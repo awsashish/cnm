@@ -103,4 +103,19 @@ angular.module('coinomiaFrontendApp')
           $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
         }
     }
+
+    // Get User Profile
+    this.userProfile = function() {
+      return $http.post(this.apiHost +'/user/me/')
+        .then(userProfileComplete)
+        .catch(userProfileFailed);
+
+        function userProfileComplete(response) {
+          return response.data;
+        }
+
+        function userProfileFailed(error) {
+          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        }
+    }
   });

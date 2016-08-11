@@ -300,4 +300,42 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Get User Profile Test
+  describe('user profile function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.userProfile).not.toEqual(null);
+    });
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/me/')
+      .respond(200, {'sponsor':'some-value','username':'coinomia', 'name':'Company', 'Mobile':'9595959595', 'Email':'some@email.com', 'Address':'xyz', 'Country':'India', 'State':'', 'City':'', 'Pincode':''});
+      var data;
+      coinomiaService.userProfile().then(function(fetchedData) {
+        data = fetchedData;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.sponsor).toEqual('some-value');
+      expect(data.username).toEqual('coinomia');
+      expect(data.name).toEqual('Company');
+      expect(data.Mobile).toEqual('9595959595');
+      expect(data.Email).toEqual('some@email.com');
+      expect(data.Address).toEqual('xyz');
+      expect(data.Country).toEqual('India');
+      expect(data.State).toEqual('');
+      expect(data.City).toEqual('');
+      expect(data.Pincode).toEqual('');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/me/')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.userProfile();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });
