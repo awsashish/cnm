@@ -118,4 +118,19 @@ angular.module('coinomiaFrontendApp')
           $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
         }
     }
+
+    // Get Purchased Power
+    this.purchasePower = function() {
+      return $http.post(this.apiHost +'/user/purchased-power/')
+        .then(purchasePowerComplete)
+        .catch(purchasePowerFailed);
+
+        function purchasePowerComplete(response) {
+          return response.data;
+        }
+
+        function purchasePowerFailed(error) {
+          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        }
+    }
   });

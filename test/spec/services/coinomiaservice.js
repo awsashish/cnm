@@ -338,4 +338,34 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Get Purchased Power Test
+  describe('purchased power function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.purchasePower).not.toEqual(null);
+    });
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/purchased-power/')
+      .respond(200, [{'coin':'BTC','miningpower':'some-value'}, {'coin':'ETH','miningpower':'some-value'}]);
+      var data;
+      coinomiaService.purchasePower().then(function(fetchedData) {
+        data = fetchedData;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data[0].coin).toEqual('BTC');
+      expect(data[0].miningpower).toEqual('some-value');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/purchased-power/')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.purchasePower();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });
