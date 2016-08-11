@@ -11,7 +11,7 @@ angular.module('coinomiaFrontendApp')
   .service('coinomiaService', function ($http, $log) {
     this.apiHost = 'http://http://coinomia.azurewebsites.net';
 
-
+    // Login Process
     this.login = function(formData) {
       var data = formData;
       return $http.post(this.apiHost + '/oauth2/token', data)
@@ -27,6 +27,7 @@ angular.module('coinomiaFrontendApp')
       }
     }
 
+    // Sign Up process
     this.signup = function(formData) {
       var data = formData;
       return $http.post(this.apiHost + '/user/signup', data)

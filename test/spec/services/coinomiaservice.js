@@ -9,11 +9,14 @@ describe('service coinomiaService', function() {
     var coinomiaService;
     var $httpBackend;
     var $log;
+    // Login Data
     var loginData = {
       "username":"coinomia",
       "password":"coinomia",
       "grant_type":"password"
-    }
+    };
+
+    // Sign Up Data
     var signupData =   {
       "sponsor":"sponsor-name",
       "userid":"user-id",
@@ -28,8 +31,21 @@ describe('service coinomiaService', function() {
       "Email":"somevalue@gmail.com",
       "IPAdr":"112.11.11.22",
       "Password":"123456",
-      "ConfirmPassword":""
+      "ConfirmPassword":"123456"
     };
+
+    // Referral Data
+    var pagination = {
+      pageno:10,
+      pagesize:25
+    }
+
+    // Change Password Data
+    var passwordData = {
+      oldPassword: 'some-value',
+      newPassword: 'some-value',
+      confirmPassword: 'some-value'
+    }
 
     beforeEach(inject(function(_coinomiaService_, _$httpBackend_, _$log_) {
       coinomiaService = _coinomiaService_;
@@ -47,6 +63,7 @@ describe('service coinomiaService', function() {
       });
     });
 
+    // Login Test Case
     describe('login function', function() {
       it('should exist', function() {
         expect(coinomiaService.login).not.toEqual(null);
@@ -83,29 +100,29 @@ describe('service coinomiaService', function() {
       });
     });
 
+    // Sign Up Test Case
     describe('signup function', function() {
       it('should exist', function() {
         expect(coinomiaService.signup).not.toEqual(null);
       });
 
-      it('should have fields defined', function () {
-          expect(signupData.userid).toEqual("user-id");
-          expect(signupData.sponsor).toEqual("sponsor-name");
-          expect(signupData.Pincode).toEqual("302013");
-          expect(signupData.Country).toEqual("country-name");
-          expect(signupData.FirstName).toEqual("first-name");
-          expect(signupData.Mobile).toEqual("9999999999");
-          expect(signupData.Email).toEqual("somevalue@gmail.com");
-          expect(signupData.IPAdr).toEqual("112.11.11.22");
-          expect(signupData.Password).toEqual("123456");
+      it('Userid, Sponsor, Pincode, Country, FirstName, Mobile, Email, IPAdr, Password Should not be blank', function () {
+          expect(signupData.userid).not.toBe('');
+          expect(signupData.sponsor).not.toBe('');
+          expect(signupData.Pincode).not.toBe('');
+          expect(signupData.Country).not.toBe('');
+          expect(signupData.FirstName).not.toBe('');
+          expect(signupData.Mobile).not.toBe('');
+          expect(signupData.Email).not.toBe('');
+          expect(signupData.IPAdr).not.toBe('');
+          expect(signupData.Password).not.toBe('');
       });
 
-      it('should have number', function () {
-          expect(signupData.Pincode).toBeGreaterThan(0);
+      it('Pincode, Mobile should be in number', function () {
           expect(signupData.Mobile).toBeGreaterThan(0);
       });
 
-      it('should password matched', function () {
+      it('New Password and Confirm Password do not match', function () {
           expect(signupData.Password).toBe(signupData.ConfirmPassword);
       });
 
@@ -131,4 +148,6 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+
 });
