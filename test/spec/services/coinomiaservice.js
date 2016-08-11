@@ -270,4 +270,34 @@ describe('service coinomiaService', function() {
     });
   });
 
+  // Get All Countries Test
+  describe('countries function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getCountries).not.toEqual(null);
+    });
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/utilities/list-countries/')
+      .respond(200, [{'name':'some-country', 'code':'some-code', 'dial_code':'+91'}, {'name':'India', 'code':'IN', 'dial_code':'+91'}]);
+      var data;
+      coinomiaService.getCountries().then(function(fetchedData) {
+        data = fetchedData;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data[0].name).toEqual('some-country');
+      expect(data[0].code).toEqual('some-code');
+      expect(data[0].dial_code).toEqual('+91');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/utilities/list-countries/')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getCountries();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });

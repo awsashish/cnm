@@ -88,4 +88,19 @@ angular.module('coinomiaFrontendApp')
           $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
         }
     }
+
+    // Get All Countries
+    this.getCountries = function() {
+      return $http.post(this.apiHost +'/utilities/list-countries/')
+        .then(getCountriesComplete)
+        .catch(getCountriesFailed);
+
+        function getCountriesComplete(response) {
+          return response.data;
+        }
+
+        function getCountriesFailed(error) {
+          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        }
+    }
   });
