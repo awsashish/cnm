@@ -133,4 +133,34 @@ angular.module('coinomiaFrontendApp')
           $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
         }
     }
+
+    // Current Mining
+    this.currentMining = function() {
+      return $http.post(this.apiHost +'/user/current-mining/')
+        .then(currentMiningComplete)
+        .catch(currentMiningFailed);
+
+        function currentMiningComplete(response) {
+          return response.data;
+        }
+
+        function currentMiningFailed(error) {
+          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        }
+    }
+
+    // Get Wallet Info
+    this.walletInfo = function(currentPage, pageLimit) {
+      return $http.post(this.apiHost +'/user/transaction/'+currentPage+'/'+pageLimit)
+        .then(walletInfoComplete)
+        .catch(wallletInfoFailed);
+
+        function walletInfoComplete(response) {
+          return response.data;
+        }
+
+        function wallletInfoFailed(error) {
+          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        }
+    }
   });

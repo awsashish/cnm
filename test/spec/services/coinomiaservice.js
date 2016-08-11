@@ -368,4 +368,70 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Current Mining Test
+  describe('current mining function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.currentMining).not.toEqual(null);
+    });
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/current-mining/')
+      .respond(200, [{'coin':'BTC','current_mining':512}, {'coin':'ETH','current_mining':512}]);
+      var data;
+      coinomiaService.currentMining().then(function(fetchedData) {
+        data = fetchedData;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data[0].coin).toEqual('BTC');
+      expect(data[0].current_mining).toEqual(512);
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/current-mining/')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.currentMining();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Wallet Transaction Test
+  describe('wallet transaction function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.wallletInfo).not.toEqual(null);
+    });
+
+    it('should not exceed page number and pagesize', function() {
+      expect(pagination.pageno).not.toBeGreaterThan(10);
+      expect(pagination.pagesize).not.toBeGreaterThan(25);
+    });
+
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/transaction/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(200, {'total':'some-value','rows':[]});
+      var data;
+      coinomiaService.walletInfo(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
+        data = fetchedData;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual('some-value');
+      expect(data.rows).toEqual(jasmine.any(Object));
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/transaction/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.walletInfo(pagination.pageno, pagination.pagesize);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });
