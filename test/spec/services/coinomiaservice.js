@@ -189,4 +189,85 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // All Referral Test
+  describe('all referral function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getReferral).not.toEqual(null);
+    });
+
+    it('should not exceed page number and pagesize', function() {
+      expect(pagination.pageno).not.toBeGreaterThan(10);
+      expect(pagination.pagesize).not.toBeGreaterThan(25);
+    });
+
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/all-referral/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(200, {'total':'some-value','rows':[{'username': 'test123', 'Name':'test', 'DOJ':'11/08/2016', 'Sponsor':'testsponsor', 'IntroName':'intro123', 'ItemName':"Registration"}]});
+      var data;
+      coinomiaService.getReferral(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
+        data = fetchedData;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual('some-value');
+      expect(data.rows[0].username).toEqual('test123');
+      expect(data.rows[0].Name).toEqual('test');
+      expect(data.rows[0].DOJ).toEqual('11/08/2016');
+      expect(data.rows[0].Sponsor).toEqual('testsponsor');
+      expect(data.rows[0].IntroName).toEqual('intro123');
+      expect(data.rows[0].ItemName).toEqual('Registration');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/all-referral/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getReferral(pagination.pageno, pagination.pagesize);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Change Password Test
+  describe('change password function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.changePassword).not.toEqual(null);
+    });
+
+    it('Current Password and New Password should not be blank', function () {
+        expect(passwordData.oldPassword).not.toBe('');
+        expect(passwordData.newPassword).not.toBe('');
+    });
+
+    it('New Password and Confirm Password do not match', function () {
+        expect(passwordData.newPassword).toEqual(passwordData.confirmPassword);
+    });
+
+
+    it('Password changed succesfully', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/change-password/', passwordData)
+      .respond(200, {"Message":"Success"});
+      var data;
+      coinomiaService.changePassword(passwordData).then(function(fetchedData) {
+        data = fetchedData;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Message).toEqual('Success');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/change-password/', passwordData)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.changePassword(passwordData);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
 });

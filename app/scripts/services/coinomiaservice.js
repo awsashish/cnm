@@ -46,6 +46,21 @@ angular.module('coinomiaFrontendApp')
     // Get User Referrals
     this.getUserReferral = function(currentPage, pageLimit) {
       return $http.post(this.apiHost +'/user/referral/'+currentPage+'/'+pageLimit)
+        .then(userReferralComplete)
+        .catch(userReferralFailed);
+
+        function userReferralComplete(response) {
+          return response.data;
+        }
+
+        function userReferralFailed(error) {
+          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        }
+    }
+
+    // All Referrals
+    this.getReferral = function(currentPage, pageLimit) {
+      return $http.post(this.apiHost +'/user/all-referral/'+currentPage+'/'+pageLimit)
         .then(getReferralComplete)
         .catch(getReferralFailed);
 
@@ -54,6 +69,22 @@ angular.module('coinomiaFrontendApp')
         }
 
         function getReferralFailed(error) {
+          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        }
+    }
+
+    // Change password process
+    this.changePassword = function(formData) {
+      var data = formData;
+      return $http.post(this.apiHost +'/user/change-password/', data)
+        .then(changePasswordComplete)
+        .catch(changePasswordFailed);
+
+        function changePasswordComplete(response) {
+          return response.data;
+        }
+
+        function changePasswordFailed(error) {
           $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
         }
     }
