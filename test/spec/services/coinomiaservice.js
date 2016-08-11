@@ -149,5 +149,44 @@ describe('service coinomiaService', function() {
     });
   });
 
+  // User Referral Test
+  describe('user referral function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getUserReferral).not.toEqual(null);
+    });
 
+    it('should not exceed page number and pagesize', function() {
+      expect(pagination.pageno).not.toBeGreaterThan(10);
+      expect(pagination.pagesize).not.toBeGreaterThan(25);
+    });
+
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/referral/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(200, {'total':'some-value','rows':[{'username': 'test123', 'Name':'test', 'DOJ':'11/08/2016', 'Sponsor':'testsponsor', 'IntroName':'intro123', 'ItemName':"Registration"}]});
+      var data;
+      coinomiaService.getUserReferral(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
+        data = fetchedData;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual('some-value');
+      expect(data.rows[0].username).toEqual('test123');
+      expect(data.rows[0].Name).toEqual('test');
+      expect(data.rows[0].DOJ).toEqual('11/08/2016');
+      expect(data.rows[0].Sponsor).toEqual('testsponsor');
+      expect(data.rows[0].IntroName).toEqual('intro123');
+      expect(data.rows[0].ItemName).toEqual('Registration');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/referral/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getUserReferral(pagination.pageno, pagination.pagesize);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });

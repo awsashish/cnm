@@ -42,4 +42,19 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
     }
+
+    // Get User Referrals
+    this.getUserReferral = function(currentPage, pageLimit) {
+      return $http.post(this.apiHost +'/user/referral/'+currentPage+'/'+pageLimit)
+        .then(getReferralComplete)
+        .catch(getReferralFailed);
+
+        function getReferralComplete(response) {
+          return response.data;
+        }
+
+        function getReferralFailed(error) {
+          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        }
+    }
   });
