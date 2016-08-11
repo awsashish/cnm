@@ -434,4 +434,38 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Get Products Test
+  describe('products function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.products).not.toEqual(null);
+    });
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/products/')
+      .respond(200, [{'coin':'BTC','productname':'some-product', 'miningpower':0.5, 'unit':'TH/s', 'amount':100, 'maxunit':10}]);
+      var data;
+      coinomiaService.products().then(function(fetchedData) {
+        data = fetchedData;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data[0].coin).toEqual('BTC');
+      expect(data[0].productname).toEqual('some-product');
+      expect(data[0].miningpower).toEqual(0.5);
+      expect(data[0].unit).toEqual('TH/s');
+      expect(data[0].amount).toEqual(100);
+      expect(data[0].maxunit).toEqual(10);
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + '/user/products/')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.products();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });

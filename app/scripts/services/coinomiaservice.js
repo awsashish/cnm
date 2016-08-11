@@ -163,4 +163,19 @@ angular.module('coinomiaFrontendApp')
           $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
         }
     }
+
+    // Get Products
+    this.products = function() {
+      return $http.post(this.apiHost +'/user/products/')
+        .then(productsComplete)
+        .catch(productsFailed);
+
+        function productsComplete(response) {
+          return response.data;
+        }
+
+        function productsFailed(error) {
+          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        }
+    }
   });
