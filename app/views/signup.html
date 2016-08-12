@@ -1,0 +1,175 @@
+<section>
+  <div class="panel panel-signup">
+    <form name="signup"  ng-submit="submit()"  novalidate>
+      <div class="panel-body" ng-hide="showme">
+        <div class="logo text-center">
+          <img src="images/logo-coinomia.png" alt="Coinomia" >
+        </div>
+        <br />
+        <h4 class="text-center mb5">Create a new account</h4>
+        <p class="text-center">Please enter your credentials below</p>
+        <div class="mb30"></div>
+        <div class="row">
+          <div class="col-sm-12">
+            <label>Sponsor ID</label><br>
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-chain"></i></span>
+              <input type="text" ng-model="sponsor"  class="form-control" placeholder="coinomia1" required>
+            </div>
+            <!-- input-group -->
+          </div>
+          <div class="col-sm-12">
+            <label>User ID</label><br>
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-chain"></i></span>
+              <input type="text" ng-model="userid" class="form-control" placeholder="coinomia">
+            </div>
+            <!-- input-group -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input type="text" ng-model="FirstName"  class="form-control" placeholder="First Name" required>
+            </div>
+            <!-- input-group -->
+          </div>
+          <div class="col-sm-6">
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input type="text" ng-model="LastName" class="form-control" placeholder="Last Name">
+            </div>
+            <!-- input-group -->
+          </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+              <input type="password" name="password" ng-model="Password" class="form-control" placeholder="Password" validation="min_len:6|required">
+            </div>
+            <!-- input-group -->
+          </div>
+          <div class="col-sm-6">
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+              <input type="password" ng-model="ConfirmPassword" class="form-control" required placeholder="Confirm Password">
+            </div>
+            <!-- input-group -->
+          </div>
+        </div>
+        <!-- row -->
+        <br />
+        <div class="clearfix">
+          <div class="pull-right">
+            <button type="button" ng-click="showme=true" class="btn btn-success" >Next <i class="fa fa-arrow-circle-o-right"></i> </button></a>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body" ng-show="showme">
+        <div class="logo text-center">
+          <img src="images/logo-coinomia.png" alt="Coinomia" >
+        </div>
+        <br />
+        <h4 class="text-center mb5">Create a new account</h4>
+        <p class="text-center">Please enter your credentials below</p>
+        <div class="mb30"></div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+              <input type="number"  ng-model="Mobile"  class="form-control" placeholder="Enter your Mobile Number" required>
+            </div>
+            <!-- input-group -->
+          </div>
+          <div class="col-sm-6">
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+              <input type="email"  ng-model="Email"  class="form-control" placeholder="Enter your Email" required>
+            </div>
+            <!-- input-group -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-map"></i></span>
+              <textarea  ng-model="Address"  class="form-control" placeholder="Full Address" required></textarea>
+            </div>
+            <!-- input-group -->
+          </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+          <div class="col-sm-4">
+            <label>Country</label><br>
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+              <select id="user.country" ng-model="Country"  class="form-control" style="padding-left:5px !important;" >
+              </select>
+            </div>
+            <!-- input-group -->
+          </div>
+          <div class="col-sm-4">
+            <label>State</label><br>
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+              <select class="form-control" ng-model="State" id="user.state" >
+              </select>
+            </div>
+            <!-- input-group -->
+          </div>
+          <div class="col-sm-4">
+            <label>City</label><br>
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+              <input type="text"  ng-model="City"  class="form-control" placeholder="City" required>
+            </div>
+            <!-- input-group -->
+          </div>
+        </div>
+        <!-- row -->
+        <div class="row">
+          <div class="col-sm-6">
+            <label>IP Address</label><br>
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-cog"></i></span>
+              <input type="number"  ng-model="IPAdr"  class="form-control" placeholder="8989" required>
+            </div>
+            <!-- input-group -->
+          </div>
+          <div class="col-sm-6">
+            <label>Pincode</label><br>
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-cog"></i></span>
+              <input type="number"  ng-model="Pincode"  class="form-control" placeholder="208011" required>
+            </div>
+            <!-- input-group -->
+          </div>
+        </div>
+        <br>
+        <div class="clearfix">
+          <div class="pull-left">
+            <div class="ckbox ckbox-primary ">
+              <input type="checkbox" id="agree" value="1"><label for="agree" >I agree with <a href="terms.html" ><strong>Terms and Conditions</strong></a></label>
+            </div>
+          </div>
+          <div class="pull-right">
+            <button type="submit" class="btn btn-success">Create New Account <i class="fa fa-angle-right ml5"></i></button>
+          </div>
+        </div>
+      </div>
+      <!-- panel-body -->
+    </form>
+    <div class="panel-footer">
+      <a href="#/" class="btn btn-primary btn-block">Already a Member? Sign In</a>
+    </div>
+    <!-- panel-footer -->
+  </div>
+  <!-- panel -->
+</section>
+<script language="javascript">
+  populateCountries("user.country", "user.state");
+</script>

@@ -1,0 +1,42 @@
+<section>
+  <div class="panel panel-signin">
+    <div class="panel-body">
+      <div class="logo text-center">
+        <img src="images/logo-coinomia.png" alt="Coinomia" >
+      </div>
+      <br />
+      <h4 class="text-center mb5">Already a Member?</h4>
+      <p class="text-center">Sign in to your account</p>
+      <div class="mb30"></div>
+      <form name="loginData" ng-submit="login()">
+        <div class="input-group mb15">
+          <span class="input-group-addon"><i class="fa fa-user"></i></span>
+          <input type="text" ng-model="username" class="form-control" placeholder="User Name" required>
+        </div>
+        <!-- input-group -->
+        <div class="input-group mb15">
+          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+          <input type="password" ng-model="password"  class="form-control" placeholder="Password" required>
+        </div>
+        <!-- input-group -->
+        <div class="clearfix">
+          <div class="pull-left">
+            <div class="ckbox ckbox-primary mt10">
+              <input type="checkbox" id="rememberMe" value="1">
+              <label for="rememberMe" style="padding-top:-25px;">Remember Me</label>
+            </div>
+          </div>
+          <div class="pull-right">
+            <button type="submit" class="btn btn-success">Sign In <i class="fa fa-angle-right ml5"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- panel-body -->
+    <div class="panel-footer">
+      <a href="#/signup" class="btn btn-primary btn-block">Not a Member Yet ? Create a Free Account</a>
+    </div>
+    <!-- panel-footer -->
+  </div>
+  <!-- panel -->
+</section>

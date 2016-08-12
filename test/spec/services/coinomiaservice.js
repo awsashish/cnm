@@ -47,6 +47,26 @@ describe('service coinomiaService', function() {
       confirmPassword: 'some-value'
     }
 
+    function verifyLoginPostData(postData) {
+      var temp = postData.split('&');
+      postData = {};
+      for (var i=0;i<temp.length;i++) {
+        var temp2 = temp[i].split('=');
+        postData[temp2[0]] = temp2[1];
+      }
+      expect(postData.username).toBe(loginData.username);
+      expect(postData.password).toBe(loginData.password);
+      expect(postData.grant_type).toBe(loginData.grant_type);
+      return true;
+
+    }
+
+    function verifyLoginRequestHeaders(headers) {
+        console.log(headers['Content-Type']);
+          expect(headers['Content-Type']).toBe('application/x-www-form-urlencoded');
+          return true;
+    }
+
     beforeEach(inject(function(_coinomiaService_, _$httpBackend_, _$log_) {
       coinomiaService = _coinomiaService_;
       $httpBackend = _$httpBackend_;
@@ -77,10 +97,12 @@ describe('service coinomiaService', function() {
 
       it('should login user successfully', function() {
         $httpBackend
-        .expect('POST', coinomiaService.apiHost + '/oauth2/token', loginData)
+        .expect('POST', coinomiaService.apiHost + '/oauth2/token',
+                  verifyLoginPostData,
+                  verifyLoginRequestHeaders)
         .respond(200, {'access_token':'some-token',token_type:'bearer', expires:90000});
         var data;
-        coinomiaService.login(loginData).then(function(fetchedData) {
+        coinomiaService.login(loginData, coinomiaService.loginRequestConfig).then(function(fetchedData) {
           data = fetchedData;
         });
         $httpBackend.flush();
@@ -92,9 +114,9 @@ describe('service coinomiaService', function() {
 
       it('should log login error', function() {
         $httpBackend
-        .expect('POST', coinomiaService.apiHost + '/oauth2/token', loginData)
+        .expect('POST', coinomiaService.apiHost + '/oauth2/token', verifyLoginPostData,verifyLoginRequestHeaders)
         .respond(500, 'Internal Server Error.');
-        coinomiaService.login(loginData);
+        coinomiaService.login(loginData, coinomiaService.loginRequestConfig);
         $httpBackend.flush();
         expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
       });

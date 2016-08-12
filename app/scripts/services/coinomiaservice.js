@@ -9,14 +9,20 @@
  */
 angular.module('coinomiaFrontendApp')
   .service('coinomiaService', function ($http, $log) {
-    this.apiHost = 'http://http://coinomia.azurewebsites.net';
+    this.apiHost = 'http://coinomia.azurewebsites.net';
+    this.loginRequestConfig = {
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          transformRequest: function(obj) {
+            var str = [];
+            for(var p in obj)
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+            return str.join("&");
+          }
+    };
 
     // Login Process
     this.login = function(formData) {
       var data = formData;
-      return $http.post(this.apiHost + '/oauth2/token', data)
-        .then(loginComplete)
-        .catch(loginFailed);
 
       function loginComplete(response) {
         return response.data;
@@ -25,14 +31,15 @@ angular.module('coinomiaFrontendApp')
       function loginFailed(error) {
         $log.error('XHR Failed for login.\n' + angular.toJson(error.data, true));
       }
-    }
+
+      return $http.post(this.apiHost + '/oauth2/token', data, this.loginRequestConfig)
+        .then(loginComplete)
+        .catch(loginFailed);
+    };
 
     // Sign Up process
     this.signup = function(formData) {
       var data = formData;
-      return $http.post(this.apiHost + '/user/signup', data)
-        .then(signupComplete)
-        .catch(signupFailed);
 
       function signupComplete(response) {
         return response.data;
@@ -41,141 +48,155 @@ angular.module('coinomiaFrontendApp')
       function signupFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
-    }
+
+      return $http.post(this.apiHost + '/user/signup', data, config)
+        .then(signupComplete)
+        .catch(signupFailed);
+    };
 
     // Get User Referrals
     this.getUserReferral = function(currentPage, pageLimit) {
+
+      function userReferralComplete(response) {
+        return response.data;
+      }
+
+      function userReferralFailed(error) {
+        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      }
+
       return $http.post(this.apiHost +'/user/referral/'+currentPage+'/'+pageLimit)
         .then(userReferralComplete)
         .catch(userReferralFailed);
-
-        function userReferralComplete(response) {
-          return response.data;
-        }
-
-        function userReferralFailed(error) {
-          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-        }
-    }
+    };
 
     // All Referrals
     this.getReferral = function(currentPage, pageLimit) {
+
+      function getReferralComplete(response) {
+        return response.data;
+      }
+
+      function getReferralFailed(error) {
+        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      }
+
       return $http.post(this.apiHost +'/user/all-referral/'+currentPage+'/'+pageLimit)
         .then(getReferralComplete)
         .catch(getReferralFailed);
 
-        function getReferralComplete(response) {
-          return response.data;
-        }
-
-        function getReferralFailed(error) {
-          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-        }
-    }
+    };
 
     // Change password process
     this.changePassword = function(formData) {
       var data = formData;
+
+      function changePasswordComplete(response) {
+        return response.data;
+      }
+
+      function changePasswordFailed(error) {
+        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      }
+
       return $http.post(this.apiHost +'/user/change-password/', data)
         .then(changePasswordComplete)
         .catch(changePasswordFailed);
-
-        function changePasswordComplete(response) {
-          return response.data;
-        }
-
-        function changePasswordFailed(error) {
-          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-        }
-    }
+    };
 
     // Get All Countries
     this.getCountries = function() {
+
+      function getCountriesComplete(response) {
+        return response.data;
+      }
+
+      function getCountriesFailed(error) {
+        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      }
+
       return $http.post(this.apiHost +'/utilities/list-countries/')
         .then(getCountriesComplete)
         .catch(getCountriesFailed);
-
-        function getCountriesComplete(response) {
-          return response.data;
-        }
-
-        function getCountriesFailed(error) {
-          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-        }
-    }
+    };
 
     // Get User Profile
     this.userProfile = function() {
+
+      function userProfileComplete(response) {
+        return response.data;
+      }
+
+      function userProfileFailed(error) {
+        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      }
+
       return $http.post(this.apiHost +'/user/me/')
         .then(userProfileComplete)
         .catch(userProfileFailed);
-
-        function userProfileComplete(response) {
-          return response.data;
-        }
-
-        function userProfileFailed(error) {
-          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-        }
-    }
+    };
 
     // Get Purchased Power
     this.purchasePower = function() {
+
+      function purchasePowerComplete(response) {
+        return response.data;
+      }
+
+      function purchasePowerFailed(error) {
+        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      }
+
       return $http.post(this.apiHost +'/user/purchased-power/')
         .then(purchasePowerComplete)
         .catch(purchasePowerFailed);
-
-        function purchasePowerComplete(response) {
-          return response.data;
-        }
-
-        function purchasePowerFailed(error) {
-          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-        }
-    }
+    };
 
     // Current Mining
     this.currentMining = function() {
+
+      function currentMiningComplete(response) {
+        return response.data;
+      }
+
+      function currentMiningFailed(error) {
+        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      }
+
       return $http.post(this.apiHost +'/user/current-mining/')
         .then(currentMiningComplete)
         .catch(currentMiningFailed);
-
-        function currentMiningComplete(response) {
-          return response.data;
-        }
-
-        function currentMiningFailed(error) {
-          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-        }
-    }
+    };
 
     // Get Wallet Info
     this.walletInfo = function(currentPage, pageLimit) {
+
+      function walletInfoComplete(response) {
+        return response.data;
+      }
+
+      function wallletInfoFailed(error) {
+        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      }
+
       return $http.post(this.apiHost +'/user/transaction/'+currentPage+'/'+pageLimit)
         .then(walletInfoComplete)
         .catch(wallletInfoFailed);
-
-        function walletInfoComplete(response) {
-          return response.data;
-        }
-
-        function wallletInfoFailed(error) {
-          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-        }
-    }
+    };
 
     // Get Products
     this.products = function() {
+
+      function productsComplete(response) {
+        return response.data;
+      }
+
+      function productsFailed(error) {
+        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      }
+
       return $http.post(this.apiHost +'/user/products/')
         .then(productsComplete)
         .catch(productsFailed);
-
-        function productsComplete(response) {
-          return response.data;
-        }
-
-        function productsFailed(error) {
-          $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-        }
-    }
+    };
   });

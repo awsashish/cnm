@@ -17,19 +17,25 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
       .otherwise({
         redirectTo: '/'
       });
+      $httpProvider.interceptors.push('authInterceptor');
+  })
+  .factory('authInterceptor', function ($rootScope, $q, $cookieStore) {
+    return {
+      // Add authorization token to headers
+      request: function (config) {
+        $rootScope.signin = true;
+        config.headers = config.headers || {};
+      //  config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        if ($cookieStore.get('token')) {
+          config.headers.authorization = 'Bearer ' + $cookieStore.get('token');
+          $rootScope.signin = false;
+        }
+        return config;
+      },
+    };
   });
