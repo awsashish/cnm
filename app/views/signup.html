@@ -14,16 +14,19 @@
             <label>Sponsor ID</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-chain"></i></span>
-              <input type="text" ng-model="sponsor"  class="form-control" placeholder="coinomia1" required>
+              <input type="text" name="sponsor" ng-model="sponsor"  class="form-control" readonly placeholder="coinomia" required />
+
             </div>
+            <p class="validation-error" ng-show="signup.sponsor.$touched && signup.sponsor.$invalid">Sponsor Id is required</p>
             <!-- input-group -->
           </div>
           <div class="col-sm-12">
             <label>User ID</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-chain"></i></span>
-              <input type="text" ng-model="userid" class="form-control" placeholder="coinomia">
+              <input type="text" name="userid" ng-model="userid" class="form-control" placeholder="coinomia" required />
             </div>
+            <p class="validation-error" ng-show="signup.userid.$touched && signup.userid.$invalid">User Id is required</p>
             <!-- input-group -->
           </div>
         </div>
@@ -31,8 +34,9 @@
           <div class="col-sm-6">
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-user"></i></span>
-              <input type="text" ng-model="FirstName"  class="form-control" placeholder="First Name" required>
+              <input type="text" name="firstname" ng-model="FirstName"  class="form-control" placeholder="First Name" required />
             </div>
+            <p class="validation-error" ng-show="signup.firstname.$touched && signup.firstname.$invalid">First Name is required</p>
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
@@ -48,15 +52,18 @@
           <div class="col-sm-6">
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-              <input type="password" name="password" ng-model="Password" class="form-control" placeholder="Password" validation="min_len:6|required">
+              <input type="password" name="password" ng-model="Password" class="form-control" ng-minlength="6" placeholder="Password" required >
             </div>
+            <p class="validation-error" ng-show="signup.password.$touched && signup.password.$invalid && !signup.password.$error.minlength ">Password is required.</p>
+            <p class="validation-error" ng-show="signup.password.$touched && signup.password.$invalid && signup.password.$error.minlength">Password must be 6 characters long.</p>
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-              <input type="password" ng-model="ConfirmPassword" class="form-control" required placeholder="Confirm Password">
+              <input type="password" name="confirmpassword" ng-model="ConfirmPassword" class="form-control" ng-keyup="confirmPass()" placeholder="Confirm Password" required />
             </div>
+            <p class="validation-error" ng-show="(signup.confirmpassword.$touched && signup.confirmpassword.$invalid) || confrimPassError">Password does not match</p>
             <!-- input-group -->
           </div>
         </div>
@@ -64,7 +71,7 @@
         <br />
         <div class="clearfix">
           <div class="pull-right">
-            <button type="button" ng-click="showme=true" class="btn btn-success" >Next <i class="fa fa-arrow-circle-o-right"></i> </button></a>
+            <button type="button" ng-click="showme=true" class="btn btn-success" ng-disabled="signup.password.$error.required || signup.sponsor.$error.required || signup.userid.$error.required || signup.firstname.$error.required || confrimPassError">Next <i class="fa fa-arrow-circle-o-right"></i> </button></a>
           </div>
         </div>
       </div>
@@ -76,19 +83,22 @@
         <h4 class="text-center mb5">Create a new account</h4>
         <p class="text-center">Please enter your credentials below</p>
         <div class="mb30"></div>
+        <p class="validation-error" ng-show="error">{{signupMessage}}</p>
         <div class="row">
           <div class="col-sm-6">
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-              <input type="number"  ng-model="Mobile"  class="form-control" placeholder="Enter your Mobile Number" required>
+              <input type="number" name="mobile" ng-model="Mobile"  class="form-control" placeholder="Enter your Mobile Number" required>
             </div>
+            <p class="validation-error" ng-show="signup.mobile.$touched && signup.mobile.$invalid">Mobile number is required</p>
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-              <input type="email"  ng-model="Email"  class="form-control" placeholder="Enter your Email" required>
+              <input type="email"  name="email" ng-model="Email"  class="form-control" placeholder="Enter your Email" required>
             </div>
+            <p class="validation-error" ng-show="signup.email.$touched && signup.email.$invalid">Email is required</p>
             <!-- input-group -->
           </div>
         </div>
@@ -107,9 +117,10 @@
             <label>Country</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-              <select id="user.country" ng-model="Country"  class="form-control" style="padding-left:5px !important;" >
+              <select id="user.country" name="country" ng-model="Country"  class="form-control" style="padding-left:5px !important;" required >
               </select>
             </div>
+            <p class="validation-error" ng-show="signup.country.$touched && signup.country.$invalid">Country is required</p>
             <!-- input-group -->
           </div>
           <div class="col-sm-4">
@@ -125,7 +136,7 @@
             <label>City</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-              <input type="text"  ng-model="City"  class="form-control" placeholder="City" required>
+              <input type="text"  name="city" ng-model="City"  class="form-control" placeholder="City" required>
             </div>
             <!-- input-group -->
           </div>
@@ -136,16 +147,18 @@
             <label>IP Address</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-cog"></i></span>
-              <input type="number"  ng-model="IPAdr"  class="form-control" placeholder="8989" required>
+              <input type="text" name="ipadr" ng-model="IPAdr"  class="form-control" placeholder="8989" required />
             </div>
+            <p class="validation-error" ng-show="signup.ipadr.$touched && signup.ipadr.$invalid">IP Address is required</p>
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
             <label>Pincode</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-cog"></i></span>
-              <input type="number"  ng-model="Pincode"  class="form-control" placeholder="208011" required>
+              <input type="number"  name="pincode" ng-model="Pincode"  class="form-control" placeholder="208011" required>
             </div>
+            <p class="validation-error" ng-show="signup.pincode.$touched && signup.pincode.$invalid">Pincode is required</p>
             <!-- input-group -->
           </div>
         </div>
@@ -157,15 +170,17 @@
             </div>
           </div>
           <div class="pull-right">
-            <button type="submit" class="btn btn-success">Create New Account <i class="fa fa-angle-right ml5"></i></button>
+            <span ng-click="showme=false" style="cursor:pointer;"> <i class="fa fa-angle-left ml5"></i> Back</span>
+            <button type="submit" class="btn btn-success" ng-disabled="signup.email.$error.required || signup.mobile.$error.required || signup.country.$error.required || signup.ipadr.$error.required || signup.pincode.$error.required">
+              Create New Account <i class="fa fa-angle-right ml5"></i></button>
           </div>
         </div>
       </div>
       <!-- panel-body -->
     </form>
-    <div class="panel-footer">
+    <!-- <div class="panel-footer">
       <a href="#/" class="btn btn-primary btn-block">Already a Member? Sign In</a>
-    </div>
+    </div> -->
     <!-- panel-footer -->
   </div>
   <!-- panel -->

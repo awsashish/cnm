@@ -19,5 +19,10 @@ angular.module('coinomiaFrontendApp')
     .when('/dashboard', {
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl'
+    })
+
+    // Successful page
+    .when('/success', {
+        templateUrl: 'views/success.html',
     });
 }]);

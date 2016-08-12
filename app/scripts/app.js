@@ -15,22 +15,24 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'validation',
+
   ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .otherwise({
         redirectTo: '/'
       });
+      //$locationProvider.html5Mode('true');
+      //$locationProvider.hashPrefix('!');
       $httpProvider.interceptors.push('authInterceptor');
   })
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore) {
     return {
       // Add authorization token to headers
       request: function (config) {
-        $rootScope.signin = true;
         config.headers = config.headers || {};
-      //  config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
         if ($cookieStore.get('token')) {
           config.headers.authorization = 'Bearer ' + $cookieStore.get('token');
           $rootScope.signin = false;

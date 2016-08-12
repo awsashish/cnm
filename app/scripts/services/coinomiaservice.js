@@ -14,19 +14,16 @@ angular.module('coinomiaFrontendApp')
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           transformRequest: function(obj) {
             var str = [];
-            for(var p in obj)
-            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+            for(var p in obj) {
+              str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+            }
             return str.join("&");
           }
     };
 
     // Login Process
-    this.login = function(formData) {
+    this.login = function(formData, loginComplete) {
       var data = formData;
-
-      function loginComplete(response) {
-        return response.data;
-      }
 
       function loginFailed(error) {
         $log.error('XHR Failed for login.\n' + angular.toJson(error.data, true));
@@ -38,18 +35,10 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Sign Up process
-    this.signup = function(formData) {
+    this.signup = function(formData, signupComplete, signupFailed) {
       var data = formData;
 
-      function signupComplete(response) {
-        return response.data;
-      }
-
-      function signupFailed(error) {
-        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-      }
-
-      return $http.post(this.apiHost + '/user/signup', data, config)
+      return $http.post(this.apiHost + '/user/signup', data)
         .then(signupComplete)
         .catch(signupFailed);
     };
