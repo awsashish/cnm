@@ -8,16 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('DashboardCtrl', function ($scope, $window, $cookies, $state) {
+  .controller('DashboardCtrl', function ($scope, $window, $cookies, $state, coinomiaService) {
     console.log('DashBoard');
-    $scope.validateUser = function() {
-      var userSession = $window.sessionStorage.getItem('token');
-      var userCookies = $cookies.get('token');
-      console.log(userSession, userCookies);
-      if(userCookies =='' || userSession == '') {
-        $state.go('login');
-      }
-    }
-
-   $scope.validateUser();
+    coinomiaService.Auth();
   });

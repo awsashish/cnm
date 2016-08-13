@@ -8,7 +8,7 @@
  * Service in the coinomiaFrontendApp.
  */
 angular.module('coinomiaFrontendApp')
-  .service('coinomiaService', function ($http, $log) {
+  .service('coinomiaService', function ($http, $log, $state, $window, $cookies) {
     this.apiHost = 'http://coinomia.azurewebsites.net';
     this.loginRequestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -188,4 +188,15 @@ angular.module('coinomiaFrontendApp')
         .then(productsComplete)
         .catch(productsFailed);
     };
+
+    // Authentication
+    this.Auth = function() {
+      var userSession = $window.sessionStorage.getItem('token');
+      var userCookies = $cookies.get('token');
+      if ($cookies.get('token') || $window.sessionStorage.getItem('token')) {
+        $state.go('dashboard');
+      }else{
+        $state.go('login');
+      }
+    }
   });

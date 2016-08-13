@@ -10,6 +10,7 @@
 angular.module('coinomiaFrontendApp')
   .controller('LoginCtrl', function ($scope, $cookies, $state, $window, $location, coinomiaService) {
     $scope.sigin = true;
+    coinomiaService.Auth();
     $scope.loginError = '';
     $scope.login = function() {
       var loginData = {
@@ -30,9 +31,5 @@ angular.module('coinomiaFrontendApp')
       }, function(err) {
           $scope.loginError = err.data.error_description;
       });
-
-
     };
-
-
   });
