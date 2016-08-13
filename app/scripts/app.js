@@ -12,6 +12,7 @@ angular
   .module('coinomiaFrontendApp', [
     'ngAnimate',
     'ngCookies',
+    'ui.router',
     'ngResource',
     'ngRoute',
     'ngSanitize',
@@ -19,22 +20,19 @@ angular
     'validation',
 
   ])
-  .config(function ($routeProvider, $locationProvider, $httpProvider) {
-    $routeProvider
-      .otherwise({
-        redirectTo: '/'
-      });
-      //$locationProvider.html5Mode('true');
-      //$locationProvider.hashPrefix('!');
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $urlRouterProvider
+      .otherwise('/');
       $httpProvider.interceptors.push('authInterceptor');
   })
-  .factory('authInterceptor', function ($rootScope, $q, $cookieStore) {
+  .factory('authInterceptor', function ($rootScope, $q, $cookies, $window) {
     return {
       // Add authorization token to headers
       request: function (config) {
+        $rootScope.signin = true;
         config.headers = config.headers || {};
-        if ($cookieStore.get('token')) {
-          config.headers.authorization = 'Bearer ' + $cookieStore.get('token');
+        if ($cookies.get('token') || $window.sessionStorage.getItem('token')) {
+        //config.headers.authorization = 'Bearer ' + $cookieStore.get('token');
           $rootScope.signin = false;
         }
         return config;

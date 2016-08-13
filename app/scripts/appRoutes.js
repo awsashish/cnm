@@ -1,28 +1,42 @@
 'use strict';
 
 angular.module('coinomiaFrontendApp')
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider
+.config(function($stateProvider, $locationProvider) {
+  $stateProvider
+
+  // Login page
+  .state('main', {
+      url: '/',
+      //templateUrl: 'views/index.html',
+      controller: 'MainCtrl'
+  })
     // Login page
-    .when('/', {
+    .state('login', {
+        url: '/login',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
     })
 
     // Sign up page
-    .when('/signup', {
+    .state('signup', {
+        url: '/signup',
         templateUrl: 'views/signup.html',
         controller: 'SignupCtrl'
     })
 
     // Dashboard page
-    .when('/dashboard', {
-        templateUrl: 'views/dashboard.html',
+    .state('dashboard', {
+        url: '/dashboard',
+        templateUrl: 'views/coming-soon.html',
         controller: 'DashboardCtrl'
     })
 
     // Successful page
-    .when('/success', {
+    .state('success', {
+        url: '/success',
         templateUrl: 'views/success.html',
     });
-}]);
+    //
+    // $locationProvider.html5Mode(true);
+    // $locationProvider.hashPrefix('!');
+});

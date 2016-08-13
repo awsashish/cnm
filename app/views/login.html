@@ -8,6 +8,7 @@
       <h4 class="text-center mb5">Already a Member?</h4>
       <p class="text-center">Sign in to your account</p>
       <div class="mb30"></div>
+      <span class="validation-error">{{loginError}}</span>
       <form name="loginData" ng-submit="login()">
         <div class="input-group mb15">
           <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -22,7 +23,7 @@
         <div class="clearfix">
           <div class="pull-left">
             <div class="ckbox ckbox-primary mt10">
-              <input type="checkbox" id="rememberMe" value="1">
+              <input type="checkbox" id="rememberMe" ng-model="remember" value="1">
               <label for="rememberMe" style="padding-top:-25px;">Remember Me</label>
             </div>
           </div>

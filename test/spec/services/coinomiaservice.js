@@ -11,41 +11,41 @@ describe('service coinomiaService', function() {
     var $log;
     // Login Data
     var loginData = {
-      "username":"coinomia",
-      "password":"coinomia",
-      "grant_type":"password"
+      'username':'coinomia',
+      'password':'coinomia',
+      'grant_type':'password'
     };
 
     // Sign Up Data
     var signupData =   {
-      "sponsor":"sponsor-name",
-      "userid":"user-id",
-      "FirstName":"first-name",
-      "LastName":"dfsd",
-      "Address":"Address",
-      "Country":"country-name",
-      "State":"state-name",
-      "City":"city-name",
-      "Pincode":"302013",
-      "Mobile":"9999999999",
-      "Email":"somevalue@gmail.com",
-      "IPAdr":"112.11.11.22",
-      "Password":"123456",
-      "ConfirmPassword":"123456"
+      'sponsor':'sponsor-name',
+      'userid':'user-id',
+      'FirstName':'first-name',
+      'LastName':'dfsd',
+      'Address':'Address',
+      'Country':'country-name',
+      'State':'state-name',
+      'City':'city-name',
+      'Pincode':'302013',
+      'Mobile':'9999999999',
+      'Email':'somevalue@gmail.com',
+      'IPAdr':'112.11.11.22',
+      'Password':'123456',
+      'ConfirmPassword':'123456'
     };
 
     // Referral Data
     var pagination = {
       pageno:10,
       pagesize:25
-    }
+    };
 
     // Change Password Data
     var passwordData = {
       oldPassword: 'some-value',
       newPassword: 'some-value',
       confirmPassword: 'some-value'
-    }
+    };
 
     function verifyLoginPostData(postData) {
       var temp = postData.split('&');

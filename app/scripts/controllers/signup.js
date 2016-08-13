@@ -11,6 +11,17 @@ angular.module('coinomiaFrontendApp')
   .controller('SignupCtrl', function ($scope, coinomiaService, $window) {
     $scope.sponsor = 'coinomia';
     $scope.confrimPassError = false;
+
+    $scope.next = function() {
+      if($scope.signup.sponsor.$valid && $scope.signup.userid.$valid && $scope.signup.firstname.$valid && $scope.signup.password.$valid && $scope.signup.confirmpassword.$valid) {
+        $scope.showme = true;
+        $scope.formError = false;
+      }else{
+        $scope.formError = true;
+        $scope.showme = false;
+      }
+    };
+
     $scope.confirmPass = function() {
       if($scope.Password !== $scope.ConfirmPassword) {
         $scope.confrimPassError = true;

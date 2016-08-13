@@ -22,12 +22,12 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Login Process
-    this.login = function(formData, loginComplete) {
+    this.login = function(formData, loginComplete, loginFailed) {
       var data = formData;
 
-      function loginFailed(error) {
-        $log.error('XHR Failed for login.\n' + angular.toJson(error.data, true));
-      }
+      // function loginFailed(error) {
+      //   $log.error('XHR Failed for login.\n' + angular.toJson(error.data, true));
+      // }
 
       return $http.post(this.apiHost + '/oauth2/token', data, this.loginRequestConfig)
         .then(loginComplete)
