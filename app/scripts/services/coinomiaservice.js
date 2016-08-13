@@ -21,6 +21,10 @@ angular.module('coinomiaFrontendApp')
           }
     };
 
+    this.requestFailed = function (error) {
+      $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+    }
+
     // Login Process
     this.login = function(formData, loginComplete, loginFailed) {
       var data = formData;
@@ -188,6 +192,11 @@ angular.module('coinomiaFrontendApp')
         .then(productsComplete)
         .catch(productsFailed);
     };
+
+    this.getUserIP = function() {
+      return $http.get('https://api.ipify.org/')
+      .catch(this.requestFailed);
+    }
 
     // Authentication
     this.Auth = function() {

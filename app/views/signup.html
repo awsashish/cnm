@@ -113,7 +113,7 @@
         </div>
         <!-- row -->
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <label>Country</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
@@ -123,7 +123,7 @@
             <p class="validation-error" ng-show="signup.country.$touched && signup.country.$invalid">Country is required</p>
             <!-- input-group -->
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <label>State</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
@@ -132,24 +132,16 @@
             </div>
             <!-- input-group -->
           </div>
-          <div class="col-sm-4">
+
+        </div>
+        <!-- row -->
+        <div class="row">
+        <div class="col-sm-6">
             <label>City</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
               <input type="text"  name="city" ng-model="City"  class="form-control" placeholder="City" required>
             </div>
-            <!-- input-group -->
-          </div>
-        </div>
-        <!-- row -->
-        <div class="row">
-          <div class="col-sm-6">
-            <label>IP Address</label><br>
-            <div class="input-group mb15">
-              <span class="input-group-addon"><i class="fa fa-cog"></i></span>
-              <input type="text" name="ipadr" ng-model="IPAdr"  class="form-control" placeholder="8989" required />
-            </div>
-            <p class="validation-error" ng-show="signup.ipadr.$touched && signup.ipadr.$invalid">IP Address is required</p>
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
@@ -165,13 +157,14 @@
         <br>
         <div class="clearfix">
           <div class="pull-left">
-            <div class="ckbox ckbox-primary ">
-              <input type="checkbox" id="agree" value="1"><label for="agree" >I agree with <a href="terms.html" ><strong>Terms and Conditions</strong></a></label>
+          <div class="ckbox ckbox-primary ">
+              <input type="checkbox" id="agree" name="remember" value="1" required /><label for="agree" >I agree with <a href="terms.html" ><strong>Terms and Conditions</strong></a></label>
             </div>
+            <p class="validation-error" ng-show="signup.remember.$touched && signup.remember.$invalid">Please accept our terms and conditions.</p>
           </div>
           <div class="pull-right">
             <span ng-click="showme=false" style="cursor:pointer;"> <i class="fa fa-angle-left ml5"></i> Back</span>
-            <button type="submit" class="btn btn-success" ng-disabled="signup.email.$error.required || signup.mobile.$error.required || signup.country.$error.required || signup.ipadr.$error.required || signup.pincode.$error.required">
+            <button type="submit" class="btn btn-success" ng-disabled="signup.remember.$error.required || signup.email.$error.required || signup.mobile.$error.required || signup.country.$error.required || signup.ipadr.$error.required || signup.pincode.$error.required">
               Create New Account <i class="fa fa-angle-right ml5"></i></button>
           </div>
         </div>

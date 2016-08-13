@@ -12,6 +12,10 @@ angular.module('coinomiaFrontendApp')
     $scope.sponsor = 'coinomia';
     $scope.confrimPassError = false;
 
+    coinomiaService.getUserIP().then(function(data) {
+      $scope.IPAdr = data.data;
+    })
+
     $scope.next = function() {
       if($scope.signup.sponsor.$valid && $scope.signup.userid.$valid && $scope.signup.firstname.$valid && $scope.signup.password.$valid && $scope.signup.confirmpassword.$valid) {
         $scope.showme = true;
@@ -56,7 +60,7 @@ angular.module('coinomiaFrontendApp')
             }
           }, function(err) {
             $scope.error = true;
-            $scope.signupMessage = 'Something goes wrong. Please fill the form correctly.';
+            $scope.signupMessage = 'Oops! Something went wrong. Please check if you entered data properly.';
           });
         };
       };
