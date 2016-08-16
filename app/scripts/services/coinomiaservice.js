@@ -192,19 +192,19 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get Products
-    this.products = function() {
+    this.getProducts = function() {
 
-      function productsComplete(response) {
+      function getProductsComplete(response) {
         return response.data;
       }
 
-      function productsFailed(error) {
+      function getProductsFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
       return $http.post(this.apiHost +'/user/products/')
-        .then(productsComplete)
-        .catch(productsFailed);
+        .then(getProductsComplete)
+        .catch(getProductsFailed);
     };
 
     this.getUserIP = function() {

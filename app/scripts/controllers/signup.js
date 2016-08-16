@@ -38,6 +38,8 @@ angular.module('coinomiaFrontendApp')
         $scope.submit = function() {
           $scope.emailError = '';
           $scope.userIdError = '';
+          $scope.firstNameError = '';
+          $scope.lastNameError = '';
 
           var formData = {
             'sponsor':$scope.sponsor,
@@ -58,7 +60,6 @@ angular.module('coinomiaFrontendApp')
 
           $scope.error = false;
           coinomiaService.signup(formData).then(function(res) {
-            console.log(res);
             var data = res.data;
             if(res.status === 200){
               $scope.signupMessage = data.Message;
@@ -74,7 +75,7 @@ angular.module('coinomiaFrontendApp')
               $scope.userIdError = data.Message;
             }else{
               if(angular.isObject(data.Messages)){
-                var errorMessage = data.Messages;
+                  var errorMessage = data.Messages;
                   if(errorMessage['Member.Email'].length > 0) {
                     $scope.showme = true;
                     $scope.emailError = data.Messages['Member.Email'][0];

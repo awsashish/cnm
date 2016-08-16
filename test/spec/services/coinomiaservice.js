@@ -48,12 +48,17 @@ describe('service coinomiaService', function() {
     };
 
     function verifyLoginPostData(postData) {
-      var temp = postData.split('&');
-      postData = {};
-      for (var i=0;i<temp.length;i++) {
-        var temp2 = temp[i].split('=');
-        postData[temp2[0]] = temp2[1];
-      }
+      // Remove the '&' at the start of the string and split out each assignment
+      var postData = _.chain( postData.split('&') )
+                      // Split each array item into [key, value]
+                      // ignore empty string if search is empty
+                      .map(function(item) { if (item) return item.split('='); })
+                      // Remove undefined in the case the search is empty
+                      .compact()
+                      // Turn [key, value] arrays into object parameters
+                      .object()
+                      // Return the value of the chain operation
+                      .value();
       expect(postData.username).toBe(loginData.username);
       expect(postData.password).toBe(loginData.password);
       expect(postData.grant_type).toBe(loginData.grant_type);
@@ -62,7 +67,7 @@ describe('service coinomiaService', function() {
     }
 
     function verifyLoginRequestHeaders(headers) {
-        console.log(headers['Content-Type']);
+        // console.log(headers['Content-Type']);
           expect(headers['Content-Type']).toBe('application/x-www-form-urlencoded');
           return true;
     }
@@ -103,7 +108,7 @@ describe('service coinomiaService', function() {
         .respond(200, {'access_token':'some-token',token_type:'bearer', expires:90000});
         var data;
         coinomiaService.login(loginData, coinomiaService.loginRequestConfig).then(function(fetchedData) {
-          data = fetchedData;
+          data = fetchedData.data;
         });
         $httpBackend.flush();
         expect(data).toEqual(jasmine.any(Object));
@@ -154,7 +159,7 @@ describe('service coinomiaService', function() {
       .respond(200, {"Message":"Success"});
       var data;
       coinomiaService.signup(signupData).then(function(fetchedData) {
-        data = fetchedData;
+        data = fetchedData.data;
       });
       $httpBackend.flush();
       expect(data).toEqual(jasmine.any(Object));
@@ -460,7 +465,7 @@ describe('service coinomiaService', function() {
   // Get Products Test
   describe('products function', function() {
     it('should exist', function() {
-      expect(coinomiaService.products).not.toEqual(null);
+      expect(coinomiaService.getProducts).not.toEqual(null);
     });
 
     it('should returns records succesfully', function() {
@@ -468,7 +473,7 @@ describe('service coinomiaService', function() {
       .expect('POST', coinomiaService.apiHost + '/user/products/')
       .respond(200, [{'coin':'BTC','productname':'some-product', 'miningpower':0.5, 'unit':'TH/s', 'amount':100, 'maxunit':10}]);
       var data;
-      coinomiaService.products().then(function(fetchedData) {
+      coinomiaService.getProducts().then(function(fetchedData) {
         data = fetchedData;
       });
       $httpBackend.flush();
@@ -485,7 +490,7 @@ describe('service coinomiaService', function() {
       $httpBackend
       .expect('POST', coinomiaService.apiHost + '/user/products/')
       .respond(500, 'Internal Server Error.');
-      coinomiaService.products();
+      coinomiaService.getProducts();
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
