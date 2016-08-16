@@ -23,15 +23,20 @@ angular.module('coinomiaFrontendApp')
 
     this.requestFailed = function (error) {
       $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-    }
+    };
 
     // Login Process
-    this.login = function(formData, loginComplete, loginFailed) {
+    this.login = function(formData) {
       var data = formData;
 
-      // function loginFailed(error) {
-      //   $log.error('XHR Failed for login.\n' + angular.toJson(error.data, true));
-      // }
+      function loginComplete(response) {
+        return response;
+      }
+
+      function loginFailed(error) {
+        $log.error('XHR Failed for login.\n' + angular.toJson(error.data, true));
+        return error;
+      }
 
       return $http.post(this.apiHost + '/oauth2/token', data, this.loginRequestConfig)
         .then(loginComplete)
@@ -39,8 +44,17 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Sign Up process
-    this.signup = function(formData, signupComplete, signupFailed) {
+    this.signup = function(formData) {
       var data = formData;
+
+      function signupComplete(response) {
+        return response;
+      }
+
+      function signupFailed(error, status) {
+        $log.error('XHR Failed for signup.\n' + angular.toJson(status, true));
+        return error;
+      }
 
       return $http.post(this.apiHost + '/user/signup', data)
         .then(signupComplete)
@@ -196,16 +210,14 @@ angular.module('coinomiaFrontendApp')
     this.getUserIP = function() {
       return $http.get('https://api.ipify.org/')
       .catch(this.requestFailed);
-    }
+    };
 
     // Authentication
     this.Auth = function() {
-      var userSession = $window.sessionStorage.getItem('token');
-      var userCookies = $cookies.get('token');
       if ($cookies.get('token') || $window.sessionStorage.getItem('token')) {
         $state.go('dashboard');
       }else{
         $state.go('login');
       }
-    }
+    };
   });

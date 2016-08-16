@@ -8,7 +8,8 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('SignupCtrl', function ($scope, coinomiaService, $window) {
+  .controller('SignupCtrl', function ($scope, coinomiaService, $window, $timeout) {
+
     $scope.sponsor = 'coinomia';
     $scope.confrimPassError = false;
 
@@ -29,12 +30,15 @@ angular.module('coinomiaFrontendApp')
     $scope.confirmPass = function() {
       if($scope.Password !== $scope.ConfirmPassword) {
         $scope.confrimPassError = true;
-        $scope.signupError = 'Password does not match.';
+        $scope.signupError = 'Passwords do not match.';
       }else{
         $scope.confrimPassError = false;
       }
 
         $scope.submit = function() {
+          $scope.emailError = '';
+          $scope.userIdError = '';
+
           var formData = {
             'sponsor':$scope.sponsor,
             'userid':$scope.userid,
@@ -53,14 +57,43 @@ angular.module('coinomiaFrontendApp')
           };
 
           $scope.error = false;
-          coinomiaService.signup(formData, function(res) {
+          coinomiaService.signup(formData).then(function(res) {
+            console.log(res);
+            var data = res.data;
             if(res.status === 200){
-              $scope.signupMessage = res.Message;
-              $window.location.href = '#/success';
+              $scope.signupMessage = data.Message;
+
+              $timeout(function () {
+                $state.go('login');
+              }, 3000);
+
             }
-          }, function(err) {
-            $scope.error = true;
-            $scope.signupMessage = 'Oops! Something went wrong. Please check if you entered data properly.';
+
+            if(res.status === 404) {
+              $scope.showme = false;
+              $scope.userIdError = data.Message;
+            }else{
+              if(angular.isObject(data.Messages)){
+                var errorMessage = data.Messages;
+                  if(errorMessage['Member.Email'].length > 0) {
+                    $scope.showme = true;
+                    $scope.emailError = data.Messages['Member.Email'][0];
+                  }
+
+                  if(errorMessage['Member.FirstName'].length > 0) {
+                    $scope.showme = false;
+                    $scope.firstNameError = 'Only Characters are allowed';
+                  }
+
+                  if(errorMessage['Member.LastName'].length > 0) {
+                    $scope.showme = false;
+                    $scope.lastNameError = 'Only Characters are allowed';
+                  }
+              }else{
+                $scope.error = true;
+                $scope.signupMessage = 'Oops! Something went wrong. Please check if you entered data properly.';
+              }
+            }
           });
         };
       };

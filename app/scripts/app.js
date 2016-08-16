@@ -16,8 +16,7 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'validation',
+    'ngTouch'
 
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
