@@ -66,13 +66,13 @@
                First name is required.</p>
             <p class="validation-error"
                ng-show="signup.firstname.$touched && signup.firstname.$error.pattern && !signup.firstname.$error.maxlength">
-               Only characters are allowed.</p>
+               Only alphabets are allowed.</p>
 
              <p class="validation-error"
                 ng-show="signup.firstname.$touched && signup.firstname.$invalid && signup.firstname.$error.maxlength">
                 Maximum 15 characters are allowed.</p>
 
-            <p class="validation-error">{{firstNameError}}</p>
+            <p class="validation-error" ng-show="!signup.firstname.$error.pattern">{{firstNameError}}</p>
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
@@ -90,13 +90,13 @@
 
             <p class="validation-error"
                ng-show="signup.lastname.$touched && signup.lastname.$error.pattern && !signup.lastname.$error.maxlength">
-               Only characters are allowed.</p>
+               Only alphabets are allowed.</p>
 
             <p class="validation-error"
                ng-show="signup.lastname.$touched && signup.lastname.$invalid && signup.lastname.$error.maxlength">
                Maximum 15 characters are allowed.</p>
 
-            <p class="validation-error">{{lastNameError}}</p>
+            <p class="validation-error" ng-show="!signup.lastname.$error.pattern">{{lastNameError}}</p>
             <!-- input-group -->
           </div>
         </div>
@@ -248,7 +248,7 @@
             <label>Pincode</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-cog"></i></span>
-              <input type="number"  name="pincode" ng-model="Pincode"  class="form-control" placeholder="208011" required>
+              <input type="text"  name="pincode" ng-model="Pincode"  class="form-control" placeholder="208011" required>
             </div>
             <p class="validation-error" ng-show="signup.pincode.$touched && signup.pincode.$invalid">Pincode is required</p>
             <!-- input-group -->
@@ -258,8 +258,9 @@
         <div class="clearfix">
           <div class="pull-left">
             <div class="ckbox ckbox-primary ">
-              <input type="checkbox" id="agree" value="1"><label for="agree" >I agree with <a href="terms.html" ><strong>Terms and Conditions</strong></a></label>
+              <input type="checkbox" id="agree" name="terms" model="terms" required ><label for="agree" >I agree with <a href="" ><strong>Terms and Conditions</strong></a></label>
             </div>
+            <!-- <p class="validation-error" ng-show="signup.terms.$touched && signup.terms.$invalid">You must accept our terms and conditions. </p> -->
           </div>
           <div class="pull-right">
             <span ng-click="showme=false" style="cursor:pointer;"> <i class="fa fa-angle-left ml5"></i> Back</span>
