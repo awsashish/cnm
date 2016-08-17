@@ -48,8 +48,8 @@ describe('service coinomiaService', function() {
     };
 
     function verifyLoginPostData(postData) {
-      // Remove the '&' at the start of the string and split out each assignment
-      var postData = _.chain( postData.split('&') )
+        // Remove the '?' at the start of the string and split out each assignment
+        postData = _.chain( postData.split('&') )
                       // Split each array item into [key, value]
                       // ignore empty string if search is empty
                       .map(function(item) { if (item) return item.split('='); })
