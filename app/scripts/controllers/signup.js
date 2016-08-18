@@ -65,10 +65,6 @@ angular.module('coinomiaFrontendApp')
         if(res.status === 200){
           $scope.signupMessage = data.Message;
           $state.go('success');
-          $timeout(function () {
-            $state.go('login');
-          }, 3000);
-
         }else if(res.status === 404) {
             $scope.showme = false;
             $scope.userIdError = data.Message;
