@@ -35,6 +35,12 @@ angular.module('coinomiaFrontendApp')
     .state('success', {
         url: '/success',
         templateUrl: 'views/success.html',
+    })
+
+    // Terms & Conditions page
+    .state('terms-and-conditions', {
+        url: '/terms-and-conditions',
+        templateUrl: 'views/terms.html',
     });
     //
     // $locationProvider.html5Mode(true);

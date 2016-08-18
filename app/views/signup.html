@@ -245,12 +245,12 @@
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
-            <label>Pincode</label><br>
+            <label>Pin/Zip</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-cog"></i></span>
               <input type="text"  name="pincode" ng-model="Pincode"  class="form-control" placeholder="208011" required>
             </div>
-            <p class="validation-error" ng-show="signup.pincode.$touched && signup.pincode.$invalid">Pincode is required</p>
+            <p class="validation-error" ng-show="signup.pincode.$touched && signup.pincode.$invalid">Pin/Zip is required</p>
             <!-- input-group -->
           </div>
         </div>
@@ -258,7 +258,7 @@
         <div class="clearfix">
           <div class="pull-left">
             <div class="ckbox ckbox-primary ">
-              <input type="checkbox" id="agree" name="terms" model="terms" required ><label for="agree" >I agree with <a href="" ><strong>Terms and Conditions</strong></a></label>
+              <input type="checkbox" id="agree" name="terms" model="terms" required ><label for="agree" >I agree with <a href="#/terms-and-conditions" target=_blank><strong>Terms and Conditions</strong></a></label>
             </div>
             <!-- <p class="validation-error" ng-show="signup.terms.$touched && signup.terms.$invalid">You must accept our terms and conditions. </p> -->
           </div>
