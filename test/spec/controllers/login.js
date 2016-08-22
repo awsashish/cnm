@@ -24,7 +24,7 @@ describe('Controller: LoginCtrl', function () {
 
     scope = $rootScope.$new();
     coinomiaServiceDeferred = $q.defer();
-    
+
     spyOn(coinomiaService, 'Auth').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'login').and.returnValue(coinomiaServiceDeferred.promise);
 
@@ -32,6 +32,12 @@ describe('Controller: LoginCtrl', function () {
       $scope: scope
       // place here mocked dependencies
     });
+
+    scope.login = {};
+
+    scope.username = 'coinomia';
+    scope.password = 'coinomia';
+    scope.grant_type = 'password';
 
     loginData = {
       username: scope.username,
@@ -48,6 +54,7 @@ describe('Controller: LoginCtrl', function () {
 
   it('should be defined and call Auth, Login services', function() {
     expect(coinomiaService.Auth).toHaveBeenCalled();
+    scope.login.$valid = true;
     scope.submit();
     expect(coinomiaService.login).toHaveBeenCalledWith(loginData);
   });

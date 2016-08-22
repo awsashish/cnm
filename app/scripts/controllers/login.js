@@ -17,6 +17,7 @@ angular.module('coinomiaFrontendApp')
     // $scope.username = 'coinomia';
     // $scope.password = 'coinomia';
     // $scope.grant_type = 'password';
+
     // Login Process
     $scope.submit = function() {
 
