@@ -49,7 +49,6 @@ URL: http://themepixels.com/
 /********** 2. RESET STYLES **********/
 /*************************************/
 @import url(https://fonts.googleapis.com/css?family=Oswald);
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 body {
     font-size: 13px;
     color: #636E7B;
@@ -97,6 +96,21 @@ a:focus {
     position: fixed;
     width: 100%;
     z-index: 1000;
+}
+
+.panel-dashboard {
+  padding: 50px 40px;
+  box-shadow: 2px 2px 30px #c6c6c6;
+  border: 1px solid #c6c6c6;
+  width: 550px;
+  margin: 0 auto;
+  margin: 80px auto 0;
+}
+
+.coming-soon {
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 21px;
 }
 
 .dashboard {
