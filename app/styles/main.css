@@ -1,5 +1,5 @@
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500,700);
 
 .browsehappy {
   margin: 0.2em 0;
@@ -66,13 +66,14 @@ body {
   margin-top: 28px;
 }
 
-.signup-padding {
-  padding: 0 200px;
+.signup-success {
+  width: 980px;
+  margin: 0 auto;
 }
 
 .panel-success {
   padding: 0;
-  margin: 80px auto 0 auto;
+  margin: 80px auto;
   border-radius: 0;
 }
 
@@ -105,7 +106,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  .signup-padding {
+  .signup-success {
     padding: 0 80px;
   }
 }

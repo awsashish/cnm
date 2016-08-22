@@ -107,6 +107,23 @@ a:focus {
   margin: 80px auto 0;
 }
 
+.mail-box-text {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size:27px;
+}
+
+.step4 {
+  float: left;
+  width: 500px;
+}
+
+.step5 {
+  position: relative;
+  top: 50px;
+  width: 440px;
+}
+
 .coming-soon {
   font-family: 'Roboto';
   font-weight: 300;
