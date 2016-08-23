@@ -8,8 +8,6 @@ describe('Controller: LoginCtrl', function () {
   var LoginCtrl,
       $q,
       scope,
-      $state,
-      $log,
       spy,
       coinomiaService,
       coinomiaServiceDeferred,
@@ -17,9 +15,7 @@ describe('Controller: LoginCtrl', function () {
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, _$state_, _coinomiaService_, _$log_, _$q_) {
-    $state = _$state_;
-    $log = _$log_;
-    $q = _$q_
+    $q = _$q_;
     coinomiaService = _coinomiaService_;
 
     scope = $rootScope.$new();
