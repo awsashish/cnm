@@ -218,17 +218,26 @@
             <label>Country</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-              <select id="user.country" name="country" ng-model="Country"  class="form-control" style="padding-left:5px !important;" required >
-              </select>
+              <input type="text"
+                     name="country"
+                     class="form-control"
+                     placeholder="{{Country}}"
+                     disabled
+                     required />
             </div>
-            <p class="validation-error" ng-show="signup.country.$touched && signup.country.$invalid">Country is required</p>
+            <!-- <p class="validation-error" ng-show="signup.country.$touched && signup.country.$invalid">Country is required</p> -->
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
             <label>State</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-              <select class="form-control" ng-model="State" id="user.state" >
+              <input type="text"
+                     name="state"
+                     class="form-control"
+                     placeholder="{{State}}"
+                     disabled
+                     required />
               </select>
             </div>
             <!-- input-group -->
@@ -240,7 +249,12 @@
             <label>City</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-              <input type="text"  name="city" ng-model="City"  class="form-control" placeholder="City" required>
+              <input type="text"
+                     name="city"
+                     class="form-control"
+                     placeholder="{{City}}"
+                     disabled
+                     required />
             </div>
             <!-- input-group -->
           </div>

@@ -13,8 +13,13 @@ angular.module('coinomiaFrontendApp')
     $scope.sponsor = 'coinomia';
     $scope.confrimPassError = false;
 
-    coinomiaService.getUserIP().then(function(data) {
-      $scope.IPAdr = data.data;
+    coinomiaService.getUserLocation().then(function(res) {
+      var data = res.data;
+      console.log(data);
+      $scope.IPAdr = data.ip;
+      $scope.Country = data.country_name;
+      $scope.State = data.region_name;
+      $scope.City = data.city;
     });
 
     $scope.next = function() {
