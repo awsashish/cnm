@@ -25,7 +25,7 @@ describe('Controller: SignupCtrl', function () {
     scope = $rootScope.$new();
     coinomiaServiceDeferred = $q.defer();
 
-    spyOn(coinomiaService, 'getUserIP').and.returnValue(coinomiaServiceDeferred.promise);
+    spyOn(coinomiaService, 'getUserLocation').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'signup').and.returnValue(coinomiaServiceDeferred.promise);
 
     SignupCtrl = $controller('SignupCtrl', {
@@ -51,13 +51,13 @@ describe('Controller: SignupCtrl', function () {
     }
   }));
 
-  it('should be defined and call getUserIp service', function() {
-    expect(coinomiaService.getUserIP).toHaveBeenCalled();
+  it('should be defined and call getUserLocation service', function() {
+    expect(coinomiaService.getUserLocation).toHaveBeenCalled();
   });
 
   it('should be defined and call signup service', function() {
     scope.submit();
     expect(coinomiaService.signup).toHaveBeenCalledWith(signUpData);
   });
-  
+
 });

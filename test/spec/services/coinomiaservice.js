@@ -16,6 +16,8 @@ describe('service coinomiaService', function() {
       'grant_type':'password'
     };
 
+    var token = 'f1608500-­c62f-­489a-­a3a9-­60c5bd2e4eec';
+
     // Sign Up Data
     var signupData =   {
       'sponsor':'sponsor-name',
@@ -491,6 +493,35 @@ describe('service coinomiaService', function() {
       .expect('POST', coinomiaService.apiHost + '/user/products/')
       .respond(500, 'Internal Server Error.');
       coinomiaService.getProducts();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Verification Email Test
+  describe('verification email function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.verifyEmail).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + '/verify-email/'+token)
+      .respond(200, {'Message':'Success'});
+      var data;
+      coinomiaService.verifyEmail(token).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Message).toEqual('Success');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + '/verify-email/'+token)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.verifyEmail(token);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
