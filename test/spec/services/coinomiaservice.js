@@ -506,7 +506,7 @@ describe('service coinomiaService', function() {
 
     it('should return success message', function() {
       $httpBackend
-      .expect('GET', coinomiaService.apiHost + '/verify-email/'+token)
+      .expect('GET', coinomiaService.apiHost + '/user/email-verify/'+token)
       .respond(200, {'Message':'Success'});
       var data;
       coinomiaService.verifyEmail(token).then(function(fetchedData) {
@@ -519,7 +519,7 @@ describe('service coinomiaService', function() {
 
     it('should log referral error', function() {
       $httpBackend
-      .expect('GET', coinomiaService.apiHost + '/verify-email/'+token)
+      .expect('GET', coinomiaService.apiHost + '/user/email-verify/'+token)
       .respond(500, 'Internal Server Error.');
       coinomiaService.verifyEmail(token);
       $httpBackend.flush();

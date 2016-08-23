@@ -8,7 +8,7 @@
  * Service in the coinomiaFrontendApp.
  */
 angular.module('coinomiaFrontendApp')
-  .service('coinomiaService', function ($http, $log, $state, $window, $cookies) {
+  .service('coinomiaService', function ($http, $log, $state, $window, $cookies, config) {
     this.apiHost = 'http://coinomiaapi.azurewebsites.net/';
     this.loginRequestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -207,8 +207,10 @@ angular.module('coinomiaFrontendApp')
         .catch(getProductsFailed);
     };
 
-    this.getUserIP = function() {
-      return $http.get('https://api.ipify.org/')
+    // Get User Location
+
+    this.getUserLocation = function() {
+      return $http.get('http://freegeoip.net/json/')
       .catch(this.requestFailed);
     };
 
@@ -220,4 +222,21 @@ angular.module('coinomiaFrontendApp')
         $state.go('login');
       }
     };
+
+    // Verfying User Email
+    this.verifyEmail = function(token) {
+
+      function verificationComplete(response) {
+        return response;
+      }
+
+      function verificationFailed(error) {
+        $log.error('XHR Failed for verification email.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'/user/email-verify/'+token)
+        .then(verificationComplete)
+        .catch(verificationFailed);
+    }
   });
