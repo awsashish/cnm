@@ -50,6 +50,7 @@ URL: http://themepixels.com/
 /*************************************/
 @import url(https://fonts.googleapis.com/css?family=Oswald);
 body {
+    font-family: 'Roboto';
     font-size: 13px;
     color: #636E7B;
     background-color: #fff;
@@ -111,6 +112,18 @@ a:focus {
   font-family: 'Roboto';
   font-weight: 500;
   font-size:27px;
+}
+
+.verifyemail-body {
+  padding: 80px 40px !important;
+}
+
+.error-padding {
+  padding: 5px 10px;
+}
+
+.verifyemail-body h4, .verifyemail-body h5 {
+  font-weight: 400;
 }
 
 .step4 {
