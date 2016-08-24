@@ -1,0 +1,10 @@
+build/
+node_modules/
+test/
+app/
+bower_components/
+tools/
+Dockerfile
+gulpfile.coffee
+README.md
+.tmp
