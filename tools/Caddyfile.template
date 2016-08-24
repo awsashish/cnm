@@ -1,5 +1,0 @@
-0.0.0.0:{$PORT}
-root /var/www/html
-gzip
-log stdout
-errors stdout
