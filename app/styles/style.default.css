@@ -129,6 +129,11 @@ a:focus {
   top: -10px;
 }
 
+.no-arrow:before {
+    content: '';
+    border: 0;
+}
+
 .error-padding {
   position: relative;
 }
