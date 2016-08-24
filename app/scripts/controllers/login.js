@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('LoginCtrl', function ($scope, $cookies, $state, $window, $location, coinomiaService) {
+  .controller('LoginCtrl', function ($scope, $cookies, $state, $window, $location, $localStorage, coinomiaService) {
     $scope.sigin = true;
     coinomiaService.Auth();
     $scope.loginError = '';
@@ -34,7 +34,8 @@ angular.module('coinomiaFrontendApp')
               if($scope.remember === true) {
                 $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toString()});
               }
-              $window.sessionStorage.setItem('token', data.access_token);
+              $scope.$storage = $localStorage.$default({token: data.access_token});
+              // $window.sessionStorage.setItem('token', data.access_token);
               $state.go( "dashboard" );
             }else{
               $scope.loginError = data.error_description;
