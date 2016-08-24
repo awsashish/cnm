@@ -1,6 +1,6 @@
 <section>
   <div class="panel panel-signup">
-    <form name="signup"  ng-submit="submit()"  novalidate>
+    <form name="signup" ng-submit="submit()" novalidate>
       <div class="panel-body" ng-hide="showme">
         <div class="logo text-center">
           <img src="images/logo-coinomia.png" alt="Coinomia" >
@@ -22,11 +22,11 @@
                      required />
 
             </div>
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.sponsor.$touched && signup.sponsor.$invalid">
-               Sponsor Id is required</p>
+               Sponsor Id is required</div>
 
-            <p class="validation-error">{{sponsorError}}</p>
+            <div class="alert alert-danger fade in error-padding" ng-if="sponsorError">{{sponsorError}}</div>
             <!-- input-group -->
           </div>
           <div class="col-sm-12">
@@ -40,15 +40,15 @@
                      placeholder="coinomia"
                      required />
             </div>
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.userid.$touched && signup.userid.$invalid">
-               User Id is required</p>
+               User Id is required</div>
 
-            <p class="validation-error">{{userIdError}}</p>
+            <div class="alert alert-danger fade in error-padding" ng-if="userIdError">{{userIdError}}</p>
             <!-- input-group -->
           </div>
         </div>
-        <div class="row">
+        <div class="row no-margin">
           <div class="col-sm-6">
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -61,18 +61,18 @@
                      ng-pattern="/^[a-zA-Z]+$/"
                      required />
             </div>
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.firstname.$touched && signup.firstname.$invalid && !signup.firstname.$error.pattern && !signup.firstname.$error.maxlength">
-               First name is required.</p>
-            <p class="validation-error"
+               First name is required.</div>
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.firstname.$touched && signup.firstname.$error.pattern && !signup.firstname.$error.maxlength">
-               Only alphabets are allowed.</p>
+               Only alphabets are allowed.</div>
 
-             <p class="validation-error"
+             <div class="alert alert-danger fade in error-padding"
                 ng-show="signup.firstname.$touched && signup.firstname.$invalid && signup.firstname.$error.maxlength">
-                Maximum 15 characters are allowed.</p>
+                Maximum 15 characters are allowed.</div>
 
-            <p class="validation-error" ng-show="!signup.firstname.$error.pattern">{{firstNameError}}</p>
+            <div class="alert alert-danger fade in error-padding" ng-show="!signup.firstname.$error.pattern && firstNameError">{{firstNameError}}</div>
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
@@ -88,20 +88,20 @@
                      required />
             </div>
 
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.lastname.$touched && signup.lastname.$error.pattern && !signup.lastname.$error.maxlength">
-               Only alphabets are allowed.</p>
+               Only alphabets are allowed.</div>
 
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.lastname.$touched && signup.lastname.$invalid && signup.lastname.$error.maxlength">
-               Maximum 15 characters are allowed.</p>
+               Maximum 15 characters are allowed.</div>
 
-            <p class="validation-error" ng-show="!signup.lastname.$error.pattern">{{lastNameError}}</p>
+            <div class="alert alert-danger fade in error-padding" ng-show="!signup.lastname.$error.pattern && lastNameError">{{lastNameError}}</div>
             <!-- input-group -->
           </div>
         </div>
         <!-- row -->
-        <div class="row">
+        <div class="row no-margin">
           <div class="col-sm-6">
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-lock"></i></span>
@@ -114,17 +114,17 @@
                      placeholder="Password"
                      required />
             </div>
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.password.$touched && signup.password.$invalid && !signup.password.$error.minlength && !signup.password.$error.pattern">
-               Password is required.</p>
+               Password is required.</div>
             <!-- Minimum Lenght Validation -->
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.password.$touched && signup.password.$invalid && signup.password.$error.minlength">
-               Password must be 6 characters long.</p>
+               Password must be 6 characters long.</div>
              <!-- Alphanumeric Validation -->
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.password.$touched && signup.password.$error.pattern && !signup.password.$error.minlength">
-               Password must be alphanumeric.</p>
+               Password must be alphanumeric.</div>
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
@@ -138,9 +138,9 @@
                      placeholder="Confirm Password"
                      required />
             </div>
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="(signup.confirmpassword.$touched && signup.confirmpassword.$invalid) || confrimPassError">
-               Password does not match</p>
+               Password does not match</div>
             <!-- input-group -->
           </div>
         </div>
@@ -155,6 +155,7 @@
           </div>
         </div>
       </div>
+    </div>
       <div class="panel-body" ng-show="showme">
         <div class="logo text-center">
           <img src="images/logo-coinomia.png" alt="Coinomia" >
@@ -162,7 +163,7 @@
         <br />
         <h4 class="text-center mb5">Create a new account</h4>
         <p class="text-center">Please enter your credentials below</p>
-        <p class="text-center validation-error" ng-show="error">{{signupMessage}}</p>
+        <div class="alert alert-danger fade in error-padding text-center" ng-show="error">{{signupMessage}}</div>
         <div class="mb30"></div>
         <div class="row">
           <div class="col-sm-6">
@@ -175,9 +176,9 @@
                      placeholder="Enter your Mobile Number"
                      required />
             </div>
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.mobile.$touched && signup.mobile.$invalid">
-               Mobile number is required</p>
+               Mobile number is required</div>
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
@@ -192,15 +193,15 @@
                      required />
             </div>
             <!--  ng-pattern ="/^[a-z]+([a-z0-9._-](\+{0,1}))+@[a-z]+\.[a-z.]{2,6}$/i" -->
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.email.$touched && signup.email.$invalid && !signup.email.$error.pattern">
-               Email is required</p>
+               Email is required</div>
             <!-- Email Validation    -->
-            <p class="validation-error"
+            <div class="alert alert-danger fade in error-padding"
                ng-show="signup.email.$error.pattern && signup.email.$touched">
-               Please enter a valid email address.</p>
+               Please enter a valid email address.</div>
 
-            <p class="validation-error">{{emailError}}</p>
+            <div class="alert alert-danger fade in error-padding" ng-if="emailError">{{emailError}}</div>
             <!-- input-group -->
           </div>
         </div>
@@ -208,7 +209,7 @@
           <div class="col-sm-12">
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-map"></i></span>
-              <textarea  ng-model="Address"  class="form-control" placeholder="Full Address" required></textarea>
+              <textarea  ng-model="Address"  class="form-control" placeholder="Full Address"></textarea>
             </div>
             <!-- input-group -->
           </div>
@@ -265,7 +266,7 @@
               <span class="input-group-addon"><i class="fa fa-cog"></i></span>
               <input type="text"  name="pincode" ng-model="Pincode"  class="form-control" placeholder="208011" required>
             </div>
-            <p class="validation-error" ng-show="signup.pincode.$touched && signup.pincode.$invalid">Pin/Zip is required</p>
+            <div class="alert alert-danger fade in error-padding" ng-show="signup.pincode.$touched && signup.pincode.$invalid">Pin/Zip is required</div>
             <!-- input-group -->
           </div>
         </div>
@@ -273,13 +274,13 @@
         <div class="clearfix">
           <div class="pull-left">
             <div class="ckbox ckbox-primary ">
-              <input type="checkbox" id="agree" name="terms" model="terms" required ><label for="agree" >I agree with <a href="#/terms-and-conditions" target=_blank><strong>Terms and Conditions</strong></a></label>
+              <input type="checkbox" id="agree" name="terms" ng-model="terms" value="1" ng-click="accept()"><label for="agree" >I agree with <a href="#/terms-and-conditions" target=_blank><strong>Terms and Conditions</strong></a></label>
             </div>
-            <!-- <p class="validation-error" ng-show="signup.terms.$touched && signup.terms.$invalid">You must accept our terms and conditions. </p> -->
+            <div class="alert alert-danger fade in error-padding" ng-if="termsError">{{termsError}}</div>
           </div>
           <div class="pull-right">
             <span ng-click="showme=false" style="cursor:pointer;"> <i class="fa fa-angle-left ml5"></i> Back</span>
-            <button type="submit" class="btn btn-success" ng-disabled="signup.email.$error.required || signup.mobile.$error.required || signup.country.$error.required || signup.ipadr.$error.required || signup.pincode.$error.required">
+            <button type="submit" class="btn btn-success" ng-disabled="signup.$invalid">
               Create New Account <i class="fa fa-angle-right ml5"></i></button>
           </div>
         </div>
@@ -293,6 +294,6 @@
   </div>
   <!-- panel -->
 </section>
-<script language="javascript">
+<!-- <script language="javascript">
   populateCountries("user.country", "user.state");
-</script>
+</script> -->

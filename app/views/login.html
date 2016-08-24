@@ -7,20 +7,28 @@
       <br />
       <h4 class="text-center mb5">Already a Member?</h4>
       <p class="text-center">Sign in to your account</p>
-      <p class="validation-error text-center">{{loginError}}</p>
       <div class="mb30"></div>
+      <div class="alert alert-danger fade in error-padding text-center" ng-if="loginError">{{loginError}}</div>
       <form name="login" ng-submit="submit()" novalidate>
         <div class="input-group mb15">
           <span class="input-group-addon"><i class="fa fa-user"></i></span>
           <input type="text" name="username" ng-model="username" class="form-control" placeholder="User Name" required>
         </div>
-        <p class="validation-error" ng-show="(login.username.$touched && login.username.$invalid) || (login.username.$invalid && login.$submitted)">This field is required.</p>
+        <div class="alert alert-danger fade in error-padding" ng-show="(login.username.$touched && login.username.$invalid) || (login.username.$invalid && login.$submitted)">
+          <!-- <a href="" class="close" data-dismiss="alert">&times;</a> -->
+          This field is required.
+        </div>
+        <!-- <p class="validation-error" ng-show="(login.username.$touched && login.username.$invalid) || (login.username.$invalid && login.$submitted)">This field is required.</p> -->
         <!-- input-group -->
         <div class="input-group mb15">
           <span class="input-group-addon"><i class="fa fa-lock"></i></span>
           <input type="password" name="password" ng-model="password"  class="form-control" placeholder="Password" required>
         </div>
-        <p class="validation-error" ng-show="(login.password.$touched && login.password.$invalid) || (login.password.$invalid && login.$submitted)">This field is required.</p>
+        <div class="alert alert-danger fade in error-padding" ng-show="(login.password.$touched && login.password.$invalid) || (login.password.$invalid && login.$submitted)">
+          <!-- <a href="" class="close" data-dismiss="alert">&times;</a> -->
+          This field is required.
+        </div>
+        <!-- <p class="validation-error" ng-show="()">This field is required.</p> -->
         <!-- input-group -->
         <div class="clearfix">
           <div class="pull-left">
