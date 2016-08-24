@@ -19,6 +19,11 @@ angular.module('coinomiaFrontendApp')
         $scope.loading = false;
         $scope.verificationMessage = data.Message;
         $scope.isVerified = true;
+      }else if(res.status == 404 && data.Message){
+        $scope.status = res.status;
+        $scope.loading = false;
+        $scope.verificationMessage = data.Message+'. Please contact to the support team.';
+        $scope.isVerified = false;
       }else{
         $scope.loading = false;
         $scope.verificationMessage = 'Something went wrong. Please contact to the support team';
