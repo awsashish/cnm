@@ -10,8 +10,8 @@
         <strong><i class="fa fa-check-circle fa-lg" aria-hidden="true"></i> {{verificationMessage}}</strong> Your Email Has Been Verified.
       </div>
       <span class="col-md-12 text-center" ng-if="isVerified"><a href="#/login">Click here</a> to login.</span>
-      <div class="alert alert-danger fade in" ng-if="isVerified==false">
-        <strong>OOPS!</i></strong> {{verificationMessage}}.
+      <div class="alert alert-danger fade in" ng-if="isVerified==false" style="text-transform:capitalize;">
+        <strong ng-if="status!==404">OOPS!</strong> {{verificationMessage}}.
       </div>
       <div ng-if="loading">
         <h4 class="text-center mb15">Please Wait</h4>

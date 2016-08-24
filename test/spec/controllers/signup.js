@@ -56,8 +56,8 @@ describe('Controller: SignupCtrl', function () {
   });
 
   it('should be defined and call signup service', function() {
+    scope.terms = true;
     scope.submit();
     expect(coinomiaService.signup).toHaveBeenCalledWith(signUpData);
   });
-
 });
