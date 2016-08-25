@@ -9,6 +9,7 @@ build:
     - "[ -d $DRONE_DIR/deploy/.git ] && rm -rf $DRONE_DIR/deploy/.git"
   image: "node:6"
   name: coinomia-frontend
+
 cache:
   mount:
     - node_modules
