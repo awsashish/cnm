@@ -22,7 +22,7 @@ publish:
   docker:
     repo: docker.appfactory.in/coinomia-frontend
     tag: latest
-    file: tools/Dockerfile
+    file: Dockerfile
     when:
       branch: "feature"
 
