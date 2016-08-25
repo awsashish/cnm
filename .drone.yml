@@ -1,30 +1,40 @@
 build:
-  image: node:6
-  cache:
-    mount:
-      - node_modules
-      - .git
-      - bower_components
-  name: coinomia-frontend
   commands:
-    - npm install -g grunt-cli bower
-    - npm install
-    - bower install --allow-root
-    - grunt test
-    - grunt build
+    - "npm install -g grunt-cli bower"
+    - "npm install"
+    - "bower install --allow-root"
+    - "grunt test"
+    - "grunt build"
+  image: "node:6"
+  name: coinomia-frontend
 
-  notify:
-    #   email:
-    #     host: $$EMAIL_HOST
-    #     port: $$EMAIL_PORT
-    #     username: $$EMAIL_USERNAME
-    #     password: $$EMAIL_PASSWORD
-    #     from: drone@gogs.io
-    #     recipients:
-    #       - u@gogs.io
-    #     when:
-    #       repo: gogits/gogs
-    # deploy:
-    # bash:
-    #   script:
-    #     - 'perl deploy.pl'
+deploy:
+  bash:
+    script:
+      - "cd tools && sh build-push-images.sh"
+  # rsync:
+  #   commands:
+  #     - "sudo service nginx restart"
+  #   delete: true
+  #   exclude:
+  #     - ".DS_Store"
+  #   host: $$SSH_HOST
+  #   port: $$SSH_PORT
+  #   recursive: true
+  #   source: ./dist/
+  #   target: /usr/share/nginx/html/
+  #   user: $$SSH_USER
+  #   when:
+  #     - master
+# notify:
+#   email:
+#     from: drone@docker.appfactory.in
+#     host: $$EMAIL_HOST
+#     password: $$EMAIL_PASSWORD
+#     port: $$EMAIL_PORT
+#     recipients:
+#       - aqabiz@allies.co.in
+#       - mohd.raza@allies.co.in
+#     username: $$EMAIL_USERNAME
+#     when:
+#       repo: coinomia/coinomia-frontend
