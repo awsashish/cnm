@@ -333,16 +333,16 @@ describe('service coinomiaService', function() {
   // Get User Profile Test
   describe('user profile function', function() {
     it('should exist', function() {
-      expect(coinomiaService.userProfile).not.toEqual(null);
+      expect(coinomiaService.userInfo).not.toEqual(null);
     });
 
     it('should returns records succesfully', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + '/user/me/')
+      .expect('GET', coinomiaService.apiHost + 'user/me/')
       .respond(200, {'sponsor':'some-value','username':'coinomia', 'name':'Company', 'Mobile':'9595959595', 'Email':'some@email.com', 'Address':'xyz', 'Country':'India', 'State':'', 'City':'', 'Pincode':''});
       var data;
-      coinomiaService.userProfile().then(function(fetchedData) {
-        data = fetchedData;
+      coinomiaService.userInfo().then(function(fetchedData) {
+        data = fetchedData.data;
       });
       $httpBackend.flush();
       expect(data).toEqual(jasmine.any(Object));
@@ -360,9 +360,9 @@ describe('service coinomiaService', function() {
 
     it('should log referral error', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + '/user/me/')
+      .expect('GET', coinomiaService.apiHost + 'user/me/')
       .respond(500, 'Internal Server Error.');
-      coinomiaService.userProfile();
+      coinomiaService.userInfo();
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
