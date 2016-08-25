@@ -2,6 +2,7 @@ build:
   image: node:6
   name: coinomia-frontend
   commands:
+    - mkdir -p /drone/node_modules/dummy
     - cp -a /drone/node_modules /root
     - rm -rf /drone/node_modules
     - npm -g install
