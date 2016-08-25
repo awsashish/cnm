@@ -1,16 +1,17 @@
 build:
   image: node:6
+  cache:
+    mount:
+      - node_modules
+      - .git
+      - bower_components
   name: coinomia-frontend
   commands:
-    - mkdir -p /drone/node_modules/dummy
-    - cp -a /drone/node_modules /root
-    - rm -rf /drone/node_modules
-    - npm -g install
     - npm install -g grunt-cli bower
+    - npm install
     - bower install
     - grunt test
     - grunt build
-    - cp -a /root/node_modules /drone
 
   notify:
     #   email:
