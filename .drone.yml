@@ -1,6 +1,3 @@
-branches:
-  - deploy-test
-  - feature
 build:
   commands:
     - "pwd"
@@ -27,6 +24,8 @@ publish:
     repo: docker.appfactory.in/coinomia-frontend
     tag: latest
     file: tools/Dockerfile
+    when:
+      branch: "feature"
 
 deploy:
   rsync:
