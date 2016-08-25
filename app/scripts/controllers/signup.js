@@ -20,7 +20,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Authenticate User
-    if(coinomiaService.isAuthenticated){
+    if(coinomiaService.isAuthenticated()){
       $state.go('dashboard');
     }
 

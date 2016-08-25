@@ -13,7 +13,7 @@ angular.module('coinomiaFrontendApp')
     $scope.loginError = '';
 
     // Authenticate User
-    if(coinomiaService.isAuthenticated){
+    if(coinomiaService.isAuthenticated()){
       $state.go('dashboard');
     }
     // For Testing
