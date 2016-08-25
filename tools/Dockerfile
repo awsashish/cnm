@@ -1,3 +1,3 @@
 FROM zzrot/alpine-caddy
-COPY Caddyfile /etc/Caddyfile
+COPY ./tools/Caddyfile /etc/Caddyfile
 COPY ./dist/ /var/www/html
