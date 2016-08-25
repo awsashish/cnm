@@ -1,0 +1,28 @@
+pipeline:
+  build:
+    image: node:6
+    commands:
+      - cp -a /drone/node_modules /root
+      - rm -rf /drone/node_modules
+      - npm -g install
+      - bower install
+      - Xvfb :10 -ac &
+      - grunt test
+      - grunt build
+      - cp -a /root/node_modules /drone
+
+  # notify:
+  #   email:
+  #     host: $$EMAIL_HOST
+  #     port: $$EMAIL_PORT
+  #     username: $$EMAIL_USERNAME
+  #     password: $$EMAIL_PASSWORD
+  #     from: drone@gogs.io
+  #     recipients:
+  #       - u@gogs.io
+  #     when:
+  #       repo: gogits/gogs
+  # deploy:
+  # bash:
+  #   script:
+  #     - 'perl deploy.pl'
