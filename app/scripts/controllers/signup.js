@@ -13,6 +13,11 @@ angular.module('coinomiaFrontendApp')
     $scope.sponsor = 'coinomia';
     $scope.confrimPassError = false;
 
+    // Authenticate User
+    if(coinomiaService.isAuthenticated){
+      $state.go('dashboard');
+    }
+
     coinomiaService.getUserLocation().then(function(res) {
       var data = res.data;
       $scope.IPAdr = data.ip;

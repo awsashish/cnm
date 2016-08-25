@@ -4,12 +4,13 @@ angular.module('coinomiaFrontendApp')
 .config(function($stateProvider, $locationProvider) {
   $stateProvider
 
-  // Login page
-  .state('main', {
-      url: '/',
-      //templateUrl: 'views/index.html',
-      controller: 'MainCtrl'
-  })
+    // Login page
+    .state('main', {
+        url: '/',
+        //templateUrl: 'views/index.html',
+        controller: 'MainCtrl',
+        authenticate: true
+    })
     // Login page
     .state('login', {
         url: '/login',
@@ -27,8 +28,9 @@ angular.module('coinomiaFrontendApp')
     // Dashboard page
     .state('dashboard', {
         url: '/dashboard',
-        templateUrl: 'views/coming-soon.html',
-        controller: 'DashboardCtrl'
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl',
+        authenticate:true
     })
 
     // Successful page
@@ -48,8 +50,9 @@ angular.module('coinomiaFrontendApp')
       url: '/verify-email/:id',
       templateUrl: 'views/verifyemail.html',
       controller: 'VerifyemailCtrl'
-    });
+    })
+
+    
     //
     // $locationProvider.html5Mode(true);
-    // $locationProvider.hashPrefix('!');
 });

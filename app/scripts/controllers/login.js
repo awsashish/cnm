@@ -2,7 +2,7 @@
 
 /**
  * @ngdoc function
- * @name coinomiaFrontendApp.controller:MainCtrl
+ * @name coinomiaFrontendApp.controller:LoginCtrl
  * @description
  * # LoginCtrl
  * Controller of the coinomiaFrontendApp
@@ -10,9 +10,12 @@
 angular.module('coinomiaFrontendApp')
   .controller('LoginCtrl', function ($scope, $cookies, $state, $window, $location, $localStorage, coinomiaService) {
     $scope.sigin = true;
-    coinomiaService.Auth();
     $scope.loginError = '';
 
+    // Authenticate User
+    if(coinomiaService.isAuthenticated){
+      $state.go('dashboard');
+    }
     // For Testing
     // $scope.username = 'coinomia';
     // $scope.password = 'coinomia';

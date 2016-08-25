@@ -128,19 +128,20 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get User Profile
-    this.userProfile = function() {
+    this.userInfo = function() {
 
-      function userProfileComplete(response) {
-        return response.data;
+      function getInfoComplete(response) {
+        return response;
       }
 
-      function userProfileFailed(error) {
+      function getInfoFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
-      return $http.post(this.apiHost +'/user/me/')
-        .then(userProfileComplete)
-        .catch(userProfileFailed);
+      return $http.get(this.apiHost +'user/me/')
+        .then(getInfoComplete)
+        .catch(getInfoFailed);
     };
 
     // Get Purchased Power
@@ -215,11 +216,9 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Authentication
-    this.Auth = function() {
+    this.isAuthenticated = function() {
       if ($cookies.get('token') || $localStorage.token) {
-        $state.go('dashboard');
-      }else{
-        $state.go('login');
+        return true;
       }
     };
 

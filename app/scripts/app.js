@@ -31,10 +31,19 @@ angular
         $rootScope.signin = true;
         config.headers = config.headers || {};
         if ($cookies.get('token') || $localStorage.token) {
-        //config.headers.authorization = 'Bearer ' + $cookieStore.get('token');
+          var authToken = $localStorage.token || $cookies.get('token');
+          config.headers.authorization = 'Bearer ' + authToken;
           $rootScope.signin = false;
         }
         return config;
       },
     };
+  })
+  .run(function ($rootScope, $state, coinomiaService) {
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+      if (toState.authenticate && !coinomiaService.isAuthenticated()) {
+        event.preventDefault();
+        $state.go('login');
+      }
+    });
   });
