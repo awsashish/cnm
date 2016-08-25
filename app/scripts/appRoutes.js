@@ -53,6 +53,45 @@ angular.module('coinomiaFrontendApp')
       controller: 'VerifyemailCtrl'
     })
 
+    // My Referral page
+    .state('referral-link', {
+      url: '/referral-link',
+      templateUrl: 'views/referral-link.html',
+      controller: 'ReferralCtrl',
+      authenticate: true
+    })
+
+    // Payouts page
+    .state('payouts', {
+      url: '/payouts',
+      templateUrl: 'views/referral-link.html',
+      controller: 'PayoutsCtrl',
+      authenticate: true
+    })
+
+    // Business Plans
+    .state('business-plan', {
+      url: '/business-plan',
+      templateUrl: 'views/referral-link.html',
+      controller: 'BusinessplanCtrl',
+      authenticate: true
+    })
+
+    // My Account
+    .state('my-account', {
+      url: '/my-account',
+      templateUrl: 'views/referral-link.html',
+      controller: 'MyaccountCtrl',
+      authenticate: true
+    })
+
+    // My Account
+    .state('setting', {
+      url: '/setting',
+      templateUrl: 'views/referral-link.html',
+      controller: 'SettingCtrl',
+      authenticate: true
+    })
 
     //
     // $locationProvider.html5Mode(true);
