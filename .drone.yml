@@ -1,27 +1,28 @@
-image: node:6
-name: coinomia-frontend
-script:
-  - cp -a /drone/node_modules /root
-  - rm -rf /drone/node_modules
-  - npm -g install
-  - npm install -g grunt-cli bower
-  - bower install
-  - grunt test
-  - grunt build
-  - cp -a /root/node_modules /drone
+build:
+  image: node:6
+  name: coinomia-frontend
+  commands:
+    - cp -a /drone/node_modules /root
+    - rm -rf /drone/node_modules
+    - npm -g install
+    - npm install -g grunt-cli bower
+    - bower install
+    - grunt test
+    - grunt build
+    - cp -a /root/node_modules /drone
 
-  # notify:
-  #   email:
-  #     host: $$EMAIL_HOST
-  #     port: $$EMAIL_PORT
-  #     username: $$EMAIL_USERNAME
-  #     password: $$EMAIL_PASSWORD
-  #     from: drone@gogs.io
-  #     recipients:
-  #       - u@gogs.io
-  #     when:
-  #       repo: gogits/gogs
-  # deploy:
-  # bash:
-  #   script:
-  #     - 'perl deploy.pl'
+  notify:
+    #   email:
+    #     host: $$EMAIL_HOST
+    #     port: $$EMAIL_PORT
+    #     username: $$EMAIL_USERNAME
+    #     password: $$EMAIL_PASSWORD
+    #     from: drone@gogs.io
+    #     recipients:
+    #       - u@gogs.io
+    #     when:
+    #       repo: gogits/gogs
+    # deploy:
+    # bash:
+    #   script:
+    #     - 'perl deploy.pl'
