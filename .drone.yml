@@ -6,7 +6,6 @@ build:
     - "bower install --allow-root"
     - "grunt test"
     - "grunt build"
-    - "[ -d $DRONE_DIR/deploy/.git ] && rm -rf $DRONE_DIR/deploy/.git"
   image: "node:6"
   name: coinomia-frontend
 
@@ -22,6 +21,12 @@ publish:
     file: Dockerfile
     when:
       branch: "feature"
+  docker:
+    repo: docker.appfactory.in/coinomia-frontend
+    tag: stable
+    file: Dockerfile
+    when:
+      branch: "master"
 
 deploy:
   rsync:
@@ -37,14 +42,27 @@ deploy:
     target: /usr/share/nginx/html/cd/
     user: "$$SSH_USER"
     when:
-      branch: "deploy-test"
-
-  commands:
-    image: "jmccann/drone-commands"
+      branch: [master, deploy-test]
+  ssh:
+    host:
+      - $$DOCKER_HOST_1
+    user: $$DOCKER_SSH_USER
+    port: 22
+    sleep: 5
     commands:
-      - "pwd"
-      - "echo $$SSH_HOST"
-      - "cd $DRONE_DIR && sh $DRON_DIR/build-push-images.sh"
+      - sh deploy-staging-latest.sh
+    when:
+      branch: feature
+  ssh:
+    host:
+      - $$DOCKER_HOST_1
+    user: $DOCKER_SSH_USER
+    port: 22
+    sleep: 5
+    commands:
+      - sh deploy-staging-stable.sh
+    when:
+      branch: master
 
 notify:
   email:
