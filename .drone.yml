@@ -1,3 +1,6 @@
+branches:
+  - master
+  - feature
 build:
   commands:
     - "npm install -g grunt-cli bower"
@@ -7,34 +10,42 @@ build:
     - "grunt build"
   image: "node:6"
   name: coinomia-frontend
+cache:
+  mount:
+    - node_modules
+    - .git
+    - bower_components
 
 deploy:
-  bash:
-    script:
+  rsync:
+    commands:
+      - "sudo service nginx restart"
+    delete: true
+    exclude:
+      - ".DS_Store"
+    host: "$$SSH_HOST"
+    port: "$$SSH_PORT"
+    recursive: true
+    source: ./dist/
+    target: /usr/share/nginx/html/
+    user: "$$SSH_USER"
+    when:
+      branch: "master"
+
+  commands:
+    image: "jmccann/drone-commands"
+    commands:
       - "cd tools && sh build-push-images.sh"
-  # rsync:
-  #   commands:
-  #     - "sudo service nginx restart"
-  #   delete: true
-  #   exclude:
-  #     - ".DS_Store"
-  #   host: $$SSH_HOST
-  #   port: $$SSH_PORT
-  #   recursive: true
-  #   source: ./dist/
-  #   target: /usr/share/nginx/html/
-  #   user: $$SSH_USER
-  #   when:
-  #     - master
-# notify:
-#   email:
-#     from: drone@docker.appfactory.in
-#     host: $$EMAIL_HOST
-#     password: $$EMAIL_PASSWORD
-#     port: $$EMAIL_PORT
-#     recipients:
-#       - aqabiz@allies.co.in
-#       - mohd.raza@allies.co.in
-#     username: $$EMAIL_USERNAME
-#     when:
-#       repo: coinomia/coinomia-frontend
+    when:
+      branch: "feature"
+
+notify:
+  email:
+    from: drone@docker.appfactory.in
+    host: "$$EMAIL_HOST"
+    password: "$$EMAIL_PASSWORD"
+    port: "$$EMAIL_PORT"
+    recipients:
+      - "aqabiz@allies.co.in"
+      - "mohd.raza@allies.co.in"
+    username: $$EMAIL_USERNAME

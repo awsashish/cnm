@@ -1,6 +1,7 @@
 echo "Building coinomia-frontend:latest images"
 cp -a ../dist ./dist
-DOCKER_HOST=tcp://docker.appfactory.in:2376 docker build --no-cache=true -t docker.appfactory.in/coinomia-frontend:latest -f Dockerfile.image
+cp Dockerfile.image ./dist/Dockerfile
+DOCKER_HOST=tcp://docker.appfactory.in:2376 docker build --no-cache -t docker.appfactory.in/coinomia-frontend:latest dist
 DOCKER_HOST=tcp://docker.appfactory.in:2376 docker push docker.appfactory.in/coinomia-frontend:latest
 echo "docker.appfactory.in/coinomia-frontend:latest pushed to registry"
 rm -rf ./dist
