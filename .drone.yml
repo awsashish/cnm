@@ -20,7 +20,6 @@ cache:
     - bower_components
 publish:
   docker:
-    registry: https://docker.appfactory.in
     repo: docker.appfactory.in/coinomia-frontend
     tag: latest
     file: tools/Dockerfile
