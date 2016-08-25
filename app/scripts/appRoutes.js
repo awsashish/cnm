@@ -8,21 +8,22 @@ angular.module('coinomiaFrontendApp')
     .state('main', {
         url: '/',
         //templateUrl: 'views/index.html',
-        controller: 'MainCtrl',
-        authenticate: true
+        controller: 'MainCtrl'
     })
     // Login page
     .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
+        controller: 'LoginCtrl',
+        authenticate: false
     })
 
     // Sign up page
     .state('signup', {
         url: '/signup',
         templateUrl: 'views/signup.html',
-        controller: 'SignupCtrl'
+        controller: 'SignupCtrl',
+        authenticate: false
     })
 
     // Dashboard page
@@ -52,7 +53,7 @@ angular.module('coinomiaFrontendApp')
       controller: 'VerifyemailCtrl'
     })
 
-    
+
     //
     // $locationProvider.html5Mode(true);
 });

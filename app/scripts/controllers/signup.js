@@ -14,7 +14,7 @@ angular.module('coinomiaFrontendApp')
     $scope.confrimPassError = false;
 
     // Authenticate User
-    if(coinomiaService.isAuthenticated){
+    if(coinomiaService.isAuthenticated()){
       $state.go('dashboard');
     }
 

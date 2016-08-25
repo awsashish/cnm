@@ -219,6 +219,8 @@ angular.module('coinomiaFrontendApp')
     this.isAuthenticated = function() {
       if ($cookies.get('token') || $localStorage.token) {
         return true;
+      }else{
+        return false;
       }
     };
 

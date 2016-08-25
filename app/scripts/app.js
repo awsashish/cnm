@@ -42,8 +42,8 @@ angular
   .run(function ($rootScope, $state, coinomiaService) {
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
       if (toState.authenticate && !coinomiaService.isAuthenticated()) {
-        event.preventDefault();
         $state.go('login');
+        event.preventDefault();
       }
     });
   });
