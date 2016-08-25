@@ -46,13 +46,11 @@ deploy:
   commands:
     image: "jmccann/drone-commands"
     commands:
-      - "export TOOLS_DIR="/drone/src/bitbucket.org/coinomia/coinomia-frontend/tools"
+      - "export TOOLS_DIR='/drone/src/bitbucket.org/coinomia/coinomia-frontend/tools'"
       - "pwd"
       - "echo $$SSH_HOST"
       - "cd $TOOLS_DIR"
       - "sh build-push-images.sh"
-    when:
-      branch: "feature"
 
 notify:
   email:
