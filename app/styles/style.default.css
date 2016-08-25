@@ -138,6 +138,10 @@ a:focus {
   position: relative;
 }
 
+.media>.pull-left {
+    margin-right: 10px;
+}
+
 .verifyemail-body {
   padding: 80px 40px !important;
 }
