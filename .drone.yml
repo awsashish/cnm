@@ -50,7 +50,7 @@ deploy:
     port: 22
     sleep: 5
     commands:
-      - sh deploy-staging-latest.sh
+      - "sh deploy-staging.sh latest"
     when:
       branch: feature
   ssh:
@@ -60,7 +60,7 @@ deploy:
     port: 22
     sleep: 5
     commands:
-      - sh deploy-staging-stable.sh
+      - "sh deploy-staging.sh stable"
     when:
       branch: master
 
