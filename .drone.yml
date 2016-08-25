@@ -6,9 +6,6 @@ build:
     - "bower install --allow-root"
     - "grunt test"
     - "grunt build"
-    - "[ -d $DRONE_DIR/dist ] && rm -rf $DRONE_DIR/dist"
-    - "mkdir -p $DRONE_DIR/dist"
-    - "cp -a dist $DRONE_DIR/dist"
     - "[ -d $DRONE_DIR/deploy/.git ] && rm -rf $DRONE_DIR/deploy/.git"
   image: "node:6"
   name: coinomia-frontend
