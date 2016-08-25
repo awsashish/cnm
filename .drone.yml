@@ -1,13 +1,19 @@
 branches:
-  - master
+  - deploy-test
   - feature
 build:
   commands:
+    - "pwd"
+    - "export TOOLS_DIR=/drone/src/bitbucket.org/coinomia/coinomia-frontend/tools"
     - "npm install -g grunt-cli bower"
     - "npm install"
     - "bower install --allow-root"
     - "grunt test"
     - "grunt build"
+    - "[ -d $TOOLS_DIR/dist ] && rm -rf $TOOLS_DIR/dist"
+    - "mkdir $TOOLS_DIR/dist"
+    - "cp -a dist $TOOLS_DIR/dist"
+    - "[ -d $TOOLS_DIR/deploy/.git ] && rm -rf $TOOLS_DIR/deploy/.git"
   image: "node:6"
   name: coinomia-frontend
 cache:
@@ -15,6 +21,12 @@ cache:
     - node_modules
     - .git
     - bower_components
+publish:
+  docker:
+    registry: https://docker.appfactory.in
+    repo: docker.appfactory.in/coinomia-frontend
+    tag: latest
+    file: tools/Dockerfile
 
 deploy:
   rsync:
@@ -27,15 +39,19 @@ deploy:
     port: "$$SSH_PORT"
     recursive: true
     source: ./dist/
-    target: /usr/share/nginx/html/
+    target: /usr/share/nginx/html/cd/
     user: "$$SSH_USER"
     when:
-      branch: "master"
+      branch: "deploy-test"
 
   commands:
     image: "jmccann/drone-commands"
     commands:
-      - "cd tools && sh build-push-images.sh"
+      - "export TOOLS_DIR="/drone/src/bitbucket.org/coinomia/coinomia-frontend/tools"
+      - "pwd"
+      - "echo $$SSH_HOST"
+      - "cd $TOOLS_DIR"
+      - "sh build-push-images.sh"
     when:
       branch: "feature"
 
