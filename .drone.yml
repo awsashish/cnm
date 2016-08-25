@@ -56,7 +56,7 @@ deploy:
   ssh:
     host:
       - $$DOCKER_HOST_1
-    user: $DOCKER_SSH_USER
+    user: $$DOCKER_SSH_USER
     port: 22
     sleep: 5
     commands:
