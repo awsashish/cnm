@@ -145,35 +145,54 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get Purchased Power
-    this.purchasePower = function() {
+    this.getPurchasePower = function() {
 
-      function purchasePowerComplete(response) {
-        return response.data;
+      function getPurchasePowerComplete(response) {
+        return response;
       }
 
-      function purchasePowerFailed(error) {
-        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      function getPurchasePowerFailed(error) {
+        $log.error('XHR Failed for purchase power.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
-      return $http.post(this.apiHost +'/user/purchased-power/')
-        .then(purchasePowerComplete)
-        .catch(purchasePowerFailed);
+      return $http.get(this.apiHost +'user/purchased-power/')
+        .then(getPurchasePowerComplete)
+        .catch(getPurchasePowerFailed);
     };
 
     // Current Mining
     this.currentMining = function() {
 
       function currentMiningComplete(response) {
-        return response.data;
+        return response;
       }
 
       function currentMiningFailed(error) {
-        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        $log.error('XHR Failed for current mining.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
-      return $http.post(this.apiHost +'/user/current-mining/')
+      return $http.get(this.apiHost +'user/current-mining/')
         .then(currentMiningComplete)
         .catch(currentMiningFailed);
+    };
+
+    // Get Total Income
+    this.getTotalIncome = function() {
+
+      function getTotalIncomeComplete(response) {
+        return response;
+      }
+
+      function getTotalIncomeFailed(error) {
+        $log.error('XHR Failed for total income.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/total-income/')
+        .then(getTotalIncomeComplete)
+        .catch(getTotalIncomeFailed);
     };
 
     // Get Wallet Info
@@ -196,14 +215,15 @@ angular.module('coinomiaFrontendApp')
     this.getProducts = function() {
 
       function getProductsComplete(response) {
-        return response.data;
+        return response;
       }
 
       function getProductsFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
-      return $http.post(this.apiHost +'/user/products/')
+      return $http.get(this.apiHost +'user/products/')
         .then(getProductsComplete)
         .catch(getProductsFailed);
     };

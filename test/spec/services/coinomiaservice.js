@@ -371,16 +371,16 @@ describe('service coinomiaService', function() {
   // Get Purchased Power Test
   describe('purchased power function', function() {
     it('should exist', function() {
-      expect(coinomiaService.purchasePower).not.toEqual(null);
+      expect(coinomiaService.getPurchasePower).not.toEqual(null);
     });
 
     it('should returns records succesfully', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + '/user/purchased-power/')
+      .expect('GET', coinomiaService.apiHost + 'user/purchased-power/')
       .respond(200, [{'coin':'BTC','miningpower':'some-value'}, {'coin':'ETH','miningpower':'some-value'}]);
       var data;
-      coinomiaService.purchasePower().then(function(fetchedData) {
-        data = fetchedData;
+      coinomiaService.getPurchasePower().then(function(fetchedData) {
+        data = fetchedData.data;
       });
       $httpBackend.flush();
       expect(data).toEqual(jasmine.any(Object));
@@ -390,9 +390,9 @@ describe('service coinomiaService', function() {
 
     it('should log referral error', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + '/user/purchased-power/')
+      .expect('GET', coinomiaService.apiHost + 'user/purchased-power/')
       .respond(500, 'Internal Server Error.');
-      coinomiaService.purchasePower();
+      coinomiaService.getPurchasePower();
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
@@ -406,11 +406,11 @@ describe('service coinomiaService', function() {
 
     it('should returns records succesfully', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + '/user/current-mining/')
+      .expect('GET', coinomiaService.apiHost + 'user/current-mining/')
       .respond(200, [{'coin':'BTC','current_mining':512}, {'coin':'ETH','current_mining':512}]);
       var data;
       coinomiaService.currentMining().then(function(fetchedData) {
-        data = fetchedData;
+        data = fetchedData.data;
       });
       $httpBackend.flush();
       expect(data).toEqual(jasmine.any(Object));
@@ -420,9 +420,39 @@ describe('service coinomiaService', function() {
 
     it('should log referral error', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + '/user/current-mining/')
+      .expect('GET', coinomiaService.apiHost + 'user/current-mining/')
       .respond(500, 'Internal Server Error.');
       coinomiaService.currentMining();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Total Income Test
+  describe('total income function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getTotalIncome).not.toEqual(null);
+    });
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/total-income/')
+      .respond(200, [{'coin':'BTC','current_mining':512}, {'coin':'ETH','current_mining':512}]);
+      var data;
+      coinomiaService.getTotalIncome().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data[0].coin).toEqual('BTC');
+      expect(data[0].current_mining).toEqual(512);
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/total-income/')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getTotalIncome();
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
@@ -472,11 +502,11 @@ describe('service coinomiaService', function() {
 
     it('should returns records succesfully', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + '/user/products/')
+      .expect('GET', coinomiaService.apiHost + 'user/products/')
       .respond(200, [{'coin':'BTC','productname':'some-product', 'miningpower':0.5, 'unit':'TH/s', 'amount':100, 'maxunit':10}]);
       var data;
       coinomiaService.getProducts().then(function(fetchedData) {
-        data = fetchedData;
+        data = fetchedData.data;
       });
       $httpBackend.flush();
       expect(data).toEqual(jasmine.any(Object));
@@ -490,7 +520,7 @@ describe('service coinomiaService', function() {
 
     it('should log referral error', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + '/user/products/')
+      .expect('GET', coinomiaService.apiHost + 'user/products/')
       .respond(500, 'Internal Server Error.');
       coinomiaService.getProducts();
       $httpBackend.flush();
