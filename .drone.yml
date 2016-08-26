@@ -39,7 +39,7 @@ deploy:
     port: $$SSH_PORT
     recursive: true
     source: dist/
-    target: /home/$$SSH_USER/deplyoments/dist_$$DRONE_BUILD_NUMBER/
+    target: /home/$$SSH_USER/deployments/dist_$DRONE_JOB_NUMBER/
     user: $$SSH_USER
     when:
       branch: "master"
