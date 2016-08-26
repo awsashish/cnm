@@ -19,8 +19,6 @@ publish:
     repo: docker.appfactory.in/coinomia-frontend
     tag: latest
     file: Dockerfile
-    when:
-      branch: "feature"
 
   docker:
     repo: docker.appfactory.in/coinomia-frontend
