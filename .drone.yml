@@ -33,16 +33,15 @@ deploy:
     commands:
       - "sudo service nginx restart"
     delete: false
-    exclude:
-      - ".DS_Store"
     host: "$$SSH_HOST"
     port: "$$SSH_PORT"
     recursive: true
-    source: ./dist/
+    source: dist/
     target: /usr/share/nginx/html/cd/
     user: "$$SSH_USER"
     when:
       branch: [master, deploy-test]
+
   ssh:
     host:
       - $$DOCKER_HOST_1
@@ -66,11 +65,11 @@ deploy:
 
 notify:
   email:
-    from: drone@docker.appfactory.in
+    from: "drone@allies.co.in"
     host: "$$EMAIL_HOST"
     password: "$$EMAIL_PASSWORD"
     port: "$$EMAIL_PORT"
     recipients:
       - "aqabiz@allies.co.in"
       - "mohd.raza@allies.co.in"
-    username: $$EMAIL_USERNAME
+    username: "$$EMAIL_USERNAME"
