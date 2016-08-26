@@ -78,4 +78,4 @@ notify:
       {{ repo.owner }}/{{ repo.name }}
       ({{ build.branch }} - {{ truncate build.commit 8 }})
     template: >
-      https://s3.amazonaws.com/abdulqabiz/drone-email-template.html
+      https://abdulqabiz.s3.amazonaws.com/drone-email-template.html
