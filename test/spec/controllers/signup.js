@@ -34,20 +34,20 @@ describe('Controller: SignupCtrl', function () {
     });
 
     signUpData = {
-      'sponsor':scope.sponsor,
-      'userid':scope.userid,
-      'FirstName':scope.FirstName,
-      'LastName':scope.LastName,
-      'Address':scope.Address,
-      'Country':scope.Country,
-      'State':scope.State,
-      'City':scope.City,
-      'Pincode':scope.Pincode,
-      'Mobile':scope.Mobile,
-      'Email':scope.Email,
-      'IPAdr':scope.IPAdr,
-      'Password':scope.Password,
-      'ConfirmPassword':scope.ConfirmPassword
+      'sponsor':scope.user.sponsor,
+      'userid':scope.user.userid,
+      'FirstName':scope.user.firstName,
+      'LastName':scope.user.lastName,
+      'Address':scope.user.address,
+      'Country':scope.user.country,
+      'State':scope.user.state,
+      'City':scope.user.city,
+      'Pincode':scope.user.pincode,
+      'Mobile':scope.user.mobile,
+      'Email':scope.user.email,
+      'IPAdr':scope.user.ipadr,
+      'Password':scope.user.password,
+      'ConfirmPassword':scope.user.confirmPassword
     }
   }));
 
