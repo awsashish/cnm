@@ -76,4 +76,4 @@ notify:
       {{ repo.owner }}/{{ repo.name }}
       ({{ build.branch }} - {{ truncate build.commit 8 }})
     template: >
-      https://git.io/vgvPz
+      https://s3.amazonaws.com/abdulqabiz/drone-email-template.html
