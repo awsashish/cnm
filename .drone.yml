@@ -19,6 +19,8 @@ publish:
     repo: docker.appfactory.in/coinomia-frontend
     tag: latest
     file: Dockerfile
+    when:
+      branch: "feature"
 
   docker:
     repo: docker.appfactory.in/coinomia-frontend
@@ -40,7 +42,7 @@ deploy:
     target: /home/$$SSH_USER/deplyoments/dist_$$DRONE_BUILD_NUMBER/
     user: $$SSH_USER
     when:
-      branch: [master, deploy-test]
+      branch: "master"
 
   ssh:
     host:
@@ -59,7 +61,7 @@ deploy:
     commands:
       - "sh deploy-staging.sh stable"
     when:
-      branch: master
+      branch: "master"
 
 notify:
   email:
