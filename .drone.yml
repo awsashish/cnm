@@ -33,12 +33,12 @@ deploy:
     commands:
       - "sudo service nginx restart"
     delete: false
-    host: "$$SSH_HOST"
-    port: "$$SSH_PORT"
+    host: $$SSH_HOST
+    port: $$SSH_PORT
     recursive: true
     source: dist/
     target: /usr/share/nginx/html/cd/
-    user: "$$SSH_USER"
+    user: $$SSH_USER
     when:
       branch: [master, deploy-test]
 
@@ -66,10 +66,10 @@ deploy:
 notify:
   email:
     from: "drone@allies.co.in"
-    host: "$$EMAIL_HOST"
-    password: "$$EMAIL_PASSWORD"
-    port: "$$EMAIL_PORT"
+    host: $$EMAIL_HOST
+    password: $$EMAIL_PASSWORD
+    port: $$EMAIL_PORT
     recipients:
       - "aqabiz@allies.co.in"
       - "mohd.raza@allies.co.in"
-    username: "$$EMAIL_USERNAME"
+    username: $$EMAIL_USERNAME
