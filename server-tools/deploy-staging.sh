@@ -1,17 +1,23 @@
 #!/bin/sh
 
-DEPLOY_DIR=/tmp/deploy_$DRONE_BUILD_NUMBER
-mkdir -p /tmp/deploy_$DRONE_BUILD_NUMBER
-echo "FROM docker.appfactory.in/coinomia-frontend:stable" > $DEPLOY_DIR/Dockerfile
+DEPLOY_TYPE=$1
+DEPLOY_DIR=/tmp/deploy_$DEPLOY_TYPE
+
+DOCKER_IMAGE="docker.appfactory.in/coinomia-frontend:$DEPLOY_TYPE"
+
+#Make sure Dokku Host has latest image from registry
+dokku registry:pull coinomia-$DEPLOY_TYPE $DOCKER_IMAGE
+
+mkdir -p $DEPLOY_DIR
+echo "FROM $DOCKER_IMAGE" > $DEPLOY_DIR/Dockerfile
 cd $DEPLOY_DIR
 git init .
+git add Dockerfile
 git config --local user.email "bot@allies.co.in"
 git config --local user.name "Build Bot"
-git commit -m "Coinomia Stable Build - $DRONE_BRANCH - $DRONE_COMMIT - $DRONE_BUILD_NUMBER"
-git remote add dokku dokku@apps.appfactory.in:coinomia-stable
+git commit -m "Coinomia $DEPLOY_TYPE Build"
+git remote add dokku dokku@apps.appfactory.in:coinomia-$DEPLOY_TYPE
 git push dokku master --force
-echo "$DRONE_BRANCH pushed to Dokku"
+echo "$DEPLOY_TYPE branch  pushed to Dokku"
 cd /tmp
 rm -rf $DEPLOY_DIR
-
-

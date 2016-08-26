@@ -32,7 +32,7 @@ deploy:
   rsync:
     commands:
       - "sudo service nginx restart"
-    delete: true
+    delete: false
     exclude:
       - ".DS_Store"
     host: "$$SSH_HOST"
