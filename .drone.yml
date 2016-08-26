@@ -71,3 +71,9 @@ notify:
       - "aqabiz@allies.co.in"
       - "mohd.raza@allies.co.in"
     username: $$EMAIL_USERNAME
+    subject: >
+      [{{ build.status }}]
+      {{ repo.owner }}/{{ repo.name }}
+      ({{ build.branch }} - {{ truncate build.commit 8 }})
+    template: >
+      https://git.io/vgvPz
