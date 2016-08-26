@@ -35,14 +35,23 @@
               <span class="input-group-addon"><i class="fa fa-chain"></i></span>
               <input type="text"
                      name="userid"
-                     ng-model="userid"
+                     ng-model="user.userid"
                      class="form-control"
                      placeholder="coinomia"
+                     ng-minlength=4
+                     ng-maxlength=20
+                     ng-pattern="/^[a-zA-Z0-9]+$/"
                      required />
             </div>
             <div class="alert alert-danger fade in error-padding"
-               ng-show="signup.userid.$touched && signup.userid.$invalid">
+               ng-show="signup.userid.$touched && signup.userid.$invalid && !signup.userid.$error.pattern && !signup.userid.$error.maxlength && !signup.userid.$error.minlength">
                User Id is required</div>
+
+            <div class="alert alert-danger fade in error-padding" ng-show="signup.userid.$touched && signup.userid.$error.pattern && !signup.userid.$error.maxlength && !signup.userid.$error.minlength"> Special characters are not allowed.</div>
+
+            <div class="alert alert-danger fade in error-padding"
+               ng-show="signup.userid.$touched && (signup.userid.$error.minlength || signup.userid.$error.maxlength)">
+               Min. 4 and Max. 15 characters are allowed.</div>
 
             <div class="alert alert-danger fade in error-padding" ng-if="userIdError">{{userIdError}}</p>
             <!-- input-group -->
@@ -54,7 +63,7 @@
               <span class="input-group-addon"><i class="fa fa-user"></i></span>
               <input type="text"
                      name="firstname"
-                     ng-model="FirstName"
+                     ng-model="user.firstName"
                      class="form-control"
                      placeholder="First Name"
                      ng-maxlength="15"
@@ -80,7 +89,7 @@
               <span class="input-group-addon"><i class="fa fa-user"></i></span>
               <input type="text"
                      name="lastname"
-                     ng-model="LastName"
+                     ng-model="user.lastName"
                      class="form-control"
                      ng-maxlength="15"
                      ng-pattern="/^[a-zA-Z]+$/"
@@ -107,7 +116,7 @@
               <span class="input-group-addon"><i class="fa fa-lock"></i></span>
               <input type="password"
                      name="password"
-                     ng-model="Password"
+                     ng-model="user.password"
                      class="form-control"
                      ng-minlength="6"
                      ng-pattern="/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/"
@@ -132,7 +141,7 @@
               <span class="input-group-addon"><i class="fa fa-lock"></i></span>
               <input type="password"
                      name="confirmpassword"
-                     ng-model="ConfirmPassword"
+                     ng-model="user.confirmPassword"
                      class="form-control"
                      ng-keyup="confirmPass()"
                      placeholder="Confirm Password"
@@ -171,7 +180,7 @@
               <span class="input-group-addon"><i class="fa fa-phone"></i></span>
               <input type="number"
                      name="mobile"
-                     ng-model="Mobile"
+                     ng-model="user.mobile"
                      class="form-control"
                      placeholder="Enter your Mobile Number"
                      required />
@@ -186,7 +195,7 @@
               <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
               <input type="email"
                      name="email"
-                     ng-model="Email"
+                     ng-model="user.email"
                      class="form-control"
                      placeholder="Enter your Email"
                      ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i"
@@ -209,7 +218,7 @@
           <div class="col-sm-12">
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-map"></i></span>
-              <textarea  ng-model="Address"  class="form-control" placeholder="Full Address"></textarea>
+              <textarea  ng-model="user.address"  class="form-control" placeholder="Full Address"></textarea>
             </div>
             <!-- input-group -->
           </div>
@@ -223,7 +232,7 @@
               <input type="text"
                      name="country"
                      class="form-control"
-                     placeholder="{{Country}}"
+                     placeholder="{{user.country}}"
                      disabled
                      required />
             </div>
@@ -237,7 +246,7 @@
               <input type="text"
                      name="state"
                      class="form-control"
-                     placeholder="{{State}}"
+                     placeholder="{{user.state}}"
                      disabled
                      required />
               </select>
@@ -254,7 +263,7 @@
               <input type="text"
                      name="city"
                      class="form-control"
-                     placeholder="{{City}}"
+                     placeholder="{{user.city}}"
                      disabled
                      required />
             </div>
@@ -264,7 +273,7 @@
             <label>Pin/Zip</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-cog"></i></span>
-              <input type="text"  name="pincode" ng-model="Pincode"  class="form-control" placeholder="Enter your zip" required>
+              <input type="text"  name="pincode" ng-model="user.pincode"  class="form-control" placeholder="Enter your zip" required>
             </div>
             <div class="alert alert-danger fade in error-padding" ng-show="signup.pincode.$touched && signup.pincode.$invalid">Pin/Zip is required</div>
             <!-- input-group -->

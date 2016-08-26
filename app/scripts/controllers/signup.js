@@ -10,17 +10,23 @@
 angular.module('coinomiaFrontendApp')
   .controller('SignupCtrl', function ($scope, coinomiaService, $window, $timeout, $state) {
 
-    $scope.sponsor = 'coinomia';
     $scope.confrimPassError = false;
+    $scope.user = {
+      'sponsor': 'coinomia',
+      'ipadr': '',
+      'country': '',
+      'state': '',
+      'city': ''
+    };
 
-    coinomiaService.getUserLocation().then(function(res) {
+    coinomiaService.getUserLocation()
+    .then(function(res) {
       var data = res.data;
-      $scope.IPAdr = data.ip;
-      $scope.Country = data.country_name;
-      $scope.State = data.region_name;
-      $scope.City = data.city;
+      $scope.user.ipadr = data.ip;
+      $scope.user.country = data.country_name;
+      $scope.user.state = data.region_name;
+      $scope.user.city = data.city;
     });
-
     $scope.next = function() {
       $scope.showme = true;
       // if($scope.signup.sponsor.$valid && $scope.signup.userid.$valid && $scope.signup.firstname.$valid && $scope.signup.password.$valid && $scope.signup.confirmpassword.$valid) {
@@ -59,22 +65,22 @@ angular.module('coinomiaFrontendApp')
       $scope.lastNameError = '';
       if($scope.terms == true) {
         var formData = {
-          'sponsor':$scope.sponsor,
-          'userid':$scope.userid,
-          'FirstName':$scope.FirstName,
-          'LastName':$scope.LastName,
-          'Address':$scope.Address,
-          'Country':$scope.Country,
-          'State':$scope.State,
-          'City':$scope.City,
-          'Pincode':$scope.Pincode,
-          'Mobile':$scope.Mobile,
-          'Email':$scope.Email,
-          'IPAdr':$scope.IPAdr,
-          'Password':$scope.Password,
-          'ConfirmPassword':$scope.ConfirmPassword
+          'sponsor':$scope.user.sponsor,
+          'userid':$scope.user.userid,
+          'FirstName':$scope.user.firstName,
+          'LastName':$scope.user.lastName,
+          'Address':$scope.user.address,
+          'Country':$scope.user.country,
+          'State':$scope.user.state,
+          'City':$scope.user.city,
+          'Pincode':$scope.user.pincode,
+          'Mobile':$scope.user.mobile,
+          'Email':$scope.user.email,
+          'IPAdr':$scope.user.ipadr,
+          'Password':$scope.user.password,
+          'ConfirmPassword':$scope.user.confirmPassword
         };
-
+        // console.log(formData);
         $scope.error = false;
         coinomiaService.signup(formData).then(function(res) {
           var data = res.data;
