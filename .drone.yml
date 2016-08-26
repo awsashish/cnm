@@ -32,14 +32,14 @@ publish:
 deploy:
   rsync:
     commands:
-      - "sh deployments/deploy.sh"
+      - "sh deployments/deploy.sh $$BUILD_NUMBER"
       - "sudo service nginx restart"
     delete: false
     host: $$SSH_HOST
     port: $$SSH_PORT
     recursive: true
     source: dist/
-    target: /home/$$SSH_USER/deployments/dist_$$DRONE_JOB_NUMBER/
+    target: /home/$$SSH_USER/deployments/dist_$$BUILD_NUMBER/
     user: $$SSH_USER
     when:
       branch: "master"
