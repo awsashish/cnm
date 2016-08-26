@@ -77,5 +77,3 @@ notify:
       [{{ build.status }}]
       {{ repo.owner }}/{{ repo.name }}
       ({{ build.branch }} - {{ truncate build.commit 8 }})
-    template: >
-      https://git.io/v6AO8
