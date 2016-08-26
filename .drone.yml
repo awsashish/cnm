@@ -19,8 +19,7 @@ publish:
     repo: docker.appfactory.in/coinomia-frontend
     tag: latest
     file: Dockerfile
-    when:
-      branch: "feature"
+
   docker:
     repo: docker.appfactory.in/coinomia-frontend
     tag: stable
@@ -31,13 +30,14 @@ publish:
 deploy:
   rsync:
     commands:
+      - "sh deployments/deploy.sh"
       - "sudo service nginx restart"
     delete: false
     host: $$SSH_HOST
     port: $$SSH_PORT
     recursive: true
     source: dist/
-    target: /usr/share/nginx/html/cd/
+    target: /home/$$SSH_USER/deplyoments/dist_$$DRONE_BUILD_NUMBER/
     user: $$SSH_USER
     when:
       branch: [master, deploy-test]
@@ -50,8 +50,6 @@ deploy:
     sleep: 5
     commands:
       - "sh deploy-staging.sh latest"
-    when:
-      branch: feature
   ssh:
     host:
       - $$DOCKER_HOST_1
