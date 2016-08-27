@@ -17,10 +17,10 @@ cache:
 publish:
   docker:
     repo: docker.appfactory.in/coinomia-frontend
-    tag: latest
+    tag: "$$BRANCH"
     file: Dockerfile
     when:
-      branch: "feature"
+      branch: "!master"
 
   docker:
     repo: docker.appfactory.in/coinomia-frontend
@@ -32,17 +32,30 @@ publish:
 deploy:
   rsync:
     commands:
-      - "sh deployments/deploy.sh"
+      - "sh deployments/deploy.sh $$BUILD_NUMBER $$COMMIT"
       - "sudo service nginx restart"
     delete: false
     host: $$SSH_HOST
     port: $$SSH_PORT
     recursive: true
     source: dist/
-    target: /home/$$SSH_USER/deplyoments/dist_$$DRONE_BUILD_NUMBER/
+    target: /home/$$SSH_USER/deployments/live/dist_$$BUILD_NUMBER/
     user: $$SSH_USER
     when:
       branch: "master"
+  rsync:
+    commands:
+      - "sh deployments/deploy_dev.sh $$BUILD_NUMBER $$COMMIT"
+      - "sudo service nginx restart"
+    delete: false
+    host: $$SSH_HOST
+    port: $$SSH_PORT
+    recursive: true
+    source: dist/
+    target: /home/$$SSH_USER/deployments/dev/dist_$$BUILD_NUMBER/
+    user: $$SSH_USER
+    when:
+      branch: "!master"
 
   ssh:
     host:
@@ -51,7 +64,9 @@ deploy:
     port: 22
     sleep: 5
     commands:
-      - "sh deploy-staging.sh latest"
+      - "sh deploy-staging.sh latest $$BRANCH $$COMMIT"
+    when:
+      branch: "!master"
   ssh:
     host:
       - $$DOCKER_HOST_1
@@ -59,7 +74,7 @@ deploy:
     port: 22
     sleep: 5
     commands:
-      - "sh deploy-staging.sh stable"
+      - "sh deploy-staging.sh stable $$BRANCH $$COMMIT"
     when:
       branch: "master"
 
@@ -72,6 +87,7 @@ notify:
     recipients:
       - "aqabiz@allies.co.in"
       - "mohd.raza@allies.co.in"
+      - "ashish@ith.tech"
     username: $$EMAIL_USERNAME
     subject: >
       [{{ build.status }}]
