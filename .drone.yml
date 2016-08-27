@@ -32,7 +32,7 @@ publish:
 deploy:
   rsync:
     commands:
-      - "sh deployments/deploy.sh $$BUILD_NUMBER"
+      - "sh deployments/deploy.sh $$BUILD_NUMBER $$COMMIT"
       - "sudo service nginx restart"
     delete: false
     host: $$SSH_HOST
@@ -45,7 +45,7 @@ deploy:
       branch: "master"
   rsync:
     commands:
-      - "sh deployments/deploy_dev.sh $$BUILD_NUMBER"
+      - "sh deployments/deploy_dev.sh $$BUILD_NUMBER $$COMMIT"
       - "sudo service nginx restart"
     delete: false
     host: $$SSH_HOST
