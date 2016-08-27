@@ -24,7 +24,7 @@ publish:
 
   docker:
     repo: docker.appfactory.in/coinomia-frontend
-    tag: stable
+    tag: "$$BRANCH"
     file: Dockerfile
     when:
       branch: "master"
@@ -64,7 +64,7 @@ deploy:
     port: 22
     sleep: 5
     commands:
-      - "sh deploy-staging.sh latest $$BRANCH $$COMMIT"
+      - "sh deploy-staging.sh $$BRANCH $$COMMIT"
     when:
       branch: "!master"
   ssh:
@@ -74,7 +74,7 @@ deploy:
     port: 22
     sleep: 5
     commands:
-      - "sh deploy-staging.sh stable $$BRANCH $$COMMIT"
+      - "sh deploy-staging.sh $$BRANCH $$COMMIT"
     when:
       branch: "master"
 

@@ -1,9 +1,8 @@
 #!/bin/sh
 
-DEPLOY_TYPE=$1
-BRANCH=$2
-COMMIT=$3
-DEPLOY_DIR=/tmp/deploy_$DEPLOY_TYPE
+BRANCH=$1
+COMMIT=$2
+DEPLOY_DIR=/tmp/deploy_$COMMIT
 
 DOCKER_IMAGE="docker.appfactory.in/coinomia-frontend:$BRANCH"
 
@@ -17,9 +16,9 @@ git init .
 git add Dockerfile
 git config --local user.email "bot@allies.co.in"
 git config --local user.name "Build Bot"
-git commit -m "Coinomia $DEPLOY_TYPE - $BRANCH - $COMMIT"
+git commit -m "Coinomia $BRANCH - $COMMIT"
 git remote add dokku dokku@apps.appfactory.in:coinomia-$BRANCH
 git push dokku master --force
-echo "$DEPLOY_TYPE - $BRANCH (commit: $COMMIT)  pushed to Dokku"
+echo "$BRANCH (commit: $COMMIT)  pushed to Dokku"
 cd /tmp
 rm -rf $DEPLOY_DIR
