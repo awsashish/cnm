@@ -34,6 +34,17 @@ angular
           var authToken = $localStorage.token || $cookies.get('token');
           config.headers.authorization = 'Bearer ' + authToken;
           $rootScope.signin = false;
+          // var currentTime = moment().toISOString();
+          // var expiryTime = $localStorage.expires;
+          // if(currentTime >= expiryTime) {
+          //   $localStorage.$reset();
+          //   $cookies.remove('token');
+          //   $window.href = '#/login';
+          // }else {
+          //   var authToken = $localStorage.token || $cookies.get('token');
+          //   config.headers.authorization = 'Bearer ' + authToken;
+          //   $rootScope.signin = false;
+          // }
         }
         return config;
       },

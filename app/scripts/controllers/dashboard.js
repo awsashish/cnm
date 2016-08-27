@@ -55,16 +55,11 @@ angular.module('coinomiaFrontendApp')
       $scope.btcProducts = [];
       $scope.ethProducts = [];
       if(res.status === 200) {
-        var i=1, j=1;
         productsData.forEach(function(products) {
           if(products.coin === 'BTC') {
-            products.btcClass = 'btc-pool-'+i;
             $scope.btcProducts.push(products);
-            i++;
           }else{
-            products.ethClass = 'eth-pool-'+j;
             $scope.ethProducts.push(products);
-            i++;
           }
         });
       }

@@ -3833,7 +3833,10 @@ border:none !important;
 .ui-slider .ui-slider-handle label{
     background: #428bca;
     border-radius: 20px;
-    width:5.2em; color:#fff !important;
+    width:5.2em;
+    color:#fff !important;
+    z-index: 999999;
+    margin: 0;
 }
 
 .ui-slider .ui-slider-handle {
@@ -4027,6 +4030,7 @@ label{ font-size:14px;}
 	background: #e1e1e1;
 	color: #222222;
 	margin-top: 4px;
+  padding: 1px 0;
 }
 .panel-footer{ padding:5px !important;}
 .ui-slider .ui-slider-handle {
