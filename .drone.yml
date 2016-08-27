@@ -17,7 +17,7 @@ cache:
 publish:
   docker:
     repo: docker.appfactory.in/coinomia-frontend
-    tag: latest
+    tag: "$$BRANCH"
     file: Dockerfile
     when:
       branch: "!master"
