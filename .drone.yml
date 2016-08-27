@@ -19,6 +19,8 @@ publish:
     repo: docker.appfactory.in/coinomia-frontend
     tag: latest
     file: Dockerfile
+    when:
+      branch: "!master"
 
   docker:
     repo: docker.appfactory.in/coinomia-frontend
@@ -63,6 +65,8 @@ deploy:
     sleep: 5
     commands:
       - "sh deploy-staging.sh latest $$BRANCH $$COMMIT"
+    when:
+      branch: "!master"
   ssh:
     host:
       - $$DOCKER_HOST_1
