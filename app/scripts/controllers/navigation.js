@@ -8,14 +8,15 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-.controller('NavCtrl', function ($scope, $cookies, $state, $localStorage, coinomiaService) {
+.controller('NavCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, coinomiaService) {
 
   //Get User Info
   $scope.getUserInfo = function() {
     coinomiaService.userInfo().then(function(res) {
       var data = res.data;
       if(res.status === 200){
-        $scope.name = data.name;
+        $rootScope.name = data.name;
+        $scope.name = $rootScope.name;
       }
     });
   }

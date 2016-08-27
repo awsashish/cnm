@@ -27,7 +27,7 @@
       <div class="contentpanel ">
         <div class="alert alert-info ">
           <button aria-hidden="true" data-dismiss="alert" class="close" type="button">&times;</button>
-          <strong>Welcome Elen Adarna!!!</strong>
+          <strong>Welcome {{name}}!!!</strong>
         </div>
         <div class="col-sm-6 col-md-6 col-md-offset-3" style="margin-bottom:20px;">
           <a href="#/refer-link" class="btn btn-block btn-default btn-bordered mb31 bor-gry"><i class="fa fa-link"></i>
@@ -143,15 +143,15 @@
                     <h4 class="great text-capitalize">{{btc.productname}}</h4>
                     <img src="images/contract-bitcoin.png" width="100" class="pull-right" />
                     <div class="col-sm-12">
-                      <div id="slider"></div>
+                      <div class="btcPool-1" class="btc.btcClass" model="btc.miningpower" min="0.5" max="{{btc.maxunit}}" step="0.1"></div>
                     </div>
                   </div>
                   <div class="price-form">
                     <div class="form-group">
                       <div class="col-sm-12">
                         <input type="hidden" id="amount" class="form-control">
-                        <p class="price lead" id="amount-label"></p>
-                        TH/s<strong class="price pull-right lead">Amount : ${{btc.amount}}</strong>
+                        <p class="price lead" id="amount-label">{{btc.miningpower}}</p>
+                         TH/s<strong class="price pull-right lead">Amount : ${{btc.amount}}</strong>
                       </div>
                     </div>
                   </div>
@@ -279,27 +279,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>12/12/2015(12:30:12)</td>
-                <td>COIN34975934</td>
-                <td>$900</td>
-                <td>Withdrawal </td>
+              <tr class="text-center">
+                <td colspan="5"> No Transaction Found</td>
               </tr>
-              <tr>
-                <td>1</td>
-                <td>12/12/2015 (01:30:12)</td>
-                <td>COIN0000098</td>
-                <td>$1200</td>
-                <td>100TH/s Bitcoin Rack Purchased  </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>12/12/2015 (01:40:12)</td>
-                <td>COIN34975934</td>
-                <td>$900</td>
-                <td>Withdrawal </td>
-              </tr>
+              <tfoot>
+                <tr>
+                  <td colspan="5">
+                    <ul uib-pagination items-per-page="25" ng-model="currentPage" total-items="totalRecords" max-size="5" boundary-links="true"></ul>
+                  </td>
+                </tr>
+              </tfoot>
             </tbody>
           </table>
         </div>
@@ -313,7 +302,7 @@
     <h2 align="center" class="mb37" style="width:60%"><span class="glyphicon glyphicon-minus"></span> Current Status Bitcoin<span class="glyphicon glyphicon-minus"></span> </h2>
     <br />
     <div align="center" id="coindesk-widget" data-size="mpu"></div>
+    <main-footer></main-footer>
   </div>
   <!-- mainwrapper -->
 </section>
-<main-footer></main-footer>

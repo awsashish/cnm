@@ -8,7 +8,9 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('DashboardCtrl', function ($scope, coinomiaService) {
+  .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService) {
+
+    $scope.currentPage = 1;
 
     // Get Purchased Power
     coinomiaService.getPurchasePower()
@@ -53,12 +55,30 @@ angular.module('coinomiaFrontendApp')
       $scope.btcProducts = [];
       $scope.ethProducts = [];
       if(res.status === 200) {
+        var i=1, j=1;
         productsData.forEach(function(products) {
           if(products.coin === 'BTC') {
+            products.btcClass = 'btc-pool-'+i;
             $scope.btcProducts.push(products);
+            i++;
           }else{
+            products.ethClass = 'eth-pool-'+j;
             $scope.ethProducts.push(products);
+            i++;
           }
+        });
+      }
+    });
+
+    // Get Latest Transaction and Withdrawals
+    coinomiaService.getTransactionDetails($scope.currentPage)
+    .then(function(res) {
+      var transactionData = res.data;
+      $scope.transactionDetails = [];
+      if(res.status === 200) {
+        $scope.totalRecords = transactionData.total;
+        transactionData.rows.forEach(function(transaction) {
+          $scope.transactionDetails.push(transaction);
         });
       }
     });

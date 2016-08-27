@@ -94,7 +94,6 @@ angular.module('coinomiaFrontendApp')
           }else if(res.status === 404) {
               $scope.showme = false;
               $scope.userIdError = data.Message;
-
           }else if(angular.isObject(data.Messages)) {
             var errorMessage = data.Messages;
             if(errorMessage['Member.Email'] !== undefined) {
