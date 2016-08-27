@@ -8,7 +8,8 @@
  * Service in the coinomiaFrontendApp.
  */
 angular.module('coinomiaFrontendApp')
-  .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage) {
+  .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage, config) {
+    var pageLimit = config.pageLimit;
     this.apiHost = 'http://coinomiaapi.azurewebsites.net/';
     this.loginRequestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -38,7 +39,7 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.post(this.apiHost + '/oauth2/token', data, this.loginRequestConfig)
+      return $http.post(this.apiHost + 'oauth2/token', data, this.loginRequestConfig)
         .then(loginComplete)
         .catch(loginFailed);
     };
@@ -56,13 +57,13 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.post(this.apiHost + '/user/signup', data)
+      return $http.post(this.apiHost + 'user/signup', data)
         .then(signupComplete)
         .catch(signupFailed);
     };
 
     // Get User Referrals
-    this.getUserReferral = function(currentPage, pageLimit) {
+    this.getUserReferral = function(currentPage) {
 
       function userReferralComplete(response) {
         return response.data;
@@ -72,13 +73,13 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.post(this.apiHost +'/user/referral/'+currentPage+'/'+pageLimit)
+      return $http.post(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
         .then(userReferralComplete)
         .catch(userReferralFailed);
     };
 
     // All Referrals
-    this.getReferral = function(currentPage, pageLimit) {
+    this.getReferral = function(currentPage) {
 
       function getReferralComplete(response) {
         return response.data;
@@ -88,7 +89,7 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.post(this.apiHost +'/user/all-referral/'+currentPage+'/'+pageLimit)
+      return $http.post(this.apiHost +'user/all-referral/'+currentPage+'/'+pageLimit)
         .then(getReferralComplete)
         .catch(getReferralFailed);
 
@@ -106,7 +107,7 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.post(this.apiHost +'/user/change-password/', data)
+      return $http.post(this.apiHost +'user/change-password/', data)
         .then(changePasswordComplete)
         .catch(changePasswordFailed);
     };
@@ -122,7 +123,7 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.post(this.apiHost +'/utilities/list-countries/')
+      return $http.post(this.apiHost +'utilities/list-countries/')
         .then(getCountriesComplete)
         .catch(getCountriesFailed);
     };
@@ -195,20 +196,21 @@ angular.module('coinomiaFrontendApp')
         .catch(getTotalIncomeFailed);
     };
 
-    // Get Wallet Info
-    this.walletInfo = function(currentPage, pageLimit) {
+    // Get Latest Transaction and Withdrawals
+    this.getTransactionDetails = function(currentPage) {
 
-      function walletInfoComplete(response) {
-        return response.data;
+      function transactionComplete(response) {
+        return response;
       }
 
-      function wallletInfoFailed(error) {
+      function transactionFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
-      return $http.post(this.apiHost +'/user/transaction/'+currentPage+'/'+pageLimit)
-        .then(walletInfoComplete)
-        .catch(wallletInfoFailed);
+      return $http.get(this.apiHost +'user/transaction/'+currentPage+'/'+pageLimit)
+        .then(transactionComplete)
+        .catch(transactionFailed);
     };
 
     // Get Products
@@ -256,7 +258,7 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.get(this.apiHost +'/user/email-verify/'+token)
+      return $http.get(this.apiHost +'user/email-verify/'+token)
         .then(verificationComplete)
         .catch(verificationFailed);
     }
