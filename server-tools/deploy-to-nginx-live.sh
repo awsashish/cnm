@@ -12,3 +12,7 @@ echo "commit: $COMMIT" > $HTML_NEW_DIR/commit.txt
 
 sudo rm $NGINX_DIR/html && \
      ln -s $HTML_NEW_DIR $NGINX_DIR/html
+
+touch $HTML_NEW_DIR/commit.txt
+cd $HTML_NEW_DIR
+echo "commit: $COMMIT" > commit.txt
