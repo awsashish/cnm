@@ -262,4 +262,22 @@ angular.module('coinomiaFrontendApp')
         .then(verificationComplete)
         .catch(verificationFailed);
     }
+
+    // Get Landing Pages & Referral Links
+    this.getLandingPages = function() {
+      // On Success
+      function landingRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function landingRequestFailed(error) {
+        $log.error('XHR Failed for landing pages.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/landing-pages')
+        .then(landingRequestComplete)
+        .catch(landingRequestFailed);
+    }
   });

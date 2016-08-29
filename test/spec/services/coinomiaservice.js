@@ -559,4 +559,36 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Get Landing Pages and Referral Link Test
+  describe('landing pages function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getLandingPages).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/landing-pages')
+      .respond(200, {'total':2, 'rows':[{'title': 'some-title', 'path':'www.some-value.com', 'description':'some-description'}]});
+      var data;
+      coinomiaService.getLandingPages().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual(2);
+      expect(data.rows[0].title).toEqual('some-title');
+      expect(data.rows[0].path).toEqual('www.some-value.com');
+      expect(data.rows[0].description).toEqual('some-description');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/landing-pages')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getLandingPages();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });
