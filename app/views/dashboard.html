@@ -185,47 +185,19 @@
                 <br />
                 <div class="panel panel-default ">
                   <div class="panel-body">
-                    <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
+                    <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="btc in btcProducts">
                       <p>
-                      <h2 class="mb38">Bitcoin Pool Contract</h2>
+                      <h2 class="mb38">{{btc.productname}}</h2>
                       </p>
-                      <h3 class="mb36">0.00 USD</h3>
-                      <h3 class="mb36">0 TH/s</h3>
+                      <h3 class="mb36">{{btc.amount | number:2}} USD</h3>
+                      <h3 class="mb36">{{btcMining}} TH/s</h3>
                     </div>
-                    <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
+                    <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="eth in ethProducts">
                       <p>
-                      <h2 class="mb38">Bitcoin  Contributor</h2>
+                      <h2 class="mb38">{{eth.productname}}</h2>
                       </p>
-                      <h3 class="mb36">0.00 USD</h3>
-                      <h3 class="mb36">0 TH/s</h3>
-                    </div>
-                    <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
-                      <p>
-                      <h2 class="mb38">Bitcoin Rack</h2>
-                      </p>
-                      <h3 class="mb36">0.00 USD</h3>
-                      <h3 class="mb36">0 TH/s</h3>
-                    </div>
-                    <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
-                      <p>
-                      <h2 class="mb38">Ether Pool Contract</h2>
-                      </p>
-                      <h3 class="mb36">0.00 USD</h3>
-                      <h3 class="mb36">0 MH/s</h3>
-                    </div>
-                    <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
-                      <p>
-                      <h2 class="mb38">Ether Contributor</h2>
-                      </p>
-                      <h3 class="mb36">0.00 USD</h3>
-                      <h3 class="mb36">0 MH/s</h3>
-                    </div>
-                    <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc; margin-bottom:20px;">
-                      <p>
-                      <h2 class="mb38">Ether Rack Owner</h2>
-                      </p>
-                      <h3 class="mb36">0.00 USD</h3>
-                      <h3 class="mb36">0 MH/s</h3>
+                      <h3 class="mb36">{{eth.amount | number:2}} USD</h3>
+                      <h3 class="mb36">{{ethMining}} MH/s</h3>
                     </div>
                     <div class="clearfix"></div>
                     <div align="center" >
