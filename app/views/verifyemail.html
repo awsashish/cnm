@@ -1,0 +1,29 @@
+<section>
+  <div class="panel panel-signin">
+    <div class="panel-body verifyemail-body">
+      <div class="logo text-center">
+        <img src="images/logo-coinomia.png" alt="Coinomia" >
+      </div>
+      <br />
+      <div class="mb20"></div>
+      <div class="alert alert-success fade in" ng-if="isVerified">
+        <strong><i class="fa fa-check-circle fa-lg" aria-hidden="true"></i> {{verificationMessage}}</strong> Your Email Has Been Verified.
+      </div>
+      <span class="col-md-12 text-center" ng-if="isVerified"><a href="#/login">Click here</a> to login.</span>
+      <div class="alert alert-danger fade in" ng-if="isVerified==false" style="text-transform:capitalize;">
+        <strong ng-if="status!==404">OOPS!</strong> {{verificationMessage}}.
+      </div>
+      <div ng-if="loading">
+        <h4 class="text-center mb15">Please Wait</h4>
+        <div class="col-md-9" style="margin: 0 auto;float: none !important;">
+          <div class="progress" style="margin-bottom:5px;height:10px;">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%"></div>
+          </div>
+        </div>
+        <h5 class="col-md-12 text-center">Your request is being processed</h5>
+      </div>
+      <div class="mb30"></div>
+    </div>
+  </div>
+  <!-- panel -->
+</section>

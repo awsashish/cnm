@@ -8,8 +8,8 @@
  * Service in the coinomiaFrontendApp.
  */
 angular.module('coinomiaFrontendApp')
-  .service('coinomiaService', function ($http, $log, $state, $window, $cookies) {
-    this.apiHost = 'http://coinomia.azurewebsites.net';
+  .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage) {
+    this.apiHost = 'http://coinomiaapi.azurewebsites.net/';
     this.loginRequestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           transformRequest: function(obj) {
@@ -23,15 +23,20 @@ angular.module('coinomiaFrontendApp')
 
     this.requestFailed = function (error) {
       $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
-    }
+    };
 
     // Login Process
-    this.login = function(formData, loginComplete, loginFailed) {
+    this.login = function(formData) {
       var data = formData;
 
-      // function loginFailed(error) {
-      //   $log.error('XHR Failed for login.\n' + angular.toJson(error.data, true));
-      // }
+      function loginComplete(response) {
+        return response;
+      }
+
+      function loginFailed(error) {
+        $log.error('XHR Failed for login.\n' + angular.toJson(error.data, true));
+        return error;
+      }
 
       return $http.post(this.apiHost + '/oauth2/token', data, this.loginRequestConfig)
         .then(loginComplete)
@@ -39,8 +44,17 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Sign Up process
-    this.signup = function(formData, signupComplete, signupFailed) {
+    this.signup = function(formData) {
       var data = formData;
+
+      function signupComplete(response) {
+        return response;
+      }
+
+      function signupFailed(error, status) {
+        $log.error('XHR Failed for signup.\n' + angular.toJson(status, true));
+        return error;
+      }
 
       return $http.post(this.apiHost + '/user/signup', data)
         .then(signupComplete)
@@ -178,34 +192,51 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get Products
-    this.products = function() {
+    this.getProducts = function() {
 
-      function productsComplete(response) {
+      function getProductsComplete(response) {
         return response.data;
       }
 
-      function productsFailed(error) {
+      function getProductsFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
       return $http.post(this.apiHost +'/user/products/')
-        .then(productsComplete)
-        .catch(productsFailed);
+        .then(getProductsComplete)
+        .catch(getProductsFailed);
     };
 
-    this.getUserIP = function() {
-      return $http.get('https://api.ipify.org/')
+    // Get User Location
+
+    this.getUserLocation = function() {
+      return $http.get('http://freegeoip.net/json/')
       .catch(this.requestFailed);
-    }
+    };
 
     // Authentication
     this.Auth = function() {
-      var userSession = $window.sessionStorage.getItem('token');
-      var userCookies = $cookies.get('token');
-      if ($cookies.get('token') || $window.sessionStorage.getItem('token')) {
+      if ($cookies.get('token') || $localStorage.token) {
         $state.go('dashboard');
       }else{
         $state.go('login');
       }
+    };
+
+    // Verfying User Email
+    this.verifyEmail = function(token) {
+
+      function verificationComplete(response) {
+        return response;
+      }
+
+      function verificationFailed(error) {
+        $log.error('XHR Failed for verification email.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'/user/email-verify/'+token)
+        .then(verificationComplete)
+        .catch(verificationFailed);
     }
   });

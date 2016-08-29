@@ -49,8 +49,8 @@ URL: http://themepixels.com/
 /********** 2. RESET STYLES **********/
 /*************************************/
 @import url(https://fonts.googleapis.com/css?family=Oswald);
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 body {
+    font-family: 'Roboto';
     font-size: 13px;
     color: #636E7B;
     background-color: #fff;
@@ -97,6 +97,74 @@ a:focus {
     position: fixed;
     width: 100%;
     z-index: 1000;
+}
+
+.panel-dashboard {
+  padding: 50px 40px;
+  box-shadow: 2px 2px 30px #c6c6c6;
+  border: 1px solid #c6c6c6;
+  width: 550px;
+  margin: 0 auto;
+  margin: 80px auto 0;
+}
+
+.mail-box-text {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size:27px;
+}
+
+.no-margin {
+  margin:0 !important;
+}
+
+.error-padding:before {
+  border-bottom: 10px solid #f2dede;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  width: 0;
+  height: 0;
+  content: '';
+  position: absolute;;
+  top: -10px;
+}
+
+.no-arrow:before {
+    content: '';
+    border: 0;
+}
+
+.error-padding {
+  position: relative;
+}
+
+.verifyemail-body {
+  padding: 80px 40px !important;
+}
+
+.error-padding {
+  padding: 5px 10px;
+}
+
+.verifyemail-body h4, .verifyemail-body h5 {
+  font-weight: 400;
+}
+
+.step4 {
+  float: left;
+  width: 500px;
+}
+
+.step5 {
+  position: relative;
+  top: 50px;
+  width: 440px;
+}
+
+.coming-soon {
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 21px;
 }
 
 .dashboard {

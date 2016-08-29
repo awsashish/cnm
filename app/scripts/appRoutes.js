@@ -35,6 +35,19 @@ angular.module('coinomiaFrontendApp')
     .state('success', {
         url: '/success',
         templateUrl: 'views/success.html',
+    })
+
+    // Terms & Conditions page
+    .state('terms-and-conditions', {
+        url: '/terms-and-conditions',
+        templateUrl: 'views/terms.html',
+    })
+
+    // Verify Email page
+    .state('verify-email', {
+      url: '/verify-email/:id',
+      templateUrl: 'views/verifyemail.html',
+      controller: 'VerifyemailCtrl'
     });
     //
     // $locationProvider.html5Mode(true);

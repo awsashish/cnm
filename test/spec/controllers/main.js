@@ -6,18 +6,29 @@ describe('Controller: MainCtrl', function () {
   beforeEach(module('coinomiaFrontendApp'));
 
   var MainCtrl,
-    scope;
+    $q,
+    scope,
+    spy,
+    coinomiaService,
+    coinomiaServiceDeferred
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, _coinomiaService_, _$q_) {
+    $q = _$q_;
+    coinomiaService = _coinomiaService_;
+
     scope = $rootScope.$new();
+    coinomiaServiceDeferred = $q.defer();
+
+    spyOn(coinomiaService, 'Auth').and.returnValue(coinomiaServiceDeferred.promise);
+
     MainCtrl = $controller('MainCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(MainCtrl.awesomeThings.length).toBe(3);
+  it('should be defined and call Auth service', function() {
+    expect(coinomiaService.Auth).toHaveBeenCalled();
   });
 });
