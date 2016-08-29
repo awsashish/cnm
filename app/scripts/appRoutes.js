@@ -64,7 +64,7 @@ angular.module('coinomiaFrontendApp')
     // Payouts page
     .state('payouts', {
       url: '/payouts',
-      templateUrl: 'views/referral-link.html',
+      templateUrl: 'views/coming-soon.html',
       controller: 'PayoutsCtrl',
       authenticate: true
     })
@@ -72,7 +72,7 @@ angular.module('coinomiaFrontendApp')
     // Business Plans
     .state('business-plan', {
       url: '/business-plan',
-      templateUrl: 'views/referral-link.html',
+      templateUrl: 'views/coming-soon.html',
       controller: 'BusinessplanCtrl',
       authenticate: true
     })
@@ -80,7 +80,7 @@ angular.module('coinomiaFrontendApp')
     // My Account
     .state('my-account', {
       url: '/my-account',
-      templateUrl: 'views/referral-link.html',
+      templateUrl: 'views/coming-soon.html',
       controller: 'MyaccountCtrl',
       authenticate: true
     })
@@ -88,7 +88,7 @@ angular.module('coinomiaFrontendApp')
     // My Account
     .state('setting', {
       url: '/setting',
-      templateUrl: 'views/referral-link.html',
+      templateUrl: 'views/coming-soon.html',
       controller: 'SettingCtrl',
       authenticate: true
     })
