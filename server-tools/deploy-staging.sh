@@ -19,6 +19,11 @@ git config --local user.name "Build Bot"
 git commit -m "Coinomia $BRANCH - $COMMIT"
 git remote add dokku dokku@apps.appfactory.in:coinomia-$BRANCH
 git push dokku master --force
-echo "$BRANCH (commit: $COMMIT)  pushed to Dokku"
+if [ $? -eq 0 ]
+  echo "$BRANCH (commit: $COMMIT)  pushed to Dokku"
+else
+  echo "$BRANCH (commit: $COMMIT)  push to Dokku FAILED"
+  exit 1
+fi
 cd /tmp
 rm -rf $DEPLOY_DIR
