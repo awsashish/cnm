@@ -31,6 +31,9 @@ angular.module('coinomiaFrontendApp')
         url: '/dashboard',
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
+        ncyBreadcrumb: {
+          label: 'Dashboard'
+        },
         authenticate:true
     })
 
@@ -58,6 +61,9 @@ angular.module('coinomiaFrontendApp')
       url: '/referral-link',
       templateUrl: 'views/referral-link.html',
       controller: 'ReferralCtrl',
+      ncyBreadcrumb: {
+        label: 'My Referral Link'
+      },
       authenticate: true
     })
 

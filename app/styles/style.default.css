@@ -136,6 +136,14 @@ a:focus {
   position: relative;
 }
 
+.custom-breadcrumb {
+  margin: -2px 0 0 0 !important;
+  font-size: 28px !important;
+  font-weight: 500;
+  color: #2f363d !important;
+  line-height: normal !important;
+}
+
 .media>.pull-left {
     margin-right: 10px;
 }
