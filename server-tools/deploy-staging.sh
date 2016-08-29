@@ -22,7 +22,7 @@ git push dokku master --force
 if [ $? -eq 0 ]
   echo "$BRANCH (commit: $COMMIT)  pushed to Dokku"
 else
-  echo "$BRANCH (commit: $COMMIT)  push to Dokku FAILED"
+  echo "$BRANCH (commit: $COMMIT)  push to Dokku FAILED" >&2
   exit 1
 fi
 cd /tmp
