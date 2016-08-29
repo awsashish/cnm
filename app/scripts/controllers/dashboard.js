@@ -11,6 +11,8 @@ angular.module('coinomiaFrontendApp')
   .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService) {
 
     $scope.currentPage = 1;
+    $scope.btcMining = 0.5;
+    $scope.ethMining = 0.5;
 
     // Get Purchased Power
     coinomiaService.getPurchasePower()

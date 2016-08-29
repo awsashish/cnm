@@ -143,14 +143,14 @@
                     <h4 class="great text-capitalize">{{btc.productname}}</h4>
                     <img src="images/contract-bitcoin.png" width="100" class="pull-right" />
                     <div class="col-sm-12">
-                      <div btc-pool class="btcPool" model="btc.miningpower" min="0.5" max="{{btc.maxunit}}" step="0.1"></div>
+                      <div ui-slider class="btcPool" model="btcMining" min="0.5" max="{{btc.maxunit}}" step="0.1"></div>
                     </div>
                   </div>
                   <div class="price-form">
                     <div class="form-group">
                       <div class="col-sm-12">
                         <input type="hidden" id="amount" class="form-control">
-                        <p class="price lead" id="amount-label">{{btc.miningpower}}</p>
+                        <p class="price lead" id="amount-label">{{btcMining}}</p>
                          TH/s<strong class="price pull-right lead">Amount : ${{btc.amount}}</strong>
                       </div>
                     </div>
@@ -163,14 +163,14 @@
                     <h4 class="great text-capitalize">{{eth.productname}}</h4>
                     <img src="images/ether-contract.png" width="100" class="pull-right" />
                     <div class="col-sm-12">
-                      <div eth-pool class="ethPool" model="eth.miningpower" min="0.5" max="{{eth.maxunit}}" step="0.1"></div>
+                      <div ui-slider class="uiSlider" model="ethMining" min="0.5" max="{{eth.maxunit}}" step="0.1"></div>
                     </div>
                   </div>
                   <div class="price-form">
                     <div class="form-group">
                       <div class="col-sm-12">
                         <input type="hidden" id="amount3" class="form-control">
-                        <p class="price lead" id="amount-label3">{{eth.miningpower}}</p>
+                        <p class="price lead" id="amount-label3">{{ethMining}}</p>
                         MH/s<strong class="price pull-right lead">Amount : ${{eth.amount}}</strong>
                       </div>
                     </div>
