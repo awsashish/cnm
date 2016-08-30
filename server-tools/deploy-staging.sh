@@ -9,6 +9,7 @@ DOCKER_IMAGE="docker.appfactory.in/coinomia-frontend:$BRANCH"
 #Make sure Dokku Host has latest image from registry
 dokku registry:pull coinomia-$BRANCH $DOCKER_IMAGE
 
+[ -d $DEPLOY_DIR ] && rm -rf $DEPLOY_DIR
 mkdir -p $DEPLOY_DIR
 echo "FROM $DOCKER_IMAGE" > $DEPLOY_DIR/Dockerfile
 cd $DEPLOY_DIR
@@ -19,7 +20,7 @@ git config --local user.name "Build Bot"
 git commit -m "Coinomia $BRANCH - $COMMIT"
 git remote add dokku dokku@apps.appfactory.in:coinomia-$BRANCH
 git push dokku master --force
-if [ $? -eq 0 ]
+if [ $? -eq 0 ]; then
   echo "$BRANCH (commit: $COMMIT)  pushed to Dokku"
 else
   echo "$BRANCH (commit: $COMMIT)  push to Dokku FAILED" >&2
@@ -27,3 +28,4 @@ else
 fi
 cd /tmp
 rm -rf $DEPLOY_DIR
+#dokku ps:restart coinomia-$BRANCH
