@@ -14,14 +14,16 @@ mkdir -p $DEPLOY_DIR
 echo "FROM $DOCKER_IMAGE" > $DEPLOY_DIR/Dockerfile
 cd $DEPLOY_DIR
 git init .
+git checkout -b master
 git add Dockerfile
 git config --local user.email "bot@allies.co.in"
 git config --local user.name "Build Bot"
 git commit -m "Coinomia $BRANCH - $COMMIT"
 git remote add dokku dokku@apps.appfactory.in:coinomia-$BRANCH
-git push dokku master --force
-if [ $? -eq 0 ]; then
-  echo "$BRANCH (commit: $COMMIT)  pushed to Dokku"
+git push dokku master:master --force
+if [ $? -ne 0 ]; then
+  dokku apps:destroy coinomia-$BRANCH --force
+  git push dokku master:master --force
 else
   echo "$BRANCH (commit: $COMMIT)  push to Dokku FAILED" >&2
   exit 1
