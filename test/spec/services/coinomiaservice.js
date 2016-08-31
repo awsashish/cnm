@@ -591,4 +591,34 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Get Default Sponsor
+  describe('user default sponsor function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getDefaultSponsor).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'utilities/default-sponsor')
+      .respond(200, {'MemberId':'some-id', 'MemberName':'some-name'});
+      var data;
+      coinomiaService.getDefaultSponsor().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.MemberId).toEqual('some-id');
+      expect(data.MemberName).toEqual('some-name');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'utilities/default-sponsor')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getDefaultSponsor();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });

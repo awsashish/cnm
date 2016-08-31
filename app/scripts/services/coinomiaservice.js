@@ -280,4 +280,22 @@ angular.module('coinomiaFrontendApp')
         .then(landingRequestComplete)
         .catch(landingRequestFailed);
     }
+
+    // Get Default Sponsor
+    this.getDefaultSponsor = function() {
+      // On Success
+      function defaultSponsorRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function defaultSponsorRequestFailed(error) {
+        $log.error('XHR Failed for Deafult Sponsor.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'utilities/default-sponsor')
+        .then(defaultSponsorRequestComplete)
+        .catch(defaultSponsorRequestFailed);
+    }
   });
