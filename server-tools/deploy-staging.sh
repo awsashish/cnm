@@ -2,32 +2,24 @@
 
 BRANCH=$1
 COMMIT=$2
-DEPLOY_DIR=/tmp/deploy_$COMMIT
 
+#Docker Image to be pulled from private registry
 DOCKER_IMAGE="docker.appfactory.in/coinomia-frontend:$BRANCH"
+#Dokku APP name
+DOKKU_APP=coinomia-$BRANCH
 
-#Make sure Dokku Host has latest image from registry
-dokku registry:pull coinomia-$BRANCH $DOCKER_IMAGE
+#Pull latest images from registry
+docker pull $DOCKER_IMAGE
+#Tag image as per Dokku's specs for image-deployment
+docker tag $DOCKER_IMAGE dokku/$DOKKU_APP:$COMMIT
 
-[ -d $DEPLOY_DIR ] && rm -rf $DEPLOY_DIR
-mkdir -p $DEPLOY_DIR
-echo "FROM $DOCKER_IMAGE" > $DEPLOY_DIR/Dockerfile
-cd $DEPLOY_DIR
-git init .
-git checkout -b master
-git add Dockerfile
-git config --local user.email "bot@allies.co.in"
-git config --local user.name "Build Bot"
-git commit -m "Coinomia $BRANCH - $COMMIT"
-git remote add dokku dokku@apps.appfactory.in:coinomia-$BRANCH
-git push dokku master:master --force
+#Check if app exists
+dokku ps $DOKKU_APP 2> /dev/null
+
+#If app doesn't exist, create one
 if [ $? -ne 0 ]; then
-  dokku apps:destroy coinomia-$BRANCH --force
-  git push dokku master:master --force
-else
-  echo "$BRANCH (commit: $COMMIT)  push to Dokku FAILED" >&2
-  exit 1
+  dokku apps:create $DOKKU_APP
 fi
-cd /tmp
-rm -rf $DEPLOY_DIR
-#dokku ps:restart coinomia-$BRANCH
+
+#Deploy tag to app
+dokku tags:deploy $DOKKU_APP $COMMIT
