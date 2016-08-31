@@ -73,7 +73,7 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.post(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
+      return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
         .then(userReferralComplete)
         .catch(userReferralFailed);
     };
@@ -129,7 +129,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get User Profile
-    this.userInfo = function() {
+    this.getUserInfo = function() {
 
       function getInfoComplete(response) {
         return response;
@@ -279,5 +279,23 @@ angular.module('coinomiaFrontendApp')
       return $http.get(this.apiHost +'user/landing-pages')
         .then(landingRequestComplete)
         .catch(landingRequestFailed);
+    }
+
+    // Get Default Sponsor
+    this.getDefaultSponsor = function() {
+      // On Success
+      function defaultSponsorRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function defaultSponsorRequestFailed(error) {
+        $log.error('XHR Failed for Deafult Sponsor.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'utilities/default-sponsor')
+        .then(defaultSponsorRequestComplete)
+        .catch(defaultSponsorRequestFailed);
     }
   });
