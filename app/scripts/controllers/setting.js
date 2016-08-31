@@ -23,6 +23,25 @@ angular.module('coinomiaFrontendApp')
 
     $scope.getUserProfile();
 
+    $scope.confirmPass = function(callback) {
+      if($scope.user.password !== $scope.user.confirmPassword) {
+        $scope.confirmPassError = true;
+        $scope.passwordError = 'Passwords do not match.';
+      }else{
+        $scope.confirmPassError = false;
+      }
+      if(typeof callback === 'function') {
+        return callback($scope.confirmPassError);
+      }
+    }
+
+    // Change User Password
+    $scope.changeUserPasssword = function(info) {
+      $scope.confirmPass(function(error) {
+      
+      });
+    }
+
     // Get User's Sponsor
     // $scope.sponsorInfo = function() {
     //   coinomiaService.getUserSponsor()

@@ -398,21 +398,58 @@
                 <small>change your current password</small>
                 <hr />
                 <div class="row mar20">
-                  <form  ng-submit="updateUserPasssword(form)">
-                    <div class="col-md-8 col-sm-12 ">  <label for="exampleInputName2"><strong>Old Password</strong></label>
-                      <input type="password" class="form-control " id="exampleInputName2" ng-model="user.oldPassword" placeholder="pasword">
+                  <form name="changePassword" ng-submit="changeUserPasssword(user)" novalidate>
+                    <div class="col-md-8 col-sm-12 ">
+                      <label for="exampleInputName2"><strong>Old Password</strong></label>
+                      <input type="password"
+                             class="form-control"
+                             id="exampleInputName2"
+                             ng-model="user.oldPassword" />
                     </div>
-                    <div class="col-md-8 col-sm-12 mt10">  <label for="exampleInputName2"><strong>New Password</strong></label>
-                      <input type="text" class="form-control " ng-model="user.newPassword" id="exampleInputName2" >
+                    <div class="col-md-8 col-sm-12 mt10">
+                      <label for="exampleInputName2"><strong>New Password</strong></label>
+                      <div class="mb15">
+                        <input type="password"
+                               name="newPassword"
+                               class="form-control"
+                               ng-model="user.password"
+                               ng-minlength="6"
+                               ng-pattern="/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/"
+                               required />
+                      </div>
+                      <div class="alert alert-danger fade in error-padding"
+                        ng-show="changePassword.newPassword.$touched && changePassword.newPassword.$invalid && !changePassword.newPassword.$error.minlength && !changePassword.newPassword.$error.pattern">
+                        Password is required.</div>
+                     <!-- Minimum Lenght Validation -->
+                      <div class="alert alert-danger fade in error-padding"
+                        ng-show="changePassword.newPassword.$touched && changePassword.newPassword.$invalid && changePassword.newPassword.$error.minlength">
+                        Password must be 6 characters long.</div>
+                      <!-- Alphanumeric Validation -->
+                      <div class="alert alert-danger fade in error-padding"
+                        ng-show="changePassword.newPassword.$touched && changePassword.newPassword.$error.pattern && !changePassword.newPassword.$error.minlength">
+                        Password must be alphanumeric.</div>
                     </div>
-                    <div class="col-md-8 col-sm-12 mt10">  <label for="exampleInputName2"><strong>Confirm Password</strong></label>
-                      <input type="text" class="form-control " ng-model="user.confirmPassword" id="exampleInputName2" >
+
+                    <div class="col-md-8 col-sm-12 mt10">
+                      <div class="mb15">
+                        <label for="exampleInputName2"><strong>Confirm Password</strong></label>
+                        <input type="password"
+                               name="confirmPassword"
+                               class="form-control"
+                               ng-model="user.confirmPassword"
+                               id="exampleInputName2"
+                               ng-keyup="confirmPass()"
+                               required />
+                      </div>
+                      <div class="alert alert-danger fade in error-padding"
+                         ng-show="(changePassword.confirmPassword.$touched && changePassword.confirmPassword.$invalid) || confirmPassError">
+                         Password does not match</div>
                     </div>
                     <div class="clearfix"></div>
-                    <p class="mar20">
-                      <input type="submit" class="btn btn-primary btn-lg" ng-click="update(user)" value="Save" name="submit">
+                    <div class="col-md-12 mar20">
+                      <input type="submit" class="btn btn-primary btn-lg" value="Save" name="submit" ng-disabled="changePassword.$invalid || confirmPassError">
                       <input type="reset" class="btn btn-default btn-lg" ng-click="reset()" value="Reset" name="reset">
-                    </p>
+                    </div>
                   </form>
                 </div>
               </div>
