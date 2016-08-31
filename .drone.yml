@@ -6,7 +6,6 @@ build:
     - "bower install --allow-root"
     - "grunt test"
     - "grunt build"
-    - "tee --append dist/index.html <<< '<!-- commit: $$COMMIT; build: $$BUILD_NUMBER -->'"
   image: "node:6"
   name: coinomia-frontend
 
