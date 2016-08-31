@@ -22,4 +22,12 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.getUserProfile();
+
+    // Get User's Sponsor
+    // $scope.sponsorInfo = function() {
+    //   coinomiaService.getUserSponsor()
+    //     .then(function(res) {
+    //       console.log(res);
+    //     });
+    // }
   });
