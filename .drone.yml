@@ -21,6 +21,7 @@ publish:
     file: Dockerfile
     when:
       branch: "!master"
+
   docker:
     repo: docker.appfactory.in/coinomia-frontend
     tag: "$$BRANCH"
@@ -34,8 +35,8 @@ deploy:
       - "sh deployments/deploy.sh $$BUILD_NUMBER $$COMMIT"
       - "sudo service nginx restart"
     delete: false
-    host: "$$SSH_HOST"
-    port: "$$SSH_PORT"
+    host: $$SSH_HOST
+    port: $$SSH_PORT
     recursive: true
     source: dist/
     target: /home/$$SSH_USER/deployments/live/dist_$$BUILD_NUMBER/
@@ -75,14 +76,14 @@ deploy:
     commands:
       - "sh deploy-staging.sh $$BRANCH $$COMMIT"
     when:
-      branch: master
+      branch: "master"
 
 notify:
   email:
     from: "drone@allies.co.in"
-    host: "$$EMAIL_HOST"
-    password: "$$EMAIL_PASSWORD"
-    port: "$$EMAIL_PORT"
+    host: $$EMAIL_HOST
+    password: $$EMAIL_PASSWORD
+    port: $$EMAIL_PORT
     recipients:
       - "aqabiz@allies.co.in"
       - "mohd.raza@allies.co.in"
