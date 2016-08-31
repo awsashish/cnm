@@ -100,11 +100,12 @@ angular.module('coinomiaFrontendApp')
       var data = formData;
 
       function changePasswordComplete(response) {
-        return response.data;
+        return response;
       }
 
       function changePasswordFailed(error) {
-        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        $log.error('XHR Failed for change password.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
       return $http.post(this.apiHost +'user/change-password/', data)
