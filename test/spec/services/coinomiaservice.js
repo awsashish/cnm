@@ -285,7 +285,7 @@ describe('service coinomiaService', function() {
       .respond(200, {"Message":"Success"});
       var data;
       coinomiaService.changePassword(passwordData).then(function(fetchedData) {
-        data = fetchedData;
+        data = fetchedData.data;
       });
       $httpBackend.flush();
       expect(data).toEqual(jasmine.any(Object));
