@@ -195,7 +195,7 @@ describe('service coinomiaService', function() {
 
     it('should returns records succesfully', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + 'user/referral/'+pagination.pageno+'/'+pagination.pagesize)
+      .expect('GET', coinomiaService.apiHost + 'user/referral/'+pagination.pageno+'/'+pagination.pagesize)
       .respond(200, {'total':'some-value','rows':[{'username': 'test123', 'Name':'test', 'DOJ':'11/08/2016', 'Sponsor':'testsponsor', 'IntroName':'intro123', 'ItemName':"Registration"}]});
       var data;
       coinomiaService.getUserReferral(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
@@ -214,7 +214,7 @@ describe('service coinomiaService', function() {
 
     it('should log referral error', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + 'user/referral/'+pagination.pageno+'/'+pagination.pagesize)
+      .expect('GET', coinomiaService.apiHost + 'user/referral/'+pagination.pageno+'/'+pagination.pagesize)
       .respond(500, 'Internal Server Error.');
       coinomiaService.getUserReferral(pagination.pageno, pagination.pagesize);
       $httpBackend.flush();

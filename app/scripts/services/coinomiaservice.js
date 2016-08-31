@@ -73,7 +73,7 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.post(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
+      return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
         .then(userReferralComplete)
         .catch(userReferralFailed);
     };
