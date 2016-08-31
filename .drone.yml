@@ -6,8 +6,12 @@ build:
     - "bower install --allow-root"
     - "grunt test"
     - "grunt build"
+    - "echo '<!-- commit: $$COMMIT; build: $$BUILD_NUMBER -->' >> dist/index.html"
   image: "node:6"
   name: coinomia-frontend
+  environment:
+    - COMMIT=$$COMMIT
+    - JOB_ID=$$BUILD_NUMBER
 
 cache:
   mount:
