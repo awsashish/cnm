@@ -344,7 +344,7 @@ describe('service coinomiaService', function() {
       .expect('GET', coinomiaService.apiHost + 'user/me/')
       .respond(200, {'sponsor':'some-value','username':'coinomia', 'name':'Company', 'Mobile':'9595959595', 'Email':'some@email.com', 'Address':'xyz', 'Country':'India', 'State':'', 'City':'', 'Pincode':''});
       var data;
-      coinomiaService.userInfo().then(function(fetchedData) {
+      coinomiaService.getUserInfo().then(function(fetchedData) {
         data = fetchedData.data;
       });
       $httpBackend.flush();
@@ -365,7 +365,7 @@ describe('service coinomiaService', function() {
       $httpBackend
       .expect('GET', coinomiaService.apiHost + 'user/me/')
       .respond(500, 'Internal Server Error.');
-      coinomiaService.userInfo();
+      coinomiaService.getUserInfo();
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });

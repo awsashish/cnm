@@ -129,7 +129,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get User Profile
-    this.userInfo = function() {
+    this.getUserInfo = function() {
 
       function getInfoComplete(response) {
         return response;
