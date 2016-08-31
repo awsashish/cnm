@@ -94,8 +94,11 @@ angular.module('coinomiaFrontendApp')
     // My Account
     .state('setting', {
       url: '/setting',
-      templateUrl: 'views/coming-soon.html',
+      templateUrl: 'views/setting.html',
       controller: 'SettingCtrl',
+      ncyBreadcrumb: {
+        label: 'Setting'
+      },
       authenticate: true
     })
 

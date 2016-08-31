@@ -11,8 +11,8 @@ angular.module('coinomiaFrontendApp')
 .controller('NavCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, coinomiaService) {
 
   //Get User Info
-  $scope.getUserInfo = function() {
-    coinomiaService.userInfo().then(function(res) {
+  $scope.getUserDetails = function() {
+    coinomiaService.getUserInfo().then(function(res) {
       var data = res.data;
       if(res.status === 200){
         $rootScope.name = data.name;
@@ -20,7 +20,7 @@ angular.module('coinomiaFrontendApp')
       }
     });
   }
-  $scope.getUserInfo();
+  $scope.getUserDetails();
 
  //  Logged out User
  $scope.logout = function() {

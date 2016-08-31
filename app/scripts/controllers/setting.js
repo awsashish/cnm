@@ -14,7 +14,10 @@ angular.module('coinomiaFrontendApp')
     $scope.getUserProfile = function() {
       coinomiaService.getUserInfo()
         .then(function(res) {
-          console.log(res);
+          var data = res.data;
+          if(res.status === 200) {
+            $scope.userInfo = data;
+          }
         });
     }
 

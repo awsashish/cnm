@@ -127,6 +127,10 @@ a:focus {
   top: -10px;
 }
 
+.no-radius {
+  border-radius: 0;
+}
+
 .no-arrow:before {
     content: '';
     border: 0;
