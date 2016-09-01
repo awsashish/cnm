@@ -33,18 +33,38 @@ angular
         config.headers = config.headers || {};
         if ($cookies.get('token') || $localStorage.token) {
           var authToken = $localStorage.token || $cookies.get('token');
-          config.headers.authorization = 'Bearer ' + authToken;
+          if(config.url.indexOf('oauth2/token') < 0) {
+            config.headers.authorization = 'Bearer ' + authToken;
+          }
           $rootScope.signin = false;
         }
         return config;
       },
     };
   })
-  .run(function ($rootScope, $state, coinomiaService) {
+  .run(function ($rootScope, $state, coinomiaService, $timeout, $localStorage) {
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
       if (toState.authenticate && !coinomiaService.isAuthenticated()) {
         $state.go('login');
         event.preventDefault();
+      }
+
+      // Get Expiry Time
+      var refreshTime = coinomiaService.getExpiryTime();
+      if(refreshTime > 0) {
+        $timeout(function() {
+          var postData = {
+            'grant_type': 'refresh_token',
+            'refresh_token': $localStorage.refresh_token
+          }
+
+          // Get Refresh Token Service
+          coinomiaService.getRefreshToken(postData).then(function(res) {
+            if(res.status === 200) {
+              console.log('>>>>> Token Generated');
+            }
+          });
+        }, refreshTime);
       }
     });
   });

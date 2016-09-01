@@ -18,10 +18,7 @@ describe('service coinomiaService', function() {
     };
 
     // Refresh Token Data
-    var refreshToken = {
-      'grant_type':'refresh_token',
-      'refresh_token': 'some-value'
-    };
+    var refreshToken = 'some-value';
 
     var token = 'f1608500-­c62f-­489a-­a3a9-­60c5bd2e4eec';
 
@@ -650,11 +647,6 @@ describe('service coinomiaService', function() {
   describe('refresh token function', function() {
     it('should exist', function() {
       expect(coinomiaService.login).not.toEqual(null);
-    });
-
-    it('should have fields defined', function () {
-        expect(refreshToken.grant_type).toEqual("refresh_token");
-        expect(refreshToken.refresh_token).toEqual("some-value");
     });
 
 

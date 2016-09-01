@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-.controller('NavCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, coinomiaService) {
+.controller('NavCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService) {
 
   //Get User Info
   $scope.getUserDetails = function() {
@@ -17,9 +17,13 @@ angular.module('coinomiaFrontendApp')
       if(res.status === 200){
         $rootScope.name = data.name;
         $scope.name = $rootScope.name;
+      }else {
+        // If API returns authorization failed.
+        $scope.logout();
       }
     });
   }
+
   $scope.getUserDetails();
 
  //  Logged out User

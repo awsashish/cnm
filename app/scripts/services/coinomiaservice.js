@@ -300,11 +300,26 @@ angular.module('coinomiaFrontendApp')
         .catch(defaultSponsorRequestFailed);
     }
 
+    // Get Expiry Time
+    this.getExpiryTime = function() {
+      if($localStorage.token && $cookies.get('token')) {
+        var currentTime = moment();
+        var expiryTime = moment($localStorage.expires);
+        var callTime = expiryTime.diff(currentTime, 'seconds');
+
+        // Set API calling time before 5 sec compared to expiry time and converted to milisecond
+        callTime = (callTime - 5)*1000;
+        return callTime;
+      }
+    }
+
     // Refresh Token Process
-    this.getRefreshToken = function(formData) {
-      var data = formData;
+    this.getRefreshToken = function(data) {
 
       function tokenRequestComplete(response) {
+        var data = response.data;
+        $cookies.put('token', data.access_token, {expires:moment().second(100).toString()});
+        $localStorage.$default({token: data.access_token, expires:moment().second(100).toISOString(), refresh_token:data.refresh_token});
         return response;
       }
 
@@ -317,4 +332,6 @@ angular.module('coinomiaFrontendApp')
         .then(tokenRequestComplete)
         .catch(tokenRequestFailed);
     };
+
+
   });
