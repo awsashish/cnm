@@ -27,8 +27,26 @@ angular.module('coinomiaFrontendApp')
       $scope.user.state = data.region_name;
       $scope.user.city = data.city;
     });
+
+
+    $scope.confirmPass = function(callback) {
+      if($scope.user.password !== $scope.user.confirmPassword) {
+        $scope.confirmPassError = true;
+        $scope.signupError = 'Passwords do not match.';
+      }else{
+        $scope.confirmPassError = false;
+      }
+      if(typeof callback === 'function') {
+        return callback($scope.confirmPassError);
+      }
+    }
+
     $scope.next = function() {
-      $scope.showme = true;
+      $scope.confirmPass(function(error) {
+        if( error === false ) {
+          $scope.showme === true
+        }
+      })
       // if($scope.signup.sponsor.$valid && $scope.signup.userid.$valid && $scope.signup.firstname.$valid && $scope.signup.password.$valid && $scope.signup.confirmpassword.$valid) {
       //   $scope.showme = true;
       //   $scope.formError = false;
@@ -39,15 +57,6 @@ angular.module('coinomiaFrontendApp')
       //   console.log(2);
       // }
     };
-
-    $scope.confirmPass = function() {
-      if($scope.Password !== $scope.ConfirmPassword) {
-        $scope.confrimPassError = true;
-        $scope.signupError = 'Passwords do not match.';
-      }else{
-        $scope.confrimPassError = false;
-      }
-    }
 
     // Accept terms and conditions.
     $scope.accept = function() {
