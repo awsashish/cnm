@@ -11,7 +11,7 @@ angular.module('coinomiaFrontendApp')
   .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage, config) {
     var pageLimit = config.pageLimit;
     this.apiHost = 'http://coinomiaapi.azurewebsites.net/';
-    this.loginRequestConfig = {
+    this.requestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           transformRequest: function(obj) {
             var str = [];
@@ -39,7 +39,7 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.post(this.apiHost + 'oauth2/token', data, this.loginRequestConfig)
+      return $http.post(this.apiHost + 'oauth2/token', data, this.requestConfig)
         .then(loginComplete)
         .catch(loginFailed);
     };
@@ -299,4 +299,22 @@ angular.module('coinomiaFrontendApp')
         .then(defaultSponsorRequestComplete)
         .catch(defaultSponsorRequestFailed);
     }
+
+    // Refresh Token Process
+    this.getRefreshToken = function(formData) {
+      var data = formData;
+
+      function tokenRequestComplete(response) {
+        return response;
+      }
+
+      function tokenRequestFailed(error) {
+        $log.error('XHR Failed for refresh token.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost + 'oauth2/token', data, this.requestConfig)
+        .then(tokenRequestComplete)
+        .catch(tokenRequestFailed);
+    };
   });

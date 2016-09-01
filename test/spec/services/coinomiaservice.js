@@ -17,6 +17,12 @@ describe('service coinomiaService', function() {
       'grant_type':'password'
     };
 
+    // Refresh Token Data
+    var refreshToken = {
+      'grant_type':'refresh_token',
+      'refresh_token': 'some-value'
+    };
+
     var token = 'f1608500-­c62f-­489a-­a3a9-­60c5bd2e4eec';
 
     // Sign Up Data
@@ -66,7 +72,25 @@ describe('service coinomiaService', function() {
 
     }
 
-    function verifyLoginRequestHeaders(headers) {
+    function verifyRefreshTokenPostData(postData) {
+        // Remove the '?' at the start of the string and split out each assignment
+        postData = _.chain( postData.split('&') )
+                      // Split each array item into [key, value]
+                      // ignore empty string if search is empty
+                      .map(function(item) { if (item) return item.split('='); })
+                      // Remove undefined in the case the search is empty
+                      .compact()
+                      // Turn [key, value] arrays into object parameters
+                      .object()
+                      // Return the value of the chain operation
+                      .value();
+      expect(postData.grant_type).toBe(refreshToken.grant_type);
+      expect(postData.refresh_token).toBe(refreshToken.refresh_token);
+      return true;
+
+    }
+
+    function verifyRequestHeaders(headers) {
         // console.log(headers['Content-Type']);
           expect(headers['Content-Type']).toBe('application/x-www-form-urlencoded');
           return true;
@@ -109,10 +133,10 @@ describe('service coinomiaService', function() {
         $httpBackend
         .expect('POST', coinomiaService.apiHost + 'oauth2/token',
                   verifyLoginPostData,
-                  verifyLoginRequestHeaders)
+                  verifyRequestHeaders)
         .respond(200, {'access_token':'some-token',token_type:'bearer', expires:90000});
         var data;
-        coinomiaService.login(loginData, coinomiaService.loginRequestConfig).then(function(fetchedData) {
+        coinomiaService.login(loginData, coinomiaService.requestConfig).then(function(fetchedData) {
           data = fetchedData.data;
         });
         $httpBackend.flush();
@@ -124,9 +148,9 @@ describe('service coinomiaService', function() {
 
       it('should log login error', function() {
         $httpBackend
-        .expect('POST', coinomiaService.apiHost + 'oauth2/token', verifyLoginPostData,verifyLoginRequestHeaders)
+        .expect('POST', coinomiaService.apiHost + 'oauth2/token', verifyLoginPostData,verifyRequestHeaders)
         .respond(500, 'Internal Server Error.');
-        coinomiaService.login(loginData, coinomiaService.loginRequestConfig);
+        coinomiaService.login(loginData, coinomiaService.requestConfig);
         $httpBackend.flush();
         expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
       });
@@ -617,6 +641,46 @@ describe('service coinomiaService', function() {
       .expect('GET', coinomiaService.apiHost + 'utilities/default-sponsor')
       .respond(500, 'Internal Server Error.');
       coinomiaService.getDefaultSponsor();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Get Refresh Token Test Case
+  describe('refresh token function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.login).not.toEqual(null);
+    });
+
+    it('should have fields defined', function () {
+        expect(refreshToken.grant_type).toEqual("refresh_token");
+        expect(refreshToken.refresh_token).toEqual("some-value");
+    });
+
+
+    it('should return token successfully', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'oauth2/token',
+                verifyRefreshTokenPostData,
+                verifyRequestHeaders)
+      .respond(200, {'access_token':'some-token',token_type:'bearer', expires_in:90000, refresh_token:'some-value', userid:'some-id'});
+      var data;
+      coinomiaService.getRefreshToken(refreshToken, coinomiaService.requestConfig).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.access_token).toEqual('some-token');
+      expect(data.token_type).toEqual('bearer');
+      expect(data.refresh_token).toEqual('some-value');
+      expect(data.userid).toEqual('some-id');
+    });
+
+    it('should log refresh token request error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'oauth2/token', verifyRefreshTokenPostData,verifyRequestHeaders)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getRefreshToken(refreshToken, coinomiaService.requestConfig);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
