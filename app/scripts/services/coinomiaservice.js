@@ -307,7 +307,7 @@ angular.module('coinomiaFrontendApp')
         var expiryTime = moment($localStorage.expires);
         var callTime = expiryTime.diff(currentTime, 'seconds');
 
-        // Set API calling time before 5 sec compared to expiry time and converted to milisecond
+        // Set API calling time before 5 sec of the expiry time and converted to milisecond
         callTime = (callTime - 5)*1000;
         return callTime;
       }
@@ -318,8 +318,9 @@ angular.module('coinomiaFrontendApp')
 
       function tokenRequestComplete(response) {
         var data = response.data;
-        $cookies.put('token', data.access_token, {expires:moment().second(100).toString()});
-        $localStorage.$default({token: data.access_token, expires:moment().second(100).toISOString(), refresh_token:data.refresh_token});
+        $localStorage.$reset();
+        $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
+        $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
         return response;
       }
 
@@ -332,6 +333,4 @@ angular.module('coinomiaFrontendApp')
         .then(tokenRequestComplete)
         .catch(tokenRequestFailed);
     };
-
-
   });

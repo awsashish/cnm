@@ -8,4 +8,7 @@
  * Constant in the coinomiaFrontendApp.
  */
 angular.module('coinomiaFrontendApp')
-  .constant('config', {'pageLimit' : 25, 'pageno':1});
+  .constant('config', {
+    'pageLimit' : 25,
+    'pageno':1
+  });

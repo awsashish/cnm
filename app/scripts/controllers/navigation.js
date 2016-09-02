@@ -18,7 +18,7 @@ angular.module('coinomiaFrontendApp')
         $rootScope.name = data.name;
         $scope.name = $rootScope.name;
       }else {
-        // If API returns authorization failed.
+        // Log out if API request failed.
         $scope.logout();
       }
     });
