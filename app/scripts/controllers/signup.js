@@ -44,7 +44,7 @@ angular.module('coinomiaFrontendApp')
     $scope.next = function() {
       $scope.confirmPass(function(error) {
         if( error === false ) {
-          $scope.showme === true
+          $scope.showme = true;
         }
       })
       // if($scope.signup.sponsor.$valid && $scope.signup.userid.$valid && $scope.signup.firstname.$valid && $scope.signup.password.$valid && $scope.signup.confirmpassword.$valid) {
