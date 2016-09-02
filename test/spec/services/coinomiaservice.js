@@ -149,7 +149,7 @@ describe('service coinomiaService', function() {
         .respond(500, 'Internal Server Error.');
         coinomiaService.login(loginData, coinomiaService.requestConfig);
         $httpBackend.flush();
-        // expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+        expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
       });
     });
 
