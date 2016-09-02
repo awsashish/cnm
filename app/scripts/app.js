@@ -26,6 +26,7 @@ angular
       $httpProvider.interceptors.push('authInterceptor');
   })
   .factory('authInterceptor', function ($rootScope, $q, $cookies, $window, $localStorage) {
+
     return {
       // Add authorization token to headers
       request: function (config) {
@@ -40,6 +41,13 @@ angular
         }
         return config;
       },
+      responseError: function(response) {
+        // If token got expired
+        if (response.status === 401) {
+          $rootScope.$broadcast('getRefreshToken');
+        }
+        return response;
+      }
     };
   })
   .run(function ($rootScope, $state, coinomiaService, $timeout, $localStorage) {
@@ -48,21 +56,21 @@ angular
         $state.go('login');
         event.preventDefault();
       }
-      var refreshTokenParams = {
-        'grant_type': 'refresh_token',
-        'refresh_token': $localStorage.refresh_token
-      }
-      // Get Expiry Time
-      var refreshTime = coinomiaService.getExpiryTime();
-      if(refreshTime > 0) {
-        $timeout(function() {
-          // Get Refresh Token Service
-          coinomiaService.getRefreshToken(refreshTokenParams).then(function(res) {
-            if(res.status === 200) {
-              console.log('>>>>> Token Generated');
-            }
-          });
-        }, refreshTime);
-      }
+      // var refreshTokenParams = {
+      //   'grant_type': 'refresh_token',
+      //   'refresh_token': $localStorage.refresh_token
+      // }
+      // // Get Expiry Time
+      // var refreshTime = coinomiaService.getExpiryTime();
+      // if(refreshTime > 0) {
+      //   $timeout(function() {
+      //     // Get Refresh Token Service
+      //     coinomiaService.getRefreshToken(refreshTokenParams).then(function(res) {
+      //       if(res.status === 200) {
+      //         console.log('>>>>> Token Generated');
+      //       }
+      //     });
+      //   }, refreshTime);
+      // }
     });
   });

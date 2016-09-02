@@ -23,7 +23,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     this.requestFailed = function (error) {
-      $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      $log.error('XHR Failed for User location.\n' + angular.toJson(error.data, true));
     };
 
     // Login Process
@@ -301,26 +301,22 @@ angular.module('coinomiaFrontendApp')
     }
 
     // Get Expiry Time
-    this.getExpiryTime = function() {
-      if($localStorage.token && $cookies.get('token')) {
-        var currentTime = moment();
-        var expiryTime = moment($localStorage.expires);
-        var callTime = expiryTime.diff(currentTime, 'seconds');
-
-        // Set API calling time before 5 sec of the expiry time and converted to milisecond
-        callTime = (callTime - 5)*1000;
-        return callTime;
-      }
-    }
+    // this.getExpiryTime = function() {
+    //   if($localStorage.token && $cookies.get('token')) {
+    //     var currentTime = moment();
+    //     var expiryTime = moment($localStorage.expires);
+    //     var callTime = expiryTime.diff(currentTime, 'seconds');
+    //
+    //     // Set API calling time before 5 sec of the expiry time and converted to milisecond
+    //     callTime = (callTime - 5)*1000;
+    //     return callTime;
+    //   }
+    // }
 
     // Refresh Token Process
     this.getRefreshToken = function(data) {
 
       function tokenRequestComplete(response) {
-        var data = response.data;
-        $localStorage.$reset();
-        $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
-        $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
         return response;
       }
 

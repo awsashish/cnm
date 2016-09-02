@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('LoginCtrl', function ($scope, $cookies, $state, $window, $location, $localStorage, coinomiaService) {
+  .controller('LoginCtrl', function ($scope, $rootScope, $cookies, $state, $window, $location, $localStorage, coinomiaService) {
     $scope.sigin = true;
     $scope.loginError = '';
 
@@ -16,6 +16,7 @@ angular.module('coinomiaFrontendApp')
     if(coinomiaService.isAuthenticated()){
       $state.go('dashboard');
     }
+
     // For Testing
     // $scope.username = 'coinomia';
     // $scope.password = 'coinomia';
