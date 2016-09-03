@@ -11,21 +11,25 @@ angular.module('coinomiaFrontendApp')
 .controller('NavCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService) {
 
   $rootScope.$on('getRefreshToken', function() {
-    var refreshTokenParams = {
-      'grant_type': 'refresh_token',
-      'refresh_token': $localStorage.refresh_token
-    }
-
-    coinomiaService.getRefreshToken(refreshTokenParams).then(function(res) {
-      var data = res.data;
-      if(res.status === 200) {
-        $localStorage.$reset();
-        $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
-        $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
-      }else {
-        $scope.logout();
+    if($localStorage.refresh_token) {
+      var refreshTokenParams = {
+        'grant_type': 'refresh_token',
+        'refresh_token': $localStorage.refresh_token
       }
-    });
+
+      coinomiaService.getRefreshToken(refreshTokenParams).then(function(res) {
+        var data = res.data;
+        if(res.status === 200) {
+          $localStorage.$reset();
+          $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
+          $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
+        }else {
+          $scope.logout();
+        }
+      });
+    }else{
+      $scope.logout();
+    }
   });
 
   //Get User Info

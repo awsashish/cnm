@@ -42,7 +42,6 @@ angular
         return config;
       },
       responseError: function(response) {
-        $rootScope.$broadcast('getRefreshToken');
         // If token got expired
         if (response.status === 401) {
           $rootScope.$broadcast('getRefreshToken');
