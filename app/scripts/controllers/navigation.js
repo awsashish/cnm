@@ -10,8 +10,12 @@
 angular.module('coinomiaFrontendApp')
 .controller('NavCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService) {
 
+  $rootScope.tokenRequestProgress = false;
+
   $rootScope.$on('getRefreshToken', function() {
-    if($localStorage.refresh_token) {
+
+    if($localStorage.refresh_token && !$cookies.get('token') && !$rootScope.tokenRequestProgress) {
+      $rootScope.tokenRequestProgress = true;
       var refreshTokenParams = {
         'grant_type': 'refresh_token',
         'refresh_token': $localStorage.refresh_token
@@ -23,11 +27,12 @@ angular.module('coinomiaFrontendApp')
           $localStorage.$reset();
           $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
           $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
-        }else {
-          $scope.logout();
+        }else{
+          $scope.logut();
         }
+        $rootScope.tokenRequestProgress = false;
       });
-    }else{
+    }else if(!$localStorage.refresh_token){
       $scope.logout();
     }
   });

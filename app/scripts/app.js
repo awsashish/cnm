@@ -26,11 +26,11 @@ angular
       $httpProvider.interceptors.push('authInterceptor');
   })
   .factory('authInterceptor', function ($rootScope, $q, $cookies, $window, $localStorage) {
-
     return {
       // Add authorization token to headers
       request: function (config) {
         $rootScope.signin = true;
+        // $rootScope.$broadcast('getRefreshToken');
         config.headers = config.headers || {};
         if ($cookies.get('token') || $localStorage.token) {
           var authToken = $localStorage.token || $cookies.get('token');
