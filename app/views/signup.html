@@ -148,7 +148,7 @@
                      required />
             </div>
             <div class="alert alert-danger fade in error-padding"
-               ng-show="(signup.confirmpassword.$touched && signup.confirmpassword.$invalid) || confrimPassError">
+               ng-show="(signup.confirmpassword.$touched && signup.confirmpassword.$invalid) || confirmPassError">
                Password does not match</div>
             <!-- input-group -->
           </div>
@@ -158,9 +158,9 @@
         <div class="clearfix">
           <div class="pull-right">
             <button type="button"
-                    ng-click="showme=true"
+                    ng-click="next()"
                     class="btn btn-success"
-                    ng-disabled="signup.firstname.$error.pattern || signup.lastname.$error.pattern || signup.password.$error.required || signup.sponsor.$error.required || signup.userid.$error.required || signup.firstname.$error.required || confrimPassError">Next <i class="fa fa-arrow-circle-o-right"></i> </button></a>
+                    ng-disabled="signup.firstname.$error.pattern || signup.lastname.$error.pattern || signup.password.$error.required || signup.sponsor.$error.required || signup.userid.$error.required || signup.firstname.$error.required || confirmPassError">Next <i class="fa fa-arrow-circle-o-right"></i> </button></a>
           </div>
         </div>
       </div>
