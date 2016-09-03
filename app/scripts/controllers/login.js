@@ -36,7 +36,7 @@ angular.module('coinomiaFrontendApp')
             var data = res.data;
             if(res.status === 200){
               if($scope.remember === true) {
-                $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toString()});
+                $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
                 $scope.$storage = $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
               }
               $scope.$storage = $localStorage.$default({token: data.access_token});

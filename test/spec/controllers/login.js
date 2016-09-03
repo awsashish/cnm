@@ -22,6 +22,7 @@ describe('Controller: LoginCtrl', function () {
     coinomiaServiceDeferred = $q.defer();
 
     spyOn(coinomiaService, 'login').and.returnValue(coinomiaServiceDeferred.promise);
+    spyOn(coinomiaService, 'isAuthenticated').and.returnValue(coinomiaServiceDeferred.promise);
 
     LoginCtrl = $controller('LoginCtrl', {
       $scope: scope
@@ -47,7 +48,11 @@ describe('Controller: LoginCtrl', function () {
     expect(scope.grant_type).toEqual('password');
   });
 
-  it('should be defined and call Auth, Login services', function() {
+  it('should be Authenticate User', function() {
+    expect(coinomiaService.isAuthenticated).toHaveBeenCalled();
+  });
+
+  it('should be defined and call Login services', function() {
     scope.login.$valid = true;
     scope.submit();
     expect(coinomiaService.login).toHaveBeenCalledWith(loginData);
