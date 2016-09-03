@@ -48,7 +48,7 @@ describe('Controller: LoginCtrl', function () {
     expect(scope.grant_type).toEqual('password');
   });
 
-  it('should be Authenticate User', function() {
+  it('should Authenticate User', function() {
     expect(coinomiaService.isAuthenticated).toHaveBeenCalled();
   });
 

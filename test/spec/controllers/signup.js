@@ -25,6 +25,7 @@ describe('Controller: SignupCtrl', function () {
     scope = $rootScope.$new();
     coinomiaServiceDeferred = $q.defer();
 
+    spyOn(coinomiaService, 'isAuthenticated').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'getUserLocation').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'signup').and.returnValue(coinomiaServiceDeferred.promise);
 
@@ -51,6 +52,10 @@ describe('Controller: SignupCtrl', function () {
     }
   }));
 
+  it('should Authenticate User', function() {
+    expect(coinomiaService.isAuthenticated).toHaveBeenCalled();
+  });
+
   it('should be defined and call getUserLocation service', function() {
     expect(coinomiaService.getUserLocation).toHaveBeenCalled();
   });
@@ -58,6 +63,7 @@ describe('Controller: SignupCtrl', function () {
   it('should be defined and call signup service', function() {
     scope.terms = true;
     scope.submit();
+    expect(scope.error).toEqual(false);
     expect(coinomiaService.signup).toHaveBeenCalledWith(signUpData);
   });
 });
