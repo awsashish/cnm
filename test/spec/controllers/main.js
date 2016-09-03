@@ -20,13 +20,15 @@ describe('Controller: MainCtrl', function () {
     scope = $rootScope.$new();
     coinomiaServiceDeferred = $q.defer();
 
+    spyOn(coinomiaService, 'isAuthenticated').and.returnValue(coinomiaServiceDeferred.promise);
+
     MainCtrl = $controller('MainCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
-  // it('should be defined and call Auth service', function() {
-  //   expect(coinomiaService.Auth).toHaveBeenCalled();
-  // });
+  it('should Authenticate User', function() {
+    expect(coinomiaService.isAuthenticated).toHaveBeenCalled();
+  });
 });

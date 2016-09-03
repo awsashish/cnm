@@ -13,8 +13,5 @@ angular.module('coinomiaFrontendApp')
     if(coinomiaService.isAuthenticated){
       $state.go('dashboard');
     }
-
-    $rootScope.$on('getRefreshToken', function() {
-      console.log(1);
-    });
+    
   });
