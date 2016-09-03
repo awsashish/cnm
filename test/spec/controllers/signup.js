@@ -34,6 +34,11 @@ describe('Controller: SignupCtrl', function () {
       // place here mocked dependencies
     });
 
+    scope.user = {
+      'NewPassword': '123456a',
+      'ConfirmPassword': '123456a'
+    };
+
     signUpData = {
       'sponsor':scope.user.sponsor,
       'userid':scope.user.userid,
@@ -58,6 +63,12 @@ describe('Controller: SignupCtrl', function () {
 
   it('should be defined and call getUserLocation service', function() {
     expect(coinomiaService.getUserLocation).toHaveBeenCalled();
+  });
+
+  it('should be define and check password mismatch', function() {
+    scope.confirmPass(scope.user);
+    scope.next();
+    expect(scope.showme).toEqual(true);
   });
 
   it('should be defined and call signup service', function() {
