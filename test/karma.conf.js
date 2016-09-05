@@ -46,7 +46,12 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-      'views/**/*.html': 'ng-html2js'
+      'app/views/**/*.html': 'ng-html2js'
+    },
+
+    ngHtml2JsPreprocessor: {
+      // strip app from the file path
+      stripPrefix: 'app/'
     },
 
     // list of files / patterns to exclude

@@ -4,19 +4,13 @@ describe('Directive: header', function () {
 
   // load the directive's module
   beforeEach(module('coinomiaFrontendApp'));
+  beforeEach(module('views/common/header.html'))
 
   var element,
     scope;
 
   beforeEach(inject(function ($rootScope, $compile, $templateCache) {
     scope = $rootScope.$new();
-
-    $templateCache.put('views/common/header.html',
-    '<div class="navbar-header">' +
-      '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">'+
-        '<i class="fa fa-align-justify top-menu-icon" aria-hidden="true"></i>'+
-      '</button>'+
-    '</div>');
 
     element = angular.element("<main-header></main-header>");
     $compile(element)(scope);
