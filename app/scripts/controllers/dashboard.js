@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService) {
+  .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService, config) {
 
     $scope.currentPage = 1;
     $scope.btcMining = 0.5;
@@ -17,6 +17,11 @@ angular.module('coinomiaFrontendApp')
     // Get Purchased Power
     coinomiaService.getPurchasePower()
     .then(function(res) {
+      $scope.purchasedParams = {
+        title:config.purchasedTitle,
+        subTitle:config.purchasedSubTitle,
+        iconPath:config.purchasedIcon
+      };
       var purchasedData = res.data;
       $scope.purchasedPower = [];
       if(res.status === 200) {
@@ -41,11 +46,18 @@ angular.module('coinomiaFrontendApp')
     // Get Total Income
     coinomiaService.getTotalIncome()
     .then(function(res) {
+      $scope.totalParams = {
+        title:config.incomeTitle,
+        subTitle:config.incomeSubTitle,
+        iconPath:config.incomeIcon
+      };
       var totalIncomeData = res.data;
       $scope.totalIncome = [];
       if(res.status === 200) {
         totalIncomeData.forEach(function(income) {
-          $scope.totalIncome.push(income);
+          if(income.coin != 'USD') {
+            $scope.totalIncome.push(income);
+          }
         });
       }
     });
