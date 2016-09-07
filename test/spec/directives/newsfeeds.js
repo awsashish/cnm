@@ -5,16 +5,22 @@ describe('Directive: newsFeeds', function () {
   // load the directive's module
   beforeEach(module('coinomiaFrontendApp'));
 
+  beforeEach(module('views/newsFeeds.html'));
+
   var element,
+    controller,
+    ctrl,
     scope;
 
-  beforeEach(inject(function ($rootScope) {
+  beforeEach(inject(function ($rootScope, $compile, _$controller_) {
     scope = $rootScope.$new();
+    element = angular.element("<news-feeds></news-feeds>");
+    $compile(element)(scope);
+    // ctrl = _$controller_('NavCtrl', {$scope: scope});
+    scope.$digest();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<news-feeds></news-feeds>');
-    element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the newsFeeds directive');
-  }));
+  it('Should load template', function () {
+     expect(element.find('.news-feeds').length).toEqual(1);  //Test if element has loaded template properly
+  });
 });
