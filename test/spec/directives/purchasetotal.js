@@ -4,7 +4,7 @@ describe('Directive: purchaseTotal', function () {
 
   // load the directive's module
   beforeEach(module('coinomiaFrontendApp'));
-  beforeEach(module('views/purchaseTotal.html'));
+  beforeEach(module('views/directiveTemplates/purchaseTotal.html'));
 
   var element,
     controller,

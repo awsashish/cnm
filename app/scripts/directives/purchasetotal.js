@@ -10,7 +10,7 @@ angular.module('coinomiaFrontendApp')
   .directive('purchaseTotal', function () {
     return {
       restrict: 'A',
-      templateUrl: 'views/purchaseTotal.html',
+      templateUrl: 'views/directiveTemplates/purchaseTotal.html',
       scope: {
         purchasedAttr: "=",
         purchasedParams: "=",

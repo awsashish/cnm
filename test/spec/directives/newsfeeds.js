@@ -5,7 +5,7 @@ describe('Directive: newsFeeds', function () {
   // load the directive's module
   beforeEach(module('coinomiaFrontendApp'));
 
-  beforeEach(module('views/newsFeeds.html'));
+  beforeEach(module('views/directiveTemplates/newsFeeds.html'));
 
   var element,
     controller,

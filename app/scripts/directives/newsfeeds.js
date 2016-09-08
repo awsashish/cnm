@@ -10,6 +10,6 @@ angular.module('coinomiaFrontendApp')
   .directive('newsFeeds', function () {
     return {
       restrict: 'E',
-      templateUrl: 'views/newsFeeds.html'
+      templateUrl: 'views/directiveTemplates/newsFeeds.html'
     };
   });
