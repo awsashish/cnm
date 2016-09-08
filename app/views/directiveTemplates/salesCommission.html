@@ -1,4 +1,4 @@
-<p align="center" class="grey-bg">Direct Referral Commission For - <a href="#" class="red-text02"> 43989 Users</a></p>
+<p align="center" class="grey-bg">Direct Referral Commission For - <a class="red-text02"> {{treeDetails.TotalDirect}} Users</a></p>
 <div class="row">
   <div class="col-md-3 col-sm-12">
     <h5 align="center" class=" arrow_box "><img src="images/direct-ref.png" width="70" /><br /><strong>If all your Direct Buy</strong></h5>
@@ -8,23 +8,23 @@
       <table class="table table01">
         <tr>
           <td width="20%"><img src="images/contract-bitcoin.png" title="Pool Contract" width="50" /></td>
-          <td width="30%"><input class="sm-txtbox" type="text" ng-model="poolContract" ng-change="poolCalc(treeDetails.TotalDirect, poolContract, poolDetails.Price)" placeholder="1000" /> Contracts</td>
+          <td width="30%"><input class="sm-txtbox" type="text" ng-model="poolContract" ng-change="poolCalc({directs:treeDetails.TotalDirect, contract:poolContract, price:poolDetails.Price})" placeholder="1000" /> Contracts</td>
           <td width="50%">
-            <h4 class="pad20"><strong>&asymp; ${{poolTotal}}</strong></h4>
+            <h4 class="pad20"><strong>&asymp; ${{poolTotal | number:2}}</strong></h4>
           </td>
         </tr>
         <tr>
           <td><img src="images/contributor.png" width="50" title="Machine Contract" /></td>
-          <td><input class="sm-txtbox" type="text" ng-name="value-poolcotract" placeholder="100" /> Contracts</td>
+          <td><input class="sm-txtbox" type="text" ng-model="contributorContract" ng-change="contributorCalc({directs:treeDetails.TotalDirect, contract:contributorContract, price:contributorDetails.Price})" placeholder="100" /> Contracts</td>
           <td>
-            <h4 class="pad20"><strong>&asymp; $900</strong></h4>
+            <h4 class="pad20"><strong>&asymp; ${{contributorTotal | number:2}}</strong></h4>
           </td>
         </tr>
         <tr>
           <td><img src="images/RACK.png" title="Rack Contract" width="50" /></td>
-          <td><input class="sm-txtbox" type="text" ng-name="value-poolcotract" placeholder="10" /> Contracts</td>
+          <td><input class="sm-txtbox" type="text" ng-model="rackContract" ng-change="rackCalc({directs:treeDetails.TotalDirect, contract:rackContract, price:rackDetails.Price})" placeholder="10" /> Contracts</td>
           <td>
-            <h4 class="pad20"><strong>&asymp; $500</strong></h4>
+            <h4 class="pad20"><strong>&asymp; ${{rackTotal | number:2}}</strong></h4>
           </td>
         </tr>
       </table>

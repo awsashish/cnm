@@ -16,6 +16,10 @@ angular.module('coinomiaFrontendApp')
     $scope.contributorDetails = '';
     $scope.rackDetails = '';
 
+    $scope.poolContract = 1000;
+    $scope.contributorContract = 100;
+    $scope.rackContract = 10;
+
     $scope.currentPage = 1;
     $scope.btcMining = 0.5;
     $scope.ethMining = 0.5;
@@ -102,6 +106,15 @@ angular.module('coinomiaFrontendApp')
       }
     });
 
+    // Get User Virtual Tree
+    coinomiaService.getVirtualTree()
+    .then(function(res) {
+      var virtualData = res.data;
+      if(res.status === 200) {
+        $scope.treeDetails = virtualData;
+      }
+    })
+
     // Get User Packages
     coinomiaService.getPackages()
     .then(function(res) {
@@ -111,22 +124,16 @@ angular.module('coinomiaFrontendApp')
         packagesData.rows.forEach(function(packages) {
           if(packages.PackageName === 'Pool Contract') {
             $scope.poolDetails = packages;
+            $scope.poolCalc($scope.treeDetails.TotalDirect, $scope.poolContract, $scope.poolDetails.Price);
           }else if(packages.PackageName === 'Contributor') {
             $scope.contributorDetails = packages;
+            $scope.contributorCalc($scope.treeDetails.TotalDirect, $scope.contributorContract, $scope.contributorDetails.Price);
           }else {
             $scope.rackDetails = packages;
+            $scope.rackCalc($scope.treeDetails.TotalDirect, $scope.rackContract, $scope.rackDetails.Price);
           }
           $scope.packagesDetails.push(packages);
         });
-      }
-    })
-
-    // Get User Virtual Tree
-    coinomiaService.getVirtualTree()
-    .then(function(res) {
-      var virtualData = res.data;
-      if(res.status === 200) {
-        $scope.treeDetails = virtualData;
       }
     })
 
@@ -146,8 +153,25 @@ angular.module('coinomiaFrontendApp')
 
     // Pool Commission Calculation
     $scope.poolCalc = function(totalDirect, poolContract, poolPrice) {
+      console.log(totalDirect, poolContract, poolPrice);
       var poolData = totalDirect * poolContract * poolPrice * 12;
       $scope.poolTotal = poolData/100;
     }
+
+    // Contributor Commission Calculation
+    $scope.contributorCalc = function(totalDirect, contributorContract, contributorPrice) {
+      var contributorData = totalDirect * contributorContract * contributorPrice * 12;
+      $scope.contributorTotal = contributorData/100;
+    }
+
+    // Rack Commission Calculation
+    $scope.rackCalc = function(totalDirect, rackContract, rackPrice) {
+      var rackData = totalDirect * rackContract * rackPrice * 12;
+      $scope.rackTotal = rackData/100;
+    }
+
+    $scope.callHome = function (totalDirect, rackContract, rackPrice) {
+      console.log(totalDirect, rackContract, rackPrice);
+    };
 
   });

@@ -9,8 +9,22 @@
 angular.module('coinomiaFrontendApp')
   .directive('salesCommission', function () {
     return {
-      restrict: 'E',
-      scope: true,
-      templateUrl: 'views/directiveTemplates/salesCommission.html'
+      restrict: 'A',
+      templateUrl: 'views/directiveTemplates/salesCommission.html',
+      scope: {
+        treeDetails: "=",
+        poolContract: "=",
+        contributorContract: "=",
+        rackContract: "=",
+        contributorTotal: "=",
+        poolTotal: "=",
+        rackTotal: "=",
+        poolDetails: "=",
+        contributorDetails: "=",
+        rackDetails: "=",
+        poolCalc: "&",
+        contributorCalc: "&",
+        rackCalc: "&"
+      }
     };
   });
