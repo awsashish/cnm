@@ -334,4 +334,22 @@ angular.module('coinomiaFrontendApp')
         .then(getPackagesRequestComplete)
         .catch(getPackagesRequestFailed);
     }
+
+    // Get User Virtual Tree Info
+    this.getVirtualTree = function() {
+      // On Success
+      function getVirtualTreeRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getVirtualTreeRequestFailed(error) {
+        $log.error('XHR Failed for Packages.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/virtualtree')
+        .then(getVirtualTreeRequestComplete)
+        .catch(getVirtualTreeRequestFailed);
+    }
   });

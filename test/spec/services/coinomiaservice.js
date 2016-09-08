@@ -702,11 +702,62 @@ describe('service coinomiaService', function() {
       expect(data.rows[0].DirectIncome).toEqual('8.00');
     });
 
-    it('should log referral error', function() {
+    it('should log packages error', function() {
       $httpBackend
       .expect('GET', coinomiaService.apiHost + 'utilities/packages')
       .respond(500, 'Internal Server Error.');
       coinomiaService.getPackages();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Get User Tree Info
+  describe('user virtual tree info function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getVirtualTree).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/virtualtree')
+      .respond(200, {
+       "username": "coinomia",
+       "Name": "Company",
+       "DOJ":  "5/17/2011 12:00:00AM",
+       "Sponsor": "0",
+       "ItemName": "Rack",
+       "LeftPV": 101,
+       "RightPV": 100,
+       "LeftTotal": 28,
+       "RightTotal": 20,
+       "TotalDirect": 45,
+       "VirtualPairs": 20
+      });
+      var data;
+      coinomiaService.getVirtualTree().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.username).toEqual("coinomia");
+      expect(data.Name).toEqual("Company");
+      expect(data.DOJ).toEqual("5/17/2011 12:00:00AM");
+      expect(data.Sponsor).toEqual("0");
+      expect(data.ItemName).toEqual("Rack");
+      expect(data.LeftPV).toEqual(101);
+      expect(data.RightPV).toEqual(100);
+      expect(data.LeftTotal).toEqual(28);
+      expect(data.RightTotal).toEqual(20);
+      expect(data.TotalDirect).toEqual(45);
+      expect(data.VirtualPairs).toEqual(20);
+    });
+
+    it('should log virtual tree error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/virtualtree')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getVirtualTree();
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
