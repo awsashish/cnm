@@ -34,11 +34,28 @@ angular.module('coinomiaFrontendApp')
     // Get Current Rates
     coinomiaService.currentMining()
     .then(function(res) {
+      $scope.ratesParams = {
+        title:config.ratesTitle,
+        subTitle:config.ratesSubTitle,
+        iconPath:config.ratesIcon
+      };
       var miningData = res.data;
-      $scope.currentMining = [];
+      $scope.currentMining = {
+        'btcMining':'',
+        'ethMining':'',
+        'btcUsd':'',
+        'ethUsd':''
+      };
       if(res.status === 200) {
         miningData.forEach(function(mining) {
-          $scope.currentMining.push(mining);
+          if(mining.coin === 'BTC') {
+            $scope.currentMining.btcMining = mining.current_mining;
+            $scope.currentMining.btcUsd = mining.USDPrice;
+          }else{
+            $scope.currentMining.ethMining = mining.current_mining;
+            $scope.currentMining.ethUsd = mining.USDPrice;
+          }
+
         });
       }
     });

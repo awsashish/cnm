@@ -16,5 +16,8 @@ angular.module('coinomiaFrontendApp')
     'purchasedIcon': 'images/dash-pur-pow.png',
     'incomeTitle': 'Total',
     'incomeSubTitle': 'Income',
-    'incomeIcon': 'images/dash-tot-inc.png'
+    'incomeIcon': 'images/dash-tot-inc.png',
+    'ratesTitle': 'Current Rates',
+    'ratesSubTitle': 'Offerd by Coinomia as Now',
+    'ratesIcon': 'images/dash-cur-rate.png'
   });
