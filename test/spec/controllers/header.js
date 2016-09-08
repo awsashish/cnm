@@ -29,15 +29,13 @@ describe('Controller: HeaderCtrl', function () {
 
     spyOn(coinomiaService, 'getUserInfo').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(rootScope, '$on').and.callThrough();
+    spyOn(rootScope, '$broadcast');
     spyOn(coinomiaService, 'getRefreshToken').and.returnValue(coinomiaServiceDeferred.promise);
     // spyOn(coinomiaService, 'changePassword').and.returnValue(coinomiaServiceDeferred.promise);
     HeaderCtrl = $controller('HeaderCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
-    localStorage = {
-      'refresh_token': 'some-token'
-    }
   }));
 
   it('should expect to rootScope value', function() {

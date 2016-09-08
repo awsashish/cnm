@@ -28,12 +28,12 @@ angular.module('coinomiaFrontendApp')
               $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
               $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
             }else{
-              $scope.logout();
+              $rootScope.$broadcast('logout');
             }
             $rootScope.tokenRequestProgress = false;
           });
         }else if(!$localStorage.refresh_token){
-          $scope.logout();
+          $rootScope.$broadcast('logout');
         }
       });
 

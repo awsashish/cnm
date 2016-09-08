@@ -6,13 +6,15 @@ describe('Controller: NavCtrl', function () {
   beforeEach(module('coinomiaFrontendApp'));
 
   var NavCtrl,
+      rootScope,
       scope;
-      
+
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
-
+    rootScope = $rootScope;
     scope = $rootScope.$new();
-    // spyOn(coinomiaService, 'changePassword').and.returnValue(coinomiaServiceDeferred.promise);
+    spyOn(rootScope, '$on').and.callThrough();
+
     NavCtrl = $controller('NavCtrl', {
       $scope: scope
       // place here mocked dependencies
@@ -21,5 +23,9 @@ describe('Controller: NavCtrl', function () {
 
   it('should be define and call Log out function', function() {
     scope.logout();
+  });
+
+  it('should be define and call logout function', function() {
+    expect(rootScope.$on).toHaveBeenCalledWith('logout', jasmine.any(Function));
   });
 });
