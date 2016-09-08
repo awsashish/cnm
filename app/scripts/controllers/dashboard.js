@@ -10,6 +10,12 @@
 angular.module('coinomiaFrontendApp')
   .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService, config) {
 
+    $scope.packagesDetails = [];
+    $scope.treeDetails = '';
+    $scope.poolDetails = '';
+    $scope.contributorDetails = '';
+    $scope.rackDetails = '';
+
     $scope.currentPage = 1;
     $scope.btcMining = 0.5;
     $scope.ethMining = 0.5;
@@ -96,6 +102,34 @@ angular.module('coinomiaFrontendApp')
       }
     });
 
+    // Get User Packages
+    coinomiaService.getPackages()
+    .then(function(res) {
+      $scope.btcIcon = config.btcIcon;
+      var packagesData = res.data;
+      if(res.status === 200) {
+        packagesData.rows.forEach(function(packages) {
+          if(packages.PackageName === 'Pool Contract') {
+            $scope.poolDetails = packages;
+          }else if(packages.PackageName === 'Contributor') {
+            $scope.contributorDetails = packages;
+          }else {
+            $scope.rackDetails = packages;
+          }
+          $scope.packagesDetails.push(packages);
+        });
+      }
+    })
+
+    // Get User Virtual Tree
+    coinomiaService.getVirtualTree()
+    .then(function(res) {
+      var virtualData = res.data;
+      if(res.status === 200) {
+        $scope.treeDetails = virtualData;
+      }
+    })
+
     // Get Latest Transaction and Withdrawals
     coinomiaService.getTransactionDetails($scope.currentPage)
     .then(function(res) {
@@ -108,4 +142,12 @@ angular.module('coinomiaFrontendApp')
         });
       }
     });
+    // Sales Commission Calculation
+
+    // Pool Commission Calculation
+    $scope.poolCalc = function(totalDirect, poolContract, poolPrice) {
+      var poolData = totalDirect * poolContract * poolPrice * 12;
+      $scope.poolTotal = poolData/100;
+    }
+
   });

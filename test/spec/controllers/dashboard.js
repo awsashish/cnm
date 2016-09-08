@@ -24,16 +24,35 @@ describe('Controller: DashboardCtrl', function () {
     spyOn(coinomiaService, 'currentMining').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'getTotalIncome').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'getProducts').and.returnValue(coinomiaServiceDeferred.promise);
+    spyOn(coinomiaService, 'getPackages').and.returnValue(coinomiaServiceDeferred.promise);
+    spyOn(coinomiaService, 'getVirtualTree').and.returnValue(coinomiaServiceDeferred.promise);
     DashboardCtrl = $controller('DashboardCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
-  it('should be defined and call getPurchasePower, currentMining, getTotalIncome, getProducts', function () {
+  it('should be defined and call getPurchasePower', function () {
     expect(coinomiaService.getPurchasePower).toHaveBeenCalled();
+  });
+
+  it('should be defined and call currentMining', function () {
     expect(coinomiaService.currentMining).toHaveBeenCalled();
+  });
+
+  it('should be defined and call getTotalIncome', function () {
     expect(coinomiaService.getTotalIncome).toHaveBeenCalled();
+  });
+
+  it('should be defined and call getProducts', function () {
     expect(coinomiaService.getProducts).toHaveBeenCalled();
+  });
+
+  it('should be defined and call getPackages', function () {
+    expect(coinomiaService.getPackages).toHaveBeenCalled();
+  });
+
+  it('should be defined and call getVirtualTree', function () {
+    expect(coinomiaService.getVirtualTree).toHaveBeenCalled();
   });
 });

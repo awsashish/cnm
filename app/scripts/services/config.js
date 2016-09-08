@@ -19,5 +19,16 @@ angular.module('coinomiaFrontendApp')
     'incomeIcon': 'images/dash-tot-inc.png',
     'ratesTitle': 'Current Rates',
     'ratesSubTitle': 'Offerd by Coinomia as Now',
-    'ratesIcon': 'images/dash-cur-rate.png'
+    'ratesIcon': 'images/dash-cur-rate.png',
+    'btcIcon': [
+      'images/contract-bitcoin.png',
+      'images/contributor.png',
+      'images/RACK.png'
+    ],
+    'eth' : {
+      'poolImg': '',
+      'contributorImg':'',
+      'rackImg':''
+    }
+
   });
