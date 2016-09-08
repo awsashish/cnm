@@ -300,19 +300,6 @@ angular.module('coinomiaFrontendApp')
         .catch(defaultSponsorRequestFailed);
     }
 
-    // Get Expiry Time
-    // this.getExpiryTime = function() {
-    //   if($localStorage.token && $cookies.get('token')) {
-    //     var currentTime = moment();
-    //     var expiryTime = moment($localStorage.expires);
-    //     var callTime = expiryTime.diff(currentTime, 'seconds');
-    //
-    //     // Set API calling time before 5 sec of the expiry time and converted to milisecond
-    //     callTime = (callTime - 5)*1000;
-    //     return callTime;
-    //   }
-    // }
-
     // Refresh Token Process
     this.getRefreshToken = function(data) {
 
@@ -329,4 +316,22 @@ angular.module('coinomiaFrontendApp')
         .then(tokenRequestComplete)
         .catch(tokenRequestFailed);
     };
+
+    // Get Packages
+    this.getPackages = function() {
+      // On Success
+      function getPackagesRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getPackagesRequestFailed(error) {
+        $log.error('XHR Failed for Packages.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'utilities/packages')
+        .then(getPackagesRequestComplete)
+        .catch(getPackagesRequestFailed);
+    }
   });

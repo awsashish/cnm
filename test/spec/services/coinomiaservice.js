@@ -677,4 +677,38 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Get Packages
+  describe('user packages function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getPackages).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'utilities/packages')
+      .respond(200, {"total": 3,"rows": [{"PackageName": "Pool Contract","Price": "100","PV": "1",  "MiningPower": "0.5000","DirectIncome":"8.00"},{"PackageName":"Contributor","Price": "250","PV": "2","MiningPower": "1.0000","DirectIncome": "10.00"}]});
+      var data;
+      coinomiaService.getPackages().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual(3);
+      expect(data.rows[0].PackageName).toEqual('Pool Contract');
+      expect(data.rows[0].Price).toEqual('100');
+      expect(data.rows[0].PV).toEqual('1');
+      expect(data.rows[0].MiningPower).toEqual('0.5000');
+      expect(data.rows[0].DirectIncome).toEqual('8.00');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'utilities/packages')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getPackages();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });
