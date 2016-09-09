@@ -8,9 +8,10 @@
  * Service in the coinomiaFrontendApp.
  */
 angular.module('coinomiaFrontendApp')
-  .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage) {
+  .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage, config) {
+    var pageLimit = config.pageLimit;
     this.apiHost = 'http://coinomiaapi.azurewebsites.net/';
-    this.loginRequestConfig = {
+    this.requestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           transformRequest: function(obj) {
             var str = [];
@@ -22,7 +23,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     this.requestFailed = function (error) {
-      $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      $log.error('XHR Failed for User location.\n' + angular.toJson(error.data, true));
     };
 
     // Login Process
@@ -38,7 +39,7 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.post(this.apiHost + '/oauth2/token', data, this.loginRequestConfig)
+      return $http.post(this.apiHost + 'oauth2/token', data, this.requestConfig)
         .then(loginComplete)
         .catch(loginFailed);
     };
@@ -56,13 +57,13 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.post(this.apiHost + '/user/signup', data)
+      return $http.post(this.apiHost + 'user/signup', data)
         .then(signupComplete)
         .catch(signupFailed);
     };
 
     // Get User Referrals
-    this.getUserReferral = function(currentPage, pageLimit) {
+    this.getUserReferral = function(currentPage) {
 
       function userReferralComplete(response) {
         return response.data;
@@ -72,13 +73,13 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.post(this.apiHost +'/user/referral/'+currentPage+'/'+pageLimit)
+      return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
         .then(userReferralComplete)
         .catch(userReferralFailed);
     };
 
     // All Referrals
-    this.getReferral = function(currentPage, pageLimit) {
+    this.getReferral = function(currentPage) {
 
       function getReferralComplete(response) {
         return response.data;
@@ -88,7 +89,7 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.post(this.apiHost +'/user/all-referral/'+currentPage+'/'+pageLimit)
+      return $http.post(this.apiHost +'user/all-referral/'+currentPage+'/'+pageLimit)
         .then(getReferralComplete)
         .catch(getReferralFailed);
 
@@ -99,14 +100,15 @@ angular.module('coinomiaFrontendApp')
       var data = formData;
 
       function changePasswordComplete(response) {
-        return response.data;
+        return response;
       }
 
       function changePasswordFailed(error) {
-        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        $log.error('XHR Failed for change password.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
-      return $http.post(this.apiHost +'/user/change-password/', data)
+      return $http.post(this.apiHost +'user/change-password/', data)
         .then(changePasswordComplete)
         .catch(changePasswordFailed);
     };
@@ -122,87 +124,109 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.post(this.apiHost +'/utilities/list-countries/')
+      return $http.post(this.apiHost +'utilities/list-countries/')
         .then(getCountriesComplete)
         .catch(getCountriesFailed);
     };
 
     // Get User Profile
-    this.userProfile = function() {
+    this.getUserInfo = function() {
 
-      function userProfileComplete(response) {
-        return response.data;
+      function getInfoComplete(response) {
+        return response;
       }
 
-      function userProfileFailed(error) {
+      function getInfoFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
-      return $http.post(this.apiHost +'/user/me/')
-        .then(userProfileComplete)
-        .catch(userProfileFailed);
+      return $http.get(this.apiHost +'user/me/')
+        .then(getInfoComplete)
+        .catch(getInfoFailed);
     };
 
     // Get Purchased Power
-    this.purchasePower = function() {
+    this.getPurchasePower = function() {
 
-      function purchasePowerComplete(response) {
-        return response.data;
+      function getPurchasePowerComplete(response) {
+        return response;
       }
 
-      function purchasePowerFailed(error) {
-        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+      function getPurchasePowerFailed(error) {
+        $log.error('XHR Failed for purchase power.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
-      return $http.post(this.apiHost +'/user/purchased-power/')
-        .then(purchasePowerComplete)
-        .catch(purchasePowerFailed);
+      return $http.get(this.apiHost +'user/purchased-power/')
+        .then(getPurchasePowerComplete)
+        .catch(getPurchasePowerFailed);
     };
 
     // Current Mining
     this.currentMining = function() {
 
       function currentMiningComplete(response) {
-        return response.data;
+        return response;
       }
 
       function currentMiningFailed(error) {
-        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        $log.error('XHR Failed for current mining.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
-      return $http.post(this.apiHost +'/user/current-mining/')
+      return $http.get(this.apiHost +'user/current-mining/')
         .then(currentMiningComplete)
         .catch(currentMiningFailed);
     };
 
-    // Get Wallet Info
-    this.walletInfo = function(currentPage, pageLimit) {
+    // Get Total Income
+    this.getTotalIncome = function() {
 
-      function walletInfoComplete(response) {
-        return response.data;
+      function getTotalIncomeComplete(response) {
+        return response;
       }
 
-      function wallletInfoFailed(error) {
+      function getTotalIncomeFailed(error) {
+        $log.error('XHR Failed for total income.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/total-income/')
+        .then(getTotalIncomeComplete)
+        .catch(getTotalIncomeFailed);
+    };
+
+    // Get Latest Transaction and Withdrawals
+    this.getTransactionDetails = function(currentPage) {
+
+      function transactionComplete(response) {
+        return response;
+      }
+
+      function transactionFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
-      return $http.post(this.apiHost +'/user/transaction/'+currentPage+'/'+pageLimit)
-        .then(walletInfoComplete)
-        .catch(wallletInfoFailed);
+      return $http.get(this.apiHost +'user/transaction/'+currentPage+'/'+pageLimit)
+        .then(transactionComplete)
+        .catch(transactionFailed);
     };
 
     // Get Products
     this.getProducts = function() {
 
       function getProductsComplete(response) {
-        return response.data;
+        return response;
       }
 
       function getProductsFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        return error;
       }
 
-      return $http.post(this.apiHost +'/user/products/')
+      return $http.get(this.apiHost +'user/products/')
         .then(getProductsComplete)
         .catch(getProductsFailed);
     };
@@ -215,11 +239,11 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Authentication
-    this.Auth = function() {
+    this.isAuthenticated = function() {
       if ($cookies.get('token') || $localStorage.token) {
-        $state.go('dashboard');
+        return true;
       }else{
-        $state.go('login');
+        return false;
       }
     };
 
@@ -235,8 +259,97 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.get(this.apiHost +'/user/email-verify/'+token)
+      return $http.get(this.apiHost +'user/email-verify/'+token)
         .then(verificationComplete)
         .catch(verificationFailed);
+    }
+
+    // Get Landing Pages & Referral Links
+    this.getLandingPages = function() {
+      // On Success
+      function landingRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function landingRequestFailed(error) {
+        $log.error('XHR Failed for landing pages.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/landing-pages')
+        .then(landingRequestComplete)
+        .catch(landingRequestFailed);
+    }
+
+    // Get Default Sponsor
+    this.getDefaultSponsor = function() {
+      // On Success
+      function defaultSponsorRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function defaultSponsorRequestFailed(error) {
+        $log.error('XHR Failed for Deafult Sponsor.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'utilities/default-sponsor')
+        .then(defaultSponsorRequestComplete)
+        .catch(defaultSponsorRequestFailed);
+    }
+
+    // Refresh Token Process
+    this.getRefreshToken = function(data) {
+
+      function tokenRequestComplete(response) {
+        return response;
+      }
+
+      function tokenRequestFailed(error) {
+        $log.error('XHR Failed for refresh token.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost + 'oauth2/token', data, this.requestConfig)
+        .then(tokenRequestComplete)
+        .catch(tokenRequestFailed);
+    };
+
+    // Get Packages
+    this.getPackages = function() {
+      // On Success
+      function getPackagesRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getPackagesRequestFailed(error) {
+        $log.error('XHR Failed for Packages.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'utilities/packages')
+        .then(getPackagesRequestComplete)
+        .catch(getPackagesRequestFailed);
+    }
+
+    // Get User Virtual Tree Info
+    this.getVirtualTree = function() {
+      // On Success
+      function getVirtualTreeRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getVirtualTreeRequestFailed(error) {
+        $log.error('XHR Failed for Packages.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/virtualtree')
+        .then(getVirtualTreeRequestComplete)
+        .catch(getVirtualTreeRequestFailed);
     }
   });

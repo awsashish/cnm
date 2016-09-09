@@ -19,8 +19,12 @@ angular.module('coinomiaFrontendApp')
       'city': ''
     };
 
-    coinomiaService.getUserLocation()
-    .then(function(res) {
+    // Authenticate User
+    if(coinomiaService.isAuthenticated()){
+      $state.go('dashboard');
+    }
+
+    coinomiaService.getUserLocation().then(function(res) {
       var data = res.data;
       $scope.user.ipadr = data.ip;
       $scope.user.country = data.country_name;
@@ -99,7 +103,6 @@ angular.module('coinomiaFrontendApp')
           }else if(res.status === 404) {
               $scope.showme = false;
               $scope.userIdError = data.Message;
-
           }else if(angular.isObject(data.Messages)) {
             var errorMessage = data.Messages;
             if(errorMessage['Member.Email'] !== undefined) {

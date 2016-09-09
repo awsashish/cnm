@@ -18,12 +18,14 @@
     <link rel="stylesheet" href="styles/style.default.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="coinomiaFrontendApp" ng-class="(signin?'signin':'dashboard')">
+  <body ng-app="coinomiaFrontendApp" ng-class="(signin?'signin':'')">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ui-view></div>
+    <div ui-view>
+      <script type="text/javascript" src="http://widget.coindesk.com/bpiticker/coindesk-widget.min.js"></script>
+    </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -53,6 +55,10 @@
     <script src="bower_components/tg-angular-validator/dist/angular-validator.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-slider/src/slider.js"></script>
+    <script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -63,13 +69,27 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/signup.js"></script>
         <script src="scripts/controllers/dashboard.js"></script>
+        <script src="scripts/controllers/verifyemail.js"></script>
+        <script src="scripts/controllers/navigation.js"></script>
+        <script src="scripts/controllers/referral.js"></script>
         <script src="scripts/services/coinomiaservice.js"></script>
         <script src="scripts/services/dummy.js"></script>
         <script src="scripts/directives/header.js"></script>
         <script src="scripts/directives/footer.js"></script>
         <script src="scripts/directives/navigation.js"></script>
         <script src="js/country.js"></script>
-        <script src="scripts/controllers/verifyemail.js"></script>
+        <script src="scripts/controllers/payouts.js"></script>
+        <script src="scripts/controllers/businessplan.js"></script>
+        <script src="scripts/controllers/myaccount.js"></script>
+        <script src="scripts/controllers/setting.js"></script>
+        <script src="scripts/services/config.js"></script>
+        <script src="scripts/directives/slider/uiSlider.js"></script>
+        <script src="scripts/directives/newsfeeds.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/directives/purchasetotal.js"></script>
+        <script src="scripts/directives/currentrates.js"></script>
+        <script src="scripts/directives/salescommission.js"></script>
+        <script src="scripts/directives/miningpayouts.js"></script>
         <!-- endbuild -->
 </body>
 </html>

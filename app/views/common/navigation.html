@@ -1,32 +1,39 @@
 <div class="leftpanel" style="z-index:5000; background:#525252; height:100%; " id="bs-example-navbar-collapse-1">
   <div class="media profile-left">
     <div class="media-body lft-menu">
-      <a class="pull-left profile-thumb" href="profile.html">
-      <img class="img-circle" src="images/users/user5.png" alt="">
+      <a class="pull-left profile-thumb" href="#/setting">
+        <img class="img-circle" src="images/users/user5.png" alt="">
       </a><br />
-      <h4 class="media-heading">Elen Adarna</h4>
-      <a href="index.html"> <span class="label label-danger"><i class="fa fa-lock"></i> <strong>Logout</strong></span></a>
+      <h4 class="media-heading">{{name}}</h4>
+      <a class="logout" href="" ng-click="logout()"> <span class="label label-danger"><i class="fa fa-lock"></i> <strong>Logout</strong></span></a>
     </div>
   </div>
   <!-- media -->
   <nav id="nav">
     <ul class="nav nav-pills nav-stacked" id="menu-content">
-      <li ><a href="dashboard.html" id="default" class="highlite" onclick="highlite(this);"><i class="fa fa-home lg-i"></i> <br />
+      <li ><a href="#/dashboard" id="default" class="highlite"><i class="fa fa-home lg-i"></i> <br />
         <span>Dashboard</span></a>
       </li>
-      <li ><a href="#/refer-link" onclick="highlite(this);"><i class="fa fa-chain lg-i" aria-hidden="true"></i>
+      <li ><a href="#/referral-link"><i class="fa fa-chain lg-i" aria-hidden="true"></i>
         <br />
         <span>My Referal Links</span></a>
-      <li ><a href="#/payouts" onclick="highlite(this);"><i class="fa fa-list lg-i" aria-hidden="true"></i>
+      <!-- <li ><a href="#/payouts" onclick="highlite(this);"><i class="fa fa-list lg-i" aria-hidden="true"></i>
         <br />
         <span>Payouts</span></a>
       </li>
       <li ><a href="#/business-plan" onclick="highlite(this);"><i class="fa fa-edit lg-i"></i><br />
         <span>Business Plan</span></a>
+      </li> -->
+      <li ><a href="#/networks" onclick="highlite(this);"><i class="fa fa-sitemap lg-i" aria-hidden="true"></i>
+        <br />
+        <span>Networks</span></a>
       </li>
-      <li><a href="#my-account" onclick="highlite(this);"><i class="fa fa-user lg-i" style="margin-right:5px;"></i> <br />
+      <li ><a href="#/mining" onclick="highlite(this);"><i class="fa fa-line-chart lg-i"></i><br />
+        <span>Mining</span></a>
+      </li>
+      <!-- <li><a href="#my-account" onclick="highlite(this);"><i class="fa fa-user lg-i" style="margin-right:5px;"></i> <br />
         <span>My Account</span></a>
-      </li>
+      </li> -->
       <li ><a href="#setting" onclick="highlite(this);"><i class="fa fa-cog lg-i" aria-hidden="true"></i> <br />
         <span>Setting</span></a>
       </li>

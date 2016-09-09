@@ -1,0 +1,177 @@
+<div class="[ row border-bot ]">
+  <div class="col-md-4"><strong>Choose Mining Contracts</strong></div>
+  <div class="col-md-4"><strong>Desired no of<br />
+    Contracts</strong>
+  </div>
+  <div class="col-md-4"><strong>Total Purchase <br />
+    Amount</strong>
+  </div>
+</div>
+<div class="[ row border-bot ]">
+  <div class="col-md-4" role="tabpanel">
+    <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
+      <li role="presentation" class="active" >
+        <a href=".btc" aria-controls="btc" role="tab" data-toggle="tab" style="padding:10px 0px !important;">
+        <img class="img-circle" width="70" src="images/contract-bitcoin.png" title="Pool Contract(BTC)" />
+        </a>
+      </li>
+      <li role="presentation" class="" >
+        <a href=".eth" aria-controls="eth" role="tab" data-toggle="tab" style="padding:10px !important;">
+        <img class="img-circle" width="70" src="images/ether-contract.png" title="Pool Contract(ETH)"   />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
+      <div role="tabpanel" class="tab-pane fade in active btc" >
+        <div align="left" class="tab-inner">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <select class="sm-txtbox1" ng-model="btcPoolContract" ng-change="btcPoolCalc({desContract:btcPoolContract, contractValue:poolDetails, mining:currentMining})">
+                <option value="0">Select</option>
+                <option value="1000" ng-selected="btcPoolContract==1000">1000</option>
+                <option value="100" ng-selected="btcPoolContract==100">100</option>
+                <option value="10" ng-selected="btcPoolContract==10">10</option>
+              </select>
+              <br><small>{{btcPoolContract}} TH/s</small>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{btcPoolPrice | number:2}}</strong></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade eth" >
+        <div align="left" class="tab-inner">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <select class="sm-txtbox1" ng-model="ethPoolContract" ng-change="ethPoolCalc({desContract:ethPoolContract, contractValue:poolDetails, mining:currentMining})">
+                <option value="0">Select</option>
+                <option value="1000" ng-selected="ethPoolContract==1000">1000</option>
+                <option value="100" ng-selected="ethPoolContract==100">100</option>
+                <option value="10" ng-selected="ethPoolContract==10">10</option>
+              </select>
+              <br><small>{{ethPoolContract}} MH/s</small>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{ethPoolPrice | number:2}}</strong></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="[ row border-bot ]">
+  <div class="col-md-4" role="tabpanel">
+    <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
+      <li role="presentation" class="active" >
+        <a href=".btc1" aria-controls="btc1" role="tab" data-toggle="tab" style="padding:10px 0px !important;">
+        <img class="img-circle" width="70" src="images/contributor.png" title="Machine Contract(BTC)" />
+        </a>
+      </li>
+      <li role="presentation" class="" >
+        <a href=".eth1" aria-controls="eth1" role="tab" data-toggle="tab" style="padding:10px !important;">
+        <img class="img-circle" width="70" src="images/machine-ether.png" title="Machine Contract(ETH)"  />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
+      <div role="tabpanel" class="tab-pane fade in active btc1" >
+        <div align="left" class="tab-inner">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <select class="sm-txtbox1" ng-model="btcContributorContract" ng-change="btcContributorCalc({desContract:btcContributorContract, contractValue:contributorDetails, mining:currentMining})">
+                <option value="0">Select</option>
+                <option value="1000" ng-selected="btcContributorContract==1000">1000</option>
+                <option value="100" ng-selected="btcContributorContract==100">100</option>
+                <option value="10" ng-selected="btcContributorContract==10">10</option>
+              </select>
+              <br><small>{{btcContributorContract}} TH/s</small>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{btcContributorPrice | number:2}}</strong></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade eth1" >
+        <div align="left" class="tab-inner">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <select class="sm-txtbox1" ng-model="ethContributorContract" ng-change="ethContributorCalc({desContract:ethContributorContract, contractValue:poolDetails, mining:currentMining})">
+                <option value="0">Select</option>
+                <option value="1000" ng-selected="ethContributorContract==1000">1000</option>
+                <option value="100" ng-selected="ethContributorContract==100">100</option>
+                <option value="10" ng-selected="ethContributorContract==10">10</option>
+              </select>
+              <br><small>{{ethContributorContract}} MH/s</small>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{ethContributorPrice | number:2}}</strong></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="[ row border-bot ]">
+  <div class="col-md-4" role="tabpanel">
+    <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
+      <li role="presentation" class="active" >
+        <a href=".btc2" aria-controls="btc2" role="tab" data-toggle="tab" style="padding:10px 0px !important;">
+        <img class="img-circle" width="70" src="images/RACK.png" title="Rack Contract(BTC)" />
+        </a>
+      </li>
+      <li role="presentation" class="" >
+        <a href=".eth2" aria-controls="eth2" role="tab" data-toggle="tab" style="padding:10px !important;">
+        <img class="img-circle" width="70" src="images/ether-rack.png" title="ETH"  />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
+      <div role="tabpanel" class="tab-pane fade in active btc2" >
+        <div align="left" class="tab-inner">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <select class="sm-txtbox1" ng-model="btcRackContract" ng-change="btcRackCalc({desContract:btcRackContract, contractValue:rackDetails, mining:currentMining})">
+                <option value="0">Select</option>
+                <option value="1000" ng-selected="btcRackContract==1000">1000</option>
+                <option value="100" ng-selected="btcRackContract==100">100</option>
+                <option value="10" ng-selected="btcRackContract==10">10</option>
+              </select>
+              <br><small>{{btcRackContract}} TH/s</small>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{btcRackPrice | number:2}}</strong></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade eth2" >
+        <div align="left" class="tab-inner">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <select class="sm-txtbox1" ng-model="ethRackContract" ng-change="ethRackCalc({desContract:ethRackContract, contractValue:rackDetails, mining:currentMining})">
+                <option value="0">Select</option>
+                <option value="1000" ng-selected="ethRackContract==1000">1000</option>
+                <option value="100" ng-selected="ethRackContract==100">100</option>
+                <option value="10" ng-selected="ethRackContract==10">10</option>
+              </select>
+              <br><small>{{ethRackContract}} MH/s</small>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{ethRackPrice | number:2}}</strong></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

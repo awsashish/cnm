@@ -12,6 +12,6 @@ angular.module('coinomiaFrontendApp')
       restrict: 'E',
       templateUrl: 'views/common/navigation.html',
       scope: true,
-      // controller: 'HeaderCtrl'
+      controller: 'NavCtrl'
     };
   });

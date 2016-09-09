@@ -17,7 +17,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngStorage'
+    'ngStorage',
+    'ncy-angular-breadcrumb'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -29,12 +30,31 @@ angular
       // Add authorization token to headers
       request: function (config) {
         $rootScope.signin = true;
+        // $rootScope.$broadcast('getRefreshToken');
         config.headers = config.headers || {};
         if ($cookies.get('token') || $localStorage.token) {
-        //config.headers.authorization = 'Bearer ' + $cookieStore.get('token');
+          var authToken = $localStorage.token || $cookies.get('token');
+          if(config.url.indexOf('oauth2/token') < 0) {
+            config.headers.authorization = 'Bearer ' + authToken;
+          }
           $rootScope.signin = false;
         }
         return config;
       },
+      responseError: function(response) {
+        // If token got expired
+        if (response.status === 401) {
+          $rootScope.$broadcast('getRefreshToken');
+        }
+        return $q.reject(response);
+      }
     };
+  })
+  .run(function ($rootScope, $state, coinomiaService, $timeout, $localStorage) {
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+      if (toState.authenticate && !coinomiaService.isAuthenticated()) {
+        $state.go('login');
+        event.preventDefault();
+      }
+    });
   });

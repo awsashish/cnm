@@ -34,12 +34,25 @@ module.exports = function(config) {
       'bower_components/tg-angular-validator/dist/angular-validator.js',
       'bower_components/underscore/underscore.js',
       'bower_components/ngstorage/ngStorage.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'bower_components/jquery-ui/ui/jquery-ui.js',
+      'bower_components/angular-ui-slider/src/slider.js',
+      'bower_components/angular-breadcrumb/release/angular-breadcrumb.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
-      'test/mock/**/*.js',
-      'test/spec/**/*.js'
+      'test/spec/**/*.js',
+      'app/views/**/*.html'
     ],
+
+    preprocessors: {
+      'app/views/**/*.html': 'ng-html2js'
+    },
+
+    ngHtml2JsPreprocessor: {
+      // strip app from the file path
+      stripPrefix: 'app/'
+    },
 
     // list of files / patterns to exclude
     exclude: [
@@ -63,7 +76,8 @@ module.exports = function(config) {
     // Which plugins to enable
     plugins: [
       'karma-phantomjs-launcher',
-      'karma-jasmine'
+      'karma-jasmine',
+      'karma-ng-html2js-preprocessor'
     ],
 
     // Continuous Integration mode

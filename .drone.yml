@@ -19,24 +19,23 @@ publish:
     repo: docker.appfactory.in/coinomia-frontend
     tag: "$$BRANCH"
     file: Dockerfile
-    when:
-      branch: "!master"
-
-  docker:
-    repo: docker.appfactory.in/coinomia-frontend
-    tag: "$$BRANCH"
-    file: Dockerfile
-    when:
-      branch: "master"
 
 deploy:
+  ssh:
+    host:
+      - $$DOCKER_HOST_1
+    user: $$DOCKER_SSH_USER
+    port: 22
+    sleep: 5
+    commands:
+      - "sh deploy-staging.sh $$BRANCH $$BUILD_NUMBER"
   rsync:
     commands:
       - "sh deployments/deploy.sh $$BUILD_NUMBER $$COMMIT"
       - "sudo service nginx restart"
     delete: false
     host: $$SSH_HOST
-    port: $$SSH_PORT
+    #port: $$SSH_PORT
     recursive: true
     source: dist/
     target: /home/$$SSH_USER/deployments/live/dist_$$BUILD_NUMBER/
@@ -49,34 +48,13 @@ deploy:
       - "sudo service nginx restart"
     delete: false
     host: $$SSH_HOST
-    port: $$SSH_PORT
+    #port: $$SSH_PORT
     recursive: true
     source: dist/
     target: /home/$$SSH_USER/deployments/dev/dist_$$BUILD_NUMBER/
     user: $$SSH_USER
     when:
       branch: "!master"
-
-  ssh:
-    host:
-      - $$DOCKER_HOST_1
-    user: $$DOCKER_SSH_USER
-    port: 22
-    sleep: 5
-    commands:
-      - "sh deploy-staging.sh $$BRANCH $$COMMIT"
-    when:
-      branch: "!master"
-  ssh:
-    host:
-      - $$DOCKER_HOST_1
-    user: $$DOCKER_SSH_USER
-    port: 22
-    sleep: 5
-    commands:
-      - "sh deploy-staging.sh $$BRANCH $$COMMIT"
-    when:
-      branch: "master"
 
 notify:
   email:

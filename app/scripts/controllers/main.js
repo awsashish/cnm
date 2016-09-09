@@ -8,6 +8,10 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('MainCtrl', function ($scope, $cookies, $state, $window, coinomiaService) {
-    coinomiaService.Auth();
+  .controller('MainCtrl', function ($scope, $rootScope, $cookies, $state, $window, coinomiaService) {
+    // Authenticate User
+    if(coinomiaService.isAuthenticated){
+      $state.go('dashboard');
+    }
+    
   });
