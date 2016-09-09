@@ -40,6 +40,7 @@
               <div class="panel-body">
                 <h3 align="center" class="yelo-text">Sales Commissions <small class="sm-text01"><strong>Considering you Rack Buyers</strong></small></h3>
                 <br />
+                <!-- Direct Sales Commission -->
                 <div sales-commission tree-details="treeDetails"
                                       pool-details="poolDetails"
                                       contributor-details="contributorDetails"
@@ -54,6 +55,7 @@
                                       contributor-calc="contributorCalc(treeData, contract, contributorData)"
                                       rack-calc="rackCalc(treeData, contract, rackData)"></div>
                 <br />
+                <!-- Binary Sales Commission -->
                 <div sales-commission binary-details="binaryUsers"
                                       tree-details="treeDetails"
                                       pool-details="poolDetails"
@@ -81,184 +83,30 @@
             <div class="panel panel-default">
               <div class="panel-body">
                 <h3 align="center" class="yelo-text">Mining Payouts <small class="sm-text01"><strong>Paid in BTC/ETH</strong></small></h3>
-                <div class="[ row border-bot ]">
-                  <div class="col-md-4"><strong>Choose Mining Contracts</strong></div>
-                  <div class="col-md-4"><strong>Desired no of<br />
-                    Contracts</strong>
-                  </div>
-                  <div class="col-md-4"><strong>Total Purchase <br />
-                    Amount</strong>
-                  </div>
-                </div>
-                <div class="[ row border-bot ]">
-                  <div class="col-md-4" role="tabpanel">
-                    <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
-                      <li role="presentation" class="active" >
-                        <a href=".btc" aria-controls="btc" role="tab" data-toggle="tab" style="padding:10px 0px !important;">
-                        <img class="img-circle" width="70" src="images/contract-bitcoin.png" title="Pool Contract(BTC)" />
-                        </a>
-                      </li>
-                      <li role="presentation" class="" >
-                        <a href=".eth" aria-controls="eth" role="tab" data-toggle="tab" style="padding:10px !important;">
-                        <img class="img-circle" width="70" src="images/ether-contract.png" title="Pool Contract(ETH)"   />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-8">
-                    <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
-                      <div role="tabpanel" class="tab-pane fade in active btc" >
-                        <div align="left" class="tab-inner">
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <select class="sm-txtbox1"  >
-                                <option value="0">Select</option>
-                                <option  selected value="1000">1000</option>
-                                <option  value="100">100</option>
-                                <option  value="10">10</option>
-                              </select>
-                              <br><small>1000 TH/s</small>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $500</strong></h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div role="tabpanel" class="tab-pane fade eth" >
-                        <div align="left" class="tab-inner">
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <select class="sm-txtbox1"  >
-                                <option value="0">Select</option>
-                                <option  selected value="1000">1000</option>
-                                <option  value="100">100</option>
-                                <option  value="10">10</option>
-                              </select>
-                              <br><small>1000 MH/s</small>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <h4 class="nomargin nopadding red-text01"><strong>&asymp; $500</strong></h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="[ row border-bot ]">
-                  <div class="col-md-4" role="tabpanel">
-                    <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
-                      <li role="presentation" class="active" >
-                        <a href=".btc" aria-controls="btc" role="tab" data-toggle="tab" style="padding:10px 0px !important;">
-                        <img class="img-circle" width="70" src="images/contributor.png" title="Machine Contract(BTC)" />
-                        </a>
-                      </li>
-                      <li role="presentation" class="" >
-                        <a href=".eth" aria-controls="eth" role="tab" data-toggle="tab" style="padding:10px !important;">
-                        <img class="img-circle" width="70" src="images/machine-ether.png" title="Machine Contract(ETH)"  />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-8">
-                    <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
-                      <div role="tabpanel" class="tab-pane fade in active btc" >
-                        <div align="left" class="tab-inner">
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <select class="sm-txtbox1"  >
-                                <option value="0">Select</option>
-                                <option   value="1000">1000</option>
-                                <option  selected value="100">100</option>
-                                <option  value="10">10</option>
-                              </select>
-                              <br><small>100 TH/s</small>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <h4 class="nomargin nopadding red-text01"><strong>&asymp; $300</strong></h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div role="tabpanel" class="tab-pane fade eth" >
-                        <div align="left" class="tab-inner">
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <select class="sm-txtbox1"  >
-                                <option value="0">Select</option>
-                                <option   value="1000">1000</option>
-                                <option  selected value="100">100</option>
-                                <option  value="10">10</option>
-                              </select>
-                              <br><small>100 MH/s</small>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <h4 class="nomargin nopadding red-text01"><strong>&asymp; $300</strong></h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="[ row border-bot ]">
-                  <div class="col-md-4" role="tabpanel">
-                    <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
-                      <li role="presentation" class="active" >
-                        <a href=".btc" aria-controls="btc" role="tab" data-toggle="tab" style="padding:10px 0px !important;">
-                        <img class="img-circle" width="70" src="images/RACK.png" title="Rack Contract(BTC)" />
-                        </a>
-                      </li>
-                      <li role="presentation" class="" >
-                        <a href=".eth" aria-controls="eth" role="tab" data-toggle="tab" style="padding:10px !important;">
-                        <img class="img-circle" width="70" src="images/ether-rack.png" title="ETH"  />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-8">
-                    <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
-                      <div role="tabpanel" class="tab-pane fade in active btc" >
-                        <div align="left" class="tab-inner">
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <select class="sm-txtbox1"  >
-                                <option value="0">Select</option>
-                                <option   value="1000">1000</option>
-                                <option   value="100">100</option>
-                                <option  selected value="10">10</option>
-                              </select>
-                              <br><small>10 TH/s</small>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <h4 class="nomargin nopadding red-text01"><strong> &asymp; $100</strong></h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div role="tabpanel" class="tab-pane fade eth" >
-                        <div align="left" class="tab-inner">
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <select class="sm-txtbox1"  >
-                                <option value="0">Select</option>
-                                <option   value="1000">1000</option>
-                                <option   value="100">100</option>
-                                <option  selected value="10">10</option>
-                              </select>
-                              <br><small>10 MH/s</small>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
-                              <h4 class="nomargin nopadding red-text01"><strong>&asymp; $100</strong></h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <p align="center"><button class="calculator"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button></p>
+                <div mining-payout
+                     pool-details="poolDetails"
+                     contributor-details="contributorDetails"
+                     rack-details="rackDetails"
+                     current-mining="currentMining"
+                     btc-pool-contract="btcPoolContract"
+                     btc-contributor-contract="btcContributorContract"
+                     btc-rack-contract="btcRackContract"
+                     eth-pool-contract="ethPoolContract"
+                     eth-contributor-contract="ethContributorContract"
+                     eth-rack-contract="ethRackContract"
+                     btc-pool-price="btcPoolPrice"
+                     btc-contributor-price="btcContributorPrice"
+                     btc-rack-price="btcRackPrice"
+                     eth-pool-price="ethPoolPrice"
+                     eth-contributor-price="ethContributorPrice"
+                     eth-rack-price="ethRackPrice"
+                     btc-pool-calc="btcPoolMining(desContract, contractValue, mining)"
+                     btc-contributor-calc="btcContributorMining(desContract, contractValue, mining)"
+                     btc-rack-calc="btcRackMining(desContract, contractValue, mining)"
+                     eth-pool-calc="ethPoolMining(desContract, contractValue, mining)"
+                     eth-contributor-calc="ethContributorMining(desContract, contractValue, mining)"
+                     eth-rack-calc="ethRackMining(desContract, contractValue, mining)"></div>
+                <p align="center"><button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button></p>
                 <div class="clearfix"></div>
                 <h3 align="center" class="text-title02"><strong>Your Estimated income based on Current <br />
                   Exchange Values of Respective Currencies</strong>
@@ -271,35 +119,11 @@
                       <td><strong>ETH</strong></td>
                       <td><strong>USD <small>(eq.)</small></strong></td>
                     </tr>
-                    <tr>
-                      <td>Daily</td>
-                      <td>34234</td>
-                      <td>232132</td>
-                      <td><strong>$50</strong></td>
-                    </tr>
-                    <tr>
-                      <td>Weekly</td>
-                      <td>9299</td>
-                      <td>33234</td>
-                      <td><strong>$150</strong></td>
-                    </tr>
-                    <tr>
-                      <td>Monthly</td>
-                      <td>8756</td>
-                      <td>4330</td>
-                      <td><strong>$250</strong></td>
-                    </tr>
-                    <tr>
-                      <td>Annualy </td>
-                      <td>34234</td>
-                      <td>232132</td>
-                      <td><strong>$450</strong></td>
-                    </tr>
-                    <tr>
-                      <td>15 Monthly</td>
-                      <td>34234</td>
-                      <td>232132</td>
-                      <td><strong>$650</strong></td>
+                    <tr ng-repeat="income in estIncome">
+                      <td>{{income.duration}}</td>
+                      <td>{{income.btc | number:2}}</td>
+                      <td>{{income.eth | number:2}}</td>
+                      <td><strong>${{income.miningUsd | number:2}}</strong></td>
                     </tr>
                   </table>
                 </div>
