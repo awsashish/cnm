@@ -41,58 +41,38 @@
                 <h3 align="center" class="yelo-text">Sales Commissions <small class="sm-text01"><strong>Considering you Rack Buyers</strong></small></h3>
                 <br />
                 <div sales-commission tree-details="treeDetails"
-                                  pool-details="poolDetails"
-                                  contributor-details="contributorDetails"
-                                  rack-details="rackDetails"
-                                  pool-contract="poolContract"
-                                  contributor-contract="contributorContract"
-                                  rack-contract="rackContract"
-                                  pool-total="poolTotal"
-                                  contributor-total="contributorTotal"
-                                  rack-total="rackTotal"
-                                  pool-calc="poolCalc(directs, contract, price)"
-                                  contributor-calc="contributorCalc(directs, contract, price)"
-                                  rack-calc="rackCalc(directs, contract, price)"></div>
+                                      pool-details="poolDetails"
+                                      contributor-details="contributorDetails"
+                                      rack-details="rackDetails"
+                                      pool-contract="poolContract"
+                                      contributor-contract="contributorContract"
+                                      rack-contract="rackContract"
+                                      pool-total="poolTotal"
+                                      contributor-total="contributorTotal"
+                                      rack-total="rackTotal"
+                                      pool-calc="poolCalc(treeData, contract, poolData)"
+                                      contributor-calc="contributorCalc(treeData, contract, contributorData)"
+                                      rack-calc="rackCalc(treeData, contract, rackData)"></div>
                 <br />
-                <p align="center" class="grey-bg">Binary Commission For -  <a href="#" class="red-text02">2989 Users</a> and <a href="#" class="red-text02">12 Pairs</a> </p>
-                <div class="row ">
-                  <div class="col-md-3 col-sm-12 ">
-                    <h5 align="center" class=" arrow_box "><img src="images/team-ref.png" width="70" /><br />
-                      <strong>If all your Team Buy</strong>
-                    </h5>
-                  </div>
-                  <div class="col-md-9 col-sm-12">
-                    <div class="table-responsive">
-                      <table class="table table01" >
-                        <tr>
-                          <td width="20%"><img src="images/contract-bitcoin.png" title="Pool Contract" width="50" /></td>
-                          <td width="30%"><input class="sm-txtbox" type="text" ng-name="value-poolcotract" placeholder="1000" /> Contracts</td>
-                          <td width="50%">
-                            <h4 class="pad20"><strong>&asymp; $200</strong></h4>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><img src="images/contributor.png" title="Machine Contract" width="50" /></td>
-                          <td><input class="sm-txtbox" type="text" ng-name="value-poolcotract" placeholder="100" /> Contracts</td>
-                          <td>
-                            <h4 class="pad20"><strong>&asymp; $120</strong></h4>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><img src="images/RACK.png" title="Rack Contract" width="50" /></td>
-                          <td><input class="sm-txtbox" type="text" ng-name="value-poolcotract" placeholder="10" /> Contracts</td>
-                          <td>
-                            <h4 class="pad20"><strong>&asymp; $300</strong></h4>
-                          </td>
-                        </tr>
-                      </table>
-                    </Div>
-                  </div>
-                </div>
+                <div sales-commission binary-details="binaryUsers"
+                                      tree-details="treeDetails"
+                                      pool-details="poolDetails"
+                                      contributor-details="contributorDetails"
+                                      rack-details="rackDetails"
+                                      pool-contract="poolContract"
+                                      contributor-contract="contributorContract"
+                                      rack-contract="rackContract"
+                                      binary-pool-total="binaryPoolTotal"
+                                      binary-contributor-total="binaryContributorTotal"
+                                      binary-rack-total="binaryRackTotal"
+                                      pool-calc="poolCalc(treeData, contract, poolData)"
+                                      contributor-calc="contributorCalc(treeData, contract, contributorData)"
+                                      rack-calc="rackCalc(treeData, contract, rackData)"></div>
+
                 <h3 align="center"><strong>Your Estimated Paycheck
                   on Launch Day</strong>
                 </h3>
-                <p class="grand-total">$40584</p>
+                <p class="grand-total">${{payCheckTotal | number:2}}</p>
                 <small>*need text here</small>
               </div>
             </div>
