@@ -43,6 +43,12 @@ angular.module('coinomiaFrontendApp')
         templateUrl: 'views/success.html',
     })
 
+    // Support page
+    .state('support', {
+        url: '/support',
+        templateUrl: 'views/support.html',
+    })
+
     // Terms & Conditions page
     .state('terms-and-conditions', {
         url: '/terms-and-conditions',
@@ -78,14 +84,15 @@ angular.module('coinomiaFrontendApp')
     // Networks page
     .state('networks', {
       url: '/networks',
-      templateUrl: 'views/coming-soon.html',
+      templateUrl: 'views/networks.html',
       authenticate: true
     })
 
-    // Networks page
+    // Mining page
     .state('mining', {
       url: '/mining',
-      templateUrl: 'views/coming-soon.html',
+      templateUrl: 'views/mining.html',
+      controller: 'DashboardCtrl',
       authenticate: true
     })
 
