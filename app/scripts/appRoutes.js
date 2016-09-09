@@ -75,6 +75,20 @@ angular.module('coinomiaFrontendApp')
       authenticate: true
     })
 
+    // Networks page
+    .state('networks', {
+      url: '/networks',
+      templateUrl: 'views/coming-soon.html',
+      authenticate: true
+    })
+
+    // Networks page
+    .state('mining', {
+      url: '/mining',
+      templateUrl: 'views/coming-soon.html',
+      authenticate: true
+    })
+
     // Business Plans
     .state('business-plan', {
       url: '/business-plan',
