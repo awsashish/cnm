@@ -35,7 +35,7 @@ deploy:
       - "sudo service nginx restart"
     delete: false
     host: $$SSH_HOST
-    port: $$SSH_PORT
+    #port: $$SSH_PORT
     recursive: true
     source: dist/
     target: /home/$$SSH_USER/deployments/live/dist_$$BUILD_NUMBER/
@@ -48,7 +48,7 @@ deploy:
       - "sudo service nginx restart"
     delete: false
     host: $$SSH_HOST
-    port: $$SSH_PORT
+    #port: $$SSH_PORT
     recursive: true
     source: dist/
     target: /home/$$SSH_USER/deployments/dev/dist_$$BUILD_NUMBER/
