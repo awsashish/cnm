@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService, config) {
+  .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService, UtilsService, $filter, config) {
 
     $scope.packagesDetails = [];
     $scope.treeDetails = '';
@@ -281,5 +281,9 @@ angular.module('coinomiaFrontendApp')
       $scope.estIncome.push(annually);
       $scope.estIncome.push(monthly_15);
     }
+
+    UtilsService.getCountryFlag('India').then(function(res){
+      $scope.countryFlag = res[0];
+    });
 
    });
