@@ -282,8 +282,4 @@ angular.module('coinomiaFrontendApp')
       $scope.estIncome.push(monthly_15);
     }
 
-    UtilsService.getCountryFlag('India').then(function(res){
-      $scope.countryFlag = res[0];
-    });
-
    });
