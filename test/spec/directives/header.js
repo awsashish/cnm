@@ -10,7 +10,7 @@ describe('Directive: header', function () {
         // Controller Mock
     });
   }));
-
+  beforeEach(module('views/directiveTemplates/countryFlag.html'));
   beforeEach(module('views/common/header.html'))
 
   var element,
