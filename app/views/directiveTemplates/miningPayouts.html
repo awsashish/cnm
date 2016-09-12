@@ -28,11 +28,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="btcPoolContract" ng-change="btcPoolCalc({desContract:btcPoolContract, contractValue:poolDetails, mining:currentMining})">
-                <option value="0">Select</option>
-                <option value="1000" ng-selected="btcPoolContract==1000">1000</option>
-                <option value="100" ng-selected="btcPoolContract==100">100</option>
-                <option value="10" ng-selected="btcPoolContract==10">10</option>
+              <select class="sm-txtbox1" ng-model="btcPoolContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="btcPoolCalc({desContract:btcPoolContract, contractValue:poolDetails, mining:currentMining})">
               </select>
               <br><small>{{btcPoolContract}} TH/s</small>
             </div>
@@ -46,11 +42,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="ethPoolContract" ng-change="ethPoolCalc({desContract:ethPoolContract, contractValue:poolDetails, mining:currentMining})">
-                <option value="0">Select</option>
-                <option value="1000" ng-selected="ethPoolContract==1000">1000</option>
-                <option value="100" ng-selected="ethPoolContract==100">100</option>
-                <option value="10" ng-selected="ethPoolContract==10">10</option>
+              <select class="sm-txtbox1" ng-model="ethPoolContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="ethPoolCalc({desContract:ethPoolContract, contractValue:poolDetails, mining:currentMining})">
               </select>
               <br><small>{{ethPoolContract}} MH/s</small>
             </div>
@@ -84,11 +76,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="btcContributorContract" ng-change="btcContributorCalc({desContract:btcContributorContract, contractValue:contributorDetails, mining:currentMining})">
-                <option value="0">Select</option>
-                <option value="1000" ng-selected="btcContributorContract==1000">1000</option>
-                <option value="100" ng-selected="btcContributorContract==100">100</option>
-                <option value="10" ng-selected="btcContributorContract==10">10</option>
+              <select class="sm-txtbox1" ng-model="btcContributorContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="btcContributorCalc({desContract:btcContributorContract, contractValue:contributorDetails, mining:currentMining})">
               </select>
               <br><small>{{btcContributorContract}} TH/s</small>
             </div>
@@ -102,11 +90,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="ethContributorContract" ng-change="ethContributorCalc({desContract:ethContributorContract, contractValue:poolDetails, mining:currentMining})">
-                <option value="0">Select</option>
-                <option value="1000" ng-selected="ethContributorContract==1000">1000</option>
-                <option value="100" ng-selected="ethContributorContract==100">100</option>
-                <option value="10" ng-selected="ethContributorContract==10">10</option>
+              <select class="sm-txtbox1" ng-model="ethContributorContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="ethContributorCalc({desContract:ethContributorContract, contractValue:poolDetails, mining:currentMining})">
               </select>
               <br><small>{{ethContributorContract}} MH/s</small>
             </div>
@@ -140,11 +124,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="btcRackContract" ng-change="btcRackCalc({desContract:btcRackContract, contractValue:rackDetails, mining:currentMining})">
-                <option value="0">Select</option>
-                <option value="1000" ng-selected="btcRackContract==1000">1000</option>
-                <option value="100" ng-selected="btcRackContract==100">100</option>
-                <option value="10" ng-selected="btcRackContract==10">10</option>
+              <select class="sm-txtbox1" ng-model="btcRackContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="btcRackCalc({desContract:btcRackContract, contractValue:rackDetails, mining:currentMining})">
               </select>
               <br><small>{{btcRackContract}} TH/s</small>
             </div>
@@ -158,11 +138,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="ethRackContract" ng-change="ethRackCalc({desContract:ethRackContract, contractValue:rackDetails, mining:currentMining})">
-                <option value="0">Select</option>
-                <option value="1000" ng-selected="ethRackContract==1000">1000</option>
-                <option value="100" ng-selected="ethRackContract==100">100</option>
-                <option value="10" ng-selected="ethRackContract==10">10</option>
+              <select class="sm-txtbox1" ng-model="ethRackContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="ethRackCalc({desContract:ethRackContract, contractValue:rackDetails, mining:currentMining})">
               </select>
               <br><small>{{ethRackContract}} MH/s</small>
             </div>

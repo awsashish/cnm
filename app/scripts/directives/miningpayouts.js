@@ -12,6 +12,7 @@ angular.module('coinomiaFrontendApp')
       restrict: 'A',
       templateUrl: 'views/directiveTemplates/miningPayouts.html',
       scope: {
+        payoutOptions: "=",
         poolDetails: "=",
         contributorDetails: "=",
         rackDetails: "=",
