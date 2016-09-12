@@ -28,7 +28,8 @@ angular.module('coinomiaFrontendApp')
       {value:50, name:'50'},
       {value:10, name:'10'},
       {value:5, name:'5'},
-      {value:2, name:'2'}
+      {value:2, name:'2'},
+      {value:1, name:'1'}
     ],
     'machineDropdown': [
       {value:0, name:'Select'},
