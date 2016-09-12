@@ -28,7 +28,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="btcPoolContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="btcPoolCalc({desContract:btcPoolContract, contractValue:poolDetails, mining:currentMining})">
+              <select class="sm-txtbox1" ng-model="btcPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="btcPoolCalc({desContract:btcPoolContract, contractValue:poolDetails, mining:currentMining})">
               </select>
               <br><small>{{btcPoolContract}} TH/s</small>
             </div>
@@ -42,7 +42,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="ethPoolContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="ethPoolCalc({desContract:ethPoolContract, contractValue:poolDetails, mining:currentMining})">
+              <select class="sm-txtbox1" ng-model="ethPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="ethPoolCalc({desContract:ethPoolContract, contractValue:poolDetails, mining:currentMining})">
               </select>
               <br><small>{{ethPoolContract}} MH/s</small>
             </div>
@@ -76,7 +76,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="btcContributorContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="btcContributorCalc({desContract:btcContributorContract, contractValue:contributorDetails, mining:currentMining})">
+              <select class="sm-txtbox1" ng-model="btcContributorContract" ng-options="option.value as option.name for option in machineOptions" ng-change="btcContributorCalc({desContract:btcContributorContract, contractValue:contributorDetails, mining:currentMining})">
               </select>
               <br><small>{{btcContributorContract}} TH/s</small>
             </div>
@@ -90,7 +90,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="ethContributorContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="ethContributorCalc({desContract:ethContributorContract, contractValue:poolDetails, mining:currentMining})">
+              <select class="sm-txtbox1" ng-model="ethContributorContract" ng-options="option.value as option.name for option in machineOptions" ng-change="ethContributorCalc({desContract:ethContributorContract, contractValue:poolDetails, mining:currentMining})">
               </select>
               <br><small>{{ethContributorContract}} MH/s</small>
             </div>
@@ -124,7 +124,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="btcRackContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="btcRackCalc({desContract:btcRackContract, contractValue:rackDetails, mining:currentMining})">
+              <select class="sm-txtbox1" ng-model="btcRackContract" ng-options="option.value as option.name for option in rackOptions" ng-change="btcRackCalc({desContract:btcRackContract, contractValue:rackDetails, mining:currentMining})">
               </select>
               <br><small>{{btcRackContract}} TH/s</small>
             </div>
@@ -138,7 +138,7 @@
         <div align="left" class="tab-inner">
           <div class="row">
             <div class="col-md-6 col-sm-12">
-              <select class="sm-txtbox1" ng-model="ethRackContract" ng-options="option.value as option.name for option in payoutOptions" ng-change="ethRackCalc({desContract:ethRackContract, contractValue:rackDetails, mining:currentMining})">
+              <select class="sm-txtbox1" ng-model="ethRackContract" ng-options="option.value as option.name for option in rackOptions" ng-change="ethRackCalc({desContract:ethRackContract, contractValue:rackDetails, mining:currentMining})">
               </select>
               <br><small>{{ethRackContract}} MH/s</small>
             </div>

@@ -31,7 +31,11 @@ angular.module('coinomiaFrontendApp')
     $scope.btcMining = config.btcMining;
     $scope.ethMining = config.ethMining;
 
-    $scope.payoutOptions = config.payoutDropdown;
+    $scope.poolOptions = config.poolDropdown;
+    $scope.machineOptions = config.machineDropdown;
+    $scope.rackOptions = config.rackDropdown;
+
+
     // Get Purchased Power
     coinomiaService.getPurchasePower()
     .then(function(res) {

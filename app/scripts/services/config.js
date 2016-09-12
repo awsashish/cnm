@@ -21,11 +21,30 @@ angular.module('coinomiaFrontendApp')
     'ratesTitle': 'Current Rates',
     'ratesSubTitle': 'Offerd by Coinomia as Now',
     'ratesIcon': 'images/dash-cur-rate.png',
-    'payoutDropdown': [
+    'poolDropdown': [
+      {value:0, name:'Select'},
+      {value:1000, name:'1000'},
+      {value:100, name:'100'},
+      {value:50, name:'50'},
+      {value:10, name:'10'},
+      {value:5, name:'5'},
+      {value:2, name:'2'}
+    ],
+    'machineDropdown': [
+      {value:0, name:'Select'},
+      {value:100, name:'100'},
+      {value:50, name:'50'},
+      {value:10, name:'10'},
+      {value:5, name:'5'},
+      {value:2, name:'2'},
+      {value:1, name:'1'}
+    ],
+    'rackDropdown': [
       {value:0, name:'Select'},
       {value:10, name:'10'},
-      {value:100, name:'100'},
-      {value:1000, name:'1000'}
+      {value:5, name:'5'},
+      {value:2, name:'2'},
+      {value:1, name:'1'}
     ],
     'poolValue':1000,          // Mining payout pool dropdown value
     'contributorValue':100,    // Mining payout Machine or Contributor dropdown value
