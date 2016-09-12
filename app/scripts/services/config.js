@@ -22,30 +22,30 @@ angular.module('coinomiaFrontendApp')
     'ratesSubTitle': 'Offerd by Coinomia as Now',
     'ratesIcon': 'images/dash-cur-rate.png',
     'poolDropdown': [
-      {value:0, name:'Select'},
       {value:1000, name:'1000'},
       {value:100, name:'100'},
       {value:50, name:'50'},
       {value:10, name:'10'},
       {value:5, name:'5'},
       {value:2, name:'2'},
-      {value:1, name:'1'}
+      {value:1, name:'1'},
+      {value:0, name:'0'}
     ],
     'machineDropdown': [
-      {value:0, name:'Select'},
       {value:100, name:'100'},
       {value:50, name:'50'},
       {value:10, name:'10'},
       {value:5, name:'5'},
       {value:2, name:'2'},
-      {value:1, name:'1'}
+      {value:1, name:'1'},
+      {value:0, name:'0'}
     ],
     'rackDropdown': [
-      {value:0, name:'Select'},
       {value:10, name:'10'},
       {value:5, name:'5'},
       {value:2, name:'2'},
-      {value:1, name:'1'}
+      {value:1, name:'1'},
+      {value:0, name:'0'}
     ],
     'poolSelectedValue': 1000,
     'machineSelectedValue': 100,

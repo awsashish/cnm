@@ -22,7 +22,7 @@ describe('Directive: comingSoon', function () {
   }));
 
   it('Should load template', function () {
-     expect(element.find('.coming-soon-wrapper h4').html()).toContain('will be coming soon');
+     expect(element.find('.coming-soon-wrapper h4').html()).toContain('');
   });
 
   it('should have the scope values', function() {
