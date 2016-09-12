@@ -25,7 +25,6 @@ describe('Directive: purchaseTotal', function () {
   });
 
   it('should have the scope values', function() {
-    expect(scope).toBeDefined();
     expect(dscope.purchasedAttr).toEqual(jasmine.any(Object));
     expect(dscope.purchasedParams).toEqual(jasmine.any(Object));
     expect(dscope.totalAttr).toEqual(jasmine.any(Object));

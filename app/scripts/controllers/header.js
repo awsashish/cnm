@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('HeaderCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService) {
+  .controller('HeaderCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService, UtilsService) {
 
       $rootScope.tokenRequestProgress = false;
 
@@ -45,9 +45,17 @@ angular.module('coinomiaFrontendApp')
           $rootScope.name = data.name;
           $scope.country = data.Country;
           $scope.name = $rootScope.name;
+          $scope.getFlag($scope.country);
         }
       });
     }
 
     $scope.getUserDetails();
+
+    // Get Country Flag
+    $scope.getFlag = function(countryName) {
+      UtilsService.getCountryFlag(countryName).then(function(res){
+        $scope.countryFlag = res[0];
+      });
+    }
   });

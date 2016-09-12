@@ -10,12 +10,20 @@ describe('Controller: DashboardCtrl', function () {
       spy,
       coinomiaService,
       coinomiaServiceDeferred,
+      config,
       scope;
 
   var tree = {
     TotalDirect: 5,
     VirtualPairs: 20
   }
+
+  var currentMining = {
+    'btcMining':0.0675,
+    'ethMining':0.0875,
+    'btcUsd':10,
+    'ethUsd':10
+  };
 
   var poolContract = 10;
   var contributorContract = 10;
@@ -36,9 +44,10 @@ describe('Controller: DashboardCtrl', function () {
   }
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, _$state_, _coinomiaService_, _$log_, _$q_) {
+  beforeEach(inject(function ($controller, $rootScope, _$state_, _coinomiaService_, _$log_, _$q_, _config_) {
     $q = _$q_;
     coinomiaService = _coinomiaService_;
+    config = _config_;
 
     scope = $rootScope.$new();
     coinomiaServiceDeferred = $q.defer();
@@ -54,6 +63,18 @@ describe('Controller: DashboardCtrl', function () {
       // place here mocked dependencies
     });
   }));
+
+  it('should be defined constant value', function() {
+    expect(scope.poolContract).toEqual(config.poolSelectedValue);
+    expect(scope.contributorContract).toEqual(config.machineSelectedValue);
+    expect(scope.rackContract).toEqual(config.rackSelectedValue);
+    expect(scope.btcPoolContract).toEqual(config.poolSelectedValue);
+    expect(scope.btcContributorContract).toEqual(config.machineSelectedValue);
+    expect(scope.btcRackContract).toEqual(config.rackSelectedValue);
+    expect(scope.ethPoolContract).toBeDefined();
+    expect(scope.ethContributorContract).toBeDefined();
+    expect(scope.ethRackContract).toBeDefined();
+  })
 
   it('should be defined and call getPurchasePower', function () {
     expect(coinomiaService.getPurchasePower).toHaveBeenCalled();
@@ -90,5 +111,42 @@ describe('Controller: DashboardCtrl', function () {
   it('should be defined and calculate rack commission and binary rack commission', function () {
     scope.rackCalc(tree, rackContract, rackDetails);
     scope.paycheck();
+  });
+
+  it('should be defined and calculate BTC pool mining, contributor mining, rack mining', function () {
+    scope.btcPoolMining(poolContract, poolDetails, currentMining);
+    expect(scope.totalBtcPool).toBeDefined();
+    scope.btcContributorMining(contributorContract, contributorDetails, currentMining);
+    expect(scope.totalBtcContributor).toBeDefined();
+    scope.btcRackMining(rackContract, rackDetails, currentMining);
+    expect(scope.totalBtcRack).toBeDefined();
+    scope.totalBtc();
+  });
+
+  it('should be defined and calculate Eth pool mining, contributor mining, rack mining', function () {
+    scope.ethPoolMining(poolContract, poolDetails, currentMining);
+    expect(scope.totalEthPool).toBeDefined();
+    scope.ethContributorMining(contributorContract, contributorDetails, currentMining);
+    expect(scope.totalEthContributor).toBeDefined();
+    scope.ethRackMining(rackContract, rackDetails, currentMining);
+    expect(scope.totalEthRack).toBeDefined();
+    scope.totalEth();
+  });
+
+  it('should be defined and calculate total BTC value and BTC USD', function() {
+    scope.totalBtc();
+    expect(scope.finalBtc).toBeDefined();
+    expect(scope.finalBtcUsd).toBeDefined();
+  });
+
+  it('should be defined and calculate total ETH value and ETH USD', function() {
+    scope.totalEth();
+    expect(scope.finalEth).toBeDefined();
+    expect(scope.finalEthUsd).toBeDefined();
+  });
+
+  it('should be defined and calculate total estimated income', function() {
+    scope.miningCalculate(scope.finalBtc, scope.finalBtcUsd, scope.finalEth, scope.finalEthUsd);
+    expect(scope.estIncome).toEqual(jasmine.any(Object));
   });
 });

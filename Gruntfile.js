@@ -220,7 +220,7 @@ module.exports = function (grunt) {
             }
           }
       }
-    }, 
+    },
 
     // Renames files for browser caching purposes
     filerev: {
@@ -301,7 +301,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
+          src: ['{,*/}*.{png,jpg,jpeg,gif}', '!flags/**'],
           dest: '<%= yeoman.dist %>/images'
         }]
       }
@@ -380,7 +380,8 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '*.html',
             'images/{,*/}*.{webp}',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'js/{,*/}*.json'
           ]
         }, {
           expand: true,
@@ -399,6 +400,12 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      uncompressedImageFiles: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/images',
+        dest: '<%= yeoman.dist %>/images',
+        src: 'flags/{,*/}*.{png,jpg,jpeg,gif}'
       }
     },
 
@@ -471,7 +478,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'copy:uncompressedImageFiles'
   ]);
 
   grunt.registerTask('default', [
