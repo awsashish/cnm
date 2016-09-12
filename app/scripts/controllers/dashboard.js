@@ -21,6 +21,10 @@ angular.module('coinomiaFrontendApp')
     $scope.contributorContract = config.machineSelectedValue;
     $scope.rackContract = config.rackSelectedValue;
 
+    // Current Rates Mining
+    $scope.machineMining = config.contributorMining;
+    $scope.rackMining = config.rackMining;
+
 
     // Mining Payouts dropdown selected value
     $scope.btcPoolContract = config.poolSelectedValue;
@@ -70,7 +74,9 @@ angular.module('coinomiaFrontendApp')
       $scope.ratesParams = {
         title:config.ratesTitle,
         subTitle:config.ratesSubTitle,
-        iconPath:config.ratesIcon
+        iconPath:config.ratesIcon,
+        machineMining: config.contributorMining,
+        rackMining: config.rackMining
       };
       var miningData = res.data;
       $scope.currentMining = {

@@ -33,8 +33,8 @@
           <h4 class="nomargin font18" >Ether - 5.766 MH/s</h4>
         </div>
         <div class="col-md-6 col-sm-12 top-box-rgt" >
-          <h4 class="nomargin font18 "><strong >{{currentMining.btcMining | number:6}} BTC &asymp; $ {{currentMining.btcUsd | number:6}}</strong></h4>
-          <h4 class="nomargin font18" ><strong >{{currentMining.ethMining | number:6}} ETH &asymp; $ {{currentMining.ethUsd | number:6}}</strong></h4>
+          <h4 class="nomargin font18 "><strong >{{currentMining.btcMining*miningParams.machineMining | number:6}} BTC &asymp; $ {{currentMining.btcUsd*miningParams.machineMining | number:6}}</strong></h4>
+          <h4 class="nomargin font18" ><strong >{{currentMining.ethMining*miningParams.machineMining | number:6}} ETH &asymp; $ {{currentMining.ethUsd*miningParams.machineMining | number:6}}</strong></h4>
         </div>
       </div>
     </div>
@@ -46,8 +46,8 @@
           <h4 class="nomargin font18" >Ether - 57.66 MH/s</h4>
         </div>
         <div class="col-md-6 col-sm-12 top-box-rgt" >
-          <h4 class="nomargin font18 "><strong >{{currentMining.btcMining | number:6}} BTC &asymp; $ {{currentMining.btcUsd | number:6}}</strong></h4>
-          <h4 class="nomargin font18" ><strong >{{currentMining.ethMining | number:6}} ETH &asymp; $ {{currentMining.ethUsd | number:6}}</strong></h4>
+          <h4 class="nomargin font18 "><strong >{{currentMining.btcMining*miningParams.rackMining | number:6}} BTC &asymp; $ {{currentMining.btcUsd*miningParams.rackMining | number:6}}</strong></h4>
+          <h4 class="nomargin font18" ><strong >{{currentMining.ethMining*miningParams.rackMining | number:6}} ETH &asymp; $ {{currentMining.ethUsd*miningParams.rackMining | number:6}}</strong></h4>
         </div>
       </div>
     </div>
