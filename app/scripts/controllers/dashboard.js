@@ -16,16 +16,27 @@ angular.module('coinomiaFrontendApp')
     $scope.contributorDetails = '';
     $scope.rackDetails = '';
 
-    $scope.poolContract = config.poolValue;
-    $scope.contributorContract = config.contributorValue;
-    $scope.rackContract = config.rackValue;
+    // Sales Commission default values
+    $scope.poolContract = config.poolSelectedValue;
+    $scope.contributorContract = config.machineSelectedValue;
+    $scope.rackContract = config.rackSelectedValue;
 
-    $scope.btcPoolContract = config.poolValue;
-    $scope.btcContributorContract = config.contributorValue;
-    $scope.btcRackContract = config.rackValue;
-    $scope.ethPoolContract = config.poolValue;
-    $scope.ethContributorContract = config.contributorValue;
-    $scope.ethRackContract = config.rackValue;
+
+    // Mining Payouts dropdown selected value
+    $scope.btcPoolContract = config.poolSelectedValue;
+    $scope.btcContributorContract = config.machineSelectedValue;
+    $scope.btcRackContract = config.rackSelectedValue;
+    $scope.ethPoolContract = config.poolSelectedValue;
+    $scope.ethContributorContract = config.machineSelectedValue;
+    $scope.ethRackContract = config.rackSelectedValue;
+
+    // TH/s and MH/s values
+    $scope.btcPoolValue = config.btcPoolValue;
+    $scope.btcMachineValue = config.btcMachineValue;
+    $scope.btcRackValue = config.btcRackValue;
+    $scope.ethPoolValue = config.ethPoolValue;
+    $scope.ethMachineValue = config.ethMachineValue;
+    $scope.ethRackValue = config.ethRackValue;
 
     $scope.currentPage = config.currentPage;
     $scope.btcMining = config.btcMining;
@@ -272,7 +283,7 @@ angular.module('coinomiaFrontendApp')
       $scope.finalEthUsd = $scope.ethPoolTotalUsd + $scope.ethContributorTotalUsd + $scope.ethRackTotalUsd;
     }
 
-    $scope.miningCalculate = function(btcValue, btcUsd, ethValue, ethUsd) {
+    $scope.miningCalculate = function(btcValue, btcUsd, ethValue, ethUsd, event) {
       $scope.estIncome = [];
       var dailyUsd = btcUsd + ethUsd;
       var daily = {duration:'Daily', btc:btcValue, eth:ethValue, miningUsd: dailyUsd };

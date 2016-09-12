@@ -85,6 +85,12 @@
                 <h3 align="center" class="yelo-text">Mining Payouts <small class="sm-text01"><strong>Paid in BTC/ETH</strong></small></h3>
                 <div mining-payout
                      pool-options="poolOptions"
+                     btc-pool-value="btcPoolValue"
+                     btc-machine-value="btcMachineValue"
+                     btc-rack-value="btcRackValue"
+                     eth-pool-value="ethPoolValue"
+                     eth-machine-value="ethMachineValue"
+                     eth-rack-value="ethRackValue"
                      machine-options="machineOptions"
                      rack-options="rackOptions"
                      pool-details="poolDetails"
@@ -109,7 +115,7 @@
                      eth-pool-calc="ethPoolMining(desContract, contractValue, mining)"
                      eth-contributor-calc="ethContributorMining(desContract, contractValue, mining)"
                      eth-rack-calc="ethRackMining(desContract, contractValue, mining)"></div>
-                <p align="center"><button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button></p>
+                <p align="center"><button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd, $event)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button></p>
                 <div class="clearfix"></div>
                 <h3 align="center" class="text-title02"><strong>Your Estimated income based on Current <br />
                   Exchange Values of Respective Currencies</strong>

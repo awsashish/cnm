@@ -46,9 +46,15 @@ angular.module('coinomiaFrontendApp')
       {value:2, name:'2'},
       {value:1, name:'1'}
     ],
-    'poolValue':1000,          // Mining payout pool dropdown value
-    'contributorValue':100,    // Mining payout Machine or Contributor dropdown value
-    'rackValue':10,            // Mining payout Rack dropdown value
+    'poolSelectedValue': 1000,
+    'machineSelectedValue': 100,
+    'rackSelectedValue': 10,
+    'btcPoolValue':3,          // Mining payout BTC pool TH/s value
+    'btcMachineValue':30,    // Mining payout BTC Machine or Contributor TH/s value
+    'btcRackValue':300,            // Mining payout BTC Rack TH/s value
+    'ethPoolValue':0.58,          // Mining payout ETH pool MH/s value
+    'ethMachineValue':5.8,    // Mining payout ETH Machine or Contributor MH/s value
+    'ethRackValue':58,            // Mining payout ETH Rack MH/s value
     // 'btcMining':0.5,
     // 'ethMining':0.5,
     'PV':10,

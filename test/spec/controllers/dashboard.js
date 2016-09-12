@@ -65,15 +65,15 @@ describe('Controller: DashboardCtrl', function () {
   }));
 
   it('should be defined constant value', function() {
-    expect(scope.poolContract).toEqual(config.poolValue);
-    expect(scope.contributorContract).toEqual(config.contributorValue);
-    expect(scope.rackContract).toEqual(config.rackValue);
-    expect(scope.btcPoolContract).toEqual(config.poolValue);
-    expect(scope.btcContributorContract).toEqual(config.contributorValue);
-    expect(scope.btcRackContract).toEqual(config.rackValue);
-    expect(scope.ethPoolContract).toEqual(config.poolValue);
-    expect(scope.ethContributorContract).toEqual(config.contributorValue);
-    expect(scope.ethRackContract).toEqual(config.rackValue);
+    expect(scope.poolContract).toEqual(config.poolSelectedValue);
+    expect(scope.contributorContract).toEqual(config.machineSelectedValue);
+    expect(scope.rackContract).toEqual(config.rackSelectedValue);
+    expect(scope.btcPoolContract).toEqual(config.poolSelectedValue);
+    expect(scope.btcContributorContract).toEqual(config.machineSelectedValue);
+    expect(scope.btcRackContract).toEqual(config.rackSelectedValue);
+    expect(scope.ethPoolContract).toEqual(config.poolSelectedValue);
+    expect(scope.ethContributorContract).toEqual(config.machineSelectedValue);
+    expect(scope.ethRackContract).toEqual(config.rackSelectedValue);
   })
 
   it('should be defined and call getPurchasePower', function () {
