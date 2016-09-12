@@ -1,4 +1,4 @@
-# coinomia-frontend
+# coinomia-frontend [![Build Status](https://drone.appfactory.in/api/badges/coinomia/coinomia-frontend/status.svg)](https://drone.appfactory.in/coinomia/coinomia-frontend)
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.15.1.
