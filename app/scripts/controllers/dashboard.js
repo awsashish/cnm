@@ -30,9 +30,9 @@ angular.module('coinomiaFrontendApp')
     $scope.btcPoolContract = config.poolSelectedValue;
     $scope.btcContributorContract = config.machineSelectedValue;
     $scope.btcRackContract = config.rackSelectedValue;
-    $scope.ethPoolContract = config.poolSelectedValue;
-    $scope.ethContributorContract = config.machineSelectedValue;
-    $scope.ethRackContract = config.rackSelectedValue;
+    $scope.ethPoolContract = 0;
+    $scope.ethContributorContract = 0;
+    $scope.ethRackContract = 0;
 
     // TH/s and MH/s values
     $scope.btcPoolValue = config.btcPoolValue;
@@ -280,13 +280,24 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.totalBtc = function () {
-      $scope.finalBtc = $scope.totalBtcPool + $scope.totalBtcContributor + $scope.totalBtcRack;
-      $scope.finalBtcUsd = $scope.btcPoolTotalUsd + $scope.btcContributorTotalUsd + $scope.btcRackTotalUsd;
+      if($scope.totalBtcPool === 0 && $scope.totalBtcContributor === 0 && $scope.totalBtcRack === 0) {
+        $scope.finalBtc = 0;
+        $scope.finalBtcUsd = 0;
+      }else{
+        $scope.finalBtc = $scope.totalBtcPool + $scope.totalBtcContributor + $scope.totalBtcRack;
+        $scope.finalBtcUsd = $scope.btcPoolTotalUsd + $scope.btcContributorTotalUsd + $scope.btcRackTotalUsd;
+      }
     }
 
     $scope.totalEth = function () {
-      $scope.finalEth = $scope.totalEthPool + $scope.totalEthContributor + $scope.totalEthRack;
-      $scope.finalEthUsd = $scope.ethPoolTotalUsd + $scope.ethContributorTotalUsd + $scope.ethRackTotalUsd;
+      if($scope.totalEthPool === 0 && $scope.totalEthContributor === 0 && $scope.totalEthRack === 0) {
+        $scope.finalEth = 0;
+        $scope.finalEthUsd = 0;
+      }else{
+        $scope.finalEth = $scope.totalEthPool + $scope.totalEthContributor + $scope.totalEthRack;
+        $scope.finalEthUsd = $scope.ethPoolTotalUsd + $scope.ethContributorTotalUsd + $scope.ethRackTotalUsd;
+      }
+
     }
 
     $scope.miningCalculate = function(btcValue, btcUsd, ethValue, ethUsd, event) {
@@ -302,6 +313,48 @@ angular.module('coinomiaFrontendApp')
       $scope.estIncome.push(monthly);
       $scope.estIncome.push(annually);
       $scope.estIncome.push(monthly_15);
+    }
+
+    $scope.btcPoolClick = function(value, pool, mining) {
+      $scope.btcPoolContract = config.poolSelectedValue;
+      $scope.ethPoolContract = 0;
+      $scope.ethPoolMining($scope.ethPoolContract, pool, mining);
+      $scope.btcPoolMining($scope.btcPoolContract, pool, mining);
+    }
+
+    $scope.ethPoolClick = function(value, pool, mining) {
+      $scope.ethPoolContract = config.poolSelectedValue;
+      $scope.btcPoolContract = 0;
+      $scope.btcPoolMining($scope.btcPoolContract, pool, mining);
+      $scope.ethPoolMining($scope.ethPoolContract, pool, mining);
+    }
+
+    $scope.btcMachineClick = function(value, contributor, mining) {
+      $scope.btcContributorContract = config.machineSelectedValue
+      $scope.ethContributorContract = 0;
+      $scope.ethContributorMining($scope.ethContributorContract, contributor, mining);
+      $scope.btcContributorMining($scope.btcContributorContract, contributor, mining);
+    }
+
+    $scope.ethMachineClick = function(value, contributor, mining) {
+      $scope.ethContributorContract = config.machineSelectedValue;
+      $scope.btcContributorContract = 0;
+      $scope.btcContributorMining($scope.btcContributorContract, contributor, mining);
+      $scope.ethContributorMining($scope.ethContributorContract, contributor, mining);
+    }
+
+    $scope.btcRackClick = function(value, rack, mining) {
+      $scope.btcRackContract = config.rackSelectedValue;
+      $scope.ethRackContract = 0;
+      $scope.ethRackMining($scope.ethRackContract, rack, mining);
+      $scope.btcRackMining($scope.btcRackContract, rack, mining);
+    }
+
+    $scope.ethRackClick = function(value, rack, mining) {
+      $scope.ethRackContract = config.rackSelectedValue;
+      $scope.btcRackContract = 0;
+      $scope.btcRackMining($scope.btcRackContract, rack, mining);
+      $scope.ethRackMining($scope.ethRackContract, rack, mining);
     }
 
    });
