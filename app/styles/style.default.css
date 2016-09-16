@@ -176,6 +176,10 @@ a:focus {
     color: #A9A9A9;
 }
 
+.mail-box-steps {
+  max-height: 750px;
+}
+
 .custom-breadcrumb {
   margin: -2px 0 0 0 !important;
   font-size: 28px !important;
@@ -207,8 +211,8 @@ a:focus {
 
 .step5 {
   position: relative;
-  top: 50px;
-  width: 440px;
+  top: -100px;
+  width: 500px;
 }
 
 .coming-soon {
