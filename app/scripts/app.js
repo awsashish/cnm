@@ -18,7 +18,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngStorage',
-    'ncy-angular-breadcrumb'
+    'ncy-angular-breadcrumb',
+    'ngCountryStateSelect'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

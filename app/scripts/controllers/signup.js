@@ -74,20 +74,31 @@ angular.module('coinomiaFrontendApp')
     $scope.submit = function() {
       $scope.emailError = '';
       $scope.userIdError = '';
-      $scope.firstNameError = '';
-      $scope.lastNameError = '';
+      $scope.nameError = '';
+      $scope.name = $scope.user.name.split(" ");
       if($scope.terms == true) {
+        // var formData = {
+        //   'sponsor':$scope.user.sponsor,
+        //   'userid':$scope.user.userid,
+        //   'FirstName':$scope.name[0],
+        //   'LastName':$scope.name[1],
+        //   'Address':$scope.user.address,
+        //   'Country':$scope.user.country,
+        //   'State':$scope.user.state,
+        //   'City':$scope.user.city,
+        //   'Pincode':$scope.user.pincode,
+        //   'Mobile':$scope.user.mobile,
+        //   'Email':$scope.user.email,
+        //   'IPAdr':$scope.user.ipadr,
+        //   'Password':$scope.user.password,
+        //   'ConfirmPassword':$scope.user.confirmPassword
+        // };
         var formData = {
           'sponsor':$scope.user.sponsor,
           'userid':$scope.user.userid,
-          'FirstName':$scope.user.firstName,
-          'LastName':$scope.user.lastName,
-          'Address':$scope.user.address,
+          'FirstName':$scope.name[0],
+          'LastName':$scope.name[1],
           'Country':$scope.user.country,
-          'State':$scope.user.state,
-          'City':$scope.user.city,
-          'Pincode':$scope.user.pincode,
-          'Mobile':$scope.user.mobile,
           'Email':$scope.user.email,
           'IPAdr':$scope.user.ipadr,
           'Password':$scope.user.password,
@@ -112,7 +123,7 @@ angular.module('coinomiaFrontendApp')
 
             if(errorMessage['Member.FirstName'] !== undefined) {
               $scope.showme = false;
-              $scope.firstNameError = 'Only alphabets are allowed';
+              $scope.nameError = 'Only alphabets are allowed';
             }
 
             if(errorMessage['Member.LastName'] !== undefined) {
