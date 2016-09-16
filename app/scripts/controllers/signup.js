@@ -13,6 +13,7 @@ angular.module('coinomiaFrontendApp')
     $scope.confrimPassError = false;
     $scope.user = {
       'sponsor': 'coinomia',
+      'sponsorName': 'Company',
       'ipadr': '',
       'country': '',
       'state': '',
@@ -75,6 +76,8 @@ angular.module('coinomiaFrontendApp')
       $scope.emailError = '';
       $scope.userIdError = '';
       $scope.nameError = '';
+      $scope.user.email = $scope.user.email;
+      $scope.user.name = $scope.user.name;
       $scope.name = $scope.user.name.split(" ");
       if($scope.terms == true) {
         // var formData = {
@@ -110,14 +113,13 @@ angular.module('coinomiaFrontendApp')
           var data = res.data;
           if(res.status === 200){
             $scope.signupMessage = data.Message;
-            $state.go('success');
+            angular.element("#coinomia-aweber-signup").submit();
           }else if(res.status === 404) {
               $scope.showme = false;
               $scope.userIdError = data.Message;
           }else if(angular.isObject(data.Messages)) {
             var errorMessage = data.Messages;
             if(errorMessage['Member.Email'] !== undefined) {
-              $scope.showme = true;
               $scope.emailError = data.Messages['Member.Email'][0];
             }
 
