@@ -12,7 +12,8 @@ angular.module('coinomiaFrontendApp')
       restrict: 'E',
       templateUrl: 'views/directiveTemplates/comingSoon.html',
       scope:{
-        textValue: "="
+        textValue: "=",
+        textAttr: "="
       }
     };
   });
