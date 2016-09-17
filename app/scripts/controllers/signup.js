@@ -49,7 +49,7 @@ angular.module('coinomiaFrontendApp')
     $scope.next = function() {
       $scope.confirmPass(function(error) {
         if( error === false ) {
-          $scope.showme = true;
+          $scope.submit();
         }
       })
       // if($scope.signup.sponsor.$valid && $scope.signup.userid.$valid && $scope.signup.firstname.$valid && $scope.signup.password.$valid && $scope.signup.confirmpassword.$valid) {
@@ -107,7 +107,7 @@ angular.module('coinomiaFrontendApp')
           'Password':$scope.user.password,
           'ConfirmPassword':$scope.user.confirmPassword
         };
-        // console.log(formData);
+        console.log(formData);
         $scope.error = false;
         coinomiaService.signup(formData).then(function(res) {
           var data = res.data;
