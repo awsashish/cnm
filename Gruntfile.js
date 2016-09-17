@@ -8,6 +8,8 @@
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
+  // Load protractor runner
+  grunt.loadNpmTasks('grunt-protractor-runner');
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -430,9 +432,40 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    protractor: {
+      options: {
+        configFile: 'protractor.conf.js', //your protractor config file
+        keepAlive: true, // If false, the grunt process stops when the test fails.
+        noColor: false, // If true, protractor will not use colors in its output.
+        args: {
+            // Arguments passed to the command
+        }
+      },
+      chrome: {
+        options: {
+          args: {
+              browser: 'chrome'
+          }
+        }
+      },
+      safari: {
+        options: {
+          args: {
+              browser: 'safari'
+          }
+        }
+      },
+      firefox: {
+        options: {
+          args: {
+              browser: 'firefox'
+          }
+        }
+      }
     }
   });
-
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -488,4 +521,16 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('protractor-chrome', [
+    'protractor:chrome'
+  ]);
+
+  grunt.registerTask('protractor-safari', [
+    'protractor:safari'
+  ]);
+
+  grunt.registerTask('protractor-firefox', [
+    'protractor:firefox'
+  ]); 
 };
