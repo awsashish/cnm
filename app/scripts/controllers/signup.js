@@ -107,7 +107,6 @@ angular.module('coinomiaFrontendApp')
           'Password':$scope.user.password,
           'ConfirmPassword':$scope.user.confirmPassword
         };
-        console.log(formData);
         $scope.error = false;
         coinomiaService.signup(formData).then(function(res) {
           var data = res.data;

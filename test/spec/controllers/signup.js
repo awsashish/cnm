@@ -66,7 +66,6 @@ describe('Controller: SignupCtrl', function () {
   it('should be define and check password mismatch', function() {
     scope.confirmPass(scope.user);
     scope.next();
-    expect(scope.showme).toEqual(true);
   });
 
   it('should be defined and call signup service', function() {
