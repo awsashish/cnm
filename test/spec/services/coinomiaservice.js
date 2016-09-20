@@ -357,7 +357,7 @@ describe('service coinomiaService', function() {
   // Get User Profile Test
   describe('user profile function', function() {
     it('should exist', function() {
-      expect(coinomiaService.userInfo).not.toEqual(null);
+      expect(coinomiaService.getUserInfo).not.toEqual(null);
     });
 
     it('should returns records succesfully', function() {

@@ -12,8 +12,8 @@
         <!-- media -->
       </div>
       <!-- pageheader -->
-      <coming-soon text-attr="landingPages"></coming-soon>
-      <div class="contentpanel content-opacity">
+      <!-- <coming-soon text-attr="landingPages"></coming-soon> -->
+      <div class="contentpanel">
         <div  style="min-height:700px;">
           <div class="col-md-12 nomargin nopadding">
             <h2 class="mb35"><i class="fa fa-link  icon-lg border-round" aria-hidden="true" style="padding-top:10px; padding-left:10px;"></i> <strong>My Referal Links</strong></h2>
@@ -32,21 +32,13 @@
                     <td><strong class="white-color">Action</strong></td>
                   </tr>
                 </thead>
-                <tr >
-                  <td>01</td>
-                  <td><strong>Coinomia Landing Page title01</strong> </td>
-                  <td>Coinomia Prelaunch Title01<br />
-                    <small class="red-text02">http://www.nbbnlgf.com/?49283ksdjskfjh3298/sdfjsdk/opooewrpwe</small>
+                <tr ng-repeat="referral in landingPages">
+                  <td>{{$index+1}}</td>
+                  <td><strong>{{referral.Title}}</strong> </td>
+                  <td>{{referral.Title}}<br />
+                    <small class="red-text02">{{referral.path}}{{sponsorId}}</small>
                   </td>
                   <td><button type="button" class="btn btn-warning">Default Page</button>	</td>
-                </tr>
-                <tr >
-                  <td>02</td>
-                  <td><strong>Coinomia Landing Page title02</strong> </td>
-                  <td>Coinomia Prelaunch Title02<br />
-                    <small class="red-text02">http://www.sdfsdjk.com/?49283ksdjskfjh3298/sdfjsdk/ewurewi</small>
-                  </td>
-                  <td><button type="button" class="btn btn-warning disabled ">Default Page</button>	</td>
                 </tr>
               </table>
             </div>
