@@ -300,6 +300,24 @@ angular.module('coinomiaFrontendApp')
         .catch(defaultSponsorRequestFailed);
     }
 
+    // Verify Sponsor
+    this.verifySponsor = function(sponsorId) {
+      // On Success
+      function verfiySponsorRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function verfiySponsorRequestFailed(error) {
+        $log.error('XHR Failed for Verify Sponsor.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'utilities/verify-sponsor', sponsorId)
+        .then(verfiySponsorRequestComplete)
+        .catch(verfiySponsorRequestFailed);
+    }
+
     // Refresh Token Process
     this.getRefreshToken = function(data) {
 

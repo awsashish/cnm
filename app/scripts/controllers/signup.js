@@ -8,12 +8,12 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('SignupCtrl', function ($scope, coinomiaService, $window, $timeout, $state) {
+  .controller('SignupCtrl', function ($scope, coinomiaService, $window, $timeout, $state, $location, $cookies) {
 
     $scope.confrimPassError = false;
     $scope.user = {
-      'sponsor': 'coinomia',
-      'sponsorName': 'Company',
+      'sponsor': '',
+      'sponsorName': '',
       'ipadr': '',
       'country': '',
       'state': '',
@@ -23,6 +23,42 @@ angular.module('coinomiaFrontendApp')
     // Authenticate User
     if(coinomiaService.isAuthenticated()){
       $state.go('dashboard');
+    }
+
+    $scope.verifySponsor = function(sponsorId) {
+      coinomiaService.verifySponsor(sponsorId).then(function(res) {
+        var data = res.data;
+        if(res.status === 200) {
+          $scope.user.sponsor = data.username;
+          $scope.user.sponsorName = data.name;
+          var expiryDate = moment().add(90, 'days').toISOString();
+          $cookies.put('sponsorId', $scope.user.sponsor, {expires:expiryDate});
+          $cookies.put('sponsorName', $scope.user.sponsorName, {expires:expiryDate});
+        }else{
+          $scope.defaultSponsor();
+        }
+      });
+    }
+
+    $scope.defaultSponsor = function() {
+      coinomiaService.getDefaultSponsor().then(function(res) {
+        var data = res.data;
+        if(res.status === 200) {
+          $scope.user.sponsor = data.Memberid;
+          $scope.user.sponsorName = data.MemberName;
+        }
+      })
+    }
+
+    if($location.search().id) {
+      var sponsorInfo = $location.search();
+      var sponsorId = JSON.stringify(sponsorInfo.id);
+      $scope.verifySponsor(sponsorId);
+    }else if($cookies.get('sponsorId')){
+      $scope.user.sponsor = $cookies.get('sponsorId');
+      $scope.user.sponsorName = $cookies.get('sponsorName');
+    }else{
+      $scope.defaultSponsor();
     }
 
     coinomiaService.getUserLocation().then(function(res) {
