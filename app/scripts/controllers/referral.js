@@ -8,21 +8,19 @@
  * Controller of the coinomiaFrontendApp
  */
  angular.module('coinomiaFrontendApp')
-   .controller('ReferralCtrl', function ($scope, $window, $cookies, $state, coinomiaService) {
-
+   .controller('ReferralCtrl', function ($scope, $rootScope, $window, $cookies, $state, coinomiaService) {
     //  Get Landing pages and referral links
     coinomiaService.getLandingPages().then(function(res) {
       var data = res.data;
       if( res.status === 200) {
         $scope.totalRecords = data.total;
-        //$scope.landingPages = [];
-        var refferalHtml = "<p>This page will be coming soon.<br /><br />For now your referral links are: <br /><br />";
+        var sponsorId = $rootScope.sponsorId;
+        $scope.landingPages = [];
         data.rows.forEach(function(item) {
-            refferalHtml += "<a href='" + item.path + "'" + "title='" + item.Title + "'>"
-                         + item.path + "</a><br /><br />";
+          var path = item.path;
+          item.path = path+'?id=';
+          $scope.landingPages.push(item)
         });
-        refferalHtml += "</p>";
-        $scope.landingPages = refferalHtml;
       }
     });
    });

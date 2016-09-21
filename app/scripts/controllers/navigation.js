@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-.controller('NavCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService) {
+.controller('NavCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService, UtilsService) {
 
  //  Logged out User
  $scope.logout = function() {
@@ -17,7 +17,7 @@ angular.module('coinomiaFrontendApp')
      $cookies.remove('token');
      $state.go('login');
    }
- }
+ } 
 
  $rootScope.$on('logout', function() {
    $scope.logout();

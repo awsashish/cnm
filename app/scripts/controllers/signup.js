@@ -8,11 +8,12 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('SignupCtrl', function ($scope, coinomiaService, $window, $timeout, $state) {
+  .controller('SignupCtrl', function ($scope, coinomiaService, $window, $timeout, $state, $location, $cookies) {
 
     $scope.confrimPassError = false;
     $scope.user = {
-      'sponsor': 'coinomia',
+      'sponsor': '',
+      'sponsorName': '',
       'ipadr': '',
       'country': '',
       'state': '',
@@ -22,6 +23,42 @@ angular.module('coinomiaFrontendApp')
     // Authenticate User
     if(coinomiaService.isAuthenticated()){
       $state.go('dashboard');
+    }
+
+    $scope.verifySponsor = function(sponsorId) {
+      coinomiaService.verifySponsor(sponsorId).then(function(res) {
+        var data = res.data;
+        if(res.status === 200) {
+          $scope.user.sponsor = data.username;
+          $scope.user.sponsorName = data.name;
+          var expiryDate = moment().add(90, 'days').toISOString();
+          $cookies.put('sponsorId', $scope.user.sponsor, {expires:expiryDate});
+          $cookies.put('sponsorName', $scope.user.sponsorName, {expires:expiryDate});
+        }else{
+          $scope.defaultSponsor();
+        }
+      });
+    }
+
+    $scope.defaultSponsor = function() {
+      coinomiaService.getDefaultSponsor().then(function(res) {
+        var data = res.data;
+        if(res.status === 200) {
+          $scope.user.sponsor = data.Memberid;
+          $scope.user.sponsorName = data.MemberName;
+        }
+      })
+    }
+
+    if($location.search().id) {
+      var sponsorInfo = $location.search();
+      var sponsorId = JSON.stringify(sponsorInfo.id);
+      $scope.verifySponsor(sponsorId);
+    }else if($cookies.get('sponsorId')){
+      $scope.user.sponsor = $cookies.get('sponsorId');
+      $scope.user.sponsorName = $cookies.get('sponsorName');
+    }else{
+      $scope.defaultSponsor();
     }
 
     coinomiaService.getUserLocation().then(function(res) {
@@ -48,7 +85,7 @@ angular.module('coinomiaFrontendApp')
     $scope.next = function() {
       $scope.confirmPass(function(error) {
         if( error === false ) {
-          $scope.showme = true;
+          $scope.submit();
         }
       })
       // if($scope.signup.sponsor.$valid && $scope.signup.userid.$valid && $scope.signup.firstname.$valid && $scope.signup.password.$valid && $scope.signup.confirmpassword.$valid) {
@@ -74,45 +111,56 @@ angular.module('coinomiaFrontendApp')
     $scope.submit = function() {
       $scope.emailError = '';
       $scope.userIdError = '';
-      $scope.firstNameError = '';
-      $scope.lastNameError = '';
+      $scope.nameError = '';
+      $scope.user.email = $scope.user.email;
+      $scope.user.name = $scope.user.name;
+      $scope.name = $scope.user.name.split(" ");
       if($scope.terms == true) {
+        // var formData = {
+        //   'sponsor':$scope.user.sponsor,
+        //   'userid':$scope.user.userid,
+        //   'FirstName':$scope.name[0],
+        //   'LastName':$scope.name[1],
+        //   'Address':$scope.user.address,
+        //   'Country':$scope.user.country,
+        //   'State':$scope.user.state,
+        //   'City':$scope.user.city,
+        //   'Pincode':$scope.user.pincode,
+        //   'Mobile':$scope.user.mobile,
+        //   'Email':$scope.user.email,
+        //   'IPAdr':$scope.user.ipadr,
+        //   'Password':$scope.user.password,
+        //   'ConfirmPassword':$scope.user.confirmPassword
+        // };
         var formData = {
           'sponsor':$scope.user.sponsor,
           'userid':$scope.user.userid,
-          'FirstName':$scope.user.firstName,
-          'LastName':$scope.user.lastName,
-          'Address':$scope.user.address,
+          'FirstName':$scope.name[0],
+          'LastName':$scope.name[1],
           'Country':$scope.user.country,
-          'State':$scope.user.state,
-          'City':$scope.user.city,
-          'Pincode':$scope.user.pincode,
-          'Mobile':$scope.user.mobile,
           'Email':$scope.user.email,
           'IPAdr':$scope.user.ipadr,
           'Password':$scope.user.password,
           'ConfirmPassword':$scope.user.confirmPassword
         };
-        // console.log(formData);
         $scope.error = false;
         coinomiaService.signup(formData).then(function(res) {
           var data = res.data;
           if(res.status === 200){
             $scope.signupMessage = data.Message;
-            $state.go('success');
+            angular.element("#coinomia-aweber-signup").submit();
           }else if(res.status === 404) {
               $scope.showme = false;
               $scope.userIdError = data.Message;
           }else if(angular.isObject(data.Messages)) {
             var errorMessage = data.Messages;
             if(errorMessage['Member.Email'] !== undefined) {
-              $scope.showme = true;
               $scope.emailError = data.Messages['Member.Email'][0];
             }
 
             if(errorMessage['Member.FirstName'] !== undefined) {
               $scope.showme = false;
-              $scope.firstNameError = 'Only alphabets are allowed';
+              $scope.nameError = 'Only alphabets are allowed';
             }
 
             if(errorMessage['Member.LastName'] !== undefined) {

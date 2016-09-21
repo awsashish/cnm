@@ -1,23 +1,24 @@
 <section>
   <div class="panel panel-signup">
-    <form name="signup" ng-submit="submit()" novalidate>
-      <div class="panel-body" ng-hide="showme">
+    <form name="signup" ng-submit="next()" novalidate>
+      <div class="panel-body">
         <div class="logo text-center">
           <img src="images/logo-coinomia.png" alt="Coinomia" >
         </div>
         <br />
         <h4 class="text-center mb5">Create a new account</h4>
         <p class="text-center">Please enter your credentials below</p>
+        <div class="alert alert-danger fade in error-padding text-center no-arrow" ng-show="error" style="positive:relative;">{{signupMessage}}</div>
         <div class="mb30"></div>
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-6">
             <label>Sponsor ID</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-chain"></i></span>
               <input type="text"
                      name="sponsor"
                      class="form-control"
-                     placeholder="coinomia"
+                     placeholder="{{user.sponsor}}"
                      disabled
                      required />
 
@@ -29,15 +30,30 @@
             <div class="alert alert-danger fade in error-padding" ng-if="sponsorError">{{sponsorError}}</div>
             <!-- input-group -->
           </div>
-          <div class="col-sm-12">
-            <label>User ID</label><br>
+          <div class="col-sm-6">
+            <label>Sponsor Name</label><br>
+            <div class="input-group mb15">
+              <span class="input-group-addon"><i class="fa fa-chain"></i></span>
+              <input type="text"
+                     name="sponsor"
+                     class="form-control"
+                     placeholder="{{user.sponsorName}}"
+                     disabled
+                     required />
+
+            </div>
+            <div class="alert alert-danger fade in error-padding" ng-if="sponsorError">{{sponsorError}}</div>
+            <!-- input-group -->
+          </div>
+          <div class="col-sm-6">
+            <label>Desired User ID</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-chain"></i></span>
               <input type="text"
                      name="userid"
                      ng-model="user.userid"
-                     class="form-control"
-                     placeholder="coinomia"
+                     class="form-control userid"
+                     placeholder="Create a Username"
                      ng-minlength=4
                      ng-maxlength=20
                      ng-pattern="/^[a-zA-Z0-9]+$/"
@@ -57,59 +73,75 @@
             <!-- input-group -->
           </div>
         </div>
+        <div class="col-sm-6">
+          <label>Name</label><br>
+          <div class="input-group mb15">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input type="text"
+                   name="name"
+                   ng-model="user.name"
+                   class="form-control"
+                   placeholder="Name"
+                   ng-maxlength="20"
+                   ng-pattern="/^[a-zA-Z ]+$/"
+                   required />
+          </div>
+          <div class="alert alert-danger fade in error-padding"
+             ng-show="signup.name.$touched && signup.name.$invalid && !signup.name.$error.pattern && !signup.name.$error.maxlength">
+             Name is required.</div>
+          <div class="alert alert-danger fade in error-padding"
+             ng-show="signup.name.$touched && signup.name.$error.pattern && !signup.name.$error.maxlength">
+             Only alphabets are allowed.</div>
+
+           <div class="alert alert-danger fade in error-padding"
+              ng-show="signup.name.$touched && signup.name.$invalid && signup.name.$error.maxlength">
+              Maximum 15 characters are allowed.</div>
+
+          <div class="alert alert-danger fade in error-padding" ng-show="!signup.name.$error.pattern && firstNameError">{{nameError}}</div>
+          <!-- input-group -->
+        </div>
+        <!-- row -->
         <div class="row no-margin">
           <div class="col-sm-6">
+            <label>Email</label><br>
             <div class="input-group mb15">
-              <span class="input-group-addon"><i class="fa fa-user"></i></span>
-              <input type="text"
-                     name="firstname"
-                     ng-model="user.firstName"
+              <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+              <input type="email"
+                     name="email"
+                     ng-model="user.email"
                      class="form-control"
-                     placeholder="First Name"
-                     ng-maxlength="15"
-                     ng-pattern="/^[a-zA-Z]+$/"
+                     placeholder="Enter your Email"
+                     ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i"
                      required />
             </div>
+            <!--  ng-pattern ="/^[a-z]+([a-z0-9._-](\+{0,1}))+@[a-z]+\.[a-z.]{2,6}$/i" -->
             <div class="alert alert-danger fade in error-padding"
-               ng-show="signup.firstname.$touched && signup.firstname.$invalid && !signup.firstname.$error.pattern && !signup.firstname.$error.maxlength">
-               First name is required.</div>
+               ng-show="signup.email.$touched && signup.email.$invalid && !signup.email.$error.pattern">
+               Email is required</div>
+            <!-- Email Validation    -->
             <div class="alert alert-danger fade in error-padding"
-               ng-show="signup.firstname.$touched && signup.firstname.$error.pattern && !signup.firstname.$error.maxlength">
-               Only alphabets are allowed.</div>
+               ng-show="signup.email.$error.pattern && signup.email.$touched">
+               Please enter a valid email address.</div>
 
-             <div class="alert alert-danger fade in error-padding"
-                ng-show="signup.firstname.$touched && signup.firstname.$invalid && signup.firstname.$error.maxlength">
-                Maximum 15 characters are allowed.</div>
-
-            <div class="alert alert-danger fade in error-padding" ng-show="!signup.firstname.$error.pattern && firstNameError">{{firstNameError}}</div>
+            <div class="alert alert-danger fade in error-padding" ng-if="emailError">{{emailError}}</div>
             <!-- input-group -->
           </div>
           <div class="col-sm-6">
+            <label>Country</label><br>
             <div class="input-group mb15">
-              <span class="input-group-addon"><i class="fa fa-user"></i></span>
-              <input type="text"
-                     name="lastname"
-                     ng-model="user.lastName"
+              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+              <div ng-model="user.country" country-select></div>
+              <!-- <input type="text"
+                     name="country"
                      class="form-control"
-                     ng-maxlength="15"
-                     ng-pattern="/^[a-zA-Z]+$/"
-                     placeholder="Last Name"
-                     required />
+                     placeholder="{{user.country}}"
+                     disabled
+                     required /> -->
             </div>
-
-            <div class="alert alert-danger fade in error-padding"
-               ng-show="signup.lastname.$touched && signup.lastname.$error.pattern && !signup.lastname.$error.maxlength">
-               Only alphabets are allowed.</div>
-
-            <div class="alert alert-danger fade in error-padding"
-               ng-show="signup.lastname.$touched && signup.lastname.$invalid && signup.lastname.$error.maxlength">
-               Maximum 15 characters are allowed.</div>
-
-            <div class="alert alert-danger fade in error-padding" ng-show="!signup.lastname.$error.pattern && lastNameError">{{lastNameError}}</div>
+            <!-- <p class="validation-error" ng-show="signup.country.$touched && signup.country.$invalid">Country is required</p> -->
             <!-- input-group -->
           </div>
         </div>
-        <!-- row -->
         <div class="row no-margin">
           <div class="col-sm-6">
             <div class="input-group mb15">
@@ -156,131 +188,6 @@
         <!-- row -->
         <br />
         <div class="clearfix">
-          <div class="pull-right">
-            <button type="button"
-                    ng-click="next()"
-                    class="btn btn-success"
-                    ng-disabled="signup.firstname.$error.pattern || signup.lastname.$error.pattern || signup.password.$error.required || signup.sponsor.$error.required || signup.userid.$error.required || signup.firstname.$error.required || confirmPassError">Next <i class="fa fa-arrow-circle-o-right"></i> </button></a>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div class="panel-body" ng-show="showme">
-        <div class="logo text-center">
-          <img src="images/logo-coinomia.png" alt="Coinomia" >
-        </div>
-        <br />
-        <h4 class="text-center mb5">Create a new account</h4>
-        <p class="text-center">Please enter your credentials below</p>
-        <div class="alert alert-danger fade in error-padding text-center no-arrow" ng-show="error">{{signupMessage}}</div>
-        <div class="mb30"></div>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="input-group mb15">
-              <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-              <input type="number"
-                     name="mobile"
-                     ng-model="user.mobile"
-                     class="form-control"
-                     placeholder="Enter your Mobile Number"
-                     required />
-            </div>
-            <div class="alert alert-danger fade in error-padding"
-               ng-show="signup.mobile.$touched && signup.mobile.$invalid">
-               Mobile number is required</div>
-            <!-- input-group -->
-          </div>
-          <div class="col-sm-6">
-            <div class="input-group mb15">
-              <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-              <input type="email"
-                     name="email"
-                     ng-model="user.email"
-                     class="form-control"
-                     placeholder="Enter your Email"
-                     ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i"
-                     required />
-            </div>
-            <!--  ng-pattern ="/^[a-z]+([a-z0-9._-](\+{0,1}))+@[a-z]+\.[a-z.]{2,6}$/i" -->
-            <div class="alert alert-danger fade in error-padding"
-               ng-show="signup.email.$touched && signup.email.$invalid && !signup.email.$error.pattern">
-               Email is required</div>
-            <!-- Email Validation    -->
-            <div class="alert alert-danger fade in error-padding"
-               ng-show="signup.email.$error.pattern && signup.email.$touched">
-               Please enter a valid email address.</div>
-
-            <div class="alert alert-danger fade in error-padding" ng-if="emailError">{{emailError}}</div>
-            <!-- input-group -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="input-group mb15">
-              <span class="input-group-addon"><i class="fa fa-map"></i></span>
-              <textarea  ng-model="user.address"  class="form-control" placeholder="Full Address"></textarea>
-            </div>
-            <!-- input-group -->
-          </div>
-        </div>
-        <!-- row -->
-        <div class="row">
-          <div class="col-sm-6">
-            <label>Country</label><br>
-            <div class="input-group mb15">
-              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-              <input type="text"
-                     name="country"
-                     class="form-control"
-                     placeholder="{{user.country}}"
-                     disabled
-                     required />
-            </div>
-            <!-- <p class="validation-error" ng-show="signup.country.$touched && signup.country.$invalid">Country is required</p> -->
-            <!-- input-group -->
-          </div>
-          <div class="col-sm-6">
-            <label>State</label><br>
-            <div class="input-group mb15">
-              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-              <input type="text"
-                     name="state"
-                     class="form-control"
-                     placeholder="{{user.state}}"
-                     disabled
-                     required />
-              </select>
-            </div>
-            <!-- input-group -->
-          </div>
-        </div>
-        <!-- row -->
-        <div class="row">
-          <div class="col-sm-6">
-            <label>City</label><br>
-            <div class="input-group mb15">
-              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-              <input type="text"
-                     name="city"
-                     class="form-control"
-                     placeholder="{{user.city}}"
-                     disabled
-                     required />
-            </div>
-            <!-- input-group -->
-          </div>
-          <div class="col-sm-6">
-            <label>Pin/Zip</label><br>
-            <div class="input-group mb15">
-              <span class="input-group-addon"><i class="fa fa-cog"></i></span>
-              <input type="text"  name="pincode" ng-model="user.pincode"  class="form-control" placeholder="Enter your zip" required>
-            </div>
-            <div class="alert alert-danger fade in error-padding" ng-show="signup.pincode.$touched && signup.pincode.$invalid">Pin/Zip is required</div>
-            <!-- input-group -->
-          </div>
-        </div>
-        <br>
-        <div class="clearfix">
           <div class="pull-left">
             <div class="ckbox ckbox-primary ">
               <input type="checkbox" id="agree" name="terms" ng-model="terms" value="1" ng-click="accept()"><label for="agree" >I agree with <a href="#/terms-and-conditions" target=_blank><strong>Terms and Conditions</strong></a></label>
@@ -288,19 +195,55 @@
             <div class="alert alert-danger fade in error-padding" ng-if="termsError">{{termsError}}</div>
           </div>
           <div class="pull-right">
-            <span ng-click="showme=false" style="cursor:pointer;"> <i class="fa fa-angle-left ml5"></i> Back</span>
             <button type="submit" class="btn btn-success" ng-disabled="signup.$invalid">
-              Create New Account <i class="fa fa-angle-right ml5"></i></button>
+              Lets Start Mining <i class="fa fa-angle-right ml5"></i></button>
           </div>
         </div>
       </div>
+    </div>
       <!-- panel-body -->
     </form>
+
+
     <!-- <div class="panel-footer">
       <a href="#/" class="btn btn-primary btn-block">Already a Member? Sign In</a>
     </div> -->
     <!-- panel-footer -->
   </div>
+
+<!-- Aweber Integration -->
+<form method="post" class="af-form-wrapper" id="coinomia-aweber-signup" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl" ng-hide="true">
+   <div style="display: none;"> <input type="hidden" name="meta_web_form_id" value="1112671389" /> <input type="hidden" name="meta_split_id" value="" /> <input type="hidden" name="listname" value="awlist4422156" /> <input type="hidden" name="redirect" value="https://www.aweber.com/thankyou.htm?m=default" id="redirect_425252e0adc67031a9d8954659616b78" />
+      <input type="hidden" name="meta_adtracking" value="My_Web_Form" />
+      <input type="hidden" name="meta_message" value="1" />
+      <input type="hidden" name="meta_required" value="name,email" />
+      <input type="hidden" name="meta_tooltip" value="" />
+   </div>
+   <div id="af-form-1112671389" class="af-form">
+      <div id="af-body-1112671389" class="af-body af-standards">
+         <div class="af-element">
+            <label class="previewLabel" for="awf_field-85730968">Name: </label>
+            <div class="af-textWrap">
+            <input id="awf_field-85730968" type="text" name="name" class="text" value="{{user.name}}" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " tabindex="500" /> </div>
+            <div class="af-clear"></div>
+         </div>
+         <div class="af-element">
+            <label class="previewLabel" for="awf_field-85730969">Email: </label>
+            <div class="af-textWrap">
+            <input class="text" id="awf_field-85730969" type="text" name="email" value="{{user.email}}" tabindex="501" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " /> </div>
+            <div class="af-clear"></div>
+         </div>
+         <div class="af-element buttonContainer">
+            <input name="submit" id="af-submit-image-1112671389" type="image" class="image" style="background: none; max-width: 100%;" alt="Submit Form" src="http://aweber.com/images/forms/plain/buttons/grey.png" tabindex="502" />
+            <div class="af-clear"></div>
+         </div>
+      </div>
+   </div>
+   <div style="display: none;"><img src="https://forms.aweber.com/form/displays.htm?id=jIyMTGzsjMwcnA==" alt="" /></div>
+</form>
+<!-- Aweber Integration -->
+
+
   <!-- panel -->
 </section>
 <!-- <script language="javascript">

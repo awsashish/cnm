@@ -13,7 +13,6 @@ angular.module('coinomiaFrontendApp')
       $rootScope.tokenRequestProgress = false;
 
       $rootScope.$on('getRefreshToken', function() {
-
         if($localStorage.refresh_token && !$cookies.get('token') && !$rootScope.tokenRequestProgress) {
           $rootScope.tokenRequestProgress = true;
           var refreshTokenParams = {
@@ -21,21 +20,21 @@ angular.module('coinomiaFrontendApp')
             'refresh_token': $localStorage.refresh_token
           }
 
-          coinomiaService.getRefreshToken(refreshTokenParams).then(function(res) {
-            var data = res.data;
-            if(res.status === 200) {
-              $localStorage.$reset();
-              $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
-              $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
-            }else{
-              $rootScope.$broadcast('logout');
-            }
-            $rootScope.tokenRequestProgress = false;
-          });
-        }else if(!$localStorage.refresh_token){
-          $rootScope.$broadcast('logout');
-        }
-      });
+        coinomiaService.getRefreshToken(refreshTokenParams).then(function(res) {
+          var data = res.data;
+          if(res.status === 200) {
+            $localStorage.$reset();
+            $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
+            $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
+          }else{
+            $rootScope.$broadcast('logout');
+          }
+          $rootScope.tokenRequestProgress = false;
+        });
+      }else if(!$localStorage.refresh_token){
+        $rootScope.$broadcast('logout');
+      }
+    });
 
     //Get User Info
     $scope.getUserDetails = function() {
@@ -43,16 +42,15 @@ angular.module('coinomiaFrontendApp')
         var data = res.data;
         if(res.status === 200){
           $rootScope.name = data.name;
-          $scope.country = data.Country;
-          $scope.name = $rootScope.name;
-          $scope.getFlag($scope.country);
+          $rootScope.sponsorId = data.username;
+          $rootScope.country = data.Country;
+          $scope.getFlag($rootScope.country);
         }
       });
     }
 
     $scope.getUserDetails();
 
-    // Get Country Flag
     $scope.getFlag = function(countryName) {
       UtilsService.getCountryFlag(countryName).then(function(res){
         $scope.countryFlag = res[0];

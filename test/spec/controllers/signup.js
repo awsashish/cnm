@@ -35,21 +35,19 @@ describe('Controller: SignupCtrl', function () {
     });
 
     scope.user = {
+      'name': 'Some Name',
       'NewPassword': '123456a',
       'ConfirmPassword': '123456a'
     };
 
+    scope.name = scope.user.name.split(" ");
+
     signUpData = {
       'sponsor':scope.user.sponsor,
       'userid':scope.user.userid,
-      'FirstName':scope.user.firstName,
-      'LastName':scope.user.lastName,
-      'Address':scope.user.address,
+      'FirstName':scope.name[0],
+      'LastName':scope.name[1],
       'Country':scope.user.country,
-      'State':scope.user.state,
-      'City':scope.user.city,
-      'Pincode':scope.user.pincode,
-      'Mobile':scope.user.mobile,
       'Email':scope.user.email,
       'IPAdr':scope.user.ipadr,
       'Password':scope.user.password,
@@ -68,12 +66,12 @@ describe('Controller: SignupCtrl', function () {
   it('should be define and check password mismatch', function() {
     scope.confirmPass(scope.user);
     scope.next();
-    expect(scope.showme).toEqual(true);
   });
 
   it('should be defined and call signup service', function() {
     scope.terms = true;
     scope.submit();
+    expect(scope.user.name).toBeDefined();
     expect(scope.error).toEqual(false);
     expect(coinomiaService.signup).toHaveBeenCalledWith(signUpData);
   });

@@ -17,6 +17,8 @@ describe('service coinomiaService', function() {
       'grant_type':'password'
     };
 
+    var sponsorId = JSON.stringify("coinomia");
+
     // Refresh Token Data
     var refreshToken = 'some-value';
 
@@ -357,7 +359,7 @@ describe('service coinomiaService', function() {
   // Get User Profile Test
   describe('user profile function', function() {
     it('should exist', function() {
-      expect(coinomiaService.userInfo).not.toEqual(null);
+      expect(coinomiaService.getUserInfo).not.toEqual(null);
     });
 
     it('should returns records succesfully', function() {
@@ -638,6 +640,36 @@ describe('service coinomiaService', function() {
       .expect('GET', coinomiaService.apiHost + 'utilities/default-sponsor')
       .respond(500, 'Internal Server Error.');
       coinomiaService.getDefaultSponsor();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Verify Sponsor
+  describe('verify sponsor function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.verifySponsor).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'utilities/verify-sponsor', sponsorId)
+      .respond(200, {'username':'sponsor-id', 'name':'some-name'});
+      var data;
+      coinomiaService.verifySponsor(sponsorId).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.username).toEqual('sponsor-id');
+      expect(data.name).toEqual('some-name');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'utilities/verify-sponsor', sponsorId)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.verifySponsor(sponsorId);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });

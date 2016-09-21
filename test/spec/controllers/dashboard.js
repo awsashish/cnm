@@ -133,6 +133,34 @@ describe('Controller: DashboardCtrl', function () {
     scope.totalEth();
   });
 
+  it('should be switch to particular currency(BTC or ETH) on click', function() {
+    // Pool Mining Switch
+    expect(scope.btcPoolContract).toEqual(config.poolSelectedValue);
+    scope.btcPoolClick(poolContract, poolDetails, currentMining);
+    scope.ethPoolClick(poolContract, poolDetails, currentMining);
+    expect(scope.ethPoolContract).toEqual(config.poolSelectedValue);
+    scope.ethPoolMining(poolContract, poolDetails, currentMining);
+    scope.btcPoolMining(poolContract, poolDetails, currentMining);
+
+
+
+    // Machine Mining Switch
+    expect(scope.btcContributorContract).toEqual(config.machineSelectedValue);
+    scope.btcMachineClick(contributorContract, poolDetails, currentMining);
+    scope.ethMachineClick(contributorContract, poolDetails, currentMining);
+    expect(scope.ethContributorContract).toEqual(config.machineSelectedValue);
+    scope.ethContributorMining(contributorContract, poolDetails, currentMining);
+    scope.btcContributorMining(contributorContract, poolDetails, currentMining);
+
+    // Ether Mining Switch
+    expect(scope.btcRackContract).toEqual(config.rackSelectedValue);
+    scope.btcRackClick(rackContract, contributorDetails, currentMining);
+    scope.ethRackClick(rackContract, contributorDetails, currentMining);
+    expect(scope.ethRackContract).toEqual(config.rackSelectedValue);
+    scope.ethRackMining(rackContract, rackDetails, currentMining);
+    scope.btcRackMining(rackContract, rackDetails, currentMining);
+  })
+
   it('should be defined and calculate total BTC value and BTC USD', function() {
     scope.totalBtc();
     expect(scope.finalBtc).toBeDefined();

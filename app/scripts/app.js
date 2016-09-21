@@ -18,7 +18,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngStorage',
-    'ncy-angular-breadcrumb'
+    'ncy-angular-breadcrumb',
+    'ngCountryStateSelect'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -50,7 +51,7 @@ angular
       }
     };
   })
-  .run(function ($rootScope, $state, coinomiaService, $timeout, $localStorage) {
+  .run(function ($rootScope, $state, coinomiaService, UtilsService, $timeout, $localStorage) {
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
       if (toState.authenticate && !coinomiaService.isAuthenticated()) {
         $state.go('login');
