@@ -18,6 +18,14 @@ angular.module('coinomiaFrontendApp')
         authenticate: false
     })
 
+    // Forogt password page
+    .state('forgot-password', {
+        url: '/forgot-password',
+        templateUrl: 'views/forgot-password.html',
+        controller: 'ForgotpasswordCtrl',
+        authenticate: false
+    })
+
     // Sign up page
     .state('signup', {
         url: '/signup',
