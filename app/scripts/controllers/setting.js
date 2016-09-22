@@ -10,19 +10,6 @@
 angular.module('coinomiaFrontendApp')
   .controller('SettingCtrl', function ($scope, coinomiaService, $state, $timeout) {
 
-    // Get User Profile
-    $scope.getUserProfile = function() {
-      coinomiaService.getUserInfo()
-        .then(function(res) {
-          var data = res.data;
-          if(res.status === 200) {
-            $scope.userInfo = data;
-          }
-        });
-    }
-
-    $scope.getUserProfile();
-
     $scope.confirmPass = function(callback) {
       if($scope.user.NewPassword !== $scope.user.ConfirmPassword) {
         $scope.confirmPassError = true;

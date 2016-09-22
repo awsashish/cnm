@@ -41,6 +41,7 @@ angular.module('coinomiaFrontendApp')
       coinomiaService.getUserInfo().then(function(res) {
         var data = res.data;
         if(res.status === 200){
+          $rootScope.userInfo = data;
           $rootScope.name = data.name;
           $rootScope.sponsorId = data.username;
           $rootScope.country = data.Country;
