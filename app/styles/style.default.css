@@ -142,6 +142,10 @@ a:focus {
   z-index: 9999;
 }
 
+select {
+  line-height: 33px !important;
+}
+
 .content-opacity{
   opacity: 0.1;
 }

@@ -6,18 +6,26 @@ describe('Controller: ForgotpasswordCtrl', function () {
   beforeEach(module('coinomiaFrontendApp'));
 
   var ForgotpasswordCtrl,
-    scope;
+      $q,
+      scope
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, _$state_, _$log_, _$q_) {
+    $q = _$q_;
+
     scope = $rootScope.$new();
+
     ForgotpasswordCtrl = $controller('ForgotpasswordCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(ForgotpasswordCtrl.awesomeThings.length).toBe(3);
+  it('should check email errors', function () {
+    expect(scope.emailError).toEqual(false);
+  });
+
+  it('should call submit function', function() {
+    scope.submit();
   });
 });
