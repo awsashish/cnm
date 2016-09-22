@@ -15,8 +15,11 @@ angular.module('coinomiaFrontendApp')
         treeDetails: "=",
         binaryDetails: "=",
         poolContract: "=",
+        binaryPoolContract: "=",
         contributorContract: "=",
+        binaryContributorContract: "=",
         rackContract: "=",
+        binaryRackContract: "=",
         contributorTotal: "=",
         binaryContributorTotal: "=",
         poolTotal: "=",
@@ -27,8 +30,11 @@ angular.module('coinomiaFrontendApp')
         contributorDetails: "=",
         rackDetails: "=",
         poolCalc: "&",
+        binaryPoolCalc: "&",
         contributorCalc: "&",
-        rackCalc: "&"
+        binaryContributorCalc: "&",
+        rackCalc: "&",
+        binaryRackCalc: "&"
       }
     };
   });

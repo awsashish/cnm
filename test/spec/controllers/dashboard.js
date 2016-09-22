@@ -103,13 +103,28 @@ describe('Controller: DashboardCtrl', function () {
     scope.paycheck();
   });
 
+  it('should be defined and calculate binary pool commission', function () {
+    scope.binaryPoolCalc(tree, poolContract, poolDetails);
+    scope.paycheck();
+  });
+
   it('should be defined and calculate contributor commission and binary contributor commission', function () {
     scope.contributorCalc(tree, contributorContract, contributorDetails);
     scope.paycheck();
   });
 
+  it('should be defined and calculate binary contributor commission', function () {
+    scope.binaryContributorCalc(tree, contributorContract, contributorDetails);
+    scope.paycheck();
+  });
+
   it('should be defined and calculate rack commission and binary rack commission', function () {
     scope.rackCalc(tree, rackContract, rackDetails);
+    scope.paycheck();
+  });
+
+  it('should be defined and calculate binary rack commission', function () {
+    scope.binaryRackCalc(tree, rackContract, rackDetails);
     scope.paycheck();
   });
 
