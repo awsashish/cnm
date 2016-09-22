@@ -19,8 +19,11 @@ describe('Directive: salesCommission', function () {
                                                     " contributor-details='{object}'" +
                                                     " rack-details='{object}'" +
                                                     " pool-contract='some-value'" +
+                                                    " binary-pool-contract='some-value'" +
                                                     " contributor-contract='some-value'" +
+                                                    " binary-contributor-contract='some-value'" +
                                                     " rack-contract='some-value'" +
+                                                    " binary-rack-contract='some-value'" +
                                                     " pool-total='some-value'" +
                                                     " contributor-total='some-value'" +
                                                     " rack-total='some-value'"+
@@ -48,8 +51,11 @@ describe('Directive: salesCommission', function () {
     expect(dscope.rackDetails).toEqual(jasmine.any(Object));
     expect(dscope.binaryDetails).toBeDefined();
     expect(dscope.poolContract).toBeDefined();
+    expect(dscope.poolContract).toBeDefined();
     expect(dscope.contributorContract).toBeDefined();
+    expect(dscope.binaryContributorContract).toBeDefined();
     expect(dscope.rackContract).toBeDefined();
+    expect(dscope.binaryRackContract).toBeDefined();
     expect(dscope.poolTotal).toBeDefined();
     expect(dscope.contributorTotal).toBeDefined();
     expect(dscope.rackTotal).toBeDefined();

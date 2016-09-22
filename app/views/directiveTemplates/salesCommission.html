@@ -7,12 +7,13 @@
   </div>
   <div class="col-md-9 col-sm-12">
     <div class="table-responsive">
-      <table class="table table01">
+      <!-- Direct Sales Commission -->
+      <table class="table table01" ng-if="!binaryDetails">
         <tr>
           <td width="20%"><img src="images/contract-bitcoin.png" title="Pool Contract" width="50" /></td>
           <td width="30%"><input class="sm-txtbox" type="text" ng-model="poolContract" ng-change="poolCalc({treeData:treeDetails, contract:poolContract, poolData:poolDetails})" placeholder="1000" /> Contracts</td>
           <td width="50%">
-            <h4 class="pad20"><strong>&asymp; ${{(binaryDetails?binaryPoolTotal:poolTotal) | number:2}}</strong></h4>
+            <h4 class="pad20"><strong>&asymp; ${{poolTotal | number:2}}</strong></h4>
           </td>
         </tr>
         <tr>
@@ -27,6 +28,30 @@
           <td><input class="sm-txtbox" type="text" ng-model="rackContract" ng-change="rackCalc({treeData:treeDetails, contract:rackContract, rackData:rackDetails})" placeholder="10" /> Contracts</td>
           <td>
             <h4 class="pad20"><strong>&asymp; ${{(binaryDetails?binaryRackTotal:rackTotal) | number:2}}</strong></h4>
+          </td>
+        </tr>
+      </table>
+      <!-- Binary Sales Commission -->
+      <table class="table table01" ng-if="binaryDetails">
+        <tr>
+          <td width="20%"><img src="images/contract-bitcoin.png" title="Pool Contract" width="50" /></td>
+          <td width="30%"><input class="sm-txtbox" type="text" ng-model="binaryPoolContract" ng-change="binaryPoolCalc({treeData:treeDetails, contract:binaryPoolContract, poolData:poolDetails})" placeholder="1000" /> Contracts</td>
+          <td width="50%">
+            <h4 class="pad20"><strong>&asymp; ${{binaryPoolTotal | number:2}}</strong></h4>
+          </td>
+        </tr>
+        <tr>
+          <td><img src="images/contributor.png" width="50" title="Machine Contract" /></td>
+          <td><input class="sm-txtbox" type="text" ng-model="binaryContributorContract" ng-change="binaryContributorCalc({treeData:treeDetails, contract:binaryContributorContract, contributorData:contributorDetails})" placeholder="100" /> Contracts</td>
+          <td>
+            <h4 class="pad20"><strong>&asymp; ${{binaryContributorTotal | number:2}}</strong></h4>
+          </td>
+        </tr>
+        <tr>
+          <td><img src="images/RACK.png" title="Rack Contract" width="50" /></td>
+          <td><input class="sm-txtbox" type="text" ng-model="binaryRackContract" ng-change="binaryRackCalc({treeData:treeDetails, contract:binaryRackContract, rackData:rackDetails})" placeholder="10" /> Contracts</td>
+          <td>
+            <h4 class="pad20"><strong>&asymp; ${{binaryRackTotal | number:2}}</strong></h4>
           </td>
         </tr>
       </table>
