@@ -10,6 +10,22 @@
 angular.module('coinomiaFrontendApp')
   .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService, UtilsService, $filter, config) {
 
+    $scope.data = {
+      "2016-09-10": {"number": 500, "url": "#"},
+      "2016-09-11": {"number": 600, "url": "#"},
+      "2016-09-12":{"number": 1200, "url": "#"},
+      "2016-08-15": {},
+      "2016-09-15": {}
+    };
+
+    $scope.company = {
+      "2016-09-10": {"number": 1000, "url": "#"},
+      "2016-09-11": {"number": 800, "url": "#"},
+      "2016-09-12":{"number": 1500, "url": "#"},
+      "2016-08-15": {},
+      "2016-09-15": {}
+    };
+
     $scope.packagesDetails = [];
     $scope.treeDetails = '';
     $scope.poolDetails = '';

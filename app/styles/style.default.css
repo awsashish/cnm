@@ -628,9 +628,8 @@ select {
     margin: 0 1px 0 0;
     font-size: 12px;
     font-weight: 500;
-   # border-top: 1px solid #e7e7e7;
     position: relative;
-	text-align:center;
+	  text-align:center;
 }
 
 .leftpanel .nav > li.active {
@@ -3489,7 +3488,7 @@ body.signin {
 .height200 { height: 200px; }
 .height300 { height: 300px; }
 .width100p { width: 100%; }
-.width300 {  : 300px; }
+.width300 {  width: 300px; }
 
 .text-black { color: #000; }
 
@@ -4051,7 +4050,6 @@ hr.style {
     border: 0;
     border-bottom: 1px dashed #ccc;
     background: #999;
-}
 }
 
 .small-text01{ font-size:14px !important;}
@@ -4816,8 +4814,12 @@ a:hover div.box-outer{border-bottom:3px solid #ccc;}
 
 .email-sample {
 	position: relative;
-	background: url(../images/bg-email-sample.png) no-repeat right bottom; #fbfbfb; border:1px solid #ccc;
-	border-radius:10px; padding:20px; box-shadow:0px 0px 2px 2px #f2f2f2; margin-bottom:20px; margin-left:30px;
+	background: url('../images/bg-email-sample.png') no-repeat right bottom;
+  border:1px solid #ccc;
+	border-radius:10px; padding:20px;
+  box-shadow:0px 0px 2px 2px #f2f2f2;
+  margin-bottom:20px;
+  margin-left:30px;
 }
 
 .email-sample strong{ background:#f2f2f2; color: #000; padding:5px;}
