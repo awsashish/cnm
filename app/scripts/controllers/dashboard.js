@@ -140,8 +140,6 @@ angular.module('coinomiaFrontendApp')
       }
     });
 
-    console.log();
-
     // Get Products
     coinomiaService.getProducts()
     .then(function(res) {

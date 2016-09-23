@@ -58,6 +58,7 @@ describe('Controller: DashboardCtrl', function () {
     spyOn(coinomiaService, 'getProducts').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'getPackages').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'getVirtualTree').and.returnValue(coinomiaServiceDeferred.promise);
+    spyOn(coinomiaService, 'getTeamCalendar').and.returnValue(coinomiaServiceDeferred.promise);
     DashboardCtrl = $controller('DashboardCtrl', {
       $scope: scope
       // place here mocked dependencies
@@ -96,6 +97,10 @@ describe('Controller: DashboardCtrl', function () {
     expect(coinomiaService.getVirtualTree).toHaveBeenCalled();
     scope.userPackages();
     expect(coinomiaService.getPackages).toHaveBeenCalled();
+  });
+
+  it('should be defined and call getTeamCalendar', function () {
+    expect(coinomiaService.getTeamCalendar).toHaveBeenCalled();
   });
 
   it('should be defined and calculate pool commission and binary pool commission', function () {
