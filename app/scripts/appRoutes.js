@@ -121,6 +121,21 @@ angular.module('coinomiaFrontendApp')
     })
 
     // My Account
+    .state('promote-coinomia', {
+      url: '/promote-coinomia',
+      templateUrl: 'views/promote-coinomia.html',
+      controller: 'PromotecoinomiaCtrl',
+      authenticate: true
+    })
+
+    .state('promote-coinomia-tab', {
+      url: '/promote-coinomia/:tabId',
+      templateUrl: 'views/promote-coinomia.html',
+      controller: 'PromotecoinomiaCtrl',
+      authenticate: true
+    })
+
+    // My Account
     .state('setting', {
       url: '/setting',
       templateUrl: 'views/setting.html',
