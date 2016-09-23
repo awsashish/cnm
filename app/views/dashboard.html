@@ -34,7 +34,7 @@
               </div>
               <div class="tab-content" style="padding:10px 10px 0px; margin-bottom:20px; ">
                 <div class="tab-pane tab_default_4 active">
-                  <ui-calendar data="data"></ui-calendar>
+                  <ui-calendar data="myTeam" ng-if="hasMyTeamData"></ui-calendar>
                 </div>
                 <div class="tab-pane tab_default_5">
                   <ui-calendar data="company"></ui-calendar>

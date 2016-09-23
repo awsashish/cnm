@@ -370,4 +370,22 @@ angular.module('coinomiaFrontendApp')
         .then(getVirtualTreeRequestComplete)
         .catch(getVirtualTreeRequestFailed);
     }
+
+    // Get User Team
+    this.getTeamCalendar = function() {
+      // On Success
+      function getTeamRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getTeamRequestFailed(error) {
+        $log.error('XHR Failed for User Team.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/team-calendar')
+        .then(getTeamRequestComplete)
+        .catch(getTeamRequestFailed);
+    }
   });

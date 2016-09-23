@@ -10,21 +10,10 @@
 angular.module('coinomiaFrontendApp')
   .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService, UtilsService, $filter, config) {
 
-    $scope.data = {
-      "2016-09-10": {"number": 500, "url": "#"},
-      "2016-09-11": {"number": 600, "url": "#"},
-      "2016-09-12":{"number": 1200, "url": "#"},
-      "2016-08-15": {},
-      "2016-09-15": {}
-    };
-
     $scope.company = {
-      "2016-09-10": {"number": 1000, "url": "#"},
-      "2016-09-11": {"number": 800, "url": "#"},
-      "2016-09-12":{"number": 1500, "url": "#"},
-      "2016-08-15": {},
-      "2016-09-15": {}
-    };
+      "2016-09-20":{"number":7,"url":"#"},
+      "2016-09-22":{"number":10,"url":"#"}
+    }
 
     $scope.packagesDetails = [];
     $scope.treeDetails = '';
@@ -110,7 +99,6 @@ angular.module('coinomiaFrontendApp')
             $scope.currentMining.ethMining = mining.current_mining;
             $scope.currentMining.ethUsd = mining.USDPrice;
           }
-
         });
       }
     });
@@ -133,6 +121,26 @@ angular.module('coinomiaFrontendApp')
         });
       }
     });
+
+    // Get User Team
+    $scope.myTeam = {};
+    $scope.hasMyTeamData = false;
+    coinomiaService.getTeamCalendar()
+    .then(function(res) {
+      var teamData = res.data;
+      if(res.status === 200) {
+        teamData.forEach(function(user) {
+          var day = user.day.split('-').reverse().join('-');
+          $scope.myTeam[day] = {
+            "number": parseInt(user.total),
+            "url": "#"
+          };
+        });
+        $scope.hasMyTeamData = true;
+      }
+    });
+
+    console.log();
 
     // Get Products
     coinomiaService.getProducts()
