@@ -15,7 +15,7 @@ angular.module('coinomiaFrontendApp')
         'data': '='
       },
       link: function(scope, elem, attrs) {
-        $(elem.get(0)).responsiveCalendar({
+        $(elem).responsiveCalendar({
           events: scope.data
         });
       }
