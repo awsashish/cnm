@@ -25,6 +25,11 @@ angular.module('coinomiaFrontendApp')
     $scope.contributorDetails = '';
     $scope.rackDetails = '';
 
+    $scope.salesDirectHeading = config.salesDirectHeading;
+    $scope.salesDirectImage = config.salesDirectImage;
+    $scope.salesBinaryHeading = config.salesBinaryHeading;
+    $scope.salesBinaryImage = config.salesBinaryImage;
+
     // Sales Commission default values
     $scope.poolContract = config.poolSelectedValue;
     $scope.contributorContract = config.machineSelectedValue;

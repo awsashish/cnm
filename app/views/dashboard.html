@@ -83,7 +83,10 @@
                 <h3 align="center" class="yelo-text">Sales Commissions <small class="sm-text01"><strong>Considering you Rack Buyers</strong></small></h3>
                 <br />
                 <!-- Direct Sales Commission -->
-                <div sales-commission tree-details="treeDetails"
+                <div sales-commission commission="'direct'"
+                  tree-details="treeDetails"
+                  sales-Heading="salesDirectHeading"
+                  sales-image-path="salesDirectImage"
                   pool-details="poolDetails"
                   contributor-details="contributorDetails"
                   rack-details="rackDetails"
@@ -98,7 +101,10 @@
                   rack-calc="rackCalc(treeData, contract, rackData)" ng-if="hasDirectReferral"></div>
                 <br />
                 <!-- Binary Sales Commission -->
-                <div sales-commission binary-details="binaryUsers"
+                <div sales-commission commission="'binary'"
+                  binary-details="binaryUsers"
+                  sales-Heading="salesBinaryHeading"
+                  sales-image-path="salesBinaryImage"
                   tree-details="treeDetails"
                   pool-details="poolDetails"
                   contributor-details="contributorDetails"
