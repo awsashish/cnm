@@ -15,6 +15,10 @@ angular.module('coinomiaFrontendApp')
       "2016-09-22":{"number":10,"url":"#"}
     }
 
+
+    $scope.hasDirectReferral = false;
+    $scope.hasBinaryReferral = false;
+
     $scope.packagesDetails = [];
     $scope.treeDetails = '';
     $scope.poolDetails = '';
@@ -163,8 +167,10 @@ angular.module('coinomiaFrontendApp')
       var virtualData = res.data;
       if(res.status === 200) {
         $scope.treeDetails = virtualData;
+        $scope.hasDirectReferral = true;
         $scope.binaryUsers = virtualData.LeftTotal + virtualData.RightTotal;
         $scope.userPackages();
+        $scope.hasBinaryReferral = true;
       }
     })
 

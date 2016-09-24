@@ -1,9 +1,8 @@
 <p align="center" class="grey-bg" ng-if="!binaryDetails">Direct Referral Commission For - <a class="red-text02"> {{treeDetails.TotalDirect}} Users</a></p>
 <p align="center" class="grey-bg" ng-if="binaryDetails">Binary Commission For -  <a href="#" class="red-text02">{{binaryDetails}} Users</a> and <a href="#" class="red-text02">{{treeDetails.VirtualPairs}} Pairs</a> </p>
-<div class="row ">
 <div class="row">
   <div class="col-md-3 col-sm-12">
-    <h5 align="center" class=" arrow_box "><img src="{{binaryDetails?'images/team-ref.png':'images/direct-ref.png'}}" width="70" /><br /><strong>If all your Direct Buy</strong></h5>
+    <h5 align="center" class=" arrow_box "><img src="{{binaryDetails?'images/team-ref.png':'images/direct-ref.png'}}" width="70" /><br /><strong>{{binaryDetails?'If all your Team Buy':'If all your Direct Buy'}}</strong></h5>
   </div>
   <div class="col-md-9 col-sm-12">
     <div class="table-responsive">

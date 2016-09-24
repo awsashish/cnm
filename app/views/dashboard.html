@@ -95,7 +95,7 @@
                   rack-total="rackTotal"
                   pool-calc="poolCalc(treeData, contract, poolData)"
                   contributor-calc="contributorCalc(treeData, contract, contributorData)"
-                  rack-calc="rackCalc(treeData, contract, rackData)"></div>
+                  rack-calc="rackCalc(treeData, contract, rackData)" ng-if="hasDirectReferral"></div>
                 <br />
                 <!-- Binary Sales Commission -->
                 <div sales-commission binary-details="binaryUsers"
@@ -111,7 +111,7 @@
                   binary-rack-total="binaryRackTotal"
                   binary-pool-calc="binaryPoolCalc(treeData, contract, poolData)"
                   binary-contributor-calc="binaryContributorCalc(treeData, contract, contributorData)"
-                  binary-rack-calc="binaryRackCalc(treeData, contract, rackData)"></div>
+                  binary-rack-calc="binaryRackCalc(treeData, contract, rackData)" ng-if="hasBinaryReferral"></div>
                 <h3 align="center"><strong>Your Estimated Paycheck
                   on Launch Day</strong>
                 </h3>
