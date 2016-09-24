@@ -158,6 +158,11 @@ select {
   border-radius: 0;
 }
 
+#nav a.highlite {
+  background-color: #ffd803;
+  display: block;
+}
+
 .no-arrow:before {
     content: '';
     border: 0;
