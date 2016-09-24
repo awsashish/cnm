@@ -66,5 +66,9 @@ angular.module('coinomiaFrontendApp')
     'DAYS_IN_A_YEAR':365,
     'DAYS_IN_A_WEEK':7,
     'DAYS_IN_A_15_MONTHLY':456,
-
+    'activeTab':'grab-concept',
+    'salesDirectImage':'images/direct-ref.png',
+    'salesBinaryImage':'images/team-ref.png',
+    'salesDirectHeading':'If all your Direct Buy',
+    'salesBinaryHeading':'If all your Team Buy'
   });

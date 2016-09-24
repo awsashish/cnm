@@ -10,11 +10,25 @@
 angular.module('coinomiaFrontendApp')
   .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService, UtilsService, $filter, config) {
 
+    $scope.company = {
+      "2016-09-20":{"number":7,"url":"#"},
+      "2016-09-22":{"number":10,"url":"#"}
+    }
+
+
+    $scope.hasDirectReferral = false;
+    $scope.hasBinaryReferral = false;
+
     $scope.packagesDetails = [];
     $scope.treeDetails = '';
     $scope.poolDetails = '';
     $scope.contributorDetails = '';
     $scope.rackDetails = '';
+
+    $scope.salesDirectHeading = config.salesDirectHeading;
+    $scope.salesDirectImage = config.salesDirectImage;
+    $scope.salesBinaryHeading = config.salesBinaryHeading;
+    $scope.salesBinaryImage = config.salesBinaryImage;
 
     // Sales Commission default values
     $scope.poolContract = config.poolSelectedValue;
@@ -94,7 +108,6 @@ angular.module('coinomiaFrontendApp')
             $scope.currentMining.ethMining = mining.current_mining;
             $scope.currentMining.ethUsd = mining.USDPrice;
           }
-
         });
       }
     });
@@ -115,6 +128,24 @@ angular.module('coinomiaFrontendApp')
             $scope.totalIncome.push(income);
           }
         });
+      }
+    });
+
+    // Get User Team
+    $scope.myTeam = {};
+    $scope.hasMyTeamData = false;
+    coinomiaService.getTeamCalendar()
+    .then(function(res) {
+      var teamData = res.data;
+      if(res.status === 200) {
+        teamData.forEach(function(user) {
+          var day = user.day.split('-').reverse().join('-');
+          $scope.myTeam[day] = {
+            "number": parseInt(user.total),
+            "url": "#"
+          };
+        });
+        $scope.hasMyTeamData = true;
       }
     });
 
@@ -141,8 +172,10 @@ angular.module('coinomiaFrontendApp')
       var virtualData = res.data;
       if(res.status === 200) {
         $scope.treeDetails = virtualData;
+        $scope.hasDirectReferral = true;
         $scope.binaryUsers = virtualData.LeftTotal + virtualData.RightTotal;
         $scope.userPackages();
+        $scope.hasBinaryReferral = true;
       }
     })
 

@@ -130,6 +130,7 @@
             <label>Country</label><br>
             <div class="input-group mb15">
               <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+              <i class="fa fa-sort select" aria-hidden="true"></i>
               <div ng-model="user.country" country-select></div>
               <!-- <input type="text"
                      name="country"
@@ -213,7 +214,12 @@
 
 <!-- Aweber Integration -->
 <form method="post" class="af-form-wrapper" id="coinomia-aweber-signup" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl" ng-hide="true">
-   <div style="display: none;"> <input type="hidden" name="meta_web_form_id" value="1112671389" /> <input type="hidden" name="meta_split_id" value="" /> <input type="hidden" name="listname" value="awlist4422156" /> <input type="hidden" name="redirect" value="http://login.coinomia.com/#/success" id="redirect_425252e0adc67031a9d8954659616b78" />
+   <div style="display: none;">
+     <input type="hidden" name="meta_web_form_id" value="1112671389" />
+     <input type="hidden" name="meta_split_id" value="" />
+     <input type="hidden" name="listname" value="awlist4422156" />
+     <input type="hidden" name="redirect" value="http://login.coinomia.com/#/success" id="redirect_425252e0adc67031a9d8954659616b78" />
+
       <input type="hidden" name="meta_adtracking" value="My_Web_Form" />
       <input type="hidden" name="meta_message" value="1" />
       <input type="hidden" name="meta_required" value="name,email" />
@@ -224,13 +230,15 @@
          <div class="af-element">
             <label class="previewLabel" for="awf_field-85730968">Name: </label>
             <div class="af-textWrap">
-            <input id="awf_field-85730968" type="text" name="name" class="text" value="{{user.name}}" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " tabindex="500" /> </div>
+              <input id="awf_field-85730968" type="text" name="name" class="text" value="{{user.name}}" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " tabindex="500" />
+            </div>
             <div class="af-clear"></div>
          </div>
          <div class="af-element">
             <label class="previewLabel" for="awf_field-85730969">Email: </label>
             <div class="af-textWrap">
-            <input class="text" id="awf_field-85730969" type="text" name="email" value="{{user.email}}" tabindex="501" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " /> </div>
+              <input class="text" id="awf_field-85730969" type="text" name="email" value="{{user.email}}" tabindex="501" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " />
+            </div>
             <div class="af-clear"></div>
          </div>
          <div class="af-element buttonContainer">

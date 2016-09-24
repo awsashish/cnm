@@ -44,9 +44,6 @@ URL: http://themepixels.com/
 
 /********** 1. IMPORTS **********/
 /********************************/
-
-/********** 2. RESET STYLES **********/
-/*************************************/
 body {
     font-size: 13px;
     color: #636E7B;
@@ -142,8 +139,15 @@ a:focus {
   z-index: 9999;
 }
 
+.select {
+  position: absolute;
+  z-index: 9;
+  top: 12px;
+  right: 6px;
+}
+
 select {
-  line-height: 33px !important;
+  -webkit-appearance: none;
 }
 
 .content-opacity{
@@ -152,6 +156,11 @@ select {
 
 .no-radius {
   border-radius: 0;
+}
+
+#nav a.highlite {
+  background-color: #ffd803;
+  display: block;
 }
 
 .no-arrow:before {
@@ -624,9 +633,8 @@ select {
     margin: 0 1px 0 0;
     font-size: 12px;
     font-weight: 500;
-   /*border-top: 1px solid #e7e7e7;*/
     position: relative;
-	text-align:center;
+	  text-align:center;
 }
 
 .leftpanel .nav > li.active {
@@ -3462,7 +3470,6 @@ body.signin {
 .mb32{ margin-bottom: 10px; font-size:25px !important; font-family: 'Oswald', sans-serif; border-bottom:5px solid #f2f2f2; padding-bottom:10px !important; color: #fff; border-radius:30px; background: #39f; padding:15px; text-align:center;  }
 .mb33{  font-size:35px !important; font-family: 'Oswald', sans-serif; color:#ffd803;  }
 .mb35{ font-size:25px !important; font-family: 'Oswald', sans-serif; margin:0px !important; padding:0px !important; }
-
 .mb37{font-size:30px !important; margin-bottom:70px; width:30%; margin:auto;  font-family: 'Oswald', sans-serif; border-bottom:5px solid #fc0;  padding-bottom:10px !important; color: #999; text-transform:uppercase;  }
 .mb38{  font-size:20px !important; font-family: 'Oswald', sans-serif; color:#ffd803; }
 
@@ -3900,10 +3907,7 @@ border:none !important;
 .ui-slider .ui-slider-handle label{
     background: #428bca;
     border-radius: 20px;
-    width:5.2em;
-    color:#fff !important;
-    z-index: 999999;
-    margin: 0;
+    width:5.2em; color:#fff !important;
 }
 
 .ui-slider .ui-slider-handle {
@@ -4060,6 +4064,12 @@ hr.style {
 .icon-lg{ font-size:30px !important; color:#ffd803 !important; text-align:center !important;}
 label{ font-size:14px;}
 
+
+
+
+
+
+
 .price-box {
 	margin: 0 auto;
 	margin-bottom:20px;
@@ -4074,7 +4084,6 @@ label{ font-size:14px;}
 	background: #e1e1e1;
 	color: #222222;
 	margin-top: 4px;
-  padding: 1px 0;
 }
 .panel-footer{ padding:5px !important;}
 .ui-slider .ui-slider-handle {
@@ -4672,10 +4681,10 @@ right connector from last child*/
 }
 
 /*Time for some hover effects*/
-/*We will apply the hover effect the the lineage of the element also*/
+/*We will apply the hover effect the the lineage of the element also
 .tree li a:hover, .tree li a:hover+ul li a {
     background: #cbcbcb; color: #000;
-}
+}*/
 /*Connector styles on hover*/
 .tree li a:hover+ul li::after,
 .tree li a:hover+ul li::before,
@@ -4687,4 +4696,167 @@ right connector from last child*/
 .contact-heading-tab{background: #d9534f !important; color:#fff !important ; font-size:18px !important; font-weight:bold !important;}
 .white-btn{background:#fff !important; border:1px solid #ccc !important;}
 
+
+
+
+
+
+.stickytooltip{
+box-shadow: 5px 5px 8px #818181; /*shadow for CSS3 capable browsers.*/
+-webkit-box-shadow: 5px 5px 8px #818181;
+-moz-box-shadow: 5px 5px 8px #818181;
+display:none;
+position:absolute;
+display:none;
+border:5px solid black; /*Border around tooltip*/
+background:white;
+z-index:3000;
+}
+
+.stickytooltip table td{ background: #d9534f; color:#fff; font-size:11px;}
+
+.stickytooltip table td{ padding:5px; }
+
+.stickytooltip .stickystatus{ /*Style for footer bar within tooltip*/
+background:black;
+color:white;
+padding-top:5px;
+text-align:center;
+font:bold 11px Arial;
+}
+
 .yelo-btn{background:#FC0 !important; border:1px solid #D0C535 !important; color:#000 !important;}
+.copy-btn{background:#fff; color:#000; font-size:12px; padding:4px; border:1px solid #000; border-bottom:2px solid #000; border-radius:3px; margin-top:-3px;}
+
+.lg-icon{ font-size:22px; padding-top:5px;}
+.round-cor{border:5px solid #fff; border-radius:15px;}
+.btn-default1{ border:1px solid #ccc; width:24%; margin-right:1%;}
+.btn-default1:active, .btn-default1.active, .open > .dropdown-toggle.btn-default1{ border:1px solid #ccc !important; background:#FC0;}
+.form-signup-reffer{background:#fbfbfb; border-radius:10px; padding:20px;}
+
+.form-signup-reffer-outer{box-shadow:0px 0px 2px 2px #f2f2f2; padding:20px;}
+.tabel-box{border-bottom:2px solid #ccc; background:#fbfbfb;}
+
+.red-text08{ font-size:20px; color:#C30; margin:0px; padding:10px;}
+.total-amount{ background:#666; font-size:20px; padding:10px 20px; display:inline-block; border-radius:30px; color:#fff;}
+.box-gry{clear:left; background:#fbfbfb; font-weight:bold; border-bottom:2px solid #ccc; border-top:1px solid #e2e2e2; padding:10px; margin-top:50px;}
+
+
+
+
+
+/*********************************** Calender *****************************************/
+
+.responsive-calendar .controls {
+  text-align: center;
+}
+.responsive-calendar .controls a {
+  cursor: pointer;
+}
+.responsive-calendar .controls h4 {
+  display: inline;
+}
+.responsive-calendar .day-headers,
+.responsive-calendar .days {
+  font-size: 0;
+}
+.responsive-calendar .day {
+  display: inline-block;
+  position: relative;
+  font-size: 12px;
+  width: 14.285714285714286%;
+  text-align: center; border-left:1px solid #f5f5f5; border-bottom:1px solid #f2f2f2;
+}
+.responsive-calendar .day a {
+  color: #000000;
+  display: block;
+  cursor: pointer;
+  padding: 5% 0 5% 0;
+}
+.responsive-calendar .day a:hover {
+  background-color: #eee;
+  text-decoration: none;
+}
+.responsive-calendar .day.header {
+ background:#f2f2f2; font-size:16px; padding:5px; color:#666 !important;
+}
+.responsive-calendar .day.active a {
+  background-color: #fbfbfb;
+  color: #000;
+}
+.responsive-calendar .day.active a:hover {
+  background-color: #fbfbfb;
+}
+.responsive-calendar .day.active .not-current {
+  background-color: #8fcaef;
+  color: #ffffff;
+}
+.responsive-calendar .day.active .not-current:hover {
+  background-color: #bcdff5;
+}
+.responsive-calendar .day.not-current a {
+  color: #ddd;
+}
+.responsive-calendar .day .badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 1; background:#d9534f !important;
+}
+
+
+
+/*********************************** Calender *****************************************/
+
+a div.box-outer{ border:1px solid #e2e2e2; color:#333 !important; font-family: 'Oswald', sans-serif; text-transform:uppercase; margin-bottom:18px; padding:0px 0px; font-size:18px; border-radius:5px; box-shadow:0px 0px 2px 2px #f5f5f5; border-bottom:3px solid #e2e2e2;  background:#fbfbfb;}
+a:hover div.box-outer{border-bottom:3px solid #ccc;}
+.btn-red{ background: #FC0; border-bottom:2px solid #C90; color:#000 !important;}
+.btn-black{ background:#666; border-bottom:2px solid #525252; color:#fff !important;}
+.video-text{background:#FC0; margin:0px;  color:#000; display:inline-block; margin-bottom:10px; padding:5px 30px; border-radius:30px;  font-size:20px;}
+.video-text i{font-size:20px; color:#f00;}
+
+
+
+.email-sample {
+	position: relative;
+	background: url('../images/bg-email-sample.png') no-repeat right bottom;
+  border:1px solid #ccc;
+	border-radius:10px; padding:20px;
+  box-shadow:0px 0px 2px 2px #f2f2f2;
+  margin-bottom:20px;
+  margin-left:30px;
+}
+
+.email-sample strong{ background:#f2f2f2; color: #000; padding:5px;}
+.email-sample:after, .email-sample:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.email-sample:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-right-color: #e2e2e2;
+	border-width: 30px;
+	margin-top: -30px;
+}
+.email-sample:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-right-color: #e2e2e2;
+	border-width: 36px;
+	margin-top: -36px;
+}
+
+
+.number{ margin-top:80px;  }
+.sms-blast{ font-size:14px;}
+.sms-blast strong{ color: #C30;}
+.fb-color{ color:#039; font-size:37px !important;}
+.gplus{ color:#C30!important; font-size:37px !important;}
+.twitter-btn{ color: #0CF!important; font-size:37px !important;}
+.fb-btn{border:1px solid #e2e2e2; padding:10px; border-radius:5px; border-bottom:2px solid #ccc; text-transform:uppercase; font-size:25px; font-family: 'Oswald', sans-serif; margin-bottom:15px;}
