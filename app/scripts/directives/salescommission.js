@@ -12,8 +12,11 @@ angular.module('coinomiaFrontendApp')
       restrict: 'A',
       templateUrl: 'views/directiveTemplates/salesCommission.html',
       scope: {
+        commission: "=",
         treeDetails: "=",
         binaryDetails: "=",
+        salesHeading: "=",
+        salesImagePath: "=",
         poolContract: "=",
         binaryPoolContract: "=",
         contributorContract: "=",

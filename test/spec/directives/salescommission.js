@@ -15,6 +15,8 @@ describe('Directive: salesCommission', function () {
   beforeEach(inject(function ($rootScope, $compile, _$controller_) {
     scope = $rootScope.$new();
     element = angular.element("<div sales-commission tree-details='{object}'" +
+                                                    " sales-Heading='some-value' "+
+                                                    " sales-image-path='some-path' "+
                                                     " pool-details='{object}' "+
                                                     " contributor-details='{object}'" +
                                                     " rack-details='{object}'" +
@@ -39,10 +41,6 @@ describe('Directive: salesCommission', function () {
     dscope = element.isolateScope();
   }));
 
-  it('Should load template', function () {
-     expect(element.find('.grey-bg').html()).toContain('Direct Referral Commission');  //Test if element has loaded template properly
-  });
-
   it('should have the scope values', function() {
     expect(scope).toBeDefined();
     expect(dscope.treeDetails).toEqual(jasmine.any(Object));
@@ -50,6 +48,8 @@ describe('Directive: salesCommission', function () {
     expect(dscope.contributorDetails).toEqual(jasmine.any(Object));
     expect(dscope.rackDetails).toEqual(jasmine.any(Object));
     expect(dscope.binaryDetails).toBeDefined();
+    expect(dscope.salesHeading).toBeDefined();
+    expect(dscope.salesImagePath).toBeDefined();
     expect(dscope.poolContract).toBeDefined();
     expect(dscope.poolContract).toBeDefined();
     expect(dscope.contributorContract).toBeDefined();

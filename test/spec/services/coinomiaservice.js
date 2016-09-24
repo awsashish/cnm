@@ -794,4 +794,34 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Get User Team Data
+  describe('user User Team function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getTeamCalendar).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/team-calendar')
+      .respond(200, {'day':'some-date', 'total':'some-value'});
+      var data;
+      coinomiaService.getTeamCalendar().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.day).toEqual('some-date');
+      expect(data.total).toEqual('some-value');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/team-calendar')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getTeamCalendar();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });
