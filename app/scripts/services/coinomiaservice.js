@@ -406,4 +406,22 @@ angular.module('coinomiaFrontendApp')
         .then(forgotPasswordRequestComplete)
         .catch(forgotPasswordRequestFailed);
     }
+
+    // Reset Password
+    this.resetPassword = function(resetData) {
+      // On Success
+      function resetPasswordRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function resetPasswordRequestFailed(error) {
+        $log.error('XHR Failed for Reset Password.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'reset-password', resetData)
+        .then(resetPasswordRequestComplete)
+        .catch(resetPasswordRequestFailed);
+    }
   });

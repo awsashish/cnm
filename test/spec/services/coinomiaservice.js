@@ -17,6 +17,13 @@ describe('service coinomiaService', function() {
       'grant_type':'password'
     };
 
+    var resetData = {
+      EmailId: 'some@gmail.com',
+      UniqueCode: 'B991F56C­21AE­4E31­923 2­FDD96A354407',
+      NewPassword: '123zaq!1',
+      ConfirmPassword: '123zaq!1'
+    }
+
     var sponsorId = JSON.stringify("coinomia");
     var emailId = JSON.stringify("some@gmail.com");
 
@@ -850,6 +857,35 @@ describe('service coinomiaService', function() {
       .expect('POST', coinomiaService.apiHost + 'forgot-password', emailId)
       .respond(500, 'Internal Server Error.');
       coinomiaService.forgotPassword(emailId);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Reset Password
+  describe('reset password function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.resetPassword).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'reset-password', resetData)
+      .respond(200, {'Message':'Success'});
+      var data;
+      coinomiaService.resetPassword(resetData).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Message).toEqual('Success');
+    });
+
+    it('should log reset password error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'reset-password', resetData)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.resetPassword(resetData);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
