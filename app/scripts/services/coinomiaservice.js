@@ -389,6 +389,24 @@ angular.module('coinomiaFrontendApp')
         .catch(getTeamRequestFailed);
     }
 
+    // Get Coinomia Team
+    this.getCoinomiaTeamCalendar = function() {
+      // On Success
+      function getCoinomiaTeamRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getCoinomiaTeamRequestFailed(error) {
+        $log.error('XHR Failed for User Team.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/coinomia-calendar')
+        .then(getCoinomiaTeamRequestComplete)
+        .catch(getCoinomiaTeamRequestFailed);
+    }
+
     // Forgot Password
     this.forgotPassword = function(emailId) {
       // On Success

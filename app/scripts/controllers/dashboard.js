@@ -10,12 +10,6 @@
 angular.module('coinomiaFrontendApp')
   .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService, UtilsService, $filter, config) {
 
-    $scope.company = {
-      "2016-09-20":{"number":7,"url":"#"},
-      "2016-09-22":{"number":10,"url":"#"}
-    }
-
-
     $scope.hasDirectReferral = false;
     $scope.hasBinaryReferral = false;
 
@@ -146,6 +140,24 @@ angular.module('coinomiaFrontendApp')
           };
         });
         $scope.hasMyTeamData = true;
+      }
+    });
+
+    // Get Coinomia Team
+    $scope.coinomiaTeam = {};
+    $scope.hasCoinomiaTeamData = false;
+    coinomiaService.getCoinomiaTeamCalendar()
+    .then(function(res) {
+      var coinomiaTeamData = res.data;
+      if(res.status === 200) {
+        coinomiaTeamData.forEach(function(user) {
+          var day = user.day.split('-').reverse().join('-');
+          $scope.coinomiaTeam[day] = {
+            "number": parseInt(user.total),
+            "url": "#"
+          };
+        });
+        $scope.hasCoinomiaTeamData = true;
       }
     });
 

@@ -833,6 +833,36 @@ describe('service coinomiaService', function() {
     });
   });
 
+  // Get Coinomia Team Data
+  describe('user Coinomia Team function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getCoinomiaTeamCalendar).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/coinomia-calendar')
+      .respond(200, {'day':'some-date', 'total':'some-value'});
+      var data;
+      coinomiaService.getCoinomiaTeamCalendar().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.day).toEqual('some-date');
+      expect(data.total).toEqual('some-value');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/coinomia-calendar')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getCoinomiaTeamCalendar();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
   // Forgot Password
   describe('forgot password function', function() {
     it('should exist', function() {
