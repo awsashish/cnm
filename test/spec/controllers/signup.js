@@ -36,8 +36,8 @@ describe('Controller: SignupCtrl', function () {
 
     scope.user = {
       'name': 'Some Name',
-      'NewPassword': '123456a',
-      'ConfirmPassword': '123456a'
+      'password': '123456a',
+      'confirmPassword': '123456a'
     };
 
     scope.name = scope.user.name.split(" ");
@@ -65,7 +65,8 @@ describe('Controller: SignupCtrl', function () {
   });
 
   it('should be define and check password mismatch', function() {
-    scope.confirmPass(scope.user);
+    scope.confirmPass();
+    expect(scope.confirmPassError).toEqual(false);
     scope.next();
   });
 
