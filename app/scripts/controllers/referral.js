@@ -29,7 +29,15 @@
       coinomiaService.switchPlacement($scope.placement)
         .then(function(res) {
           if(res.status === 200) {
-            $state.reload();
+            if(placement === 'L') {
+              $scope.activePlacement = 'Left Placement';
+            }else if(placement === 'R') {
+              $scope.activePlacement = 'Right Placement';
+            }if(placement === 'A') {
+              $scope.activePlacement = 'Alternate Placement';
+            }if(placement === 'W') {
+              $scope.activePlacement = 'Balance Weak Leg';
+            }
           }
       });
     }
