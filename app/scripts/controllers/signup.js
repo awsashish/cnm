@@ -141,7 +141,8 @@ angular.module('coinomiaFrontendApp')
           'Email':$scope.user.email,
           'IPAdr':$scope.user.ipadr,
           'Password':$scope.user.password,
-          'ConfirmPassword':$scope.user.confirmPassword
+          'ConfirmPassword':$scope.user.confirmPassword,
+          'Leg':''
         };
         $scope.error = false;
         coinomiaService.signup(formData).then(function(res) {

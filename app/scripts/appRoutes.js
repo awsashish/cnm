@@ -26,6 +26,14 @@ angular.module('coinomiaFrontendApp')
         authenticate: false
     })
 
+    // Reset password page
+    .state('reset-password', {
+        url: '/reset-password',
+        templateUrl: 'views/reset-password.html',
+        controller: 'ResetpasswordCtrl',
+        authenticate: false
+    })
+
     // Sign up page
     .state('signup', {
         url: '/signup',

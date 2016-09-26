@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
  angular.module('coinomiaFrontendApp')
-   .controller('ReferralCtrl', function ($scope, $rootScope, $window, $cookies, $state, coinomiaService) {
+   .controller('ReferralCtrl', function ($scope, $rootScope, $window, $cookies, $state, $location, coinomiaService) {
     //  Get Landing pages and referral links
     coinomiaService.getLandingPages().then(function(res) {
       var data = res.data;
@@ -23,4 +23,22 @@
         });
       }
     });
+
+    $scope.updatePlacement = function(placement) {
+      $scope.placement = JSON.stringify(placement);
+      coinomiaService.switchPlacement($scope.placement)
+        .then(function(res) {
+          if(res.status === 200) {
+            if(placement === 'L') {
+              $scope.activePlacement = 'Left Placement';
+            }else if(placement === 'R') {
+              $scope.activePlacement = 'Right Placement';
+            }if(placement === 'A') {
+              $scope.activePlacement = 'Alternate Placement';
+            }if(placement === 'W') {
+              $scope.activePlacement = 'Balance Weak Leg';
+            }
+          }
+      });
+    }
    });

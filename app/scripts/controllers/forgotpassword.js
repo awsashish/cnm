@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('ForgotpasswordCtrl', function ($scope) {
+  .controller('ForgotpasswordCtrl', function ($scope,coinomiaService) {
 
     $scope.emailError = false;
 
@@ -16,7 +16,14 @@ angular.module('coinomiaFrontendApp')
     $scope.submit = function() {
       if($scope.user) {
         $scope.emailError = false;
-        console.log($scope.user.email);
+        $scope.emailId = JSON.stringify($scope.user.email);
+        coinomiaService.forgotPassword($scope.emailId)
+          .then(function(res){
+            if(res.status === 200) {
+              $scope.hasSuccess = true;
+              $scope.successEmail = '<'+$scope.user.email+'>';
+            }
+          })
       }else{
         $scope.emailError = true;
       }

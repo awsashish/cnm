@@ -44,6 +44,16 @@ angular.module('coinomiaFrontendApp')
           $rootScope.name = data.name;
           $rootScope.sponsorId = data.username;
           $rootScope.country = data.Country;
+          $rootScope.autorotator = data.autorotator;
+          if($rootScope.autorotator === 'L') {
+            $rootScope.activePlacement = 'Left Placement';
+          }else if($rootScope.autorotator === 'R') {
+            $rootScope.activePlacement = 'Right Placement';
+          }if($rootScope.autorotator === 'A') {
+            $rootScope.activePlacement = 'Alternate Placement';
+          }if($rootScope.autorotator === 'W') {
+            $rootScope.activePlacement = 'Balance Weak Leg';
+          }
           $scope.getFlag($rootScope.country);
         }
       });

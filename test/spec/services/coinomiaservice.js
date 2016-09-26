@@ -17,7 +17,17 @@ describe('service coinomiaService', function() {
       'grant_type':'password'
     };
 
+    var resetData = {
+      EmailId: 'some@gmail.com',
+      UniqueCode: 'B991F56C­21AE­4E31­923 2­FDD96A354407',
+      NewPassword: '123zaq!1',
+      ConfirmPassword: '123zaq!1'
+    }
+
+    var placement = JSON.stringify("A");
+
     var sponsorId = JSON.stringify("coinomia");
+    var emailId = JSON.stringify("some@gmail.com");
 
     // Refresh Token Data
     var refreshToken = 'some-value';
@@ -820,6 +830,123 @@ describe('service coinomiaService', function() {
       .expect('GET', coinomiaService.apiHost + 'user/team-calendar')
       .respond(500, 'Internal Server Error.');
       coinomiaService.getTeamCalendar();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Get Coinomia Team Data
+  describe('user Coinomia Team function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getCoinomiaTeamCalendar).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/coinomia-calendar')
+      .respond(200, {'day':'some-date', 'total':'some-value'});
+      var data;
+      coinomiaService.getCoinomiaTeamCalendar().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.day).toEqual('some-date');
+      expect(data.total).toEqual('some-value');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/coinomia-calendar')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getCoinomiaTeamCalendar();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Forgot Password
+  describe('forgot password function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.forgotPassword).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'forgot-password', emailId)
+      .respond(200, {'Message':'Success'});
+      var data;
+      coinomiaService.forgotPassword(emailId).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Message).toEqual('Success');
+    });
+
+    it('should log forgot password error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'forgot-password', emailId)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.forgotPassword(emailId);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Reset Password
+  describe('reset password function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.resetPassword).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'reset-password', resetData)
+      .respond(200, {'Message':'Success'});
+      var data;
+      coinomiaService.resetPassword(resetData).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Message).toEqual('Success');
+    });
+
+    it('should log reset password error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'reset-password', resetData)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.resetPassword(resetData);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Switch to L | R | A | W Placement
+  describe('switch placement function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.switchPlacement).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/auto-rotator', placement)
+      .respond(200, {'Message':'Success'});
+      var data;
+      coinomiaService.switchPlacement(placement).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Message).toEqual('Success');
+    });
+
+    it('should log forgot password error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/auto-rotator', placement)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.switchPlacement(placement);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });

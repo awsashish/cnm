@@ -388,4 +388,76 @@ angular.module('coinomiaFrontendApp')
         .then(getTeamRequestComplete)
         .catch(getTeamRequestFailed);
     }
+
+    // Get Coinomia Team
+    this.getCoinomiaTeamCalendar = function() {
+      // On Success
+      function getCoinomiaTeamRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getCoinomiaTeamRequestFailed(error) {
+        $log.error('XHR Failed for User Team.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/coinomia-calendar')
+        .then(getCoinomiaTeamRequestComplete)
+        .catch(getCoinomiaTeamRequestFailed);
+    }
+
+    // Forgot Password
+    this.forgotPassword = function(emailId) {
+      // On Success
+      function forgotPasswordRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function forgotPasswordRequestFailed(error) {
+        $log.error('XHR Failed for Forgot Password.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'forgot-password', emailId)
+        .then(forgotPasswordRequestComplete)
+        .catch(forgotPasswordRequestFailed);
+    }
+
+    // Reset Password
+    this.resetPassword = function(resetData) {
+      // On Success
+      function resetPasswordRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function resetPasswordRequestFailed(error) {
+        $log.error('XHR Failed for Reset Password.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'reset-password', resetData)
+        .then(resetPasswordRequestComplete)
+        .catch(resetPasswordRequestFailed);
+    }
+
+    // Switch to L | R | A | W Placement
+    this.switchPlacement = function(placement) {
+      // On Success
+      function switchPlacementRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function switchPlacementRequestFailed(error) {
+        $log.error('XHR Failed for Switch Placement.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/auto-rotator', placement)
+        .then(switchPlacementRequestComplete)
+        .catch(switchPlacementRequestFailed);
+    }
   });
