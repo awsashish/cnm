@@ -234,6 +234,22 @@ select {
   font-size: 21px;
 }
 
+.full-width{
+  width:100%;
+}
+
+.forgot-password {
+  display: table;
+  margin: 30px auto 0;
+  float: none;
+}
+
+.forgot-text {
+  display: table;
+  float: none;
+  margin: 0 auto;
+}
+
 .dashboard {
   background: url('../images/dahsboard.jpg') no-repeat;
   background-size: 100%;
