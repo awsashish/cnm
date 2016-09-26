@@ -18,30 +18,113 @@
           <div class="col-md-12 nomargin nopadding">
             <h2 class="mb35"><i class="fa fa-link  icon-lg border-round" aria-hidden="true" style="padding-top:10px; padding-left:10px;"></i> <strong>My Referal Links</strong></h2>
             <hr />
-            <div class="table-responsive">
-              <div class="alert alert-success" role="alert"><strong>Note</strong> : Your Coinomia Landing Page {{landingPages[0].Title}} Page is Active Now</div>
-              <div class="ref-box yelo-text01"><i class="fa fa-check-square-o" aria-hidden="true"></i>
-                {{landingPages[0].path}}{{sponsorId}}
+              <div class="tabbable-panel" >
+                 <div class="tabbable-line" >
+                    <div align="center">
+                       <ul  class="nav nav-tabs ">
+                          <li class="active">
+                             <a href=".tab_default_4" data-toggle="tab">
+                             <i class="fa fa-newspaper-o icon-lg" aria-hidden="true"></i><br />
+                             <strong>Landing Pages</strong> </a>
+                          </li>
+                          <li>
+                             <a href=".tab_default_5" data-toggle="tab">
+                             <i class="fa fa-sitemap icon-lg" aria-hidden="true"></i><br />
+                             <strong>Tree Placement Management</strong> </a>
+                          </li>
+                          <li>
+                             <a href=".tab_default_6" data-toggle="tab">
+                             <i class="fa fa-user-plus icon-lg" aria-hidden="true"></i><br />
+                             <strong>Signup User</strong> </a>
+                          </li>
+                       </ul>
+                    </div>
+                    <div class="tab-content" style="padding:20px 20px; ">
+                       <div class="tab-pane tab_default_4 active">
+                          <h2 class="mb35-sm  top-spacemob10"><i class="fa fa-newspaper-o icon-lg-red border-round-red" style="padding-left:4px;" aria-hidden="true"></i> <strong>Landing Pages</strong></h2>
+                          <hr />
+                          <div class="table-responsive">
+                            <div class="alert alert-success" role="alert"><strong>Note</strong> : Your Coinomia Landing Page {{landingPages[0].Title}} Page is Active Now</div>
+                            <div class="ref-box yelo-text01"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+                              {{landingPages[0].path}}{{sponsorId}}
+                            </div>
+                            <table class="table table-dark-gry table-hover mb30 font16">
+                              <thead style="background:#525252;">
+                                <tr style="color:#525252;">
+                                  <td><strong class="white-color">S.No</strong></td>
+                                  <td><strong class="white-color">Title</strong></td>
+                                  <td><strong class="white-color">Refferal Link</strong></td>
+                                  <td><strong class="white-color">Action</strong></td>
+                                </tr>
+                              </thead>
+                              <tr ng-repeat="referral in landingPages">
+                                <td>{{$index+1}}</td>
+                                <td><strong>{{referral.Title}}</strong> </td>
+                                <td>{{referral.Title}}<br />
+                                  <small class="red-text02">{{referral.path}}{{sponsorId}}</small>
+                                </td>
+                                <td><button type="button" class="btn btn-warning">Use this landing page</button>	</td>
+                              </tr>
+                            </table>
+                          </div>
+                       </div>
+                       <div class="tab-pane tab_default_5" style="padding-bottom:150px;" >
+                          <h2 class="mb35-sm top-spacemob10"><i class="fa fa-sitemap icon-lg-red border-round-red" style="padding-left:5px;"  aria-hidden="true"></i> <strong>Tree Placement Management</strong></h2>
+                          <hr />
+                          <div class="alert alert-success" role="alert"><strong>Note</strong> : Left Placement Active !!!</div>
+                          <form class="form-horizontal " method="post" action="" >
+                             <div data-toggle="buttons">
+                                <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='L'?'active':'')" ng-click="updatePlacement('L')">
+                                <img src="images/left.png" width="100" /><br />
+                                <input type="radio" name="q1" value="0"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true" checked></i>
+                                Left Placement</div>
+
+                                <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='R'?'active':'')" ng-click="updatePlacement('R')">
+                                <img src="images/right.png" width="100" /><br />
+                                <input type="radio" name="q1" value="1"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true"></i> Right Placement</div>
+
+                                <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='A'?'active':'')" ng-click="updatePlacement('A')">
+                                <img src="images/tree.png" width="100" /><br />
+                                <input type="radio" value="R"><i class="fa fa-check-circle-o lg-icon " aria-hidden="true"></i> Alternet Placement</div>
+
+                                <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='W'?'active':'')" ng-click="updatePlacement('W')">
+                                <img src="images/week.png" width="100" /><br />
+                                <input type="radio" name="q1" value="2"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true"></i> Balance Weak Leg </div><br />
+                             </div>
+                          </form>
+                       </div>
+                       <div class="tab-pane tab_default_6" style="min-height:950px; overflow:hidden;">
+                          <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-user-plus icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>Signup User</strong></h2>
+                          <hr />
+                          <br />
+                          <Div  class="col-md-6 col-md-offset-3 form-signup-reffer-outer">
+                             <p align="center"><i class="fa fa-user-plus icon-lg border-round " style="padding-left:7px;" aria-hidden="true"></i></p>
+                             <h3 align="center" style="padding:0px; margin:0px;"><strong>Create a New Account</strong></h3>
+                             <p align="center"><strong>Please enter your credentials below</strong></p>
+                             <form class="form-signup-reffer">
+                                <label class="mar10"><strong>Sponsor ID</strong></label>
+                                <input type="text" name="sponsor-ID" class="form-control" value="CON098459" readonly="readonly" />
+                                <label class="mar10"><strong>Sponsor Name</strong></label>
+                                <input type="text" name="sponsor-name" class="form-control" value="Elen Adarna" readonly="readonly" />
+                                <label class="mar10"><strong>First Name</strong></label>
+                                <input type="text" name="f-name" class="form-control" />
+                                <label class="mar10"><strong>Last Name</strong></label>
+                                <input type="text" name="l-name" class="form-control" />
+                                <label class="mar10"><strong>Email</strong></label>
+                                <input type="email" name="email" class="form-control" />
+                                <label class="mar10"><strong>Password</strong></label>
+                                <input type="password" name="pwd" class="form-control" />
+                                <label class="mar10"><strong>Confirm Password</strong></label>
+                                <input type="password" name="c-pwd" class="form-control" />
+                                <p class="mar10"><label><input name="placement" type="radio" value="lft-placement" /> <strong>Left Placement</strong></label>&nbsp;&nbsp;     <label><input name="placement" type="radio" value="rgt-placement" /> <strong>Right Placement</strong></label></p>
+                                <button class="btn btn-block btn-warning mar10"><strong>Join Now</strong></button>
+                             </form>
+                          </Div>
+                       </div>
+                    </div>
+                 </div>
               </div>
-              <table class="table table-dark-gry table-hover mb30 font16">
-                <thead style="background:#525252;">
-                  <tr style="color:#525252;">
-                    <td><strong class="white-color">S.No</strong></td>
-                    <td><strong class="white-color">Title</strong></td>
-                    <td><strong class="white-color">Refferal Link</strong></td>
-                    <td><strong class="white-color">Action</strong></td>
-                  </tr>
-                </thead>
-                <tr ng-repeat="referral in landingPages">
-                  <td>{{$index+1}}</td>
-                  <td><strong>{{referral.Title}}</strong> </td>
-                  <td>{{referral.Title}}<br />
-                    <small class="red-text02">{{referral.path}}{{sponsorId}}</small>
-                  </td>
-                  <td><button type="button" class="btn btn-warning">Use this landing page</button>	</td>
-                </tr>
-              </table>
-            </div>
+
             <!-- table-responsive -->
           </div>
         </div>

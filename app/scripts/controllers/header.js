@@ -44,6 +44,7 @@ angular.module('coinomiaFrontendApp')
           $rootScope.name = data.name;
           $rootScope.sponsorId = data.username;
           $rootScope.country = data.Country;
+          $rootScope.autorotator = data.autorotator;
           $scope.getFlag($rootScope.country);
         }
       });
