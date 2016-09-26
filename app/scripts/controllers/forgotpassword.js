@@ -21,6 +21,7 @@ angular.module('coinomiaFrontendApp')
           .then(function(res){
             if(res.status === 200) {
               $scope.hasSuccess = true;
+              $scope.successEmail = '<'+$scope.user.email+'>';
             }
           })
       }else{
