@@ -59,17 +59,17 @@
                      ng-pattern="/^[a-zA-Z0-9]+$/"
                      required />
             </div>
-            <div class="alert alert-danger fade in error-padding"
+            <div class="alert alert-danger fade in error-padding error-abs"
                ng-show="signup.userid.$touched && signup.userid.$invalid && !signup.userid.$error.pattern && !signup.userid.$error.maxlength && !signup.userid.$error.minlength">
                User Id is required</div>
 
-            <div class="alert alert-danger fade in error-padding" ng-show="signup.userid.$touched && signup.userid.$error.pattern && !signup.userid.$error.maxlength && !signup.userid.$error.minlength"> Special characters are not allowed.</div>
+            <div class="alert alert-danger fade in error-padding error-abs" ng-show="signup.userid.$touched && signup.userid.$error.pattern && !signup.userid.$error.maxlength && !signup.userid.$error.minlength"> Special characters are not allowed.</div>
 
-            <div class="alert alert-danger fade in error-padding"
+            <div class="alert alert-danger fade in error-padding error-abs"
                ng-show="signup.userid.$touched && (signup.userid.$error.minlength || signup.userid.$error.maxlength)">
                Min. 4 and Max. 15 characters are allowed.</div>
 
-            <div class="alert alert-danger fade in error-padding" ng-if="userIdError">{{userIdError}}</p>
+            <div class="alert alert-danger fade in error-padding error-abs" ng-if="userIdError">{{userIdError}}</p>
             <!-- input-group -->
           </div>
         </div>

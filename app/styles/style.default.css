@@ -169,8 +169,13 @@ select {
 }
 
 .error-padding {
-  position: absolute;
+  position: relative;
   z-index: 99;
+}
+
+.error-abs {
+  position: absolute !important;
+  width: 250px;
 }
 
 .userid::-webkit-input-placeholder {
