@@ -442,4 +442,22 @@ angular.module('coinomiaFrontendApp')
         .then(resetPasswordRequestComplete)
         .catch(resetPasswordRequestFailed);
     }
+
+    // Switch to L | R | A | W Placement
+    this.switchPlacement = function(placement) {
+      // On Success
+      function switchPlacementRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function switchPlacementRequestFailed(error) {
+        $log.error('XHR Failed for Switch Placement.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/auto-rotator', placement)
+        .then(switchPlacementRequestComplete)
+        .catch(switchPlacementRequestFailed);
+    }
   });

@@ -24,6 +24,8 @@ describe('service coinomiaService', function() {
       ConfirmPassword: '123zaq!1'
     }
 
+    var placement = JSON.stringify("A");
+
     var sponsorId = JSON.stringify("coinomia");
     var emailId = JSON.stringify("some@gmail.com");
 
@@ -916,6 +918,35 @@ describe('service coinomiaService', function() {
       .expect('POST', coinomiaService.apiHost + 'reset-password', resetData)
       .respond(500, 'Internal Server Error.');
       coinomiaService.resetPassword(resetData);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Switch to L | R | A | W Placement
+  describe('switch placement function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.switchPlacement).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/auto-rotator', placement)
+      .respond(200, {'Message':'Success'});
+      var data;
+      coinomiaService.switchPlacement(placement).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Message).toEqual('Success');
+    });
+
+    it('should log forgot password error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/auto-rotator', placement)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.switchPlacement(placement);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
