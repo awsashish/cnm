@@ -83,7 +83,7 @@
                    class="form-control"
                    placeholder="Name"
                    ng-maxlength="20"
-                   ng-pattern="/^[a-zA-Z ]+$/"
+                   ng-pattern="/^[a-zA-Z]+(\s{1})[a-zA-Z]+$/"
                    required />
           </div>
           <div class="alert alert-danger fade in error-padding"
@@ -91,7 +91,7 @@
              Name is required.</div>
           <div class="alert alert-danger fade in error-padding"
              ng-show="signup.name.$touched && signup.name.$error.pattern && !signup.name.$error.maxlength">
-             Only alphabets are allowed.</div>
+             Please enter your full name (Only Alphabets are allowed).</div>
 
            <div class="alert alert-danger fade in error-padding"
               ng-show="signup.name.$touched && signup.name.$invalid && signup.name.$error.maxlength">
