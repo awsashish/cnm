@@ -388,4 +388,22 @@ angular.module('coinomiaFrontendApp')
         .then(getTeamRequestComplete)
         .catch(getTeamRequestFailed);
     }
+
+    // Forgot Password
+    this.forgotPassword = function(emailId) {
+      // On Success
+      function forgotPasswordRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function forgotPasswordRequestFailed(error) {
+        $log.error('XHR Failed for Forgot Password.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'forgot-password', emailId)
+        .then(forgotPasswordRequestComplete)
+        .catch(forgotPasswordRequestFailed);
+    }
   });
