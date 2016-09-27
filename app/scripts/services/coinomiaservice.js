@@ -460,4 +460,22 @@ angular.module('coinomiaFrontendApp')
         .then(switchPlacementRequestComplete)
         .catch(switchPlacementRequestFailed);
     }
+
+    // Get User Banners
+    this.getBanners = function() {
+      // On Success
+      function getBannerRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getBannerRequestFailed(error) {
+        $log.error('XHR Failed for Switch Placement.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/banners')
+        .then(getBannerRequestComplete)
+        .catch(getBannerRequestFailed);
+    }
   });

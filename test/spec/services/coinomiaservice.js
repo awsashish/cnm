@@ -951,4 +951,38 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Get Banners
+  describe('user banners function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getBanners).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/banners')
+      .respond(200, {'total':12, 'rows':[{'bannerid': 'some-id', 'bannername':'No hidden Costs', 'bannerhight':125, 'bannerwidth':125, 'bannerimage':'some-path'}]});
+      var data;
+      coinomiaService.getBanners().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual(12);
+      expect(data.rows[0].bannerid).toEqual('some-id');
+      expect(data.rows[0].bannername).toEqual('No hidden Costs');
+      expect(data.rows[0].bannerhight).toEqual(125);
+      expect(data.rows[0].bannerwidth).toEqual(125);
+      expect(data.rows[0].bannerimage).toEqual('some-path');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/banners')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getBanners();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });

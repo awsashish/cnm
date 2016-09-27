@@ -126,6 +126,12 @@ a:focus {
   top: -10px;
 }
 
+.banner-section {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  padding: 0 0 20px 0;
+}
+
 .coming-soon-wrapper {
   width: 93%;
   height: 100%;
