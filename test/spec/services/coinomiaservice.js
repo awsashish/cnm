@@ -214,10 +214,10 @@ describe('service coinomiaService', function() {
     });
   });
 
-  // User Referral Test
-  describe('user referral function', function() {
+  // User Directs Test
+  describe('user directs function', function() {
     it('should exist', function() {
-      expect(coinomiaService.getUserReferral).not.toEqual(null);
+      expect(coinomiaService.getUserDirects).not.toEqual(null);
     });
 
     it('should not exceed page number and pagesize', function() {
@@ -231,8 +231,8 @@ describe('service coinomiaService', function() {
       .expect('GET', coinomiaService.apiHost + 'user/referral/'+pagination.pageno+'/'+pagination.pagesize)
       .respond(200, {'total':'some-value','rows':[{'username': 'test123', 'Name':'test', 'DOJ':'11/08/2016', 'Sponsor':'testsponsor', 'IntroName':'intro123', 'ItemName':"Registration"}]});
       var data;
-      coinomiaService.getUserReferral(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
-        data = fetchedData;
+      coinomiaService.getUserDirects(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
+        data = fetchedData.data;
       });
       $httpBackend.flush();
       expect(data).toEqual(jasmine.any(Object));
@@ -249,7 +249,7 @@ describe('service coinomiaService', function() {
       $httpBackend
       .expect('GET', coinomiaService.apiHost + 'user/referral/'+pagination.pageno+'/'+pagination.pagesize)
       .respond(500, 'Internal Server Error.');
-      coinomiaService.getUserReferral(pagination.pageno, pagination.pagesize);
+      coinomiaService.getUserDirects(pagination.pageno, pagination.pagesize);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
@@ -258,7 +258,7 @@ describe('service coinomiaService', function() {
   // All Referral Test
   describe('all referral function', function() {
     it('should exist', function() {
-      expect(coinomiaService.getReferral).not.toEqual(null);
+      expect(coinomiaService.getAllReferral).not.toEqual(null);
     });
 
     it('should not exceed page number and pagesize', function() {
@@ -269,11 +269,11 @@ describe('service coinomiaService', function() {
 
     it('should returns records succesfully', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + 'user/all-referral/'+pagination.pageno+'/'+pagination.pagesize)
+      .expect('GET', coinomiaService.apiHost + 'user/all-referral/'+pagination.pageno+'/'+pagination.pagesize)
       .respond(200, {'total':'some-value','rows':[{'username': 'test123', 'Name':'test', 'DOJ':'11/08/2016', 'Sponsor':'testsponsor', 'IntroName':'intro123', 'ItemName':"Registration"}]});
       var data;
-      coinomiaService.getReferral(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
-        data = fetchedData;
+      coinomiaService.getAllReferral(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
+        data = fetchedData.data;
       });
       $httpBackend.flush();
       expect(data).toEqual(jasmine.any(Object));
@@ -288,9 +288,9 @@ describe('service coinomiaService', function() {
 
     it('should log referral error', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + 'user/all-referral/'+pagination.pageno+'/'+pagination.pagesize)
+      .expect('GET', coinomiaService.apiHost + 'user/all-referral/'+pagination.pageno+'/'+pagination.pagesize)
       .respond(500, 'Internal Server Error.');
-      coinomiaService.getReferral(pagination.pageno, pagination.pagesize);
+      coinomiaService.getAllReferral(pagination.pageno, pagination.pagesize);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
