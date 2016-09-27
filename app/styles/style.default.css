@@ -113,7 +113,6 @@ a:focus {
 
 .no-margin {
   margin:0 !important;
-  padding: 0 !important;
 }
 
 .error-padding:before {
@@ -4366,7 +4365,7 @@ h4.great {
 .s-block-transparent-bg{ background:url(../images/cr-transbg.png) #525252 bottom right no-repeat !important; color:#fff; border-bottom:10px solid #333 !important;}
 .t-block-transparent-bg{ background:url(../images/ti-bgtrans.png) #d9534f bottom right no-repeat !important;}
 .font18{font-size:18px !important; font-weight:bold;}
-.yelo-text{ color:#FC0 !important; font-weight:bold; border-bottom:1px solid #ccc; font-size:30px; padding-bottom:5px;}
+.yelo-text{ color:#FC0 !important; font-weight:bold; border-bottom:1px solid #ccc; font-size:25px; padding-bottom:5px;}
 .red-text{ color: #F30 !important;  margin:0px; padding:0px;}
 .grey-bg{ background:#f2f2f2; border-radius:30px; padding:5px; color:#525252; font-weight:bold; font-size:19px; padding-bottom:5px; margin-bottom:0px; }
 .sm-txtbox{ border:1px solid #ccc; padding:5px; width:80%; font-size:16px; font-weight:bold;}
@@ -4845,10 +4844,7 @@ a:hover div.box-outer{border-bottom:3px solid #ccc;}
 	position: relative;
 	background: url('../images/bg-email-sample.png') no-repeat right bottom;
   border:1px solid #ccc;
-	border-radius:10px; padding:20px;
-  box-shadow:0px 0px 2px 2px #f2f2f2;
-  margin-bottom:20px;
-  margin-left:30px;
+	border-radius:10px; padding:20px; box-shadow:0px 0px 2px 2px #f2f2f2; margin-bottom:20px; margin-left:30px;
 }
 
 .email-sample strong{ background:#f2f2f2; color: #000; padding:5px;}
@@ -4880,7 +4876,9 @@ a:hover div.box-outer{border-bottom:3px solid #ccc;}
 .number{ margin-top:80px;  }
 .sms-blast{ font-size:14px;}
 .sms-blast strong{ color: #C30;}
-.fb-color{ color:#039; font-size:37px !important;}
-.gplus{ color:#C30!important; font-size:37px !important;}
-.twitter-btn{ color: #0CF!important; font-size:37px !important;}
+.fb-color{ color:#039; font-size:37px !important; padding-right:20px;}
+.gplus{ color:#C30!important; font-size:37px !important;padding-right:20px;}
+.twitter-btn{ color: #0CF!important; font-size:37px !important;padding-right:20px;}
 .fb-btn{border:1px solid #e2e2e2; padding:10px; border-radius:5px; border-bottom:2px solid #ccc; text-transform:uppercase; font-size:25px; font-family: 'Oswald', sans-serif; margin-bottom:15px;}
+.arrow-bot-lft{position:absolute; margin-top:-20px; left:25%; z-index:4000;}
+.arrow-bot-rgt{position:absolute; margin-top:-20px; left:75%; z-index:4000;}
