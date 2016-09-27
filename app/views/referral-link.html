@@ -44,9 +44,12 @@
                           <h2 class="mb35-sm  top-spacemob10"><i class="fa fa-newspaper-o icon-lg-red border-round-red" style="padding-left:4px;" aria-hidden="true"></i> <strong>Landing Pages</strong></h2>
                           <hr />
                           <div class="table-responsive">
-                            <div class="alert alert-success" role="alert"><strong>Note</strong> : Your Coinomia Landing Page {{landingPages[0].Title}} Page is Active Now</div>
-                            <div class="ref-box yelo-text01"><i class="fa fa-check-square-o" aria-hidden="true"></i>
-                              <span id="copy-text-clipboard">{{landingPages[0].path}}{{sponsorId}}</span>
+                            <div class="alert alert-success" role="alert" ng-repeat="referral in landingPages | filter:{id:landingPage}">
+                              <strong>Note</strong> : Your Coinomia Landing Page {{referral.Title}} Page is Active Now
+                            </div>
+                            <div class="ref-box yelo-text01" ng-repeat="referral in landingPages | filter:{id:landingPage}">
+                              <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                              <span id="copy-text-clipboard">{{referral.path}}{{sponsorId}}</span>
                               <button ngclipboard data-clipboard-target="#copy-text-clipboard" class="pull-right copy-btn "><i class="fa fa-chain "></i> Copy Link</button>
                             </div>
                             <table class="table table-dark-gry table-hover mb30 font16">
@@ -64,7 +67,7 @@
                                 <td>{{referral.Title}}<br />
                                   <small class="red-text02">{{referral.path}}{{sponsorId}}</small>
                                 </td>
-                                <td><button type="button" class="btn btn-warning">Use this landing page</button>	</td>
+                                <td><button type="button" class="btn btn-warning" ng-disabled="landingPage==referral.id" ng-click="updatePage(referral.id)">Use this landing page</button>	</td>
                               </tr>
                             </table>
                           </div>
@@ -259,6 +262,41 @@
                                   <strong>OOPS!</strong> {{errorMessage}}.
                                 </div>
                              </form>
+
+                             <!-- AWeber Web Form Generator 3.0.1 -->
+                            <form method="post" id="referral-aweber-form" class="af-form-wrapper" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl" ng-hide="true">
+                              <div style="display: none;">
+                                <input type="hidden" name="meta_web_form_id" value="422944451" />
+                                <input type="hidden" name="meta_split_id" value="" />
+                                <input type="hidden" name="listname" value="awlist4422156" />
+                                <input type="hidden" name="redirect" value="{{redirectPage}}" id="redirect_5ef06d17dc927186298be16e42bdceb2" />
+                                <input type="hidden" name="meta_redirect_onlist" value="{{redirectPage}}" />
+                                <input type="hidden" name="meta_adtracking" value="My_Web_Form-1" />
+                                <input type="hidden" name="meta_message" value="1" />
+                                <input type="hidden" name="meta_required" value="name,email" />
+                                <input type="hidden" name="meta_tooltip" value="" />
+                              </div>
+                              <div id="af-form-422944451" class="af-form">
+                                <div id="af-body-422944451" class="af-body af-standards">
+                                  <div class="af-element">
+                                    <label class="previewLabel" for="awf_field-86023512">Name: </label>
+                                    <div class="af-textWrap"> <input id="awf_field-86023512" type="text" name="name" class="text" value="{{user.firstName}} {{user.lastName}}" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " tabindex="500" /> </div>
+                                    <div class="af-clear"></div>
+                                  </div>
+                                  <div class="af-element">
+                                    <label class="previewLabel" for="awf_field-86023513">Email: </label>
+                                    <div class="af-textWrap"><input class="text" id="awf_field-86023513" type="text" name="email" value="{{user.email}}" tabindex="501" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " /> </div>
+                                    <div class="af-clear"></div>
+                                  </div>
+                                  <div class="af-element buttonContainer">
+                                    <input name="submit" id="af-submit-image-422944451" type="image" class="image" style="background: none; max-width: 100%;" alt="Submit Form" src="//aweber.com/images/forms/plain/buttons/grey.png" tabindex="502" />
+                                    <div class="af-clear"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="display: none;"><img src="https://forms.aweber.com/form/displays.htm?id=LExMnCwsLKyM" alt="" /></div>
+                            </form>
+                            <!-- /AWeber Web Form Generator 3.0.1 -->
 
                           </div>
                        </div>

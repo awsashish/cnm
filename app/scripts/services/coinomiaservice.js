@@ -318,6 +318,24 @@ angular.module('coinomiaFrontendApp')
         .catch(verfiySponsorRequestFailed);
     }
 
+    // Update Landing Pages
+    this.updateLandingPage = function(landingPage) {
+      // On Success
+      function updateLandingPageRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function updateLandingPageRequestFailed(error) {
+        $log.error('XHR Failed for Verify Sponsor.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/update-landing-page', landingPage)
+        .then(updateLandingPageRequestComplete)
+        .catch(updateLandingPageRequestFailed);
+    }
+
     // Refresh Token Process
     this.getRefreshToken = function(data) {
 
@@ -369,6 +387,24 @@ angular.module('coinomiaFrontendApp')
       return $http.get(this.apiHost +'user/virtualtree')
         .then(getVirtualTreeRequestComplete)
         .catch(getVirtualTreeRequestFailed);
+    }
+
+    // Get User Downline Info
+    this.getUserDownline = function(sponsorId) {
+      // On Success
+      function getUserDownlineRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getUserDownlineRequestFailed(error) {
+        $log.error('XHR Failed for Packages.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/tree/'+sponsorId)
+        .then(getUserDownlineRequestComplete)
+        .catch(getUserDownlineRequestFailed);
     }
 
     // Get User Team

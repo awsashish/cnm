@@ -21,6 +21,8 @@
        'city': ''
      };
 
+     $scope.redirectPage = $window.location.host + '/#' + $location.path();
+
     //  Get Landing pages and referral links
     coinomiaService.getLandingPages().then(function(res) {
       var data = res.data;
@@ -110,6 +112,7 @@
         var data = res.data;
         if(res.status === 200){
           $scope.signupMessage = data.Message;
+          angular.element("#referral-aweber-form").submit();
         }else if(res.status === 404) {
             $scope.showme = false;
             $scope.userIdError = data.Message;
@@ -134,4 +137,13 @@
         }
       });
     };
+
+    $scope.updatePage = function(defaultPage) {
+      var pageId = JSON.stringify(defaultPage);
+      coinomiaService.updateLandingPage(pageId)
+      .then(function(res) {
+        $rootScope.landingPage = defaultPage;
+      })
+    }
+
    });

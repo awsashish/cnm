@@ -257,7 +257,7 @@ module.exports = function (grunt) {
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      js: ['<%= yeoman.dist %>/scripts/{,*/}*.js'],
+      js: ['<%= yeoman.dist %>/scripts/{,*/}*.js',],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
@@ -301,7 +301,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
-          src: ['{,*/}*.{png,jpg,jpeg,gif}', '!flags/**', '!download/**'],
+          src: ['{,*/}*.{png,jpg,jpeg,gif}', '!flags/**', '!download/**', '!package/**'],
           dest: '<%= yeoman.dist %>/images'
         }]
       }
@@ -407,6 +407,12 @@ module.exports = function (grunt) {
         dest: '<%= yeoman.dist %>/images',
         src: 'flags/{,*/}*.{png,jpg,jpeg,gif}'
       },
+      uncompressedPackageFiles: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/images',
+        dest: '<%= yeoman.dist %>/images',
+        src: 'package/{,*/}*.{png,jpg,jpeg,gif}'
+      },
       uncompressedPdfZipFiles: {
         expand: true,
         cwd: '<%= yeoman.app %>/images',
@@ -486,7 +492,8 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin',
     'copy:uncompressedImageFiles',
-    'copy:uncompressedPdfZipFiles'
+    'copy:uncompressedPdfZipFiles',
+    'copy:uncompressedPackageFiles'
   ]);
 
   grunt.registerTask('default', [
