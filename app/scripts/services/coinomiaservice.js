@@ -371,6 +371,24 @@ angular.module('coinomiaFrontendApp')
         .catch(getVirtualTreeRequestFailed);
     }
 
+    // Get User Downline Info
+    this.getUserDownline = function(sponsorId) {
+      // On Success
+      function getUserDownlineRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getUserDownlineRequestFailed(error) {
+        $log.error('XHR Failed for Packages.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/tree/'+sponsorId)
+        .then(getUserDownlineRequestComplete)
+        .catch(getUserDownlineRequestFailed);
+    }
+
     // Get User Team
     this.getTeamCalendar = function() {
       // On Success

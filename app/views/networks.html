@@ -71,7 +71,7 @@
                           <!-- <img src="images/flags/in.png" />  -->
                           <tr ng-repeat="directs in teamDirectsData">
                             <td>{{$index+1}}</td>
-                            <td>{{directs.Name}}</td>
+                            <td><img src="{{directs.flag}}" />&nbsp;{{directs.Name}}</td>
                             <td>{{directs.Email}}</td>
                             <!-- <td>{{directs.mobile}}</td> -->
                             <td>{{directs.TotalContract}} BTC</td>
@@ -103,19 +103,14 @@
                               <td><strong>Right</strong></td>
                             </tr>
                             <tr>
-                              <td><strong>Total PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['0'].LeftDirect}}</td>
+                              <td>{{downline['0'].RightDirect}}</td>
                             </tr>
                             <tr>
-                              <td><strong>Potential PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
-                            </tr>
-                            <tr>
-                              <td><strong>Matched PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['0'].LeftTotal}}</td>
+                              <td>{{downline['0'].RightTotal}}</td>
                             </tr>
                           </table>
                         </div>
@@ -127,19 +122,14 @@
                               <td><strong>Right</strong></td>
                             </tr>
                             <tr>
-                              <td><strong>Total PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['1'].LeftDirect}}</td>
+                              <td>{{downline['1'].RightDirect}}</td>
                             </tr>
                             <tr>
-                              <td><strong>Potential PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
-                            </tr>
-                            <tr>
-                              <td><strong>Matched PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['1'].LeftTotal}}</td>
+                              <td>{{downline['1'].RightTotal}}</td>
                             </tr>
                           </table>
                         </div>
@@ -151,19 +141,14 @@
                               <td><strong>Right</strong></td>
                             </tr>
                             <tr>
-                              <td><strong>Total PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['3'].LeftDirect}}</td>
+                              <td>{{downline['3'].RightDirect}}</td>
                             </tr>
                             <tr>
-                              <td><strong>Potential PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
-                            </tr>
-                            <tr>
-                              <td><strong>Matched PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['3'].LeftTotal}}</td>
+                              <td>{{downline['3'].RightTotal}}</td>
                             </tr>
                           </table>
                         </div>
@@ -175,19 +160,14 @@
                               <td><strong>Right</strong></td>
                             </tr>
                             <tr>
-                              <td><strong>Total PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['4'].LeftDirect}}</td>
+                              <td>{{downline['4'].RightDirect}}</td>
                             </tr>
                             <tr>
-                              <td><strong>Potential PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
-                            </tr>
-                            <tr>
-                              <td><strong>Matched PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['4'].LeftTotal}}</td>
+                              <td>{{downline['4'].RightTotal}}</td>
                             </tr>
                           </table>
                         </div>
@@ -199,19 +179,14 @@
                               <td><strong>Right</strong></td>
                             </tr>
                             <tr>
-                              <td><strong>Total PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['2'].LeftDirect}}</td>
+                              <td>{{downline['2'].RightDirect}}</td>
                             </tr>
                             <tr>
-                              <td><strong>Potential PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
-                            </tr>
-                            <tr>
-                              <td><strong>Matched PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['2'].LeftTotal}}</td>
+                              <td>{{downline['2'].RightTotal}}</td>
                             </tr>
                           </table>
                         </div>
@@ -223,19 +198,14 @@
                               <td><strong>Right</strong></td>
                             </tr>
                             <tr>
-                              <td><strong>Total PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['5'].LeftDirect}}</td>
+                              <td>{{downline['5'].RightDirect}}</td>
                             </tr>
                             <tr>
-                              <td><strong>Potential PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
-                            </tr>
-                            <tr>
-                              <td><strong>Matched PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['5'].LeftTotal}}</td>
+                              <td>{{downline['5'].RightTotal}}</td>
                             </tr>
                           </table>
                         </div>
@@ -247,19 +217,14 @@
                               <td><strong>Right</strong></td>
                             </tr>
                             <tr>
-                              <td><strong>Total PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['6'].LeftDirect}}</td>
+                              <td>{{downline['6'].RightDirect}}</td>
                             </tr>
                             <tr>
-                              <td><strong>Potential PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
-                            </tr>
-                            <tr>
-                              <td><strong>Matched PV</strong></td>
-                              <td>10PV</td>
-                              <td>4PV</td>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['6'].LeftTotal}}</td>
+                              <td>{{downline['6'].RightTotal}}</td>
                             </tr>
                           </table>
                         </div>
@@ -277,18 +242,18 @@
                           </tr>
                           <tr>
                             <td><strong>Total PV</strong></td>
-                            <td>10PV</td>
-                            <td>4PV</td>
+                            <td>{{tableInfo.LeftPV}} PV</td>
+                            <td>{{tableInfo.RightPV}} PV</td>
                           </tr>
                           <tr>
                             <td><strong>Potential PV</strong></td>
-                            <td>10PV</td>
-                            <td>4PV</td>
+                            <td>{{tableInfo.Capping}} PV</td>
+                            <td>{{tableInfo.Capping}} PV</td>
                           </tr>
                           <tr>
                             <td><strong>Matched PV</strong></td>
-                            <td>10PV</td>
-                            <td>4PV</td>
+                            <td>{{tableInfo.MatchedPV}} PV</td>
+                            <td>{{tableInfo.MatchedPV}} PV</td>
                           </tr>
                         </table>
                       </div>
@@ -305,81 +270,76 @@
                           </tr>
                           <tr>
                             <td><strong>Total PV</strong></td>
-                            <td>10PV</td>
-                            <td>4PV</td>
+                            <td>{{tableInfo.LeftRepurchasePV}} PV</td>
+                            <td>{{tableInfo.RightRepurchasePV}} PV</td>
                           </tr>
                           <tr>
                             <td><strong>Potential PV</strong></td>
-                            <td>10PV</td>
-                            <td>4PV</td>
+                            <td>{{tableInfo.RepurchaseCapping}} PV</td>
+                            <td>{{tableInfo.RepurchaseCapping}} PV</td>
                           </tr>
                           <tr>
                             <td><strong>Matched PV</strong></td>
-                            <td>10PV</td>
-                            <td>4PV</td>
+                            <td>{{tableInfo.RepurchaseMatchedPV}} PV</td>
+                            <td>{{tableInfo.RepurchaseMatchedPV}} PV</td>
                           </tr>
                         </table>
                       </div>
                       <div class="row">
                         <div class="col-md-11 col-md-offset-1">
+                          <span class="pull-right" ng-click="getDownline('')" style="cursor: pointer;margin-right: 20px" role="button" tabindex="0">
+                            <img src="images/refresh.png" width="20px"> Refresh
+                          </span><br>
                           <div class="tree">
                             <ul>
                               <li>
-                                <a href="#" data-tooltip="sticky1">
+                                <a ng-click="getDownline(downline['0'].username)" data-tooltip="sticky1">
                                   <div class="container-fluid">
                                     <div class="row">
-                                      <img src="images/flags/cn.png" /> <strong>Bruce Ting</strong>
+                                      <img src="{{downline['0'].flag}}" /> <strong>{{downline['0'].username}}</strong>
                                     </div>
                                     <div class="row" style="margin-top: 5px;">
-                                      <img src="images/users/u01.jpg" class="img-circle" width="50" height="50" />
-                                    </div>
-                                    <div class="row">
-                                      <strong class="red-text02">50% Commission</strong>
+                                      <img ng-if="downline['0'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['0'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                      <img ng-if="downline['0'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                     </div>
                                   </div>
                                 </a>
                                 <ul>
                                   <li>
-                                    <a href="#" data-tooltip="sticky2">
+                                    <a ng-click="getDownline(downline['1'].username)" data-tooltip="sticky2">
                                       <div class="container-fluid">
                                         <div class="row">
-                                          <img src="images/flags/in.png" /> <strong>Yash Sharma</strong>
+                                          <img src="{{downline['1'].flag}}" /> <strong>{{downline['1'].username}}</strong>
                                         </div>
                                         <div class="row" style="margin-top: 5px;">
-                                          <img src="images/users/u02.jpg" class="img-circle" width="50" height="50" />
-                                        </div>
-                                        <div class="row">
-                                          <strong class="red-text02">35% Commission</strong>
+                                          <img ng-if="downline['1'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['1'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                          <img ng-if="downline['1'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                         </div>
                                       </div>
                                     </a>
                                     <ul>
                                       <li>
-                                        <a href="#" data-tooltip="sticky3">
+                                        <a ng-click="getDownline(downline['3'].username)" data-tooltip="sticky3">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="images/flags/in.png" /> <strong>Keya Mishra</strong>
+                                              <img src="{{downline['3'].flag}}" /> <strong>{{downline['3'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img src="images/users/u03.jpg" class="img-circle" width="50" height="50" />
-                                            </div>
-                                            <div class="row">
-                                              <strong class="red-text02">16% Commission</strong>
+                                              <img ng-if="downline['3'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['3'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['3'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
                                         </a>
                                       </li>
                                       <li>
-                                        <a href="#" data-tooltip="sticky4">
+                                        <a ng-click="getDownline(downline['4'].username)" data-tooltip="sticky4">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="images/flags/in.png" /> <strong>Rashmi Roy</strong>
+                                              <img src="{{downline['4'].flag}}" /> <strong>{{downline['4'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img src="images/users/u04.jpg" class="img-circle" width="50" height="50" />
-                                            </div>
-                                            <div class="row">
-                                              <strong class="red-text02">14% Commission</strong>
+                                              <img ng-if="downline['4'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['4'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['4'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
                                         </a>
@@ -387,46 +347,41 @@
                                     </ul>
                                   </li>
                                   <li>
-                                    <a href="#" data-tooltip="sticky5">
+                                    <a ng-click="getDownline(downline['2'].username)" data-tooltip="sticky5">
                                       <div class="container-fluid">
                                         <div class="row">
-                                          <img src="images/flags/cn.png" /> <strong>Arvindu Gupta</strong>
+                                          <img src="{{downline['2'].flag}}" /> <strong>{{downline['2'].username}}</strong>
                                         </div>
                                         <div class="row" style="margin-top: 5px;">
-                                          <img src="images/users/u05.jpg" class="img-circle" width="50" height="50" />
-                                        </div>
-                                        <div class="row">
-                                          <strong class="red-text02">35% Commission</strong>
+                                          <img ng-if="downline['2'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['2'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                          <img ng-if="downline['2'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                         </div>
                                       </div>
                                     </a>
                                     <ul>
                                       <li>
-                                        <a href="#" data-tooltip="sticky6">
+                                        <a ng-click="getDownline(downline['5'].username)" data-tooltip="sticky6">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="images/flags/in.png" /> <strong>Mayank Das</strong>
+                                              <img src="{{downline['5'].flag}}" /> <strong>{{downline['5'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img src="images/users/u06.jpg" class="img-circle" width="50" height="50" />
-                                            </div>
-                                            <div class="row">
-                                              <strong class="red-text02">13% Commission</strong>
+                                              <img ng-if="downline['5'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['5'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              {{downline['5'].ItemName.toLowerCase()}}
+                                              <img ng-if="downline['5'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
                                         </a>
                                       </li>
                                       <li>
-                                        <a href="#" data-tooltip="sticky7">
+                                        <a ng-click="getDownline(downline['6'].username)" data-tooltip="sticky7">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="images/flags/cn.png" /> <strong>Abhishek Lajpat</strong>
+                                              <img src="{{downline['6'].flag}}" /> <strong>{{downline['6'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img src="images/users/u07.jpg" class="img-circle" width="50" height="50" />
-                                            </div>
-                                            <div class="row">
-                                              <strong class="red-text02">50% Commission</strong>
+                                              <img ng-if="downline['6'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['6'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['6'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
                                         </a>
@@ -439,6 +394,9 @@
                           </div>
                         </div>
                       </div>
+                      <script src="js/stickytooltip.js"></script>
+                      <div class="mt10"></div>
+                      <p class="text-danger text-center"><small>*To view more details of any member, please click on it.</small></p>
                     </div>
                   </div>
                   <div class="tab-pane tab_default_6">
