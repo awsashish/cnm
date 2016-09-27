@@ -122,7 +122,7 @@
                   on Launch Day</strong>
                 </h3>
                 <p class="grand-total">${{payCheckTotal | number:2}}</p>
-                <small>*need text here</small>
+                <small>*Above mentioned figures are based on an average of referral and team commissions, calculated on behalf of estimated purchases of your current downlines. It represents the income potential of this marketing system. However, your real paycheque depends upon the real purchases on Coinomia Launch.</small>
               </div>
             </div>
           </div>
@@ -183,9 +183,9 @@
                     </tr>
                     <tr ng-repeat="income in estIncome">
                       <td>{{income.duration}}</td>
-                      <td>{{income.btc | number:2}}</td>
-                      <td>{{income.eth | number:2}}</td>
-                      <td><strong>${{income.miningUsd | number:2}}</strong></td>
+                      <td>{{income.btc | number:5}}</td>
+                      <td>{{income.eth | number:5}}</td>
+                      <td><strong>${{income.miningUsd | number:5}}</strong></td>
                     </tr>
                   </table>
                 </div>
