@@ -3,7 +3,7 @@
   <div class="mainwrapper">
     <navigation></navigation>
     <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
-      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}
+      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.error-padding{top:4px;}
     </style>
     <div class="mainpanel">
       <div class="pageheader">
@@ -46,7 +46,8 @@
                           <div class="table-responsive">
                             <div class="alert alert-success" role="alert"><strong>Note</strong> : Your Coinomia Landing Page {{landingPages[0].Title}} Page is Active Now</div>
                             <div class="ref-box yelo-text01"><i class="fa fa-check-square-o" aria-hidden="true"></i>
-                              {{landingPages[0].path}}{{sponsorId}}
+                              <span id="copy-text-clipboard">{{landingPages[0].path}}{{sponsorId}}</span>
+                              <button ngclipboard data-clipboard-target="#copy-text-clipboard" class="pull-right copy-btn "><i class="fa fa-chain "></i> Copy Link</button>
                             </div>
                             <table class="table table-dark-gry table-hover mb30 font16">
                               <thead style="background:#525252;">
@@ -101,25 +102,165 @@
                              <p align="center"><i class="fa fa-user-plus icon-lg border-round " style="padding-left:7px;" aria-hidden="true"></i></p>
                              <h3 align="center" style="padding:0px; margin:0px;"><strong>Create a New Account</strong></h3>
                              <p align="center"><strong>Please enter your credentials below</strong></p>
-                             <form class="form-signup-reffer">
+
+                             <form name="signup" ng-submit="next()" class="form-signup-reffer" novalidate>
                                 <label class="mar10"><strong>Sponsor ID</strong></label>
-                                <input type="text" name="sponsor-ID" class="form-control" value="CON098459" readonly="readonly" />
+                                <input type="text" class="form-control" ng-model="sponsorId" value="{{sponsorId}}" readonly="readonly" />
                                 <label class="mar10"><strong>Sponsor Name</strong></label>
-                                <input type="text" name="sponsor-name" class="form-control" value="Elen Adarna" readonly="readonly" />
+                                <input type="text" class="form-control" ng-model="name" value="{{name}}" readonly="readonly" />
+
+                                <label class="mar10"><strong>Desired User ID</strong></label>
+                                <input type="text"
+                                       name="userid"
+                                       ng-model="user.userid"
+                                       class="form-control userid"
+                                       placeholder="Create a Username"
+                                       ng-minlength=4
+                                       ng-maxlength=20
+                                       ng-pattern="/^[a-zA-Z0-9]+$/"
+                                       required />
+
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.userid.$touched && signup.userid.$invalid && !signup.userid.$error.pattern && !signup.userid.$error.maxlength && !signup.userid.$error.minlength">
+                                   User Id is required</div>
+
+                                <div class="alert alert-danger fade in error-padding" ng-show="signup.userid.$touched && signup.userid.$error.pattern && !signup.userid.$error.maxlength && !signup.userid.$error.minlength"> Special characters are not allowed.</div>
+
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.userid.$touched && (signup.userid.$error.minlength || signup.userid.$error.maxlength)">
+                                   Min. 4 and Max. 15 characters are allowed.</div>
+
+                                <div class="alert alert-danger fade in error-padding" ng-if="userIdError">{{userIdError}}</div>
+
                                 <label class="mar10"><strong>First Name</strong></label>
-                                <input type="text" name="f-name" class="form-control" />
+                                <input type="text"
+                                       name="firstName"
+                                       ng-model="user.firstName"
+                                       class="form-control"
+                                       placeholder="First Name"
+                                       ng-maxlength="15"
+                                       ng-pattern="/^[a-zA-Z]+$/"
+                                       required />
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.firstName.$touched && signup.firstName.$invalid && !signup.firstName.$error.pattern && !signup.firstName.$error.maxlength">
+                                   First Name is required.</div>
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.firstName.$touched && signup.firstName.$error.pattern && !signup.firstName.$error.maxlength">
+                                   Only Alphabets are allowed.</div>
+
+                                 <div class="alert alert-danger fade in error-padding"
+                                    ng-show="signup.name.$touched && signup.name.$invalid && signup.name.$error.maxlength">
+                                    Maximum 15 characters are allowed.</div>
+
+                                <div class="alert alert-danger fade in error-padding" ng-show="!signup.name.$error.pattern && firstNameError">{{nameError}}</div>
+
                                 <label class="mar10"><strong>Last Name</strong></label>
-                                <input type="text" name="l-name" class="form-control" />
+                                <input type="text"
+                                       name="lastName"
+                                       ng-model="user.lastName"
+                                       class="form-control"
+                                       placeholder="Last Name"
+                                       ng-maxlength="15"
+                                       ng-pattern="/^[a-zA-Z]+$/"
+                                       required />
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.lastName.$touched && signup.lastName.$invalid && !signup.lastName.$error.pattern && !signup.lastName.$error.maxlength">
+                                   Last Name is required.</div>
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.lastName.$touched && signup.lastName.$error.pattern && !signup.lastName.$error.maxlength">
+                                   Only Alphabets are allowed.</div>
+
+                                 <div class="alert alert-danger fade in error-padding"
+                                    ng-show="signup.lastName.$touched && signup.lastName.$invalid && signup.lastName.$error.maxlength">
+                                    Maximum 15 characters are allowed.</div>
+
+                                <div class="alert alert-danger fade in error-padding" ng-show="!signup.lastName.$error.pattern && lastNameError">{{nameError}}</div>
+
                                 <label class="mar10"><strong>Email</strong></label>
-                                <input type="email" name="email" class="form-control" />
-                                <label class="mar10"><strong>Password</strong></label>
-                                <input type="password" name="pwd" class="form-control" />
-                                <label class="mar10"><strong>Confirm Password</strong></label>
-                                <input type="password" name="c-pwd" class="form-control" />
-                                <p class="mar10"><label><input name="placement" type="radio" value="lft-placement" /> <strong>Left Placement</strong></label>&nbsp;&nbsp;     <label><input name="placement" type="radio" value="rgt-placement" /> <strong>Right Placement</strong></label></p>
-                                <button class="btn btn-block btn-warning mar10"><strong>Join Now</strong></button>
+                                <input type="email"
+                                       name="email"
+                                       ng-model="user.email"
+                                       class="form-control"
+                                       placeholder="Enter your Email"
+                                       ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i"
+                                       required />
+                              <!--  ng-pattern ="/^[a-z]+([a-z0-9._-](\+{0,1}))+@[a-z]+\.[a-z.]{2,6}$/i" -->
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="signup.email.$touched && signup.email.$invalid && !signup.email.$error.pattern">
+                                 Email is required</div>
+                              <!-- Email Validation    -->
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="signup.email.$error.pattern && signup.email.$touched">
+                                 Please enter a valid email address.</div>
+
+                              <div class="alert alert-danger fade in error-padding" ng-if="emailError">{{emailError}}</div>
+
+                              <label class="mar10"><strong>Country</strong></label>
+                              <div class="col-md-12 input-group mb15">
+                              <i class="fa fa-sort select" aria-hidden="true"></i>
+                              <div ng-model="user.country" country-select></div>
+                                <!-- <input type="text"
+                                       name="country"
+                                       class="form-control"
+                                       placeholder="{{user.country}}"
+                                       disabled
+                                       required /> -->
+                              </div>
+
+                              <label class="mar10"><strong>Password</strong></label>
+                              <input type="password"
+                                     name="password"
+                                     ng-model="user.password"
+                                     class="form-control"
+                                     ng-minlength="6"
+                                     ng-pattern="/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/"
+                                     placeholder="Password"
+                                     required />
+
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="signup.password.$touched && signup.password.$invalid && !signup.password.$error.minlength && !signup.password.$error.pattern">
+                                 Password is required.</div>
+                              <!-- Minimum Lenght Validation -->
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="signup.password.$touched && signup.password.$invalid && signup.password.$error.minlength">
+                                 Password must be 6 characters long.</div>
+                               <!-- Alphanumeric Validation -->
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="signup.password.$touched && signup.password.$error.pattern && !signup.password.$error.minlength">
+                                 Password must be alphanumeric.</div>
+
+                              <label class="mar10"><strong>Confirm Password</strong></label>
+                              <input type="password"
+                                     name="confirmpassword"
+                                     ng-model="user.confirmPassword"
+                                     class="form-control"
+                                     ng-keyup="confirmPass()"
+                                     placeholder="Confirm Password"
+                                     required />
+
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="(signup.confirmpassword.$touched && signup.confirmpassword.$invalid) || confirmPassError">
+                                 Password does not match</div>
+
+                                <p class="mar10">
+                                  <label><input name="placement" type="radio" ng-model="user.placement" value="L" /> <strong>Left Placement</strong></label>
+                                  &nbsp;&nbsp;
+                                  <label><input name="placement" type="radio" ng-model="user.placement" value="R" /> <strong>Right Placement</strong></label></p>
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-if="errorPlacement">{{errorPlacementMessage }}</div>
+
+                                <button type="submit" class="btn btn-success" ng-disabled="signup.$invalid"><strong>Join Now</strong></button>
+                                <br />
+                                <br />
+                                <div class="alert alert-success fade in" ng-if="signupMessage">
+                                  <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i> Account created succesfully.
+                                </div>
+                                <div class="alert alert-danger fade in" ng-if="errorMessage" style="text-transform:capitalize;">
+                                  <strong>OOPS!</strong> {{errorMessage}}.
+                                </div>
                              </form>
-                          </Div>
+
+                          </div>
                        </div>
                     </div>
                  </div>

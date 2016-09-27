@@ -2,8 +2,8 @@
 <section>
   <div class="mainwrapper">
   <navigation></navigation>
-  <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
-  }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;} </style>
+  <style>.nav-tabs > li > a{ padding: 10px 30px !important; color:#fff !important;
+  }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;} .box-gry{float:left;margin-top: 20px;}</style>
   <div class="mainpanel">
     <div class="pageheader">
       <!-- media -->
@@ -38,6 +38,11 @@
                   <a href=".sms-blast" data-toggle="tab">
                   <i class="fa fa-mobile icon-lg" aria-hidden="true"></i><br />
                   <strong>SMS Blast</strong> </a>
+                </li>
+                <li>
+                  <a href=".fb-private" data-toggle="tab">
+                  <i class="fa fa-facebook icon-lg" aria-hidden="true"></i><br />
+                  <strong>FB Private Messages</strong></a>
                 </li>
                 <li ng-class="(activeTab==='social-blast'?'active':'')">
                   <a href=".social-blast" data-toggle="tab">
@@ -113,6 +118,16 @@
                       </div>
                     </div>
                   </div>
+                  <div class="col-md-4">
+                    <div class="panel panel-default">
+                      <div class="panel-body" style="padding:5px !important;">
+                        <a href="images/download/pdf03.pdf" target="_blank" title="Elaborated Compensation Plan"><img src="images/download/pdf03.jpg" class="img-responsive" /> </a>
+                      </div>
+                      <div align="center" class="panel-footer"><a href="images/download/pdf03.pdf" target="_blank" title="Compensation Plan"><strong >Elaborated Compensation Plan</strong></a><br />
+                        <a href="images/download/pdf03.zip"  title="Download PDF" class="mar20"><button type="button" class="btn btn-red btn-xs pull-right"><i class="fa fa-download"></i> Download</button></a>
+                      </div>
+                    </div>
+                  </div>
                   <div></div>
                 </div>
               </div>
@@ -121,22 +136,29 @@
                 <hr />
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <div ><strong>Example Link : </strong>&lt;a href=&quot;http://login.coinomia.com/refb/SPONSOR_ID/BANNER_ID&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://login.coinomia.com/assets/affiliates/banner/upload/f2464ef0-d606-11e5-9ab6-df709999eff5.png&quot; alt=&quot;Compnay&quot; height=&quot;90&quot; width=&quot;728&quot; /&gt;&lt;/a&gt;
+                    <div ><strong>Example Link : </strong>&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{banners[0].bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerApiPath}}{{banners[0].bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;90&quot; width=&quot;728&quot; /&gt;&lt;/a&gt;
                     </div>
                     <br />
                     <strong style="color:#f00;">** Note: Please don't share above link, it is an example link.</strong> <br />
                     Please generate your own banner referral link by typing its name and click on "Get Your Banner Referral Link" button shown below<br />
                     <br />
                     <hr />
-                    <h4 class="total-amount"><strong>Banner Name: Cloud Mining Edge (728 x 90)</strong></h4>
-                    <strong class="pull-right">Height: 90 Width: 728</strong><br />
-                    <img src="images/affiliates/728x90.png" />
-                    <form class="mar20   ">
-                      <div class="col-md-6 nomargin nopadding"><input type="text" name="banner-name" class="form-control" value="Enter Your Banner Name" /></div>
-                      <div class="col-md-6"><button ng-click="showme=true" class="btn btn-default yelo-btn"><strong>Get Your Banner Referral Link</strong></button></div>
-                      <br />
-                      <div class="box-gry">&lt;a href=&quot;http://login.coinomia.com/refb/SPONSOR_ID/BANNER_ID&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://login.coinomia.com/assets/affiliates/banner/upload/f2464ef0-d606-11e5-9ab6-df709999eff5.png&quot; alt=&quot;Compnay&quot; height=&quot;90&quot; width=&quot;728&quot; /&gt;&lt;/a&gt;</div>
-                    </form>
+                    <div class="col-md-12 mb30 banner-section" ng-repeat="(key,bannerInfo) in banners">
+                      <h4 class="total-amount"><strong>Banner Name: {{bannerInfo.bannername}} ({{bannerInfo.bannerwidth}} x {{bannerInfo.bannerhight}})</strong></h4>
+                      <strong class="pull-right">Height: {{bannerInfo.bannerhight}} Width: {{bannerInfo.bannerwidth}}</strong><br />
+                      <img src="{{bannerInfo.bannerimage}}" />
+                      <form class="mar20">
+                        <div class="col-md-6 nomargin nopadding">
+                          <input type="text" name="banner-name" class="form-control" value="{{bannerInfo.bannername}}" disabled/>
+                        </div>
+                        <div class="col-md-6">
+                          <button ng-click="getBannerCode(key);" class="btn btn-default yelo-btn">
+                            <strong>Get Your Banner Referral Link</strong>
+                          </button>
+                        </div>
+                        <div ng-show="bannerInfo.showCode" class="box-gry">&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerhight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt;</div>
+                      </form>
+                    </div>
                   </div>
                   <div></div>
                 </div>
@@ -297,22 +319,127 @@
                   <div class="col-md-5" align="center"><img src="images/snapchat.png" width="300" /></div>
                 </div>
               </div>
+              <div class="tab-pane fb-private" ng-class="(activeTab==='fb-private'?'active':'')">
+                <h2 class="mb35-sm top-spacemob10"><i class="fa fa-facebook icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>FB Private Messages</strong></h2>
+                <hr />
+                <div class="row" >
+                  <div class="col-md-2">
+                    <div class="number"><img src="images/fb1.png" class="img-responsive" /></div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="email-sample">
+                      <strong>Body :</strong> Hey Would Like You To Check out this Private VIP Prelaunch which has the potential to make upto $65,610/Day . <br />
+                      Some of the biggest industry names are already a part of it now and it is growing viral<br /><br />
+                      <strong>==>> Link</strong><br /><br />
+                      It's a never heard before concept where user's have the potential to be crypto currency miners and earn daily bitcoins , etherium's and other alt coins on complete autopilot...<br />
+                      Right Now You Can Create Your Account For Free And Get Started Immediately And Start Building Your Network Before They Officially Go Live
+                      Check it out<br /><br />
+                      <strong>==>> Link</strong><br /><br />
+                      <strong>Name</strong>
+                    </div>
+                  </div>
+                </div>
+                <Div class="clearfix"></Div>
+                <div class="row" >
+                  <div class="col-md-2">
+                    <div class="number"><img src="images/fb2.png" class="img-responsive" /></div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="email-sample">
+                      <strong>Body : </strong>
+                      Products you can offer millions,
+                      products in the 15 BILLION DOLLAR
+                      Crypto Currency industry!<br /><br />
+                      <em><strong>In prelaunch now.</strong></em><br /><br />
+                      Earning Potential Upto $65,610/Day<br /><br />
+                      Tell your contacts now before others do. <br /><br />
+                      Get An Affiliate Link In 10 Seconds Here<br /><br />
+                      <strong>==>> Link </strong><br />
+                      Then send this same email with your affiliate link
+                      and/or share it with your friends on your Facebook wall.<br />
+                      <br />
+                      <strong>-Name</strong>
+                    </div>
+                  </div>
+                </div>
+                <Div class="clearfix"></Div>
+                <div class="row" >
+                  <div class="col-md-2">
+                    <div class="number"><img src="images/fb3.png" class="img-responsive" /></div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="email-sample">
+                      <strong>Body : </strong>
+                      Your crypto currency mining setup is live and ready to start
+                      mining bitcoins , etherium's and other alt coins
+                      on complete autopilot : <br />
+                      <br />
+                      Take a look at it here<br /><br />
+                      <strong>==>> Link</strong><br /><br />
+                      Like you've heard me say before,
+                      the whole financial system is changing
+                      and crypto currencies are the future of money...<br />
+                      <br />
+                      It's time we start having them on autopilot<br />
+                      <br />
+                      <strong>==>> Link</strong><br />
+                      <br />
+                      Cheers,<br />
+                      Name
+                    </div>
+                  </div>
+                </div>
+                <Div class="clearfix"></Div>
+                <div class="row" >
+                  <div class="col-md-2">
+                    <div class="number"><img src="images/fb4.png" class="img-responsive" /></div>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="email-sample">
+                      <strong>Body : </strong>
+                      I am going to show you a waaaaay
+                      too easy way to start earning crypto-currencies
+                      like bitcoins , etherium and other alt coins on complete
+                      autopilot here<br />
+                      <br />
+                      <strong>==>> Link</strong><br />
+                      <br />
+                      Oh and the best part it, it's not only
+                      quick, but they also offer a business opportuntiy
+                      which is currently in prelaunch and earning potential
+                      is upto $65,610/Day <br />
+                      <br />
+                      <strong>It's Free To Join  : Check it out</strong><br />
+                      <br />
+                      <strong>==>> Link</strong><br />
+                      <br />
+                      Enjoy,<br />
+                      Name
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="tab-pane social-group" ng-class="(activeTab==='social-group'?'active':'')">
                 <h2 class="mb35-sm top-spacemob10"><i class="fa fa-facebook icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Social Groups</strong></h2>
                 <hr />
+                <p style="text-align:justify;">Make the best use of the Social Platforms to expand your network. Join our Facebook Group and start following leaders and approaching users. Follow our Facebook page for all the latest updates and notifications. Subscribe to our you tube channel  to get the latest updated videos and learn the tricks of the trade. You can also share these videos, presentations and all the essentials through your twitter handle, G+ and facebook account.<br />
+                <br />
+
+                Get an Edge over others with Social Media Marketing and promote Coinomia to build a stronger  team  with every passing minute.</p>
+                <h4>Time is precious. Get going!!!</h4><br />
                 <div class="row">
                   <div class="col-md-6">
-                    <a href="#" style="color:#666;">
+                    <a href="https://www.facebook.com/groups/coinomiacorporate/" title="Our Facebook Group" target="_blank" style="color:#666;">
                       <div class="fb-btn"><i class="fa fb-color fa-facebook-square fa-5x" aria-hidden="true"></i>
                         Our Facebook Group
                       </div>
                     </a>
-                    <a href="#" style="color:#666;">
+                    <a href="https://www.facebook.com/Coinomia-1077562372325251/" target="_blank" title="Facebook Page" style="color:#666;">
                       <div class="fb-btn"><i class="fa fb-color fa-facebook-square fa-5x" aria-hidden="true"></i>
                         Facebook Page
                       </div>
                     </a>
-                    <a href="#" style="color:#666;">
+                    <!-- <a href="#" style="color:#666;">
                       <div class="fb-btn"><i class="fa twitter-btn fa-twitter-square fa-5x" aria-hidden="true"></i>
                         Twitter
                       </div>
@@ -321,8 +448,8 @@
                       <div class="fb-btn"><i class="fa gplus fa-google-plus-square" aria-hidden="true"></i>
                         Google Plus
                       </div>
-                    </a>
-                    <a href="#" style="color:#666;">
+                    </a> -->
+                    <a href="https://www.youtube.com/channel/UCQA22mJPGyMx3ZTDM8uEfyw" target="_blank" title="Youtube" style="color:#666;">
                       <div class="fb-btn"><i class="fa gplus fa-youtube-square" aria-hidden="true"></i>
                         Youtube
                       </div>

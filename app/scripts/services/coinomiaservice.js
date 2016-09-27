@@ -63,35 +63,35 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get User Referrals
-    this.getUserReferral = function(currentPage) {
+    this.getUserDirects = function(currentPage) {
 
-      function userReferralComplete(response) {
-        return response.data;
+      function userDirectsComplete(response) {
+        return response;
       }
 
-      function userReferralFailed(error) {
+      function userDirectsFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
       return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
-        .then(userReferralComplete)
-        .catch(userReferralFailed);
+        .then(userDirectsComplete)
+        .catch(userDirectsFailed);
     };
 
     // All Referrals
-    this.getReferral = function(currentPage) {
+    this.getAllReferral = function(currentPage) {
 
-      function getReferralComplete(response) {
-        return response.data;
+      function getAllReferralComplete(response) {
+        return response;
       }
 
-      function getReferralFailed(error) {
+      function getAllReferralFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.post(this.apiHost +'user/all-referral/'+currentPage+'/'+pageLimit)
-        .then(getReferralComplete)
-        .catch(getReferralFailed);
+      return $http.get(this.apiHost +'user/all-referral/'+currentPage+'/'+pageLimit)
+        .then(getAllReferralComplete)
+        .catch(getAllReferralFailed);
 
     };
 
@@ -459,5 +459,23 @@ angular.module('coinomiaFrontendApp')
       return $http.post(this.apiHost +'user/auto-rotator', placement)
         .then(switchPlacementRequestComplete)
         .catch(switchPlacementRequestFailed);
+    }
+
+    // Get User Banners
+    this.getBanners = function() {
+      // On Success
+      function getBannerRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getBannerRequestFailed(error) {
+        $log.error('XHR Failed for Switch Placement.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/banners')
+        .then(getBannerRequestComplete)
+        .catch(getBannerRequestFailed);
     }
   });

@@ -70,5 +70,7 @@ angular.module('coinomiaFrontendApp')
     'salesDirectImage':'images/direct-ref.png',
     'salesBinaryImage':'images/team-ref.png',
     'salesDirectHeading':'If all your Direct Buy',
-    'salesBinaryHeading':'If all your Team Buy'
+    'salesBinaryHeading':'If all your Team Buy',
+    'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
+    'signUpPath':'http://login.coinomia.com/#/signup'
   });
