@@ -32,12 +32,12 @@
                       <strong>My Downline</strong> </a>
                     </li>
                     <li>
-                      <a href=".tab_default_6" data-toggle="tab">
+                      <a href="" data-toggle="tab">
                       <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br />
                       <strong>Leaderboard</strong> </a>
                     </li>
                     <li>
-                      <a href=".tab_default_7" data-toggle="tab">
+                      <a href="" data-toggle="tab">
                       <i class="fa fa-money icon-lg" aria-hidden="true"></i><br />
                       <strong>Commissions</strong> </a>
                     </li>
@@ -60,30 +60,30 @@
                             <th width="2%"><strong class="white-color">Sr.No</strong></th>
                             <th width="20%"><strong class="white-color">Name of the User</strong></th>
                             <th width="20%"><strong class="white-color">Email</strong></th>
-                            <!-- <th width="15%"><strong class="white-color">Contact Number</strong></th> -->
+                            <th width="15%"><strong class="white-color">Contact Number</strong></th>
                             <th width="18%"><strong class="white-color">Contract Purchased</strong></th>
                             <th width="18%"><strong class="white-color">Total Purchased Value</strong></th>
                             <th  width="10%"><strong class="white-color">Joined At</strong></th>
-                            <!-- <th align="right" width="18%" ><strong class="white-color">Team Members</strong>	</th> -->
+                            <th align="right" width="18%" ><strong class="white-color">Team Members</strong>	</th>
                           </tr>
                         </thead>
                         <tbody>
                           <!-- <img src="images/flags/in.png" />  -->
-                          <tr ng-repeat="directs in teamDirectsData">
-                            <td>{{$index+1}}</td>
+                          <tr ng-repeat="(key,directs) in teamDirectsData">
+                            <td>{{(((currentPage - 1) * pagination.perpage) + (key + 1))}}</td>
                             <td><img src="{{directs.flag}}" />&nbsp;{{directs.Name}}</td>
                             <td>{{directs.Email}}</td>
-                            <!-- <td>{{directs.mobile}}</td> -->
-                            <td>{{directs.TotalContract}} BTC</td>
-                            <td>{{directs.TotalPurchased}} BTC</td>
+                            <td>{{directs.Mobile}}</td>
+                            <td>{{directs.TotalContract}}</td>
+                            <td>{{directs.TotalPurchased | currency}}</td>
                             <td>{{directs.DOJ}}</td>
-                            <!-- <td align="center">4</td> -->
+                            <td align="center">{{directs.TotalDirect}}</td>
                           </tr>
                         </tbody>
                       </table>
 
                       <div class="pull-right">
-                        <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="pagination.totalDirects" ng-model="currentPage" max-size="5"></ul>
+                        <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="pagination.totalDirects" ng-model="currentPage" max-size="5" ng-change="userDirects(currentPage)"></ul>
                       </div>
                       <br />
                       <br />
@@ -593,19 +593,19 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr ng-repeat="team in teamData">
-                            <td>{{$index+1}}</td>
+                          <tr ng-repeat="(key,team) in teamData">
+                            <td>{{(((currentPage - 1) * pagination.perpage) + (key + 1))}}</td>
                             <td><img src="{{team.flag}}" /> {{team.Name}}</td>
                             <td>{{team.username}}</td>
                             <td>{{team.Sponsor}}</td>
                             <td>{{team.Level}}</td>
                             <td>{{team.DOJ}}</td>
-                            <td></td>
+                            <td>{{team.TotalDirect}}</td>
                           </tr>
                         </tbody>
                       </table>
                       <div class="pull-right">
-                        <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="pagination.totalTeam" ng-model="currentPage" max-size="5"></ul>
+                        <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="pagination.totalTeam" ng-model="currentPage" max-size="5" ng-change="allReferral(currentPage)"></ul>
                       </div>
                       <br />
                       <br />

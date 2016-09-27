@@ -45,6 +45,7 @@ angular.module('coinomiaFrontendApp')
           $rootScope.sponsorId = data.username;
           $rootScope.country = data.Country;
           $rootScope.autorotator = data.autorotator;
+          $rootScope.landingPage = data.LandingPage;
           if($rootScope.autorotator === 'L') {
             $rootScope.activePlacement = 'Left Placement';
           }else if($rootScope.autorotator === 'R') {

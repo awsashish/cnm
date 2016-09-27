@@ -13,25 +13,29 @@ angular.module('coinomiaFrontendApp')
     $scope.pagination = {
       totalDirects: 0,
       totalTeam:0,
-      perpage: 25
+      perpage: config.pageLimit
     }
 
     $scope.sponsorId = '';
 
     // Get User Directs
-    coinomiaService.getUserDirects($scope.currentPage)
-      .then(function(res) {
-        if(res.status === 200) {
-          var data = res.data;
-          $scope.pagination.totalDirects = data.total;
-          $scope.teamDirectsData  = data.rows;
-          $scope.getFlags(0, $scope.teamDirectsData, $scope.teamDirectsData.length);
-        }
-    });
+    $scope.userDirects = function(currentPage) {
+      coinomiaService.getUserDirects(currentPage)
+        .then(function(res) {
+          if(res.status === 200) {
+            var data = res.data;
+            $scope.pagination.totalDirects = data.total;
+            $scope.teamDirectsData  = data.rows;
+            $scope.getFlags(0, $scope.teamDirectsData, $scope.teamDirectsData.length);
+          }
+      });
+    }
+
+    $scope.userDirects($scope.currentPage);
 
     // Get All Referrals
     $scope.allReferral = function(page) {
-      coinomiaService.getAllReferral($scope.currentPage)
+      coinomiaService.getAllReferral(page)
         .then(function(res) {
           if(res.status === 200) {
             var data = res.data;

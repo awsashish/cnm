@@ -134,4 +134,13 @@
         }
       });
     };
+
+    $scope.updatePage = function(defaultPage) {
+      var pageId = JSON.stringify(defaultPage);
+      coinomiaService.updateLandingPage(pageId)
+      .then(function(res) {
+        $rootScope.landingPage = defaultPage;
+      })
+    }
+
    });
