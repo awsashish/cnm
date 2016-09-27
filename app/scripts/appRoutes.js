@@ -101,6 +101,7 @@ angular.module('coinomiaFrontendApp')
     .state('networks', {
       url: '/networks',
       templateUrl: 'views/networks.html',
+      controller:'NetworksCtrl',
       authenticate: true
     })
 
