@@ -39,6 +39,8 @@ module.exports = function(config) {
       'bower_components/angular-ui-slider/src/slider.js',
       'bower_components/angular-breadcrumb/release/angular-breadcrumb.js',
       'bower_components/angular-country-state-select/dist/angular-country-state-select.js',
+      'bower_components/clipboard/dist/clipboard.js',
+      'bower_components/ngclipboard/dist/ngclipboard.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

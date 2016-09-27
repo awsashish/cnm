@@ -19,7 +19,8 @@ angular
     'ngTouch',
     'ngStorage',
     'ncy-angular-breadcrumb',
-    'ngCountryStateSelect'
+    'ngCountryStateSelect',
+    'ngclipboard'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

@@ -46,7 +46,8 @@
                           <div class="table-responsive">
                             <div class="alert alert-success" role="alert"><strong>Note</strong> : Your Coinomia Landing Page {{landingPages[0].Title}} Page is Active Now</div>
                             <div class="ref-box yelo-text01"><i class="fa fa-check-square-o" aria-hidden="true"></i>
-                              {{landingPages[0].path}}{{sponsorId}}
+                              <span id="copy-text-clipboard">{{landingPages[0].path}}{{sponsorId}}</span>
+                              <button ngclipboard data-clipboard-target="#copy-text-clipboard" class="pull-right copy-btn "><i class="fa fa-chain "></i> Copy Link</button>
                             </div>
                             <table class="table table-dark-gry table-hover mb30 font16">
                               <thead style="background:#525252;">
