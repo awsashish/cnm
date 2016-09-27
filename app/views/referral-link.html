@@ -255,7 +255,7 @@
                                 <div class="alert alert-success fade in" ng-if="signupMessage">
                                   <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i> Account created succesfully.
                                 </div>
-                                <div class="alert alert-danger fade in"  style="text-transform:capitalize;">
+                                <div class="alert alert-danger fade in" ng-if="errorMessage" style="text-transform:capitalize;">
                                   <strong>OOPS!</strong> {{errorMessage}}.
                                 </div>
                              </form>
