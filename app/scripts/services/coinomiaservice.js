@@ -514,4 +514,40 @@ angular.module('coinomiaFrontendApp')
         .then(getBannerRequestComplete)
         .catch(getBannerRequestFailed);
     }
+
+    // Get User Direct leader Board
+    this.getDirectLeaderboard = function() {
+      // On Success
+      function getLeaderboardRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getLeaderboardRequestFailed(error) {
+        $log.error('XHR Failed for Switch Placement.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/leader-board-direct')
+        .then(getLeaderboardRequestComplete)
+        .catch(getLeaderboardRequestFailed);
+    }
+
+    // Get User Team leader Board
+    this.getTeamLeaderboard = function() {
+      // On Success
+      function getTeamLeaderboardRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getTeamLeaderboardRequestFailed(error) {
+        $log.error('XHR Failed for Switch Placement.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/leader-board-team')
+        .then(getTeamLeaderboardRequestComplete)
+        .catch(getTeamLeaderboardRequestFailed);
+    }
   });

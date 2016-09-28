@@ -985,4 +985,66 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Get User Direct Leader Board
+  describe('user direct leaderboard function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getDirectLeaderboard).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/leader-board-direct')
+      .respond(200, {"Last7Days": [{"MemberName": "Mohammad Raza","country": "India","total": 13}]});
+      var data;
+      coinomiaService.getDirectLeaderboard().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Last7Days[0].MemberName).toEqual('Mohammad Raza');
+      expect(data.Last7Days[0].country).toEqual('India');
+      expect(data.Last7Days[0].total).toEqual(13);
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/leader-board-direct')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getDirectLeaderboard();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Get User Team Leader Board
+  describe('user team leaderboard function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getTeamLeaderboard).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/leader-board-team')
+      .respond(200, {"Last7Days": [{"MemberName": "Mohammad Raza","country": "India","total": 14}]});
+      var data;
+      coinomiaService.getTeamLeaderboard().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Last7Days[0].MemberName).toEqual('Mohammad Raza');
+      expect(data.Last7Days[0].country).toEqual('India');
+      expect(data.Last7Days[0].total).toEqual(14);
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/leader-board-team')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getTeamLeaderboard();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });
