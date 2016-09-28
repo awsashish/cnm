@@ -144,8 +144,8 @@
                     <br />
                     <hr />
                     <div class="col-md-12 mb30 banner-section" ng-repeat="(key,bannerInfo) in banners">
-                      <h4 class="total-amount"><strong>Banner Name: {{bannerInfo.bannername}} ({{bannerInfo.bannerwidth}} x {{bannerInfo.bannerhight}})</strong></h4>
-                      <strong class="pull-right">Height: {{bannerInfo.bannerhight}} Width: {{bannerInfo.bannerwidth}}</strong><br />
+                      <h4 class="total-amount"><strong>Banner Name: {{bannerInfo.bannername}} ({{bannerInfo.bannerwidth}} x {{bannerInfo.bannerheight}})</strong></h4>
+                      <strong class="pull-right">Height: {{bannerInfo.bannerheight}} Width: {{bannerInfo.bannerwidth}}</strong><br />
                       <img src="{{bannerInfo.bannerimage}}" />
                       <form class="mar20">
                         <div class="col-md-6 nomargin nopadding">
@@ -156,7 +156,7 @@
                             <strong>Get Your Banner Referral Link</strong>
                           </button>
                         </div>
-                        <div ng-show="bannerInfo.showCode" class="box-gry">&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerhight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt;</div>
+                        <div ng-show="bannerInfo.showCode" class="box-gry">&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerheight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt;</div>
                       </form>
                     </div>
                   </div>
