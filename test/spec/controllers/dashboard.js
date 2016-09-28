@@ -58,6 +58,8 @@ describe('Controller: DashboardCtrl', function () {
     spyOn(coinomiaService, 'getProducts').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'getPackages').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'getVirtualTree').and.returnValue(coinomiaServiceDeferred.promise);
+    spyOn(coinomiaService, 'getTeamCalendar').and.returnValue(coinomiaServiceDeferred.promise);
+    spyOn(coinomiaService, 'getCoinomiaTeamCalendar').and.returnValue(coinomiaServiceDeferred.promise);
     DashboardCtrl = $controller('DashboardCtrl', {
       $scope: scope
       // place here mocked dependencies
@@ -98,8 +100,21 @@ describe('Controller: DashboardCtrl', function () {
     expect(coinomiaService.getPackages).toHaveBeenCalled();
   });
 
+  it('should be defined and call getTeamCalendar', function () {
+    expect(coinomiaService.getTeamCalendar).toHaveBeenCalled();
+  });
+
+  it('should be defined and call getCoinomiaTeamCalendar', function () {
+    expect(coinomiaService.getCoinomiaTeamCalendar).toHaveBeenCalled();
+  });
+
   it('should be defined and calculate pool commission and binary pool commission', function () {
     scope.poolCalc(tree, poolContract, poolDetails);
+    scope.paycheck();
+  });
+
+  it('should be defined and calculate binary pool commission', function () {
+    scope.binaryPoolCalc(tree, poolContract, poolDetails);
     scope.paycheck();
   });
 
@@ -108,8 +123,18 @@ describe('Controller: DashboardCtrl', function () {
     scope.paycheck();
   });
 
+  it('should be defined and calculate binary contributor commission', function () {
+    scope.binaryContributorCalc(tree, contributorContract, contributorDetails);
+    scope.paycheck();
+  });
+
   it('should be defined and calculate rack commission and binary rack commission', function () {
     scope.rackCalc(tree, rackContract, rackDetails);
+    scope.paycheck();
+  });
+
+  it('should be defined and calculate binary rack commission', function () {
+    scope.binaryRackCalc(tree, rackContract, rackDetails);
     scope.paycheck();
   });
 

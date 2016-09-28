@@ -3,7 +3,7 @@
   <div class="mainwrapper">
     <navigation></navigation>
     <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
-      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}
+      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.error-padding{top:4px;}
     </style>
     <div class="mainpanel">
       <div class="pageheader">
@@ -18,30 +18,292 @@
           <div class="col-md-12 nomargin nopadding">
             <h2 class="mb35"><i class="fa fa-link  icon-lg border-round" aria-hidden="true" style="padding-top:10px; padding-left:10px;"></i> <strong>My Referal Links</strong></h2>
             <hr />
-            <div class="table-responsive">
-              <div class="alert alert-success" role="alert"><strong>Note</strong> : Your Coinomia Landing Page {{landingPages[0].Title}} Page is Active Now</div>
-              <div class="ref-box yelo-text01"><i class="fa fa-check-square-o" aria-hidden="true"></i>
-                {{landingPages[0].path}}{{sponsorId}}
+              <div class="tabbable-panel" >
+                 <div class="tabbable-line" >
+                    <div align="center">
+                       <ul  class="nav nav-tabs ">
+                          <li class="active">
+                             <a href=".tab_default_4" data-toggle="tab">
+                             <i class="fa fa-newspaper-o icon-lg" aria-hidden="true"></i><br />
+                             <strong>Landing Pages</strong> </a>
+                          </li>
+                          <li>
+                             <a href=".tab_default_5" data-toggle="tab">
+                             <i class="fa fa-sitemap icon-lg" aria-hidden="true"></i><br />
+                             <strong>Tree Placement Management</strong> </a>
+                          </li>
+                          <li>
+                             <a href=".tab_default_6" data-toggle="tab">
+                             <i class="fa fa-user-plus icon-lg" aria-hidden="true"></i><br />
+                             <strong>Signup User</strong> </a>
+                          </li>
+                       </ul>
+                    </div>
+                    <div class="tab-content" style="padding:20px 20px; ">
+                       <div class="tab-pane tab_default_4 active">
+                          <h2 class="mb35-sm  top-spacemob10"><i class="fa fa-newspaper-o icon-lg-red border-round-red" style="padding-left:4px;" aria-hidden="true"></i> <strong>Landing Pages</strong></h2>
+                          <hr />
+                          <div class="table-responsive">
+                            <div class="alert alert-success" role="alert" ng-repeat="referral in landingPages | filter:{id:landingPage}">
+                              <strong>Note</strong> : Your Coinomia Landing Page {{referral.Title}} Page is Active Now
+                            </div>
+                            <div class="ref-box yelo-text01" ng-repeat="referral in landingPages | filter:{id:landingPage}">
+                              <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                              <span id="copy-text-clipboard">{{referral.path}}{{sponsorId}}</span>
+                              <button ngclipboard data-clipboard-target="#copy-text-clipboard" class="pull-right copy-btn "><i class="fa fa-chain "></i> Copy Link</button>
+                            </div>
+                            <table class="table table-dark-gry table-hover mb30 font16">
+                              <thead style="background:#525252;">
+                                <tr style="color:#525252;">
+                                  <td><strong class="white-color">S.No</strong></td>
+                                  <td><strong class="white-color">Title</strong></td>
+                                  <td><strong class="white-color">Refferal Link</strong></td>
+                                  <td><strong class="white-color">Action</strong></td>
+                                </tr>
+                              </thead>
+                              <tr ng-repeat="referral in landingPages">
+                                <td>{{$index+1}}</td>
+                                <td><strong>{{referral.Title}}</strong> </td>
+                                <td>{{referral.Title}}<br />
+                                  <small class="red-text02">{{referral.path}}{{sponsorId}}</small>
+                                </td>
+                                <td><button type="button" class="btn btn-warning" ng-disabled="landingPage==referral.id" ng-click="updatePage(referral.id)">Use this landing page</button>	</td>
+                              </tr>
+                            </table>
+                          </div>
+                       </div>
+                       <div class="tab-pane tab_default_5" style="padding-bottom:150px;" >
+                          <h2 class="mb35-sm top-spacemob10"><i class="fa fa-sitemap icon-lg-red border-round-red" style="padding-left:5px;"  aria-hidden="true"></i> <strong>Tree Placement Management</strong></h2>
+                          <hr />
+                          <div class="alert alert-success" role="alert"><strong>Note</strong> : {{activePlacement}} Active !!!</div>
+                          <form class="form-horizontal " method="post" action="" >
+                             <div data-toggle="buttons">
+                                <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='L'?'active':'')" ng-click="updatePlacement('L')">
+                                <img src="images/left.png" width="100" /><br />
+                                <input type="radio" name="q1" value="0"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true" checked></i>
+                                Left Placement</div>
+
+                                <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='R'?'active':'')" ng-click="updatePlacement('R')">
+                                <img src="images/right.png" width="100" /><br />
+                                <input type="radio" name="q1" value="1"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true"></i> Right Placement</div>
+
+                                <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='A'?'active':'')" ng-click="updatePlacement('A')">
+                                <img src="images/tree.png" width="100" /><br />
+                                <input type="radio" value="R"><i class="fa fa-check-circle-o lg-icon " aria-hidden="true"></i> Alternet Placement</div>
+
+                                <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='W'?'active':'')" ng-click="updatePlacement('W')">
+                                <img src="images/week.png" width="100" /><br />
+                                <input type="radio" name="q1" value="2"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true"></i> Balance Weak Leg </div><br />
+                             </div>
+                          </form>
+                       </div>
+                       <div class="tab-pane tab_default_6" style="min-height:950px; overflow:hidden;">
+                          <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-user-plus icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>Signup User</strong></h2>
+                          <hr />
+                          <br />
+                          <Div  class="col-md-6 col-md-offset-3 form-signup-reffer-outer">
+                             <p align="center"><i class="fa fa-user-plus icon-lg border-round " style="padding-left:7px;" aria-hidden="true"></i></p>
+                             <h3 align="center" style="padding:0px; margin:0px;"><strong>Create a New Account</strong></h3>
+                             <p align="center"><strong>Please enter your credentials below</strong></p>
+
+                             <form name="signup" ng-submit="next()" class="form-signup-reffer" novalidate>
+                                <label class="mar10"><strong>Sponsor ID</strong></label>
+                                <input type="text" class="form-control" ng-model="sponsorId" value="{{sponsorId}}" readonly="readonly" />
+                                <label class="mar10"><strong>Sponsor Name</strong></label>
+                                <input type="text" class="form-control" ng-model="name" value="{{name}}" readonly="readonly" />
+
+                                <label class="mar10"><strong>Desired User ID</strong></label>
+                                <input type="text"
+                                       name="userid"
+                                       ng-model="user.userid"
+                                       class="form-control userid"
+                                       placeholder="Create a Username"
+                                       ng-minlength=4
+                                       ng-maxlength=20
+                                       ng-pattern="/^[a-zA-Z0-9]+$/"
+                                       required />
+
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.userid.$touched && signup.userid.$invalid && !signup.userid.$error.pattern && !signup.userid.$error.maxlength && !signup.userid.$error.minlength">
+                                   User Id is required</div>
+
+                                <div class="alert alert-danger fade in error-padding" ng-show="signup.userid.$touched && signup.userid.$error.pattern && !signup.userid.$error.maxlength && !signup.userid.$error.minlength"> Special characters are not allowed.</div>
+
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.userid.$touched && (signup.userid.$error.minlength || signup.userid.$error.maxlength)">
+                                   Min. 4 and Max. 15 characters are allowed.</div>
+
+                                <div class="alert alert-danger fade in error-padding" ng-if="userIdError">{{userIdError}}</div>
+
+                                <label class="mar10"><strong>First Name</strong></label>
+                                <input type="text"
+                                       name="firstName"
+                                       ng-model="user.firstName"
+                                       class="form-control"
+                                       placeholder="First Name"
+                                       ng-maxlength="15"
+                                       ng-pattern="/^[a-zA-Z]+$/"
+                                       required />
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.firstName.$touched && signup.firstName.$invalid && !signup.firstName.$error.pattern && !signup.firstName.$error.maxlength">
+                                   First Name is required.</div>
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.firstName.$touched && signup.firstName.$error.pattern && !signup.firstName.$error.maxlength">
+                                   Only Alphabets are allowed.</div>
+
+                                 <div class="alert alert-danger fade in error-padding"
+                                    ng-show="signup.name.$touched && signup.name.$invalid && signup.name.$error.maxlength">
+                                    Maximum 15 characters are allowed.</div>
+
+                                <div class="alert alert-danger fade in error-padding" ng-show="!signup.name.$error.pattern && firstNameError">{{nameError}}</div>
+
+                                <label class="mar10"><strong>Last Name</strong></label>
+                                <input type="text"
+                                       name="lastName"
+                                       ng-model="user.lastName"
+                                       class="form-control"
+                                       placeholder="Last Name"
+                                       ng-maxlength="15"
+                                       ng-pattern="/^[a-zA-Z]+$/"
+                                       required />
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.lastName.$touched && signup.lastName.$invalid && !signup.lastName.$error.pattern && !signup.lastName.$error.maxlength">
+                                   Last Name is required.</div>
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-show="signup.lastName.$touched && signup.lastName.$error.pattern && !signup.lastName.$error.maxlength">
+                                   Only Alphabets are allowed.</div>
+
+                                 <div class="alert alert-danger fade in error-padding"
+                                    ng-show="signup.lastName.$touched && signup.lastName.$invalid && signup.lastName.$error.maxlength">
+                                    Maximum 15 characters are allowed.</div>
+
+                                <div class="alert alert-danger fade in error-padding" ng-show="!signup.lastName.$error.pattern && lastNameError">{{nameError}}</div>
+
+                                <label class="mar10"><strong>Email</strong></label>
+                                <input type="email"
+                                       name="email"
+                                       ng-model="user.email"
+                                       class="form-control"
+                                       placeholder="Enter your Email"
+                                       ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i"
+                                       required />
+                              <!--  ng-pattern ="/^[a-z]+([a-z0-9._-](\+{0,1}))+@[a-z]+\.[a-z.]{2,6}$/i" -->
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="signup.email.$touched && signup.email.$invalid && !signup.email.$error.pattern">
+                                 Email is required</div>
+                              <!-- Email Validation    -->
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="signup.email.$error.pattern && signup.email.$touched">
+                                 Please enter a valid email address.</div>
+
+                              <div class="alert alert-danger fade in error-padding" ng-if="emailError">{{emailError}}</div>
+
+                              <label class="mar10"><strong>Country</strong></label>
+                              <div class="col-md-12 input-group mb15">
+                              <i class="fa fa-sort select" aria-hidden="true"></i>
+                              <div ng-model="user.country" country-select></div>
+                                <!-- <input type="text"
+                                       name="country"
+                                       class="form-control"
+                                       placeholder="{{user.country}}"
+                                       disabled
+                                       required /> -->
+                              </div>
+
+                              <label class="mar10"><strong>Password</strong></label>
+                              <input type="password"
+                                     name="password"
+                                     ng-model="user.password"
+                                     class="form-control"
+                                     ng-minlength="6"
+                                     ng-pattern="/^(?=.*[a-zA-Z])(?=.*[0-9]).+$/"
+                                     placeholder="Password"
+                                     required />
+
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="signup.password.$touched && signup.password.$invalid && !signup.password.$error.minlength && !signup.password.$error.pattern">
+                                 Password is required.</div>
+                              <!-- Minimum Lenght Validation -->
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="signup.password.$touched && signup.password.$invalid && signup.password.$error.minlength">
+                                 Password must be 6 characters long.</div>
+                               <!-- Alphanumeric Validation -->
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="signup.password.$touched && signup.password.$error.pattern && !signup.password.$error.minlength">
+                                 Password must be alphanumeric.</div>
+
+                              <label class="mar10"><strong>Confirm Password</strong></label>
+                              <input type="password"
+                                     name="confirmpassword"
+                                     ng-model="user.confirmPassword"
+                                     class="form-control"
+                                     ng-keyup="confirmPass()"
+                                     placeholder="Confirm Password"
+                                     required />
+
+                              <div class="alert alert-danger fade in error-padding"
+                                 ng-show="(signup.confirmpassword.$touched && signup.confirmpassword.$invalid) || confirmPassError">
+                                 Password does not match</div>
+
+                                <p class="mar10">
+                                  <label><input name="placement" type="radio" ng-model="user.placement" value="L" /> <strong>Left Placement</strong></label>
+                                  &nbsp;&nbsp;
+                                  <label><input name="placement" type="radio" ng-model="user.placement" value="R" /> <strong>Right Placement</strong></label></p>
+                                <div class="alert alert-danger fade in error-padding"
+                                   ng-if="errorPlacement">{{errorPlacementMessage }}</div>
+
+                                <button type="submit" class="btn btn-success" ng-disabled="signup.$invalid"><strong>Join Now</strong></button>
+                                <br />
+                                <br />
+                                <div class="alert alert-success fade in" ng-if="signupMessage">
+                                  <i class="fa fa-check-circle fa-lg" aria-hidden="true"></i> Account created succesfully.
+                                </div>
+                                <div class="alert alert-danger fade in" ng-if="errorMessage" style="text-transform:capitalize;">
+                                  <strong>OOPS!</strong> {{errorMessage}}.
+                                </div>
+                             </form>
+
+                             <!-- AWeber Web Form Generator 3.0.1 -->
+                            <form method="post" id="referral-aweber-form" class="af-form-wrapper" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl" ng-hide="true">
+                              <div style="display: none;">
+                                <input type="hidden" name="meta_web_form_id" value="422944451" />
+                                <input type="hidden" name="meta_split_id" value="" />
+                                <input type="hidden" name="listname" value="awlist4422156" />
+                                <input type="hidden" name="redirect" value="{{redirectPage}}" id="redirect_5ef06d17dc927186298be16e42bdceb2" />
+                                <input type="hidden" name="meta_redirect_onlist" value="{{redirectPage}}" />
+                                <input type="hidden" name="meta_adtracking" value="My_Web_Form-1" />
+                                <input type="hidden" name="meta_message" value="1" />
+                                <input type="hidden" name="meta_required" value="name,email" />
+                                <input type="hidden" name="meta_tooltip" value="" />
+                              </div>
+                              <div id="af-form-422944451" class="af-form">
+                                <div id="af-body-422944451" class="af-body af-standards">
+                                  <div class="af-element">
+                                    <label class="previewLabel" for="awf_field-86023512">Name: </label>
+                                    <div class="af-textWrap"> <input id="awf_field-86023512" type="text" name="name" class="text" value="{{user.firstName}} {{user.lastName}}" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " tabindex="500" /> </div>
+                                    <div class="af-clear"></div>
+                                  </div>
+                                  <div class="af-element">
+                                    <label class="previewLabel" for="awf_field-86023513">Email: </label>
+                                    <div class="af-textWrap"><input class="text" id="awf_field-86023513" type="text" name="email" value="{{user.email}}" tabindex="501" onfocus=" if (this.value == '') { this.value = ''; }" onblur="if (this.value == '') { this.value='';} " /> </div>
+                                    <div class="af-clear"></div>
+                                  </div>
+                                  <div class="af-element buttonContainer">
+                                    <input name="submit" id="af-submit-image-422944451" type="image" class="image" style="background: none; max-width: 100%;" alt="Submit Form" src="//aweber.com/images/forms/plain/buttons/grey.png" tabindex="502" />
+                                    <div class="af-clear"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div style="display: none;"><img src="https://forms.aweber.com/form/displays.htm?id=LExMnCwsLKyM" alt="" /></div>
+                            </form>
+                            <!-- /AWeber Web Form Generator 3.0.1 -->
+
+                          </div>
+                       </div>
+                    </div>
+                 </div>
               </div>
-              <table class="table table-dark-gry table-hover mb30 font16">
-                <thead style="background:#525252;">
-                  <tr style="color:#525252;">
-                    <td><strong class="white-color">S.No</strong></td>
-                    <td><strong class="white-color">Title</strong></td>
-                    <td><strong class="white-color">Refferal Link</strong></td>
-                    <td><strong class="white-color">Action</strong></td>
-                  </tr>
-                </thead>
-                <tr ng-repeat="referral in landingPages">
-                  <td>{{$index+1}}</td>
-                  <td><strong>{{referral.Title}}</strong> </td>
-                  <td>{{referral.Title}}<br />
-                    <small class="red-text02">{{referral.path}}{{sponsorId}}</small>
-                  </td>
-                  <td><button type="button" class="btn btn-warning">Use this landing page</button>	</td>
-                </tr>
-              </table>
-            </div>
+
             <!-- table-responsive -->
           </div>
         </div>

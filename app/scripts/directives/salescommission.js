@@ -12,11 +12,17 @@ angular.module('coinomiaFrontendApp')
       restrict: 'A',
       templateUrl: 'views/directiveTemplates/salesCommission.html',
       scope: {
+        commission: "=",
         treeDetails: "=",
         binaryDetails: "=",
+        salesHeading: "=",
+        salesImagePath: "=",
         poolContract: "=",
+        binaryPoolContract: "=",
         contributorContract: "=",
+        binaryContributorContract: "=",
         rackContract: "=",
+        binaryRackContract: "=",
         contributorTotal: "=",
         binaryContributorTotal: "=",
         poolTotal: "=",
@@ -27,8 +33,11 @@ angular.module('coinomiaFrontendApp')
         contributorDetails: "=",
         rackDetails: "=",
         poolCalc: "&",
+        binaryPoolCalc: "&",
         contributorCalc: "&",
-        rackCalc: "&"
+        binaryContributorCalc: "&",
+        rackCalc: "&",
+        binaryRackCalc: "&"
       }
     };
   });

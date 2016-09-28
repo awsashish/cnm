@@ -63,35 +63,35 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get User Referrals
-    this.getUserReferral = function(currentPage) {
+    this.getUserDirects = function(currentPage) {
 
-      function userReferralComplete(response) {
-        return response.data;
+      function userDirectsComplete(response) {
+        return response;
       }
 
-      function userReferralFailed(error) {
+      function userDirectsFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
       return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
-        .then(userReferralComplete)
-        .catch(userReferralFailed);
+        .then(userDirectsComplete)
+        .catch(userDirectsFailed);
     };
 
     // All Referrals
-    this.getReferral = function(currentPage) {
+    this.getAllReferral = function(currentPage) {
 
-      function getReferralComplete(response) {
-        return response.data;
+      function getAllReferralComplete(response) {
+        return response;
       }
 
-      function getReferralFailed(error) {
+      function getAllReferralFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.post(this.apiHost +'user/all-referral/'+currentPage+'/'+pageLimit)
-        .then(getReferralComplete)
-        .catch(getReferralFailed);
+      return $http.get(this.apiHost +'user/all-referral/'+currentPage+'/'+pageLimit)
+        .then(getAllReferralComplete)
+        .catch(getAllReferralFailed);
 
     };
 
@@ -318,6 +318,24 @@ angular.module('coinomiaFrontendApp')
         .catch(verfiySponsorRequestFailed);
     }
 
+    // Update Landing Pages
+    this.updateLandingPage = function(landingPage) {
+      // On Success
+      function updateLandingPageRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function updateLandingPageRequestFailed(error) {
+        $log.error('XHR Failed for Verify Sponsor.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/update-landing-page', landingPage)
+        .then(updateLandingPageRequestComplete)
+        .catch(updateLandingPageRequestFailed);
+    }
+
     // Refresh Token Process
     this.getRefreshToken = function(data) {
 
@@ -369,5 +387,167 @@ angular.module('coinomiaFrontendApp')
       return $http.get(this.apiHost +'user/virtualtree')
         .then(getVirtualTreeRequestComplete)
         .catch(getVirtualTreeRequestFailed);
+    }
+
+    // Get User Downline Info
+    this.getUserDownline = function(sponsorId) {
+      // On Success
+      function getUserDownlineRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getUserDownlineRequestFailed(error) {
+        $log.error('XHR Failed for Packages.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/tree/'+sponsorId)
+        .then(getUserDownlineRequestComplete)
+        .catch(getUserDownlineRequestFailed);
+    }
+
+    // Get User Team
+    this.getTeamCalendar = function() {
+      // On Success
+      function getTeamRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getTeamRequestFailed(error) {
+        $log.error('XHR Failed for User Team.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/team-calendar')
+        .then(getTeamRequestComplete)
+        .catch(getTeamRequestFailed);
+    }
+
+    // Get Coinomia Team
+    this.getCoinomiaTeamCalendar = function() {
+      // On Success
+      function getCoinomiaTeamRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getCoinomiaTeamRequestFailed(error) {
+        $log.error('XHR Failed for User Team.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/coinomia-calendar')
+        .then(getCoinomiaTeamRequestComplete)
+        .catch(getCoinomiaTeamRequestFailed);
+    }
+
+    // Forgot Password
+    this.forgotPassword = function(emailId) {
+      // On Success
+      function forgotPasswordRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function forgotPasswordRequestFailed(error) {
+        $log.error('XHR Failed for Forgot Password.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'forgot-password', emailId)
+        .then(forgotPasswordRequestComplete)
+        .catch(forgotPasswordRequestFailed);
+    }
+
+    // Reset Password
+    this.resetPassword = function(resetData) {
+      // On Success
+      function resetPasswordRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function resetPasswordRequestFailed(error) {
+        $log.error('XHR Failed for Reset Password.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'reset-password', resetData)
+        .then(resetPasswordRequestComplete)
+        .catch(resetPasswordRequestFailed);
+    }
+
+    // Switch to L | R | A | W Placement
+    this.switchPlacement = function(placement) {
+      // On Success
+      function switchPlacementRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function switchPlacementRequestFailed(error) {
+        $log.error('XHR Failed for Switch Placement.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/auto-rotator', placement)
+        .then(switchPlacementRequestComplete)
+        .catch(switchPlacementRequestFailed);
+    }
+
+    // Get User Banners
+    this.getBanners = function() {
+      // On Success
+      function getBannerRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getBannerRequestFailed(error) {
+        $log.error('XHR Failed for Switch Placement.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/banners')
+        .then(getBannerRequestComplete)
+        .catch(getBannerRequestFailed);
+    }
+
+    // Get User Direct leader Board
+    this.getDirectLeaderboard = function() {
+      // On Success
+      function getLeaderboardRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getLeaderboardRequestFailed(error) {
+        $log.error('XHR Failed for Switch Placement.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/leader-board-direct')
+        .then(getLeaderboardRequestComplete)
+        .catch(getLeaderboardRequestFailed);
+    }
+
+    // Get User Team leader Board
+    this.getTeamLeaderboard = function() {
+      // On Success
+      function getTeamLeaderboardRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getTeamLeaderboardRequestFailed(error) {
+        $log.error('XHR Failed for Switch Placement.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/leader-board-team')
+        .then(getTeamLeaderboardRequestComplete)
+        .catch(getTeamLeaderboardRequestFailed);
     }
   });

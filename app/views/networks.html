@@ -3,8 +3,7 @@
   <div class="mainwrapper">
     <navigation></navigation>
     <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
-    }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}
-
+      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}
     </style>
     <div class="mainpanel">
       <div class="pageheader">
@@ -13,429 +12,495 @@
         <!-- media -->
       </div>
       <!-- pageheader -->
-      <coming-soon text-value="'Networks'"></coming-soon>
-      <div class="contentpanel content-opacity">
-
-
-
-
-
-<div class="col-md-12 nomargin nopadding">
-
-<h2 class="mb35"><i class="fa fa-sitemap icon-lg border-round" aria-hidden="true" style="padding-left:10px;"></i> <strong>Networks</strong></h2>
-              <hr />
-<div class="tabbable-panel" >
-<div class="tabbable-line" >
-<div align="center"><ul  class="nav nav-tabs ">
-
-
-
-          <li class="active">
-<a href=".tab_default_4" data-toggle="tab">
-<i class="fa fa-user icon-lg" aria-hidden="true"></i><br />
-
-<strong>My Directs</strong> </a>
-</li>
-
-          <li>
-<a href=".tab_default_5" data-toggle="tab">
-<i class="fa fa-sitemap icon-lg" aria-hidden="true"></i><br />
-
-<strong>My Downline</strong> </a>
-</li>
-
-           <li>
-<a href=".tab_default_6" data-toggle="tab">
-<i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br />
-
-<strong>Leaderboard</strong> </a>
-</li>
-
-          <li>
-<a href=".tab_default_7" data-toggle="tab">
-<i class="fa fa-money icon-lg" aria-hidden="true"></i><br />
-
-<strong>Commissions</strong> </a>
-</li>
-</ul></div>
-<div class="tab-content" style="padding:20px 20px; ">
-
-
-
-
-          <div class="tab-pane tab_default_4 active">
-<h2 class="mb35-sm  top-spacemob10"><i class="fa fa-user icon-lg-red border-round-red" aria-hidden="true"></i> <strong>My Directs</strong></h2>
-              <hr />
-<div class="table-responsive">
+      <!-- <coming-soon text-value="'Networks'"></coming-soon> -->
+      <div class="contentpanel">
+        <div class="col-md-12 nomargin nopadding">
+            <h2 class="mb35"><i class="fa fa-sitemap icon-lg border-round" aria-hidden="true" style="padding-left:10px;"></i> <strong>Networks</strong></h2>
+            <hr />
+            <div class="tabbable-panel" >
+              <div class="tabbable-line" >
+                <div align="center">
+                  <ul  class="nav nav-tabs ">
+                    <li class="active">
+                      <a href=".tab_default_4" data-toggle="tab">
+                      <i class="fa fa-user icon-lg" aria-hidden="true"></i><br />
+                      <strong>My Directs</strong> </a>
+                    </li>
+                    <li>
+                      <a href=".tab_default_5" data-toggle="tab">
+                      <i class="fa fa-sitemap icon-lg" aria-hidden="true"></i><br />
+                      <strong>My Downline</strong> </a>
+                    </li>
+                    <li ng-click="getLeaderBoard()">
+                      <a href=".tab_default_6" data-toggle="tab">
+                      <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br />
+                      <strong>Leaderboard</strong> </a>
+                    </li>
+                    <li>
+                      <a href=".tab_default_7" data-toggle="tab">
+                      <i class="fa fa-money icon-lg" aria-hidden="true"></i><br />
+                      <strong>Commissions</strong> </a>
+                    </li>
+                    <li ng-click="allReferral(currentPage)">
+                      <a href=".tab_default_8" data-toggle="tab">
+                      <i class="fa fa-users icon-lg" aria-hidden="true"></i><br />
+                      <strong>My Team</strong> </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-content" style="padding:20px 20px; ">
+                  <div class="tab-pane tab_default_4 active">
+                    <h2 class="mb35-sm  top-spacemob10"><i class="fa fa-user icon-lg-red border-round-red" aria-hidden="true"></i> <strong>My Directs</strong></h2>
+                    <hr />
+                    <button class="pull-right copy-btn "><i class="fa fa-file-excel-o "></i> Excel Sheet Download</button>
+                    <div class="table-responsive mar50">
                       <table class="table table-dark-gry table-hover mb30 font16">
-                          <thead style="background:#525252;">
-                            <tr style="color:#525252;">
-                              <th width="5%"><strong class="white-color">Sr.No</strong></th>
-                              <th width="20%"><strong class="white-color">Name of the User</strong></th>
-                              <th width="20%"><strong class="white-color">Email</strong></th>
-                              <th width="15%"><strong class="white-color">Contact Number</strong></th>
-                              <th width="18%"><strong class="white-color">Sponsor Name</strong></th>
-                              <th  width="10%"><strong class="white-color">Joined At</strong></th>
-                               <th align="right" width="15%" ><strong class="white-color">Team Members</strong>	</th>
-
-
-
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr><td>01</td>
-                            <td><img src="images/flags/in.png" /> Sanjeev Sharma</td>
-                            <td>sdl028@gmail.com</td>
-                            <td>03948354899</td>
-                             <td><img src="images/flags/in.png" /> Amit Singh</td>
-                            <td>04/04/2016</td>
-                            <td align="center">4</td>
-
-                            </tr>
-                             <tr><td>01</td>
-                            <td><img src="images/flags/cn.png" /> Ela Chang</td>
-                            <td>kjh9820@yahoo.co.in</td>
-                            <td>06533668709</td>
-                             <td><img src="images/flags/in.png" /> Amit Singh</td>
-                            <td>07/04/2016</td>
-                            <td align="center">8</td>
-
-                            </tr>
-                            <tr><td>01</td>
-                            <td><img src="images/flags/cn.png" /> Losi Chang</td>
-                            <td>sdl028@gmail.com</td>
-                            <td>03948354899</td>
-                             <td><img src="images/flags/cn.png" /> Bruce Ting</td>
-                            <td>04/04/2016</td>
-                            <td align="center">4</td>
-
-                            </tr>
-
-                          </tbody>
+                        <thead style="background:#525252;">
+                          <tr style="color:#525252;">
+                            <th width="2%"><strong class="white-color">Sr.No</strong></th>
+                            <th width="20%"><strong class="white-color">Name of the User</strong></th>
+                            <th width="20%"><strong class="white-color">Email</strong></th>
+                            <th width="15%"><strong class="white-color">Contact Number</strong></th>
+                            <th width="18%"><strong class="white-color">Contract Purchased</strong></th>
+                            <th width="18%"><strong class="white-color">Total Purchased Value</strong></th>
+                            <th  width="10%"><strong class="white-color">Joined At</strong></th>
+                            <th align="right" width="18%" ><strong class="white-color">Team Members</strong>	</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- <img src="images/flags/in.png" />  -->
+                          <tr ng-repeat="(key,directs) in teamDirectsData">
+                            <td>{{(((currentPage - 1) * pagination.perpage) + (key + 1))}}</td>
+                            <td><img src="{{directs.flag}}" />&nbsp;{{directs.Name}}</td>
+                            <td>{{directs.Email}}</td>
+                            <td>{{directs.Mobile}}</td>
+                            <td>{{directs.TotalContract}}</td>
+                            <td>{{directs.TotalPurchased | currency}}</td>
+                            <td>{{directs.DOJ}}</td>
+                            <td align="center">{{directs.TotalDirect}}</td>
+                          </tr>
+                        </tbody>
                       </table>
-                    <div class="pull-right"><ul class="pagination pagination-metro nomargin mt10">
-                              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                              <li><a href="#">1</a></li>
-                              <li class="active"><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">5</a></li>
-                              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                          </ul></div><br />
-<br />
 
+                      <div class="pull-right">
+                        <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="pagination.totalDirects" ng-model="currentPage" max-size="5" ng-change="userDirects(currentPage)"></ul>
+                      </div>
+                      <br />
+                      <br />
+                    </div>
                   </div>
-
-
-</div>
-
-          <div class="tab-pane tab_default_5" style="padding-bottom:50px;" >
-<h2 class="mb35-sm top-spacemob10"><i class="fa fa-sitemap icon-lg-red border-round-red" style="padding-left:5px;"  aria-hidden="true"></i> <strong>My Downline</strong></h2>
-              <hr />
-<div class="container-fluid" style="margin-top:20px">
-<div class="row">
-<div class="col-md-11 col-md-offset-1">
-<div class="tree">
-  <ul>
-      <li>
-          <a href="#">
-
-              <div class="container-fluid">
-                  <div class="row">
-                      <img src="images/flags/cn.png" /> <strong>Bruce Ting</strong>
-                  </div>
-                  <div class="row" style="margin-top: 5px;">
-                     <img src="images/users/u01.jpg" class="img-circle" width="50" height="50" />
-                  </div>
-                  <div class="row">
-                      <strong class="red-text02">50% Commission</strong>                                </div>
-              </div>
-
-          </a>
-          <ul>
-
-              <li>
-                  <a href="#">
-
-                      <div class="container-fluid">
-                  <div class="row">
-                      <img src="images/flags/in.png" /> <strong>Yash Sharma</strong>
-                  </div>
-                  <div class="row" style="margin-top: 5px;">
-                     <img src="images/users/u02.jpg" class="img-circle" width="50" height="50" />
-                  </div>
-                  <div class="row">
-                      <strong class="red-text02">35% Commission</strong>                                </div>
-              </div>
-
-                  </a>
-                  <ul>
-                      <li>
-                          <a href="#">
-
-                              <div class="container-fluid">
-                  <div class="row">
-                      <img src="images/flags/in.png" /> <strong>Keya Mishra</strong>
-                  </div>
-                  <div class="row" style="margin-top: 5px;">
-                     <img src="images/users/u03.jpg" class="img-circle" width="50" height="50" />
-                  </div>
-                  <div class="row">
-                      <strong class="red-text02">16% Commission</strong>                                </div>
-              </div>
-
-                          </a>
-                      </li>
-                      <li>
-                          <a href="#">
-
-                              <div class="container-fluid">
-                  <div class="row">
-                      <img src="images/flags/in.png" /> <strong>Rashmi Roy</strong>
-                  </div>
-                  <div class="row" style="margin-top: 5px;">
-                     <img src="images/users/u04.jpg" class="img-circle" width="50" height="50" />
-                  </div>
-                  <div class="row">
-                      <strong class="red-text02">14% Commission</strong>                                </div>
-              </div>
-
-                          </a>
-                      </li>
-                  </ul>
-              </li>
-              <li>
-                  <a href="#">
-
-                      <div class="container-fluid">
-                  <div class="row">
-                      <img src="images/flags/cn.png" /> <strong>Arvindu Gupta</strong>
-                  </div>
-                  <div class="row" style="margin-top: 5px;">
-                     <img src="images/users/u05.jpg" class="img-circle" width="50" height="50" />
-                  </div>
-                  <div class="row">
-                      <strong class="red-text02">35% Commission</strong>                                </div>
-              </div>
-
-                  </a>
-                  <ul>
-                      <li>
-                          <a href="#">
-
-                              <div class="container-fluid">
-                  <div class="row">
-                      <img src="images/flags/in.png" /> <strong>Mayank Das</strong>
-                  </div>
-                  <div class="row" style="margin-top: 5px;">
-                     <img src="images/users/u06.jpg" class="img-circle" width="50" height="50" />
-                  </div>
-                  <div class="row">
-                      <strong class="red-text02">13% Commission</strong>                                </div>
-              </div>
-
-                          </a>
-                      </li>
-                      <li>
-                          <a href="#">
-
-                              <div class="container-fluid">
-                  <div class="row">
-                      <img src="images/flags/cn.png" /> <strong>Abhishek Lajpat</strong>
-                  </div>
-                  <div class="row" style="margin-top: 5px;">
-                     <img src="images/users/u07.jpg" class="img-circle" width="50" height="50" />
-                  </div>
-                  <div class="row">
-                      <strong class="red-text02">50% Commission</strong>                                </div>
-              </div>
-
-                          </a>
-                      </li>
-                  </ul>
-              </li>
-          </ul>
-      </li>
-  </ul>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-
-          <div class="tab-pane tab_default_6">
-<h2 class="mb35-sm top-spacemob10"> <i class="fa fa-trophy icon-lg-red border-round-red" style="padding-top10px; padding-left:5px" aria-hidden="true"></i> <strong>Leaderboard</strong></h2>
-              <hr />
-              <h5 class="red-text02"><strong>Max Directs</strong></h5>
-<div class="table-responsive">
-                      <table class="table table-dark-gry table-hover mb30 font16">
-                          <thead style="background:#525252;">
-                            <tr style="color:#525252;">
-                              <th><strong class="white-color">Last 7 Days</strong></th>
-                              <th><strong class="white-color">Last 30 Days</strong></th>
-                              <th><strong class="white-color">All Time
-</strong></th>
-
-
-
-
-                            </tr>
-                          </thead>
-                          <tbody>
+                  <div class="tab-pane tab_default_5" style="padding-bottom:50px;" >
+                    <h2 class="mb35-sm top-spacemob10"><i class="fa fa-sitemap icon-lg-red border-round-red" style="padding-left:5px;"  aria-hidden="true"></i> <strong>My Downline</strong></h2>
+                    <hr />
+                    <div class="container-fluid" style="margin-top:20px">
+                      <!--HTML for the tooltips-->
+                      <div id="mystickytooltip" class="stickytooltip">
+                        <div id="sticky1" class="atip" style="width:300px">
+                          <table width="100%" class=" table-bordered tabel-box">
                             <tr>
+                              <td></td>
+                              <td><strong>Left</strong></td>
+                              <td><strong>Right</strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['0'].LeftDirect}}</td>
+                              <td>{{downline['0'].RightDirect}}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['0'].LeftTotal}}</td>
+                              <td>{{downline['0'].RightTotal}}</td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div id="sticky2" class="atip" style="width:300px">
+                          <table width="100%" class=" table-bordered tabel-box">
+                            <tr>
+                              <td></td>
+                              <td><strong>Left</strong></td>
+                              <td><strong>Right</strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['1'].LeftDirect}}</td>
+                              <td>{{downline['1'].RightDirect}}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['1'].LeftTotal}}</td>
+                              <td>{{downline['1'].RightTotal}}</td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div id="sticky3" class="atip" style="width:300px">
+                          <table width="100%" class=" table-bordered tabel-box">
+                            <tr>
+                              <td></td>
+                              <td><strong>Left</strong></td>
+                              <td><strong>Right</strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['3'].LeftDirect}}</td>
+                              <td>{{downline['3'].RightDirect}}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['3'].LeftTotal}}</td>
+                              <td>{{downline['3'].RightTotal}}</td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div id="sticky4" class="atip" style="width:300px">
+                          <table width="100%" class=" table-bordered tabel-box">
+                            <tr>
+                              <td></td>
+                              <td><strong>Left</strong></td>
+                              <td><strong>Right</strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['4'].LeftDirect}}</td>
+                              <td>{{downline['4'].RightDirect}}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['4'].LeftTotal}}</td>
+                              <td>{{downline['4'].RightTotal}}</td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div id="sticky5" class="atip" style="width:300px">
+                          <table width="100%" class=" table-bordered tabel-box">
+                            <tr>
+                              <td></td>
+                              <td><strong>Left</strong></td>
+                              <td><strong>Right</strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['2'].LeftDirect}}</td>
+                              <td>{{downline['2'].RightDirect}}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['2'].LeftTotal}}</td>
+                              <td>{{downline['2'].RightTotal}}</td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div id="sticky6" class="atip" style="width:300px">
+                          <table width="100%" class=" table-bordered tabel-box">
+                            <tr>
+                              <td></td>
+                              <td><strong>Left</strong></td>
+                              <td><strong>Right</strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['5'].LeftDirect}}</td>
+                              <td>{{downline['5'].RightDirect}}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['5'].LeftTotal}}</td>
+                              <td>{{downline['5'].RightTotal}}</td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div id="sticky7" class="atip" style="width:300px">
+                          <table width="100%" class=" table-bordered tabel-box">
+                            <tr>
+                              <td></td>
+                              <td><strong>Left</strong></td>
+                              <td><strong>Right</strong></td>
+                            </tr>
+                            <tr>
+                              <td><strong>Referrals</strong></td>
+                              <td>{{downline['6'].LeftDirect}}</td>
+                              <td>{{downline['6'].RightDirect}}</td>
+                            </tr>
+                            <tr>
+                              <td><strong>Team Size</strong></td>
+                              <td>{{downline['6'].LeftTotal}}</td>
+                              <td>{{downline['6'].RightTotal}}</td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="pull-letf col-md-5 col-sm-12">
+                        <h2 class="mb35" align="center" >
+                          <span class="glyphicon glyphicon-minus"></span>
+                          Purchase Binary<span class="glyphicon glyphicon-minus"></span>
+                        </h2>
+                        <table class="table table-bordered tabel-box mar10">
+                          <tr>
+                            <td></td>
+                            <td><strong>Left</strong></td>
+                            <td><strong>Right</strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Total PV</strong></td>
+                            <td>{{tableInfo.LeftPV}} PV</td>
+                            <td>{{tableInfo.RightPV}} PV</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Potential PV</strong></td>
+                            <td>{{tableInfo.Capping}} PV</td>
+                            <td>{{tableInfo.Capping}} PV</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Matched PV</strong></td>
+                            <td>{{tableInfo.MatchedPV}} PV</td>
+                            <td>{{tableInfo.MatchedPV}} PV</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="pull-right col-md-5 col-sm-12">
+                        <h2 class="mb35" align="center" >
+                          <span class="glyphicon glyphicon-minus"></span>
+                          Re-Purchase Binary<span class="glyphicon glyphicon-minus"></span>
+                        </h2>
+                        <table class="table table-bordered tabel-box mar10">
+                          <tr>
+                            <td></td>
+                            <td><strong>Left</strong></td>
+                            <td><strong>Right</strong></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Total PV</strong></td>
+                            <td>{{tableInfo.LeftRepurchasePV}} PV</td>
+                            <td>{{tableInfo.RightRepurchasePV}} PV</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Potential PV</strong></td>
+                            <td>{{tableInfo.RepurchaseCapping}} PV</td>
+                            <td>{{tableInfo.RepurchaseCapping}} PV</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Matched PV</strong></td>
+                            <td>{{tableInfo.RepurchaseMatchedPV}} PV</td>
+                            <td>{{tableInfo.RepurchaseMatchedPV}} PV</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-11 col-md-offset-1">
+                          <span class="pull-right" ng-click="getDownline('')" style="cursor: pointer;margin-right: 20px" role="button" tabindex="0">
+                            <img src="images/refresh.png" width="20px"> Refresh
+                          </span><br>
+                          <div class="tree">
+                            <ul>
+                              <li>
+                                <a ng-click="getDownline(downline['0'].username)" data-tooltip="sticky1">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                      <img src="images/flags/{{allCountryCodes['0'] | lowercase}}.png" /> <strong>{{downline['0'].username}}</strong>
+                                    </div>
+                                    <div class="row" style="margin-top: 5px;">
+                                      <img ng-if="downline['0'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['0'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                      <img ng-if="downline['0'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                    </div>
+                                  </div>
+                                </a>
+                                <ul>
+                                  <li>
+                                    <a ng-click="getDownline(downline['1'].username)" data-tooltip="sticky2">
+                                      <div class="container-fluid">
+                                        <div class="row">
+                                          <img src="images/flags/{{allCountryCodes[downline['1'].country] | lowercase}}.png" /> <strong>{{downline['1'].username}}</strong>
+                                        </div>
+                                        <div class="row" style="margin-top: 5px;">
+                                          <img ng-if="downline['1'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['1'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                          <img ng-if="downline['1'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                        </div>
+                                      </div>
+                                    </a>
+                                    <ul>
+                                      <li>
+                                        <a ng-click="getDownline(downline['3'].username)" data-tooltip="sticky3">
+                                          <div class="container-fluid">
+                                            <div class="row">
+                                              <img src="images/flags/{{allCountryCodes[downline['3'].country] | lowercase}}.png" /> <strong>{{downline['3'].username}}</strong>
+                                            </div>
+                                            <div class="row" style="margin-top: 5px;">
+                                              <img ng-if="downline['3'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['3'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['3'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                            </div>
+                                          </div>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a ng-click="getDownline(downline['4'].username)" data-tooltip="sticky4">
+                                          <div class="container-fluid">
+                                            <div class="row">
+                                              <img src="images/flags/{{allCountryCodes[downline['4'].country] | lowercase}}.png" /> <strong>{{downline['4'].username}}</strong>
+                                            </div>
+                                            <div class="row" style="margin-top: 5px;">
+                                              <img ng-if="downline['4'].ItemName.toLowerCase() != 'registration'" src="images/packages/{{downline['4'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['4'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                            </div>
+                                          </div>
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <a ng-click="getDownline(downline['2'].username)" data-tooltip="sticky5">
+                                      <div class="container-fluid">
+                                        <div class="row">
+                                          <img src="images/flags/{{allCountryCodes[downline['2'].country] | lowercase}}.png" /> <strong>{{downline['2'].username}}</strong>
+                                        </div>
+                                        <div class="row" style="margin-top: 5px;">
+                                          <img ng-if="downline['2'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['2'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                          <img ng-if="downline['2'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                        </div>
+                                      </div>
+                                    </a>
+                                    <ul>
+                                      <li>
+                                        <a ng-click="getDownline(downline['5'].username)" data-tooltip="sticky6">
+                                          <div class="container-fluid">
+                                            <div class="row">
+                                              <img src="images/flags/{{allCountryCodes[downline['5'].country] | lowercase}}.png" /> <strong>{{downline['5'].username}}</strong>
+                                            </div>
+                                            <div class="row" style="margin-top: 5px;">
+                                              <img ng-if="downline['5'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['5'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['5'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                            </div>
+                                          </div>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a ng-click="getDownline(downline['6'].username)" data-tooltip="sticky7">
+                                          <div class="container-fluid">
+                                            <div class="row">
+                                              <img src="images/flags/{{allCountryCodes[downline['6'].country] | lowercase}}.png" /> <strong>{{downline['6'].username}}</strong>
+                                            </div>
+                                            <div class="row" style="margin-top: 5px;">
+                                              <img ng-if="downline['6'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['6'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['6'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                            </div>
+                                          </div>
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mt10"></div>
+                      <p class="text-danger text-center"><small>*To view more details of any member, please click on it.</small></p>
+                    </div>
+                  </div>
+                  <div class="tab-pane tab_default_6">
+                    <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-trophy icon-lg-red border-round-red" style="padding-top10px; padding-left:5px" aria-hidden="true"></i> <strong>Leaderboard</strong></h2>
+                    <hr />
+                    <h5 class="red-text02"><strong>Max Directs</strong></h5>
+
+                    <div class="table-responsive">
+                      <table class="table table-dark-gry table-hover mb30 font16">
+                        <thead style="background:#525252;">
+                          <tr style="color:#525252;">
+                            <th><strong class="white-color">Last 7 Days</strong></th>
+                            <th><strong class="white-color">Last 30 Days</strong></th>
+                            <th><strong class="white-color">All Time
+                              </strong>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-if="loadingData==true">
+                            <td>Loading Data ...</td>
+                          </tr>
+                          <tr ng-repeat="(key, row) in maxDirects">
+                            <td><img src="images/flags/{{allCountryCodes[row.last7Days.country] | lowercase}}.png" /> {{row.last7Days.MemberName}}</td>
+                            <td><img src="images/flags/{{allCountryCodes[row.last30Days.country] | lowercase}}.png" />  {{row.last30Days.MemberName}}</td>
+                            <td><img src="images/flags/{{allCountryCodes[row.allTime.country] | lowercase}}.png" /> {{row.allTime.MemberName}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <br />
+                      <br />
+                    </div>
+                    <h5 class="red-text02"><strong>Max Team Size</strong></h5>
+                    <div class="table-responsive">
+                      <table class="table table-dark-gry table-hover mb30 font16">
+                        <thead style="background:#525252;">
+                          <tr style="color:#525252;">
+                            <th><strong class="white-color">Last 7 Days</strong></th>
+                            <th><strong class="white-color">Last 30 Days</strong></th>
+                            <th><strong class="white-color">All Time
+                              </strong>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
                             <td><img src="images/flags/in.png" /> Sanjeev Sharma</td>
                             <td><img src="images/flags/cn.png" />  Eun Ppp</td>
                             <td><img src="images/flags/cn.png" /> Валерий Булычев</td>
-
-                            </tr>
-
-
-                          </tbody>
+                          </tr>
+                        </tbody>
                       </table>
-                    <div class="pull-right"><ul class="pagination pagination-metro nomargin mt10">
-                              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                              <li><a href="#">1</a></li>
-                              <li class="active"><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">5</a></li>
-                              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                          </ul></div><br />
-<br />
-
+                      <br />
+                      <br />
+                    </div>
                   </div>
-
-
-                   <h5 class="red-text02"><strong>Max Team Size</strong></h5>
-<div class="table-responsive">
-                      <table class="table table-dark-gry table-hover mb30 font16">
-                          <thead style="background:#525252;">
-                            <tr style="color:#525252;">
-                              <th><strong class="white-color">Last 7 Days</strong></th>
-                              <th><strong class="white-color">Last 30 Days</strong></th>
-                              <th><strong class="white-color">All Time
-</strong></th>
-
-
-
-
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                            <td><img src="images/flags/in.png" /> Sanjeev Sharma</td>
-                            <td><img src="images/flags/cn.png" />  Eun Ppp</td>
-                            <td><img src="images/flags/cn.png" /> Валерий Булычев</td>
-
-                            </tr>
-
-
-                          </tbody>
-                      </table>
-                    <div class="pull-right"><ul class="pagination pagination-metro nomargin mt10">
-                              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                              <li><a href="#">1</a></li>
-                              <li class="active"><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">5</a></li>
-                              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                          </ul></div><br />
-<br />
-
+                  <div class="tab-pane tab_default_7">
+                    <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-money icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>Commissions</strong></h2>
+                    <hr />
+                    <p>Coming Soon ...</p>
                   </div>
-
-</div>
-
-
-
-
-          <div class="tab-pane tab_default_7">
-<h2 class="mb35-sm top-spacemob10"> <i class="fa fa-money icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>Commissions</strong></h2>
-              <hr />
-
-
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-<li role="presentation" class="active" ><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><i class="fa fa-user " aria-hidden="true"></i> Total Direct Referral Income</strong></a></li>
-<li role="presentation" ><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><i class="fa fa-users " aria-hidden="true"></i>  Total Team Income</a></li>
-</ul>
-
-<!-- Tab panes -->
-<div class="tab-content" style="border:0px !important">
-<div role="tabpanel" class="tab-pane active dmp"><br />
-<h5 class="red-text02"><strong>Total Direct Referral Income</strong></h5>
-             <div class="table-responsive">
-                      <table class="table table-dark-gry table-hover mb30 font16">
-                          <thead style="background:#525252;">
-                            <tr style="color:#525252;">
-                              <th><strong class="white-color">Date</strong></th>
-                              <th><strong class="white-color">Description </th>
-                              <th><strong class="white-color">Income(USD)
-</strong></th>
-
-
-
-
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                            <td>12/08/2016</td>
-                            <td>Commission Received by Direct Referral ID = COIN0239809</td>
-                            <td>$20</td>
-
-                            </tr>
-
-
-                          </tbody>
-                      </table>
-                    <div class="pull-right"><ul class="pagination pagination-metro nomargin mt10">
-                              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                              <li><a href="#">1</a></li>
-                              <li class="active"><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">5</a></li>
-                              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                          </ul></div><br />
-<br />
-
-                  </div></div>
-<div role="tabpanel" class="tab-pane rmp" ><br />
-<h5 class="red-text02"><strong>Total Team Income</strong></h5>
-             <div class="table-responsive">
-                      <table class="table table-dark-gry table-hover mb30 font16">
-                          <thead style="background:#525252;">
-                            <tr style="color:#525252;">
-                              <th><strong class="white-color">Date</strong></th>
-                              <th><strong class="white-color">Description </strong></th>
-                              <th><strong class="white-color">Income(USD)
-</strong></th>
-
-
-
-
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                            <td>12/08/2016</td>
-                            <td>Commission Received by Purchase Binary = COIN45098 </td>
-                            <td>$270</td>
-
-                            </tr>
-
+                  <div class="tab-pane tab_default_71" ng-hide="true">
+                    <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-money icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>Commissions</strong></h2>
+                    <hr />
+                    <p>Coming Soon ...</p>
+                    <div class="row">
+                      <div class="col-md-3 col-md-12">
+                        <h4><strong> Total Commission Earned</strong></h4>
+                        <p class="red-text04 pull-left">$300</p>
+                      </div>
+                      <div class="col-md-3 col-md-offset-4 col-md-12">
+                        <h4 class="red-text"> <strong>Balance</strong></h4>
+                        <p class="red-text04 pull-left mar10">$100</p>
+                      </div>
+                    </div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs mar50" role="tablist" style="background:#ccc !important; color:#525252 !important;">
+                      <li role="presentation" class="active" ><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><i class="fa fa-user " aria-hidden="true"></i> Total Direct Referral Income</strong></a></li>
+                      <li role="presentation" ><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><i class="fa fa-users " aria-hidden="true"></i>  Total Team Income</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content" >
+                      <div role="tabpanel" class="tab-pane active dmp">
+                        <br />
+                        <h5 class="red-text02"><strong>Total Direct Referral Income</strong></h5>
+                        <div class="table-responsive">
+                          <table class="table table-dark-gry table-hover mb30 font16">
+                            <thead style="background:#525252;">
+                              <tr style="color:#525252;">
+                                <th><strong class="white-color">Date</strong></th>
+                                <th><strong class="white-color">Description </th>
+                                <th><strong class="white-color">Income(USD)
+                                  </strong>
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
                               <tr>
-                            <td>12/08/2016</td>
-                            <td>Commission Received by Re-Purchase Binary = COIN8439 </td>
-                            <td>$70</td>
-
-                            </tr>
-                          </tbody>
-                      </table>
-                    <div class="pull-right"><ul class="pagination pagination-metro nomargin mt10">
+                                <td>12/08/2016</td>
+                                <td>Commission Received by Direct Referral ID = COIN0239809</td>
+                                <td>$20</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div class="pull-right">
+                            <ul class="pagination pagination-metro nomargin mt10">
                               <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
                               <li><a href="#">1</a></li>
                               <li class="active"><a href="#">2</a></li>
@@ -443,27 +508,100 @@
                               <li><a href="#">4</a></li>
                               <li><a href="#">5</a></li>
                               <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                          </ul></div><br />
-<br />
-
-                  </div></div>
-</div>
-
-
-
-
-
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-
-
-
-</div>
+                            </ul>
+                          </div>
+                          <br />
+                          <br />
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane rmp" >
+                        <br />
+                        <h5 class="red-text02"><strong>Total Team Income</strong></h5>
+                        <div class="table-responsive">
+                          <table class="table table-dark-gry table-hover mb30 font16">
+                            <thead style="background:#525252;">
+                              <tr style="color:#525252;">
+                                <th><strong class="white-color">Date</strong></th>
+                                <th><strong class="white-color">Description </strong></th>
+                                <th><strong class="white-color">Income(USD)
+                                  </strong>
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>12/08/2016</td>
+                                <td>Commission Received by Purchase Binary = COIN45098 </td>
+                                <td>$270</td>
+                              </tr>
+                              <tr>
+                                <td>12/08/2016</td>
+                                <td>Commission Received by Re-Purchase Binary = COIN8439 </td>
+                                <td>$70</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <div class="pull-right">
+                            <ul class="pagination pagination-metro nomargin mt10">
+                              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                              <li><a href="#">1</a></li>
+                              <li class="active"><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                              <li><a href="#">5</a></li>
+                              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                            </ul>
+                          </div>
+                          <br />
+                          <br />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane tab_default_8">
+                    <h2 class="mb35-sm top-spacemob10"><i class="fa fa-users icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>My Team</strong></h2>
+                    <hr />
+                    <div class="table-responsive">
+                      <table class="table table-dark-gry table-hover mb30 font16">
+                        <thead style="background:#525252;">
+                          <tr style="color:#525252;">
+                            <th><strong class="white-color">S.No</strong></th>
+                            <th><strong class="white-color">Name </th>
+                            <th><strong class="white-color">User ID
+                              </strong>
+                            </th>
+                            <th><strong class="white-color">Sponser Name</strong></th>
+                            <th><strong class="white-color">Level </th>
+                            <th><strong class="white-color">Join at</strong></th>
+                            <th><strong class="white-color">Frontline (Direct Referral)
+                              </strong>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="(key,team) in teamData">
+                            <td>{{(((currentPage - 1) * pagination.perpage) + (key + 1))}}</td>
+                            <td><img src="{{team.flag}}" /> {{team.Name}}</td>
+                            <td>{{team.username}}</td>
+                            <td>{{team.Sponsor}}</td>
+                            <td>{{team.Level}}</td>
+                            <td>{{team.DOJ}}</td>
+                            <td>{{team.TotalDirect}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="pull-right">
+                        <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="pagination.totalTeam" ng-model="currentPage" max-size="5" ng-change="allReferral(currentPage)"></ul>
+                      </div>
+                      <br />
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
       <!-- contentpanel -->
     </div>
     <main-footer></main-footer>

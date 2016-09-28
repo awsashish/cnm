@@ -141,14 +141,15 @@ angular.module('coinomiaFrontendApp')
           'Email':$scope.user.email,
           'IPAdr':$scope.user.ipadr,
           'Password':$scope.user.password,
-          'ConfirmPassword':$scope.user.confirmPassword
+          'ConfirmPassword':$scope.user.confirmPassword,
+          'Leg':''
         };
         $scope.error = false;
         coinomiaService.signup(formData).then(function(res) {
           var data = res.data;
           if(res.status === 200){
             $scope.signupMessage = data.Message;
-            angular.element("#coinomia-aweber-signup").submit();
+            angular.element("#aweber-internal-signup").submit();
           }else if(res.status === 404) {
               $scope.showme = false;
               $scope.userIdError = data.Message;

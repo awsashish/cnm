@@ -18,6 +18,22 @@ angular.module('coinomiaFrontendApp')
         authenticate: false
     })
 
+    // Forogt password page
+    .state('forgot-password', {
+        url: '/forgot-password',
+        templateUrl: 'views/forgot-password.html',
+        controller: 'ForgotpasswordCtrl',
+        authenticate: false
+    })
+
+    // Reset password page
+    .state('reset-password', {
+        url: '/reset-password',
+        templateUrl: 'views/reset-password.html',
+        controller: 'ResetpasswordCtrl',
+        authenticate: false
+    })
+
     // Sign up page
     .state('signup', {
         url: '/signup',
@@ -85,6 +101,7 @@ angular.module('coinomiaFrontendApp')
     .state('networks', {
       url: '/networks',
       templateUrl: 'views/networks.html',
+      controller:'NetworksCtrl',
       authenticate: true
     })
 
@@ -109,6 +126,21 @@ angular.module('coinomiaFrontendApp')
       url: '/my-account',
       templateUrl: 'views/coming-soon.html',
       controller: 'MyaccountCtrl',
+      authenticate: true
+    })
+
+    // My Account
+    .state('promote-coinomia', {
+      url: '/promote-coinomia',
+      templateUrl: 'views/promote-coinomia.html',
+      controller: 'PromotecoinomiaCtrl',
+      authenticate: true
+    })
+
+    .state('promote-coinomia-tab', {
+      url: '/promote-coinomia/:tabId',
+      templateUrl: 'views/promote-coinomia.html',
+      controller: 'PromotecoinomiaCtrl',
       authenticate: true
     })
 

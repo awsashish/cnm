@@ -15,19 +15,61 @@
       </div>
       <!-- pageheader -->
       <div class="contentpanel ">
+        <div class="col-md-9 col-sm-12">
+          <div class="tabbable-panel" >
+            <div class="tabbable-line" >
+              <div align="center">
+                <ul  class="nav nav-tabs " >
+                  <li class="active" style="width:50%; ">
+                    <a href=".tab_default_4" data-toggle="tab">
+                    <i class="fa fa-user " aria-hidden="true"></i>
+                    My Team </a>
+                  </li>
+                  <li style="width:50%;">
+                    <a href=".tab_default_5" data-toggle="tab">
+                    <i class="fa fa-users " aria-hidden="true"></i>
+                    Company Wide </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-content" style="padding:10px 10px 0px; margin-bottom:20px; ">
+                <div class="tab-pane tab_default_4 active">
+                  <ui-calendar data="myTeam" ng-if="hasMyTeamData"></ui-calendar>
+                </div>
+                <div class="tab-pane tab_default_5">
+                  <ui-calendar data="coinomiaTeam" ng-if="hasCoinomiaTeamData"></ui-calendar>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <a href="#promote-coinomia/social-group">
+            <div class="box-outer"><img src="images/facebook.png" width="70" /> &nbsp;&nbsp;Get Connected  </div>
+          </a>
+          <a href="#promote-coinomia/grab-concept">
+            <div class="box-outer"><img src="images/presentation.png" width="70" />&nbsp;&nbsp; Grab the Concept</div>
+          </a>
+          <a href="#referral-link">
+            <div class="box-outer"><img src="images/plan.png" width="70" /> &nbsp;&nbsp;Your Referral Links</div>
+          </a>
+          <a href="#promote-coinomia/sms-blast">
+            <div class="box-outer"><img src="images/mining.png" width="70" /> &nbsp;&nbsp;Get, Set, Go!</div>
+          </a>
+        </div>
         <div class="clearfix"></div>
         <div class="row row-stat">
           <div class="col-md-3" purchase-total
-                                purchased-attr="purchasedPower"
-                                purchased-params="purchasedParams"></div>
+            purchased-attr="purchasedPower"
+            purchased-params="purchasedParams"></div>
           <!-- col-md-4 -->
           <div class="col-md-6" current-rates
-                                current-mining="currentMining"
-                                mining-params="ratesParams"></div>
+            current-mining="currentMining"
+            mining-params="ratesParams"></div>
           <!-- col-md-4 -->
           <div class="col-md-3" purchase-total
-                                total-attr="totalIncome"
-                                total-params="totalParams"></div>
+            total-attr="totalIncome"
+            total-params="totalParams"></div>
           <!-- col-md-4 -->
         </div>
         <!-- row -->
@@ -41,41 +83,46 @@
                 <h3 align="center" class="yelo-text">Sales Commissions <small class="sm-text01"><strong>Considering you Rack Buyers</strong></small></h3>
                 <br />
                 <!-- Direct Sales Commission -->
-                <div sales-commission tree-details="treeDetails"
-                                      pool-details="poolDetails"
-                                      contributor-details="contributorDetails"
-                                      rack-details="rackDetails"
-                                      pool-contract="poolContract"
-                                      contributor-contract="contributorContract"
-                                      rack-contract="rackContract"
-                                      pool-total="poolTotal"
-                                      contributor-total="contributorTotal"
-                                      rack-total="rackTotal"
-                                      pool-calc="poolCalc(treeData, contract, poolData)"
-                                      contributor-calc="contributorCalc(treeData, contract, contributorData)"
-                                      rack-calc="rackCalc(treeData, contract, rackData)"></div>
+                <div sales-commission commission="'direct'"
+                  tree-details="treeDetails"
+                  sales-Heading="salesDirectHeading"
+                  sales-image-path="salesDirectImage"
+                  pool-details="poolDetails"
+                  contributor-details="contributorDetails"
+                  rack-details="rackDetails"
+                  pool-contract="poolContract"
+                  contributor-contract="contributorContract"
+                  rack-contract="rackContract"
+                  pool-total="poolTotal"
+                  contributor-total="contributorTotal"
+                  rack-total="rackTotal"
+                  pool-calc="poolCalc(treeData, contract, poolData)"
+                  contributor-calc="contributorCalc(treeData, contract, contributorData)"
+                  rack-calc="rackCalc(treeData, contract, rackData)" ng-if="hasDirectReferral"></div>
                 <br />
                 <!-- Binary Sales Commission -->
-                <div sales-commission binary-details="binaryUsers"
-                                      tree-details="treeDetails"
-                                      pool-details="poolDetails"
-                                      contributor-details="contributorDetails"
-                                      rack-details="rackDetails"
-                                      pool-contract="poolContract"
-                                      contributor-contract="contributorContract"
-                                      rack-contract="rackContract"
-                                      binary-pool-total="binaryPoolTotal"
-                                      binary-contributor-total="binaryContributorTotal"
-                                      binary-rack-total="binaryRackTotal"
-                                      pool-calc="poolCalc(treeData, contract, poolData)"
-                                      contributor-calc="contributorCalc(treeData, contract, contributorData)"
-                                      rack-calc="rackCalc(treeData, contract, rackData)"></div>
-
+                <div sales-commission commission="'binary'"
+                  binary-details="binaryUsers"
+                  sales-Heading="salesBinaryHeading"
+                  sales-image-path="salesBinaryImage"
+                  tree-details="treeDetails"
+                  pool-details="poolDetails"
+                  contributor-details="contributorDetails"
+                  rack-details="rackDetails"
+                  binary-pool-contract="poolContract"
+                  binary-contributor-contract="contributorContract"
+                  binary-rack-contract="rackContract"
+                  binary-pool-total="binaryPoolTotal"
+                  binary-contributor-total="binaryContributorTotal"
+                  binary-rack-total="binaryRackTotal"
+                  binary-pool-calc="binaryPoolCalc(treeData, contract, poolData)"
+                  binary-contributor-calc="binaryContributorCalc(treeData, contract, contributorData)"
+                  binary-rack-calc="binaryRackCalc(treeData, contract, rackData)" ng-if="hasBinaryReferral"></div>
                 <h3 align="center"><strong>Your Estimated Paycheck
                   on Launch Day</strong>
                 </h3>
                 <p class="grand-total">${{payCheckTotal | number:2}}</p>
-                <small>*need text here</small>
+                <small>*Above mentioned figures are based on an average of referral and team commissions, calculated on behalf of estimated purchases of your current downlines. It represents the income potential of this marketing system. However, your real paycheque depends upon the real purchases on Coinomia Launch.</small>
               </div>
             </div>
           </div>
@@ -84,43 +131,43 @@
               <div class="panel-body">
                 <h3 align="center" class="yelo-text">Mining Payouts <small class="sm-text01"><strong>Paid in BTC/ETH</strong></small></h3>
                 <div mining-payout
-                     pool-options="poolOptions"
-                     btc-pool-value="btcPoolValue"
-                     btc-machine-value="btcMachineValue"
-                     btc-rack-value="btcRackValue"
-                     eth-pool-value="ethPoolValue"
-                     eth-machine-value="ethMachineValue"
-                     eth-rack-value="ethRackValue"
-                     machine-options="machineOptions"
-                     rack-options="rackOptions"
-                     pool-details="poolDetails"
-                     contributor-details="contributorDetails"
-                     rack-details="rackDetails"
-                     current-mining="currentMining"
-                     btc-pool-contract="btcPoolContract"
-                     btc-contributor-contract="btcContributorContract"
-                     btc-rack-contract="btcRackContract"
-                     eth-pool-contract="ethPoolContract"
-                     eth-contributor-contract="ethContributorContract"
-                     eth-rack-contract="ethRackContract"
-                     btc-pool-price="btcPoolPrice"
-                     btc-contributor-price="btcContributorPrice"
-                     btc-rack-price="btcRackPrice"
-                     eth-pool-price="ethPoolPrice"
-                     eth-contributor-price="ethContributorPrice"
-                     eth-rack-price="ethRackPrice"
-                     btc-pool-click="btcPoolClick(desContract, contractValue, mining)"
-                     btc-machine-click="btcMachineClick(desContract, contractValue, mining)"
-                     btc-rack-click="btcRackClick(desContract, contractValue, mining)"
-                     eth-pool-click="ethPoolClick(desContract, contractValue, mining)"
-                     eth-machine-click="ethMachineClick(desContract, contractValue, mining)"
-                     eth-rack-click="ethRackClick(desContract, contractValue, mining)"
-                     btc-pool-calc="btcPoolMining(desContract, contractValue, mining)"
-                     btc-contributor-calc="btcContributorMining(desContract, contractValue, mining)"
-                     btc-rack-calc="btcRackMining(desContract, contractValue, mining)"
-                     eth-pool-calc="ethPoolMining(desContract, contractValue, mining)"
-                     eth-contributor-calc="ethContributorMining(desContract, contractValue, mining)"
-                     eth-rack-calc="ethRackMining(desContract, contractValue, mining)"></div>
+                  pool-options="poolOptions"
+                  btc-pool-value="btcPoolValue"
+                  btc-machine-value="btcMachineValue"
+                  btc-rack-value="btcRackValue"
+                  eth-pool-value="ethPoolValue"
+                  eth-machine-value="ethMachineValue"
+                  eth-rack-value="ethRackValue"
+                  machine-options="machineOptions"
+                  rack-options="rackOptions"
+                  pool-details="poolDetails"
+                  contributor-details="contributorDetails"
+                  rack-details="rackDetails"
+                  current-mining="currentMining"
+                  btc-pool-contract="btcPoolContract"
+                  btc-contributor-contract="btcContributorContract"
+                  btc-rack-contract="btcRackContract"
+                  eth-pool-contract="ethPoolContract"
+                  eth-contributor-contract="ethContributorContract"
+                  eth-rack-contract="ethRackContract"
+                  btc-pool-price="btcPoolPrice"
+                  btc-contributor-price="btcContributorPrice"
+                  btc-rack-price="btcRackPrice"
+                  eth-pool-price="ethPoolPrice"
+                  eth-contributor-price="ethContributorPrice"
+                  eth-rack-price="ethRackPrice"
+                  btc-pool-click="btcPoolClick(desContract, contractValue, mining)"
+                  btc-machine-click="btcMachineClick(desContract, contractValue, mining)"
+                  btc-rack-click="btcRackClick(desContract, contractValue, mining)"
+                  eth-pool-click="ethPoolClick(desContract, contractValue, mining)"
+                  eth-machine-click="ethMachineClick(desContract, contractValue, mining)"
+                  eth-rack-click="ethRackClick(desContract, contractValue, mining)"
+                  btc-pool-calc="btcPoolMining(desContract, contractValue, mining)"
+                  btc-contributor-calc="btcContributorMining(desContract, contractValue, mining)"
+                  btc-rack-calc="btcRackMining(desContract, contractValue, mining)"
+                  eth-pool-calc="ethPoolMining(desContract, contractValue, mining)"
+                  eth-contributor-calc="ethContributorMining(desContract, contractValue, mining)"
+                  eth-rack-calc="ethRackMining(desContract, contractValue, mining)"></div>
                 <p align="center"><button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd, $event)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button></p>
                 <div class="clearfix"></div>
                 <h3 align="center" class="text-title02"><strong>Your Estimated income based on Current <br />
@@ -136,9 +183,9 @@
                     </tr>
                     <tr ng-repeat="income in estIncome">
                       <td>{{income.duration}}</td>
-                      <td>{{income.btc | number:2}}</td>
-                      <td>{{income.eth | number:2}}</td>
-                      <td><strong>${{income.miningUsd | number:2}}</strong></td>
+                      <td>{{income.btc | number:5}}</td>
+                      <td>{{income.eth | number:5}}</td>
+                      <td><strong>${{income.miningUsd | number:5}}</strong></td>
                     </tr>
                   </table>
                 </div>

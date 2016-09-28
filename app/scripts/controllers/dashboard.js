@@ -10,11 +10,19 @@
 angular.module('coinomiaFrontendApp')
   .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService, UtilsService, $filter, config) {
 
+    $scope.hasDirectReferral = false;
+    $scope.hasBinaryReferral = false;
+
     $scope.packagesDetails = [];
     $scope.treeDetails = '';
     $scope.poolDetails = '';
     $scope.contributorDetails = '';
     $scope.rackDetails = '';
+
+    $scope.salesDirectHeading = config.salesDirectHeading;
+    $scope.salesDirectImage = config.salesDirectImage;
+    $scope.salesBinaryHeading = config.salesBinaryHeading;
+    $scope.salesBinaryImage = config.salesBinaryImage;
 
     // Sales Commission default values
     $scope.poolContract = config.poolSelectedValue;
@@ -94,7 +102,6 @@ angular.module('coinomiaFrontendApp')
             $scope.currentMining.ethMining = mining.current_mining;
             $scope.currentMining.ethUsd = mining.USDPrice;
           }
-
         });
       }
     });
@@ -115,6 +122,42 @@ angular.module('coinomiaFrontendApp')
             $scope.totalIncome.push(income);
           }
         });
+      }
+    });
+
+    // Get User Team
+    $scope.myTeam = {};
+    $scope.hasMyTeamData = false;
+    coinomiaService.getTeamCalendar()
+    .then(function(res) {
+      var teamData = res.data;
+      if(res.status === 200) {
+        teamData.forEach(function(user) {
+          var day = user.day.split('-').reverse().join('-');
+          $scope.myTeam[day] = {
+            "number": parseInt(user.total),
+            "url": "#"
+          };
+        });
+        $scope.hasMyTeamData = true;
+      }
+    });
+
+    // Get Coinomia Team
+    $scope.coinomiaTeam = {};
+    $scope.hasCoinomiaTeamData = false;
+    coinomiaService.getCoinomiaTeamCalendar()
+    .then(function(res) {
+      var coinomiaTeamData = res.data;
+      if(res.status === 200) {
+        coinomiaTeamData.forEach(function(user) {
+          var day = user.day.split('-').reverse().join('-');
+          $scope.coinomiaTeam[day] = {
+            "number": parseInt(user.total),
+            "url": "#"
+          };
+        });
+        $scope.hasCoinomiaTeamData = true;
       }
     });
 
@@ -141,8 +184,10 @@ angular.module('coinomiaFrontendApp')
       var virtualData = res.data;
       if(res.status === 200) {
         $scope.treeDetails = virtualData;
+        $scope.hasDirectReferral = true;
         $scope.binaryUsers = virtualData.LeftTotal + virtualData.RightTotal;
         $scope.userPackages();
+        $scope.hasBinaryReferral = true;
       }
     })
 
@@ -157,16 +202,19 @@ angular.module('coinomiaFrontendApp')
             if(packages.PackageName === 'Pool Contract') {
               $scope.poolDetails = packages;
               $scope.poolCalc($scope.treeDetails, $scope.poolContract, $scope.poolDetails);
+              $scope.binaryPoolCalc($scope.treeDetails, $scope.poolContract, $scope.poolDetails);
               $scope.btcPoolMining($scope.btcPoolContract, $scope.poolDetails, $scope.currentMining);
               $scope.ethPoolMining($scope.ethPoolContract, $scope.poolDetails, $scope.currentMining);
             }else if(packages.PackageName === 'Contributor') {
               $scope.contributorDetails = packages;
               $scope.contributorCalc($scope.treeDetails, $scope.contributorContract, $scope.contributorDetails);
+              $scope.binaryContributorCalc($scope.treeDetails, $scope.contributorContract, $scope.contributorDetails);
               $scope.btcContributorMining($scope.btcContributorContract, $scope.contributorDetails, $scope.currentMining);
               $scope.ethContributorMining($scope.ethContributorContract, $scope.contributorDetails, $scope.currentMining);
             }else {
               $scope.rackDetails = packages;
               $scope.rackCalc($scope.treeDetails, $scope.rackContract, $scope.rackDetails);
+              $scope.binaryRackCalc($scope.treeDetails, $scope.rackContract, $scope.rackDetails);
               $scope.btcRackMining($scope.btcRackContract, $scope.rackDetails, $scope.currentMining);
               $scope.ethRackMining($scope.ethRackContract, $scope.rackDetails, $scope.currentMining);
             }
@@ -188,38 +236,50 @@ angular.module('coinomiaFrontendApp')
         });
       }
     });
-    // Sales Commission Calculation
 
-    // Pool Commission Calculation
+    // Sales Commission Calculation
+    // Direct Pool Commission Calculation
     $scope.poolCalc = function(tree, poolContract, pool) {
       // Formula for Direct Sales Commission (Total Directs * No. of Contracts * Pool Contract Rates) of 12% 
       var poolData = tree.TotalDirect * poolContract * pool.Price * config.directPercent;
       $scope.poolTotal = poolData;
+      $scope.paycheck();
+    }
 
+    // Binary Pool Commission Calculation
+    $scope.binaryPoolCalc = function(tree, poolContract, pool) {
       // Formula for Binary Sales Commission (No. of Contracts * PV * Pairs) * PV Value
       var binaryPoolData = poolContract * pool.PV * tree.VirtualPairs * config.PV;
       $scope.binaryPoolTotal = binaryPoolData;
       $scope.paycheck();
     }
 
-    // Contributor Commission Calculation
+    // Direct Contributor Commission Calculation
     $scope.contributorCalc = function(tree, contributorContract, contributor) {
       // Formula for Direct Sales Commission (Total Directs * No. of Contracts * Pool Contract Rates) of 12% 
       var contributorData = tree.TotalDirect * contributorContract * contributor.Price * config.directPercent;
       $scope.contributorTotal = contributorData;
+      $scope.paycheck();
+    }
 
+    // Binary Contributor Commission Calculation
+    $scope.binaryContributorCalc = function(tree, contributorContract, contributor) {
       // Formula for Binary Sales Commission (No. of Contracts * PV * Pairs) * PV Value
       var binaryContributorData = contributorContract * contributor.PV * tree.VirtualPairs * config.PV;
       $scope.binaryContributorTotal = binaryContributorData;
       $scope.paycheck();
     }
 
-    // Rack Commission Calculation
+    // Direct Rack Commission Calculation
     $scope.rackCalc = function(tree, rackContract, rack) {
       // Formula for Direct Sales Commission (Total Directs * No. of Contracts * Pool Contract Rates) of 12% 
       var rackData = tree.TotalDirect * rackContract * rack.Price * config.directPercent;
       $scope.rackTotal = rackData;
+      $scope.paycheck();
+    }
 
+    // Binary Rack Commission Calculation
+    $scope.binaryRackCalc = function(tree, rackContract, rack) {
       // Formula for Binary Sales Commission (No. of Contracts * PV * Pairs) * PV Value
       var binaryRackData = rackContract * rack.PV * tree.VirtualPairs * config.PV;
       $scope.binaryRackTotal = binaryRackData;
