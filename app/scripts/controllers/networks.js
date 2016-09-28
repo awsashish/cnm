@@ -16,6 +16,11 @@ angular.module('coinomiaFrontendApp')
       perpage: config.pageLimit
     }
 
+    // Get Country Codes
+    UtilsService.getCountryCode().then(function(res) {
+      $scope.allCountryCodes = res;
+    });
+
     $scope.sponsorId = '';
 
     // Get User Directs
@@ -74,11 +79,50 @@ angular.module('coinomiaFrontendApp')
           if(res.status === 200) {
             $scope.downline  = res.data;
             $scope.tableInfo = res.data["0"];
-            console.log($scope.downline.length);
             $scope.getFlags(0, $scope.downline, $scope.downline.length);
           }
       });
     }
+
+    $scope.loadingData = true;
+    // Get User Direct Leader Board
+    $scope.getLeaderBoard = function() {
+
+      coinomiaService.getDirectLeaderboard()
+      .then(function(res){
+        if(res.status == 200){
+          var members = res.data;
+          var length  = Math.max(Math.max(members.Last7Days.length, members.Last30Days.length), members.alltime.length);
+          $scope.maxDirects = [];
+          for(var idx = 0; idx < length; idx++) {
+            $scope.maxDirects.push({
+              last7Days: members.Last7Days[idx] ? members.Last7Days[idx] : {},
+              last30Days: members.Last30Days[idx] ? members.Last30Days[idx] : {},
+              allTime: members.alltime[idx] ? members.alltime[idx] : {}
+            })
+          };
+          $scope.loadingData = false;
+        }
+      })
+
+      // Get User Team Leader Board
+      // coinomiaService.getTeamLeaderboard()
+      // .then(function(res){
+      //   if(res.status == 200){
+      //     var _members = res.data;
+      //     var _length  = Math.max(Math.max(_members.Last7Days.length, _members.Last30Days.length), _members.alltime.length);
+      //     $scope.maxTeam = [];
+      //     for(var idx = 0; idx < length; idx++) {
+      //       $scope.maxTeam.push({
+      //         last7Days: _members.Last7Days[idx] ? _members.Last7Days[idx] : {},
+      //         last30Days: _members.Last30Days[idx] ? _members.Last30Days[idx] : {},
+      //         allTime: _members.alltime[idx] ? _members.alltime[idx] : {}
+      //       })
+      //     };
+      //   }
+      // })
+    }
+
 
     $scope.getDownline = function(sponsorId) {
       $scope.userDownline(sponsorId);

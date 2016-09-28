@@ -27,4 +27,20 @@ angular.module('coinomiaFrontendApp')
         .catch(getCountryFlagFailed);
     };
 
+    // Get Country Code
+    this.getCountryCode = function(countryName) {
+
+      function getCountryCodeComplete(response) {
+        return response.data;
+      }
+
+      function getCountryCodeFailed(error) {
+        $log.error('XHR Failed for country flag.\n' + angular.toJson(error.data, true));
+      }
+
+      return $http.get('js/countryToCode.json')
+        .then(getCountryCodeComplete)
+        .catch(getCountryCodeFailed);
+    };
+
   });

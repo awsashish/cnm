@@ -31,7 +31,7 @@
                       <i class="fa fa-sitemap icon-lg" aria-hidden="true"></i><br />
                       <strong>My Downline</strong> </a>
                     </li>
-                    <li>
+                    <li ng-click="getLeaderBoard()">
                       <a href=".tab_default_6" data-toggle="tab">
                       <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br />
                       <strong>Leaderboard</strong> </a>
@@ -296,10 +296,10 @@
                                 <a ng-click="getDownline(downline['0'].username)" data-tooltip="sticky1">
                                   <div class="container-fluid">
                                     <div class="row">
-                                      <img src="{{downline['0'].flag}}" /> <strong>{{downline['0'].username}}</strong>
+                                      <img src="images/flags/{{allCountryCodes['0'] | lowercase}}.png" /> <strong>{{downline['0'].username}}</strong>
                                     </div>
                                     <div class="row" style="margin-top: 5px;">
-                                      <img ng-if="downline['0'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['0'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                      <img ng-if="downline['0'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['0'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
                                       <img ng-if="downline['0'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                     </div>
                                   </div>
@@ -309,7 +309,7 @@
                                     <a ng-click="getDownline(downline['1'].username)" data-tooltip="sticky2">
                                       <div class="container-fluid">
                                         <div class="row">
-                                          <img src="{{downline['1'].flag}}" /> <strong>{{downline['1'].username}}</strong>
+                                          <img src="images/flags/{{allCountryCodes[downline['1'].country] | lowercase}}.png" /> <strong>{{downline['1'].username}}</strong>
                                         </div>
                                         <div class="row" style="margin-top: 5px;">
                                           <img ng-if="downline['1'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['1'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
@@ -322,10 +322,10 @@
                                         <a ng-click="getDownline(downline['3'].username)" data-tooltip="sticky3">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="{{downline['3'].flag}}" /> <strong>{{downline['3'].username}}</strong>
+                                              <img src="images/flags/{{allCountryCodes[downline['3'].country] | lowercase}}.png" /> <strong>{{downline['3'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img ng-if="downline['3'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['3'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['3'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['3'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
                                               <img ng-if="downline['3'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
@@ -335,10 +335,10 @@
                                         <a ng-click="getDownline(downline['4'].username)" data-tooltip="sticky4">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="{{downline['4'].flag}}" /> <strong>{{downline['4'].username}}</strong>
+                                              <img src="images/flags/{{allCountryCodes[downline['4'].country] | lowercase}}.png" /> <strong>{{downline['4'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img ng-if="downline['4'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['4'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['4'].ItemName.toLowerCase() != 'registration'" src="images/packages/{{downline['4'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
                                               <img ng-if="downline['4'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
@@ -350,10 +350,10 @@
                                     <a ng-click="getDownline(downline['2'].username)" data-tooltip="sticky5">
                                       <div class="container-fluid">
                                         <div class="row">
-                                          <img src="{{downline['2'].flag}}" /> <strong>{{downline['2'].username}}</strong>
+                                          <img src="images/flags/{{allCountryCodes[downline['2'].country] | lowercase}}.png" /> <strong>{{downline['2'].username}}</strong>
                                         </div>
                                         <div class="row" style="margin-top: 5px;">
-                                          <img ng-if="downline['2'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['2'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                          <img ng-if="downline['2'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['2'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
                                           <img ng-if="downline['2'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                         </div>
                                       </div>
@@ -363,11 +363,10 @@
                                         <a ng-click="getDownline(downline['5'].username)" data-tooltip="sticky6">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="{{downline['5'].flag}}" /> <strong>{{downline['5'].username}}</strong>
+                                              <img src="images/flags/{{allCountryCodes[downline['5'].country] | lowercase}}.png" /> <strong>{{downline['5'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img ng-if="downline['5'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['5'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
-                                              {{downline['5'].ItemName.toLowerCase()}}
+                                              <img ng-if="downline['5'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['5'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
                                               <img ng-if="downline['5'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
@@ -377,10 +376,10 @@
                                         <a ng-click="getDownline(downline['6'].username)" data-tooltip="sticky7">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="{{downline['6'].flag}}" /> <strong>{{downline['6'].username}}</strong>
+                                              <img src="images/flags/{{allCountryCodes[downline['6'].country] | lowercase}}.png" /> <strong>{{downline['6'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img ng-if="downline['6'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['6'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['6'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['6'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
                                               <img ng-if="downline['6'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
@@ -401,12 +400,8 @@
                   <div class="tab-pane tab_default_6">
                     <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-trophy icon-lg-red border-round-red" style="padding-top10px; padding-left:5px" aria-hidden="true"></i> <strong>Leaderboard</strong></h2>
                     <hr />
-                    <p>Coming Soon ...</p>
-                  </div>
-                  <div class="tab-pane tab_default_61" ng-hide="true">
-                    <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-trophy icon-lg-red border-round-red" style="padding-top10px; padding-left:5px" aria-hidden="true"></i> <strong>Leaderboard</strong></h2>
-                    <hr />
                     <h5 class="red-text02"><strong>Max Directs</strong></h5>
+
                     <div class="table-responsive">
                       <table class="table table-dark-gry table-hover mb30 font16">
                         <thead style="background:#525252;">
@@ -419,24 +414,16 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td><img src="images/flags/in.png" /> Sanjeev Sharma</td>
-                            <td><img src="images/flags/cn.png" />  Eun Ppp</td>
-                            <td><img src="images/flags/cn.png" /> Валерий Булычев</td>
+                          <tr ng-if="loadingData==true">
+                            <td>Loading Data ...</td>
+                          </tr>
+                          <tr ng-repeat="(key, row) in maxDirects">
+                            <td><img src="images/flags/{{allCountryCodes[row.last7Days.country] | lowercase}}.png" /> {{row.last7Days.MemberName}}</td>
+                            <td><img src="images/flags/{{allCountryCodes[row.last30Days.country] | lowercase}}.png" />  {{row.last30Days.MemberName}}</td>
+                            <td><img src="images/flags/{{allCountryCodes[row.allTime.country] | lowercase}}.png" /> {{row.allTime.MemberName}}</td>
                           </tr>
                         </tbody>
                       </table>
-                      <div class="pull-right">
-                        <ul class="pagination pagination-metro nomargin mt10">
-                          <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                          <li><a href="#">1</a></li>
-                          <li class="active"><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
-                          <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
-                      </div>
                       <br />
                       <br />
                     </div>
@@ -460,17 +447,6 @@
                           </tr>
                         </tbody>
                       </table>
-                      <div class="pull-right">
-                        <ul class="pagination pagination-metro nomargin mt10">
-                          <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                          <li><a href="#">1</a></li>
-                          <li class="active"><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
-                          <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
-                      </div>
                       <br />
                       <br />
                     </div>
