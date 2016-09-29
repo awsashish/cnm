@@ -550,4 +550,22 @@ angular.module('coinomiaFrontendApp')
         .then(getTeamLeaderboardRequestComplete)
         .catch(getTeamLeaderboardRequestFailed);
     }
+
+    // Update Profile
+    this.updateProfile = function(formData) {
+      // On Success
+      function updateProfileRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function updateProfileRequestFailed(error) {
+        $log.error('XHR Failed for Update Profile.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/update-profile', formData)
+        .then(updateProfileRequestComplete)
+        .catch(updateProfileRequestFailed);
+    }
   });

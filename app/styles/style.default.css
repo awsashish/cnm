@@ -154,6 +154,13 @@ a:focus {
   right: 6px;
 }
 
+.custom-select {
+  position: absolute;
+  z-index: 9;
+  top: 37px;
+  right: 20px;
+}
+
 select {
   -webkit-appearance: none;
 }

@@ -1,0 +1,79 @@
+<h2 class="mb35-sm top-spacemob10"><i class="fa fa-user icon-lg-red border-round-red" aria-hidden="true"></i> <strong> Personal Information</strong></h2>
+<hr />
+<div class="row">
+  <div align="center" class="col-md-col-sm-12">
+    <img src="images/users/user5.png" width="100" height="100" class="img-circle" /><br />
+    <h3 class="nomargin nopadding red-text02"><strong>{{userInfo.name}}</strong></h3>
+    <br />
+    <!-- <p><button class="yelo-btn btn-sm"><i class="fa fa-edit icon-lg-sm" aria-hidden="true"></i> <strong>Change Avatar</strong></button><br />
+      <small>Note: Only images (i.e. PNG, GIF, JPG, JPEG) files are allowed</small>
+    </p> -->
+  </div>
+</div>
+<form ng-submit="updateProfile(userInfo)"  >
+  <div class="row">
+    <div class="col-md-6 col-sm-12 mar20">
+      <label for="exampleInputName2"><strong>Email</strong></label>
+      <input class="form-control" id="disabledInput" ng-model="userInfo.Email" type="text" placeholder="Email" disabled>
+    </div>
+    <div class="col-md-6 col-sm-12 mar20">
+      <label for="exampleInputName2"><strong>Backup Email</strong></label>
+      <input type="text" class="form-control " ng-model="userInfo.backUpEmail" id="exampleInputName2">
+    </div>
+  </div>
+  <div class="row mar20">
+    <div class="col-md-6 col-sm-12">
+      <label for="exampleInputName2"><strong>First Name</strong></label>
+      <input type="text" class="form-control " id="exampleInputName2" ng-model="userInfo.name">
+    </div>
+    <div class="col-md-6 col-sm-12">  <label for="exampleInputName2"><strong>Mobile Number</strong></label>
+      <input type="text" class="form-control " id="exampleInputName2" ng-model="userInfo.Mobile" placeholder="Mobile Number">
+    </div>
+  </div>
+  <div class="row mar20">
+    <div class="col-md-12 col-sm-12">
+      <label for="exampleInputName2"><strong>Address</strong></label>
+      <input type="text" class="form-control " id="exampleInputName2" ng-model="userInfo.Address" placeholder="Address">
+    </div>
+  </div>
+  <div class="row mar20">
+    <div class="col-md-4 col-sm-12 mb15">
+      <label for="exampleInputName2"><strong>Country</strong></label>
+      <i class="fa fa-sort {{customClass}}" aria-hidden="true"></i>
+      <div ng-model="userInfo.Country" country-select></div>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <label for="exampleInputName2"><strong>State</strong></label>
+      <i class="fa fa-sort {{customClass}}" aria-hidden="true"></i>
+      <div country="{{ userInfo.Country }}" ng-model="userInfo.State" state-select></div>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <label for="exampleInputName2"><strong>City</strong></label>
+      <input type="text" class="form-control " id="exampleInputName2" ng-model="userInfo.City" placeholder="City">
+    </div>
+  </div>
+  <div class="row mar20">
+    <div class="col-md-12 col-sm-12">
+      <label for="exampleInputName2"><strong>Pincode/Postal Code</strong></label>
+      <input type="text" class="form-control " id="exampleInputName2" ng-model="userInfo.Pincode" placeholder="Pincode">
+    </div>
+  </div>
+  <!-- <div class="row mar20">
+    <div class="col-md-12 col-sm-12">
+      <label for="exampleInputName2"><strong>Government Id/ Tax Id Number</strong></label>
+      <input type="file" class="form-control " id="exampleInputName2" ng-model="userInfo.taxId" placeholder="Pincode" /><small>Note: Only images (i.e. PNG, GIF, JPG, JPEG) files are allowed</small>
+    </div>
+  </div>
+  <div class="row mar20">
+    <div class="col-md-12 col-sm-12">
+      <label for="exampleInputName2"><strong>Photo Id Proof</strong></label>
+      <input type="file" class="form-control " id="exampleInputName2" ng-model="userInfo.photoId" placeholder="Pincode" /><small>Note: Only images (i.e. PNG, GIF, JPG, JPEG) files are allowed</small>
+    </div>
+  </div> -->
+  <br />
+  <br />
+  <p class="mar20">
+    <input type="submit" class="btn white-btn btn-lg" value="Save">
+    <input type="reset" class="btn btn-default btn-lg" ng-click="reset()" value="Reset" name="reset">
+  </p>
+</form>

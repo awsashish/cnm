@@ -43,6 +43,25 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
+    $scope.updateProfile = function(userData) {
+      $scope.name = $scope.name.split(" ");
+      var formData = {
+        'FirstName':$scope.name[0],
+        'LastName':$scope.name[1],
+        'Country':$scope.userInfo.Country,
+        'State':$scope.userInfo.State,
+        'City':$scope.userInfo.City,
+        'Address':$scope.userInfo.Address,
+        'Mobile':$scope.userInfo.Mobile,
+        'Pincode':$scope.userInfo.Pincode
+      };
+
+      coinomiaService.updateProfile(formData)
+        .then(function(res) {
+          console.log(res);
+        });
+    }
+
     // Get User's Sponsor
     // $scope.sponsorInfo = function() {
     //   coinomiaService.getUserSponsor()

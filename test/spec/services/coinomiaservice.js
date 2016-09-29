@@ -52,6 +52,17 @@ describe('service coinomiaService', function() {
       'ConfirmPassword':'123456'
     };
 
+    var formData =   {
+      'Name':'some-name',
+      'Address':'Address',
+      'Country':'country-name',
+      'State':'state-name',
+      'City':'city-name',
+      'Pincode':'302013',
+      'Mobile':'9999999999',
+      'Email':'somevalue@gmail.com',
+    };
+
     // Referral Data
     var pagination = {};
 
@@ -918,6 +929,35 @@ describe('service coinomiaService', function() {
       .expect('POST', coinomiaService.apiHost + 'reset-password', resetData)
       .respond(500, 'Internal Server Error.');
       coinomiaService.resetPassword(resetData);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Update Profile
+  describe('update profile function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.updateProfile).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/update-profile', formData)
+      .respond(200, {'Message':'Success'});
+      var data;
+      coinomiaService.updateProfile(formData).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Message).toEqual('Success');
+    });
+
+    it('should log reset password error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/update-profile', formData)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.updateProfile(formData);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
