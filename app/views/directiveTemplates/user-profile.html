@@ -45,7 +45,7 @@
     <div class="col-md-4 col-sm-12">
       <label for="exampleInputName2"><strong>State</strong></label>
       <i class="fa fa-sort {{customClass}}" aria-hidden="true"></i>
-      <div country="{{ userInfo.Country }}" ng-model="userInfo.State" state-select></div>
+      <div country="{{ userInfo.Country }}" ng-model="userInfo.State" state-select ng-if="userInfo.Country"></div>
     </div>
     <div class="col-md-4 col-sm-12">
       <label for="exampleInputName2"><strong>City</strong></label>
@@ -72,6 +72,12 @@
   </div> -->
   <br />
   <br />
+  <div class="alert alert-success fade in" ng-if="successMessage">
+    <strong><i class="fa fa-check-circle fa-lg" aria-hidden="true"></i> {{successMessage}}</strong>
+  </div>
+  <div class="alert alert-danger fade in text-capitalize" ng-if="errorMessage">
+    <strong>{{errorMessage}}</strong>
+  </div>
   <p class="mar20">
     <input type="submit" class="btn white-btn btn-lg" value="Save">
     <input type="reset" class="btn btn-default btn-lg" ng-click="reset()" value="Reset" name="reset">

@@ -137,7 +137,7 @@ angular.module('coinomiaFrontendApp')
       }
 
       function getInfoFailed(error) {
-        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        $log.error('XHR Failed for User Profile.\n' + angular.toJson(error.data, true));
         return error;
       }
 

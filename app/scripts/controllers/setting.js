@@ -9,6 +9,8 @@
  */
 angular.module('coinomiaFrontendApp')
   .controller('SettingCtrl', function ($scope, coinomiaService, $state, $timeout) {
+    $scope.confirmPassError = false;
+    $scope.user = {};
 
     $scope.confirmPass = function(callback) {
       if($scope.user.NewPassword !== $scope.user.ConfirmPassword) {
@@ -23,7 +25,8 @@ angular.module('coinomiaFrontendApp')
     }
 
     // Change User Password
-    $scope.changeUserPasssword = function(info) {
+    $scope.changeUserPassword = function(data) {
+      var info = $scope.user;
       $scope.confirmPass(function(error) {
         if(error === false) {
           coinomiaService.changePassword(info)
@@ -31,9 +34,6 @@ angular.module('coinomiaFrontendApp')
               if(res.status === 200) {
                 $scope.errorMessage = '';
                 $scope.successMessage = 'Password Changed Successfully';
-                $timeout(function() {
-                  $state.reload();
-                }, 3000);
               }else{
                 $scope.successMessage = '';
                 $scope.errorMessage = res.data.Message;
@@ -48,6 +48,7 @@ angular.module('coinomiaFrontendApp')
       var formData = {
         'FirstName':$scope.name[0],
         'LastName':$scope.name[1],
+        'Email':$scope.userInfo.Email,
         'Country':$scope.userInfo.Country,
         'State':$scope.userInfo.State,
         'City':$scope.userInfo.City,
@@ -58,7 +59,13 @@ angular.module('coinomiaFrontendApp')
 
       coinomiaService.updateProfile(formData)
         .then(function(res) {
-          console.log(res);
+          if(res.status === 200){
+            $scope.errorMessage = '';
+            $scope.successMessage = 'Profile Updated Successfully';
+          }else{
+            $scope.successMessage = '';
+            $scope.errorMessage = res.data.Message;
+          }
         });
     }
 
