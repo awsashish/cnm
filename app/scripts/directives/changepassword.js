@@ -12,7 +12,12 @@ angular.module('coinomiaFrontendApp')
       restrict: 'E',
       templateUrl: 'views/directiveTemplates/changePassword.html',
       scope: {
-        'changePassword':'&'
+        'userValue':'=',
+        'confirmPassError':'=',
+        'errorMessage':'=',
+        'successMessage':'=',
+        'changeUserPassword':'&',
+        'confirmPass':'&'
       },
     };
   });
