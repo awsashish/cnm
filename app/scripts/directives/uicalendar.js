@@ -12,12 +12,15 @@ angular.module('coinomiaFrontendApp')
       restrict: 'E',
       templateUrl: 'views/directiveTemplates/calendar.html',
       scope: {
-        'data': '='
+        'data': '=',
+        'dateRange':'='
       },
       link: function(scope, elem, attrs) {
         $(elem).responsiveCalendar({
           events: scope.data
         });
+        $(elem).responsiveCalendar('curr');
+        $(elem).responsiveCalendar('clear', scope.dateRange)
       }
     };
   });
