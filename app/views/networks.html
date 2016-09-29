@@ -296,7 +296,7 @@
                                 <a ng-click="getDownline(downline['0'].username)" data-tooltip="sticky1">
                                   <div class="container-fluid">
                                     <div class="row">
-                                      <img src="images/flags/{{allCountryCodes['0'] | lowercase}}.png" /> <strong>{{downline['0'].username}}</strong>
+                                      <img src="images/flags/{{allCountryCodes[downline['0'].country] | lowercase}}.png" /> <strong>{{downline['0'].username}}</strong>
                                     </div>
                                     <div class="row" style="margin-top: 5px;">
                                       <img ng-if="downline['0'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['0'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
@@ -427,8 +427,8 @@
                       <br />
                       <br />
                     </div>
-                    <h5 class="red-text02"><strong>Max Team Size</strong></h5>
-                    <div class="table-responsive">
+                    <h5 class="red-text02" ng-hide="true"><strong>Max Team Size</strong></h5>
+                    <div class="table-responsive" ng-hide="true">
                       <table class="table table-dark-gry table-hover mb30 font16">
                         <thead style="background:#525252;">
                           <tr style="color:#525252;">
