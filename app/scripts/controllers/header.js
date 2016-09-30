@@ -74,4 +74,9 @@ angular.module('coinomiaFrontendApp')
         $scope.countryFlag = res[0];
       });
     }
+
+    // Get Country Codes
+    UtilsService.getCountryCode().then(function(res) {
+      $rootScope.allCountryCodes = res;
+    });
   });
