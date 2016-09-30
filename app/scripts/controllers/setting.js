@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('SettingCtrl', function ($scope, coinomiaService, $state, $timeout) {
+  .controller('SettingCtrl', function ($scope, coinomiaService, $state, $timeout, $window, UtilsService) {
     $scope.confirmPassError = false;
     $scope.user = {};
 
@@ -62,12 +62,17 @@ angular.module('coinomiaFrontendApp')
           if(res.status === 200){
             $scope.errorMessage = '';
             $scope.successMessage = 'Profile Updated Successfully';
+            $timeout($window.location.reload(), 1000, true);
           }else{
             $scope.successMessage = '';
             $scope.errorMessage = res.data.Message;
           }
         });
     }
+
+    UtilsService.getCountryCode().then(function(res) {
+      $scope.dialCode = res;
+    });
 
     // Get User's Sponsor
     // $scope.sponsorInfo = function() {

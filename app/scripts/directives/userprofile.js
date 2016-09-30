@@ -13,6 +13,7 @@ angular.module('coinomiaFrontendApp')
       templateUrl: 'views/directiveTemplates/user-profile.html',
       scope: {
         'userInfo': '=',
+        'dialCode':'=',
         'errorMessage':'=',
         'successMessage':'=',
         'updateProfile':'&',

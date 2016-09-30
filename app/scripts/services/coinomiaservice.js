@@ -568,4 +568,22 @@ angular.module('coinomiaFrontendApp')
         .then(updateProfileRequestComplete)
         .catch(updateProfileRequestFailed);
     }
+
+    // Get User Wallet Info
+    this.getWalletInfo = function() {
+      // On Success
+      function getWalletInfoRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getWalletInfoRequestFailed(error) {
+        $log.error('XHR Failed for Wallet Info.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/wallet-status')
+        .then(getWalletInfoRequestComplete)
+        .catch(getWalletInfoRequestFailed);
+    }
   });
