@@ -42,6 +42,14 @@ angular.module('coinomiaFrontendApp')
         authenticate: false
     })
 
+    // Total Sign up
+    .state('total-signups', {
+        url: '/total-signups',
+        templateUrl: 'views/total-signup.html',
+        controller: 'TotalsignupCtrl',
+        authenticate: false
+    })
+
     // Dashboard page
     .state('dashboard', {
         url: '/dashboard',
