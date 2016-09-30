@@ -25,7 +25,6 @@ describe('Controller: DashboardCtrl', function () {
     scope = $rootScope.$new();
     coinomiaServiceDeferred = $q.defer();
 
-    spyOn(coinomiaService, 'getUserInfo').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'changePassword').and.returnValue(coinomiaServiceDeferred.promise);
     SettingCtrl = $controller('SettingCtrl', {
       $scope: scope
@@ -37,18 +36,13 @@ describe('Controller: DashboardCtrl', function () {
     };
   }));
 
-  it('should be defined and call getUserInfo', function () {
-    scope.getUserProfile();
-    expect(coinomiaService.getUserInfo).toHaveBeenCalled();
-  });
-
   it('should be define and check password mismatch', function() {
-    scope.confirmPass(scope.user);
+    scope.confirmPass();
     expect(scope.confirmPassError).toEqual(false);
   });
 
   it('should be define and call change password service', function() {
-    scope.changeUserPasssword(scope.user);
+    scope.changeUserPassword(scope.user);
     expect(coinomiaService.changePassword).toHaveBeenCalledWith(scope.user);
   });
 });

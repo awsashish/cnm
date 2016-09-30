@@ -8,20 +8,9 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('SettingCtrl', function ($scope, coinomiaService, $state, $timeout) {
-
-    // Get User Profile
-    $scope.getUserProfile = function() {
-      coinomiaService.getUserInfo()
-        .then(function(res) {
-          var data = res.data;
-          if(res.status === 200) {
-            $scope.userInfo = data;
-          }
-        });
-    }
-
-    $scope.getUserProfile();
+  .controller('SettingCtrl', function ($scope, coinomiaService, $state, $timeout, $window, UtilsService) {
+    $scope.confirmPassError = false;
+    $scope.user = {};
 
     $scope.confirmPass = function(callback) {
       if($scope.user.NewPassword !== $scope.user.ConfirmPassword) {
@@ -36,7 +25,8 @@ angular.module('coinomiaFrontendApp')
     }
 
     // Change User Password
-    $scope.changeUserPasssword = function(info) {
+    $scope.changeUserPassword = function(data) {
+      var info = $scope.user;
       $scope.confirmPass(function(error) {
         if(error === false) {
           coinomiaService.changePassword(info)
@@ -44,9 +34,6 @@ angular.module('coinomiaFrontendApp')
               if(res.status === 200) {
                 $scope.errorMessage = '';
                 $scope.successMessage = 'Password Changed Successfully';
-                $timeout(function() {
-                  $state.reload();
-                }, 3000);
               }else{
                 $scope.successMessage = '';
                 $scope.errorMessage = res.data.Message;
@@ -54,6 +41,61 @@ angular.module('coinomiaFrontendApp')
             });
         }
       });
+    }
+
+    $scope.updateProfile = function(userData) {
+      $scope.name = $scope.name.split(" ");
+      var formData = {
+        'FirstName':$scope.name[0],
+        'LastName':$scope.name[1],
+        'Email':$scope.userInfo.Email,
+        'Country':$scope.userInfo.Country,
+        'State':$scope.userInfo.State,
+        'City':$scope.userInfo.City,
+        'Address':$scope.userInfo.Address,
+        'Mobile':$scope.userInfo.Mobile,
+        'Pincode':$scope.userInfo.Pincode
+      };
+
+      coinomiaService.updateProfile(formData)
+        .then(function(res) {
+          if(res.status === 200){
+            $scope.errorMessage = '';
+            $scope.successMessage = 'Profile Updated Successfully';
+            $timeout($window.location.reload(), 1000, true);
+          }else{
+            $scope.successMessage = '';
+            $scope.errorMessage = res.data.Message;
+          }
+        });
+    }
+
+    UtilsService.getCountryDialCode().then(function(res) {
+      $scope.dialCode = res;
+    });
+
+    $scope.walletInfo = function() {
+      coinomiaService.getWalletInfo()
+        .then(function(res){
+          if(res.status === 200){
+            $scope.walletData = res.data;
+          }
+        });
+    }
+
+    $scope.updateWallet = function(wallet, address) {
+      var walletData = {
+        "wallet": wallet,
+        'address': address
+      }
+      coinomiaService.updateWalletInfo(walletData)
+        .then(function(res){
+          if(res.status === 200) {
+            $scope.successMessage = 'Wallet Info updated successfully.';
+          }else{
+            $scope.errorMessage = 'OOPS! Something went wrong. Please try again.'
+          }
+        });
     }
 
     // Get User's Sponsor

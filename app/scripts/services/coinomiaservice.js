@@ -137,7 +137,7 @@ angular.module('coinomiaFrontendApp')
       }
 
       function getInfoFailed(error) {
-        $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
+        $log.error('XHR Failed for User Profile.\n' + angular.toJson(error.data, true));
         return error;
       }
 
@@ -549,5 +549,59 @@ angular.module('coinomiaFrontendApp')
       return $http.get(this.apiHost +'user/leader-board-team')
         .then(getTeamLeaderboardRequestComplete)
         .catch(getTeamLeaderboardRequestFailed);
+    }
+
+    // Update Profile
+    this.updateProfile = function(formData) {
+      // On Success
+      function updateProfileRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function updateProfileRequestFailed(error) {
+        $log.error('XHR Failed for Update Profile.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/update-profile', formData)
+        .then(updateProfileRequestComplete)
+        .catch(updateProfileRequestFailed);
+    }
+
+    // Get User Wallet Info
+    this.getWalletInfo = function() {
+      // On Success
+      function getWalletInfoRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getWalletInfoRequestFailed(error) {
+        $log.error('XHR Failed for Wallet Info.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/wallet-status')
+        .then(getWalletInfoRequestComplete)
+        .catch(getWalletInfoRequestFailed);
+    }
+
+    // Update Profile
+    this.updateWalletInfo = function(formData) {
+      // On Success
+      function updateWalletInfoRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function updateWalletInfoRequestFailed(error) {
+        $log.error('XHR Failed for Update Profile.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/update-wallet', formData)
+        .then(updateWalletInfoRequestComplete)
+        .catch(updateWalletInfoRequestFailed);
     }
   });

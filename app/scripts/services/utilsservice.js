@@ -43,4 +43,21 @@ angular.module('coinomiaFrontendApp')
         .catch(getCountryCodeFailed);
     };
 
+
+    // Get Dial Code
+    this.getCountryDialCode = function() {
+
+      function getCountryDialCodeComplete(response) {
+        return response.data;
+      }
+
+      function getCountryDialCodeFailed(error) {
+        $log.error('XHR Failed for country flag.\n' + angular.toJson(error.data, true));
+      }
+
+      return $http.get('js/countryInfo.json')
+        .then(getCountryDialCodeComplete)
+        .catch(getCountryDialCodeFailed);
+    };
+
   });

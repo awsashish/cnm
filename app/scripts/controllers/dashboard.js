@@ -10,6 +10,7 @@
 angular.module('coinomiaFrontendApp')
   .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService, UtilsService, $filter, config) {
 
+
     $scope.hasDirectReferral = false;
     $scope.hasBinaryReferral = false;
 
@@ -58,6 +59,15 @@ angular.module('coinomiaFrontendApp')
     $scope.machineOptions = config.machineDropdown;
     $scope.rackOptions = config.rackDropdown;
 
+    var startDate = moment('2016-09-01').format('YYYY-MM-DD');
+    var endDate = moment('2016-09-26').format('YYYY-MM-DD');
+
+    $scope.getDates = [];
+    while(startDate <= endDate) {
+      $scope.getDates.push(moment(startDate).format('YYYY-MM-DD'));
+      // console.log($scope.getDates);
+      startDate = moment(startDate).add(1, 'day').format('YYYY-MM-DD');
+    }
 
     // Get Purchased Power
     coinomiaService.getPurchasePower()
@@ -128,6 +138,7 @@ angular.module('coinomiaFrontendApp')
     // Get User Team
     $scope.myTeam = {};
     $scope.hasMyTeamData = false;
+    $scope.loadingData = true;
     coinomiaService.getTeamCalendar()
     .then(function(res) {
       var teamData = res.data;
@@ -139,6 +150,7 @@ angular.module('coinomiaFrontendApp')
             "url": "#"
           };
         });
+        $scope.loadingData = false;
         $scope.hasMyTeamData = true;
       }
     });
@@ -146,6 +158,7 @@ angular.module('coinomiaFrontendApp')
     // Get Coinomia Team
     $scope.coinomiaTeam = {};
     $scope.hasCoinomiaTeamData = false;
+    $scope.loadingCoinomiaData = true;
     coinomiaService.getCoinomiaTeamCalendar()
     .then(function(res) {
       var coinomiaTeamData = res.data;
@@ -157,6 +170,7 @@ angular.module('coinomiaFrontendApp')
             "url": "#"
           };
         });
+        $scope.loadingCoinomiaData = false;
         $scope.hasCoinomiaTeamData = true;
       }
     });
