@@ -43,6 +43,7 @@ module.exports = function(config) {
       'bower_components/ngclipboard/dist/ngclipboard.js',
       'bower_components/humanize-duration/humanize-duration.js',
       'bower_components/angular-timer/dist/angular-timer.js',
+      'bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

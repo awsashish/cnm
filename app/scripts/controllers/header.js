@@ -10,6 +10,12 @@
 angular.module('coinomiaFrontendApp')
   .controller('HeaderCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService, UtilsService) {
 
+      // Calcultate remaining Time
+      var futureDate = moment('2016-11-01').tz('America/New_York').valueOf();
+      var currentDate = moment().tz('America/New_York').valueOf();
+
+      $scope.remainingTime = (futureDate - currentDate)/1000;
+
       $rootScope.tokenRequestProgress = false;
 
       $rootScope.$on('getRefreshToken', function() {

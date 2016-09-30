@@ -4898,7 +4898,7 @@ a:hover div.box-outer{border-bottom:3px solid #ccc;}
 
 /***********************Calender ******************************************/
 .counter-date {
-    position: absolute;
+    float: left;
     top: -1px;
     padding: 10px 0px 0px 5px;
     border-radius: 0px 0px 5px 5px;
@@ -4906,6 +4906,20 @@ a:hover div.box-outer{border-bottom:3px solid #ccc;}
     border-bottom: 2px solid #ccc;
     outline: none;
     cursor: pointer;
+}
+
+.countdown-amount {
+    padding: 5px 8px;
+    width: 50px;
+    height: 50px;
+    margin: 5px 2px;
+    text-align: center;
+    font-size: 12px;
+    background: #fc0;
+    border-radius: 50%;
+    border-bottom: 2px solid #F90;
+    color: #000 !important;
+    font-family: 'Oswald', sans-serif;
 }
 
 .cdStyleFlat .countdown-amount {

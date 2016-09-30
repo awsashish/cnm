@@ -9,5 +9,13 @@
   </p>
 </div>
 <div class="col-md-6" align="right">
+  <div class="counter-date">
+    <timer countdown="remainingTime" max-time-unit="'day'" interval="1000">
+      <span class="countdown-amount">{{ddays}}</span>Day{{daysS}}
+      <span class="countdown-amount">{{hhours}}</span> Hour{{hoursS}}
+      <span class="countdown-amount">{{mminutes}}</span> Minute{{minutesS}}
+      <span class="countdown-amount">{{sseconds}}</span> Second{{secondsS}}</timer>
+  </div>
+  <p class="cal-dash pull-left" style="margin: 10px 12px 0;">To Launch...</p>
   <img src="images/logo-coinomia.png" width="200" style="padding:10px 20px 0px;">
 </div>

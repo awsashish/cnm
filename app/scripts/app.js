@@ -21,7 +21,8 @@ angular
     'ngStorage',
     'ncy-angular-breadcrumb',
     'ngCountryStateSelect',
-    'ngclipboard'
+    'ngclipboard',
+    'timer'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
