@@ -45,7 +45,7 @@ body {
               <td><strong>Time</strong></td>
            </tr>
            <tr ng-repeat="(key, row) in latestSignup | limitTo:10:10">
-              <td><img src="images/flags/{{allCountryCodes[row.country]}}.png"> {{row.membername}}</td>
+              <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername}}</td>
               <td>2 minutes ago</td>
            </tr>
          </tbody>
