@@ -45,7 +45,7 @@ angular.module('coinomiaFrontendApp')
 
 
     // Get Dial Code
-    this.getCountryCode = function() {
+    this.getCountryDialCode = function() {
 
       function getCountryDialCodeComplete(response) {
         return response.data;

@@ -586,4 +586,22 @@ angular.module('coinomiaFrontendApp')
         .then(getWalletInfoRequestComplete)
         .catch(getWalletInfoRequestFailed);
     }
+
+    // Update Profile
+    this.updateWalletInfo = function(formData) {
+      // On Success
+      function updateWalletInfoRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function updateWalletInfoRequestFailed(error) {
+        $log.error('XHR Failed for Update Profile.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/update-wallet', formData)
+        .then(updateWalletInfoRequestComplete)
+        .catch(updateWalletInfoRequestFailed);
+    }
   });

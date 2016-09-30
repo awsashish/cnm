@@ -24,6 +24,11 @@ describe('service coinomiaService', function() {
       ConfirmPassword: '123zaq!1'
     }
 
+    var walletData = {
+      "wallet":"BTC",
+      "address":"addresshdlkjahlkas"
+    }
+
     var placement = JSON.stringify("A");
 
     var sponsorId = JSON.stringify("coinomia");
@@ -1083,6 +1088,66 @@ describe('service coinomiaService', function() {
       .expect('GET', coinomiaService.apiHost + 'user/leader-board-team')
       .respond(500, 'Internal Server Error.');
       coinomiaService.getTeamLeaderboard();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Get Wallet Info
+  describe('user wallet info function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getWalletInfo).not.toEqual(null);
+    });
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/wallet-status')
+      .respond(200, [{'Wallet': 'test123', 'Address':'some-address', 'Balance':10}]);
+      var data;
+      coinomiaService.getWalletInfo().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data[0].Wallet).toEqual('test123');
+      expect(data[0].Address).toEqual('some-address');
+      expect(data[0].Balance).toEqual(10);
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/wallet-status')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getWalletInfo();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Update User Wallet Info
+  describe('update wallet info', function() {
+    it('should exist', function() {
+      expect(coinomiaService.updateWalletInfo).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/update-wallet', walletData)
+      .respond(200, {'Message':'Success'});
+      var data;
+      coinomiaService.updateWalletInfo(walletData).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Message).toEqual('Success');
+    });
+
+    it('should log forgot password error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/update-wallet', walletData)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.updateWalletInfo(walletData);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });

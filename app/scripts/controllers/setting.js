@@ -70,9 +70,33 @@ angular.module('coinomiaFrontendApp')
         });
     }
 
-    UtilsService.getCountryCode().then(function(res) {
+    UtilsService.getCountryDialCode().then(function(res) {
       $scope.dialCode = res;
     });
+
+    $scope.walletInfo = function() {
+      coinomiaService.getWalletInfo()
+        .then(function(res){
+          if(res.status === 200){
+            $scope.walletData = res.data;
+          }
+        });
+    }
+
+    $scope.updateWallet = function(wallet, address) {
+      var walletData = {
+        "wallet": wallet,
+        'address': address
+      }
+      coinomiaService.updateWalletInfo(walletData)
+        .then(function(res){
+          if(res.status === 200) {
+            $scope.successMessage = 'Wallet Info updated successfully.';
+          }else{
+            $scope.errorMessage = 'OOPS! Something went wrong. Please try again.'
+          }
+        });
+    }
 
     // Get User's Sponsor
     // $scope.sponsorInfo = function() {
