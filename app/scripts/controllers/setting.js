@@ -10,6 +10,8 @@
 angular.module('coinomiaFrontendApp')
   .controller('SettingCtrl', function ($scope, coinomiaService, $state, $timeout, $window, UtilsService) {
     $scope.confirmPassError = false;
+    $scope.showSaveAvatar = false;
+    $scope.changeImage = true;
     $scope.user = {};
 
     $scope.confirmPass = function(callback) {
@@ -54,7 +56,8 @@ angular.module('coinomiaFrontendApp')
         'City':$scope.userInfo.City,
         'Address':$scope.userInfo.Address,
         'Mobile':$scope.userInfo.Mobile,
-        'Pincode':$scope.userInfo.Pincode
+        'Pincode':$scope.userInfo.Pincode,
+        'avatar':$scope.userInfo.avatar
       };
 
       coinomiaService.updateProfile(formData)
@@ -97,6 +100,25 @@ angular.module('coinomiaFrontendApp')
           }
         });
     }
+
+    $scope.showSaveAvatar = false;
+    var handleFileSelect = function(evt) {
+      var file=evt.currentTarget.files[0];
+      var reader = new FileReader();
+      if(['image/jpeg', 'image/png'].indexOf(file.type) >= 0) {
+        reader.onload = function (evt) {
+          $scope.$apply(function($scope){
+            $scope.myImage=evt.target.result;
+            $scope.userInfo.avatar = $scope.myImage;
+            $scope.showSaveAvatar = true;
+            $scope.changeImage = false;
+          });
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+
+    angular.element('#fileInput').on('change', handleFileSelect);
 
     // Get User's Sponsor
     // $scope.sponsorInfo = function() {

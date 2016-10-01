@@ -18,7 +18,8 @@ angular.module('coinomiaFrontendApp')
     // Get Total Signups
     coinomiaService.getLatestSignup().then(function(res){
       if(res.status === 200){
-        $scope.latestSignup = res.data;
+        $scope.totalUsers = res.data.totalusers;
+        $scope.latestSignup = res.data.data;
       }
     })
   });
