@@ -195,11 +195,11 @@
       "code":"KM",
       "dial":"269"
    },
-   "Congo":{
+   "Congo, Republic of the":{
       "code":"CG",
       "dial":"242"
    },
-   "Congo, The Democratic Republic of the":{
+   "Congo, Democratic Republic of the":{
       "code":"CD",
       "dial":"243"
    },
@@ -275,7 +275,7 @@
       "code":"ET",
       "dial":"251"
    },
-   "Falkland Islands (Malvinas)":{
+   "Falkland Islands (Islas Malvinas)":{
       "code":"FK",
       "dial":"500"
    },
@@ -841,7 +841,7 @@
       "code":"SY",
       "dial":"963"
    },
-   "Taiwan, Province of China":{
+   "Taiwan":{
       "code":"TW",
       "dial":"886"
    },
@@ -849,7 +849,7 @@
       "code":"TJ",
       "dial":"992"
    },
-   "Tanzania, United Republic of":{
+   "Tanzania":{
       "code":"TZ",
       "dial":"255"
    },
@@ -873,7 +873,11 @@
       "code":"TO",
       "dial":"676"
    },
-   "Trinidad and Tobago":{
+   "Trinidad":{
+      "code":"TT",
+      "dial":"+1-868"
+   },
+   "Tobago":{
       "code":"TT",
       "dial":"+1-868"
    },
@@ -913,7 +917,7 @@
       "code":"GB",
       "dial":"44"
    },
-   "United States":{
+   "USA":{
       "code":"US",
       "dial":"1"
    },
