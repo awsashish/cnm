@@ -2,7 +2,7 @@
   <div class="media profile-left">
     <div class="media-body lft-menu">
       <a class="pull-left profile-thumb" href="#/setting">
-        <img class="img-circle" src="images/users/user5.png" alt="">
+        <img class="img-circle" ng-src="{{userInfo.avatar?userInfo.avatar:'images/users/user5.png'}}" alt="">
       </a><br />
       <h4 class="media-heading">{{name}}</h4>
       <a class="logout" href="" ng-click="logout()"> <span class="label label-danger"><i class="fa fa-lock"></i> <strong>Logout</strong></span></a>
