@@ -46,7 +46,9 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.updateProfile = function(userData) {
+      $scope.user.name = $scope.name;
       $scope.name = $scope.name.split(" ");
+
       $scope.firstName = $scope.name[0].trim();
       $scope.lastName  = $scope.user.name.replace($scope.firstName, '').trim();
       var formData = {

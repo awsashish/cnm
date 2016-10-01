@@ -49,12 +49,12 @@
                 <hr />
                 <div class="row">
                   <div align="center" class="col-md-col-sm-12">
-                    <div class="cropArea">
-                      <img ng-hide="!changeImage" src="{{userInfo.avatar?userInfo.avatar:'images/users/user5.png'}}" width="100" height="100" class="img-circle" style="background:transparent"/>
+                    <div class="cropArea" ng-hide="changeImage">
                       <img-crop ng-hide="changeImage" image="myImage" result-image="userInfo.avatar" area-type="square" width="100" height="100" class="img-circle" area-min-size="30"></img-crop>
-                      <h3 class="nomargin nopadding red-text02"><strong>{{userInfo.name}}</strong></h3>
                     </div>
                     <br />
+                    <img ng-hide="!changeImage" src="{{userInfo.avatar?userInfo.avatar:'images/users/user5.png'}}" width="100" height="100" class="img-circle" style="background:transparent"/>
+                    <h3 class="nomargin nopadding red-text02 mt10"><strong>{{userInfo.name}}</strong></h3><br />
                     <div class="fileUpload btn btn-primary yelo-btn btn-sm">
                       <i class="fa fa-edit icon-lg-sm" aria-hidden="true"></i>
                         <strong>Change Avatar</strong>
