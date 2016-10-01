@@ -20,7 +20,7 @@ angular.module('coinomiaFrontendApp')
           events: scope.data
         });
         $(elem).responsiveCalendar('curr');
-        $(elem).responsiveCalendar('clear', scope.dateRange)
+        $(elem).responsiveCalendar('clear', scope.dateRange);
       }
     };
   });
