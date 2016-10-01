@@ -188,6 +188,24 @@ select {
   z-index: 99;
 }
 
+.fileUpload {
+  margin-bottom: 0.5%;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload {
+  cursor: pointer;
+  filter: alpha(opacity=0);
+  font-size: 26px;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 .error-abs {
   position: absolute !important;
   width: 250px;

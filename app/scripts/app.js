@@ -22,7 +22,8 @@ angular
     'ncy-angular-breadcrumb',
     'ngCountryStateSelect',
     'ngclipboard',
-    'timer'
+    'timer',
+    'ngImgCrop'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

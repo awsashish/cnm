@@ -3,7 +3,12 @@
   <div class="mainwrapper">
     <navigation></navigation>
     <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
-      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}
+      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.cropArea {
+      background: #E4E4E4;
+      overflow: hidden;
+      width:100px;
+      height:100px;
+    }
     </style>
     <div class="mainpanel">
       <div class="pageheader">
@@ -13,7 +18,7 @@
       </div>
       <!-- pageheader -->
       <div class="contentpanel">
-        <h2 class="mb35"><i class="fa fa-cog icon-lg border-round" aria-hidden="true" style="padding-left:10px; padding-top:8px;"></i> <strong>Setting</strong></h2>
+        <h2 class="mb35"><i class="fa fa-cog icon-lg border-round" aria-hidden="true" style="padding-left:10px; padding-top:8px;"></i> <strong>Settings</strong></h2>
         <hr />
         <div class="tabbable-panel" >
           <div class="tabbable-line" >
@@ -40,6 +45,31 @@
 
               <!-- User Info -->
               <div class="tab-pane tab_default_4 active">
+                <h2 class="mb35-sm top-spacemob10"><i class="fa fa-user icon-lg-red border-round-red" aria-hidden="true"></i> <strong> Personal Information</strong></h2>
+                <hr />
+                <div class="row">
+                  <div align="center" class="col-md-col-sm-12">
+                    <div class="cropArea">
+                      <img ng-hide="!changeImage" src="{{userInfo.avatar?userInfo.avatar:'images/users/user5.png'}}" width="100" height="100" class="img-circle" style="background:transparent"/>
+                      <img-crop ng-hide="changeImage" image="myImage" result-image="userInfo.avatar" area-type="square" width="100" height="100" class="img-circle" area-min-size="30"></img-crop>
+                      <h3 class="nomargin nopadding red-text02"><strong>{{userInfo.name}}</strong></h3>
+                    </div>
+                    <br />
+                    <div class="fileUpload btn btn-primary yelo-btn btn-sm">
+                      <i class="fa fa-edit icon-lg-sm" aria-hidden="true"></i>
+                        <strong>Change Avatar</strong>
+                        <input id="fileInput" type="file" class="upload" accept="image/*"/>
+                    </div>
+                    <br />
+                    <small>Note: Only images (i.e. PNG, GIF, JPG, JPEG) files are allowed</small>
+                    <!-- <p>
+                      <button class="yelo-btn btn-sm"><i class="fa fa-edit icon-lg-sm" aria-hidden="true"></i>
+                        <strong>Change Avatar</strong>
+                      </button><br />
+                      <small>Note: Only images (i.e. PNG, GIF, JPG, JPEG) files are allowed</small>
+                    </p> -->
+                  </div>
+                </div>
                 <user-profile user-info="userInfo" update-profile="updateProfile(userInfo)" custom-class="custom-select" dial-code="dialCode" success-message="successMessage" error-message="errorMessage"></user-profile>
               </div>
 
