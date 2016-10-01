@@ -1152,4 +1152,37 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Get Latest Signup
+  describe('latest signup function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getLatestSignup).not.toEqual(null);
+    });
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'latest-signup')
+      .respond(200, {"Rank": 1, "country": "South Africa", "membername": "LINDA MKHIZE", "TotalMembers": 0, "DOJ": "2016-09-30T06:05:09.55"});
+      var data;
+      coinomiaService.getLatestSignup().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Rank).toEqual(1);
+      expect(data.country).toEqual('South Africa');
+      expect(data.membername).toEqual('LINDA MKHIZE');
+      expect(data.TotalMembers).toEqual(0);
+      expect(data.DOJ).toEqual('2016-09-30T06:05:09.55');
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'latest-signup')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getLatestSignup();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });

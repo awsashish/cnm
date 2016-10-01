@@ -604,4 +604,22 @@ angular.module('coinomiaFrontendApp')
         .then(updateWalletInfoRequestComplete)
         .catch(updateWalletInfoRequestFailed);
     }
+
+    // Get Total Sign Ups
+    this.getLatestSignup = function() {
+      // On Success
+      function getLatestSignupRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getLatestSignupRequestFailed(error) {
+        $log.error('XHR Failed for Wallet Info.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'latest-signup')
+        .then(getLatestSignupRequestComplete)
+        .catch(getLatestSignupRequestFailed);
+    }
   });

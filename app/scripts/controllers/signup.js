@@ -115,6 +115,21 @@ angular.module('coinomiaFrontendApp')
       $scope.user.email = $scope.user.email;
       $scope.user.name = $scope.user.name;
       $scope.name = $scope.user.name.split(" ");
+
+      $scope.firstName = $scope.name[0].trim();
+      $scope.lastName  = $scope.user.name.replace($scope.firstName, '').trim();
+
+      // if($scope.name[1] && $scope.name[2]) {
+      //   $scope.firstname = $scope.name[0];
+      //   $scope.lastname = $scope.name[1]+" "+$scope.name[2];
+      // }else if($scope.name[1]){
+      //   $scope.firstname = $scope.name[0];
+      //   $scope.lastname = $scope.name[1];
+      // }else{
+      //   $scope.firstname = $scope.user.name;
+      //   $scope.lastname = '';
+      // }
+
       if($scope.terms == true) {
         // var formData = {
         //   'sponsor':$scope.user.sponsor,
@@ -135,8 +150,8 @@ angular.module('coinomiaFrontendApp')
         var formData = {
           'sponsor':$scope.user.sponsor,
           'userid':$scope.user.userid,
-          'FirstName':$scope.name[0],
-          'LastName':$scope.name[1],
+          'FirstName':$scope.firstName,
+          'LastName':$scope.lastName,
           'Country':$scope.user.country,
           'Email':$scope.user.email,
           'IPAdr':$scope.user.ipadr,
@@ -152,11 +167,14 @@ angular.module('coinomiaFrontendApp')
             angular.element("#aweber-internal-signup").submit();
           }else if(res.status === 404) {
               $scope.showme = false;
-              $scope.userIdError = data.Message;
+              $scope.error = data.Message;
           }else if(angular.isObject(data.Messages)) {
             var errorMessage = data.Messages;
             if(errorMessage['Member.Email'] !== undefined) {
               $scope.emailError = data.Messages['Member.Email'][0];
+            }
+            if(errorMessage['Member.Userid'] !== undefined) {
+              $scope.userIdError = data.Messages['Member.Userid'][0];
             }
 
             if(errorMessage['Member.FirstName'] !== undefined) {

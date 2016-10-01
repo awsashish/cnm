@@ -16,11 +16,6 @@ angular.module('coinomiaFrontendApp')
       perpage: config.pageLimit
     }
 
-    // Get Country Codes
-    UtilsService.getCountryCode().then(function(res) {
-      $scope.allCountryCodes = res;
-    });
-
     $scope.sponsorId = '';
 
     // Get User Directs
