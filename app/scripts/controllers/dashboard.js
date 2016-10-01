@@ -59,6 +59,7 @@ angular.module('coinomiaFrontendApp')
     $scope.machineOptions = config.machineDropdown;
     $scope.rackOptions = config.rackDropdown;
 
+    // Get Date Ranges
     var startDate = moment('2016-09-01').format('YYYY-MM-DD');
     var endDate = moment('2016-09-26').format('YYYY-MM-DD');
 

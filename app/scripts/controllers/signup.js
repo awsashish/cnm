@@ -115,6 +115,17 @@ angular.module('coinomiaFrontendApp')
       $scope.user.email = $scope.user.email;
       $scope.user.name = $scope.user.name;
       $scope.name = $scope.user.name.split(" ");
+      if($scope.name[1] && $scope.name[2]) {
+        $scope.firstname = $scope.name[0];
+        $scope.lastname = $scope.name[1]+" "+$scope.name[2];
+      }else if($scope.name[1]){
+        $scope.firstname = $scope.name[0];
+        $scope.lastname = $scope.name[1];
+      }else{
+        $scope.firstname = $scope.user.name;
+        $scope.lastname = '';
+      }
+
       if($scope.terms == true) {
         // var formData = {
         //   'sponsor':$scope.user.sponsor,
@@ -135,8 +146,8 @@ angular.module('coinomiaFrontendApp')
         var formData = {
           'sponsor':$scope.user.sponsor,
           'userid':$scope.user.userid,
-          'FirstName':$scope.name[0],
-          'LastName':$scope.name[1],
+          'FirstName':$scope.firstname,
+          'LastName':$scope.lastname,
           'Country':$scope.user.country,
           'Email':$scope.user.email,
           'IPAdr':$scope.user.ipadr,
