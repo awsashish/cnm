@@ -110,7 +110,7 @@
                      ng-model="user.email"
                      class="form-control"
                      placeholder="Enter your Email"
-                     ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i"
+                     ng-pattern="/^[a-z]+([a-z0-9._-](\+{0,1}))+@[a-z]+\.[a-z.]{2,6}$/i"
                      required />
             </div>
             <!--  ng-pattern ="/^[a-z]+([a-z0-9._-](\+{0,1}))+@[a-z]+\.[a-z.]{2,6}$/i" -->
