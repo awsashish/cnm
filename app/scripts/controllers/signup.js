@@ -153,7 +153,7 @@ angular.module('coinomiaFrontendApp')
             angular.element("#aweber-internal-signup").submit();
           }else if(res.status === 404) {
               $scope.showme = false;
-              $scope.signupMessage = data.Message;
+              $scope.signupError = data.Message;
           }else if(angular.isObject(data.Messages)) {
             var errorMessage = data.Messages;
             if(errorMessage['Member.Email'] !== undefined) {
