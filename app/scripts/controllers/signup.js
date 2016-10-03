@@ -131,22 +131,7 @@ angular.module('coinomiaFrontendApp')
       // }
 
       if($scope.terms == true) {
-        // var formData = {
-        //   'sponsor':$scope.user.sponsor,
-        //   'userid':$scope.user.userid,
-        //   'FirstName':$scope.name[0],
-        //   'LastName':$scope.name[1],
-        //   'Address':$scope.user.address,
-        //   'Country':$scope.user.country,
-        //   'State':$scope.user.state,
-        //   'City':$scope.user.city,
-        //   'Pincode':$scope.user.pincode,
-        //   'Mobile':$scope.user.mobile,
-        //   'Email':$scope.user.email,
-        //   'IPAdr':$scope.user.ipadr,
-        //   'Password':$scope.user.password,
-        //   'ConfirmPassword':$scope.user.confirmPassword
-        // };
+        $scope.loadingMessage = true;
         var formData = {
           'sponsor':$scope.user.sponsor,
           'userid':$scope.user.userid,
@@ -161,6 +146,7 @@ angular.module('coinomiaFrontendApp')
         };
         $scope.error = false;
         coinomiaService.signup(formData).then(function(res) {
+          $scope.loadingMessage = false;
           var data = res.data;
           if(res.status === 200){
             $scope.signupMessage = data.Message;
