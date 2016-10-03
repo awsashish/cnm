@@ -910,6 +910,35 @@ describe('service coinomiaService', function() {
     });
   });
 
+  // Resend Verification Email
+  describe('resend verification email function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.resendEmail).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'resend-verification', emailId)
+      .respond(200, {'Message':'Success'});
+      var data;
+      coinomiaService.resendEmail(emailId).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Message).toEqual('Success');
+    });
+
+    it('should log forgot password error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'resend-verification', emailId)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.resendEmail(emailId);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
   // Reset Password
   describe('reset password function', function() {
     it('should exist', function() {

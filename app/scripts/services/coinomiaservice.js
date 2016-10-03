@@ -461,6 +461,24 @@ angular.module('coinomiaFrontendApp')
         .catch(forgotPasswordRequestFailed);
     }
 
+    // Resend Verification Email
+    this.resendEmail = function(emailId) {
+      // On Success
+      function resendEmailRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function resendEmailRequestFailed(error) {
+        $log.error('XHR Failed for Resend Verification Email.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'resend-verification', emailId)
+        .then(resendEmailRequestComplete)
+        .catch(resendEmailRequestFailed);
+    }
+
     // Reset Password
     this.resetPassword = function(resetData) {
       // On Success
