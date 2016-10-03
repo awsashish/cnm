@@ -5,7 +5,7 @@
         <img src="images/logo-coinomia.png" alt="Coinomia" >
       </div>
       <br />
-      <h4 class="text-center mb5">Resen Verification Email</h4>
+      <h4 class="text-center mb5">Resend Verification Email</h4>
       <p class="text-center">Enter your Email and Press Resend</p>
       <div class="mb30"></div>
       <div class="alert alert-danger fade in error-padding text-center no-arrow text-capitalize" ng-if="forgotPassError" style="position:relative;">{{forgotPassError}}</div>
@@ -32,7 +32,7 @@
         <!-- input-group -->
         <div class="clearfix row">
           <div class="col-md-12">
-            <button type="submit" class="btn btn-success full-width">Send<i class="fa fa-arrow-circle-o-right ml5"></i></button>
+            <button type="submit" class="btn btn-success full-width">Resend<i class="fa fa-arrow-circle-o-right ml5"></i></button>
             <small style=" padding-top:10px;">*If you have not received Verification email, please click on the button and get a fresh Activation Email!</small>
           </div>
         </div>
@@ -40,9 +40,14 @@
     </div>
   </div>
   <!-- panel -->
-  <div class="col-md-8 alert alert-warning forgot-password" ng-if="hasSuccess">
+  <div class="col-md-8 alert alert-warning forgot-password text-center" ng-if="hasSuccess">
     <div class="col-md-8 forgot-text">
       "We've sent an email to <strong>{{successEmail}}</strong>. Click the link to verify your account.
+    </div>
+  </div>
+  <div class="col-md-8 alert alert-danger forgot-password text-center" ng-if="resendError">
+    <div class="col-md-8 forgot-text">
+      {{resendError}}
     </div>
   </div>
 </section>

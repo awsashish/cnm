@@ -23,7 +23,9 @@ angular
     'ngCountryStateSelect',
     'ngclipboard',
     'timer',
-    'ngImgCrop'
+    'ngImgCrop',
+    'ngSanitize',
+    'ngCsv'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

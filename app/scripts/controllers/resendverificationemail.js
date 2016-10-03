@@ -21,6 +21,8 @@ angular.module('coinomiaFrontendApp')
             if(res.status === 200) {
               $scope.hasSuccess = true;
               $scope.successEmail = '<'+$scope.user.email+'>';
+            }else{
+              $scope.resendError = 'OOPS! Something went wrong. Please try again.';
             }
           })
       }else{
