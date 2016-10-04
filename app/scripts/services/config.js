@@ -72,5 +72,29 @@ angular.module('coinomiaFrontendApp')
     'salesDirectHeading':'If all your Direct Buy',
     'salesBinaryHeading':'If all your Team Buy',
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
-    'signUpPath':'http://login.coinomia.com/#/signup'
+    'signUpPath':'http://login.coinomia.com/#/signup',
+    'teamColumnHead': [
+      'Name of the User',
+      'Email',
+      'Sponsor Name',
+      'Username',
+      'Contact Number',
+      'Country',
+      'Contract Purchased',
+      'Total Purchased Value',
+      'Joined At',
+      'Team Members'
+    ],
+    'columnOrder': [
+      'Name',
+      'Email',
+      'Sponsor',
+      'username',
+      'Mobile',
+      'country',
+      'TotalContract',
+      'TotalPurchased',
+      'DOJ',
+      'TotalDirect'
+    ]
   });

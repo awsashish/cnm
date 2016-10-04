@@ -23,7 +23,8 @@ angular
     'ngCountryStateSelect',
     'ngclipboard',
     'timer',
-    'ngImgCrop'
+    'ngImgCrop',
+    'ngExcel'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

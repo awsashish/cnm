@@ -126,6 +126,29 @@ a:focus {
   top: -10px;
 }
 
+.ajax_loader {
+    cursor: wait;
+    opacity: 0.75;
+    position: absolute;
+    z-index: 999;
+    content: "Please Wait ... ";
+    background: #ffffff url("../images/loading.gif") no-repeat center center;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.ajax_loader:before {
+    content: "Please Wait ...  ";
+    top: 55%;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
 .banner-section {
   margin-bottom: 30px;
   border-bottom: 1px solid #eee;

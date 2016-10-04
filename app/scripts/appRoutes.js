@@ -26,6 +26,14 @@ angular.module('coinomiaFrontendApp')
         authenticate: false
     })
 
+    // Resend Verification Email
+    .state('resend-verification', {
+        url: '/resend-verification',
+        templateUrl: 'views/resend-verification.html',
+        controller: 'ResendverificationemailCtrl',
+        authenticate: false
+    })
+
     // Reset password page
     .state('reset-password', {
         url: '/reset-password',

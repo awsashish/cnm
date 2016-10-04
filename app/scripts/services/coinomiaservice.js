@@ -10,7 +10,7 @@
 angular.module('coinomiaFrontendApp')
   .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage, config) {
     var pageLimit = config.pageLimit;
-    this.apiHost = 'http://coinomiaapi.azurewebsites.net/';
+    this.apiHost = 'https://api.coinomia.com/';
     this.requestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           transformRequest: function(obj) {
@@ -459,6 +459,24 @@ angular.module('coinomiaFrontendApp')
       return $http.post(this.apiHost +'forgot-password', emailId)
         .then(forgotPasswordRequestComplete)
         .catch(forgotPasswordRequestFailed);
+    }
+
+    // Resend Verification Email
+    this.resendEmail = function(emailId) {
+      // On Success
+      function resendEmailRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function resendEmailRequestFailed(error) {
+        $log.error('XHR Failed for Resend Verification Email.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'resend-verification', emailId)
+        .then(resendEmailRequestComplete)
+        .catch(resendEmailRequestFailed);
     }
 
     // Reset Password

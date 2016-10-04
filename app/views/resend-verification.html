@@ -5,11 +5,11 @@
         <img src="images/logo-coinomia.png" alt="Coinomia" >
       </div>
       <br />
-      <h4 class="text-center mb5">Forgot Password?</h4>
-      <p class="text-center">Please enter your Email below</p>
+      <h4 class="text-center mb5">Resend Verification Email</h4>
+      <p class="text-center">Enter your Email and Press Resend</p>
       <div class="mb30"></div>
       <div class="alert alert-danger fade in error-padding text-center no-arrow text-capitalize" ng-if="forgotPassError" style="position:relative;">{{forgotPassError}}</div>
-      <form name="forgotPassword" ng-submit="submit()" novalidate>
+      <form name="resendEmail" ng-submit="submit()" novalidate>
         <div class="input-group mb15">
           <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
           <input type="email"
@@ -21,27 +21,33 @@
                  required>
         </div>
         <div class="alert alert-danger fade in error-padding"
-             ng-show="(forgotPassword.email.$touched && forgotPassword.email.$invalid && !forgotPassword.email.$error.pattern) || emailError">
+             ng-show="(resendEmail.email.$touched && resendEmail.email.$invalid && !resendEmail.email.$error.pattern) || emailError">
           <!-- <a href="" class="close" data-dismiss="alert">&times;</a> -->
           This field is required.
         </div>
 
         <div class="alert alert-danger fade in error-padding"
-             ng-show="forgotPassword.email.$error.pattern && forgotPassword.email.$touched">
+             ng-show="resendEmail.email.$error.pattern && resendEmail.email.$touched">
              Please enter a valid email address.</div>
         <!-- input-group -->
         <div class="clearfix row">
           <div class="col-md-12">
-            <button type="submit" class="btn btn-success full-width">Send<i class="fa fa-arrow-circle-o-right ml5"></i></button>
+            <button type="submit" class="btn btn-success full-width">Resend<i class="fa fa-arrow-circle-o-right ml5"></i></button>
+            <small style=" padding-top:10px;">*If you have not received Verification email, please click on the button and get a fresh Activation Email!</small>
           </div>
         </div>
       </form>
     </div>
   </div>
   <!-- panel -->
-  <div class="col-md-8 alert alert-warning forgot-password" ng-if="hasSuccess">
+  <div class="col-md-8 alert alert-warning forgot-password text-center" ng-if="hasSuccess">
     <div class="col-md-8 forgot-text">
-      "We've sent an email to <strong>{{successEmail}}</strong>. Click the link in the email to reset your password,<br />If you don't see the email, check other places it might be, like your junk, spam, social, or other folders."
+      "We've sent an email to <strong>{{successEmail}}</strong>. Click the link to verify your account.
+    </div>
+  </div>
+  <div class="col-md-8 alert alert-danger forgot-password text-center" ng-if="resendError">
+    <div class="col-md-8 forgot-text">
+      {{resendError}}
     </div>
   </div>
 </section>
