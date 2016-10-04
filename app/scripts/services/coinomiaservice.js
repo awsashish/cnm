@@ -10,7 +10,7 @@
 angular.module('coinomiaFrontendApp')
   .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage, config) {
     var pageLimit = config.pageLimit;
-    this.apiHost = 'http://coinomiaapi.azurewebsites.net/';
+    this.apiHost = 'https://api.coinomia.com/';
     this.requestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
           transformRequest: function(obj) {
