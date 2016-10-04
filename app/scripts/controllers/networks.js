@@ -16,6 +16,8 @@ angular.module('coinomiaFrontendApp')
       perpage: config.pageLimit
     }
 
+
+
     $scope.teamColumnHead = config.teamColumnHead;
 
     $scope.sponsorId = '';
@@ -28,24 +30,32 @@ angular.module('coinomiaFrontendApp')
         .then(function(res) {
           if(res.status === 200) {
             var data = res.data;
+            $scope.arrayList = [
+              config.teamColumnHead
+            ];
             $scope.pagination.totalDirects = data.total;
             $scope.teamDirectsData  = data.rows;
+            data.rows.forEach(function(info){
+              var excelArray = [info.Name, info.Email, info.Sponsor, info.username, info.Mobile, info.country, info.TotalContract, info.TotalPurchased, info.DOJ, info.TotalDirect];
+              $scope.arrayList.push(excelArray);
+            });
+            $scope.getExcelData($scope.arrayList);
             // $scope.getFlags(0, $scope.teamDirectsData, $scope.teamDirectsData.length);
           }
       });
     }
 
-    // $scope.exportExcel = function(currentPage='') {
-    //   coinomiaService.getUserDirects(currentPage)
-    //     .then(function(res) {
-    //       if(res.status === 200) {
-    //         var data = res.data;
-    //         $scope.directsExcelData  = data.rows;
-    //       }
-    //   });
-    // }
-    //
-    // $scope.exportExcel('');
+
+    $scope.getExcelData = function(excelData) {
+      $scope.testData = [{
+          name: 'sheet1',
+          data: excelData
+      }];
+    }
+
+    $scope.exportExcel = {
+      down: function() {},
+    };
 
     $scope.userDirects($scope.currentPage);
 
