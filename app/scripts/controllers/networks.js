@@ -16,8 +16,6 @@ angular.module('coinomiaFrontendApp')
       perpage: config.pageLimit
     }
 
-
-
     $scope.teamColumnHead = config.teamColumnHead;
 
     $scope.sponsorId = '';
@@ -45,9 +43,9 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
-
+    /*** Excel Import ***/
     $scope.getExcelData = function(excelData) {
-      $scope.testData = [{
+      $scope.exportData = [{
           name: 'sheet1',
           data: excelData
       }];
@@ -56,6 +54,7 @@ angular.module('coinomiaFrontendApp')
     $scope.exportExcel = {
       down: function() {},
     };
+    /** -- Excel Import -- **/
 
     $scope.userDirects($scope.currentPage);
 
@@ -95,12 +94,16 @@ angular.module('coinomiaFrontendApp')
 
     // Get User Downline
     $scope.userDownline = function(sponsorId) {
+      $scope.loadingData = true;
       coinomiaService.getUserDownline(sponsorId)
         .then(function(res) {
           if(res.status === 200) {
+            $scope.responseError = false;
             $scope.downline  = res.data;
             $scope.tableInfo = res.data["0"];
-            // $scope.getFlags(0, $scope.downline, $scope.downline.length);
+            $scope.loadingData = false;
+          }else{
+            $scope.responseError = true;
           }
       });
     }
@@ -144,9 +147,19 @@ angular.module('coinomiaFrontendApp')
       // })
     }
 
+    $scope.searchDownline = function(sponsorId) {
+      if(sponsorId !== undefined) {
+        $scope.searchError = false;
+        $scope.userDownline(sponsorId);
+      }else{
+        $scope.searchError = true;
+      }
+    }
 
     $scope.getDownline = function(sponsorId) {
-      $scope.userDownline(sponsorId);
+      if(sponsorId !== undefined) {
+        $scope.userDownline(sponsorId);
+      }
     }
 
     $scope.getDownline($scope.sponsorId);

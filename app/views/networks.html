@@ -55,7 +55,7 @@
 
                     <div class="download">
                       <div ng-excel="" type="'excel'" data="exportExcel.data" xlsfilename="'mydirects.xls'" down="exportExcel.down"></div>
-                      <button class="pull-right copy-btn" ng-click="exportExcel.down(testData)"><i class="fa fa-file-excel-o "></i> Excel Sheet Download</button>
+                      <button class="pull-right copy-btn" ng-click="exportExcel.down(exportData)"><i class="fa fa-file-excel-o "></i> Excel Sheet Download</button>
                     </div>
 
 
@@ -291,7 +291,33 @@
                           </tr>
                         </table>
                       </div>
-                      <div class="row">
+                      <div class="pull-left">
+                        <form name="search" class="search-userbox" ng-submit="searchDownline(userId)" novalidate>
+                          <div class="col-md-12">
+                            <strong><i class="fa fa-search" aria-hidden="true"></i>
+                              Search by User ID</strong>
+                              <input type="text"
+                                     name="userid"
+                                     ng-model="userId"
+                                     placeholder="Enter User Id"
+                                     required />
+
+                              <input type="submit" class="btn-binary-search" name="submit" value="Search" >
+                              <div class="default-error fade in"
+                                 ng-show="search.userid.$touched && search.userid.$invalid || searchError">
+                                 User Id is required
+                               </div>
+                              <div class="default-error fade in"
+                                 ng-if="responseError">
+                                 User Id does not exists.
+                               </div>
+                          </div>
+
+                        </form>
+                      </div>
+
+                      <div class="row col-md-12">
+                        <div class="ajax_loader" ng-if="loadingData"></div>
                         <div class="col-md-11 col-md-offset-1">
                           <span class="pull-right" ng-click="getDownline('')" style="cursor: pointer;margin-right: 20px" role="button" tabindex="0">
                             <img src="images/refresh.png" width="20px"> Refresh
@@ -398,9 +424,9 @@
                             </ul>
                           </div>
                         </div>
+                        <div class="col-md-12 mt20"></div>
+                        <p class="text-danger text-center"><small>*To view more details of any member, please click on it.</small></p>
                       </div>
-                      <div class="mt10"></div>
-                      <p class="text-danger text-center"><small>*To view more details of any member, please click on it.</small></p>
                     </div>
                   </div>
                   <div class="tab-pane tab_default_6">
@@ -576,7 +602,7 @@
                             <th><strong class="white-color">User ID
                               </strong>
                             </th>
-                            <th><strong class="white-color">Sponser Name</strong></th>
+                            <th><strong class="white-color">Sponsor Name</strong></th>
                             <th><strong class="white-color">Level </th>
                             <th><strong class="white-color">Join at</strong></th>
                             <th><strong class="white-color">Frontline (Direct Referral)
