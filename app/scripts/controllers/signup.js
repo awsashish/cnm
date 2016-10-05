@@ -73,7 +73,6 @@ angular.module('coinomiaFrontendApp')
     $scope.confirmPass = function(callback) {
       if($scope.user.password !== $scope.user.confirmPassword) {
         $scope.confirmPassError = true;
-        $scope.signupError = 'Passwords do not match.';
       }else{
         $scope.confirmPassError = false;
       }
