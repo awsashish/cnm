@@ -163,6 +163,14 @@ a:focus {
   z-index: 999;
 }
 
+.default-error {
+  position: relative;
+  text-align: right;
+  right: 115px;
+  top: 5px;
+  color: #a94442;
+}
+
 .coming-soon {
   margin-top: 0;
   position: relative;
