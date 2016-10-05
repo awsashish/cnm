@@ -11,12 +11,18 @@ angular.module('coinomiaFrontendApp')
     return {
       restrict: 'A',
       scope: {
-        'model': '='
+        'model': '=',
+        'product': '='
       },
       link: function(scope, elem, attrs) {
-        var sliderLabel  = '<label>SLIDER_VALUE<small>TH/s</small></label>';
-        var uiLabelInner = '<div class="ui-slider-label-inner"></div>';
+        if(scope.product === 'btc'){
+          var sliderLabel  = '<label>SLIDER_VALUE<small>TH/s</small></label><div class="ui-slider-label-inner"></div>';
+        }else{
+          var sliderLabel  = '<label>SLIDER_VALUE<small>MH/s</small></label><div class="ui-slider-label-inner"></div>';
+        }
         $(elem).slider({
+          range: "min",
+          animate: true,
           value: +scope.model,
           min: +attrs.min,
           max: +attrs.max,
@@ -29,11 +35,11 @@ angular.module('coinomiaFrontendApp')
           create: function( event, ui ) {
             var el = angular.element(event.target).find('a');
             var sliderValue = $(elem).slider('value');
-            el.append(sliderLabel.replace('SLIDER_VALUE', scope.model)+uiLabelInner);
+            el.append(sliderLabel.replace('SLIDER_VALUE', scope.model));
           },
           change: function( event, ui ) {
             var el = angular.element(event.target).find('a');
-            el.find('label').html(sliderLabel.replace('SLIDER_VALUE', scope.model));
+            el.html(sliderLabel.replace('SLIDER_VALUE', scope.model));
           }
         });
         scope.$watch('model', function(newVal) {

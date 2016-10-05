@@ -56,8 +56,8 @@ angular.module('coinomiaFrontendApp')
     'ethPoolValue':0.58,          // Mining payout ETH pool MH/s value
     'ethMachineValue':5.8,    // Mining payout ETH Machine or Contributor MH/s value
     'ethRackValue':58,            // Mining payout ETH Rack MH/s value
-    // 'btcMining':0.5,
-    // 'ethMining':0.5,
+    'btcMining':0.5,
+    'ethMining':0.5,
     'PV':10,
     'directPercent': 0.12,    // 12% incase of direct sales commission
     'contributorMining':10,   // Machine mining value for mining payouts
