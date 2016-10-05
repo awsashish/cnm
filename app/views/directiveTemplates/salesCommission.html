@@ -1,5 +1,5 @@
-<p align="center" class="grey-bg" ng-if="commission=='direct'">Direct Referral Commission For - <a class="red-text02"> {{treeDetails.TotalDirect}} Users</a></p>
-<p align="center" class="grey-bg" ng-if="commission=='binary'">Binary Commission For -  <a href="#" class="red-text02">{{binaryDetails}} Users</a> and <a href="#" class="red-text02">{{treeDetails.VirtualPairs}} Pairs</a> </p>
+<p align="center" class="grey-bg" ng-if="commission=='direct'">Direct Referral Commission For - <a class="red-text02"> {{treeDetails.TotalDirect | number}} Users</a></p>
+<p align="center" class="grey-bg" ng-if="commission=='binary'">Binary Commission For -  <a href="#" class="red-text02">{{binaryDetails | number}} Users</a> and <a href="#" class="red-text02">{{treeDetails.VirtualPairs | number}} Pairs</a> </p>
 <div class="row">
   <div class="col-md-3 col-sm-12">
     <h5 align="center" class=" arrow_box "><img src="{{salesImagePath}}" width="70" /><br /><strong>{{salesHeading}}</strong></h5>
