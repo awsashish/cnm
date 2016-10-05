@@ -19,7 +19,7 @@ angular.module('coinomiaFrontendApp')
     'incomeSubTitle': 'Income',
     'incomeIcon': 'images/dash-tot-inc.png',
     'ratesTitle': 'Current Rates',
-    'ratesSubTitle': 'Offerd by Coinomia as Now',
+    'ratesSubTitle': 'Offered by Coinomia as Now',
     'ratesIcon': 'images/dash-cur-rate.png',
     'poolDropdown': [
       {value:1000, name:'1000'},
@@ -69,7 +69,7 @@ angular.module('coinomiaFrontendApp')
     'activeTab':'grab-concept',
     'salesDirectImage':'images/direct-ref.png',
     'salesBinaryImage':'images/team-ref.png',
-    'salesDirectHeading':'If all your Direct Buy',
+    'salesDirectHeading':'If all your Directs Buy',
     'salesBinaryHeading':'If all your Team Buy',
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
     'signUpPath':'http://login.coinomia.com/#/signup',
