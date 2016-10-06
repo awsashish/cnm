@@ -50,7 +50,12 @@
                    </ul>
                 </div>
                 <div class="tab-content" style="padding:20px 20px; ">
-                   <div class="tab-pane tab_default_4 active">
+                  <div class="tab-pane tab_default_4 active">
+                     <br />
+                     <p> Coming soon ... </p>
+                     <br />
+                   </div>
+                   <div class="tab-pane tab_default_41">
                       <br />
                       <h2 class="mb37" align="center" style="width:40%;">
                          <span class="glyphicon glyphicon-minus"></span>
@@ -458,7 +463,12 @@
                          </div>
                       </div>
                    </div>
-                   <div class="tab-pane tab_default_5" style="height:500px;" >
+                   <div class="tab-pane tab_default_5">
+                      <br />
+                      <p> Coming soon ... </p>
+                      <br />
+                  </div>
+                   <div class="tab-pane tab_default_51" style="height:500px;" >
                       <h2 class="mb35-sm top-spacemob10"><i class="fa fa-circle-o icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Live Contracts</strong></h2>
                       <hr />
                       <div class="row">
@@ -519,7 +529,12 @@
                          <br />
                       </div>
                    </div>
-                   <div class="tab-pane tab_default_6" >
+                   <div class="tab-pane tab_default_6">
+                      <br />
+                      <p> Coming soon ... </p>
+                      <br />
+                  </div>
+                   <div class="tab-pane tab_default_61" >
                       <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-newspaper-o icon-lg-red border-round-red" style="padding-top:5px; padding-left:3px" aria-hidden="true"></i> <strong>Mining Payouts</strong></h2>
                       <hr />
                       <div class="table-responsive">
@@ -558,7 +573,12 @@
                          <br />
                       </div>
                    </div>
-                   <div class="tab-pane tab_default_7" style="height:800px;">
+                   <div class="tab-pane tab_default_7">
+                      <br />
+                      <p> Coming soon ... </p>
+                      <br />
+                   </div>
+                   <div class="tab-pane tab_default_71" style="height:800px;">
                       <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-google-wallet icon-lg-red border-round-red" style="padding-top:5px; " aria-hidden="true"></i> <strong>Wallets</strong></h2>
                       <hr />
                       <div class="row">
@@ -702,7 +722,7 @@
                                    <h4 class="great text-capitalize">{{btc.productname}}</h4>
                                    <img src="images/contract-bitcoin.png" width="100" class="pull-right" />
                                    <div class="col-sm-12">
-                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="'btc'" min="{{btc.miningpower}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
+                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="'btc'" min="{{btc.miningpower}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}" update-total="updateTotal(btcTotal, ethTotal)" total="{{total}}"></div>
                                    </div>
                                 </div>
                                 <div class="price-form">
@@ -749,6 +769,7 @@
                                         </p>
                                         <h3 class="mb36">{{btc.amount * btc.btcMining/btc.miningpower | number:2}} USD</h3>
                                         <h3 class="mb36">{{btc.btcMining}} TH/s</h3>
+                                        <input type="hidden" id="btc-{{$index}}" value="{{btc.amount * btc.btcMining/btc.miningpower}}" />
                                         <br />
                                      </div>
                                      <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="eth in ethProducts">
@@ -757,11 +778,12 @@
                                         </p>
                                         <h3 class="mb36">{{eth.amount * eth.ethMining/eth.miningpower | number:2}} USD</h3>
                                         <h3 class="mb36">{{eth.ethMining}} TH/s</h3>
+                                        <input type="hidden" id="eth-{{$index}}" value="{{eth.amount * eth.ethMining/eth.miningpower}}" />
                                         <br />
                                      </div>
                                      <div class="clearfix"></div>
-                                     <div align="center" >
-                                        <h3 class="total-price"><strong>Total - $5690</strong></h3>
+                                     <div align="center">
+                                        <h3 class="total-price"><strong>Total - {{total | currency}}</strong></h3>
                                      </div>
                                      <div align="center" class="col-md-12   col-sm-12">
                                         <div class="" style="margin-top:20px;">

@@ -11,7 +11,7 @@ angular.module('coinomiaFrontendApp')
   .controller('MiningCtrl', function ($scope, coinomiaService, config) {
 
     $scope.productMaxUnit = config.productMaxUnit;
-
+    $scope.total = 0;
     // Get Products
     coinomiaService.getProducts()
     .then(function(res) {
@@ -27,7 +27,12 @@ angular.module('coinomiaFrontendApp')
             products.ethMining = products.miningpower;
             $scope.ethProducts.push(products);
           }
+          $scope.total += products.amount;
         });
       }
     });
+
+    $scope.updateTotal =  function(btcTotal, ethTotal) {
+      $scope.total = btcTotal+ethTotal;
+    }
   });
