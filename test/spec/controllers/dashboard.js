@@ -55,7 +55,6 @@ describe('Controller: DashboardCtrl', function () {
     spyOn(coinomiaService, 'getPurchasePower').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'currentMining').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'getTotalIncome').and.returnValue(coinomiaServiceDeferred.promise);
-    spyOn(coinomiaService, 'getProducts').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'getPackages').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'getVirtualTree').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'getTeamCalendar').and.returnValue(coinomiaServiceDeferred.promise);
@@ -88,10 +87,6 @@ describe('Controller: DashboardCtrl', function () {
 
   it('should be defined and call getTotalIncome', function () {
     expect(coinomiaService.getTotalIncome).toHaveBeenCalled();
-  });
-
-  it('should be defined and call getProducts', function () {
-    expect(coinomiaService.getProducts).toHaveBeenCalled();
   });
 
   it('should be defined and call getVirtualTree, getPackages', function () {
