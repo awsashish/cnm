@@ -3996,6 +3996,19 @@ border:none !important;
 }
 
 .ui-slider .ui-slider-handle {
+    position: absolute !important;
+    z-index: 2 !important;
+    width: 4.2em !important;
+    height: 2.2em !important;
+    cursor: default !important;
+    margin: 0 -10px auto !important;
+    text-align: center !important;
+    line-height: 30px !important;
+    color: #FFFFFF !important;
+    font-size: 15px !important;
+}
+
+.ui-slider .ui-slider-handle {
 	position: absolute;
 	z-index: 2;
 	width: 5.2em;
