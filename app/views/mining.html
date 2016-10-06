@@ -702,15 +702,15 @@
                                    <h4 class="great text-capitalize">{{btc.productname}}</h4>
                                    <img src="images/contract-bitcoin.png" width="100" class="pull-right" />
                                    <div class="col-sm-12">
-                                      <div ui-slider class="uiSlider" model="btcMining" product="'btc'" min="0.5" max="{{btc.maxunit}}" step="0.1"></div>
+                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="'btc'" min="{{btc.miningpower}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
                                    </div>
                                 </div>
                                 <div class="price-form">
                                    <div class="form-group">
                                       <div class="col-sm-12">
                                          <input type="hidden" id="amount3" class="form-control">
-                                         <p class="price lead" id="amount-label3">{{btcMining}}</p>
-                                         TH/s<strong class="price pull-right lead">Amount : ${{btc.amount}}</strong>
+                                         <p class="price lead" id="amount-label3">{{btc.btcMining/btc.miningpower}}</p>
+                                         Number Of Contracts<strong class="price pull-right lead">Amount : {{btc.amount*btc.btcMining/btc.miningpower | currency}}</strong>
                                       </div>
                                    </div>
                                 </div>
@@ -722,15 +722,15 @@
                                     <h4 class="great text-capitalize">{{eth.productname}}</h4>
                                     <img src="images/ether-contract.png" width="100" class="pull-right" />
                                     <div class="col-sm-12">
-                                       <div ui-slider class="uiSlider" model="ethMining" product="'eth'" min="0.5" max="{{eth.maxunit}}" step="0.1"></div>
+                                       <div ui-slider class="uiSlider" model="eth.ethMining" product="'eth'" min="{{eth.miningpower}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
                                     </div>
                                  </div>
                                  <div class="price-form">
                                     <div class="form-group">
                                        <div class="col-sm-12">
                                           <input type="hidden" id="amount3" class="form-control">
-                                          <p class="price lead" id="amount-label3">{{ethMining}}</p>
-                                          MH/s<strong class="price pull-right lead">Amount : ${{eth.amount}}</strong>
+                                          <p class="price lead" id="amount-label3">{{eth.ethMining/eth.miningpower | number:0}}</p>
+                                          Number Of Contracts<strong class="price pull-right lead">Amount : {{eth.amount * eth.ethMining/eth.miningpower | currency}}</strong>
                                        </div>
                                     </div>
                                  </div>
@@ -743,51 +743,20 @@
                                <p align="center">Hashpower contract overview</p>
                                <div class="panel panel-default " style="box-shadow:0px 0px 2px 2px #f2f2f2; background:#f9fbfc;">
                                   <div class="panel-body">
-                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
+                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="btc in btcProducts">
                                         <p>
-                                        <h2 class="mb38 nopadding nomargin"><img src="images/bitcoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Bitcoin Pool Contract</h2>
+                                        <h2 class="mb38 nopadding nomargin"><img src="images/bitcoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{btc.productname}}</h2>
                                         </p>
-                                        <h3 class="mb36">0.00 USD</h3>
-                                        <h3 class="mb36">0 TH/s</h3>
+                                        <h3 class="mb36">{{btc.amount * btc.btcMining/btc.miningpower | number:2}} USD</h3>
+                                        <h3 class="mb36">{{btc.btcMining}} TH/s</h3>
                                         <br />
                                      </div>
-                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
+                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="eth in ethProducts">
                                         <p>
-                                        <h2 class="mb38"><img src="images/bitcoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Machine Contract</h2>
+                                        <h2 class="mb38 nopadding nomargin"><img src="images/ether.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{eth.productname}}</h2>
                                         </p>
-                                        <h3 class="mb36">0.00 USD</h3>
-                                        <h3 class="mb36">0 TH/s</h3>
-                                        <br />
-                                     </div>
-                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
-                                        <p>
-                                        <h2 class="mb38"><img src="images/bitcoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Bitcoin Rack Contract</h2>
-                                        </p>
-                                        <h3 class="mb36">0.00 USD</h3>
-                                        <h3 class="mb36">0 TH/s</h3>
-                                     </div>
-                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc">
-                                        <p>
-                                        <h2 class="mb38"><img src="images/ether.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Ether Pool Contract</h2>
-                                        </p>
-                                        <h3 class="mb36">0.00 USD</h3>
-                                        <h3 class="mb36">0 MH/s</h3>
-                                        <br />
-                                     </div>
-                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
-                                        <p>
-                                        <h2 class="mb38"><img src="images/ether.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Ether Machine Contract</h2>
-                                        </p>
-                                        <h3 class="mb36">0.00 USD</h3>
-                                        <h3 class="mb36">0 MH/s</h3>
-                                        <br />
-                                     </div>
-                                     <div  class="col-md-12  col-sm-12 dotted-bor">
-                                        <p>
-                                        <h2 class="mb38"><img src="images/ether.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Ether Rack Contract</h2>
-                                        </p>
-                                        <h3 class="mb36 ">0.00 USD</h3>
-                                        <h3 class="mb36">0 MH/s</h3>
+                                        <h3 class="mb36">{{eth.amount * eth.ethMining/eth.miningpower | number:2}} USD</h3>
+                                        <h3 class="mb36">{{eth.ethMining}} TH/s</h3>
                                         <br />
                                      </div>
                                      <div class="clearfix"></div>

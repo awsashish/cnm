@@ -23,23 +23,21 @@ angular.module('coinomiaFrontendApp')
         $(elem).slider({
           range: "min",
           animate: true,
-          value: +scope.model,
+          value: 1,
           min: +attrs.min,
           max: +attrs.max,
           step: +attrs.step,
           slide: function(event, ui) {
             scope.$apply(function() {
               scope.model = ui.value;
+              var el = angular.element(event.target).find('a');
+              el.html(sliderLabel.replace('SLIDER_VALUE', scope.model));
             });
           },
           create: function( event, ui ) {
             var el = angular.element(event.target).find('a');
             var sliderValue = $(elem).slider('value');
             el.append(sliderLabel.replace('SLIDER_VALUE', scope.model));
-          },
-          change: function( event, ui ) {
-            var el = angular.element(event.target).find('a');
-            el.html(sliderLabel.replace('SLIDER_VALUE', scope.model));
           }
         });
         scope.$watch('model', function(newVal) {
