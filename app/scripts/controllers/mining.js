@@ -10,6 +10,8 @@
 angular.module('coinomiaFrontendApp')
   .controller('MiningCtrl', function ($scope, coinomiaService, config) {
 
+    $scope.walletHeading = config.wallet;
+    $scope.currentPage = config.currentPage;
     $scope.productMaxUnit = config.productMaxUnit;
     $scope.total = 0;
     // Get Products
@@ -32,7 +34,23 @@ angular.module('coinomiaFrontendApp')
       }
     });
 
-    $scope.updateTotal =  function(btcTotal, ethTotal) {
-      $scope.total = btcTotal+ethTotal;
+    // Get Wallet Info
+    $scope.walletInfo = function() {
+      coinomiaService.getWalletInfo()
+        .then(function(res){
+          if(res.status === 200){
+            $scope.walletData = res.data;
+          }
+        });
+        $scope.getTransctions();
+    }
+
+    $scope.getTransctions = function() {
+      coinomiaService.getTransactionDetails($scope.currentPage)
+        .then(function(res){
+          if(res === 200) {
+            $scope.transactionDetails = res.data;
+          }
+        })
     }
   });

@@ -1,18 +1,7 @@
-<h2 class="mb35-sm top-spacemob10"><i class="fa fa-google-wallet icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Wallet Address</strong></h2>
-<hr />
-<div class="alert alert-success fade in" ng-if="successMessage">
-  <strong><i class="fa fa-check-circle fa-lg" aria-hidden="true"></i></strong> {{successMessage}}
-</div>
-<div class="alert alert-danger fade in text-capitalize" ng-if="errorMessage">
-  <strong>{{errorMessage}}</strong>
-</div>
-<div class="row">
- <div class="col-md-4 col-sm-12" ng-repeat="info in walletData">
+ <div  ng-repeat="info in walletData | filter:{'Wallet':walletType}">
     <h2 class="mb35" align="center"><img src="images/package/{{info.Wallet | lowercase}}-wallet.png" width="20%"><br>
        <span class="glyphicon glyphicon-minus"></span>
-       <span ng-if="info.Wallet=='BTC'">{{info.Wallet}} Wallet</span>
-       <span ng-if="info.Wallet=='ETH'">{{info.Wallet}} Wallet</span>
-       <span ng-if="info.Wallet=='USD'">{{info.Wallet}} Wallet</span>
+       <span>{{walletHeading[info.Wallet]?walletHeading[info.Wallet]:'USD'}} Wallet</span>
        <span class="glyphicon glyphicon-minus"></span><br>
     </h2>
     <br>
@@ -21,10 +10,19 @@
           <tbody>
              <tr>
                 <td valign="middle"><strong class="red-text02 " style="padding-top:30px;">Wallet Address</strong></td>
-                <td><input type="text" class="form-control" ng-model="info.Address" value="3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy"></td>
+                <td><input type="text" class="form-control" ng-model="info.Address"></td>
              </tr>
-             <tr>
-                <td align="center" valign="middle" colspan="2"><button class="btn btn-lg btn-default white-btn" ng-click="updateWallet({wallet:info.Wallet, address:info.Address})"><strong>Save </strong></button></td>
+             <tr ng-if="type">
+                <td valign="middle"><strong class="red-text02" >Balance {{walletHeading[info.Wallet]}}</strong></td>
+                <td ng-if="info.Wallet !== 'USD'"><h4 class="nomargin nopadding"><strong>{{info.Balance}} {{info.Wallet}}</strong></h4></td>
+                <td><h4 class="nomargin nopadding" ng-if="info.Wallet === 'USD'"><strong>{{info.Balance | currency}} </strong></h4></td>
+             </tr>
+             <tr ng-if="type">
+                <td align="center" valign="middle" colspan="2"><button data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ><strong>Withdraw</strong></button></td>
+             </tr>
+             <tr ng-if="!type">
+                <td align="center" valign="middle" colspan="2">
+                  <button class="btn btn-lg btn-default white-btn" ng-click="updateWallet({wallet:info.Wallet, address:info.Address})"><strong>Save </strong></button></td>
              </tr>
           </tbody>
        </table>
@@ -32,4 +30,3 @@
        <br>
     </div>
  </div>
-</div>

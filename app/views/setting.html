@@ -75,7 +75,20 @@
 
               <!-- Wallet Info -->
               <div class="tab-pane tab_default_5" style="height:500px;" >
-                <wallet-info wallet-data="walletData" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage"></wallet-info>
+                <h2 class="mb35-sm top-spacemob10">
+                  <i class="fa fa-google-wallet icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i>
+                  <strong>Wallet Address</strong>
+                </h2>
+                <hr />
+                <div class="alert alert-success fade in" ng-if="successMessage">
+                  <strong><i class="fa fa-check-circle fa-lg" aria-hidden="true"></i></strong> {{successMessage}}
+                </div>
+                <div class="alert alert-danger fade in text-capitalize" ng-if="errorMessage">
+                  <strong>{{errorMessage}}</strong>
+                </div>
+                <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="BTC" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading"></wallet-info>
+                <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="ETH" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading"></wallet-info>
+                <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="USD" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading"></wallet-info>
               </div>
 
               <!-- Change Password -->

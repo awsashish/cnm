@@ -12,8 +12,7 @@ angular.module('coinomiaFrontendApp')
       restrict: 'A',
       scope: {
         'model': '=',
-        'product': '=',
-        'updateTotal':'&'
+        'product': '='
       },
       link: function(scope, elem, attrs) {
         if(scope.product === 'btc'){

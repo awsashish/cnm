@@ -15,7 +15,10 @@ angular.module('coinomiaFrontendApp')
         walletData:'=',
         successMessage:'=',
         errorMessage:'=',
-        updateWallet: '&'
+        walletHeading:'=',
+        type:'@',
+        updateWallet: '&',
+        walletType: '@'
       }
     };
   });

@@ -23,6 +23,8 @@ describe('Controller: MiningCtrl', function () {
     defer = $q.defer();
 
     spyOn(coinomiaService, 'getProducts').and.returnValue(defer.promise);
+    spyOn(coinomiaService, 'getWalletInfo').and.returnValue(defer.promise);
+    spyOn(coinomiaService, 'getTransactionDetails').and.returnValue(defer.promise);
 
     MiningCtrl = $controller('MiningCtrl', {
       $scope: scope
@@ -34,7 +36,17 @@ describe('Controller: MiningCtrl', function () {
     expect(scope.productMaxUnit).toEqual(config.productMaxUnit);
   })
 
-  it('should be defined and call getProducts', function () {
+  it('should be defined and call getProducts service', function () {
+    expect(coinomiaService.getProducts).toHaveBeenCalled();
+  });
+
+  it('should be defined and call getWalletInfo service', function () {
+    scope.walletInfo();
+    expect(coinomiaService.getProducts).toHaveBeenCalled();
+  });
+
+  it('should be defined and call getTransctions service', function () {
+    scope.getTransctions();
     expect(coinomiaService.getProducts).toHaveBeenCalled();
   });
 });

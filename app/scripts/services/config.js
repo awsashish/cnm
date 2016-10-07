@@ -74,6 +74,10 @@ angular.module('coinomiaFrontendApp')
     'salesBinaryImage':'images/team-ref.png',
     'salesDirectHeading':'If all your Directs Buy',
     'salesBinaryHeading':'If all your Team Buy',
+    'wallet':{
+      'BTC': 'Bitcoin',
+      'ETH': 'Ether'
+    },
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
     'signUpPath':'http://login.coinomia.com/#/signup',
     'teamColumnHead': [
