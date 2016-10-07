@@ -8,11 +8,13 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('SettingCtrl', function ($scope, coinomiaService, $state, $timeout, $window, UtilsService) {
+  .controller('SettingCtrl', function ($scope, config, coinomiaService, $state, $timeout, $window, UtilsService) {
     $scope.confirmPassError = false;
     $scope.showSaveAvatar = false;
     $scope.changeImage = true;
     $scope.user = {};
+
+    $scope.walletHeading = config.wallet;
 
     $scope.confirmPass = function(callback) {
       if($scope.user.NewPassword !== $scope.user.ConfirmPassword) {

@@ -13,8 +13,8 @@
         <!-- media -->
       </div>
       <!-- pageheader -->
-      <coming-soon text-value="'Mining'"></coming-soon>
-      <div class="contentpanel content-opacity">
+      <!-- <coming-soon text-value="'Mining'"></coming-soon> -->
+      <div class="contentpanel">
        <div class="col-md-12 nomargin nopadding">
           <h2 class="mb35"><i class="fa fa-line-chart icon-lg border-round" aria-hidden="true" style="padding-left:10px;"></i> <strong>Mining</strong></h2>
           <hr />
@@ -42,7 +42,7 @@
                          <i class="fa fa-newspaper-o icon-lg" aria-hidden="true"></i><br />
                          <strong>Mining Payouts</strong> </a>
                       </li>
-                      <li>
+                      <li ng-click="walletInfo()">
                          <a href=".tab_default_7" data-toggle="tab">
                          <i class="fa fa-google-wallet icon-lg" aria-hidden="true"></i><br />
                          <strong>Wallets</strong> </a>
@@ -50,7 +50,12 @@
                    </ul>
                 </div>
                 <div class="tab-content" style="padding:20px 20px; ">
-                   <div class="tab-pane tab_default_4 active">
+                  <div class="tab-pane tab_default_4 active">
+                     <br />
+                     <p> Coming soon ... </p>
+                     <br />
+                   </div>
+                   <div class="tab-pane tab_default_41">
                       <br />
                       <h2 class="mb37" align="center" style="width:40%;">
                          <span class="glyphicon glyphicon-minus"></span>
@@ -458,7 +463,12 @@
                          </div>
                       </div>
                    </div>
-                   <div class="tab-pane tab_default_5" style="height:500px;" >
+                   <div class="tab-pane tab_default_5">
+                      <br />
+                      <p> Coming soon ... </p>
+                      <br />
+                  </div>
+                   <div class="tab-pane tab_default_51" style="height:500px;" >
                       <h2 class="mb35-sm top-spacemob10"><i class="fa fa-circle-o icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Live Contracts</strong></h2>
                       <hr />
                       <div class="row">
@@ -519,7 +529,12 @@
                          <br />
                       </div>
                    </div>
-                   <div class="tab-pane tab_default_6" >
+                   <div class="tab-pane tab_default_6">
+                      <br />
+                      <p> Coming soon ... </p>
+                      <br />
+                  </div>
+                   <div class="tab-pane tab_default_61" >
                       <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-newspaper-o icon-lg-red border-round-red" style="padding-top:5px; padding-left:3px" aria-hidden="true"></i> <strong>Mining Payouts</strong></h2>
                       <hr />
                       <div class="table-responsive">
@@ -562,90 +577,9 @@
                       <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-google-wallet icon-lg-red border-round-red" style="padding-top:5px; " aria-hidden="true"></i> <strong>Wallets</strong></h2>
                       <hr />
                       <div class="row">
-                         <div class="col-md-4 col-sm-12">
-                            <h2 class="mb35" align="center" ><img src="images/btc-wallet.png" width="20%" /><br />
-                               <span class="glyphicon glyphicon-minus"></span>
-                               Bitcoin Wallet<span class="glyphicon glyphicon-minus"></span><br />
-                            </h2>
-                            <br />
-                            <div class="table-responsive">
-                               <table class="table table-dark-gry table-hover mb30 font16">
-                                  <tbody>
-                                     <tr>
-                                        <td valign="middle"><strong class="red-text02 " style="padding-top:30px;">Wallet Address</strong></td>
-                                        <td><input type="text" class="form-control" value="3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy" readonly="readonly" /></td>
-                                     </tr>
-                                     <tr>
-                                        <td valign="middle"><strong class="red-text02" >Balance Bitcoin1</strong></td>
-                                        <td>
-                                           <h4 class="nomargin nopadding"><strong>437563.4758 BTC</strong></h4>
-                                        </td>
-                                     </tr>
-                                     <tr>
-                                        <td align="center" valign="middle" colspan="2"><button data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ><strong>Withdraw</strong></button></td>
-                                     </tr>
-                                  </tbody>
-                               </table>
-                               <br />
-                               <br />
-                            </div>
-                         </div>
-                         <div class="col-md-4 col-sm-12" align="center">
-                            <h2 class="mb35" align="center" ><img src="images/eth-wallet.png" width="20%" ><br />
-                               <span class="glyphicon glyphicon-minus"></span>
-                               Ether Wallet<span class="glyphicon glyphicon-minus"></span><br />
-                            </h2>
-                            <br />
-                            <div class="table-responsive">
-                               <table class="table table-dark-gry table-hover mb30 font16">
-                                  <tbody>
-                                     <tr>
-                                        <td valign="middle"><strong class="red-text02 " style="padding-top:30px;">Wallet Address</strong></td>
-                                        <td><input type="text" class="form-control" value="1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2" readonly="readonly" /></td>
-                                     </tr>
-                                     <tr>
-                                        <td valign="middle"><strong class="red-text02 " style="padding-top:30px;">Balance Etheruem</strong></td>
-                                        <td>
-                                           <h4 class="nomargin nopadding"><strong>437563.4758 ETH</strong></h4>
-                                        </td>
-                                     </tr>
-                                     <tr>
-                                        <td align="center" valign="middle" colspan="2"><button data-toggle="modal" data-target="#eth-wallet" class="btn btn-default" ><strong>Withdraw</strong></button></td>
-                                     </tr>
-                                  </tbody>
-                               </table>
-                               <br />
-                               <br />
-                            </div>
-                         </div>
-                         <div class="col-md-4 col-sm-12" align="center">
-                            <h2 class="mb35" align="center" ><img src="images/usd-wallet.png" width="20%" ><br />
-                               <span class="glyphicon glyphicon-minus"></span>
-                               USD Wallet<span class="glyphicon glyphicon-minus"></span><br />
-                            </h2>
-                            <br />
-                            <div class="table-responsive">
-                               <table class="table table-dark-gry table-hover mb30 font16">
-                                  <tbody>
-                                     <tr>
-                                        <td valign="middle"><strong class="red-text02 " style="padding-top:30px;">Wallet Address</strong></td>
-                                        <td><input type="text" class="form-control" value="HDFC Bank,Delhi" readonly="readonly" /></td>
-                                     </tr>
-                                     <tr>
-                                        <td valign="middle"><strong class="red-text02 " style="padding-top:30px;">Balance </strong></td>
-                                        <td>
-                                           <h4 class="nomargin nopadding"><strong>$8437</strong></h4>
-                                        </td>
-                                     </tr>
-                                     <tr>
-                                        <td align="center" valign="middle" colspan="2"><button data-toggle="modal" data-target="#usd-wallet" class="btn btn-default" ><strong>Withdraw</strong></button></td>
-                                     </tr>
-                                  </tbody>
-                               </table>
-                               <br />
-                               <br />
-                            </div>
-                         </div>
+                        <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="BTC" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal"></wallet-info>
+                        <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="ETH" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal"></wallet-info>
+                        <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="USD" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal"></wallet-info>
                          <br />
                          <br />
                       </div>
@@ -666,26 +600,15 @@
                                </tr>
                             </thead>
                             <tbody>
-                               <tr>
+                              <tr>
+                                <td colspan="5" class="text-center">No Transaction Found.</td>
+                              </tr>
+                               <tr ng-hide="true">
                                   <td>1</td>
                                   <td>12/12/2015(12:30:12)</td>
                                   <td>COIN34975934</td>
                                   <td>$900</td>
                                   <td>Withdrawal </td>
-                               </tr>
-                               <tr>
-                                  <td>2</td>
-                                  <td>12/12/2015 (01:30:12)</td>
-                                  <td>COIN0000098</td>
-                                  <td>100TH/s</td>
-                                  <td> Bitcoin Rack Purchased  </td>
-                               </tr>
-                               <tr>
-                                  <td>3</td>
-                                  <td>12/12/2015 (01:40:12)</td>
-                                  <td>COIN34975934</td>
-                                  <td>5.8 MH/s</td>
-                                  <td>Machine Contract Purchase </td>
                                </tr>
                             </tbody>
                          </table>
@@ -696,41 +619,41 @@
                       <hr />
                       <div class="row" >
                         <div class="col-md-8 col-sm-12">
-                           <div class="price-box" ng-repeat="btc in btcProducts">
-                              <form class="form-horizontal form-pricing" role="form">
-                                 <div class="price-slider">{{btcMining}}
-                                    <h4 class="great text-capitalize">{{btc.productname}}</h4>
-                                    <img src="images/contract-bitcoin.png" width="100" class="pull-right" />
-                                    <div class="col-sm-12">
-                                       <div ui-slider class="btcPool" model="btcMining" min="0.5" max="{{btc.maxunit}}" step="0.1"></div>
-                                    </div>
-                                 </div>
-                                 <div class="price-form">
-                                    <div class="form-group">
-                                       <div class="col-sm-12">
-                                          <input type="hidden" id="amount" class="form-control">
-                                          <p class="price lead" id="amount-label">{{btcMining}}</p>
-                                          TH/s<strong class="price pull-right lead">Amount : ${{btc.amount}}</strong>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </form>
-                           </div>
+                          <div class="price-box" ng-repeat="btc in btcProducts">
+                             <form class="form-horizontal form-pricing" role="form">
+                                <div class="price-slider">
+                                   <h4 class="great text-capitalize">{{btc.productname}}</h4>
+                                   <img src="images/contract-bitcoin.png" width="100" class="pull-right" />
+                                   <div class="col-sm-12">
+                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="'btc'" min="{{btc.miningpower}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
+                                   </div>
+                                </div>
+                                <div class="price-form">
+                                   <div class="form-group">
+                                      <div class="col-sm-12">
+                                         <input type="hidden" id="amount3" class="form-control">
+                                         <p class="price lead" id="amount-label3">{{btc.btcMining/btc.miningpower}}</p>
+                                         Number Of Contracts<strong class="price pull-right lead">Amount : {{btc.amount*btc.btcMining/btc.miningpower | currency}}</strong>
+                                      </div>
+                                   </div>
+                                </div>
+                             </form>
+                          </div>
                            <div class="price-box" ng-repeat="eth in ethProducts">
-                              <form class="form-horizontal form-pricing" role="form">{{eth}}
+                              <form class="form-horizontal form-pricing" role="form">
                                  <div class="price-slider">
                                     <h4 class="great text-capitalize">{{eth.productname}}</h4>
                                     <img src="images/ether-contract.png" width="100" class="pull-right" />
                                     <div class="col-sm-12">
-                                       <div ui-slider class="uiSlider" model="ethMining" min="0.5" max="{{eth.maxunit}}" step="0.1"></div>
+                                       <div ui-slider class="uiSlider" model="eth.ethMining" product="'eth'" min="{{eth.miningpower}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
                                     </div>
                                  </div>
                                  <div class="price-form">
                                     <div class="form-group">
                                        <div class="col-sm-12">
                                           <input type="hidden" id="amount3" class="form-control">
-                                          <p class="price lead" id="amount-label3">{{ethMining}}</p>
-                                          MH/s<strong class="price pull-right lead">Amount : ${{eth.amount}}</strong>
+                                          <p class="price lead" id="amount-label3">{{eth.ethMining/eth.miningpower | number:0}}</p>
+                                          Number Of Contracts<strong class="price pull-right lead">Amount : {{eth.amount * eth.ethMining/eth.miningpower | currency}}</strong>
                                        </div>
                                     </div>
                                  </div>
@@ -743,56 +666,27 @@
                                <p align="center">Hashpower contract overview</p>
                                <div class="panel panel-default " style="box-shadow:0px 0px 2px 2px #f2f2f2; background:#f9fbfc;">
                                   <div class="panel-body">
-                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
+                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="btc in btcProducts">
                                         <p>
-                                        <h2 class="mb38 nopadding nomargin"><img src="images/bitcoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Bitcoin Pool Contract</h2>
+                                        <h2 class="mb38 nopadding nomargin"><img src="images/bitcoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{btc.productname}}</h2>
                                         </p>
-                                        <h3 class="mb36">0.00 USD</h3>
-                                        <h3 class="mb36">0 TH/s</h3>
+                                        <h3 class="mb36">{{btc.amount * btc.btcMining/btc.miningpower | number:2}} USD</h3>
+                                        <h3 class="mb36">{{btc.btcMining}} TH/s</h3>
+                                        <input type="hidden" id="btc-{{$index}}" value="{{btc.amount * btc.btcMining/btc.miningpower}}" />
                                         <br />
                                      </div>
-                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
+                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="eth in ethProducts">
                                         <p>
-                                        <h2 class="mb38"><img src="images/bitcoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Machine Contract</h2>
+                                        <h2 class="mb38 nopadding nomargin"><img src="images/ether.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{eth.productname}}</h2>
                                         </p>
-                                        <h3 class="mb36">0.00 USD</h3>
-                                        <h3 class="mb36">0 TH/s</h3>
-                                        <br />
-                                     </div>
-                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
-                                        <p>
-                                        <h2 class="mb38"><img src="images/bitcoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Bitcoin Rack Contract</h2>
-                                        </p>
-                                        <h3 class="mb36">0.00 USD</h3>
-                                        <h3 class="mb36">0 TH/s</h3>
-                                     </div>
-                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc">
-                                        <p>
-                                        <h2 class="mb38"><img src="images/ether.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Ether Pool Contract</h2>
-                                        </p>
-                                        <h3 class="mb36">0.00 USD</h3>
-                                        <h3 class="mb36">0 MH/s</h3>
-                                        <br />
-                                     </div>
-                                     <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;">
-                                        <p>
-                                        <h2 class="mb38"><img src="images/ether.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Ether Machine Contract</h2>
-                                        </p>
-                                        <h3 class="mb36">0.00 USD</h3>
-                                        <h3 class="mb36">0 MH/s</h3>
-                                        <br />
-                                     </div>
-                                     <div  class="col-md-12  col-sm-12 dotted-bor">
-                                        <p>
-                                        <h2 class="mb38"><img src="images/ether.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;Ether Rack Contract</h2>
-                                        </p>
-                                        <h3 class="mb36 ">0.00 USD</h3>
-                                        <h3 class="mb36">0 MH/s</h3>
+                                        <h3 class="mb36">{{eth.amount * eth.ethMining/eth.miningpower | number:2}} USD</h3>
+                                        <h3 class="mb36">{{eth.ethMining}} TH/s</h3>
+                                        <input type="hidden" id="eth-{{$index}}" value="{{eth.amount * eth.ethMining/eth.miningpower}}" />
                                         <br />
                                      </div>
                                      <div class="clearfix"></div>
-                                     <div align="center" >
-                                        <h3 class="total-price"><strong>Total - $5690</strong></h3>
+                                     <div align="center">
+                                        <h3 class="total-price"><strong>Total - {{total | currency}}</strong></h3>
                                      </div>
                                      <div align="center" class="col-md-12   col-sm-12">
                                         <div class="" style="margin-top:20px;">

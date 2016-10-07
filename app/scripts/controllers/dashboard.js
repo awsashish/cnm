@@ -52,8 +52,6 @@ angular.module('coinomiaFrontendApp')
     $scope.ethRackValue = config.ethRackValue;
 
     $scope.currentPage = config.currentPage;
-    $scope.btcMining = config.btcMining;
-    $scope.ethMining = config.ethMining;
 
     $scope.poolOptions = config.poolDropdown;
     $scope.machineOptions = config.machineDropdown;
@@ -173,23 +171,6 @@ angular.module('coinomiaFrontendApp')
         });
         $scope.loadingCoinomiaData = false;
         $scope.hasCoinomiaTeamData = true;
-      }
-    });
-
-    // Get Products
-    coinomiaService.getProducts()
-    .then(function(res) {
-      var productsData = res.data;
-      $scope.btcProducts = [];
-      $scope.ethProducts = [];
-      if(res.status === 200) {
-        productsData.forEach(function(products) {
-          if(products.coin === 'BTC') {
-            $scope.btcProducts.push(products);
-          }else{
-            $scope.ethProducts.push(products);
-          }
-        });
       }
     });
 

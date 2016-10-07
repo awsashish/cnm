@@ -125,7 +125,7 @@ angular.module('coinomiaFrontendApp')
     .state('mining', {
       url: '/mining',
       templateUrl: 'views/mining.html',
-      controller: 'DashboardCtrl',
+      controller: 'MiningCtrl',
       authenticate: true
     })
 
