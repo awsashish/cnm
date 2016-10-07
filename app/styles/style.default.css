@@ -157,9 +157,8 @@ a:focus {
 
 .coming-soon-wrapper {
   width: 93%;
-  height: 100%;
   position: fixed;
-  top: 0;
+  top: 30%;
   z-index: 999;
 }
 
@@ -190,6 +189,10 @@ a:focus {
   z-index: 9;
   top: 37px;
   right: 20px;
+}
+
+.navbar-header {
+  position: relative;
 }
 
 select {
@@ -3631,6 +3634,14 @@ body.signin {
         position: static;
     }
 
+    .navbar-toggle {
+      position: absolute;
+      right: 0;
+      z-index: 9999;
+    }
+
+    .left-navigation{ display: none !important}
+
     .headerwrapper .header-left,
     .headerwrapper .header-right {
         position: relative;
@@ -4414,9 +4425,9 @@ h4.great {
 	.contentpanel{ margin-top:60px;}
 	.pageheader .media{ padding-top:10px;}
 
-.profile-left{height:160px !important;}
+  .profile-left{height:160px !important;}
 
-
+  .header-logo{ visibility: hidden; }
 	}
 
 
@@ -5098,4 +5109,6 @@ filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#feea69', endC
 
 .countdown-period{ color:#999; font-size:14px;  margin-right:10px !important}
 .cal-dash{ font-size:16px; font-family: 'Oswald', sans-serif; font-weight:normal; margin-right:10px !important;}
+
+
 /*********************************************Calender End **********************************************************/
