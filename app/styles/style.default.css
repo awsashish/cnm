@@ -659,6 +659,23 @@ select {
 
 /***** 4.1 LEFT PANEL STYLES *****/
 
+.mobile-navigation {
+  width: 100%;
+  top: 0;
+  left: 0; background:#666;
+}
+
+.mobile-navigation .nav > li > a {
+  color: #f7f7f7;
+  border-radius: 0;
+  transition: all 0.2s ease-out 0s;
+  padding: 12px 5px;
+}
+
+.mobile-navigation .nav > li > a:hover, .mobile-navigation .nav > li > a:focus, .mobile-navigation .nav > li > a:active {
+    background-color: #ffd803;
+}
+
 .leftpanel {
     width: 100px;
     position: absolute;
@@ -4430,6 +4447,7 @@ h4.great {
   .header-logo{ visibility: hidden; }
 	}
 
+.pageheader{ padding: 10px 10px 20px;}
 
 .btn-danger{ border-bottom:2px solid #930}
 .lft-menu{height:130px !important;}
@@ -4462,7 +4480,7 @@ h4.great {
 .calculator{background:#999; color:#fff; font-weight:bold; border:0px; border-bottom:5px solid #525252;  font-size:20px; text-align:center; border-radius:5px; padding:10px; margin-top:10px; width:100%;}
 
 .buynow{ background: #FC0; border:0px; border-bottom:5px solid #CA9926; color:#fff; font-weight:bold; font-size:25px; text-align:center; border-radius:5px; padding:10px;}
-.news-feeds{ border-left:5px solid #FC0; padding:0px 0px 1px 5px;  margin-top:-20px; }
+.news-feeds{ border-left:5px solid #FC0; padding:0px 0px 1px 5px;  margin-top:0; }
 
 
 .arrow_box-top-lft-amout {
@@ -4691,7 +4709,6 @@ h4.great {
 	 width:100%;
 }
 
-.news-feeds{ margin-top:-7px;}
 .mb35{ margin-top:-50px !important;}
 .nav > li {
     width: 100%;

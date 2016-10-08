@@ -79,6 +79,8 @@ angular.module('coinomiaFrontendApp')
     .state('support', {
         url: '/support',
         templateUrl: 'views/support.html',
+        controller: 'SupportCtrl',
+        authenticate: true
     })
 
     // Terms & Conditions page
