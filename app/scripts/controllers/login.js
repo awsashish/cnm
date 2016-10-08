@@ -41,10 +41,9 @@ angular.module('coinomiaFrontendApp')
               }
               $scope.$storage = $localStorage.$default({token: data.access_token});
               // $window.sessionStorage.setItem('token', data.access_token);
-              if($location.search()){
+              if($location.search().return_url){
                 var url = atob($location.search().return_url);
                 $window.location.href = 'http://'+$location.host()+':9000/#/support?return_url='+url;
-                // $state.go('support',{return_url:$location.search().return_url})
               }else{
                 $state.go( "dashboard" );
               }
