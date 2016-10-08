@@ -43,7 +43,7 @@ angular.module('coinomiaFrontendApp')
               // $window.sessionStorage.setItem('token', data.access_token);
               if($location.search().return_url){
                 var url = atob($location.search().return_url);
-                $window.location.href = 'http://'+$location.host()+':9000/#/support?return_url='+url;
+                $window.location.href = 'http://'+$location.host()+'/#/support?return_url='+url;
               }else{
                 $state.go( "dashboard" );
               }
