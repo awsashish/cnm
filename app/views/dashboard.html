@@ -1,4 +1,4 @@
-<main-header></main-header>
+<main-header class="main-header"></main-header>
 <section>
   <div class="mainwrapper">
     <navigation></navigation>
@@ -6,44 +6,10 @@
     -webkit-appearance: menulist;}
    </style>
     <div class="mainpanel">
-      <div class="pageheader">
-        <!-- media -->
-        <news-feeds></news-feeds>
-        <!-- media -->
-      </div>
-      <!-- pageheader -->
-      <div class="contentpanel ">
+
+      <div class="contentpanel">
         <div class="col-md-9 col-sm-12">
-          <div class="tabbable-panel" >
-            <div class="tabbable-line" >
-              <div align="center">
-                <ul class="nav nav-tabs">
-                 <li class="active" style="width:50%; ">
-                    <a href=".tab_default_4" data-toggle="tab" aria-expanded="true">
-                    <i class="fa fa-user " aria-hidden="true"></i>
-                    My Team </a>
-                 </li>
-                 <li style="width:50%;" class="">
-                    <a href=".tab_default_5" data-toggle="tab" aria-expanded="false">
-                    <i class="fa fa-users " aria-hidden="true"></i>
-                    Company Wide </a>
-                 </li>
-                </ul>
-              </div>
-              <div class="tab-content" style="padding:20px 10px 0px; margin-bottom:20px; ">
-                <div class="tab-pane tab_default_4 active">
-                  <img src="images/arrow-bot.png" class="arrow-bot-lft">
-                  <p ng-if="loadingData">Loading data ... </p>
-                  <ui-calendar data="myTeam" date-range="getDates" ng-if="hasMyTeamData"></ui-calendar>
-                </div>
-                <div class="tab-pane tab_default_5">
-                  <img src="images/arrow-bot.png" class="arrow-bot-rgt">
-                  <p ng-if="loadingCoinomiaData">Loading data ... </p>
-                  <ui-calendar data="coinomiaTeam" date-range="getDates" ng-if="hasCoinomiaTeamData"></ui-calendar>
-                </div>
-              </div>
-            </div>
-          </div>
+          <news-feeds></news-feeds>
         </div>
         <div class="col-md-3">
           <a href="#promote-coinomia/social-group">
@@ -58,7 +24,78 @@
           <a href="#promote-coinomia/sms-blast">
             <div class="box-outer"><img src="images/mining.png" width="70" /> &nbsp;&nbsp;Get, Set, Go!</div>
           </a>
+          <a>
+            <div class="box-outer"><img src="images/mining.png" width="70" /> &nbsp;&nbsp;Get Automatic Referrals!</div>
+          </a>
         </div>
+
+        <div class="col-md-12">
+          <div class="col-sm-12 col-md-12 col-lg-6 table-wrapper">
+            <div class="table-content">
+              <table class="table table-dark-gry table-hover font16">
+                <thead style="background:#525252;">
+                  <tr style="color:#525252;">
+                    <th><strong class="white-color">Name</strong></th>
+                    <th><strong class="white-color">Country</strong></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="(key, row) in latestSignup | limitTo:10">
+                     <td>{{row.membername}}</td>
+                     <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-dark-gry table-hover mb30 font16">
+                <thead style="background:#525252;">
+                  <tr style="color:#525252;">
+                    <th><strong class="white-color">Name</strong></th>
+                    <th><strong class="white-color">Country</strong></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="(key, row) in latestSignup | limitTo:10:10">
+                     <td>{{row.membername}}</td>
+                     <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="tabbable-panel" >
+              <div class="tabbable-line" >
+                <div align="center">
+                  <ul class="nav nav-tabs">
+                   <li class="active" style="width:50%; ">
+                      <a href=".tab_default_4" data-toggle="tab" aria-expanded="true">
+                      <i class="fa fa-user " aria-hidden="true"></i>
+                      My Team </a>
+                   </li>
+                   <li style="width:50%;" class="">
+                      <a href=".tab_default_5" data-toggle="tab" aria-expanded="false">
+                      <i class="fa fa-users " aria-hidden="true"></i>
+                      Company Wide </a>
+                   </li>
+                  </ul>
+                </div>
+                <div class="tab-content" style="padding:20px 10px 0px; margin-bottom:20px; ">
+                  <div class="tab-pane tab_default_4 active">
+                    <img src="images/arrow-bot.png" class="arrow-bot-lft">
+                    <p ng-if="loadingData">Loading data ... </p>
+                    <ui-calendar data="myTeam" date-range="getDates" ng-if="hasMyTeamData"></ui-calendar>
+                  </div>
+                  <div class="tab-pane tab_default_5">
+                    <img src="images/arrow-bot.png" class="arrow-bot-rgt">
+                    <p ng-if="loadingCoinomiaData">Loading data ... </p>
+                    <ui-calendar data="coinomiaTeam" date-range="getDates" ng-if="hasCoinomiaTeamData"></ui-calendar>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="clearfix"></div>
         <div class="row row-stat">
           <div class="col-md-3" purchase-total

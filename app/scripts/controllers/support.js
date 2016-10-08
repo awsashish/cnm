@@ -12,15 +12,15 @@ angular.module('coinomiaFrontendApp')
 
     // Os Ticket Login
     $scope.osLogin = function() {
-      angular.element('#osticket').submit();
+      setTimeout(function() {
+        angular.element('#osticket').submit();
+      }, 500);
     }
 
     // Check Token exists or not
     if($localStorage.token) {
+      $scope.redirectURL = $sce.trustAsResourceUrl($location.search().return_url);
       $scope.token = $localStorage.token;
       $scope.osLogin();
     }
-
-    $scope.redirectURL = $sce.trustAsResourceUrl($location.search().return_url);
-
   });
