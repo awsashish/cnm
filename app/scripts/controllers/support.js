@@ -8,20 +8,19 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('SupportCtrl', function ($scope, coinomiaService, $localStorage, $cookies) {
+  .controller('SupportCtrl', function ($scope, coinomiaService, $location, $sce, $localStorage, $cookies) {
 
     // Os Ticket Login
-    $scope.osLogin = function(token) {
-      coinomiaService.osTicketlogin(token)
-      .then(function(res){
-        if(res.status === 200){
-
-        }
-      });
+    $scope.osLogin = function() {
+      angular.element('#osticket').submit();
     }
 
     // Check Token exists or not
     if($localStorage.token) {
-      $scope.osLogin($localStorage.token);
+      $scope.token = $localStorage.token;
+      $scope.osLogin();
     }
+
+    $scope.redirectURL = $sce.trustAsResourceUrl($location.search().return_url);
+
   });

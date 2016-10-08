@@ -678,6 +678,7 @@ select {
 
 .leftpanel {
     width: 100px;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0; background:#666;
