@@ -5,7 +5,7 @@
 </div>
 <div class="col-md-4 col-md-offset-1">
   <p class="user-info" style=" padding-top:10px;">
-    <strong><i class="fa fa-user"></i> Welcome {{name}}, <country-flag country-name="countryFlag" /> </strong>
+    <strong><i class="fa fa-user"></i> Welcome {{name}}, <country-flag country-name="countryFlag" s3-url="s3Url"/> </strong>
   </p>
 </div>
 <div class="col-md-7" align="right">
@@ -17,7 +17,7 @@
       <span class="countdown-amount">{{sseconds}}</span> Second{{secondsS}}</timer>
   </div>
   <p class="cal-dash pull-left" style="margin: 10px 12px 0;">To Launch...</p>
-  <img src="images/logo-coinomia.png" class="header-logo" width="200" style="padding:10px 20px 0px;">
+  <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo" width="200" style="padding:10px 20px 0px;">
 </div>
 <div class="col-md-12 mobile-navigation collapse" id="bs-example-navbar-collapse-1">
   <nav id="nav">

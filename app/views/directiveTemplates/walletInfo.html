@@ -1,5 +1,5 @@
  <div  ng-repeat="info in walletData | filter:{'Wallet':walletType}">
-    <h2 class="mb35" align="center"><img src="images/package/{{info.Wallet | lowercase}}-wallet.png" width="20%"><br>
+    <h2 class="mb35" align="center"><img ng-src="{{s3Url}}package/{{info.Wallet | lowercase}}-wallet.png" width="20%"><br>
        <span class="glyphicon glyphicon-minus"></span>
        <span>{{walletHeading[info.Wallet]?walletHeading[info.Wallet]:'USD'}} Wallet</span>
        <span class="glyphicon glyphicon-minus"></span><br>

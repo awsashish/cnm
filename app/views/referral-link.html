@@ -79,20 +79,20 @@
                           <form class="form-horizontal " method="post" action="" >
                              <div data-toggle="buttons">
                                 <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='L'?'active':'')" ng-click="updatePlacement('L')">
-                                <img src="images/left.png" width="100" /><br />
+                                <img ng-src="{{s3Url}}left.png" width="100" /><br />
                                 <input type="radio" name="q1" value="0"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true" checked></i>
                                 Left Placement</div>
 
                                 <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='R'?'active':'')" ng-click="updatePlacement('R')">
-                                <img src="images/right.png" width="100" /><br />
+                                <img ng-src="{{s3Url}}right.png" width="100" /><br />
                                 <input type="radio" name="q1" value="1"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true"></i> Right Placement</div>
 
                                 <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='A'?'active':'')" ng-click="updatePlacement('A')">
-                                <img src="images/tree.png" width="100" /><br />
+                                <img ng-src="{{s3Url}}tree.png" width="100" /><br />
                                 <input type="radio" value="R"><i class="fa fa-check-circle-o lg-icon " aria-hidden="true"></i> Alternate Placement</div>
 
                                 <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='W'?'active':'')" ng-click="updatePlacement('W')">
-                                <img src="images/week.png" width="100" /><br />
+                                <img ng-src="{{s3Url}}week.png" width="100" /><br />
                                 <input type="radio" name="q1" value="2"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true"></i> Balance Weak Leg </div><br />
                              </div>
                           </form>

@@ -8,7 +8,10 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('HeaderCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService, UtilsService) {
+  .controller('HeaderCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService, UtilsService, config) {
+
+      $rootScope.s3Url = config.s3BucketUrl;
+
       // Calcultate remaining Time
       var futureDate = moment('2016-11-01').tz('America/New_York').valueOf();
       var currentDate = moment().tz('America/New_York').valueOf();

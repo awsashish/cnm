@@ -4,7 +4,7 @@
       <a href="" class="panel-close tooltips" data-toggle="tooltip" title="Close Panel"><i class="fa fa-times"></i></a>
     </div>
     <!-- panel-btns -->
-    <div class="panel-icon"><img src="{{purchasedParams?purchasedParams.iconPath:totalParams.iconPath}}" width="60" class="img-responsive" /></div>
+    <div class="panel-icon"><img ng-src="{{s3Url}}{{purchasedParams?purchasedParams.iconPath:totalParams.iconPath}}" width="60" class="img-responsive" /></div>
     <div class="media-body">
       <h1 class="mt5">{{purchasedParams?purchasedParams.title:totalParams.title}} <br />
         {{purchasedParams?purchasedParams.subTitle:totalParams.subTitle}}

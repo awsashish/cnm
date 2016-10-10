@@ -37,7 +37,8 @@ angular.module('coinomiaFrontendApp')
         contributorCalc: "&",
         binaryContributorCalc: "&",
         rackCalc: "&",
-        binaryRackCalc: "&"
+        binaryRackCalc: "&",
+        s3Url: "="
       }
     };
   });

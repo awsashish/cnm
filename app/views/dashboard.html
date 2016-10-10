@@ -32,12 +32,12 @@
               </div>
               <div class="tab-content" style="padding:20px 10px 0px; margin-bottom:20px; ">
                 <div class="tab-pane tab_default_4 active">
-                  <img src="images/arrow-bot.png" class="arrow-bot-lft">
+                  <img src="{{s3Url}}arrow-bot.png" class="arrow-bot-lft">
                   <p ng-if="loadingData">Loading data ... </p>
                   <ui-calendar data="myTeam" date-range="getDates" ng-if="hasMyTeamData"></ui-calendar>
                 </div>
                 <div class="tab-pane tab_default_5">
-                  <img src="images/arrow-bot.png" class="arrow-bot-rgt">
+                  <img src="{{s3Url}}arrow-bot.png" class="arrow-bot-rgt">
                   <p ng-if="loadingCoinomiaData">Loading data ... </p>
                   <ui-calendar data="coinomiaTeam" date-range="getDates" ng-if="hasCoinomiaTeamData"></ui-calendar>
                 </div>
@@ -47,31 +47,31 @@
         </div>
         <div class="col-md-3">
           <a href="#promote-coinomia/social-group">
-            <div class="box-outer"><img src="images/facebook.png" width="70" /> &nbsp;&nbsp;Get Connected  </div>
+            <div class="box-outer"><img src="{{s3Url}}facebook.png" width="70" /> &nbsp;&nbsp;Get Connected  </div>
           </a>
           <a href="#promote-coinomia/grab-concept">
-            <div class="box-outer"><img src="images/presentation.png" width="70" />&nbsp;&nbsp; Grab the Concept</div>
+            <div class="box-outer"><img src="{{s3Url}}presentation.png" width="70" />&nbsp;&nbsp; Grab the Concept</div>
           </a>
           <a href="#referral-link">
-            <div class="box-outer"><img src="images/plan.png" width="70" /> &nbsp;&nbsp;Your Referral Links</div>
+            <div class="box-outer"><img src="{{s3Url}}plan.png" width="70" /> &nbsp;&nbsp;Your Referral Links</div>
           </a>
           <a href="#promote-coinomia/sms-blast">
-            <div class="box-outer"><img src="images/mining.png" width="70" /> &nbsp;&nbsp;Get, Set, Go!</div>
+            <div class="box-outer"><img src="{{s3Url}}mining.png" width="70" /> &nbsp;&nbsp;Get, Set, Go!</div>
           </a>
         </div>
         <div class="clearfix"></div>
         <div class="row row-stat">
           <div class="col-md-3" purchase-total
             purchased-attr="purchasedPower"
-            purchased-params="purchasedParams"></div>
+            purchased-params="purchasedParams" s3-url="s3Url"></div>
           <!-- col-md-4 -->
           <div class="col-md-6" current-rates
             current-mining="currentMining"
-            mining-params="ratesParams"></div>
+            mining-params="ratesParams" s3-url="s3Url"></div>
           <!-- col-md-4 -->
           <div class="col-md-3" purchase-total
             total-attr="totalIncome"
-            total-params="totalParams"></div>
+            total-params="totalParams" s3-url="s3Url"></div>
           <!-- col-md-4 -->
         </div>
         <!-- row -->
@@ -100,7 +100,7 @@
                   rack-total="rackTotal"
                   pool-calc="poolCalc(treeData, contract, poolData)"
                   contributor-calc="contributorCalc(treeData, contract, contributorData)"
-                  rack-calc="rackCalc(treeData, contract, rackData)" ng-if="hasDirectReferral"></div>
+                  rack-calc="rackCalc(treeData, contract, rackData)" s3-url="s3Url" ng-if="hasDirectReferral"></div>
                 <br />
                 <!-- Binary Sales Commission -->
                 <div sales-commission commission="'binary'"
@@ -119,7 +119,7 @@
                   binary-rack-total="binaryRackTotal"
                   binary-pool-calc="binaryPoolCalc(treeData, contract, poolData)"
                   binary-contributor-calc="binaryContributorCalc(treeData, contract, contributorData)"
-                  binary-rack-calc="binaryRackCalc(treeData, contract, rackData)" ng-if="hasBinaryReferral"></div>
+                  binary-rack-calc="binaryRackCalc(treeData, contract, rackData)" s3-url="s3Url" ng-if="hasBinaryReferral"></div>
                 <h3 align="center"><strong>Your Estimated Paycheck
                   on Launch Day</strong>
                 </h3>
@@ -169,7 +169,7 @@
                   btc-rack-calc="btcRackMining(desContract, contractValue, mining)"
                   eth-pool-calc="ethPoolMining(desContract, contractValue, mining)"
                   eth-contributor-calc="ethContributorMining(desContract, contractValue, mining)"
-                  eth-rack-calc="ethRackMining(desContract, contractValue, mining)"></div>
+                  eth-rack-calc="ethRackMining(desContract, contractValue, mining)" s3-url="s3Url"></div>
                 <p align="center"><button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd, $event)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button></p>
                 <div class="clearfix"></div>
                 <h3 align="center" class="text-title02"><strong>Your Estimated income based on Current <br />

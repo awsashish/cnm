@@ -74,10 +74,10 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <!-- <img src="images/flags/in.png" />  -->
+                          <!-- <img ng-src="{{s3Url}}flags/in.png" />  -->
                           <tr ng-repeat="(key,directs) in teamDirectsData">
                             <td>{{(((currentPage - 1) * pagination.perpage) + (key + 1))}}</td>
-                            <td><img src="images/flags/{{allCountryCodes[directs.country] | lowercase}}.png" />&nbsp;{{directs.Name}}</td>
+                            <td><img ng-src="{{s3Url}}flags/{{allCountryCodes[directs.country] | lowercase}}.png" />&nbsp;{{directs.Name}}</td>
                             <td>{{directs.Email}}</td>
                             <td>{{directs.Mobile}}</td>
                             <td>{{directs.TotalContract}}</td>
@@ -320,7 +320,7 @@
                         <div class="ajax_loader" ng-if="loadingData"></div>
                         <div class="col-md-11 col-md-offset-1">
                           <span class="pull-right" ng-click="getDownline('')" style="cursor: pointer;margin-right: 20px" role="button" tabindex="0">
-                            <img src="images/refresh.png" width="20px"> Refresh
+                            <img ng-src="{{s3Url}}refresh.png" width="20px"> Refresh
                           </span><br>
                           <div class="tree">
                             <ul>
@@ -328,11 +328,11 @@
                                 <a ng-click="getDownline(downline['0'].username)" data-tooltip="sticky1">
                                   <div class="container-fluid">
                                     <div class="row">
-                                      <img src="images/flags/{{allCountryCodes[downline['0'].country] | lowercase}}.png" /> <strong>{{downline['0'].username}}</strong>
+                                      <img ng-src="{{s3Url}}flags/{{allCountryCodes[downline['0'].country] | lowercase}}.png" /> <strong>{{downline['0'].username}}</strong>
                                     </div>
                                     <div class="row" style="margin-top: 5px;">
-                                      <img ng-if="downline['0'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['0'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
-                                      <img ng-if="downline['0'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                      <img ng-if="downline['0'].ItemName.toLowerCase() != 'registration'" ng-src="{{s3Url}}package/{{downline['0'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                      <img ng-if="downline['0'].ItemName.toLowerCase() == 'registration'" ng-src="{{s3Url}}users/user5.png" class="img-circle" width="50" height="50" />
                                     </div>
                                   </div>
                                 </a>
@@ -341,11 +341,11 @@
                                     <a ng-click="getDownline(downline['1'].username)" data-tooltip="sticky2">
                                       <div class="container-fluid">
                                         <div class="row">
-                                          <img src="images/flags/{{allCountryCodes[downline['1'].country] | lowercase}}.png" /> <strong>{{downline['1'].username}}</strong>
+                                          <img ng-src="{{s3Url}}flags/{{allCountryCodes[downline['1'].country] | lowercase}}.png" /> <strong>{{downline['1'].username}}</strong>
                                         </div>
                                         <div class="row" style="margin-top: 5px;">
-                                          <img ng-if="downline['1'].ItemName.toLowerCase() != 'registration'" src="images/{{downline['1'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
-                                          <img ng-if="downline['1'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                          <img ng-if="downline['1'].ItemName.toLowerCase() != 'registration'" ng-src="{{s3Url}}{{downline['1'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                          <img ng-if="downline['1'].ItemName.toLowerCase() == 'registration'" ng-src="{{s3Url}}users/user5.png" class="img-circle" width="50" height="50" />
                                         </div>
                                       </div>
                                     </a>
@@ -354,11 +354,11 @@
                                         <a ng-click="getDownline(downline['3'].username)" data-tooltip="sticky3">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="images/flags/{{allCountryCodes[downline['3'].country] | lowercase}}.png" /> <strong>{{downline['3'].username}}</strong>
+                                              <img ng-src="{{s3Url}}flags/{{allCountryCodes[downline['3'].country] | lowercase}}.png" /> <strong>{{downline['3'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img ng-if="downline['3'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['3'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
-                                              <img ng-if="downline['3'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['3'].ItemName.toLowerCase() != 'registration'" ng-src="{{s3Url}}package/{{downline['3'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['3'].ItemName.toLowerCase() == 'registration'" ng-src="{{s3Url}}users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
                                         </a>
@@ -367,11 +367,11 @@
                                         <a ng-click="getDownline(downline['4'].username)" data-tooltip="sticky4">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="images/flags/{{allCountryCodes[downline['4'].country] | lowercase}}.png" /> <strong>{{downline['4'].username}}</strong>
+                                              <img ng-src="{{s3Url}}flags/{{allCountryCodes[downline['4'].country] | lowercase}}.png" /> <strong>{{downline['4'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img ng-if="downline['4'].ItemName.toLowerCase() != 'registration'" src="images/packages/{{downline['4'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
-                                              <img ng-if="downline['4'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['4'].ItemName.toLowerCase() != 'registration'" ng-src="{{s3Url}}packages/{{downline['4'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['4'].ItemName.toLowerCase() == 'registration'" ng-src="{{s3Url}}users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
                                         </a>
@@ -382,11 +382,11 @@
                                     <a ng-click="getDownline(downline['2'].username)" data-tooltip="sticky5">
                                       <div class="container-fluid">
                                         <div class="row">
-                                          <img src="images/flags/{{allCountryCodes[downline['2'].country] | lowercase}}.png" /> <strong>{{downline['2'].username}}</strong>
+                                          <img ng-src="{{s3Url}}flags/{{allCountryCodes[downline['2'].country] | lowercase}}.png" /> <strong>{{downline['2'].username}}</strong>
                                         </div>
                                         <div class="row" style="margin-top: 5px;">
-                                          <img ng-if="downline['2'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['2'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
-                                          <img ng-if="downline['2'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                          <img ng-if="downline['2'].ItemName.toLowerCase() != 'registration'" ng-src="{{s3Url}}package/{{downline['2'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                          <img ng-if="downline['2'].ItemName.toLowerCase() == 'registration'" ng-src="{{s3Url}}users/user5.png" class="img-circle" width="50" height="50" />
                                         </div>
                                       </div>
                                     </a>
@@ -395,11 +395,11 @@
                                         <a ng-click="getDownline(downline['5'].username)" data-tooltip="sticky6">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="images/flags/{{allCountryCodes[downline['5'].country] | lowercase}}.png" /> <strong>{{downline['5'].username}}</strong>
+                                              <img ng-src="{{s3Url}}flags/{{allCountryCodes[downline['5'].country] | lowercase}}.png" /> <strong>{{downline['5'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img ng-if="downline['5'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['5'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
-                                              <img ng-if="downline['5'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['5'].ItemName.toLowerCase() != 'registration'" ng-src="{{s3Url}}package/{{downline['5'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['5'].ItemName.toLowerCase() == 'registration'" ng-src="{{s3Url}}users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
                                         </a>
@@ -408,11 +408,11 @@
                                         <a ng-click="getDownline(downline['6'].username)" data-tooltip="sticky7">
                                           <div class="container-fluid">
                                             <div class="row">
-                                              <img src="images/flags/{{allCountryCodes[downline['6'].country] | lowercase}}.png" /> <strong>{{downline['6'].username}}</strong>
+                                              <img ng-src="{{s3Url}}flags/{{allCountryCodes[downline['6'].country] | lowercase}}.png" /> <strong>{{downline['6'].username}}</strong>
                                             </div>
                                             <div class="row" style="margin-top: 5px;">
-                                              <img ng-if="downline['6'].ItemName.toLowerCase() != 'registration'" src="images/package/{{downline['6'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
-                                              <img ng-if="downline['6'].ItemName.toLowerCase() == 'registration'" src="images/users/user5.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['6'].ItemName.toLowerCase() != 'registration'" ng-src="{{s3Url}}package/{{downline['6'].ItemName.toLowerCase()}}.png" class="img-circle" width="50" height="50" />
+                                              <img ng-if="downline['6'].ItemName.toLowerCase() == 'registration'" ng-src="{{s3Url}}users/user5.png" class="img-circle" width="50" height="50" />
                                             </div>
                                           </div>
                                         </a>
@@ -450,9 +450,9 @@
                             <td>Loading Data ...</td>
                           </tr>
                           <tr ng-repeat="(key, row) in maxDirects">
-                            <td><img src="images/flags/{{allCountryCodes[row.last7Days.country] | lowercase}}.png" /> {{row.last7Days.MemberName}}</td>
-                            <td><img src="images/flags/{{allCountryCodes[row.last30Days.country] | lowercase}}.png" />  {{row.last30Days.MemberName}}</td>
-                            <td><img src="images/flags/{{allCountryCodes[row.allTime.country] | lowercase}}.png" /> {{row.allTime.MemberName}}</td>
+                            <td><img ng-src="{{s3Url}}flags/{{allCountryCodes[row.last7Days.country] | lowercase}}.png" /> {{row.last7Days.MemberName}}</td>
+                            <td><img ng-src="{{s3Url}}flags/{{allCountryCodes[row.last30Days.country] | lowercase}}.png" />  {{row.last30Days.MemberName}}</td>
+                            <td><img ng-src="{{s3Url}}flags/{{allCountryCodes[row.allTime.country] | lowercase}}.png" /> {{row.allTime.MemberName}}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -473,9 +473,9 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td><img src="images/flags/in.png" /> Sanjeev Sharma</td>
-                            <td><img src="images/flags/cn.png" />  Eun Ppp</td>
-                            <td><img src="images/flags/cn.png" /> Валерий Булычев</td>
+                            <td><img ng-src="{{s3Url}}flags/in.png" /> Sanjeev Sharma</td>
+                            <td><img ng-src="{{s3Url}}flags/cn.png" />  Eun Ppp</td>
+                            <td><img ng-src="{{s3Url}}flags/cn.png" /> Валерий Булычев</td>
                           </tr>
                         </tbody>
                       </table>
@@ -613,7 +613,7 @@
                         <tbody>
                           <tr ng-repeat="(key,team) in teamData">
                             <td>{{(((currentPage - 1) * pagination.perpage) + (key + 1))}}</td>
-                            <td><img src="images/flags/{{allCountryCodes[team.country] | lowercase}}.png" /> {{team.Name}}</td>
+                            <td><img ng-src="{{s3Url}}flags/{{allCountryCodes[team.country] | lowercase}}.png" /> {{team.Name}}</td>
                             <td>{{team.username}}</td>
                             <td>{{team.Sponsor}}</td>
                             <td>{{team.Level}}</td>
