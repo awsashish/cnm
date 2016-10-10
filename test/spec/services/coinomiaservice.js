@@ -30,8 +30,9 @@ describe('service coinomiaService', function() {
     }
 
     var placement = JSON.stringify("A");
+    var sponsorId = "coinomia";
 
-    var sponsorId = JSON.stringify("coinomia");
+    var sponsorStringId = JSON.stringify("coinomia");
     var emailId = JSON.stringify("some@gmail.com");
 
     // Refresh Token Data
@@ -679,10 +680,10 @@ describe('service coinomiaService', function() {
 
     it('should return success message', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + 'utilities/verify-sponsor', sponsorId)
+      .expect('POST', coinomiaService.apiHost + 'utilities/verify-sponsor', sponsorStringId)
       .respond(200, {'username':'sponsor-id', 'name':'some-name'});
       var data;
-      coinomiaService.verifySponsor(sponsorId).then(function(fetchedData) {
+      coinomiaService.verifySponsor(sponsorStringId).then(function(fetchedData) {
         data = fetchedData.data;
       });
       $httpBackend.flush();
@@ -693,9 +694,9 @@ describe('service coinomiaService', function() {
 
     it('should log referral error', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + 'utilities/verify-sponsor', sponsorId)
+      .expect('POST', coinomiaService.apiHost + 'utilities/verify-sponsor', sponsorStringId)
       .respond(500, 'Internal Server Error.');
-      coinomiaService.verifySponsor(sponsorId);
+      coinomiaService.verifySponsor(sponsorStringId);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
@@ -1210,6 +1211,51 @@ describe('service coinomiaService', function() {
       .expect('GET', coinomiaService.apiHost + 'latest-signup')
       .respond(500, 'Internal Server Error.');
       coinomiaService.getLatestSignup();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Get User Downline
+  describe('User Downline function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getUserDownline).not.toEqual(null);
+    });
+
+    it('should returns records succesfully', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/tree/'+sponsorId)
+      .respond(200, { "0": { "username": "coinomia", "DOJ": "5/17/2011 12:00:00 AM", "country": "USA", "Sponsor": "0", "ItemName": "Rack", "LeftPV": 0, "RightPV": 0, "LeftRepurchasePV": 0, "RightRepurchasePV": 0, "LeftTotal": 6154, "RightTotal": 36683, "LeftDirect": 3462, "RightDirect": 3467, "MatchedPV": 0, "RepurchaseMatchedPV": 0, "Capping": 0, "RepurchaseCapping": 0 }});
+      var data;
+      coinomiaService.getUserDownline(sponsorId).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data[0].username).toEqual("coinomia");
+      expect(data[0].DOJ).toEqual("5/17/2011 12:00:00 AM");
+      expect(data[0].Sponsor).toEqual("0");
+      expect(data[0].ItemName).toEqual("Rack");
+      expect(data[0].country).toEqual("USA");
+      expect(data[0].LeftPV).toEqual(0);
+      expect(data[0].RightPV).toEqual(0);
+      expect(data[0].LeftRepurchasePV).toEqual(0);
+      expect(data[0].RightRepurchasePV).toEqual(0);
+      expect(data[0].LeftTotal).toEqual(6154);
+      expect(data[0].RightTotal).toEqual(36683);
+      expect(data[0].LeftDirect).toEqual(3462);
+      expect(data[0].RightDirect).toEqual(3467);
+      expect(data[0].MatchedPV).toEqual(0);
+      expect(data[0].RepurchaseMatchedPV).toEqual(0);
+      expect(data[0].Capping).toEqual(0);
+      expect(data[0].RepurchaseCapping).toEqual(0);
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/tree/'+sponsorId)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getUserDownline(sponsorId);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });

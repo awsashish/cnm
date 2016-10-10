@@ -23,6 +23,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     this.requestFailed = function (error) {
+      return error;
       $log.error('XHR Failed for User location.\n' + angular.toJson(error.data, true));
     };
 
