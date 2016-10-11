@@ -8,9 +8,10 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('LoginCtrl', function ($scope, $rootScope, $cookies, $state, $window, $location, $localStorage, coinomiaService) {
+  .controller('LoginCtrl', function ($scope, $rootScope, $cookies, $state, $window, $location, $localStorage, coinomiaService, config) {
     $scope.sigin = true;
     $scope.loginError = '';
+    $scope.s3Url = config.s3BucketUrl;
 
     // Authenticate User
     if(coinomiaService.isAuthenticated()){

@@ -8,8 +8,9 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('SignupCtrl', function ($scope, coinomiaService, $window, $timeout, $state, $location, $cookies) {
+  .controller('SignupCtrl', function ($scope, coinomiaService, config, $window, $timeout, $state, $location, $cookies) {
 
+    $scope.s3Url = config.s3BucketUrl;
     $scope.confrimPassError = false;
     $scope.user = {
       'sponsor': '',

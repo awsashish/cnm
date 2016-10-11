@@ -81,6 +81,7 @@ angular.module('coinomiaFrontendApp')
     .state('success', {
         url: '/success',
         templateUrl: 'views/success.html',
+        controller: 'SuccessCtrl'
     })
 
     // Support page
