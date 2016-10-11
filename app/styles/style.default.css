@@ -4446,6 +4446,7 @@ h4.great {
   .profile-left{height:160px !important;}
 
   .header-logo{ visibility: hidden; }
+  .yelo-btn{margin-top: 10px;margin-left: -10px;white-space: normal}
 	}
 
 .pageheader{ padding: 10px 10px 20px;}
