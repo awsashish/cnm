@@ -111,10 +111,6 @@ a:focus {
   font-size:27px;
 }
 
-.no-margin {
-  margin:0 !important;
-}
-
 .error-padding:before {
   border-bottom: 10px solid #f2dede;
   border-left: 8px solid transparent;
@@ -153,6 +149,10 @@ a:focus {
   margin-bottom: 30px;
   border-bottom: 1px solid #eee;
   padding: 0 0 20px 0;
+}
+
+.pagination-default {
+  float: right;
 }
 
 .coming-soon-wrapper {
@@ -4447,6 +4447,7 @@ h4.great {
 
   .header-logo{ visibility: hidden; }
   .yelo-btn{margin-top: 10px;margin-left: -10px;white-space: normal}
+  .pagination-default { float: left; width: 600px;}
 	}
 
 .pageheader{ padding: 10px 10px 20px;}
@@ -4717,6 +4718,10 @@ h4.great {
 }
 .top-spacemob10{ padding-top:50px !important;}
 .form-pricing{ height:300px !important;}
+}
+
+.no-margin {
+  margin:0 !important;
 }
 
 
