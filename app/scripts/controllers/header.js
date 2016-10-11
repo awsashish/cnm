@@ -12,6 +12,13 @@ angular.module('coinomiaFrontendApp')
 
       $rootScope.s3Url = config.s3BucketUrl;
 
+      $rootScope.activeMenu = $state.current.name;
+
+       //  Logged out User
+       $scope.logout = function(){
+         $rootScope.$broadcast('logout');
+       }
+
       // Calcultate remaining Time
       var futureDate = moment('2016-11-01').tz('America/New_York').valueOf();
       var currentDate = moment().tz('America/New_York').valueOf();
