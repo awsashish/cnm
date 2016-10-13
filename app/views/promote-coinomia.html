@@ -3,7 +3,7 @@
   <div class="mainwrapper">
   <navigation></navigation>
   <style>.nav-tabs > li > a{ padding: 10px 30px !important; color:#fff !important;
-  }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;} .box-gry{float: left;margin-top: 20px;width: 100%;overflow-x: scroll;}</style>
+  }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;} .box-gry{float: left;margin-top: 20px;width: 100%;}</style>
   <div class="mainpanel">
     <div class="pageheader">
       <!-- media -->
@@ -136,7 +136,7 @@
                 <hr />
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <div class="col-md-12" style="overflow-x:scroll"><strong>Example Link : </strong>&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{banners[0].bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{banners[0].bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;90&quot; width=&quot;728&quot; /&gt;&lt;/a&gt;
+                    <div class="col-md-12 mobile-scroll"><strong>Example Link : </strong>&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{banners[0].bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{banners[0].bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;90&quot; width=&quot;728&quot; /&gt;&lt;/a&gt;
                     </div>
                     <br />
                     <strong style="color:#f00;">** Note: Please don't share above link, it is an example link.</strong> <br />
@@ -156,7 +156,7 @@
                             <strong>Get Your Banner Referral Link</strong>
                           </button>
                         </div>
-                        <div ng-show="bannerInfo.showCode" class="box-gry">&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerheight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt;</div>
+                        <div ng-show="bannerInfo.showCode" class="box-gry mobile-scroll">&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerheight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt;</div>
                         <div class="clearfix"></div>
                       </form>
                     </div>

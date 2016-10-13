@@ -145,6 +145,8 @@ a:focus {
     display: block;
 }
 
+.mobile-scroll{ overflow-x: hidden;}
+
 .banner-section {
   margin-bottom: 30px;
   border-bottom: 1px solid #eee;
@@ -4448,6 +4450,7 @@ h4.great {
   .header-logo{ visibility: hidden; }
   .yelo-btn{margin-top: 10px;margin-left: -10px;white-space: normal}
   .pagination-default { float: left; width: 600px;}
+  .mobile-scroll{ overflow-x: scroll; }
 	}
 
 .pageheader{ padding: 10px 10px 20px;}
