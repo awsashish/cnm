@@ -317,8 +317,8 @@
 
                       <div class="row col-md-12">
                         <div class="ajax_loader" ng-if="loadingData"></div>
-                        <div class="col-md-11 col-md-offset-1">
-                          <span class="pull-right" ng-click="getDownline('')" style="cursor: pointer;margin-right: 20px" role="button" tabindex="0">
+                        <div class="col-md-11 col-md-offset-1 tree-wrapper">
+                          <span class="refresh pull-right" ng-click="getDownline('')" role="button" tabindex="0">
                             <img ng-src="{{s3Url}}refresh.png" width="20px"> Refresh
                           </span><br>
                           <div class="col-xs-12 col-sm-12 col-md-12 tree">
@@ -507,7 +507,7 @@
                       <li role="presentation" ><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><i class="fa fa-users " aria-hidden="true"></i>  Total Team Income</a></li>
                     </ul>
                     <!-- Tab panes -->
-                    <div class="tab-content" >
+                    <div class="tab-content" style="overflow:hidden;">
                       <div role="tabpanel" class="tab-pane active dmp">
                         <br />
                         <h5 class="red-text02"><strong>Total Direct Referral Income</strong></h5>
