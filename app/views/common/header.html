@@ -8,16 +8,16 @@
     <strong><i class="fa fa-user"></i> Welcome {{name}}, <country-flag country-name="countryFlag" s3-url="s3Url"/> </strong>
   </p>
 </div>
-<div class="col-md-7" align="right">
+<div class="col-md-7">
   <div class="counter-date">
-    <timer countdown="remainingTime" max-time-unit="'day'" interval="1000">
+    <timer countdown="remainingTime" max-time-unit="'day'" class="timer" interval="1000">
       <span class="countdown-amount">{{ddays}}</span>Day{{daysS}}
       <span class="countdown-amount">{{hhours}}</span> Hour{{hoursS}}
       <span class="countdown-amount">{{mminutes}}</span> Minute{{minutesS}}
       <span class="countdown-amount">{{sseconds}}</span> Second{{secondsS}}</timer>
   </div>
   <p class="cal-dash pull-left" style="margin: 10px 12px 0;">To Launch...</p>
-  <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo" width="200" style="padding:10px 20px 0px;">
+  <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo pull-right" width="200" style="padding:10px 20px 0px;">
 </div>
 <div class="col-md-12 mobile-navigation collapse" id="bs-example-navbar-collapse-1">
   <nav id="nav">
