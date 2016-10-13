@@ -179,6 +179,8 @@ a:focus {
   z-index: 9999;
 }
 
+.copy-btn{background:#fff; color:#000; font-size:12px; padding:4px; border:1px solid #000; border-bottom:2px solid #000; border-radius:3px; margin-top:-3px;}
+
 .select {
   position: absolute;
   z-index: 9;
@@ -4451,6 +4453,7 @@ h4.great {
   .yelo-btn{margin-top: 10px;margin-left: -10px;white-space: normal}
   .pagination-default { float: left; width: 600px;}
   .mobile-scroll{ overflow-x: scroll; }
+  .copy-btn{ margin-top: 5px; }
 	}
 
 .pageheader{ padding: 10px 10px 20px;}
@@ -4862,7 +4865,6 @@ font:bold 11px Arial;
 }
 
 .yelo-btn{background:#FC0 !important; border:1px solid #D0C535 !important; color:#000 !important;}
-.copy-btn{background:#fff; color:#000; font-size:12px; padding:4px; border:1px solid #000; border-bottom:2px solid #000; border-radius:3px; margin-top:-3px;}
 
 .lg-icon{ font-size:22px; padding-top:5px;}
 .round-cor{border:5px solid #fff; border-radius:15px;}
