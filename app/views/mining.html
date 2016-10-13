@@ -623,9 +623,9 @@
                              <form class="form-horizontal form-pricing" role="form">
                                 <div class="price-slider">
                                    <h4 class="great text-capitalize">{{btc.productname}}</h4>
-                                   <img ng-src="{{s3Url}}contract-bitcoin.png" width="100" class="pull-right" />
+                                   <img ng-src="{{s3Url}}{{btcImagePath[$index]}}" width="100" class="pull-right" />
                                    <div class="col-sm-12">
-                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="'btc'" min="{{btc.miningpower}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
+                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="'btc'" min="{{btc.btcMining}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
                                    </div>
                                 </div>
                                 <div class="price-form">
@@ -643,7 +643,7 @@
                               <form class="form-horizontal form-pricing" role="form">
                                  <div class="price-slider">
                                     <h4 class="great text-capitalize">{{eth.productname}}</h4>
-                                    <img ng-src="{{s3Url}}ether-contract.png" width="100" class="pull-right" />
+                                    <img ng-src="{{s3Url}}{{ethImagePath[$index]}}" width="100" class="pull-right" />
                                     <div class="col-sm-12">
                                        <div ui-slider class="uiSlider" model="eth.ethMining" product="'eth'" min="{{eth.miningpower}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
                                     </div>

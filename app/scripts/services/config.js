@@ -104,5 +104,15 @@ angular.module('coinomiaFrontendApp')
       'TotalPurchased',
       'DOJ',
       'TotalDirect'
+    ],
+    'btcImagePath':[
+      'contract-bitcoin.png',
+      'contributor.png',
+      'rack.png'
+    ],
+    'ethImagePath':[
+      'ether-contract.png',
+      'ether-contributor.png',
+      'ether-rack.png'
     ]
   });
