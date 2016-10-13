@@ -122,6 +122,9 @@ a:focus {
   top: -10px;
 }
 
+.btn-default1{ border:1px solid #ccc; width:24%; margin-right:1%;white-space: normal;}
+.btn-default1:active, .btn-default1.active, .open > .dropdown-toggle.btn-default1{ border:1px solid #ccc !important; background:#FC0;}
+
 .ajax_loader {
     cursor: wait;
     opacity: 0.75;
@@ -187,6 +190,8 @@ a:focus {
   top: 12px;
   right: 6px;
 }
+
+.lg-icon{ font-size:22px; padding-top:5px;}
 
 .custom-select {
   position: absolute;
@@ -4454,7 +4459,14 @@ h4.great {
   .pagination-default { float: left; width: 600px;}
   .mobile-scroll{ overflow-x: scroll; }
   .copy-btn{ margin-top: 5px; }
+  .btn-default1 { width: 48%; font-size: 15px; margin-bottom: 2%;}
+  .lg-icon{ font-size: 18px; }
 	}
+
+@media(max-width:481px) {
+  .btn-default1 { width: 100%;}
+  .lg-icon{ font-size: 18px; }
+}
 
 .pageheader{ padding: 10px 10px 20px;}
 
@@ -4866,10 +4878,8 @@ font:bold 11px Arial;
 
 .yelo-btn{background:#FC0 !important; border:1px solid #D0C535 !important; color:#000 !important;}
 
-.lg-icon{ font-size:22px; padding-top:5px;}
-.round-cor{border:5px solid #fff; border-radius:15px;}
-.btn-default1{ border:1px solid #ccc; width:24%; margin-right:1%;}
-.btn-default1:active, .btn-default1.active, .open > .dropdown-toggle.btn-default1{ border:1px solid #ccc !important; background:#FC0;}
+.round-cor{ border-radius:15px; }
+
 .form-signup-reffer{background:#fbfbfb; border-radius:10px; padding:20px;}
 
 .form-signup-reffer-outer{box-shadow:0px 0px 2px 2px #f2f2f2; padding:20px;}
