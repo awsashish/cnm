@@ -165,8 +165,6 @@ a:focus {
 
 .no-wrap td { white-space: normal; }
 
-.nav-tabs > li > a { font-size: 20px; }
-
 .refresh{ cursor: pointer; margin-right: 20px;margin-top: 20px;}
 
 .tree li a{
