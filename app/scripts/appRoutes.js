@@ -92,13 +92,6 @@ angular.module('coinomiaFrontendApp')
         authenticate:true
     })
 
-    // )S TIcket page
-    .state('osticket', {
-        url: '/osticket',
-        templateUrl: 'views/support.html',
-        controller: 'OsticketCtrl'
-    })
-
     // Terms & Conditions page
     .state('terms-and-conditions', {
         url: '/terms-and-conditions',

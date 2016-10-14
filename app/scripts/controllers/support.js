@@ -13,7 +13,7 @@ angular.module('coinomiaFrontendApp')
     // Os Ticket Login
     $scope.osLogin = function() {
       setTimeout(function() {
-        angular.element('#osticket1').submit();
+        angular.element('#osticket').submit();
       }, 500);
     }
 

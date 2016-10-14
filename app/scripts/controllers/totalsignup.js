@@ -9,7 +9,6 @@
  */
 angular.module('coinomiaFrontendApp')
   .controller('TotalsignupCtrl', function ($scope, coinomiaService, UtilsService) {
-
     // Get Country Codes
     UtilsService.getCountryCode().then(function(res) {
       $scope.allCountryCodes = res;

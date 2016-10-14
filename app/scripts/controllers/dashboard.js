@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('DashboardCtrl', function ($scope, $rootScope, coinomiaService, UtilsService, $filter, config) {
+  .controller('DashboardCtrl', function ($scope, $rootScope, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config) {
 
 
     $scope.hasDirectReferral = false;
@@ -411,6 +411,19 @@ angular.module('coinomiaFrontendApp')
       $scope.btcRackContract = 0;
       $scope.btcRackMining($scope.btcRackContract, rack, mining);
       $scope.ethRackMining($scope.ethRackContract, rack, mining);
+    }
+
+    // Open Angular Modal
+    $scope.getReferrals = function() {
+      var modalInstance = $uibModal.open({
+          templateUrl: 'views/automatic-referrals.html',
+          scope: $scope,
+          size: 'md'
+      });
+    }
+
+    $scope.closeModal = function() {
+      $uibModalStack.dismissAll();
     }
 
    });
