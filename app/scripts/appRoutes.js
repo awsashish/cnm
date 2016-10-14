@@ -84,11 +84,18 @@ angular.module('coinomiaFrontendApp')
         controller: 'SuccessCtrl'
     })
 
+    // // Support page
+    // .state('support', {
+    //     url: '/support?return_url',
+    //     templateUrl: 'views/support.html',
+    //     controller: 'SupportCtrl',
+    //     authenticate:true
+    // })
+
     // Support page
     .state('support', {
-        url: '/support?return_url',
+        url: '/support',
         templateUrl: 'views/support.html',
-        controller: 'SupportCtrl',
         authenticate:true
     })
 

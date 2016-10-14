@@ -4702,6 +4702,8 @@ h4.great {
   }
   .sponsor-wrapper{ float: left; margin: 0; left:-20px; }
   .sponser-name{ white-space: nowrap; }
+  .coming-soon-wrapper { width: 100%; }
+  .panel-dashboard {width: 90%;}
 }
 
 .pageheader{ padding: 10px 10px 20px;}
