@@ -122,6 +122,22 @@ a:focus {
   top: -10px;
 }
 
+.sponser-name {
+  background: #C30;
+  font-size: 14px;
+  border-radius: 30px;
+  padding: 10px 10px 10px 10px;
+  color: #fff !important;
+  text-transform: capitalize;
+}
+
+.sponsor-wrapper {
+  position: relative;
+  display: block;
+  float: left;
+  width: 94%;
+}
+
 .latest-signup {
   margin: 0px !important;
   font-size: 20px;
@@ -4679,6 +4695,13 @@ h4.great {
   .countdown-amount { font-size: 12px !important; }
   .user-info{ width: 180px; }
   .main-header{ height: auto;}
+  .refresh {
+    cursor: pointer;
+    margin-right: 60px;
+    margin-bottom: 20px;
+  }
+  .sponsor-wrapper{ float: left; margin: 0; left:-20px; }
+  .sponser-name{ white-space: nowrap; }
 }
 
 .pageheader{ padding: 10px 10px 20px;}
