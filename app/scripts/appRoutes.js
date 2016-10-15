@@ -85,19 +85,19 @@ angular.module('coinomiaFrontendApp')
     })
 
     // Support page
-    .state('support', {
-        url: '/support?return_url',
-        templateUrl: 'views/support.html',
-        controller: 'SupportCtrl',
-        authenticate:true
-    })
-
-    // Support page
     // .state('support', {
-    //     url: '/support',
+    //     url: '/support?return_url',
     //     templateUrl: 'views/support.html',
+    //     controller: 'SupportCtrl',
     //     authenticate:true
     // })
+
+    // Support page
+    .state('support', {
+        url: '/support',
+        templateUrl: 'views/support.html',
+        authenticate:true
+    })
 
     // Terms & Conditions page
     .state('terms-and-conditions', {
