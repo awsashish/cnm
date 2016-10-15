@@ -639,7 +639,7 @@
                                     <h4 class="great text-capitalize">{{eth.productname}}</h4>
                                     <img ng-src="{{s3Url}}{{ethImagePath[$index]}}" width="100" class="pull-right" />
                                     <div class="col-sm-12">
-                                       <div ui-slider class="uiSlider" model="eth.ethMining" product="'eth'" min="{{eth.miningpower}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
+                                       <div ui-slider class="uiSlider" model="eth.ethMining" product="'eth'" min="{{eth.ethMining}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
                                     </div>
                                  </div>
                                  <div class="price-form">
