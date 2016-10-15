@@ -122,6 +122,16 @@ a:focus {
   top: -10px;
 }
 
+.modal-header {
+  background: #900;
+  font-family: "Oswald",sans-serif;
+  padding: 10px !important;
+}
+
+.modal-header h4 {
+  color: #fff !important;
+}
+
 .sponsor-name {
   background: #C30;
   font-size: 14px;
