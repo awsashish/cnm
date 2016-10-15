@@ -8,8 +8,9 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('ForgotpasswordCtrl', function ($scope,coinomiaService) {
+  .controller('ForgotpasswordCtrl', function ($scope,coinomiaService,config) {
 
+    $scope.s3Url = config.s3BucketUrl;
     $scope.emailError = false;
 
     // Forgot Password

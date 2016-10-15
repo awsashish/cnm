@@ -56,10 +56,14 @@ angular
       }
     };
   })
-  .run(function ($rootScope, $state, coinomiaService, UtilsService, $timeout, $localStorage) {
+  .run(function ($rootScope, $state, $location, $window, coinomiaService, UtilsService, $timeout, $localStorage) {
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
       if (toState.authenticate && !coinomiaService.isAuthenticated()) {
-        $state.go('login');
+        if($location.search().return_url){
+          $state.go('login',{return_url:$window.btoa($location.search().return_url)});
+        }else{
+          $state.go('login');
+        }
         event.preventDefault();
       }
     });

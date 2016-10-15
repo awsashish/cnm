@@ -13,6 +13,9 @@ angular.module('coinomiaFrontendApp')
     $scope.walletHeading = config.wallet;
     $scope.currentPage = config.currentPage;
     $scope.productMaxUnit = config.productMaxUnit;
+    $scope.btcImagePath = config.btcImagePath;
+    $scope.ethImagePath = config.ethImagePath;
+
     $scope.total = 0;
     // Get Products
     coinomiaService.getProducts()
@@ -23,10 +26,10 @@ angular.module('coinomiaFrontendApp')
       if(res.status === 200) {
         productsData.forEach(function(products) {
           if(products.coin === 'BTC') {
-            products.btcMining = products.miningpower;
+            products.btcMining = 0;
             $scope.btcProducts.push(products);
           }else{
-            products.ethMining = products.miningpower;
+            products.ethMining = 0;
             $scope.ethProducts.push(products);
           }
           $scope.total += products.amount;

@@ -1,16 +1,10 @@
-<main-header></main-header>
+<main-header class="main-header"></main-header>
 <section>
   <div class="mainwrapper">
   <navigation></navigation>
   <style>.nav-tabs > li > a{ padding: 10px 30px !important; color:#fff !important;
-  }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;} .box-gry{float:left;margin-top: 20px;}</style>
+  }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;} .box-gry{float: left;margin-top: 20px;width: 100%;}</style>
   <div class="mainpanel">
-    <div class="pageheader">
-      <!-- media -->
-      <news-feeds></news-feeds>
-      <!-- media -->
-    </div>
-    <!-- pageheader -->
     <div class="contentpanel">
       <div class="container">
         <h2 class="mb35"><i class="fa fa-bullhorn icon-lg border-round" aria-hidden="true" style="padding-left:10px; padding-top:10px; "></i> <strong>Promote Coinomia</strong></h2>
@@ -101,30 +95,30 @@
                   <div class="col-md-4">
                     <div class="panel panel-default">
                       <div class="panel-body" style="padding:5px !important;">
-                        <a href="images/download/pdf01.pdf" target="_blank" title="Mining with Coinomia"><img src="images/download/pdf01.jpg" class="img-responsive" /> </a>
+                        <a ng-href="{{s3Url}}download/pdf01.pdf" target="_blank" title="Mining with Coinomia"><img ng-src="{{s3Url}}download/pdf01.jpg" class="img-responsive" /> </a>
                       </div>
-                      <div align="center" class="panel-footer"><a href="images/download/pdf01.pdf" target="_blank" title="Mining with Coinomia"><strong >Mining with Coinomia</strong></a><br />
-                        <a href="images/download/pdf01.zip"  title="Download PDF" class="mar20"><button type="button" class="btn btn-red btn-xs pull-right"><i class="fa fa-download"></i> Download</button></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="panel panel-default">
-                      <div class="panel-body" style="padding:5px !important;">
-                        <a href="images/download/pdf02.pdf" target="_blank" title="Compensation Plan"><img src="images/download/pdf02.jpg" class="img-responsive" /> </a>
-                      </div>
-                      <div align="center" class="panel-footer"><a href="images/download/pdf02.pdf" target="_blank" title="Compensation Plan"><strong >Compensation Plan</strong></a><br />
-                        <a href="images/download/pdf02.zip"  title="Download PDF" class="mar20"><button type="button" class="btn btn-red btn-xs pull-right"><i class="fa fa-download"></i> Download</button></a>
+                      <div align="center" class="panel-footer"><a ng-href="{{s3Url}}download/pdf01.pdf" target="_blank" title="Mining with Coinomia"><strong >Mining with Coinomia</strong></a><br />
+                        <a ng-href="{{s3Url}}download/pdf01.zip"  title="Download PDF" class="mar20"><button type="button" class="btn btn-red btn-xs pull-right"><i class="fa fa-download"></i> Download</button></a>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="panel panel-default">
                       <div class="panel-body" style="padding:5px !important;">
-                        <a href="images/download/pdf03.pdf" target="_blank" title="Elaborated Compensation Plan"><img src="images/download/pdf03.jpg" class="img-responsive" /> </a>
+                        <a ng-href="{{s3Url}}download/pdf02.pdf" target="_blank" title="Compensation Plan"><img ng-src="{{s3Url}}download/pdf02.jpg" class="img-responsive" /> </a>
                       </div>
-                      <div align="center" class="panel-footer"><a href="images/download/pdf03.pdf" target="_blank" title="Compensation Plan"><strong >Elaborated Compensation Plan</strong></a><br />
-                        <a href="images/download/pdf03.zip"  title="Download PDF" class="mar20"><button type="button" class="btn btn-red btn-xs pull-right"><i class="fa fa-download"></i> Download</button></a>
+                      <div align="center" class="panel-footer"><a ng-href="{{s3Url}}download/pdf02.pdf" target="_blank" title="Compensation Plan"><strong >Compensation Plan</strong></a><br />
+                        <a ng-href="{{s3Url}}download/pdf02.zip"  title="Download PDF" class="mar20"><button type="button" class="btn btn-red btn-xs pull-right"><i class="fa fa-download"></i> Download</button></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="panel panel-default">
+                      <div class="panel-body" style="padding:5px !important;">
+                        <a ng-href="{{s3Url}}download/pdf03.pdf" target="_blank" title="Elaborated Compensation Plan"><img ng-src="{{s3Url}}download/pdf03.jpg" class="img-responsive" /> </a>
+                      </div>
+                      <div align="center" class="panel-footer"><a ng-href="{{s3Url}}download/pdf03.pdf" target="_blank" title="Compensation Plan"><strong >Elaborated Compensation Plan</strong></a><br />
+                        <a ng-href="{{s3Url}}download/pdf03.zip"  title="Download PDF" class="mar20"><button type="button" class="btn btn-red btn-xs pull-right"><i class="fa fa-download"></i> Download</button></a>
                       </div>
                     </div>
                   </div>
@@ -136,7 +130,7 @@
                 <hr />
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <div ><strong>Example Link : </strong>&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{banners[0].bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerApiPath}}{{banners[0].bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;90&quot; width=&quot;728&quot; /&gt;&lt;/a&gt;
+                    <div class="col-md-12 mobile-scroll"><strong>Example Link : </strong>&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{banners[0].bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{banners[0].bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;90&quot; width=&quot;728&quot; /&gt;&lt;/a&gt;
                     </div>
                     <br />
                     <strong style="color:#f00;">** Note: Please don't share above link, it is an example link.</strong> <br />
@@ -146,7 +140,7 @@
                     <div class="col-md-12 mb30 banner-section" ng-repeat="(key,bannerInfo) in banners">
                       <h4 class="total-amount"><strong>Banner Name: {{bannerInfo.bannername}} ({{bannerInfo.bannerwidth}} x {{bannerInfo.bannerheight}})</strong></h4>
                       <strong class="pull-right">Height: {{bannerInfo.bannerheight}} Width: {{bannerInfo.bannerwidth}}</strong><br />
-                      <img src="{{bannerInfo.bannerimage}}" />
+                      <img ng-src="{{bannerInfo.bannerimage}}" />
                       <form class="mar20">
                         <div class="col-md-6 nomargin nopadding">
                           <input type="text" name="banner-name" class="form-control" value="{{bannerInfo.bannername}}" disabled/>
@@ -156,7 +150,8 @@
                             <strong>Get Your Banner Referral Link</strong>
                           </button>
                         </div>
-                        <div ng-show="bannerInfo.showCode" class="box-gry">&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerheight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt;</div>
+                        <div ng-show="bannerInfo.showCode" class="box-gry mobile-scroll">&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerheight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt;</div>
+                        <div class="clearfix"></div>
                       </form>
                     </div>
                   </div>
@@ -168,7 +163,7 @@
                 <hr />
                 <div class="row" >
                   <div class="col-md-2">
-                    <div class="number"><img src="images/email1.png" class="img-responsive" /></div>
+                    <div class="number"><img ng-src="{{s3Url}}email1.png" class="img-responsive" /></div>
                   </div>
                   <div class="col-md-10">
                     <div class="email-sample"><strong>Subject Lines :
@@ -187,7 +182,7 @@
                 <Div class="clearfix"></Div>
                 <div class="row" >
                   <div class="col-md-2">
-                    <div class="number"><img src="images/email2.png" class="img-responsive" /></div>
+                    <div class="number"><img ng-src="{{s3Url}}email2.png" class="img-responsive" /></div>
                   </div>
                   <div class="col-md-10">
                     <div class="email-sample">
@@ -211,7 +206,7 @@
                 <Div class="clearfix"></Div>
                 <div class="row" >
                   <div class="col-md-2">
-                    <div class="number"><img src="images/email3.png" class="img-responsive" /></div>
+                    <div class="number"><img ng-src="{{s3Url}}email3.png" class="img-responsive" /></div>
                   </div>
                   <div class="col-md-10">
                     <div class="email-sample">
@@ -239,7 +234,7 @@
                 <Div class="clearfix"></Div>
                 <div class="row" >
                   <div class="col-md-2">
-                    <div class="number"><img src="images/email4.png" class="img-responsive" /></div>
+                    <div class="number"><img ng-src="{{s3Url}}email4.png" class="img-responsive" /></div>
                   </div>
                   <div class="col-md-10">
                     <div class="email-sample">
@@ -268,7 +263,7 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane sms-blast" ng-class="(activeTab==='sms-blast'?'active':'')" style="height:500px;">
+              <div class="tab-pane sms-blast" ng-class="(activeTab==='sms-blast'?'active':'')">
                 <h2 class="mb35-sm top-spacemob10"><i class="fa fa-mobile icon-lg-red border-round-red" style="padding-left:3px;" aria-hidden="true"></i> <strong>SMS Blast</strong></h2>
                 <hr />
                 <div class="row">
@@ -284,7 +279,7 @@
                     <strong>4.</strong>Hey Would Like You To Check out this Private VIP Prelaunch which has the potential to make upto<strong> $65,610/Day</strong> . Some of the<strong> biggest industry names are already a part of it now and it is growing viral</strong><br />
                     <br />
                   </div>
-                  <div class="col-md-5 col-sm-12" align="center"><img src="images/sms-blast.png" width="300" class="img-responsive" ></div>
+                  <div class="col-md-5 col-sm-12" align="center"><img ng-src="{{s3Url}}sms-blast.png" width="300" class="img-responsive" ></div>
                 </div>
               </div>
               <div class="tab-pane social-blast" ng-class="(activeTab==='social-blast'?'active':'')">
@@ -316,7 +311,7 @@
                     <hr />
                     <strong>3.</strong> Be <strong>A Crypto Currency Miner And Start Earning Your First Bitcoins</strong>, Etherium and Other Alt Coins On Complete Autopilot!
                   </div>
-                  <div class="col-md-5" align="center"><img src="images/snapchat.png" width="300" /></div>
+                  <div class="col-md-5" align="center"><img ng-src="{{s3Url}}snapchat.png" width="300" /></div>
                 </div>
               </div>
               <div class="tab-pane fb-private" ng-class="(activeTab==='fb-private'?'active':'')">
@@ -324,7 +319,7 @@
                 <hr />
                 <div class="row" >
                   <div class="col-md-2">
-                    <div class="number"><img src="images/fb1.png" class="img-responsive" /></div>
+                    <div class="number"><img ng-src="{{s3Url}}fb1.png" class="img-responsive" /></div>
                   </div>
                   <div class="col-md-10">
                     <div class="email-sample">
@@ -342,7 +337,7 @@
                 <Div class="clearfix"></Div>
                 <div class="row" >
                   <div class="col-md-2">
-                    <div class="number"><img src="images/fb2.png" class="img-responsive" /></div>
+                    <div class="number"><img ng-src="{{s3Url}}fb2.png" class="img-responsive" /></div>
                   </div>
                   <div class="col-md-10">
                     <div class="email-sample">
@@ -365,7 +360,7 @@
                 <Div class="clearfix"></Div>
                 <div class="row" >
                   <div class="col-md-2">
-                    <div class="number"><img src="images/fb3.png" class="img-responsive" /></div>
+                    <div class="number"><img ng-src="{{s3Url}}fb3.png" class="img-responsive" /></div>
                   </div>
                   <div class="col-md-10">
                     <div class="email-sample">
@@ -392,7 +387,7 @@
                 <Div class="clearfix"></Div>
                 <div class="row" >
                   <div class="col-md-2">
-                    <div class="number"><img src="images/fb4.png" class="img-responsive" /></div>
+                    <div class="number"><img ng-src="{{s3Url}}fb4.png" class="img-responsive" /></div>
                   </div>
                   <div class="col-md-10">
                     <div class="email-sample">
@@ -455,7 +450,7 @@
                       </div>
                     </a>
                   </div>
-                  <div class="col-md-6"><img src="images/social-groups.png" class="img-responsive" /></div>
+                  <div class="col-md-6"><img ng-src="{{s3Url}}social-groups.png" class="img-responsive" /></div>
                 </div>
               </div>
             </div>

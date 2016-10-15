@@ -1,4 +1,4 @@
-<main-header></main-header>
+<main-header class="main-header"></main-header>
 <section>
   <div class="mainwrapper">
     <navigation></navigation>
@@ -6,12 +6,6 @@
       }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.error-padding{top:4px;}
     </style>
     <div class="mainpanel">
-      <div class="pageheader">
-        <!-- media -->
-        <news-feeds></news-feeds>
-        <!-- media -->
-      </div>
-      <!-- pageheader -->
       <!-- <coming-soon text-attr="landingPages"></coming-soon> -->
       <div class="contentpanel">
         <div  style="min-height:700px;">
@@ -51,6 +45,7 @@
                               <i class="fa fa-check-square-o" aria-hidden="true"></i>
                               <span id="copy-text-clipboard">{{referral.path}}{{sponsorId}}</span>
                               <button ngclipboard data-clipboard-target="#copy-text-clipboard" class="pull-right copy-btn "><i class="fa fa-chain "></i> Copy Link</button>
+                              <div class="clearfix"></div>
                             </div>
                             <table class="table table-dark-gry table-hover mb30 font16">
                               <thead style="background:#525252;">
@@ -79,20 +74,20 @@
                           <form class="form-horizontal " method="post" action="" >
                              <div data-toggle="buttons">
                                 <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='L'?'active':'')" ng-click="updatePlacement('L')">
-                                <img src="images/left.png" width="100" /><br />
+                                <img ng-src="{{s3Url}}left.png" width="100" /><br />
                                 <input type="radio" name="q1" value="0"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true" checked></i>
                                 Left Placement</div>
 
                                 <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='R'?'active':'')" ng-click="updatePlacement('R')">
-                                <img src="images/right.png" width="100" /><br />
+                                <img ng-src="{{s3Url}}right.png" width="100" /><br />
                                 <input type="radio" name="q1" value="1"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true"></i> Right Placement</div>
 
                                 <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='A'?'active':'')" ng-click="updatePlacement('A')">
-                                <img src="images/tree.png" width="100" /><br />
+                                <img ng-src="{{s3Url}}tree.png" width="100" /><br />
                                 <input type="radio" value="R"><i class="fa fa-check-circle-o lg-icon " aria-hidden="true"></i> Alternate Placement</div>
 
                                 <div class="btn btn-default1 btn-circle btn-lg col-md-3 col-sm-12 round-cor no-outline" ng-class="(autorotator=='W'?'active':'')" ng-click="updatePlacement('W')">
-                                <img src="images/week.png" width="100" /><br />
+                                <img ng-src="{{s3Url}}week.png" width="100" /><br />
                                 <input type="radio" name="q1" value="2"><i class="fa fa-check-circle-o lg-icon" aria-hidden="true"></i> Balance Weak Leg </div><br />
                              </div>
                           </form>

@@ -8,9 +8,10 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('LoginCtrl', function ($scope, $rootScope, $cookies, $state, $window, $location, $localStorage, coinomiaService) {
+  .controller('LoginCtrl', function ($scope, $rootScope, $cookies, $state, $window, $location, $localStorage, coinomiaService, config) {
     $scope.sigin = true;
     $scope.loginError = '';
+    $scope.s3Url = config.s3BucketUrl;
 
     // Authenticate User
     if(coinomiaService.isAuthenticated()){
@@ -41,7 +42,12 @@ angular.module('coinomiaFrontendApp')
               }
               $scope.$storage = $localStorage.$default({token: data.access_token});
               // $window.sessionStorage.setItem('token', data.access_token);
-              $state.go( "dashboard" );
+              if($location.search().return_url){
+                var url = atob($location.search().return_url);
+                $window.location.href = 'http://'+$location.host()+'/#/support?return_url='+url;
+              }else{
+                $state.go( "dashboard" );
+              }
             }else{
               $scope.loginError = data.error_description;
             }

@@ -1,4 +1,4 @@
-<main-header></main-header>
+<main-header class="main-header"></main-header>
 <section>
   <div class="mainwrapper">
     <navigation></navigation>
@@ -11,12 +11,7 @@
     }
     </style>
     <div class="mainpanel">
-      <div class="pageheader">
-        <!-- media -->
-        <news-feeds></news-feeds>
-        <!-- media -->
-      </div>
-      <!-- pageheader -->
+
       <div class="contentpanel">
         <h2 class="mb35"><i class="fa fa-cog icon-lg border-round" aria-hidden="true" style="padding-left:10px; padding-top:8px;"></i> <strong>Settings</strong></h2>
         <hr />
@@ -41,7 +36,7 @@
                 </li>
               </ul>
             </div>
-            <div class="tab-content" style="padding:20px 20px; ">
+            <div class="tab-content" style="padding:20px 20px; float:left;">
 
               <!-- User Info -->
               <div class="tab-pane tab_default_4 active">
@@ -74,7 +69,7 @@
               </div>
 
               <!-- Wallet Info -->
-              <div class="tab-pane tab_default_5" style="height:500px;" >
+              <div class="tab-pane tab_default_5" >
                 <h2 class="mb35-sm top-spacemob10">
                   <i class="fa fa-google-wallet icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i>
                   <strong>Wallet Address</strong>
@@ -86,9 +81,9 @@
                 <div class="alert alert-danger fade in text-capitalize" ng-if="errorMessage">
                   <strong>{{errorMessage}}</strong>
                 </div>
-                <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="BTC" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading"></wallet-info>
-                <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="ETH" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading"></wallet-info>
-                <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="USD" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading"></wallet-info>
+                <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="BTC" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
+                <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="ETH" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
+                <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="USD" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
               </div>
 
               <!-- Change Password -->

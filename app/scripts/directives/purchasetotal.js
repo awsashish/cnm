@@ -15,7 +15,8 @@ angular.module('coinomiaFrontendApp')
         purchasedAttr: "=",
         purchasedParams: "=",
         totalAttr: "=",
-        totalParams: "="
+        totalParams: "=",
+        s3Url: "="
       }
     };
   });

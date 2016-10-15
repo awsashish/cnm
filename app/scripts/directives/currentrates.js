@@ -13,7 +13,8 @@ angular.module('coinomiaFrontendApp')
       templateUrl: 'views/directiveTemplates/currentRates.html',
       scope: {
         currentMining: "=",
-        miningParams: "="
+        miningParams: "=",
+        s3Url: "="
       }
     };
   });

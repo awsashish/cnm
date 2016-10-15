@@ -18,7 +18,8 @@ angular.module('coinomiaFrontendApp')
         walletHeading:'=',
         type:'@',
         updateWallet: '&',
-        walletType: '@'
+        walletType: '@',
+        s3Url:"="
       }
     };
   });

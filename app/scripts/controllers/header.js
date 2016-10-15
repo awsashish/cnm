@@ -8,7 +8,16 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('HeaderCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService, UtilsService) {
+  .controller('HeaderCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService, UtilsService, config) {
+
+      $rootScope.s3Url = config.s3BucketUrl;
+
+      $rootScope.activeMenu = $state.current.name;
+
+       //  Logged out User
+       $scope.logout = function(){
+         $rootScope.$broadcast('logout');
+       }
 
       // Calcultate remaining Time
       var futureDate = moment('2016-11-01').tz('America/New_York').valueOf();
@@ -79,4 +88,13 @@ angular.module('coinomiaFrontendApp')
     UtilsService.getCountryCode().then(function(res) {
       $rootScope.allCountryCodes = res;
     });
+
+    // Get Total Signups
+    coinomiaService.getLatestSignup().then(function(res){
+      if(res.status === 200){
+        $rootScope.totalUsers = res.data.totalusers;
+        $rootScope.latestSignup = res.data.data;
+      }
+    })
+
   });

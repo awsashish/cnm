@@ -23,6 +23,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     this.requestFailed = function (error) {
+      return error;
       $log.error('XHR Failed for User location.\n' + angular.toJson(error.data, true));
     };
 
@@ -639,5 +640,23 @@ angular.module('coinomiaFrontendApp')
       return $http.get(this.apiHost +'latest-signup')
         .then(getLatestSignupRequestComplete)
         .catch(getLatestSignupRequestFailed);
+    }
+
+    // OS Ticket Login
+    this.osTicketlogin = function(token) {
+      // On Success
+      function osTicketloginRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function osTicketloginRequestFailed(error) {
+        // $log.error('XHR Failed for Wallet Info.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'latest-signup', token)
+        .then(osTicketloginRequestComplete)
+        .catch(osTicketloginRequestFailed);
     }
   });

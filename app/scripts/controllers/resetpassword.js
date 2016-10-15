@@ -8,8 +8,8 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('ResetpasswordCtrl', function ($scope, $location, $state, coinomiaService) {
-
+  .controller('ResetpasswordCtrl', function ($scope, $location, $state, coinomiaService, config) {
+    $scope.s3Url = config.s3BucketUrl;
     $scope.confrimPassError = false;
 
     if($location.search().email && $location.search().ucode) {

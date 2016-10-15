@@ -12,7 +12,8 @@ angular.module('coinomiaFrontendApp')
       restrict: 'E',
       templateUrl: 'views/directiveTemplates/countryFlag.html',
       scope: {
-        countryName: "="
+        countryName: "=",
+        s3Url: "="
       }
     };
   });

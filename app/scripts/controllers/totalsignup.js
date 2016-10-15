@@ -9,7 +9,6 @@
  */
 angular.module('coinomiaFrontendApp')
   .controller('TotalsignupCtrl', function ($scope, coinomiaService, UtilsService) {
-
     // Get Country Codes
     UtilsService.getCountryCode().then(function(res) {
       $scope.allCountryCodes = res;
@@ -17,7 +16,7 @@ angular.module('coinomiaFrontendApp')
 
     // Get Total Signups
     coinomiaService.getLatestSignup().then(function(res){
-      if(res.status === 200){
+      if(res.status === 200) {
         $scope.totalUsers = res.data.totalusers;
         $scope.latestSignup = res.data.data;
       }

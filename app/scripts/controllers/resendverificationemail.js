@@ -8,7 +8,9 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('ResendverificationemailCtrl', function ($scope, coinomiaService) {
+  .controller('ResendverificationemailCtrl', function ($scope, coinomiaService, config) {
+
+    $scope.s3Url = config.s3BucketUrl;
     $scope.emailError = false;
 
     // Forgot Password

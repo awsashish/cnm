@@ -3,19 +3,51 @@
     <i class="fa fa-align-justify top-menu-icon" aria-hidden="true"></i>
   </button>
 </div>
-<div class="col-md-5 col-md-offset-1">
+<div class="col-md-4 col-md-offset-1">
   <p class="user-info" style=" padding-top:10px;">
-    <strong><i class="fa fa-user"></i> Welcome {{name}}, <country-flag country-name="countryFlag" /> </strong>
+    <strong><i class="fa fa-user"></i> Welcome {{name}}, <country-flag country-name="countryFlag" s3-url="s3Url"/> </strong>
   </p>
 </div>
-<div class="col-md-6" align="right">
+<div class="col-md-7">
   <div class="counter-date">
-    <timer countdown="remainingTime" max-time-unit="'day'" interval="1000">
+    <timer countdown="remainingTime" max-time-unit="'day'" class="timer" interval="1000">
       <span class="countdown-amount">{{ddays}}</span>Day{{daysS}}
       <span class="countdown-amount">{{hhours}}</span> Hour{{hoursS}}
       <span class="countdown-amount">{{mminutes}}</span> Minute{{minutesS}}
       <span class="countdown-amount">{{sseconds}}</span> Second{{secondsS}}</timer>
   </div>
   <p class="cal-dash pull-left" style="margin: 10px 12px 0;">To Launch...</p>
-  <img src="images/logo-coinomia.png" width="200" style="padding:10px 20px 0px;">
+  <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo pull-right" width="200" style="padding:10px 20px 0px;">
+</div>
+<div class="col-md-12 mobile-navigation collapse" id="bs-example-navbar-collapse-1">
+  <nav id="nav">
+    <ul class="nav nav-pills nav-stacked" id="menu-content">
+      <li ><a href="#/dashboard" id="default" ng-class="(activeMenu==='dashboard'?'highlite':'')">
+        <span>Dashboard</span></a>
+      </li>
+      <li><a href="#/referral-link" ng-class="(activeMenu==='referral-link'?'highlite':'')">
+        <span>My Referral Links</span></a>
+      </li>
+      <li><a href='#/promote-coinomia' ng-class="(activeMenu==='promote-coinomia'?'highlite':'')">
+        <span>Promote Coinomia</span></a>
+      </li>
+      <li><a href="#/networks" ng-class="(activeMenu==='networks'?'highlite':'')">
+        <span>Networks</span></a>
+      </li>
+      <li><a href="#/mining" ng-class="(activeMenu==='mining'?'highlite':'')">
+        <span>Mining</span></a>
+      </li>
+      <li><a href="#/setting" ng-class="(activeMenu==='setting'?'highlite':'')">
+        <span>Settings</span></a>
+      </li>
+      <li class="parent">
+        <a href="#/support" ng-class="(activeMenu==='support'?'highlite':'')">
+          <span>Support</span></a>
+      </li>
+      <li class="parent">
+        <a class="logout" ng-click="logout()" style="cursor:pointer">
+          <span>Logout</span></a>
+      </li>
+    </ul>
+  </nav>
 </div>

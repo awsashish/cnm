@@ -111,10 +111,6 @@ a:focus {
   font-size:27px;
 }
 
-.no-margin {
-  margin:0 !important;
-}
-
 .error-padding:before {
   border-bottom: 10px solid #f2dede;
   border-left: 8px solid transparent;
@@ -124,6 +120,139 @@ a:focus {
   content: '';
   position: absolute;;
   top: -10px;
+}
+
+.sponsor-name {
+  background: #C30;
+  font-size: 14px;
+  border-radius: 30px;
+  padding: 10px 10px 10px 10px;
+  color: #fff !important;
+  text-transform: capitalize;
+  float: right;
+}
+
+.sponsor-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  top: 6px;
+}
+
+.child-wrapper {
+  position: relative;
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+.child-sponsor {
+  background: #C30;
+  font-size: 14px;
+  border-radius: 30px;
+  color: #fff !important;
+  text-transform: capitalize;
+  padding: 5px 4px !important;
+  float: none !important;
+}
+
+.latest-signup {
+  margin: 0px !important;
+  font-size: 20px;
+  padding: 0px !important;
+  padding-bottom: 10px !important;
+  color: #d9534f;
+  font-family: "Oswald",sans-serif;
+}
+
+.timer span { font-size: 13px; }
+
+.arrow_box {
+	position: relative;
+	background: #88b7d5; padding:55px 20px; color:#fff; border-radius:5px;
+	border: 1px solid #c2e1f5; margin-top:5px;
+}
+
+.arrow_box:after, .arrow_box:before {
+	left: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-left-color: #88b7d5;
+	border-width: 10px;
+	margin-top: -10px;
+}
+.arrow_box:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-left-color: #c2e1f5;
+	border-width: 10px;
+	margin-top: -10px;
+}
+
+.no-wrap td { white-space: normal; }
+
+.refresh{ cursor: pointer; margin-right: 20px;margin-top: 20px;}
+
+.tree li a{
+  height: 100px;
+  width: 200px;
+  padding: 5px 10px;
+  text-decoration: none;
+  background-color: white;
+  color: #8b8b8b;
+  font-family: arial, verdana, tahoma;
+  font-size: 11px;
+  display: inline-block;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  -transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  cursor: pointer;
+}
+
+.btn-default1{ border:1px solid #ccc; width:24%; margin-right:1%;white-space: normal;}
+.btn-default1:active, .btn-default1.active, .open > .dropdown-toggle.btn-default1{ border:1px solid #ccc !important; background:#FC0;}
+
+.table-wrapper {
+  overflow: auto;
+}
+
+.table-content {
+    white-space: nowrap;
+}
+
+.table-content .table {
+  display: inline-table;
+  margin-bottom: 0;
+}
+
+.total-signup{
+  background: #FC0;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 30px;
+  color: #fff !important;
+  font-weight: bold;
+}
+
+.main-header{
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  height: 1p0px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.03);
+  float: left;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .ajax_loader {
@@ -149,17 +278,22 @@ a:focus {
     display: block;
 }
 
+.mobile-scroll{ overflow-x: hidden;}
+
 .banner-section {
   margin-bottom: 30px;
   border-bottom: 1px solid #eee;
   padding: 0 0 20px 0;
 }
 
+.pagination-default {
+  float: right;
+}
+
 .coming-soon-wrapper {
   width: 93%;
-  height: 100%;
   position: fixed;
-  top: 0;
+  top: 30%;
   z-index: 999;
 }
 
@@ -178,6 +312,8 @@ a:focus {
   z-index: 9999;
 }
 
+.copy-btn{background:#fff; color:#000; font-size:12px; padding:4px; border:1px solid #000; border-bottom:2px solid #000; border-radius:3px; margin-top:-3px;}
+
 .select {
   position: absolute;
   z-index: 9;
@@ -185,11 +321,17 @@ a:focus {
   right: 6px;
 }
 
+.lg-icon{ font-size:22px; padding-top:5px;}
+
 .custom-select {
   position: absolute;
   z-index: 9;
   top: 37px;
   right: 20px;
+}
+
+.navbar-header {
+  position: relative;
 }
 
 select {
@@ -303,6 +445,18 @@ select {
   font-size: 21px;
 }
 
+.mb37{font-size:30px !important; margin-bottom:70px; width:30%; margin:auto;  font-family: 'Oswald', sans-serif; border-bottom:5px solid #fc0;  padding-bottom:10px !important; color: #999; text-transform:uppercase;  }
+
+.yellow-border {
+  margin-bottom: 70px;
+  width: 385px;
+  margin: auto;
+  border-bottom: 5px solid #fc0;
+  padding-bottom: 10px !important;
+  text-transform: uppercase;
+  display: block;
+}
+
 .full-width{
   width:100%;
 }
@@ -329,6 +483,88 @@ select {
     display: block;
     content: '';
 }
+
+/*********************************** Calender *****************************************/
+
+.responsive-calendar .controls {
+  text-align: center;
+}
+.responsive-calendar .controls a {
+  cursor: pointer;
+}
+.responsive-calendar .controls h4 {
+  display: inline;
+}
+.responsive-calendar .day-headers,
+.responsive-calendar .days {
+  font-size: 0;
+}
+.responsive-calendar .day {
+  display: inline-block;
+  position: relative;
+  font-size: 12px;
+  width: 14.285714285714286%;
+  text-align: center; border-left:1px solid #f5f5f5; border-bottom:1px solid #f2f2f2;
+}
+.responsive-calendar .day a {
+  color: #000000;
+  display: block;
+  cursor: pointer;
+  padding: 29% 0 0% 5%;
+  text-align: left;
+}
+.responsive-calendar .day a:hover {
+  background-color: #eee;
+  text-decoration: none;
+}
+.responsive-calendar .day.header {
+ background:#f2f2f2; font-size:16px; padding:5px; color:#666 !important;
+}
+.responsive-calendar .day.active a {
+  background-color: #fbfbfb;
+  color: #000;
+}
+.responsive-calendar .day.active a:hover {
+  background-color: #fbfbfb;
+}
+.responsive-calendar .day.active .not-current {
+  background-color: #8fcaef;
+  color: #ffffff;
+}
+.responsive-calendar .day.active .not-current:hover {
+  background-color: #bcdff5;
+}
+.responsive-calendar .day.not-current a {
+  color: #ddd;
+}
+.responsive-calendar .day .badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 1; background:#d9534f !important;
+}
+
+.search-userbox {
+  border-bottom: 2px solid #F90;
+  border: 2px solid #fff;
+  margin-left: 10px;
+  border-radius: 5px;
+  color: #000;
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #f2f2f2;
+}
+
+.btn-binary-search {
+  background: #FC0;
+  border: 1px solid #F90;
+  padding: 2px 10px;
+  color: #fff;
+}
+
+
+
+/*********************************** Calender *****************************************/
 
 
 /***** 3.1 HEADER LEFT *****/
@@ -656,8 +892,27 @@ select {
 
 /***** 4.1 LEFT PANEL STYLES *****/
 
+.mobile-navigation {
+  width: 100%;
+  float: left;
+  background:#666;
+  z-index: 9999;
+}
+
+.mobile-navigation .nav > li > a {
+  color: #f7f7f7;
+  border-radius: 0;
+  transition: all 0.2s ease-out 0s;
+  padding: 12px 5px;
+}
+
+.mobile-navigation .nav > li > a:hover, .mobile-navigation .nav > li > a:focus, .mobile-navigation .nav > li > a:active {
+    background-color: #ffd803;
+}
+
 .leftpanel {
     width: 100px;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0; background:#666;
@@ -3555,7 +3810,6 @@ body.signin {
 .mb32{ margin-bottom: 10px; font-size:25px !important; font-family: 'Oswald', sans-serif; border-bottom:5px solid #f2f2f2; padding-bottom:10px !important; color: #fff; border-radius:30px; background: #39f; padding:15px; text-align:center;  }
 .mb33{  font-size:35px !important; font-family: 'Oswald', sans-serif; color:#ffd803;  }
 .mb35{ font-size:25px !important; font-family: 'Oswald', sans-serif; margin:0px !important; padding:0px !important; }
-.mb37{font-size:30px !important; margin-bottom:70px; width:30%; margin:auto;  font-family: 'Oswald', sans-serif; border-bottom:5px solid #fc0;  padding-bottom:10px !important; color: #999; text-transform:uppercase;  }
 .mb38{  font-size:20px !important; font-family: 'Oswald', sans-serif; color:#ffd803; }
 
 .plan-text{font-size:30px !important; padding:0px; background:#1c8cb9;  padding:5px;  margin:0px; margin-bottom:5px; border-bottom:3px solid #155d7a; font-family: 'Oswald', sans-serif;  color:#fff;}
@@ -3630,6 +3884,15 @@ body.signin {
     .logo {
         position: static;
     }
+
+    .navbar-toggle {
+      position: absolute;
+      right: 0;
+      z-index: 9999;
+      margin-top:0;
+    }
+
+    .left-navigation{ display: none !important}
 
     .headerwrapper .header-left,
     .headerwrapper .header-right {
@@ -3798,7 +4061,7 @@ body.signin {
     }
 
     .contentpanel {
-        padding: 10px;
+        padding: 5px;
     }
 }
 
@@ -4407,18 +4670,72 @@ h4.great {
 .btn-buynow{ background: #6C9; padding:20px 60px; color:#fff; font-size:20px; border-bottom:5px solid #4b9c74}
 .top-menu-icon{ border:1px solid #999; font-size:18px; padding:5px; border-radius:5px; color:#FC0;  cursor:pointer;}
 .btn-success{ border-bottom:2px solid #438c43}
+
+@media (min-width : 768px) and (max-width : 1024px) {
+  .tree li a {width: 120px;}
+  .arrow_box:after, .arrow_box:before { display: none;}
+}
+
 @media(max-width:767px)
 {
 
 	.leftpanel{ margin-top:-68px !important; height:100% !important;}
-	.contentpanel{ margin-top:60px;}
+	.contentpanel{ margin-top:10px;}
 	.pageheader .media{ padding-top:10px;}
 
-.profile-left{height:160px !important;}
+  .profile-left{height:160px !important;}
 
-
+  .header-logo{ visibility: hidden; }
+  .yelo-btn{margin-top: 10px;margin-left: -10px;white-space: normal}
+  .pagination-default { float: left; width: 600px;}
+  .mobile-scroll{ overflow-x: scroll; }
+  .copy-btn{ margin-top: 5px; }
+  .btn-default1 { width: 48%; font-size: 15px; margin-bottom: 2%;}
+  .lg-icon{ font-size: 18px; }
+  .tree-wrapper { width: 100%; overflow-x: scroll;}
+  .tree { width: 600px; padding: 0; position: relative;}
+  .tree li a{ width: 100px; }
+  .refresh{ cursor: pointer; margin-right: 0;margin-top: 20px;}
+  .arrow_box:after, .arrow_box:before { display: none;}
+  .responsive-block { width: 600px; margin: 0 auto; }
+  .block-wrapper { width: 100%; overflow-x: scroll;}
+  .no-wrap td { white-space: normal !important; }
+  .sponsor-name {
+    float: none;
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    position: absolute;
+    top: 5px;
+  }
 	}
 
+@media(max-width:481px) {
+  .btn-default1 { width: 100%;}
+  .lg-icon{ font-size: 18px; }
+  .mb37{ font-size: 22px !important; }
+  .yellow-border{ width: 260px; }
+  .nav-tabs > li > a { font-size: 16px !important; }
+  .responsive-calendar .day.header { font-size:14px; }
+  .responsive-calendar .day a { padding: 50% 0 0% 5%; }
+  .badge {font-size: 10px; }
+  .contentpanel {margin-top: 10px;}
+  .timer span { font-size: 11px; }
+  .countdown-amount { font-size: 12px !important; }
+  .user-info{ width: 180px; }
+  .main-header{ height: auto;}
+  .refresh {
+    cursor: pointer;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .sponsor-wrapper{ float: left; margin: 0; left:-20px; }
+  .sponser-name{ white-space: nowrap; }
+  .coming-soon-wrapper { width: 100%; }
+  .panel-dashboard {width: 90%;}
+}
+
+.pageheader{ padding: 10px 10px 20px;}
 
 .btn-danger{ border-bottom:2px solid #930}
 .lft-menu{height:130px !important;}
@@ -4451,7 +4768,7 @@ h4.great {
 .calculator{background:#999; color:#fff; font-weight:bold; border:0px; border-bottom:5px solid #525252;  font-size:20px; text-align:center; border-radius:5px; padding:10px; margin-top:10px; width:100%;}
 
 .buynow{ background: #FC0; border:0px; border-bottom:5px solid #CA9926; color:#fff; font-weight:bold; font-size:25px; text-align:center; border-radius:5px; padding:10px;}
-.news-feeds{ border-left:5px solid #FC0; padding:0px 0px 1px 5px;  margin-top:-20px; }
+.news-feeds{ border-left:5px solid #FC0; padding:0px 0px 1px 5px;  margin-top:0; }
 
 
 .arrow_box-top-lft-amout {
@@ -4487,37 +4804,6 @@ h4.great {
 .mar10{ margin-top:10px !important;}
 .mar50{ margin-top:50px !important;}
 .total-income{ border-bottom:1px solid #ccc; border-top:1px solid #ccc; font-weight:bold; padding:5px; border-radius:5px; background:#3e3b3b; color:#fff;}
-
-
-
-.arrow_box {
-	position: relative;
-	background: #88b7d5; padding:55px 20px; color:#fff; border-radius:5px;
-	border: 1px solid #c2e1f5; margin-top:5px;
-}
-.arrow_box:after, .arrow_box:before {
-	left: 100%;
-	top: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-}
-
-.arrow_box:after {
-	border-color: rgba(136, 183, 213, 0);
-	border-left-color: #88b7d5;
-	border-width: 10px;
-	margin-top: -10px;
-}
-.arrow_box:before {
-	border-color: rgba(194, 225, 245, 0);
-	border-left-color: #c2e1f5;
-	border-width: 10px;
-	margin-top: -10px;
-}
 
 .nav.nav-justified > li > a { position: relative; }
 .nav.nav-justified > li > a:hover,
@@ -4680,13 +4966,16 @@ h4.great {
 	 width:100%;
 }
 
-.news-feeds{ margin-top:-7px;}
 .mb35{ margin-top:-50px !important;}
 .nav > li {
     width: 100%;
 }
 .top-spacemob10{ padding-top:50px !important;}
 .form-pricing{ height:300px !important;}
+}
+
+.no-margin {
+  margin:0 !important;
 }
 
 
@@ -4761,23 +5050,6 @@ right connector from last child*/
     width: 0; height: 20px;
 }
 
-.tree li a{
-    height: 100px;
-    width: 200px;
-    padding: 5px 10px;
-    text-decoration: none;
-    background-color: white;
-    color: #8b8b8b;
-    font-family: arial, verdana, tahoma;
-    font-size: 11px;
-    display: inline-block;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    -transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    cursor: pointer;
-}
-
 /*Time for some hover effects*/
 /*We will apply the hover effect the the lineage of the element also
 .tree li a:hover, .tree li a:hover+ul li a {
@@ -4824,12 +5096,9 @@ font:bold 11px Arial;
 }
 
 .yelo-btn{background:#FC0 !important; border:1px solid #D0C535 !important; color:#000 !important;}
-.copy-btn{background:#fff; color:#000; font-size:12px; padding:4px; border:1px solid #000; border-bottom:2px solid #000; border-radius:3px; margin-top:-3px;}
 
-.lg-icon{ font-size:22px; padding-top:5px;}
-.round-cor{border:5px solid #fff; border-radius:15px;}
-.btn-default1{ border:1px solid #ccc; width:24%; margin-right:1%;}
-.btn-default1:active, .btn-default1.active, .open > .dropdown-toggle.btn-default1{ border:1px solid #ccc !important; background:#FC0;}
+.round-cor{ border-radius:15px; }
+
 .form-signup-reffer{background:#fbfbfb; border-radius:10px; padding:20px;}
 
 .form-signup-reffer-outer{box-shadow:0px 0px 2px 2px #f2f2f2; padding:20px;}
@@ -4840,89 +5109,6 @@ font:bold 11px Arial;
 .box-gry{clear:left; background:#fbfbfb; font-weight:bold; border-bottom:2px solid #ccc; border-top:1px solid #e2e2e2; padding:10px; margin-top:50px;}
 
 
-
-
-
-/*********************************** Calender *****************************************/
-
-.responsive-calendar .controls {
-  text-align: center;
-}
-.responsive-calendar .controls a {
-  cursor: pointer;
-}
-.responsive-calendar .controls h4 {
-  display: inline;
-}
-.responsive-calendar .day-headers,
-.responsive-calendar .days {
-  font-size: 0;
-}
-.responsive-calendar .day {
-  display: inline-block;
-  position: relative;
-  font-size: 12px;
-  width: 14.285714285714286%;
-  text-align: center; border-left:1px solid #f5f5f5; border-bottom:1px solid #f2f2f2;
-}
-.responsive-calendar .day a {
-  color: #000000;
-  display: block;
-  cursor: pointer;
-  padding: 5% 0 5% 0;
-}
-.responsive-calendar .day a:hover {
-  background-color: #eee;
-  text-decoration: none;
-}
-.responsive-calendar .day.header {
- background:#f2f2f2; font-size:16px; padding:5px; color:#666 !important;
-}
-.responsive-calendar .day.active a {
-  background-color: #fbfbfb;
-  color: #000;
-}
-.responsive-calendar .day.active a:hover {
-  background-color: #fbfbfb;
-}
-.responsive-calendar .day.active .not-current {
-  background-color: #8fcaef;
-  color: #ffffff;
-}
-.responsive-calendar .day.active .not-current:hover {
-  background-color: #bcdff5;
-}
-.responsive-calendar .day.not-current a {
-  color: #ddd;
-}
-.responsive-calendar .day .badge {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  z-index: 1; background:#d9534f !important;
-}
-
-.search-userbox {
-  border-bottom: 2px solid #F90;
-  border: 2px solid #fff;
-  margin-left: 10px;
-  border-radius: 5px;
-  color: #000;
-  display: inline-block;
-  padding: 10px;
-  border: 1px solid #f2f2f2;
-}
-
-.btn-binary-search {
-  background: #FC0;
-  border: 1px solid #F90;
-  padding: 2px 10px;
-  color: #fff;
-}
-
-
-
-/*********************************** Calender *****************************************/
 
 a div.box-outer{ border:1px solid #e2e2e2; color:#333 !important; font-family: 'Oswald', sans-serif; text-transform:uppercase; margin-bottom:18px; padding:0px 0px; font-size:18px; border-radius:5px; box-shadow:0px 0px 2px 2px #f5f5f5; border-bottom:3px solid #e2e2e2;  background:#fbfbfb;}
 a:hover div.box-outer{border-bottom:3px solid #ccc;}
@@ -4973,8 +5159,8 @@ a:hover div.box-outer{border-bottom:3px solid #ccc;}
 .gplus{ color:#C30!important; font-size:37px !important;padding-right:20px;}
 .twitter-btn{ color: #0CF!important; font-size:37px !important;padding-right:20px;}
 .fb-btn{border:1px solid #e2e2e2; padding:10px; border-radius:5px; border-bottom:2px solid #ccc; text-transform:uppercase; font-size:25px; font-family: 'Oswald', sans-serif; margin-bottom:15px;}
-.arrow-bot-lft{position:absolute; margin-top:-20px; left:25%; z-index:4000;}
-.arrow-bot-rgt{position:absolute; margin-top:-20px; left:75%; z-index:4000;}
+.arrow-bot-lft{position:absolute; margin-top:-20px; left:25%; z-index:99;}
+.arrow-bot-rgt{position:absolute; margin-top:-20px; left:75%; z-index:99;}
 
 /***********************Calender ******************************************/
 .counter-date {
@@ -4994,7 +5180,7 @@ a:hover div.box-outer{border-bottom:3px solid #ccc;}
     height: 50px;
     margin: 5px 2px;
     text-align: center;
-    font-size: 12px;
+    font-size: 15px;
     background: #fc0;
     border-radius: 50%;
     border-bottom: 2px solid #F90;
@@ -5098,4 +5284,6 @@ filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#feea69', endC
 
 .countdown-period{ color:#999; font-size:14px;  margin-right:10px !important}
 .cal-dash{ font-size:16px; font-family: 'Oswald', sans-serif; font-weight:normal; margin-right:10px !important;}
+
+
 /*********************************************Calender End **********************************************************/

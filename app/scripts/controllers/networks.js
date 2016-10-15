@@ -43,7 +43,7 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
-    /*** Excel Import ***/
+    /*** Excel Export ***/
     $scope.getExcelData = function(excelData) {
       $scope.exportData = [{
           name: 'sheet1',
@@ -54,7 +54,7 @@ angular.module('coinomiaFrontendApp')
     $scope.exportExcel = {
       down: function() {},
     };
-    /** -- Excel Import -- **/
+    /** -- Excel Export -- **/
 
     $scope.userDirects($scope.currentPage);
 

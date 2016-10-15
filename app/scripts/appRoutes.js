@@ -10,9 +10,17 @@ angular.module('coinomiaFrontendApp')
         //templateUrl: 'views/index.html',
         controller: 'MainCtrl'
     })
-    // Login page
+    // // Login page
+    // .state('login', {
+    //     url: '/login',
+    //     templateUrl: 'views/login.html',
+    //     controller: 'LoginCtrl',
+    //     authenticate: false
+    // })
+
+    // Login rediect
     .state('login', {
-        url: '/login',
+        url: '/login?return_url',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
         authenticate: false
@@ -73,13 +81,23 @@ angular.module('coinomiaFrontendApp')
     .state('success', {
         url: '/success',
         templateUrl: 'views/success.html',
+        controller: 'SuccessCtrl'
     })
 
     // Support page
     .state('support', {
-        url: '/support',
+        url: '/support?return_url',
         templateUrl: 'views/support.html',
+        controller: 'SupportCtrl',
+        authenticate:true
     })
+
+    // Support page
+    // .state('support', {
+    //     url: '/support',
+    //     templateUrl: 'views/support.html',
+    //     authenticate:true
+    // })
 
     // Terms & Conditions page
     .state('terms-and-conditions', {

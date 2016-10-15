@@ -48,7 +48,8 @@ angular.module('coinomiaFrontendApp')
         btcRackCalc: "&",
         ethPoolCalc: "&",
         ethContributorCalc: "&",
-        ethRackCalc: "&"
+        ethRackCalc: "&",
+        s3Url:"="
       }
     };
   });

@@ -1,82 +1,111 @@
-<main-header></main-header>
+<main-header class="main-header"></main-header>
 <section>
   <div class="mainwrapper">
     <navigation></navigation>
-    <style>.price-box{ margin-bottom:20px; padding:20px; background:#f5f5f5;}.container .jumbotron{ padding-left:0px !important; padding-right:0px !important;}label {font-size: 11px;}.nav-tabs > li > a{ padding: 5px !important; color:#fff !important; font-size:20px; font-family:'Oswald', sans-serif;}.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background:#b73632 !important;} select {
-    -webkit-appearance: menulist;}
+    <style>.price-box{ margin-bottom:20px; padding:20px; background:#f5f5f5;}.container .jumbotron{ padding-left:0px !important; padding-right:0px !important;}label {font-size: 11px;}.nav-tabs > li > a{ padding: 5px !important; color:#fff !important; font-family:'Oswald', sans-serif;}.nav-tabs{background: #ccc  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background:#b73632 !important;} .nav-tabs > li > a { font-size: 20px; } select { -webkit-appearance: menulist;}
    </style>
     <div class="mainpanel">
-      <div class="pageheader">
-        <!-- media -->
-        <news-feeds></news-feeds>
-        <!-- media -->
-      </div>
-      <!-- pageheader -->
-      <div class="contentpanel ">
-        <div class="col-md-9 col-sm-12">
-          <div class="tabbable-panel" >
-            <div class="tabbable-line" >
-              <div align="center">
-                <ul class="nav nav-tabs">
-                 <li class="active" style="width:50%; ">
-                    <a href=".tab_default_4" data-toggle="tab" aria-expanded="true">
-                    <i class="fa fa-user " aria-hidden="true"></i>
-                    My Team </a>
-                 </li>
-                 <li style="width:50%;" class="">
-                    <a href=".tab_default_5" data-toggle="tab" aria-expanded="false">
-                    <i class="fa fa-users " aria-hidden="true"></i>
-                    Company Wide </a>
-                 </li>
-                </ul>
-              </div>
-              <div class="tab-content" style="padding:20px 10px 0px; margin-bottom:20px; ">
-                <div class="tab-pane tab_default_4 active">
-                  <img src="images/arrow-bot.png" class="arrow-bot-lft">
-                  <p ng-if="loadingData">Loading data ... </p>
-                  <ui-calendar data="myTeam" date-range="getDates" ng-if="hasMyTeamData"></ui-calendar>
+
+      <div class="contentpanel" style="overflow:hidden">
+        <div class="col-md-7 col-sm-12 col-lg-9">
+          <news-feeds></news-feeds>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-3">
+          <a href="#promote-coinomia/social-group">
+            <div class="box-outer"><img src="{{s3Url}}facebook.png" width="70" /> &nbsp;&nbsp;Get Connected  </div>
+          </a>
+          <a href="#promote-coinomia/grab-concept">
+            <div class="box-outer"><img src="{{s3Url}}presentation.png" width="70" />&nbsp;&nbsp; Grab the Concept</div>
+          </a>
+          <a href="#referral-link">
+            <div class="box-outer"><img src="{{s3Url}}plan.png" width="70" /> &nbsp;&nbsp;Your Referral Links</div>
+          </a>
+          <a href="#promote-coinomia/sms-blast">
+            <div class="box-outer"><img src="{{s3Url}}mining.png" width="70" /> &nbsp;&nbsp;Get, Set, Go!</div>
+          </a>
+          <a ng-click="getReferrals()" style="cursor:pointer;">
+            <div class="box-outer"><img src="images/mining.png" width="70" /> &nbsp;&nbsp;Get Automatic Referrals!</div>
+          </a>
+        </div>
+
+        <div>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="tabbable-panel" >
+              <div class="tabbable-line" >
+                <div align="center">
+                  <ul class="nav nav-tabs">
+                   <li class="active" style="width:50%;">
+                      <a href=".tab_default_4" data-toggle="tab" aria-expanded="true">
+                        <i class="fa fa-users " aria-hidden="true"></i>
+                        Company Wide </a>
+                   </li>
+                   <li style="width:50%;" class="">
+                      <a href=".tab_default_5" data-toggle="tab" aria-expanded="false">
+                      <i class="fa fa-user " aria-hidden="true"></i>
+                      My Team </a>
+                   </li>
+                  </ul>
                 </div>
-                <div class="tab-pane tab_default_5">
-                  <img src="images/arrow-bot.png" class="arrow-bot-rgt">
-                  <p ng-if="loadingCoinomiaData">Loading data ... </p>
-                  <ui-calendar data="coinomiaTeam" date-range="getDates" ng-if="hasCoinomiaTeamData"></ui-calendar>
+                <div class="tab-content" style="padding:20px 10px 0px; margin-bottom:20px; ">
+                  <div class="tab-pane tab_default_4 active">
+                    <img src="images/arrow-bot.png" class="arrow-bot-lft">
+                    <p ng-if="loadingData">Loading data ... </p>
+                    <ui-calendar data="coinomiaTeam" date-range="getDates" ng-if="hasCoinomiaTeamData"></ui-calendar>
+                  </div>
+                  <div class="tab-pane tab_default_5">
+                    <img src="images/arrow-bot.png" class="arrow-bot-rgt">
+                    <p ng-if="loadingCoinomiaData">Loading data ... </p>
+                    <ui-calendar data="myTeam" date-range="getDates" ng-if="hasMyTeamData"></ui-calendar>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="col-sm-12 col-md-12 col-lg-6 mb20">
+            <h3 align="left" class="latest-signup">
+              <i class="fa fa-user-plus"></i> Total Sign ups
+            </h3>
+            <p class="total-signup">Total Sign Ups ({{totalUsers | number}})</p>
+            <div class="table-content">
+              <div class="table-responsive">
+                <table class="table table-striped table-hover" style="width:50%">
+                  <tbody>
+                    <tr ng-repeat="(key, row) in latestSignup | limitTo:10">
+                       <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="table table-striped table-hover" style="width:50%">
+                  <tbody>
+                    <tr ng-repeat="(key, row) in latestSignup | limitTo:10:10">
+                       <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-3">
-          <a href="#promote-coinomia/social-group">
-            <div class="box-outer"><img src="images/facebook.png" width="70" /> &nbsp;&nbsp;Get Connected  </div>
-          </a>
-          <a href="#promote-coinomia/grab-concept">
-            <div class="box-outer"><img src="images/presentation.png" width="70" />&nbsp;&nbsp; Grab the Concept</div>
-          </a>
-          <a href="#referral-link">
-            <div class="box-outer"><img src="images/plan.png" width="70" /> &nbsp;&nbsp;Your Referral Links</div>
-          </a>
-          <a href="#promote-coinomia/sms-blast">
-            <div class="box-outer"><img src="images/mining.png" width="70" /> &nbsp;&nbsp;Get, Set, Go!</div>
-          </a>
-        </div>
+
         <div class="clearfix"></div>
         <div class="row row-stat">
           <div class="col-md-3" purchase-total
             purchased-attr="purchasedPower"
-            purchased-params="purchasedParams"></div>
+            purchased-params="purchasedParams" s3-url="s3Url"></div>
           <!-- col-md-4 -->
           <div class="col-md-6" current-rates
             current-mining="currentMining"
-            mining-params="ratesParams"></div>
+            mining-params="ratesParams" s3-url="s3Url"></div>
           <!-- col-md-4 -->
           <div class="col-md-3" purchase-total
             total-attr="totalIncome"
-            total-params="totalParams"></div>
+            total-params="totalParams" s3-url="s3Url"></div>
           <!-- col-md-4 -->
         </div>
         <!-- row -->
         <br />
-        <h2 align="center" class="mb37" style="width:40%;"><span class="glyphicon glyphicon-minus"></span> Virtual Calculators<span class="glyphicon glyphicon-minus"></span> </h2>
+        <h2 align="center" class="mb37 full-width" style="border:0"><span class="glyphicon glyphicon-minus"></span> Virtual Calculators<span class="glyphicon glyphicon-minus"></span> </h2>
+        <span class="yellow-border"></span>
         <br />
         <div class="row">
           <div class="col-md-6">
@@ -85,7 +114,7 @@
                 <h3 align="center" class="yelo-text mt0">Sales Commissions <br /><small class="sm-text01"><strong>Considering you as Rack Contract Owners!</strong></small></h3>
                 <br />
                 <!-- Direct Sales Commission -->
-                <div sales-commission commission="'direct'"
+                <div class="block-wrapper" sales-commission commission="'direct'"
                   tree-details="treeDetails"
                   sales-Heading="salesDirectHeading"
                   sales-image-path="salesDirectImage"
@@ -100,10 +129,10 @@
                   rack-total="rackTotal"
                   pool-calc="poolCalc(treeData, contract, poolData)"
                   contributor-calc="contributorCalc(treeData, contract, contributorData)"
-                  rack-calc="rackCalc(treeData, contract, rackData)" ng-if="hasDirectReferral"></div>
+                  rack-calc="rackCalc(treeData, contract, rackData)" s3-url="s3Url" ng-if="hasDirectReferral"></div>
                 <br />
                 <!-- Binary Sales Commission -->
-                <div sales-commission commission="'binary'"
+                <div class="block-wrapper" sales-commission commission="'binary'"
                   binary-details="binaryUsers"
                   sales-Heading="salesBinaryHeading"
                   sales-image-path="salesBinaryImage"
@@ -119,7 +148,7 @@
                   binary-rack-total="binaryRackTotal"
                   binary-pool-calc="binaryPoolCalc(treeData, contract, poolData)"
                   binary-contributor-calc="binaryContributorCalc(treeData, contract, contributorData)"
-                  binary-rack-calc="binaryRackCalc(treeData, contract, rackData)" ng-if="hasBinaryReferral"></div>
+                  binary-rack-calc="binaryRackCalc(treeData, contract, rackData)" s3-url="s3Url" ng-if="hasBinaryReferral"></div>
                 <h3 align="center"><strong>Your Estimated Paycheck
                   on Launch Day</strong>
                 </h3>
@@ -132,7 +161,7 @@
             <div class="panel panel-default">
               <div class="panel-body">
                 <h3 align="center" class="yelo-text mt0">Mining Payouts <br /><small class="sm-text01"><strong>Paid in BTC/ETH</strong></small></h3>
-                <div mining-payout
+                <div class="block-wrapper" mining-payout
                   pool-options="poolOptions"
                   btc-pool-value="btcPoolValue"
                   btc-machine-value="btcMachineValue"
@@ -169,7 +198,7 @@
                   btc-rack-calc="btcRackMining(desContract, contractValue, mining)"
                   eth-pool-calc="ethPoolMining(desContract, contractValue, mining)"
                   eth-contributor-calc="ethContributorMining(desContract, contractValue, mining)"
-                  eth-rack-calc="ethRackMining(desContract, contractValue, mining)"></div>
+                  eth-rack-calc="ethRackMining(desContract, contractValue, mining)" s3-url="s3Url"></div>
                 <p align="center"><button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd, $event)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button></p>
                 <div class="clearfix"></div>
                 <h3 align="center" class="text-title02"><strong>Your Estimated income based on Current <br />
