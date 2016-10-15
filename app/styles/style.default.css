@@ -122,6 +122,14 @@ a:focus {
   top: -10px;
 }
 
+.grey-scale {
+  -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+   filter: grayscale(100%);
+   position: relative;
+   top: 10px;
+}
+
+
 .sponsor-name {
   background: #C30;
   font-size: 14px;
