@@ -122,20 +122,39 @@ a:focus {
   top: -10px;
 }
 
-.sponser-name {
+.sponsor-name {
   background: #C30;
   font-size: 14px;
   border-radius: 30px;
   padding: 10px 10px 10px 10px;
   color: #fff !important;
   text-transform: capitalize;
+  float: right;
 }
 
 .sponsor-wrapper {
   position: relative;
   display: block;
+  width: 100%;
+  margin-bottom: 0;
+  top: 6px;
+}
+
+.child-wrapper {
+  position: relative;
+  display: block;
   float: left;
-  width: 94%;
+  width: 100%;
+}
+
+.child-sponsor {
+  background: #C30;
+  font-size: 14px;
+  border-radius: 30px;
+  color: #fff !important;
+  text-transform: capitalize;
+  padding: 5px 4px !important;
+  float: none !important;
 }
 
 .latest-signup {
@@ -4673,13 +4692,21 @@ h4.great {
   .btn-default1 { width: 48%; font-size: 15px; margin-bottom: 2%;}
   .lg-icon{ font-size: 18px; }
   .tree-wrapper { width: 100%; overflow-x: scroll;}
-  .tree { width: 500px; padding: 0; position: relative;}
+  .tree { width: 600px; padding: 0; position: relative;}
   .tree li a{ width: 100px; }
   .refresh{ cursor: pointer; margin-right: 0;margin-top: 20px;}
   .arrow_box:after, .arrow_box:before { display: none;}
   .responsive-block { width: 600px; margin: 0 auto; }
   .block-wrapper { width: 100%; overflow-x: scroll;}
   .no-wrap td { white-space: normal !important; }
+  .sponsor-name {
+    float: none;
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    position: absolute;
+    top: 5px;
+  }
 	}
 
 @media(max-width:481px) {
@@ -4697,7 +4724,7 @@ h4.great {
   .main-header{ height: auto;}
   .refresh {
     cursor: pointer;
-    margin-right: 60px;
+    margin-right: 0;
     margin-bottom: 20px;
   }
   .sponsor-wrapper{ float: left; margin: 0; left:-20px; }

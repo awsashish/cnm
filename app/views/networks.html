@@ -284,7 +284,7 @@
                           </tr>
                         </table>
                       </div>
-                      <div class="col-xs-12 col-sm-12 col-md-12 pull-left">
+                      <div class="col-xs-12 col-sm-8 col-md-8 pull-left">
                         <form name="search" class="search-userbox" ng-submit="searchDownline(userId)" novalidate>
                           <div class="col-md-12">
                             <strong><i class="fa fa-search" aria-hidden="true"></i>
@@ -308,13 +308,14 @@
 
                         </form>
                       </div>
-
+                      <div class="col-xs-12 col-sm-4 col-md-4 pull-left">
+                        <p class="sponsor-wrapper" align="center"><strong class="sponsor-name">Sponser Name - {{downline['0'].Sponsor==0?'Coinomia':downline['0'].Sponsor}}</strong></p>
+                      </div>
                       <div class="row col-md-12">
                         <div class="ajax_loader" ng-if="loadingData"></div>
                         <span class="refresh pull-right" ng-click="getDownline('')" role="button" tabindex="0">
                           <img ng-src="{{s3Url}}refresh.png" width="20px"> Refresh
                         </span><br>
-                        <p class="sponsor-wrapper" align="center"><strong class="sponser-name">Sponser Name - {{downline['0'].Sponsor==0?'Coinomia':downline['0'].Sponsor}}</strong></p>
                         <div class="col-md-11 col-md-offset-1 tree-wrapper">
                           <div class="col-xs-12 col-sm-12 col-md-12 tree">
                             <ul>
