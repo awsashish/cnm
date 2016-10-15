@@ -40,7 +40,7 @@
             <div role="tabpanel" class="tab-pane fade in active btc" >
               <div align="left" class="tab-inner">
                 <div class="row">
-                  <div class="col-md-6 col-sm-12">
+                  <div class="col-sm-12 col-md-12">
                     <select class="sm-txtbox1" ng-model="btcPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="btcPoolCalc({desContract:btcPoolContract, contractValue:poolDetails, mining:currentMining})">
                     </select>
                     <br><small>{{btcPoolContract*btcPoolValue}} TH/s</small>
@@ -51,7 +51,7 @@
             <div role="tabpanel" class="tab-pane fade eth" >
               <div align="left" class="tab-inner">
                 <div class="row">
-                  <div class="col-md-6 col-sm-12">
+                  <div class="col-sm-12 col-md-12">
                     <select class="sm-txtbox1" ng-model="ethPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="ethPoolCalc({desContract:ethPoolContract, contractValue:poolDetails, mining:currentMining})">
                     </select>
                     <br><small>{{ethPoolContract*ethPoolValue}} MH/s</small>
@@ -66,7 +66,7 @@
             <div role="tabpanel" class="tab-pane fade in active btc" >
               <div align="left" class="tab-inner">
                 <div class="row">
-                  <div class="col-md-6 col-sm-12">
+                  <div class="col-sm-12 col-md-12">
                     <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{btcPoolPrice | number:2}}</strong></h4>
                   </div>
                 </div>
@@ -75,7 +75,7 @@
             <div role="tabpanel" class="tab-pane fade eth" >
               <div align="left" class="tab-inner">
                 <div class="row">
-                  <div class="col-md-6 col-sm-12">
+                  <div class="col-sm-12 col-md-12">
                     <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{ethPoolPrice | number:2}}</strong></h4>
                   </div>
                 </div>
@@ -104,7 +104,7 @@
             <div role="tabpanel" class="tab-pane fade in active btc1" >
               <div align="left" class="tab-inner">
                 <div class="row">
-                  <div class="col-md-6 col-sm-12">
+                  <div class="col-sm-12 col-md-12">
                     <select class="sm-txtbox1" ng-model="btcContributorContract" ng-options="option.value as option.name for option in machineOptions" ng-change="btcContributorCalc({desContract:btcContributorContract, contractValue:contributorDetails, mining:currentMining})">
                     </select>
                     <br><small>{{btcContributorContract*btcMachineValue}} TH/s</small>
@@ -115,7 +115,7 @@
             <div role="tabpanel" class="tab-pane fade eth1" >
               <div align="left" class="tab-inner">
                 <div class="row">
-                  <div class="col-md-6 col-sm-12">
+                  <div class="col-sm-12 col-md-12">
                     <select class="sm-txtbox1" ng-model="ethContributorContract" ng-options="option.value as option.name for option in machineOptions" ng-change="ethContributorCalc({desContract:ethContributorContract, contractValue:contributorDetails, mining:currentMining})">
                     </select>
                     <br><small>{{ethContributorContract*ethMachineValue}} MH/s</small>
@@ -129,7 +129,7 @@
           <div role="tabpanel" class="tab-pane fade in active btc1" >
             <div align="left" class="tab-inner">
               <div class="row">
-                <div class="col-md-6 col-sm-12">
+                <div class="col-sm-12 col-md-12">
                   <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{btcContributorPrice | number:2}}</strong></h4>
                 </div>
               </div>
@@ -138,7 +138,7 @@
           <div role="tabpanel" class="tab-pane fade eth1" >
             <div align="left" class="tab-inner">
               <div class="row">
-                <div class="col-md-6 col-sm-12">
+                <div class="col-sm-12 col-md-12">
                   <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{ethContributorPrice | number:2}}</strong></h4>
                 </div>
               </div>
@@ -166,7 +166,7 @@
             <div role="tabpanel" class="tab-pane fade in active btc2" >
               <div align="left" class="tab-inner">
                 <div class="row">
-                  <div class="col-md-6 col-sm-12">
+                  <div class="col-sm-12 col-md-12">
                     <select class="sm-txtbox1" ng-model="btcRackContract" ng-options="option.value as option.name for option in rackOptions" ng-change="btcRackCalc({desContract:btcRackContract, contractValue:rackDetails, mining:currentMining})">
                     </select>
                     <br><small>{{btcRackContract*btcRackValue}} TH/s</small>
@@ -177,7 +177,7 @@
             <div role="tabpanel" class="tab-pane fade eth2" >
               <div align="left" class="tab-inner">
                 <div class="row">
-                  <div class="col-md-6 col-sm-12">
+                  <div class="col-sm-12 col-md-12">
                     <select class="sm-txtbox1" ng-model="ethRackContract" ng-options="option.value as option.name for option in rackOptions" ng-change="ethRackCalc({desContract:ethRackContract, contractValue:rackDetails, mining:currentMining})">
                     </select>
                     <br><small>{{ethRackContract*ethRackValue}} MH/s</small>
@@ -191,7 +191,7 @@
           <div role="tabpanel" class="tab-pane fade in active btc2" >
             <div align="left" class="tab-inner">
               <div class="row">
-                <div class="col-md-6 col-sm-12">
+                <div class="col-sm-12 col-md-12">
                   <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{btcRackPrice | number:2}}</strong></h4>
                 </div>
               </div>
@@ -200,7 +200,7 @@
           <div role="tabpanel" class="tab-pane fade eth2" >
             <div align="left" class="tab-inner">
               <div class="row">
-                <div class="col-md-6 col-sm-12">
+                <div class="col-sm-12 col-md-12">
                   <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{ethRackPrice | number:2}}</strong></h4>
                 </div>
               </div>

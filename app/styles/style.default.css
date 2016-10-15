@@ -510,7 +510,8 @@ select {
   color: #000000;
   display: block;
   cursor: pointer;
-  padding: 15% 0 14% 0;
+  padding: 29% 0 0% 5%;
+  text-align: left;
 }
 .responsive-calendar .day a:hover {
   background-color: #eee;
@@ -4060,7 +4061,7 @@ body.signin {
     }
 
     .contentpanel {
-        padding: 10px;
+        padding: 5px;
     }
 }
 
@@ -4714,8 +4715,9 @@ h4.great {
   .lg-icon{ font-size: 18px; }
   .mb37{ font-size: 22px !important; }
   .yellow-border{ width: 260px; }
-  .nav-tabs > li > a { font-size: 16px; }
+  .nav-tabs > li > a { font-size: 16px !important; }
   .responsive-calendar .day.header { font-size:14px; }
+  .responsive-calendar .day a { padding: 50% 0 0% 5%; }
   .badge {font-size: 10px; }
   .contentpanel {margin-top: 10px;}
   .timer span { font-size: 11px; }
