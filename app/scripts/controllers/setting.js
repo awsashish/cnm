@@ -48,22 +48,22 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.updateProfile = function(userData) {
-      $scope.user.name = $scope.name;
-      $scope.name = $scope.name.split(" ");
+      $scope.user.name = userData.name;
+      $scope.name = userData.name.split(" ");
 
       $scope.firstName = $scope.name[0].trim();
       $scope.lastName  = $scope.user.name.replace($scope.firstName, '').trim();
       var formData = {
         'FirstName':$scope.firstName,
         'LastName':$scope.lastName,
-        'Email':$scope.userInfo.Email,
-        'Country':$scope.userInfo.Country,
-        'State':$scope.userInfo.State,
-        'City':$scope.userInfo.City,
-        'Address':$scope.userInfo.Address,
-        'Mobile':$scope.userInfo.Mobile,
-        'Pincode':$scope.userInfo.Pincode,
-        'avatar':$scope.userInfo.avatar
+        'Email':userData.Email,
+        'Country':userData.Country,
+        'State':userData.State,
+        'City':userData.City,
+        'Address':userData.Address,
+        'Mobile':userData.Mobile,
+        'Pincode':userData.Pincode,
+        'avatar':userData.avatar
       };
 
       coinomiaService.updateProfile(formData)

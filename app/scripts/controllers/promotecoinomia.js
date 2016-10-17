@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('PromotecoinomiaCtrl', function ($scope, $stateParams, config, coinomiaService) {
+  .controller('PromotecoinomiaCtrl', function ($scope, $uibModal, $uibModalStack, $stateParams, $timeout, config, coinomiaService) {
 
     $scope.activeTab = config.activeTab;
     $scope.bannerApiPath = config.bannerApiPath
@@ -56,19 +56,36 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
-    $scope.createCampaign = function() {
-      if($scope.referralId === undefined) {
+    $scope.getReferral = function() {
+      // Open Angular Modal
+      var modalInstance = $uibModal.open({
+          templateUrl: 'views/modal/referrals.html',
+          scope: $scope,
+          size: 'md'
+      });
+    }
+
+    $scope.closeModal = function() {
+      setTimeout(function () {
+        $uibModalStack.dismissAll();
+      }, 2000);
+    }
+
+    $scope.createCampaign = function(campaign) {
+      if(campaign.referralId === undefined) {
         $scope.errorMessage = "Please select atleast one option."
       }else{
         var campaignData = {
-          bannerid:$scope.referralId,
-          campaignname:$scope.campaignName
+          bannerid:campaign.referralId,
+          campaignname:campaign.campaignName
         }
 
         coinomiaService.createCampaign(campaignData)
         .then(function(res) {
           if(res.status === 200) {
+            $scope.errorMessage = '';
             $scope.successMessage = "Camapaign created successfully.";
+            $scope.closeModal();
           }else{
             $scope.errorMessage = "OOPS! Something went wrong. Please try again."
           }
