@@ -467,9 +467,14 @@
                <br>
                <!-- Nav tabs -->
                <ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-                  <li role="presentation" class="active"><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab" aria-expanded="true"><strong><i class="fa fa-list-alt " aria-hidden="true"></i> Referral Campaign</strong></a></li>
-                  <li role="presentation" style="border-right:1px solid #fff;" class=""><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab" aria-expanded="false"><strong><i class="fa fa-list-alt " aria-hidden="true"></i>  Referral Campaign Reports</strong></a></li>
-                  <li role="presentation" class=""><a href=".bnrr" aria-controls="bnrr" role="tab" data-toggle="tab" aria-expanded="false"><strong><i class="fa fa-list-alt " aria-hidden="true"></i> Banner Report
+                  <li role="presentation" class="active">
+                    <a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab" aria-expanded="true"><strong><i class="fa fa-list-alt " aria-hidden="true"></i> Referral Campaign</strong></a>
+                  </li>
+                  <li role="presentation" ng-click="referralReports()" style="border-right:1px solid #fff;">
+                    <a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab" aria-expanded="false"><strong><i class="fa fa-list-alt " aria-hidden="true"></i>  Referral Campaign Reports</strong></a>
+                  </li>
+                  <li role="presentation" ng-click="bannerReports()">
+                    <a href=".bnrr" aria-controls="bnrr" role="tab" data-toggle="tab" aria-expanded="false"><strong><i class="fa fa-list-alt " aria-hidden="true"></i> Banner Report
                      </strong></a>
                   </li>
                </ul>
@@ -480,8 +485,8 @@
                      <h2 class="mb35-sm top-spacemob10"><i class="fa fa-list-alt icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Referral Campaign</strong></h2>
                      <hr>
                      <div class="table-responsive">
-                        <div class="ref-box yelo-text01"><i class="fa fa-check-square-o" aria-hidden="true"></i>
-                           http://www.sdfsdjk.com/?49283ksdjskfjh3298/sdfjsdk/ewurewi <button class="pull-right copy-btn " ng-click="getReferral()"><i class="fa fa-chain "></i> Get Referral Link </button>
+                        <div class="ref-box yelo-text01" ng-repeat="referral in landingPages | filter:{id:landingPage}"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+                           <span id="copy-text-clipboard">{{referral.path}}{{sponsorId}}</span> <button class="pull-right copy-btn " ng-click="getReferral()"><i class="fa fa-chain "></i> Get Referral Link </button>
                         </div>
 
                         <div class="table-responsive">
@@ -495,19 +500,19 @@
                                  </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td>No Records found</td>
+                                <tr ng-if="loadingData==true">
+                                  <td>Loading data ... </td>
                                 </tr>
-                                 <!-- <tr>
-                                    <td>01</td>
-                                    <td><strong>Coinomia Landing Page title01</strong> </td>
-                                    <td>
-                                       <small class="red-text02">http://www.nbbnlgf.com/?49283ksdjskfjh3298/sdfjsdk/opooewrpwe</small>
-                                    </td>
-                                    <td><i class="fa fa-times" aria-hidden="true"></i>
-                                       Delete
-                                    </td>
-                                 </tr> -->
+                                <tr ng-repeat="referral in landingPages">
+                                  <td>{{$index+1}}</td>
+                                  <td class="text-capitalize"><strong>{{referral.Title}}</strong> </td>
+                                  <td>{{referral.Title}}<br />
+                                    <small class="red-text02">{{referral.path}}{{sponsorId}}</small>
+                                  </td>
+                                  <td><i class="fa fa-times" aria-hidden="true"></i>
+                                     Delete
+                                  </td>
+                                </tr>
                               </tbody>
                            </table>
                            <!-- <div align="right">
@@ -532,26 +537,25 @@
                         <table class="table table-dark-gry table-hover mb30 font16">
                            <thead style="background:#525252;">
                               <tr style="color:#525252;">
-                                 <td><strong class="white-color">Created at</strong></td>
+                                 <!-- <td><strong class="white-color">Created at</strong></td> -->
                                  <td><strong class="white-color">Campaign Name</strong></td>
                                  <td><strong class="white-color">Visits</strong></td>
                                  <td><strong class="white-color">Signups</strong></td>
                               </tr>
                            </thead>
                            <tbody>
-                             <tr>
-                               <td>No Records found</td>
+                             <tr ng-if="loadingData==true">
+                               <td>Loading Data ...</td>
                              </tr>
-                              <!-- <tr>
-                                 <td>02/12/2106</td>
-                                 <td><strong>Mining with Coinomia</strong> </td>
+                              <tr ng-repeat="referralReport in referralReports">
+                                 <td class="text-capitalize"><strong>{{referralReport.title}}</strong> </td>
                                  <td>
-                                    <small class="red-text02">23,309</small>
+                                    <small class="red-text02">{{referralReport.visit | number}}</small>
                                  </td>
                                  <td>
-                                    400
+                                    {{referralReport.register | number}}
                                  </td>
-                              </tr> -->
+                              </tr>
                            </tbody>
                         </table>
                         <!-- <div align="right">
@@ -581,16 +585,18 @@
                               </tr>
                            </thead>
                            <tbody>
-                             <tr>
-                               <td>No Records found</td>
+                             <tr ng-if="loadingData==true">
+                               <td>Loading Data ...</td>
                              </tr>
-                              <!-- <tr>
-                                 <td>Mining with Coinomia</td>
-                                 <td><strong>0</strong> </td>
+                              <tr ng-repeat="bannerReport in bannerReports">
+                                 <td class="text-capitalize"><strong>{{bannerReport.campaignname}}</strong> </td>
                                  <td>
-                                    <small class="red-text02">23,309</small>
+                                    <small class="red-text02">{{bannerReport.visit | number}}</small>
                                  </td>
-                              </tr> -->
+                                 <td>
+                                    {{bannerReport.register | number}}
+                                 </td>
+                              </tr>
                            </tbody>
                         </table>
                         <!-- <div align="right">

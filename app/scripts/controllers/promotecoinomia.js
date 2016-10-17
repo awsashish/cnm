@@ -13,6 +13,7 @@ angular.module('coinomiaFrontendApp')
     $scope.activeTab = config.activeTab;
     $scope.bannerApiPath = config.bannerApiPath
     $scope.signUpPath = config.signUpPath;
+    $scope.loadingData = true;
 
     if($stateParams.tabId) {
       $scope.activeTab = $stateParams.tabId;
@@ -52,6 +53,7 @@ angular.module('coinomiaFrontendApp')
             item.path = path+'?id=';
             $scope.landingPages.push(item)
           });
+          $scope.loadingData = false;
         }
       });
     }
@@ -71,6 +73,7 @@ angular.module('coinomiaFrontendApp')
       }, 2000);
     }
 
+    // Create Campaign
     $scope.createCampaign = function(campaign) {
       if(campaign.referralId === undefined) {
         $scope.errorMessage = "Please select atleast one option."
@@ -92,4 +95,33 @@ angular.module('coinomiaFrontendApp')
         })
       }
     }
+
+    // Get Referral Reports
+    $scope.referralReports = function() {
+      $scope.loadingData = true;
+      coinomiaService.getReferralReports()
+      .then(function(res) {
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.totalReferrals = data.total;
+          $scope.referralReports = data.rows;
+        }
+        $scope.loadingData = false;
+      });
+    }
+
+    // Get Banner Reports
+    $scope.bannerReports = function() {
+      $scope.loadingData = true;
+      coinomiaService.getBannerReports()
+      .then(function(res) {
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.totalBanners = data.total;
+          $scope.bannerReports = data.rows;
+        }
+        $scope.loadingData = false;
+      });
+    }
+
   });

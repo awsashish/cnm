@@ -659,4 +659,40 @@ angular.module('coinomiaFrontendApp')
         .then(createCampaignRequestComplete)
         .catch(createCampaignRequestFailed);
     }
+
+    // Get Referral Reports
+    this.getReferralReports = function() {
+      // On Success
+      function referralReportsRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function referralReportsRequestFailed(error) {
+        $log.error('XHR Failed for Referral Reports.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'affiliate/referral-report')
+        .then(referralReportsRequestComplete)
+        .catch(referralReportsRequestFailed);
+    }
+
+    // Get Banner Reports
+    this.getBannerReports = function() {
+      // On Success
+      function bannerReportsRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function bannerReportsRequestFailed(error) {
+        $log.error('XHR Failed for Banner Reports.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'affiliate/banner-report')
+        .then(bannerReportsRequestComplete)
+        .catch(bannerReportsRequestFailed);
+    }
   });
