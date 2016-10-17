@@ -2,18 +2,12 @@
 
 /**
  * @ngdoc directive
-<<<<<<< HEAD
- * @name coinomiaFrontendApp.directive:textEditor
- * @description
- * # textEditor
-=======
  * @name coinomiaFrontendApp.directive:texteditor
  * @description
  * # texteditor
->>>>>>> group-chat
  */
 angular.module('coinomiaFrontendApp')
-  .directive('textEditor', function () {
+  .directive('texteditor', function () {
     return {
       restrict: 'A',
       link: function(scope, element, attrs) {
