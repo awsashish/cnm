@@ -56,4 +56,23 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
+    $scope.createCampaign = function() {
+      if($scope.referralId === undefined) {
+        $scope.errorMessage = "Please select atleast one option."
+      }else{
+        var campaignData = {
+          bannerid:$scope.referralId,
+          campaignname:$scope.campaignName
+        }
+
+        coinomiaService.createCampaign(campaignData)
+        .then(function(res) {
+          if(res.status === 200) {
+            $scope.successMessage = "Camapaign created successfully.";
+          }else{
+            $scope.errorMessage = "OOPS! Something went wrong. Please try again."
+          }
+        })
+      }
+    }
   });
