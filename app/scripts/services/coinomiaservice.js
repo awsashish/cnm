@@ -642,21 +642,21 @@ angular.module('coinomiaFrontendApp')
         .catch(getLatestSignupRequestFailed);
     }
 
-    // OS Ticket Login
-    this.osTicketlogin = function(token) {
-      // On Success
-      function osTicketloginRequestComplete(response) {
+    // Create Campaign
+    this.createCampaign = function(campaignData) {
+      //  On Success
+      function createCampaignRequestComplete(response) {
         return response;
       }
 
       // On Failed
-      function osTicketloginRequestFailed(error) {
+      function createCampaignRequestFailed(error) {
         // $log.error('XHR Failed for Wallet Info.\n' + angular.toJson(error.data, true));
         return error;
       }
 
-      return $http.post(this.apiHost +'latest-signup', token)
-        .then(osTicketloginRequestComplete)
-        .catch(osTicketloginRequestFailed);
+      return $http.post(this.apiHost +'affiliate/addcampaign', campaignData)
+        .then(createCampaignRequestComplete)
+        .catch(createCampaignRequestFailed);
     }
   });
