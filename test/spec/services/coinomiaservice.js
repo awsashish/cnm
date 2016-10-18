@@ -17,6 +17,11 @@ describe('service coinomiaService', function() {
       'grant_type':'password'
     };
 
+    var campaignData = {
+      "bannerid":"ea8ee062-8d00- 4e68-801c- 9b8659ea2550",
+      "campaignnname":"Test Campaign"
+    }
+
     var resetData = {
       EmailId: 'some@gmail.com',
       UniqueCode: 'B991F56C­21AE­4E31­923 2­FDD96A354407',
@@ -1173,7 +1178,7 @@ describe('service coinomiaService', function() {
       expect(data.Message).toEqual('Success');
     });
 
-    it('should log forgot password error', function() {
+    it('should log update wallet error', function() {
       $httpBackend
       .expect('POST', coinomiaService.apiHost + 'user/update-wallet', walletData)
       .respond(500, 'Internal Server Error.');
@@ -1256,6 +1261,34 @@ describe('service coinomiaService', function() {
       .expect('GET', coinomiaService.apiHost + 'user/tree/'+sponsorId)
       .respond(500, 'Internal Server Error.');
       coinomiaService.getUserDownline(sponsorId);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Create Referral Campaign
+  describe('create referral campaign', function() {
+    it('should exist', function() {
+      expect(coinomiaService.createCampaign).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'affiliate/addcampaign', campaignData)
+      .respond(200, 'success');
+      var data;
+      coinomiaService.createCampaign(campaignData).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual('success');
+    });
+
+    it('should log create campaign error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'affiliate/addcampaign', campaignData)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.createCampaign(campaignData);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });

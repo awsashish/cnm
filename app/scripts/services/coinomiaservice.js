@@ -651,7 +651,7 @@ angular.module('coinomiaFrontendApp')
 
       // On Failed
       function createCampaignRequestFailed(error) {
-        // $log.error('XHR Failed for Wallet Info.\n' + angular.toJson(error.data, true));
+        $log.error('XHR Failed for Create Campaign.\n' + angular.toJson(error.data, true));
         return error;
       }
 
