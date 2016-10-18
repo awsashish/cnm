@@ -1318,11 +1318,43 @@ describe('service coinomiaService', function() {
       expect(data.rows[0].visit).toEqual(1);
     });
 
-    it('should log referral error', function() {
+    it('should log referral reports error', function() {
       $httpBackend
       .expect('GET', coinomiaService.apiHost + 'affiliate/referral-report')
       .respond(500, 'Internal Server Error.');
       coinomiaService.getReferralReports();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Get Banner Reports
+  describe('referral reports function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getBannerReports).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'affiliate/banner-report')
+      .respond(200, {'total':3, 'rows':[{'campaignname': 'some-name', 'register':0, 'visit':1}]});
+      var data;
+      coinomiaService.getBannerReports().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual(3);
+      expect(data.rows[0].campaignname).toEqual('some-name');
+      expect(data.rows[0].register).toEqual(0);
+      expect(data.rows[0].visit).toEqual(1);
+    });
+
+    it('should log banner report error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'affiliate/banner-report')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getBannerReports();
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
