@@ -1293,4 +1293,38 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Get Referral Reports
+  describe('referral reports function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getReferralReports).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'affiliate/referral-report')
+      .respond(200, {'total':2, 'rows':[{'title': 'some-title', 'path':'www.some-value.com', 'description':'some-description', 'register':0, 'visit':1}]});
+      var data;
+      coinomiaService.getReferralReports().then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual(2);
+      expect(data.rows[0].title).toEqual('some-title');
+      expect(data.rows[0].path).toEqual('www.some-value.com');
+      expect(data.rows[0].description).toEqual('some-description');
+      expect(data.rows[0].register).toEqual(0);
+      expect(data.rows[0].visit).toEqual(1);
+    });
+
+    it('should log referral error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'affiliate/referral-report')
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getReferralReports();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
 });
