@@ -22,6 +22,23 @@ describe('service coinomiaService', function() {
       "campaignnname":"Test Campaign"
     }
 
+    var messageData = {
+       "Subject":"this is subject",
+       "Message":"this is message",
+       "Replyid ":0,
+       "Receiverids":[
+          {
+             "id":"coinomia"
+          },
+          {
+             "id":"coinomia2"
+          },
+          {
+             "id":"coinomia3"
+          }
+       ]
+    }
+
     var resetData = {
       EmailId: 'some@gmail.com',
       UniqueCode: 'B991F56C­21AE­4E31­923 2­FDD96A354407',
@@ -1355,6 +1372,35 @@ describe('service coinomiaService', function() {
       .expect('GET', coinomiaService.apiHost + 'affiliate/banner-report')
       .respond(500, 'Internal Server Error.');
       coinomiaService.getBannerReports();
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Send Message
+  describe('send message', function() {
+    it('should exist', function() {
+      expect(coinomiaService.sendMessage).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/compose', messageData)
+      .respond(200, {"Message":"Success"});
+      var data;
+      coinomiaService.sendMessage(messageData).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.Message).toEqual('Success');
+    });
+
+    it('should log send message error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/compose', messageData)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.sendMessage(messageData);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });

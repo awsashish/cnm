@@ -695,4 +695,22 @@ angular.module('coinomiaFrontendApp')
         .then(bannerReportsRequestComplete)
         .catch(bannerReportsRequestFailed);
     }
+
+    // Send Message
+    this.sendMessage =  function(messageData) {
+      // On Success
+      function sendMessageRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function sendMessageRequestFailed(error) {
+        $log.error('XHR Failed for Send Message Reports.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/compose', messageData)
+        .then(sendMessageRequestComplete)
+        .catch(sendMessageRequestFailed);
+    }
   });
