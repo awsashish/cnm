@@ -58,6 +58,9 @@ angular.module('coinomiaFrontendApp')
               var total = $filter('currency')(scope.total);
               var totalAmount = '<strong>Total - '+total+'</strong>';
               angular.element(".total-price").html(totalAmount);
+            }else{
+              var totalAmount = '<strong>Total - $0.00</strong>';
+              angular.element(".total-price").html(totalAmount);
             }
 
           }
