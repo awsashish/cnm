@@ -2333,6 +2333,11 @@ select {
     background-color: rgba(255,255,255,0.1);
 }
 
+.tab-content {
+    float: left;
+    width: 100%;
+}
+
 .tab-content-primary {
     border-color: #357ebd;
 }
