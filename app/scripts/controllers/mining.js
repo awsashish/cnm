@@ -32,7 +32,8 @@ angular.module('coinomiaFrontendApp')
             products.ethMining = 0;
             $scope.ethProducts.push(products);
           }
-          $scope.total += products.amount;
+          // $scope.total += products.amount;
+          // console.log($scope.total);
         });
       }
     });
