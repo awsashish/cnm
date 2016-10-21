@@ -18,9 +18,13 @@ describe('service coinomiaService', function() {
     };
 
     var campaignData = {
-      "bannerid":"ea8ee062-8d00- 4e68-801c- 9b8659ea2550",
-      "campaignnname":"Test Campaign"
+      "CampaignType": "referral",
+      "Bannerid":"",
+      "campaignnname":"Test Campaign",
+      "pageid":"12wegjegr"
     }
+
+    var type = 'referral';
 
     var messageData = {
        "Subject":"this is subject",
@@ -1291,7 +1295,7 @@ describe('service coinomiaService', function() {
 
     it('should return success message', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + 'affiliate/addcampaign', campaignData)
+      .expect('POST', coinomiaService.apiHost + 'affiliate/create-campaign', campaignData)
       .respond(200, 'success');
       var data;
       coinomiaService.createCampaign(campaignData).then(function(fetchedData) {
@@ -1303,7 +1307,7 @@ describe('service coinomiaService', function() {
 
     it('should log create campaign error', function() {
       $httpBackend
-      .expect('POST', coinomiaService.apiHost + 'affiliate/addcampaign', campaignData)
+      .expect('POST', coinomiaService.apiHost + 'affiliate/create-campaign', campaignData)
       .respond(500, 'Internal Server Error.');
       coinomiaService.createCampaign(campaignData);
       $httpBackend.flush();
@@ -1314,15 +1318,15 @@ describe('service coinomiaService', function() {
   // Get Referral Reports
   describe('referral reports function', function() {
     it('should exist', function() {
-      expect(coinomiaService.getReferralReports).not.toEqual(null);
+      expect(coinomiaService.getReports).not.toEqual(null);
     });
 
     it('should return success message', function() {
       $httpBackend
-      .expect('GET', coinomiaService.apiHost + 'affiliate/referral-report')
+      .expect('GET', coinomiaService.apiHost + 'affiliate/campaign-report/'+type)
       .respond(200, {'total':2, 'rows':[{'title': 'some-title', 'path':'www.some-value.com', 'description':'some-description', 'register':0, 'visit':1}]});
       var data;
-      coinomiaService.getReferralReports().then(function(fetchedData) {
+      coinomiaService.getReports(type).then(function(fetchedData) {
         data = fetchedData.data;
       });
       $httpBackend.flush();
@@ -1337,45 +1341,45 @@ describe('service coinomiaService', function() {
 
     it('should log referral reports error', function() {
       $httpBackend
-      .expect('GET', coinomiaService.apiHost + 'affiliate/referral-report')
+      .expect('GET', coinomiaService.apiHost + 'affiliate/campaign-report/'+type)
       .respond(500, 'Internal Server Error.');
-      coinomiaService.getReferralReports();
+      coinomiaService.getReports(type);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
 
-  // Get Banner Reports
-  describe('referral reports function', function() {
-    it('should exist', function() {
-      expect(coinomiaService.getBannerReports).not.toEqual(null);
-    });
-
-    it('should return success message', function() {
-      $httpBackend
-      .expect('GET', coinomiaService.apiHost + 'affiliate/banner-report')
-      .respond(200, {'total':3, 'rows':[{'campaignname': 'some-name', 'register':0, 'visit':1}]});
-      var data;
-      coinomiaService.getBannerReports().then(function(fetchedData) {
-        data = fetchedData.data;
-      });
-      $httpBackend.flush();
-      expect(data).toEqual(jasmine.any(Object));
-      expect(data.total).toEqual(3);
-      expect(data.rows[0].campaignname).toEqual('some-name');
-      expect(data.rows[0].register).toEqual(0);
-      expect(data.rows[0].visit).toEqual(1);
-    });
-
-    it('should log banner report error', function() {
-      $httpBackend
-      .expect('GET', coinomiaService.apiHost + 'affiliate/banner-report')
-      .respond(500, 'Internal Server Error.');
-      coinomiaService.getBannerReports();
-      $httpBackend.flush();
-      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
-    });
-  });
+  // // Get Banner Reports
+  // describe('referral reports function', function() {
+  //   it('should exist', function() {
+  //     expect(coinomiaService.getBannerReports).not.toEqual(null);
+  //   });
+  //
+  //   it('should return success message', function() {
+  //     $httpBackend
+  //     .expect('GET', coinomiaService.apiHost + 'affiliate/banner-report')
+  //     .respond(200, {'total':3, 'rows':[{'campaignname': 'some-name', 'register':0, 'visit':1}]});
+  //     var data;
+  //     coinomiaService.getBannerReports().then(function(fetchedData) {
+  //       data = fetchedData.data;
+  //     });
+  //     $httpBackend.flush();
+  //     expect(data).toEqual(jasmine.any(Object));
+  //     expect(data.total).toEqual(3);
+  //     expect(data.rows[0].campaignname).toEqual('some-name');
+  //     expect(data.rows[0].register).toEqual(0);
+  //     expect(data.rows[0].visit).toEqual(1);
+  //   });
+  //
+  //   it('should log banner report error', function() {
+  //     $httpBackend
+  //     .expect('GET', coinomiaService.apiHost + 'affiliate/banner-report')
+  //     .respond(500, 'Internal Server Error.');
+  //     coinomiaService.getBannerReports();
+  //     $httpBackend.flush();
+  //     expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+  //   });
+  // });
 
   // Send Message
   describe('send message', function() {

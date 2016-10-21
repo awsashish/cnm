@@ -642,7 +642,7 @@ angular.module('coinomiaFrontendApp')
         .catch(getLatestSignupRequestFailed);
     }
 
-    // Create Campaign
+    // Create Referral Campaign and Banner Campaign
     this.createCampaign = function(campaignData) {
       //  On Success
       function createCampaignRequestComplete(response) {
@@ -655,46 +655,46 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.post(this.apiHost +'affiliate/addcampaign', campaignData)
+      return $http.post(this.apiHost +'affiliate/create-campaign', campaignData)
         .then(createCampaignRequestComplete)
         .catch(createCampaignRequestFailed);
     }
 
-    // Get Referral Reports
-    this.getReferralReports = function() {
+    // Get Referral and Banner Reports
+    this.getReports = function(type) {
       // On Success
-      function referralReportsRequestComplete(response) {
+      function getReportsRequestComplete(response) {
         return response;
       }
 
       // On Failed
-      function referralReportsRequestFailed(error) {
+      function getReportsRequestFailed(error) {
         $log.error('XHR Failed for Referral Reports.\n' + angular.toJson(error.data, true));
         return error;
       }
 
-      return $http.get(this.apiHost +'affiliate/referral-report')
-        .then(referralReportsRequestComplete)
-        .catch(referralReportsRequestFailed);
+      return $http.get(this.apiHost +'affiliate/campaign-report/'+type)
+        .then(getReportsRequestComplete)
+        .catch(getReportsRequestFailed);
     }
 
     // Get Banner Reports
-    this.getBannerReports = function() {
-      // On Success
-      function bannerReportsRequestComplete(response) {
-        return response;
-      }
-
-      // On Failed
-      function bannerReportsRequestFailed(error) {
-        $log.error('XHR Failed for Banner Reports.\n' + angular.toJson(error.data, true));
-        return error;
-      }
-
-      return $http.get(this.apiHost +'affiliate/banner-report')
-        .then(bannerReportsRequestComplete)
-        .catch(bannerReportsRequestFailed);
-    }
+    // this.getBannerReports = function() {
+    //   // On Success
+    //   function bannerReportsRequestComplete(response) {
+    //     return response;
+    //   }
+    //
+    //   // On Failed
+    //   function bannerReportsRequestFailed(error) {
+    //     $log.error('XHR Failed for Banner Reports.\n' + angular.toJson(error.data, true));
+    //     return error;
+    //   }
+    //
+    //   return $http.get(this.apiHost +'affiliate/banner-report')
+    //     .then(bannerReportsRequestComplete)
+    //     .catch(bannerReportsRequestFailed);
+    // }
 
     // Send Message
     this.sendMessage =  function(messageData) {

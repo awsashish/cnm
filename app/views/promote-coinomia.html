@@ -522,10 +522,10 @@
                   <li role="presentation" class="active">
                     <a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab" aria-expanded="true"><strong><i class="fa fa-list-alt " aria-hidden="true"></i> Referral Campaign</strong></a>
                   </li>
-                  <li role="presentation" ng-click="referralReports()" style="border-right:1px solid #fff;">
+                  <li role="presentation" ng-click="reports('referral')" style="border-right:1px solid #fff;">
                     <a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab" aria-expanded="false"><strong><i class="fa fa-list-alt " aria-hidden="true"></i>  Referral Campaign Reports</strong></a>
                   </li>
-                  <li role="presentation" ng-click="bannerReports()">
+                  <li role="presentation" ng-click="reports('banner')">
                     <a href=".bnrr" aria-controls="bnrr" role="tab" data-toggle="tab" aria-expanded="false"><strong><i class="fa fa-list-alt " aria-hidden="true"></i> Banner Report
                      </strong></a>
                   </li>
@@ -599,8 +599,8 @@
                              <tr ng-if="loadingData==true">
                                <td>Loading Data ...</td>
                              </tr>
-                              <tr ng-repeat="referralReport in referralReports">
-                                 <td class="text-capitalize"><strong>{{referralReport.title}}</strong> </td>
+                              <tr ng-repeat="referralReport in allReports">
+                                 <td class="text-capitalize"><strong>{{referralReport.campaignname}}</strong> </td>
                                  <td>
                                     <small class="red-text02">{{referralReport.visit | number}}</small>
                                  </td>
@@ -640,7 +640,10 @@
                              <tr ng-if="loadingData==true">
                                <td>Loading Data ...</td>
                              </tr>
-                              <tr ng-repeat="bannerReport in bannerReports">
+                             <tr ng-if="loadingData==false">
+                               <td> No data found</td>
+                             </tr>
+                              <!-- <tr ng-repeat="bannerReport in allReports">
                                  <td class="text-capitalize"><strong>{{bannerReport.campaignname}}</strong> </td>
                                  <td>
                                     <small class="red-text02">{{bannerReport.visit | number}}</small>
@@ -648,7 +651,7 @@
                                  <td>
                                     {{bannerReport.register | number}}
                                  </td>
-                              </tr>
+                              </tr> -->
                            </tbody>
                         </table>
                         <!-- <div align="right">
