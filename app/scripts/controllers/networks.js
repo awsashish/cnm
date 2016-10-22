@@ -15,6 +15,7 @@ angular.module('coinomiaFrontendApp')
       totalTeam:0,
       perpage: config.pageLimit
     }
+    $scope.selected = [];
 
     $scope.teamColumnHead = config.teamColumnHead;
 
@@ -22,9 +23,11 @@ angular.module('coinomiaFrontendApp')
 
     $scope.order = config.columnOrder;
 
+    $scope.pageLimit = config.pageLimit;
+
     // Get User Directs
-    $scope.userDirects = function(currentPage) {
-      coinomiaService.getUserDirects(currentPage)
+    $scope.userDirects = function(currentPage, pageLimit) {
+      coinomiaService.getUserDirects(currentPage, pageLimit)
         .then(function(res) {
           if(res.status === 200) {
             var data = res.data;
@@ -43,6 +46,17 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
+    $scope.getUser = function(currentPage, pageLimit) {
+      coinomiaService.getUserDirects(currentPage, pageLimit)
+        .then(function(res) {
+          if(res.status === 200) {
+            var data = res.data;
+            $scope.pagination.totalUsers = data.total;
+            $scope.teamDirectsUsers  = data.rows;
+          }
+      });
+    }
+
     /*** Excel Export ***/
     $scope.getExcelData = function(excelData) {
       $scope.exportData = [{
@@ -56,7 +70,7 @@ angular.module('coinomiaFrontendApp')
     };
     /** -- Excel Export -- **/
 
-    $scope.userDirects($scope.currentPage);
+    $scope.userDirects($scope.currentPage, $scope.pageLimit);
 
     // Get All Referrals
     $scope.allReferral = function(page) {
@@ -163,4 +177,60 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.getDownline($scope.sponsorId);
-  });
+
+    $scope.updateSelectedUser = function(action, username) {
+      if (action === 'add' && $scope.selected.indexOf(username) === -1) {
+        $scope.selected.push(username);
+      }
+      if (action === 'remove' && $scope.selected.indexOf(username) !== -1) {
+        $scope.selected.splice($scope.selected.indexOf(username), 1);
+      }
+    };
+
+    $scope.updateSelection = function($event, username) {
+      var checkbox = $event.target;
+      var action = (checkbox.checked ? 'add' : 'remove');
+      $scope.updateSelectedUser(action, username);
+    };
+
+
+    $scope.isSelected = function(username) {
+      return $scope.selected.indexOf(username) >= 0;
+    };
+
+    angular.element('.Editor-container .Editor-editor').addClass('raza');
+
+    $scope.sendMessage = function() {
+      if($scope.selected.length > 0) {
+        if($scope.message) {
+          $scope.messageError = false;
+          $scope.sendError = false;
+          var receiver = [];
+          for(var i in $scope.selected) {
+            var id = {"id": $scope.selected[i]};
+            receiver.push(id);
+          }
+          var sendData = {
+             Subject:$scope.subject,
+             Message:$scope.message,
+             Replyid:0,
+             Receiverids:receiver
+          }
+          coinomiaService.sendMessage(sendData)
+          .then(function(res){
+            if(res.status === 200) {
+              $scope.sendMessage = true;
+            }else{
+              $scope.sendMessage = false;
+            }
+          })
+        }else{
+          $scope.messageError = true;
+          $scope.sendError = false;
+        }
+      }else{
+        $scope.sendError = true;
+      }
+    }
+
+});
