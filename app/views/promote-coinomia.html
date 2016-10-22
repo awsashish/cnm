@@ -201,14 +201,21 @@
                       <img ng-src="{{bannerInfo.bannerimage}}" />
                       <form class="mar20">
                         <div class="col-md-6 nomargin nopadding">
-                          <input type="text" name="banner-name" class="form-control" value="{{bannerInfo.bannername}}" disabled/>
+                          <input type="text" name="banner-name" ng-model="bannerName" class="form-control" />
                         </div>
                         <div class="col-md-6">
-                          <button ng-click="getBannerCode(key);" class="btn btn-default yelo-btn">
-                            <strong>Get Your Banner Referral Link</strong>
+                          <button ng-click="createBanner(key, bannerName)" class="btn btn-default yelo-btn">
+                            <strong>Create Your Banner</strong>
                           </button>
                         </div>
-                        <div ng-show="bannerInfo.showCode" class="box-gry mobile-scroll">&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerheight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt;</div>
+                        <div class="row">
+                          <div class="col-lg-8">
+                            <div ng-show="bannerInfo.showCode" class="alert alert-success fade in">
+                              <strong><i class="fa fa-check-circle fa-lg" aria-hidden="true"></i></strong> Banner created succesfully.
+                            </div>
+                            <!-- &lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerheight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt; -->
+                          </div>
+                        </div>
                         <div class="clearfix"></div>
                       </form>
                     </div>
@@ -640,10 +647,7 @@
                              <tr ng-if="loadingData==true">
                                <td>Loading Data ...</td>
                              </tr>
-                             <tr ng-if="loadingData==false">
-                               <td> No data found</td>
-                             </tr>
-                              <!-- <tr ng-repeat="bannerReport in allReports">
+                              <tr ng-repeat="bannerReport in allReports">
                                  <td class="text-capitalize"><strong>{{bannerReport.campaignname}}</strong> </td>
                                  <td>
                                     <small class="red-text02">{{bannerReport.visit | number}}</small>
@@ -651,7 +655,7 @@
                                  <td>
                                     {{bannerReport.register | number}}
                                  </td>
-                              </tr> -->
+                              </tr>
                            </tbody>
                         </table>
                         <!-- <div align="right">

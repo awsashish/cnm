@@ -19,9 +19,20 @@ angular.module('coinomiaFrontendApp')
       $scope.activeTab = $stateParams.tabId;
     }
 
-    $scope.getBannerCode = function(bannerIndex) {
+    $scope.createBanner = function(bannerIndex, bannerName) {
       var banner = $scope.banners[bannerIndex];
-      banner.showCode = true;
+      var campaignData = {
+        CampaignType:"banner",
+        CampaignName:bannerName,
+        Bannerid:banner.bannerid,
+        pageid:0
+      }
+      coinomiaService.createCampaign(campaignData)
+      .then(function(res) {
+        if(res.status === 200) {
+          banner.showCode = true;
+        }
+      })
     }
 
     // Get Banners
