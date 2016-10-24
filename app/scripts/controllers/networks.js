@@ -25,6 +25,8 @@ angular.module('coinomiaFrontendApp')
 
     $scope.pageLimit = config.pageLimit;
 
+    $scope.limit = config.messageLimit;
+
     // Get User Directs
     $scope.userDirects = function(currentPage, pageLimit) {
       coinomiaService.getUserDirects(currentPage, pageLimit)
@@ -232,5 +234,32 @@ angular.module('coinomiaFrontendApp')
         $scope.sendError = true;
       }
     }
+
+    $scope.getInbox = function (currentPage, limit) {
+      $scope.loadingData = true;
+      coinomiaService.getInboxList(currentPage, limit)
+      .then(function(res) {
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.totalInboxMessage = data.total;
+          $scope.inboxData = data.rows;
+          $scope.loadingData = false;
+        }
+      });
+    }
+
+    $scope.getSent = function (currentPage, limit) {
+      $scope.loadingData = true;
+      coinomiaService.getSentList(currentPage, limit)
+      .then(function(res) {
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.totalSentMessage = data.total;
+          $scope.sentData = data.rows;
+          $scope.loadingData = false;
+        }
+      });
+    }
+
 
 });

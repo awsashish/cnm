@@ -713,4 +713,40 @@ angular.module('coinomiaFrontendApp')
         .then(sendMessageRequestComplete)
         .catch(sendMessageRequestFailed);
     }
+
+    // Get Inbox List
+    this.getInboxList = function(page, limit) {
+      // On Success
+      function getInboxListRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getInboxListRequestFailed(error) {
+        $log.error('XHR Failed for Inbox List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/inbox-item/'+page+'/'+limit)
+        .then(getInboxListRequestComplete)
+        .catch(getInboxListRequestFailed);
+    }
+
+    // Get Sent List
+    this.getSentList = function(page, limit) {
+      // On Success
+      function getSentListRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getSentListRequestFailed(error) {
+        $log.error('XHR Failed for Sent List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/sent-item/'+page+'/'+limit)
+        .then(getSentListRequestComplete)
+        .catch(getSentListRequestFailed);
+    }
   });

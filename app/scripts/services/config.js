@@ -10,6 +10,7 @@
 angular.module('coinomiaFrontendApp')
   .constant('config', {
     'pageLimit' : 25,
+    'messageLimit': 10,
     'pageno':1,
     'currentPage':1,
     'purchasedTitle': 'Purchased',
