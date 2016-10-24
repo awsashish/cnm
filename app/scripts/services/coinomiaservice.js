@@ -732,6 +732,61 @@ angular.module('coinomiaFrontendApp')
         .catch(getInboxListRequestFailed);
     }
 
+    // Get Inbox Search Results
+    this.getInboxSearch = function(filter, page, limit) {
+      // On Success
+      function getInboxSearchRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getInboxSearchRequestFailed(error) {
+        $log.error('XHR Failed for Inbox List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/inbox-item/'+filter+'/'+page+'/'+limit)
+        .then(getInboxSearchRequestComplete)
+        .catch(getInboxSearchRequestFailed);
+    }
+
+    // Get Inbox Search Results
+    this.getSentSearch = function(filter, page, limit) {
+      // On Success
+      function getSentSearchRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getSentSearchRequestFailed(error) {
+        $log.error('XHR Failed for Inbox List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/sent-item/'+filter+'/'+page+'/'+limit)
+        .then(getSentSearchRequestComplete)
+        .catch(getSentSearchRequestFailed);
+    }
+
+
+    // Get Search User Results
+    this.searchUser = function(filterType, filter, page) {
+      // On Success
+      function searchUserRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function searchUserRequestFailed(error) {
+        $log.error('XHR Failed for Inbox List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/all-group/'+filterType+'/'+filter+'/'+page)
+        .then(searchUserRequestComplete)
+        .catch(searchUserRequestFailed);
+    }
+
     // Get Sent List
     this.getSentList = function(page, limit) {
       // On Success

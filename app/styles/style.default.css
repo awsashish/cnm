@@ -5334,6 +5334,10 @@ h2.demo-text{font-family: 'Roboto', sans-serif!important; font-size:45px; font-w
   font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 
+.search-form .btn.disabled, .search-form .btn[disabled], .search-form fieldset[disabled] .btn {
+  background: #f0ad4e !important;
+}
+
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
   pointer-events: none;
   cursor: not-allowed;

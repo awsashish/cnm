@@ -235,6 +235,7 @@ angular.module('coinomiaFrontendApp')
       }
     }
 
+    // Get Inbox List
     $scope.getInbox = function (currentPage, limit) {
       $scope.loadingData = true;
       coinomiaService.getInboxList(currentPage, limit)
@@ -248,6 +249,7 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
+    // Get Sent List
     $scope.getSent = function (currentPage, limit) {
       $scope.loadingData = true;
       coinomiaService.getSentList(currentPage, limit)
@@ -261,5 +263,50 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
+    // Search Inbox Message
+    $scope.searchInboxMessage = function(filterData, currentPage, limit) {
+      $scope.loadingData = true;
+      coinomiaService.getInboxSearch(filterData, currentPage, limit)
+      .then(function(res){
+        if(res.status === 200) {
+          $scope.loadingData = false;
+          var data = res.data;
+          $scope.totalInboxMessage = data.total;
+          $scope.inboxData = data.rows;
+        }
+      });
+    }
+
+    // Search Sent Message
+    $scope.searchSentMessage = function(filterData, currentPage, limit) {
+      $scope.loadingData = true;
+      coinomiaService.getSentSearch(filterData, currentPage, limit)
+      .then(function(res) {
+        if(res.status === 200) {
+          $scope.loadingData = false;
+          var data = res.data;
+          $scope.totalSentMessage = data.total;
+          $scope.sentData = data.rows;
+        }
+      });
+    }
+
+    // Search User
+    $scope.searchUser =  function(page) {
+      var filterType = $scope.searchType;
+      var filter = $scope.searchText;
+      if(filterType !== "0") {
+        coinomiaService.searchUser(filterType, filter, page)
+        .then(function(res) {
+          if(res.status === 200) {
+            var data = res.data;
+            $scope.pagination.totalUsers = data.total;
+            $scope.teamDirectsUsers  = data.rows;
+          }
+        })
+      }else{
+        $scope.searchTypeError = true;
+      }
+    }
 
 });

@@ -658,13 +658,13 @@
                                 <h2 class="mb35-sm top-spacemob10"><i class="fa fa-inbox icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Inbox</strong></h2>
                                 <hr />
                                 <div class="row">
-                                    <form class="form-inline">
+                                    <form name="searchForm" class="form-inline search-form" ng-submit="searchInboxMessage(searchText, currentPage, limit)" novalidate>
                                         <h4 style="padding-left:10px;">Search Messages</h4>
                                         <div class="col-md-4 col-sm-12">
-                                            <input type="text" name="serch-text" class="form-control" style="width:100%;" />
+                                            <input type="text" name="search-text" ng-model="searchText" class="form-control" style="width:100%;" required />
                                         </div>
                                         <div class="col-md-2 col-sm-12">
-                                            <input type="submit" value="Apply Filter" class="btn btn-block btn-warning" />
+                                            <input type="submit" value="Apply Filter" ng-disabled="searchForm.$invalid" class="btn btn-block btn-warning" />
                                         </div>
                                     </form>
                                 </div>
@@ -676,7 +676,7 @@
                                     <tr ng-if="loadingData==true">
                                       <td>Loading ...</td>
                                     </tr>
-                                    <tr ng-if="totalInboxMessage===0">
+                                    <tr ng-if="totalInboxMessage===0 && loadingData==false">
                                       <td>No Message Found</td>
                                     </tr>
                                     <tr ng-repeat="(key, sent) in inboxData" ng-if="loadingData==false">
@@ -769,13 +769,13 @@
                             <h2 class="mb35-sm top-spacemob10"><i class="fa fa-paper-plane-o icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Sent</strong></h2>
                             <hr />
                             <div class="row">
-                                <form class="form-inline">
+                                <form name="sentForm" class="form-inline search-form" ng-submit="searchSentMessage(searchSent, currentPage, limit)" novalidate>
                                     <h4 style="padding-left:10px;">Search Messages</h4>
                                     <div class="col-md-4 col-sm-12">
-                                        <input type="text" name="serch-text" class="form-control" style="width:100%;" />
+                                        <input type="text" name="search-sent" ng-model="searchSent" class="form-control" style="width:100%;" required />
                                     </div>
                                     <div class="col-md-2 col-sm-12">
-                                        <input type="submit" value="Apply Filter" class="btn btn-block btn-warning" />
+                                        <input type="submit" value="Apply Filter" ng-disabled="sentForm.$invalid" class="btn btn-block btn-warning" />
                                     </div>
                                 </form>
                             </div>
@@ -787,7 +787,10 @@
                                   <tr ng-if="loadingData==true">
                                     <td>Loading ...</td>
                                   </tr>
-                                  <tr ng-repeat="(key, sent) in sentData" ng-if="loadingData==false">
+                                  <tr ng-if="totalSentMessage===0 && loadingData==false">
+                                    <td>No Message Found.</td>
+                                  </tr>
+                                  <tr ng-repeat="(key, sent) in sentData" ng-if="totalSentMessage > 0 && loadingData==false">
                                       <a href="#">
                                           <td class="text-capitalize"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;{{sent.receivername}}</td>
                                           <td><strong>{{sent.receiverid}}</strong> </td>
@@ -801,7 +804,7 @@
                                   </tr>
                                 </table>
                                 <div class="pagination-default">
-                                  <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="pagination.totalSentUsers" ng-model="currentPage" max-size="5" ng-change="getSent(currentPage, limit)"></ul>
+                                  <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="totalSentMessage" ng-model="currentPage" max-size="5" ng-change="getSent(currentPage, limit)"></ul>
                                 </div>
                             </div>
                         </div>
@@ -810,20 +813,23 @@
                             <h2 class="mb35-sm top-spacemob10"><i class="fa fa-envelope-o icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Send Message</strong></h2>
                             <hr />
                             <div class="row">
-                                <form class="form-inline">
+                                <form name="userForm" class="form-inline" ng-submit="searchUser(currentPage)">
                                     <h4 style="padding-left:10px;">Filter By</h4>
                                     <div class="col-md-6 col-sm-12">
-                                        <select name="serach-filter" class="form-control " style="width:100%;">
-                                            <option selected="selected">select</option>
-                                            <option value="email">Eamil</option>
+                                        <select name="filterType" ng-model="searchType" class="form-control" style="width:100%;" required >
+                                            <option value="0" selected="selected">select</option>
+                                            <option value="email">Email</option>
                                             <option value="Name">Name</option>
                                         </select>
+                                        <div class="alert alert-danger fade in error-padding"
+                                           ng-if="searchTypeError">
+                                           Please select search type.</div>
                                     </div>
                                     <div class="col-md-4 col-sm-12">
-                                        <input type="text" name="serch-text" class="form-control" style="width:100%;" disabled="disabled" />
+                                        <input type="text" name="search-text" ng-model="searchText" class="form-control" style="width:100%;" ng-disabled="userForm.filterType.$invalid" required />
                                     </div>
                                     <div class="col-md-2 col-sm-12">
-                                        <input type="submit" value="Search" class="btn btn-block btn-warning" />
+                                        <input type="submit" value="Search" ng-disabled="userForm.$invalid" class="btn btn-block btn-warning" />
                                     </div>
                                 </form>
                             </div>
@@ -843,6 +849,9 @@
                                                 </td>
                                             </tr>
                                         </thead>
+                                        <tr ng-if="pagination.totalUsers==0">
+                                          <td>No Records Found</td>
+                                        </tr>
                                         <tr ng-repeat="(key,directs) in teamDirectsUsers">
                                           <td>
                                             <input type="checkbox" name="selected" ng-checked="isSelected(directs.username)" ng-click="updateSelection($event, directs.username)">
