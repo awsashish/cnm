@@ -679,7 +679,7 @@
                                     <tr ng-if="totalInboxMessage===0 && loadingData==false">
                                       <td>No Message Found</td>
                                     </tr>
-                                    <tr ng-repeat="(key, sent) in inboxData" ng-if="loadingData==false">
+                                    <tr ng-repeat="(key, inbox) in inboxData" ng-if="loadingData==false">
                                         <a href="#">
                                             <td class="text-capitalize"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;{{inbox.sendername}}</td>
                                             <td><strong>{{inbox.senderid}}</strong> </td>
@@ -687,7 +687,8 @@
                                                 <small class="red-text02">Coinomia:: {{inbox.subject}}</small>
                                             </td>
                                             <td>
-                                                <i class="fa fa-link" aria-hidden="true"></i>&nbsp; {{inbox.ondate}}
+                                                <!-- <i class="fa fa-link" aria-hidden="true"></i>&nbsp;  -->
+                                                {{inbox.ondate}}
                                             </td>
                                         </a>
                                     </tr>
@@ -790,7 +791,7 @@
                                   <tr ng-if="totalSentMessage===0 && loadingData==false">
                                     <td>No Message Found.</td>
                                   </tr>
-                                  <tr ng-repeat="(key, sent) in sentData" ng-if="totalSentMessage > 0 && loadingData==false">
+                                  <tr ng-repeat="(key, sent) in sentData" ng-if="totalSentMessage > 0 && loadingData==false" ng-click="viewMessage(key, sent)">
                                       <a href="#">
                                           <td class="text-capitalize"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;{{sent.receivername}}</td>
                                           <td><strong>{{sent.receiverid}}</strong> </td>
@@ -803,10 +804,43 @@
                                       </a>
                                   </tr>
                                 </table>
-                                <div class="pagination-default">
+                                <div class="pagination-default" ng-if="totalSentMessage > 0">
                                   <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="totalSentMessage" ng-model="currentPage" max-size="5" ng-change="getSent(currentPage, limit)"></ul>
                                 </div>
                             </div>
+                            <div id="view-msg" ng-if="readMessage">
+                                <h2 class="mb35-sm top-spacemob10"><i class="fa fa-inbox icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>View Message</strong></h2>
+                                <div class="btn-group pull-right">
+                                    <div class=" btn btn-default "><a href="#"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Back</a>
+                                    </div>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-reply" aria-hidden="true"></i> Reply <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr />
+                                <div class="clear-fix"></div>
+                                <strong>From:</strong> me To: Vinay Kumar
+                                &lt;klvk123456@gmail.com &gt; on 11:11:22pm 11th May 2016
+                                    <br />
+                                    <h4><strong>Subject: Hey Guys - Amit Tiwari - Your Sponsor In Coinomia Here</strong></h4>
+                                    <br />
+                                    <hr /> How is it going ?
+                                    <br /> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu,
+                                    <br />
+                                    <br /> consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
+                                    <br />
+                                    <br />
+                                    <strong>Thanks
+                        Amit Tiwari</strong>
+                            </div>
+                            <br />
+                            <br />
                         </div>
                         <div role="tabpanel" class="tab-pane  bnrr">
                             <br />

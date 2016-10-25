@@ -309,4 +309,10 @@ angular.module('coinomiaFrontendApp')
       }
     }
 
+    $scope.readMessage = false;
+    // View Message
+    $scope.viewMessage = function(key, sent) {
+      $scope.readMessage = true;
+    }
+
 });
