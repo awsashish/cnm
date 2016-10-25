@@ -5584,3 +5584,14 @@ h1{
   cursor:pointer;
   }
 /* ?????????????????????????????????????????????????????????????????????????????????????????? Text Editer*/
+
+
+.affiliate{ font-size:45px; color:#F90; font-weight:bold; font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;  border:1px solid #ccc; border-radius:10px; padding:10px;}
+.affiliate small{ font-size:17px;}
+.gry-round-box{background:#f2f2f2; border:1px solid #ccc; padding:5px 20px; display:block; border-radius:30px; margin-bottom:30px;}
+.active-affiliate{background:#6C6; display:inline-block;  border-radius:4px; padding:5px 50px; font-size:30px; color:#fff !important; border-bottom:4px solid #090;}
+
+.inactive-affiliate{background:#f2f2f2; display:inline-block;  border-radius:4px; padding:5px 50px; font-size:30px; color:#999 !important; border-bottom:4px solid #ccc;}
+@media(max-width:540px){
+  .affiliate{ font-size:25px;}
+}
