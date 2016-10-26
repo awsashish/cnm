@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('DashboardCtrl', function ($scope, $rootScope, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config) {
+  .controller('DashboardCtrl', function ($scope, $rootScope, $localStorage, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config) {
 
 
     $scope.hasDirectReferral = false;
@@ -411,6 +411,21 @@ angular.module('coinomiaFrontendApp')
       $scope.btcRackContract = 0;
       $scope.btcRackMining($scope.btcRackContract, rack, mining);
       $scope.ethRackMining($scope.ethRackContract, rack, mining);
+    }
+
+    // Open Reward Structure Modal
+    if(!$localStorage.viewPopup) {
+      var modalInstance = $uibModal.open({
+          templateUrl: 'views/reward-structure.html',
+          scope: $scope,
+          size: 'lg',
+          backdrop: 'static'
+      });
+    }
+
+    $scope.closePopup = function() {
+      $localStorage.$default({viewPopup: 1});
+      $uibModalStack.dismissAll();
     }
 
     // Open Angular Modal
