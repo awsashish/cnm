@@ -804,4 +804,29 @@ angular.module('coinomiaFrontendApp')
         .then(getSentListRequestComplete)
         .catch(getSentListRequestFailed);
     }
+
+    // View Message
+    this.viewMessage = function(type, messageId) {
+
+      function viewMessageRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function viewMessageRequestFailed(error) {
+        $log.error('XHR Failed for View Message.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      if(type == 'inbox') {
+        return $http.get(this.apiHost +'user/inbox/'+messageId)
+          .then(viewMessageRequestComplete)
+          .catch(viewMessageRequestFailed);
+      }else if(type == 'sent') {
+        return $http.get(this.apiHost +'user/sent/'+messageId)
+          .then(viewMessageRequestComplete)
+          .catch(viewMessageRequestFailed);
+      }
+
+    }
   });

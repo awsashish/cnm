@@ -732,7 +732,7 @@
                                     <tr ng-if="totalInboxMessage===0 && loadingData==false">
                                       <td>No Message Found</td>
                                     </tr>
-                                    <tr ng-repeat="(key, inbox) in inboxData" ng-if="loadingData==false">
+                                    <tr ng-repeat="(key, inbox) in inboxData" ng-if="loadingData==false" ng-click="viewMessage('inbox', inbox.id)">
                                         <a href="#">
                                             <td class="text-capitalize"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;{{inbox.sendername}}</td>
                                             <td><strong>{{inbox.senderid}}</strong> </td>
@@ -751,7 +751,7 @@
                                   </div>
                                 </div>
                             </div>
-                            <div id="view-msg">
+                            <div id="view-msg" ng-if="readMessage">
                                 <h2 class="mb35-sm top-spacemob10"><i class="fa fa-inbox icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>View Message</strong></h2>
                                 <div class="btn-group pull-right">
                                     <div class=" btn btn-default "><a href="#"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Back</a>
@@ -760,61 +760,64 @@
                                         <i class="fa fa-reply" aria-hidden="true"></i> Reply <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-reply" aria-hidden="true"></i> Reply</a>
+                                        <li ng-click="replyMessage(inboxMessage)"><a><i class="fa fa-reply" aria-hidden="true"></i> Reply</a>
                                         </li>
                                         <li><a href="#"><i class="fa fa-times" aria-hidden="true"></i> Delete</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <hr />
+                                <div ng-if="loadingData">Loading Message ... </div>
                                 <div class="clear-fix"></div>
-                                <strong>From:</strong> me To: Vinay Kumar
-                                &lt;klvk123456@gmail.com &gt; on 11:11:22pm 11th May 2016
+                                <div ng-if="loadingData==false">
+                                <strong>From:</strong> {{inboxMessage.senderid}} To: me on {{inboxMessage.ondate}}
                                     <br />
-                                    <h4><strong>Subject: Hey Guys - Amit Tiwari - Your Sponsor In Coinomia Here</strong></h4>
+                                    <h4><strong>Subject: {{inboxMessage.subject}}</strong></h4>
                                     <br />
-                                    <hr /> How is it going ?
-                                    <br /> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu,
-                                    <br />
-                                    <br /> consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
-                                    <br />
-                                    <br />
-                                    <strong>Thanks
-                        Amit Tiwari</strong>
+                                    <div ng-bind-html="inboxMessage.body"></div>
+                                </div>
                             </div>
                             <br />
+                            <hr />
                             <br />
-                            <div class="reply-msg">
-                                <h2 class="mb35-sm top-spacemob10"><i class="fa fa-reply icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Reply Message</strong></h2>
+                            <div class="reply-msg" ng-if="showReplyBox">
+                                <h2 class="mb35-sm top-spacemob10">
+                                  <i class="fa fa-reply icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Reply Message</strong>
+                                </h2>
                                 <div class=" pull-right btn btn-default "><a href="#"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Back</a>
                                 </div>
                                 <div class="clear-fix"></div>
                                 <hr />
-                                <form>
+                                <form name="replyForm" ng-submit="sendMessage()" novalidate>
                                     <label><strong>To</strong>
                                     </label>
                                     <br />
-                                    <input type="text" name="to-email" value="Vinay Kumar<klvk123456@gmail.com>" class="form-control" readonly="readonly" required="required" />
+                                    <input type="text" ng-model="replyId" class="form-control" />
                                     <label><strong>Subject</strong>
                                     </label>
                                     <br />
-                                    <input type="text" name="subject" value="Hey Guys - Amit Tiwari - Your Sponsor In Coinomia Here" class="form-control" required="required" />
-                                    <label><strong>Message</strong>
-                                    </label>
-                                    <div text-angular ng-model="htmlVariable"></div>
-                                    <!-- <textarea texteditor id="txtEditor" required="required" class="form-control">
-                                        How is it going ?
-                                        <br /> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu,
-                                        <br />
-                                        <br /> consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
-                                        <br />
-                                        <br />
-                                        <strong>Thanks
-                          Amit Tiwari</strong>
-                                    </textarea> -->
+                                    <input type="text" name="subject" ng-model="replySubject" class="form-control" required="required" />
+                                    <div class="alert alert-danger fade in error-padding"
+                                       ng-show="replyForm.subject.$touched && replyForm.subject.$invalid">
+                                       Subject is required</div>
+
+                                    <label><strong>Message</strong></label>
+                                    <div text-angular ng-model="message"></div>
+                                    <!-- <textarea texteditor id="txtEditor1" ng-model="message" class="form-control"></textarea> -->
+
+                                    <div class="alert alert-danger fade in error-padding" ng-if="messageError">
+                                       Please enter your message</div>
                                     <br />
                                     <br />
-                                    <input type="submit" value="Submit" class="btn  btn-warning" />
+                                    <div class="alert alert-danger fade in error-padding no-arrow" ng-if="sendError">
+                                       No user selected</div>
+                                     <div class="alert alert-success fade in" ng-if="sendMessage==true">
+                                       <strong><i class="fa fa-check-circle fa-lg" aria-hidden="true"></i> </strong> Message Sent Succesfully.
+                                     </div>
+                                     <div class="alert alert-danger fade in" ng-if="sendMessage==false">
+                                       <strong></strong> Please keep in mind that you can send only one message every 24 hours.
+                                     </div>
+                                    <input type="submit" value="Submit" ng-disabled="replyForm.$invalid" class="btn  btn-warning" />
                                 </form>
                             </div>
                         </div>

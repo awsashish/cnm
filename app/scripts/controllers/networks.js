@@ -8,23 +8,19 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('NetworksCtrl', function ($scope, $timeout, coinomiaService, config, UtilsService) {
+  .controller('NetworksCtrl', function ($scope, $timeout, $location, $window, coinomiaService, config, UtilsService) {
     $scope.currentPage = config.currentPage;
     $scope.pagination = {
       totalDirects: 0,
       totalTeam:0,
       perpage: config.pageLimit
     }
+
     $scope.selected = [];
-
     $scope.teamColumnHead = config.teamColumnHead;
-
     $scope.sponsorId = '';
-
     $scope.order = config.columnOrder;
-
     $scope.pageLimit = config.pageLimit;
-
     $scope.limit = config.messageLimit;
 
     // Get User Directs
@@ -203,7 +199,7 @@ angular.module('coinomiaFrontendApp')
     angular.element('.Editor-container .Editor-editor').addClass('raza');
 
     $scope.sendMessage = function() {
-      if($scope.selected.length > 0) {
+      if($scope.selected.length > 0 || $scope.replyId) {
         if($scope.message) {
           $scope.messageError = false;
           $scope.sendError = false;
@@ -212,16 +208,31 @@ angular.module('coinomiaFrontendApp')
             var id = {"id": $scope.selected[i]};
             receiver.push(id);
           }
-          var sendData = {
-             Subject:$scope.subject,
-             Message:$scope.message,
-             Replyid:0,
-             Receiverids:receiver
+
+
+          if($scope.replyId) {
+            // Reply Message Parameter
+            var sendData = {
+               "Subject":$scope.replySubject,
+               "Message":$scope.message,
+               "Replyid ":$scope.replyId,
+               "Receiverids":receiver
+            }
+          }else{
+            // Send Message Parameter
+            var sendData = {
+               Subject:$scope.subject,
+               Message:$scope.message,
+               Replyid:$scope.replyId,
+               Receiverids:0
+            }
           }
+
           coinomiaService.sendMessage(sendData)
           .then(function(res){
             if(res.status === 200) {
               $scope.sendMessage = true;
+              $window.relocation.reload();
             }else{
               $scope.sendMessage = false;
             }
@@ -311,8 +322,30 @@ angular.module('coinomiaFrontendApp')
 
     $scope.readMessage = false;
     // View Message
-    $scope.viewMessage = function(key, sent) {
+    $scope.viewMessage = function(type, messageId) {
+      $scope.inboxMessage = '';
       $scope.readMessage = true;
+      $scope.loadingData = true;
+      $scope.showReplyBox = false;
+      angular.element("html, body").animate({ scrollTop: angular.element(document).height() }, 1000);
+      coinomiaService.viewMessage(type, messageId)
+      .then(function(res) {
+        if(res.status === 200) {
+          $scope.loadingData = false;
+          var data = res.data;
+          $scope.inboxMessage = data;
+        }
+      });
+    }
+
+
+    // Reply Message
+    $scope.replyMessage = function(reply) {
+      $scope.showReplyBox = true;
+      $scope.replyId = reply.senderid;
+      $scope.replySubject = reply.subject;
+      $scope.message = reply.body;
+      angular.element("html, body").animate({ scrollTop: angular.element(document).height() }, 1000);
     }
 
 });
