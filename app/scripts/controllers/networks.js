@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('NetworksCtrl', function ($scope, $timeout, $location, $window, coinomiaService, config, UtilsService) {
+  .controller('NetworksCtrl', function ($scope, $timeout, $location, $uibModal, $uibModalStack, $window, coinomiaService, config, UtilsService) {
     $scope.currentPage = config.currentPage;
     $scope.pagination = {
       totalDirects: 0,
@@ -311,7 +311,7 @@ angular.module('coinomiaFrontendApp')
         .then(function(res) {
           if(res.status === 200) {
             var data = res.data;
-            $scope.pagination.totalUsers = data.total;
+            $scope.pagination.totalUsers = 0;
             $scope.teamDirectsUsers  = data.rows;
           }
         })
@@ -324,28 +324,58 @@ angular.module('coinomiaFrontendApp')
     // View Message
     $scope.viewMessage = function(type, messageId) {
       $scope.inboxMessage = '';
-      $scope.readMessage = true;
+      if(type === 'inbox') {
+        $scope.readInboxMessage = true;
+      }else{
+        $scope.readSentMessage = true;
+      }
+
       $scope.loadingData = true;
-      $scope.showReplyBox = false;
       angular.element("html, body").animate({ scrollTop: angular.element(document).height() }, 1000);
       coinomiaService.viewMessage(type, messageId)
       .then(function(res) {
         if(res.status === 200) {
           $scope.loadingData = false;
           var data = res.data;
-          $scope.inboxMessage = data;
+          if(type === 'inbox') {
+            $scope.inboxMessage = data;
+          }else{
+            $scope.sentMessage = data;
+          }
         }
       });
     }
 
 
     // Reply Message
-    $scope.replyMessage = function(reply) {
-      $scope.showReplyBox = true;
+    $scope.replyMessage = function(type, reply) {
+      if(type === 'inbox'){
+        $scope.showReplyBox = true;
+      }else{
+        $scope.sentReplyBox = true;
+      }
+
       $scope.replyId = reply.senderid;
       $scope.replySubject = reply.subject;
       $scope.message = reply.body;
       angular.element("html, body").animate({ scrollTop: angular.element(document).height() }, 1000);
+    }
+
+
+    $scope.ativatePayment = function() {
+      var modalInstance = $uibModal.open({
+          templateUrl: 'views/payment-mode.html',
+          scope: $scope,
+          size: 'md'
+      });
+    }
+
+    $scope.closePopup = function() {
+      $uibModalStack.dismissAll();
+    }
+
+    $scope.activeAffiliate = function(payment) {
+      console.log(payment);
     }
 
 });

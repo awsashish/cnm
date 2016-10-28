@@ -827,6 +827,23 @@ angular.module('coinomiaFrontendApp')
           .then(viewMessageRequestComplete)
           .catch(viewMessageRequestFailed);
       }
+    }
 
+    // Get Sent List
+    this.activeAffiliate = function(page, limit) {
+      // On Success
+      function activeAffiliateRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function activeAffiliateRequestFailed(error) {
+        $log.error('XHR Failed for Sent List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'active-affiliate')
+        .then(activeAffiliateRequestComplete)
+        .catch(activeAffiliateRequestFailed);
     }
   });
