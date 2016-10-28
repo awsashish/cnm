@@ -8,8 +8,12 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('DashboardCtrl', function ($scope, $rootScope, $localStorage, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config) {
+  .controller('DashboardCtrl', function ($scope, $rootScope, $localStorage, $location, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config) {
 
+
+    $scope.goToSection = function(id) {
+      $location.hash(id);
+    }
 
     $scope.hasDirectReferral = false;
     $scope.hasBinaryReferral = false;
