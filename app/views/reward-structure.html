@@ -1,0 +1,83 @@
+<!-- Modal Content -->
+<div class="modal-content">
+  <div class="modal-body" style="overflow:auto !important; height:800px; width:100%;">
+   <div class="row">
+      <div class="col-md-4 col-sm-12 popup-logo"><img ng-src="{{s3Url}}logo-coinomia.png"></div>
+      <div class="col-md-5 col-sm-12">
+        <div class="counter-date">
+          <timer countdown="remainingTime" max-time-unit="'day'" class="timer" interval="1000">
+            <span class="countdown-amount">{{ddays}}</span>Day{{daysS}}
+            <span class="countdown-amount">{{hhours}}</span> Hour{{hoursS}}
+            <span class="countdown-amount">{{mminutes}}</span> Minute{{minutesS}}
+            <span class="countdown-amount">{{sseconds}}</span> Second{{secondsS}}</timer>
+        </div>
+         <h2 align="center" class="col-xs-12 col-sm-12 col-md-12 nomargin nopadding" style="font-family: 'Kaushan Script', cursive; padding-top:10px; color:#FC0; font-size:50px !important;">Launch Rewards  </h2>
+         <h4 align="center" class="col-xs-12 col-sm-12 col-md-12 nomargin nopadding">Rewards from Everyone</h4>
+      </div>
+      <div align="center" class="col-md-3 col-sm-12">
+        <img ng-src="{{s3Url}}reward.png" width="140">
+      </div>
+   </div>
+   <hr>
+   <div class="main-slider01">
+     <img ng-src="{{s3Url}}slide1.png" width="100%">
+   </div>
+   <div class="main-slider02" class="mar50">
+     <img ng-src="{{s3Url}}slide2.png" usemap="#Map" border="0" width="100%">
+   </div>
+   <map name="Map" id="Map">
+      <area shape="circle" coords="137,252,125" ng-click="goToSection('tab2')" title="Maximum Referrals">
+      <area shape="circle" coords="763,250,131" ng-click="goToSection('tab3')" title="Paid Frontline">
+      <area shape="circle" coords="738,560,155" ng-click="goToSection('tab1')" title="Double Your Repurchase Cheque">
+      <area shape="circle" coords="136,516,123" ng-click="goToSection('tab4')" title="Frontline Commissions">
+   </map>
+   <hr>
+   <div id="tab1" class="mar20">
+     <img ng-src="{{s3Url}}slide3.png" width="100%">
+   </div>
+   <hr>
+   <div id="tab2" class="mar20">
+     <img ng-src="{{s3Url}}slide4.png" width="100%">
+   </div>
+   <hr>
+   <div id="tab3" class="mar20">
+     <img ng-src="{{s3Url}}slide5.png" width="100%">
+   </div>
+   <hr>
+   <div id="tab4" class="mar20">
+     <img ng-src="{{s3Url}}slide6.png" width="100%">
+   </div>
+   <div><h3><strong>Case Study</strong></h3><br>
+      Alex, Bella, Carol and Dave are 4 members of Coinomia. Alex has a frontline of 300 users whereas Bella, Carol and Dave has a frontline of 200, 100 and 50 respectively.<br>
+      <hr>
+
+
+      Stats for Alex(Rack Owner):Out of 300 users as his frontline,120 purchase Pool contract!Alex receives direct commission of $1440.Alex's team makes further repurchases and their Repurchase binary match count 10.<br>
+      <hr>
+
+
+
+      Stats for Bella(Rack Owner):Out of 200 users as her frontline,150 purchase Pool contract!Bella receives direct commission of $1800.Bella's team makes further repurchases and their Repurchase binary match count 15.<br>
+      <hr>
+
+
+
+      Stats for Carol(Rack Owner):Out of 100 users as her frontline,90 purchase Rack contract!Carol receives direct commission of $108000.Alex's team makes further repurchases and their Repurchase binary match count 20.<br>
+      <hr>
+
+
+      Stats for Dave(Rack Owner):Out of 50 users as his frontline,40 purchase Machine contract!Dave receives direct commission of $4800.Alex's team makes further repurchases and their Repurchase binary match count 27.<br>
+      <hr>
+
+
+
+
+      Alex has 10 Repurchase Binary Matching!Bella has 15 Repurchase Binary Matching!Carol has 20 Repurchase Binary Matching!Dave has 27 Repurchase Binary Matching!Dave tops the list and gets $270 x 2<br>
+      <br>
+      </div>
+  </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closePopup()">Close</button>
+    </div>
+</div>
+<!-- /.modal-content -->
