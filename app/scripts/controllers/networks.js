@@ -349,11 +349,12 @@ angular.module('coinomiaFrontendApp')
     $scope.replyMessage = function(type, reply) {
       if(type === 'inbox'){
         $scope.showReplyBox = true;
+        $scope.replyId = reply.senderid;
       }else{
         $scope.sentReplyBox = true;
+        $scope.replyId = reply.receiverid;
       }
 
-      $scope.replyId = reply.senderid;
       $scope.replySubject = reply.subject;
       $scope.message = reply.body;
       angular.element("html, body").animate({ scrollTop: angular.element(document).height() }, 1000);

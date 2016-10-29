@@ -807,7 +807,7 @@ angular.module('coinomiaFrontendApp')
 
     // View Message
     this.viewMessage = function(type, messageId) {
-
+      console.log(type);
       function viewMessageRequestComplete(response) {
         return response;
       }
@@ -823,7 +823,7 @@ angular.module('coinomiaFrontendApp')
           .then(viewMessageRequestComplete)
           .catch(viewMessageRequestFailed);
       }else if(type == 'sent') {
-        return $http.get(this.apiHost +'user/sent/'+messageId)
+        return $http.get(this.apiHost +'user/sentbox/'+messageId)
           .then(viewMessageRequestComplete)
           .catch(viewMessageRequestFailed);
       }

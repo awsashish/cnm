@@ -847,7 +847,7 @@
                                   <tr ng-if="totalSentMessage===0 && loadingData==false">
                                     <td>No Message Found.</td>
                                   </tr>
-                                  <tr ng-repeat="(key, sent) in sentData" ng-if="totalSentMessage > 0 && loadingData==false" ng-click="viewMessage(key, sent)">
+                                  <tr ng-repeat="(key, sent) in sentData" ng-if="totalSentMessage > 0 && loadingData==false" ng-click="viewMessage('sent', sent.id)">
                                       <a href="#">
                                           <td class="text-capitalize"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;{{sent.receivername}}</td>
                                           <td><strong>{{sent.receiverid}}</strong> </td>
