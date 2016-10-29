@@ -178,6 +178,13 @@ angular.module('coinomiaFrontendApp')
       authenticate: true
     })
 
+    .state('wallet', {
+      url: '/wallet',
+      templateUrl: 'views/wallet.html',
+      controller: 'WalletCtrl',
+      authenticate: true
+    })
+
     // My Account
     .state('setting', {
       url: '/setting',

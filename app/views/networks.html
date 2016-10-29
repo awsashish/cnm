@@ -788,21 +788,21 @@
                                 </div>
                                 <div class="clear-fix"></div>
                                 <hr />
-                                <form name="replyForm" ng-submit="sendMessage()" novalidate>
+                                <form name="replyForm" ng-submit="sendMessage(replyMail)" novalidate>
                                     <label><strong>To</strong>
                                     </label>
                                     <br />
-                                    <input type="text" ng-model="replyId" class="form-control" ng-readonly="true" />
+                                    <input type="text" ng-model="replyMail.replyId" class="form-control" ng-readonly="true" />
                                     <label><strong>Subject</strong>
                                     </label>
                                     <br />
-                                    <input type="text" name="subject" ng-model="replySubject" class="form-control" required="required" />
+                                    <input type="text" name="subject" ng-model="replyMail.replySubject" class="form-control" required="required" />
                                     <div class="alert alert-danger fade in error-padding"
                                        ng-show="replyForm.subject.$touched && replyForm.subject.$invalid">
                                        Subject is required</div>
 
                                     <label><strong>Message</strong></label>
-                                    <div text-angular ng-model="message"></div>
+                                    <div text-angular ng-model="replyMail.message"></div>
                                     <!-- <textarea texteditor id="txtEditor1" ng-model="message" class="form-control"></textarea> -->
 
                                     <div class="alert alert-danger fade in error-padding" ng-if="messageError">
@@ -901,21 +901,21 @@
                                 </div>
                                 <div class="clear-fix"></div>
                                 <hr />
-                                <form name="replyForm" ng-submit="sendMessage()" novalidate>
+                                <form name="replyForm" ng-submit="sendMessage(replyMail)" novalidate>
                                     <label><strong>To</strong>
                                     </label>
                                     <br />
-                                    <input type="text" ng-model="replyId" class="form-control" ng-readonly="true" />
+                                    <input type="text" ng-model="replyMail.replyId" class="form-control" ng-readonly="true" />
                                     <label><strong>Subject</strong>
                                     </label>
                                     <br />
-                                    <input type="text" name="subject" ng-model="replySubject" class="form-control" required="required" />
+                                    <input type="text" name="subject" ng-model="replyMail.replySubject" class="form-control" required="required" />
                                     <div class="alert alert-danger fade in error-padding"
                                        ng-show="replyForm.subject.$touched && replyForm.subject.$invalid">
                                        Subject is required</div>
 
                                     <label><strong>Message</strong></label>
-                                    <div text-angular ng-model="message"></div>
+                                    <div text-angular ng-model="replyMail.message"></div>
                                     <!-- <textarea texteditor id="txtEditor1" ng-model="message" class="form-control"></textarea> -->
 
                                     <div class="alert alert-danger fade in error-padding" ng-if="messageError">
@@ -995,18 +995,18 @@
                                 <div class="alert alert-danger" role="alert"><strong>Note :</strong> Please keep in mind that you can send only one message every 24 hours</div>
                                 <br />
                             </div>
-                            <form name="sendForm" ng-submit="sendMessage()" novalidate>
+                            <form name="sendForm" ng-submit="sendMessage(replyMail)" novalidate>
                                 <label><strong>To: {{selected.join(', ')}}</strong>
                                 </label><br /><br />
                                 <label><strong>Subject</strong></label>
                                 <br />
-                                <input type="text" name="subject" ng-model="subject" class="form-control" required="required" />
+                                <input type="text" name="subject" ng-model="replyMail.subject" class="form-control" required="required" />
                                 <div class="alert alert-danger fade in error-padding"
                                    ng-show="sendForm.subject.$touched && sendForm.subject.$invalid">
                                    Subject is required</div>
 
                                 <label><strong>Message</strong></label>
-                                <div text-angular ng-model="message"></div>
+                                <div text-angular ng-model="replyMail.message"></div>
                                 <!-- <textarea texteditor id="txtEditor1" ng-model="message" class="form-control"></textarea> -->
 
                                 <div class="alert alert-danger fade in error-padding" ng-if="messageError">

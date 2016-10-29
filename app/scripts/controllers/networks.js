@@ -16,6 +16,8 @@ angular.module('coinomiaFrontendApp')
       perpage: config.pageLimit
     }
 
+    $scope.replyMail = {};
+
     $scope.selected = [];
     $scope.teamColumnHead = config.teamColumnHead;
     $scope.sponsorId = '';
@@ -196,9 +198,9 @@ angular.module('coinomiaFrontendApp')
       return $scope.selected.indexOf(username) >= 0;
     };
 
-    $scope.sendMessage = function() {
-      if($scope.selected.length > 0 || $scope.replyId) {
-        if($scope.message) {
+    $scope.sendMessage = function(replyMail) {
+      if($scope.selected.length > 0 || replyMail.replyId) {
+        if(replyMail.message) {
           $scope.messageError = false;
           $scope.sendError = false;
           var receiver = [];
@@ -208,20 +210,20 @@ angular.module('coinomiaFrontendApp')
           }
 
 
-          if($scope.replyId && $scope.replySubject) {
+          if(replyMail.replyId && replyMail.replySubject) {
             // Reply Message Parameter
             var sendData = {
-               "Subject":$scope.replySubject,
-               "Message":$scope.message,
-               "Replyid ":$scope.replyId,
+               "Subject":replyMail.replySubject,
+               "Message":replyMail.message,
+               "Replyid ":replyMail.replyId,
                "Receiverids":receiver
             }
           }else{
             // Send Message Parameter
             var sendData = {
-               Subject:$scope.subject,
-               Message:$scope.message,
-               Replyid:$scope.replyId,
+               Subject:replyMail.subject,
+               Message:replyMail.message,
+               Replyid:replyMail.replyId,
                Receiverids:receiver
             }
           }
@@ -349,14 +351,14 @@ angular.module('coinomiaFrontendApp')
     $scope.replyMessage = function(type, reply) {
       if(type === 'inbox'){
         $scope.showReplyBox = true;
-        $scope.replyId = reply.senderid;
+        $scope.replyMail.replyId = reply.senderid;
       }else{
         $scope.sentReplyBox = true;
-        $scope.replyId = reply.receiverid;
+        $scope.replyMail.replyId = reply.receiverid;
       }
 
-      $scope.replySubject = reply.subject;
-      $scope.message = reply.body;
+      $scope.replyMail.replySubject = reply.subject;
+      $scope.replyMail.message = reply.body;
       angular.element("html, body").animate({ scrollTop: angular.element(document).height() }, 1000);
     }
 
