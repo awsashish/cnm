@@ -196,8 +196,6 @@ angular.module('coinomiaFrontendApp')
       return $scope.selected.indexOf(username) >= 0;
     };
 
-    angular.element('.Editor-container .Editor-editor').addClass('raza');
-
     $scope.sendMessage = function() {
       if($scope.selected.length > 0 || $scope.replyId) {
         if($scope.message) {
@@ -210,7 +208,7 @@ angular.module('coinomiaFrontendApp')
           }
 
 
-          if($scope.replyId) {
+          if($scope.replyId && $scope.replySubject) {
             // Reply Message Parameter
             var sendData = {
                "Subject":$scope.replySubject,
@@ -224,7 +222,7 @@ angular.module('coinomiaFrontendApp')
                Subject:$scope.subject,
                Message:$scope.message,
                Replyid:$scope.replyId,
-               Receiverids:0
+               Receiverids:receiver
             }
           }
 

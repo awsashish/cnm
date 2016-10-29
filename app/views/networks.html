@@ -3,7 +3,7 @@
   <div class="mainwrapper">
     <navigation></navigation>
     <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
-      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.btn-group { margin-bottom: 0px !important;}
+      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.btn-group { margin-bottom: 0px !important;}select {-webkit-appearance: menulist;}
     </style>
     <div class="mainpanel">
       <!-- <coming-soon text-value="'Networks'"></coming-soon> -->
@@ -943,7 +943,7 @@
                                     <h4 style="padding-left:10px;">Filter By</h4>
                                     <div class="col-md-6 col-sm-12">
                                         <select name="filterType" ng-model="searchType" class="form-control" style="width:100%;" required >
-                                            <option value="0" selected="selected">select</option>
+                                            <!--<option value="0">select</option>-->
                                             <option value="email">Email</option>
                                             <option value="Name">Name</option>
                                         </select>
@@ -975,7 +975,7 @@
                                                 </td>
                                             </tr>
                                         </thead>
-                                        <tr ng-if="pagination.totalUsers==0">
+                                        <tr ng-if="teamDirectsUsers == ''">
                                           <td>No Records Found</td>
                                         </tr>
                                         <tr ng-repeat="(key,directs) in teamDirectsUsers">
