@@ -20,8 +20,8 @@ angular.module('coinomiaFrontendApp')
        }
 
       // Calcultate remaining Time
-      var futureDate = moment('2016-11-01').tz('America/New_York').valueOf();
-      var currentDate = moment().tz('America/New_York').valueOf();
+      var futureDate = moment('2016-11-14 09:00:00').tz('Europe/London').valueOf();
+      var currentDate = moment().tz('Europe/London').valueOf();
 
       $rootScope.remainingTime = (futureDate - currentDate)/1000;
 
