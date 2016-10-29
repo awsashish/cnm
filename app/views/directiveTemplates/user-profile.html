@@ -1,5 +1,25 @@
 <form ng-submit="updateProfile(userInfo)"  >
-  <div class="row">
+  <div class="row" ng-if="parentSponsor">
+    <div class="col-md-6 col-sm-12 mar20">
+      <label for="exampleInputName2"><strong>Sponsor Name</strong></label>
+      <input class="form-control" id="disabledInput" ng-model="userInfo.sponsorname" type="text" placeholder="Email" disabled>
+    </div>
+    <div class="col-md-6 col-sm-12 mar20">
+      <label for="exampleInputName2"><strong>Sponsor ID</strong></label>
+      <input type="text" class="form-control" ng-model="userInfo.sponsor" id="exampleInputName2" disabled>
+    </div>
+  </div>
+  <div class="row mar20" ng-if="parentSponsor">
+    <div class="col-md-6 col-sm-12 mar20">
+      <label for="exampleInputName2"><strong>Sponsor Email</strong></label>
+      <input class="form-control" id="disabledInput" ng-model="userInfo.sponsoremail" type="text" placeholder="Email" disabled>
+    </div>
+    <div class="col-md-6 col-sm-12 mar20">
+      <label for="exampleInputName2"><strong>Sponsor Phone</strong></label>
+      <input type="text" class="form-control" ng-model="userInfo.sponsormobile" id="exampleInputName2" disabled>
+    </div>
+  </div>
+  <div class="row mar20">
     <div class="col-md-6 col-sm-12 mar20">
       <label for="exampleInputName2"><strong>Email</strong></label>
       <input class="form-control" id="disabledInput" ng-model="userInfo.Email" type="text" placeholder="Email" disabled>
@@ -17,7 +37,7 @@
 
     <div class="col-md-6 col-sm-12">
       <label for="exampleInputName2"><strong>Mobile Number</strong></label>
-      <div class="input-group mb15" ng-if="userInfo.Country"> <span class="input-group-addon">+{{dialCode[userInfo.Country].dial}}</span>
+      <div class="input-group mb15"> <span class="input-group-addon">+{{dialCode[userInfo.Country].dial}}</span>
       <input type="text" class="form-control " id="exampleInputName2" ng-model="userInfo.Mobile" placeholder="Mobile Number">
     </div>
     </div>
