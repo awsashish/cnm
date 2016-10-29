@@ -185,7 +185,7 @@ a:focus {
   font-family: "Oswald",sans-serif;
 }
 
-.timer span { font-size: 16px; }
+.timer span { font-size: 14px; }
 
 .timer-text { color: #9d9d9d; }
 
@@ -193,6 +193,10 @@ a:focus {
 	position: relative;
 	background: #88b7d5; padding:55px 20px; color:#fff; border-radius:5px;
 	border: 1px solid #c2e1f5; margin-top:5px;
+}
+
+map area{
+  outline: none;
 }
 
 .arrow_box:after, .arrow_box:before {
@@ -3869,7 +3873,16 @@ body.signin {
 .mb36{ font-size:20px !important; font-family: 'Oswald', sans-serif; margin:0px !important; padding:0px !important; }
 .bor-gry{border-bottom:5px solid #ccc !important; box-shadow:2px 2px #f2f2f2;}
 
-
+.counter-date {
+    float: left;
+    top: -1px;
+    padding: 10px 0px 0px 5px;
+    border-radius: 0px 0px 5px 5px;
+    left: 89%;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    cursor: pointer;
+}
 
 /********** 13. MEDIA QUERIES **********/
 /***************************************/
@@ -3902,6 +3915,18 @@ body.signin {
     }
 }
 
+@media screen and (max-width: 991px) {
+  .popup-logo {
+    text-align: center;
+  }
+
+  .counter-date {
+    float: none;
+    display: table;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (max-width: 768px) {
 
     body {
@@ -3912,10 +3937,11 @@ body.signin {
         position: static;
     }
 
+
     .navbar-toggle {
       position: absolute;
       right: 0;
-      z-index: 9999;
+      z-index: 999;
       margin-top:0;
     }
 
@@ -5192,17 +5218,6 @@ a:hover div.box-outer{border-bottom:3px solid #ccc;}
 .arrow-bot-rgt{position:absolute; margin-top:-20px; left:75%; z-index:99;}
 
 /***********************Calender ******************************************/
-.counter-date {
-    float: left;
-    top: -1px;
-    padding: 10px 0px 0px 5px;
-    border-radius: 0px 0px 5px 5px;
-    left: 89%;
-    border-bottom: 2px solid #ccc;
-    outline: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
 
 .countdown-amount {
     padding: 8px 10px;
