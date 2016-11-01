@@ -36,6 +36,28 @@ angular.module('coinomiaFrontendApp')
             ];
             $scope.pagination.totalDirects = data.total;
             $scope.teamDirectsData  = data.rows;
+            // data.rows.forEach(function(info){
+            //   var excelArray = [info.Name, info.Email, info.Sponsor, info.username, info.Mobile, info.country, info.TotalContract, info.TotalPurchased, info.DOJ, info.TotalDirect];
+            //   $scope.arrayList.push(excelArray);
+            // });
+            // $scope.getExcelData($scope.arrayList);
+            // $scope.getFlags(0, $scope.teamDirectsData, $scope.teamDirectsData.length);
+          }
+      });
+    }
+
+    $scope.getAllUser = function(pages) {
+      var currentPage = pages;
+      var pageLimit = pages;
+      coinomiaService.getUserDirects(currentPage, pageLimit)
+        .then(function(res) {
+          if(res.status === 200) {
+            var data = res.data;
+            $scope.arrayList = [
+              config.teamColumnHead
+            ];
+
+            $scope.directUsers  = data.rows;
             data.rows.forEach(function(info){
               var excelArray = [info.Name, info.Email, info.Sponsor, info.username, info.Mobile, info.country, info.TotalContract, info.TotalPurchased, info.DOJ, info.TotalDirect];
               $scope.arrayList.push(excelArray);
@@ -71,6 +93,8 @@ angular.module('coinomiaFrontendApp')
     /** -- Excel Export -- **/
 
     $scope.userDirects($scope.currentPage, $scope.pageLimit);
+
+    $scope.getAllUser('all');
 
     // Get All Referrals
     $scope.allReferral = function(page) {
