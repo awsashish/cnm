@@ -271,6 +271,10 @@ map area{
   font-weight: bold;
 }
 
+.transaction_heading {
+  width: 50%;
+}
+
 .main-header{
   border-bottom: 1px solid #eee;
   padding-bottom: 10px;
@@ -4761,7 +4765,10 @@ h4.great {
     position: absolute;
     top: 5px;
   }
-	}
+  .transaction_heading {
+    width: 90%;
+  }
+}
 
 @media(max-width:481px) {
   .btn-default1 { width: 100%;}
