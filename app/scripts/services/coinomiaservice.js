@@ -837,7 +837,7 @@ angular.module('coinomiaFrontendApp')
     }
 
     // Get Sent List
-    this.activeAffiliate = function(page, limit) {
+    this.activeAffiliate = function(paymode, paytype) {
       // On Success
       function activeAffiliateRequestComplete(response) {
         return response;
