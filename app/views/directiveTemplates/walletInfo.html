@@ -18,11 +18,20 @@
                 <td><h4 class="nomargin nopadding" ng-if="info.Wallet === 'USD'"><strong>{{info.Balance | currency}} </strong></h4></td>
              </tr>
              <tr ng-if="type">
-                <td align="center" valign="middle" colspan="2"><button data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ><strong>Withdraw</strong></button></td>
+                <td align="center" valign="middle" colspan="2" ng-if="info.Wallet !== 'USD'">
+                  <button data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ><strong>Withdraw</strong></button>
+                </td>
+                <td align="center" valign="middle" colspan="2" ng-if="info.Wallet === 'USD'">
+                   <a data-toggle="modal" data-target="#usd-wallet" class="btn btn-default btn-white"><strong><img src="images/withdraw.png" width="30"> Withdraw</strong></a> &nbsp;&nbsp;<a data-toggle="modal" data-target="#internal-transfer" class="btn btn-default"><strong><img src="images/transfer-funds.png" width="30"> Internal Transfer</strong></a>
+                   <form class="form-inline">
+                      <b style="font-size:25px; ">$</b> <input type="text" class="form-control" style="margin-top:10px;">&nbsp;&nbsp;<button data-toggle="modal" data-target="#add-funds" class="btn btn-default btn-white"><strong>Add Funds</strong></button>
+                   </form>
+                </td>
              </tr>
              <tr ng-if="!type">
                 <td align="center" valign="middle" colspan="2">
-                  <button class="btn btn-lg btn-default white-btn" ng-click="updateWallet({wallet:info.Wallet, address:info.Address})"><strong>Save </strong></button></td>
+                  <button class="btn btn-lg btn-default white-btn" ng-click="updateWallet({wallet:info.Wallet, address:info.Address})"><strong>Save </strong></button>
+                </td>
              </tr>
           </tbody>
        </table>
