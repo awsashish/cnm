@@ -64,8 +64,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get User Referrals
-    this.getUserDirects = function(currentPage) {
-
+    this.getUserDirects = function(currentPage, limit) {
       function userDirectsComplete(response) {
         return response;
       }
@@ -74,10 +73,18 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
-        .then(userDirectsComplete)
-        .catch(userDirectsFailed);
+      if(currentPage == 'all') {
+        return $http.get(this.apiHost +'user/referral/')
+          .then(userDirectsComplete)
+          .catch(userDirectsFailed);
+      }else{
+        return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+limit)
+          .then(userDirectsComplete)
+          .catch(userDirectsFailed);
+      }
+
     };
+
 
     // All Referrals
     this.getAllReferral = function(currentPage) {
@@ -642,21 +649,225 @@ angular.module('coinomiaFrontendApp')
         .catch(getLatestSignupRequestFailed);
     }
 
-    // OS Ticket Login
-    this.osTicketlogin = function(token) {
-      // On Success
-      function osTicketloginRequestComplete(response) {
+    // Create Referral Campaign and Banner Campaign
+    this.createCampaign = function(campaignData) {
+      //  On Success
+      function createCampaignRequestComplete(response) {
         return response;
       }
 
       // On Failed
-      function osTicketloginRequestFailed(error) {
-        // $log.error('XHR Failed for Wallet Info.\n' + angular.toJson(error.data, true));
+      function createCampaignRequestFailed(error) {
+        $log.error('XHR Failed for Create Campaign.\n' + angular.toJson(error.data, true));
         return error;
       }
 
-      return $http.post(this.apiHost +'latest-signup', token)
-        .then(osTicketloginRequestComplete)
-        .catch(osTicketloginRequestFailed);
+      return $http.post(this.apiHost +'affiliate/create-campaign', campaignData)
+        .then(createCampaignRequestComplete)
+        .catch(createCampaignRequestFailed);
+    }
+
+    // Get Referral and Banner Reports
+    this.getReports = function(type) {
+      // On Success
+      function getReportsRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getReportsRequestFailed(error) {
+        $log.error('XHR Failed for Referral Reports.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'affiliate/campaign-report/'+type)
+        .then(getReportsRequestComplete)
+        .catch(getReportsRequestFailed);
+    }
+
+    // Get Banner Reports
+    // this.getBannerReports = function() {
+    //   // On Success
+    //   function bannerReportsRequestComplete(response) {
+    //     return response;
+    //   }
+    //
+    //   // On Failed
+    //   function bannerReportsRequestFailed(error) {
+    //     $log.error('XHR Failed for Banner Reports.\n' + angular.toJson(error.data, true));
+    //     return error;
+    //   }
+    //
+    //   return $http.get(this.apiHost +'affiliate/banner-report')
+    //     .then(bannerReportsRequestComplete)
+    //     .catch(bannerReportsRequestFailed);
+    // }
+
+    // Send Message
+    this.sendMessage =  function(messageData) {
+      // On Success
+      function sendMessageRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function sendMessageRequestFailed(error) {
+        $log.error('XHR Failed for Send Message Reports.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/compose', messageData)
+        .then(sendMessageRequestComplete)
+        .catch(sendMessageRequestFailed);
+    }
+
+    // Get Inbox List
+    this.getInboxList = function(page, limit) {
+      // On Success
+      function getInboxListRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getInboxListRequestFailed(error) {
+        $log.error('XHR Failed for Inbox List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/inbox-item/'+page+'/'+limit)
+        .then(getInboxListRequestComplete)
+        .catch(getInboxListRequestFailed);
+    }
+
+    // Get Inbox Search Results
+    this.getInboxSearch = function(filter, page, limit) {
+      // On Success
+      function getInboxSearchRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getInboxSearchRequestFailed(error) {
+        $log.error('XHR Failed for Inbox List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/inbox-item/'+filter+'/'+page+'/'+limit)
+        .then(getInboxSearchRequestComplete)
+        .catch(getInboxSearchRequestFailed);
+    }
+
+    // Get Inbox Search Results
+    this.getSentSearch = function(filter, page, limit) {
+      // On Success
+      function getSentSearchRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getSentSearchRequestFailed(error) {
+        $log.error('XHR Failed for Inbox List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/sent-item/'+filter+'/'+page+'/'+limit)
+        .then(getSentSearchRequestComplete)
+        .catch(getSentSearchRequestFailed);
+    }
+
+
+    // Get Search User Results
+    this.searchUser = function(filterType, filter, page) {
+      // On Success
+      function searchUserRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function searchUserRequestFailed(error) {
+        $log.error('XHR Failed for Inbox List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/all-group/'+filterType+'/'+filter+'/'+page)
+        .then(searchUserRequestComplete)
+        .catch(searchUserRequestFailed);
+    }
+
+    // Get Sent List
+    this.getSentList = function(page, limit) {
+      // On Success
+      function getSentListRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getSentListRequestFailed(error) {
+        $log.error('XHR Failed for Sent List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/sent-item/'+page+'/'+limit)
+        .then(getSentListRequestComplete)
+        .catch(getSentListRequestFailed);
+    }
+
+    // View Message
+    this.viewMessage = function(type, messageId) {
+      function viewMessageRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function viewMessageRequestFailed(error) {
+        $log.error('XHR Failed for View Message.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      if(type == 'inbox') {
+        return $http.get(this.apiHost +'user/inbox/'+messageId)
+          .then(viewMessageRequestComplete)
+          .catch(viewMessageRequestFailed);
+      }else if(type == 'sent') {
+        return $http.get(this.apiHost +'user/sentbox/'+messageId)
+          .then(viewMessageRequestComplete)
+          .catch(viewMessageRequestFailed);
+      }
+    }
+
+    // Get Sent List
+    this.activeAffiliate = function(paymode, paytype) {
+      // On Success
+      function activeAffiliateRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function activeAffiliateRequestFailed(error) {
+        $log.error('XHR Failed for Sent List.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'active-affiliate')
+        .then(activeAffiliateRequestComplete)
+        .catch(activeAffiliateRequestFailed);
+    }
+
+    // Update Profile
+    this.addUsdFund = function(amount) {
+      // On Success
+      function addUsdFundRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function addUsdFundRequestFailed(error) {
+        $log.error('XHR Failed for Add Fund.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/add-fund', amount)
+        .then(addUsdFundRequestComplete)
+        .catch(addUsdFundRequestFailed);
     }
   });

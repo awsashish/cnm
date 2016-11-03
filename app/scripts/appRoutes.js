@@ -189,6 +189,13 @@ angular.module('coinomiaFrontendApp')
       authenticate: true
     })
 
+    .state('wallet', {
+      url: '/wallet',
+      templateUrl: 'views/wallet.html',
+      controller: 'WalletCtrl',
+      authenticate: true
+    })
+
     //
     // $locationProvider.html5Mode(true);
 });
