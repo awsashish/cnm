@@ -122,6 +122,19 @@ a:focus {
   top: -10px;
 }
 
+.add-funds-popup {
+  background: #FC0;
+  padding: 10px;
+  color: #fff;
+  border-radius: 30px;
+}
+
+.add-funds-popup strong {
+  border-radius: 30px;
+  background: #000;
+  padding: 5px 20px;
+}
+
 .cal-dash{ font-size:20px; font-family: 'Oswald', sans-serif; font-weight:normal; margin: 16px 0 0 40px;}
 
 .modal-header {
@@ -4795,6 +4808,8 @@ h4.great {
   .panel-dashboard {width: 90%;}
   .table-content { overflow-x: scroll;}
   .cal-dash { margin: 16px 0 0 10px; }
+  .add-funds-popup {text-align: center;}
+  .add-funds-popup strong { float: left;width: 100%;}
 }
 
 .pageheader{ padding: 10px 10px 20px;}
