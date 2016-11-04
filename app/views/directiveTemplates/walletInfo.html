@@ -24,14 +24,22 @@
                <td align="center" valign="middle" colspan="2" ng-if="info.Wallet === 'USD'">
                   <!--<a data-toggle="modal" data-target="#usd-wallet" class="btn btn-default btn-white"><strong><img src="images/withdraw.png" width="30"> Withdraw</strong></a> &nbsp;&nbsp;<a data-toggle="modal" data-target="#internal-transfer" class="btn btn-default"><strong><img src="images/transfer-funds.png" width="30"> Internal Transfer</strong></a>-->
                   <form name="fund" class="form-inline" ng-submit="submit(amount)" novalidate>
-                     <b style="font-size:25px; ">$</b>
-                     <input type="number" name="amount" class="form-control" ng-model="amount" style="margin-top:10px;" ng-change="checkAmount(amount)" required />&nbsp;&nbsp;
-                     <div class="alert alert-danger fade in error-padding"
-                        ng-show="fund.amount.$touched && fund.amount.$invalid">
-                        Please enter any amount</div>
-                     <button type="submit" data-toggle="modal" data-target="#add-funds" class="btn btn-default btn-white" ng-disabled="fund.$invalid || amountError"><strong>Add Funds</strong></button>
-                     <div class="alert alert-danger fade in error-padding"
-                        ng-if="amountError">Amount should not be less than $100.</div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 text-left fund-section">
+                      <div class="col-xs-12 col-sm-12 col-md-12 input-group mb15 fund-box">
+                        <span class="input-group-addon ng-binding">$</span>
+                        <input type="number" name="amount" class="form-control" ng-model="amount" ng-change="checkAmount(amount)" required />
+                      </div>
+                      <div class="alert alert-danger fade in error-padding text-center"
+                         ng-show="fund.amount.$touched && fund.amount.$invalid">
+                         Please enter any amount</div>
+                      <div class="alert alert-danger fade in error-padding text-center"
+                         ng-if="amountError">Amount should not be less than $100.</div>
+                     </div>
+                     <!-- <b style="font-size:25px; ">$</b>
+                     <input type="number" name="amount" class="form-control" ng-model="amount" style="margin-top:10px;" ng-change="checkAmount(amount)" required />&nbsp;&nbsp; -->
+                     <div class="col-xs-4 col-sm-4 col-md-4 text-left fund-button">
+                       <button type="submit" data-toggle="modal" data-target="#add-funds" class="btn btn-default btn-white" ng-disabled="fund.$invalid || amountError"><strong>Add Funds</strong></button>
+                     </div>
                   </form>
                </td>
             </tr>

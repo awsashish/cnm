@@ -122,6 +122,8 @@ a:focus {
   top: -10px;
 }
 
+.fund-button { padding: 0;}
+
 button.close {
   position: absolute;
   z-index: 99;
@@ -4840,6 +4842,8 @@ h4.great {
   .default-error { text-align: left; top:10px; left:0}
   .search-userbox { margin-left: 0}
   .sponsor-name {position: relative;}
+  .fund-button { padding: 0 10px;}
+  .fund-section { width: 100% !important;}
 }
 
 .pageheader{ padding: 10px 10px 20px;}
