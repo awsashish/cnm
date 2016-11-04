@@ -122,6 +122,12 @@ a:focus {
   top: -10px;
 }
 
+button.close {
+  position: absolute;
+  z-index: 99;
+  right: 10px;
+}
+
 #loadingDiv {
   position:fixed;
   top:0px;
