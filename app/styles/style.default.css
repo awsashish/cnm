@@ -312,7 +312,7 @@ map area{
 }
 
 .transaction_heading {
-  width: 50%;
+  width: 50% !important;
 }
 
 .main-header{
@@ -4806,7 +4806,7 @@ h4.great {
     top: 5px;
   }
   .transaction_heading {
-    width: 90%;
+    width: 90% !important;
   }
 }
 
@@ -5665,4 +5665,15 @@ h1{
 .inactive-affiliate{background:#f2f2f2; display:inline-block;  border-radius:4px; padding:5px 50px; font-size:30px; color:#999 !important; border-bottom:4px solid #ccc;}
 @media(max-width:540px){
   .affiliate{ font-size:25px;}
+}
+
+@media print
+{
+    @page { margin: 0; }
+    body { margin: 1.6cm; }
+
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
 }

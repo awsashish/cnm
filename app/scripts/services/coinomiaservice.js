@@ -217,7 +217,7 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.get(this.apiHost +'user/transaction/'+currentPage+'/'+pageLimit)
+      return $http.get(this.apiHost +'user/latest-transaction/')
         .then(transactionComplete)
         .catch(transactionFailed);
     };
@@ -869,5 +869,23 @@ angular.module('coinomiaFrontendApp')
       return $http.post(this.apiHost +'user/add-fund', amount)
         .then(addUsdFundRequestComplete)
         .catch(addUsdFundRequestFailed);
+    }
+
+    // Update Profile
+    this.fundStatus = function(btcAddress) {
+      // On Success
+      function fundStatusRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function fundStatusRequestFailed(error) {
+        $log.error('XHR Failed for Fund Status.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/btc-transaction', btcAddress)
+        .then(fundStatusRequestComplete)
+        .catch(fundStatusRequestFailed);
     }
   });
