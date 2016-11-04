@@ -64,7 +64,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get User Referrals
-    this.getUserDirects = function(currentPage, limit) {
+    this.getUserDirects = function(currentPage) {
       function userDirectsComplete(response) {
         return response;
       }
@@ -73,16 +73,9 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      if(currentPage == 'all') {
-        return $http.get(this.apiHost +'user/referral/')
-          .then(userDirectsComplete)
-          .catch(userDirectsFailed);
-      }else{
-        return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+limit)
-          .then(userDirectsComplete)
-          .catch(userDirectsFailed);
-      }
-
+      return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
+        .then(userDirectsComplete)
+        .catch(userDirectsFailed);
     };
 
 
@@ -217,7 +210,7 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.get(this.apiHost +'user/transaction/'+currentPage+'/'+pageLimit)
+      return $http.get(this.apiHost +'user/latest-transaction/')
         .then(transactionComplete)
         .catch(transactionFailed);
     };
@@ -869,5 +862,23 @@ angular.module('coinomiaFrontendApp')
       return $http.post(this.apiHost +'user/add-fund', amount)
         .then(addUsdFundRequestComplete)
         .catch(addUsdFundRequestFailed);
+    }
+
+    // Update Profile
+    this.fundStatus = function(btcAddress) {
+      // On Success
+      function fundStatusRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function fundStatusRequestFailed(error) {
+        $log.error('XHR Failed for Fund Status.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/btc-transaction', btcAddress)
+        .then(fundStatusRequestComplete)
+        .catch(fundStatusRequestFailed);
     }
   });

@@ -1,9 +1,18 @@
 <div class="modal-content">
    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      <h4 class="modal-title" id="myModalLabel"><img src="images/usd-wallet.png" width="35" class="pull-left img-responsive "> <strong>&nbsp;USD Wallet</strong></h4>
+      <button type="button" class="close no-print" data-dismiss="modal" aria-label="Close" ng-click="closePopup()"><span aria-hidden="true">×</span></button>
+      <h4 class="modal-title no-print" id="myModalLabel"><img src="images/usd-wallet.png" width="35" class="pull-left img-responsive "> <strong>&nbsp;USD Wallet</strong></h4>
    </div>
    <div class="modal-body">
+     <div class="alert alert-danger fade in" ng-if="notPaid">
+       You have not paid any amount yet.
+     </div>
+     <div class="alert alert-warning fade in" ng-if="pendingStatus">
+       Your transaction confirmation is still pending.
+     </div>
+     <div class="alert alert-success fade in" ng-if="successStatus">
+       Your transaction has been confirmed.
+     </div>
      <form>
          <h4>Transaction Funding</h4>
          <p>Please transfer your Bitcoins to the address given below. The funds will be credited to your wallet as soon as we get 6 confirmations from the Bitcoin network.</p>
@@ -29,7 +38,8 @@
    </div>
    <br>
    <br>
-   <div class="modal-footer">
-      <button type="button" class="btn btn-primary" ng-click="closePopup()">Close</button>
+   <div class="modal-footer no-print">
+      <button type="button" class="btn btn-info" ng-click="printInvoice()"><i class="fa fa-print"></i> Print</button>
+      <button type="button" class="btn btn-primary" ng-click="checkStatus(transactionDetails.address)">I have paid</button>
    </div>
 </div>
