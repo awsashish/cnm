@@ -81,7 +81,9 @@ angular.module('coinomiaFrontendApp')
           $scope.pendingStatus = true;
         }else if (res.status === 200 && res.data.payment_status === 'SUCCESS') {
           $scope.successStatus = true;
-          $scope.closePopup();
+          setTimeout(function () {
+            $scope.closePopup();
+          }, 2000);
         }else {
           $scope.notPaid = true;
         }

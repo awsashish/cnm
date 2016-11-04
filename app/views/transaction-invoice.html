@@ -4,10 +4,16 @@
       <h4 class="modal-title no-print" id="myModalLabel"><img src="images/usd-wallet.png" width="35" class="pull-left img-responsive "> <strong>&nbsp;USD Wallet</strong></h4>
    </div>
    <div class="modal-body">
-     <h4 ng-if="notPaid">You have not paid any amount yet.</h4>
-     <h4 ng-if="pendingStatus">Your transaction confirmation is still pending.</h4>
-     <h4 ng-if="successStatus">Your transaction has been confirmed.</h4>
-     <form ng-hide="notPaid || pendingStatus || successStatus">
+     <div class="alert alert-danger fade in" ng-if="notPaid">
+       You have not paid any amount yet.
+     </div>
+     <div class="alert alert-warning fade in" ng-if="pendingStatus">
+       Your transaction confirmation is still pending.
+     </div>
+     <div class="alert alert-success fade in" ng-if="successStatus">
+       Your transaction has been confirmed.
+     </div>
+     <form>
          <h4>Transaction Funding</h4>
          <p>Please transfer your Bitcoins to the address given below. The funds will be credited to your wallet as soon as we get 6 confirmations from the Bitcoin network.</p>
          <div class="row">
