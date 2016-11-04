@@ -64,7 +64,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get User Referrals
-    this.getUserDirects = function(currentPage, limit) {
+    this.getUserDirects = function(currentPage) {
       function userDirectsComplete(response) {
         return response;
       }
@@ -73,16 +73,9 @@ angular.module('coinomiaFrontendApp')
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
 
-      if(currentPage == 'all') {
-        return $http.get(this.apiHost +'user/referral/')
-          .then(userDirectsComplete)
-          .catch(userDirectsFailed);
-      }else{
-        return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+limit)
-          .then(userDirectsComplete)
-          .catch(userDirectsFailed);
-      }
-
+      return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
+        .then(userDirectsComplete)
+        .catch(userDirectsFailed);
     };
 
 
