@@ -340,6 +340,15 @@ map area{
     display: block;
 }
 
+.custom_day {
+  float: right;
+  padding: 29% 5% 0 0 !important;
+}
+
+.custom_date {
+    float: left;
+}
+
 .mobile-scroll{ overflow-x: hidden;}
 
 .banner-section {

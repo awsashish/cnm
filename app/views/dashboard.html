@@ -28,6 +28,27 @@
           </a>
         </div>
 
+        {{myTeam}}
+        <div class="responsive-calendar">
+           <div class="day-headers">
+              <div class="day header">Mon</div>
+              <div class="day header">Tue</div>
+              <div class="day header">Wed</div>
+              <div class="day header">Thu</div>
+              <div class="day header">Fri</div>
+              <div class="day header">Sat</div>
+              <div class="day header">Sun</div>
+           </div>
+           <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
+              <div class="day" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="team in myTeam">
+                <a class="custom_date">{{team.dayNumber}}</a>
+                <a class="custom_day">{{team.day}}</a>
+                <span class="badge">{{team.total}}</span>
+              </div>
+           </div>
+        </div>
+
+
         <div>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
             <div class="tabbable-panel" >

@@ -139,7 +139,7 @@ angular.module('coinomiaFrontendApp')
     });
 
     // Get User Team
-    $scope.myTeam = {};
+    $scope.myTeam = [];
     $scope.hasMyTeamData = false;
     $scope.loadingData = true;
     coinomiaService.getTeamCalendar()
@@ -147,11 +147,23 @@ angular.module('coinomiaFrontendApp')
       var teamData = res.data;
       if(res.status === 200) {
         teamData.forEach(function(user) {
-          var day = user.day.split('-').reverse().join('-');
-          $scope.myTeam[day] = {
-            "number": parseInt(user.total),
-            "url": "#"
-          };
+          var changeFormat = user.day.split('-').reverse().join('-');
+          var date = moment(changeFormat);
+          var day = date.format('ddd');
+          var dayNumber = date.date();
+          var myTeamData = {
+            day: day,
+            dayNumber: dayNumber,
+            total: user.total
+          }
+
+          $scope.myTeam.push(myTeamData);
+
+          // console.log(date.format('ddd')+'--', date.date());
+          // $scope.myTeam[day] = {
+          //   "number": parseInt(user.total),
+          //   "url": "#"
+          // };
         });
         $scope.loadingData = false;
         $scope.hasMyTeamData = true;
