@@ -11,7 +11,7 @@
        <div class="col-md-12 nomargin nopadding">
           <h2 class="mb35"><i class="fa fa-google-wallet icon-lg border-round" aria-hidden="true" style="padding-left:5px;"></i> <strong>Wallet</strong></h2>
           <hr />
-          <div class="tabbable-panel" >
+          <div class="tabbable-panel" style="min-height:800px;">
              <div class="tabbable-line" >
                    <div class="tab-pane tab_default_7 active">
                       <div class="row">
@@ -148,18 +148,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 <h4 class="modal-title" id="myModalLabel"><img src="images/usd-wallet.png" width="35" class="pull-left img-responsive "> <strong>&nbsp;Add Funds</strong></h4>
              </div>
+
+             <div id="loadingDiv" ng-if="loadingData"></div>
              <div class="modal-body">
                 <form>
                    <strong>Choose Your Payment Method</strong>
                    <div class="row mar20">
-                      <div class="col-md-6 col-md-offset-3 col-sm-12"><input name="check-ref" type="radio" value="">&nbsp;&nbsp;<img src="{{s3Url}}bitcoin-logo.png" width="200"></div>
+                      <div class="col-md-6 col-md-offset-3 col-sm-12"><input name="check-ref" type="radio" value="1" checked>&nbsp;&nbsp;<img src="{{s3Url}}bitcoin-logo.png" width="200"></div>
                    </div>
                 </form>
              </div>
              <br>
              <br>
              <div class="modal-footer">
-                <button type="button" data-toggle="modal" data-target="#add-funds1" class="btn btn-primary" data-dismiss="modal">Add Funds</button>
+                <button type="button" class="btn btn-primary" ng-click="addFund(addAmount)" ng-disabled="amountError">Add Funds</button>
              </div>
           </div>
        </div>
@@ -176,26 +178,27 @@
              </div>
              <div class="modal-body">
                <form>
-                <h4>Transaction Funding</h4>
-                <div class="row mar20">
-                <div class="col-xs-12 col-sm-12 col-md-9"><h4>Invoice Number : #3987981279379</h4><strong>Add Funds :</strong><small></small> <h4 class="add-funds-popup col-xs-12 col-sm-12 col-md-12">You have to Pay <strong>3213.90 BTC ≈ $200</strong> </h4><br>
-                <strong>Transaction ID :</strong> COIN32492384<br>
-                <strong>Date :</strong> 12/12/2016<br>
-                <strong>Bitcoin Address :</strong> sdkjfhkh3274923849238432dsjfhsdj<br>
-                <small class="red">Note : You have to pay this Bitcoin Address</small>
-                <br><br>
-                <br>
-
-                <span><strong>Thank You,</strong><br>
-
-                Team Coinomia<br>
-                <img src="images/logo-coinomia.png" width="60"></span>
-
-                </div>
-
-                </div>
-
-              </form>
+                   <h4>Transaction Funding</h4>
+                   <p>Please transfer your Bitcoins to the address given below. The funds will be credited to your wallet as soon as we get 6 confirmations from the Bitcoin network.</p>
+                   <div class="row">
+                      <div class="col-md-12 col-sm-12" style="font-size:14px; text-align:justify;">
+                         <h4 class="no-margin no-padding">Invoice Number : #3987981279379</h4>
+                         <h3><strong>Add Funds : $200</strong></h3>
+                         <h4 class="add-funds-popup">You have to Pay <strong>3213.90 BTC </strong> </h4>
+                         <br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=XXXXXXXXXXXXXXX" class="pull-right" width="100">
+                         <strong>Date :</strong> 12/12/2016<br><br>
+                         <strong class="bit-address">Bitcoin Address :
+                         sdkjfhkh3274923849238432dsjfhsdj</strong><br>
+                         <br><br>
+                         <br>
+                         <small class="red-text02"><strong>Attention!</strong> Please note that the Bitcoin address the system gave you for this funding is unique and can only be used once. Each new funding has to be initiated in Add Funds inside your account.</small><br>
+                         <br>
+                         <span><strong>Thank You,</strong><br>
+                         Team Coinomia<br>
+                         <img src="images/logo-coinomia.png" width="60"></span>
+                      </div>
+                   </div>
+                </form>
              </div>
              <br>
              <br>

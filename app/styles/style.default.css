@@ -122,10 +122,29 @@ a:focus {
   top: -10px;
 }
 
+#loadingDiv {
+  position:fixed;
+  top:0px;
+  right:0px;
+  width:100%;
+  height:100%;
+  background-color:#666;
+  background-image:url('../images/ajax-loading.gif'); background-repeat:no-repeat;background-position:center;z-index:10000000;  opacity: 0.4;
+  filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
 .add-funds-popup {
   background: #FC0;
   padding: 10px;
   color: #fff;
+  border-radius: 30px;
+  display: inline-block;
+}
+
+.bit-address {
+  background: #525252;
+  color: #fff;
+  padding: 10px;
   border-radius: 30px;
 }
 

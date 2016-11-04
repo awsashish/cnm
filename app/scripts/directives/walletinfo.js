@@ -20,6 +20,20 @@ angular.module('coinomiaFrontendApp')
         updateWallet: '&',
         walletType: '@',
         s3Url:"="
+      },
+      controller: function($scope, $rootScope, $element, $attrs) {
+        $scope.submit = function(amount) {
+          $rootScope.addAmount = amount;
+        }
+
+        $scope.checkAmount = function(amount) {
+          if(amount < 100) {
+            $scope.amountError = true;
+          }else {
+            $scope.amountError = false;
+            $rootScope.addAmount = amount;
+          }
+        }
       }
     };
   });

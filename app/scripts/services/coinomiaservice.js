@@ -814,7 +814,6 @@ angular.module('coinomiaFrontendApp')
 
     // View Message
     this.viewMessage = function(type, messageId) {
-      console.log(type);
       function viewMessageRequestComplete(response) {
         return response;
       }
@@ -852,5 +851,23 @@ angular.module('coinomiaFrontendApp')
       return $http.get(this.apiHost +'active-affiliate')
         .then(activeAffiliateRequestComplete)
         .catch(activeAffiliateRequestFailed);
+    }
+
+    // Update Profile
+    this.addUsdFund = function(amount) {
+      // On Success
+      function addUsdFundRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function addUsdFundRequestFailed(error) {
+        $log.error('XHR Failed for Add Fund.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/add-fund', amount)
+        .then(addUsdFundRequestComplete)
+        .catch(addUsdFundRequestFailed);
     }
   });

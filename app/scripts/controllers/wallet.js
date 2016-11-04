@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('WalletCtrl', function ($scope, coinomiaService, config) {
+  .controller('WalletCtrl', function ($scope, $uibModal, $uibModalStack, $window, coinomiaService, config) {
 
     $scope.walletHeading = config.wallet;
     $scope.currentPage = config.currentPage;
@@ -35,6 +35,31 @@ angular.module('coinomiaFrontendApp')
             $scope.transactionDetails = res.data;
           }
         })
+    }
+
+    $scope.closePopup = function() {
+      $uibModalStack.dismissAll();
+      $window.location.reload();
+    }
+
+    // Add FUND
+    $scope.addFund = function(amount) {
+      $scope.loadingData = true;
+      coinomiaService.addUsdFund(amount)
+      .then(function(res) {
+        if(res.status === 200) {
+          $scope.loadingData = false;
+          angular.element("#add-funds").hide();
+          var data = res.data;
+          $scope.transactionDetails = data;
+          $scope.transactionDate = moment().format('YYYY-MM-DD');
+          var modalInstance = $uibModal.open({
+              templateUrl: 'views/transaction-invoice.html',
+              scope: $scope,
+              size: 'md'
+          });
+        }
+      })
     }
 
     $scope.walletInfo();
