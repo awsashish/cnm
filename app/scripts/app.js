@@ -24,7 +24,9 @@ angular
     'ngclipboard',
     'timer',
     'ngImgCrop',
-    'ngExcel'
+    'ngExcel',
+    'textAngular',
+    'angular.filter'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

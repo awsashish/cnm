@@ -64,7 +64,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get User Referrals
-    this.getUserDirects = function(currentPage) {
+    this.getUserDirects = function(currentPage, limit) {
       function userDirectsComplete(response) {
         return response;
       }
@@ -72,10 +72,16 @@ angular.module('coinomiaFrontendApp')
       function userDirectsFailed(error) {
         $log.error('XHR Failed for signup.\n' + angular.toJson(error.data, true));
       }
+      if(currentPage === 'all') {
+        return $http.get(this.apiHost +'user/referral/')
+          .then(userDirectsComplete)
+          .catch(userDirectsFailed);
+      }else{
+        return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+limit)
+          .then(userDirectsComplete)
+          .catch(userDirectsFailed);
+      }
 
-      return $http.get(this.apiHost +'user/referral/'+currentPage+'/'+pageLimit)
-        .then(userDirectsComplete)
-        .catch(userDirectsFailed);
     };
 
 
@@ -880,5 +886,49 @@ angular.module('coinomiaFrontendApp')
       return $http.post(this.apiHost +'user/btc-transaction', btcAddress)
         .then(fundStatusRequestComplete)
         .catch(fundStatusRequestFailed);
+    }
+
+
+    // Change Date format
+    this.changeDateFormat = function(user) {
+      var changeFormat = user.day.split('-').reverse().join('-');
+      var date = moment(changeFormat);
+      var day = date.format('ddd');
+      var dayNumber = date.date();
+      var myTeamData = {
+        date:date.format('YYYY-MM-DD'),
+        day: day,
+        dayNumber: dayNumber,
+        total: user.total
+      }
+
+      return myTeamData;
+    }
+
+    // Get All Dates Between Two Dates
+    this.getAllDates = function(team) {
+
+      var getLastRow = _.last(team);
+
+      // Get All Dates Between Two Dates
+      var lastDate = getLastRow.date;
+      var futureDate = new moment(lastDate).add(18, 'day').format('YYYY-MM-DD');
+
+      var getFutureDates = [];
+      while(lastDate <= futureDate) {
+        // getFutureDates.push(moment(lastDate).format('YYYY-MM-DD'));
+        // console.log($scope.getDates);
+        lastDate = moment(lastDate).add(1, 'day').format('YYYY-MM-DD');
+        var _date = moment(lastDate);
+        var _day = _date.format('ddd');
+        var _dayNumber = _date.date();
+        var _myTeamData = {
+          date: _date.format('YYYY-MM-DD'),
+          day: _day,
+          dayNumber: _dayNumber
+        }
+        getFutureDates.push(_myTeamData);
+      }
+      return getFutureDates;
     }
   });

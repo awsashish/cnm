@@ -327,6 +327,10 @@ map area{
   font-weight: bold;
 }
 
+.overall-signup {
+  overflow-x: hidden;
+}
+
 .transaction_heading {
   width: 50% !important;
 }
@@ -362,6 +366,15 @@ map area{
     text-align: center;
     width: 100%;
     display: block;
+}
+
+.custom_day {
+  float: right;
+  padding: 29% 5% 0 0 !important;
+}
+
+.custom_date {
+    float: left;
 }
 
 .mobile-scroll{ overflow-x: hidden;}
@@ -4831,6 +4844,9 @@ h4.great {
 
   .transaction .table>tbody>tr>td {
     word-wrap: normal;
+  }
+  .overall-signup {
+    overflow-x: auto;
   }
 }
 
