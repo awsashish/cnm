@@ -20,7 +20,8 @@
             <div class="col-md-12 col-sm-12" style="font-size:14px; text-align:justify;">
                <h4 class="no-margin no-padding">Invoice Number : {{transactionDetails.invoice_number}}</h4>
                <h3><strong>Add Funds : {{transactionDetails.value_in_usd | currency}}</strong></h3>
-               <h4 class="add-funds-popup">You have to Pay <strong>{{transactionDetails.value_in_btc}} BTC </strong> </h4>
+               <small class="red-text02"><strong>Note:</strong> Please pay the exact amount of BTC mentioned here. Any underpayments will remain unattended!</small>
+               <h4 class="add-funds-popup">You have to Pay <strong>{{transactionDetails.value_in_btc}} BTC </strong> </h4><br>
                <br><img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=bitcoin:{{transactionDetails.address}}?&amount={{transactionDetails.value_in_btc}}" class="pull-right" width="100">
                <strong>Date :</strong> {{transactionDate}}<br><br>
                <strong class="bit-address">Bitcoin Address :

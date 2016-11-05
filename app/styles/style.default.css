@@ -139,6 +139,13 @@ button.close {
   right: 10px;
 }
 
+.banlinks li a {
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+  position: relative;
+}
+
 #loadingDiv {
   position:fixed;
   top:0px;
