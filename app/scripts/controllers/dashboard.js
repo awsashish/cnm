@@ -10,7 +10,6 @@
 angular.module('coinomiaFrontendApp')
   .controller('DashboardCtrl', function ($scope, $rootScope, $localStorage, $location, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config) {
 
-
     $scope.goToSection = function(id) {
       $location.hash(id);
     }
@@ -147,31 +146,26 @@ angular.module('coinomiaFrontendApp')
       var teamData = res.data;
       if(res.status === 200) {
         teamData.forEach(function(user) {
-          var changeFormat = user.day.split('-').reverse().join('-');
-          var date = moment(changeFormat);
-          var day = date.format('ddd');
-          var dayNumber = date.date();
-          var myTeamData = {
-            day: day,
-            dayNumber: dayNumber,
-            total: user.total
-          }
-
-          $scope.myTeam.push(myTeamData);
-
+        var myTeam = coinomiaService.changeDateFormat(user);
+        $scope.myTeam.push(myTeam);
           // console.log(date.format('ddd')+'--', date.date());
           // $scope.myTeam[day] = {
           //   "number": parseInt(user.total),
           //   "url": "#"
           // };
         });
+
+        // Get All Dates Between Two Dates
+        var dateRange = coinomiaService.getAllDates($scope.myTeam);
+        $scope.myTeam = $scope.myTeam.concat(dateRange);
+
         $scope.loadingData = false;
         $scope.hasMyTeamData = true;
       }
     });
 
     // Get Coinomia Team
-    $scope.coinomiaTeam = {};
+    $scope.coinomiaTeam = [];
     $scope.hasCoinomiaTeamData = false;
     $scope.loadingCoinomiaData = true;
     coinomiaService.getCoinomiaTeamCalendar()
@@ -179,12 +173,14 @@ angular.module('coinomiaFrontendApp')
       var coinomiaTeamData = res.data;
       if(res.status === 200) {
         coinomiaTeamData.forEach(function(user) {
-          var day = user.day.split('-').reverse().join('-');
-          $scope.coinomiaTeam[day] = {
-            "number": parseInt(user.total),
-            "url": "#"
-          };
+          var _myTeam = coinomiaService.changeDateFormat(user);
+          $scope.coinomiaTeam.push(_myTeam);
         });
+
+        // Get All Dates Between Two Dates
+        var dateRange = coinomiaService.getAllDates($scope.coinomiaTeam);
+        $scope.coinomiaTeam = $scope.coinomiaTeam.concat(dateRange);
+
         $scope.loadingCoinomiaData = false;
         $scope.hasCoinomiaTeamData = true;
       }

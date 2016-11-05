@@ -881,4 +881,48 @@ angular.module('coinomiaFrontendApp')
         .then(fundStatusRequestComplete)
         .catch(fundStatusRequestFailed);
     }
+
+
+    // Change Date format
+    this.changeDateFormat = function(user) {
+      var changeFormat = user.day.split('-').reverse().join('-');
+      var date = moment(changeFormat);
+      var day = date.format('ddd');
+      var dayNumber = date.date();
+      var myTeamData = {
+        date:date.format('YYYY-MM-DD'),
+        day: day,
+        dayNumber: dayNumber,
+        total: user.total
+      }
+
+      return myTeamData;
+    }
+
+    // Get All Dates Between Two Dates
+    this.getAllDates = function(team) {
+
+      var getLastRow = _.last(team);
+
+      // Get All Dates Between Two Dates
+      var lastDate = getLastRow.date;
+      var futureDate = new moment(lastDate).add(18, 'day').format('YYYY-MM-DD');
+
+      var getFutureDates = [];
+      while(lastDate <= futureDate) {
+        // getFutureDates.push(moment(lastDate).format('YYYY-MM-DD'));
+        // console.log($scope.getDates);
+        lastDate = moment(lastDate).add(1, 'day').format('YYYY-MM-DD');
+        var _date = moment(lastDate);
+        var _day = _date.format('ddd');
+        var _dayNumber = _date.date();
+        var _myTeamData = {
+          date: _date.format('YYYY-MM-DD'),
+          day: _day,
+          dayNumber: _dayNumber
+        }
+        getFutureDates.push(_myTeamData);
+      }
+      return getFutureDates;
+    }
   });

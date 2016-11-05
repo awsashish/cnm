@@ -327,6 +327,10 @@ map area{
   font-weight: bold;
 }
 
+.overall-signup {
+  overflow-x: hidden;
+}
+
 .transaction_heading {
   width: 50% !important;
 }
@@ -4840,6 +4844,9 @@ h4.great {
 
   .transaction .table>tbody>tr>td {
     word-wrap: normal;
+  }
+  .overall-signup {
+    overflow-x: auto;
   }
 }
 
