@@ -122,12 +122,28 @@ a:focus {
   top: -10px;
 }
 
+.transaction .table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.transaction .table>tbody>tr>td {
+  word-wrap: break-word;
+}
+
 .fund-button { padding: 0;}
 
 button.close {
   position: absolute;
   z-index: 99;
   right: 10px;
+}
+
+.banlinks li a {
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+  position: relative;
 }
 
 #loadingDiv {
@@ -4817,6 +4833,14 @@ h4.great {
   .transaction_heading {
     width: 90% !important;
   }
+  .transaction .table {
+    width: 100%;
+    table-layout: auto;
+  }
+
+  .transaction .table>tbody>tr>td {
+    word-wrap: normal;
+  }
 }
 
 @media(max-width:481px) {
@@ -5684,5 +5708,9 @@ h1{
     .no-print, .no-print *
     {
         display: none !important;
+    }
+
+    #tawkchat-iframe-container {
+      display: none !important;
     }
 }
