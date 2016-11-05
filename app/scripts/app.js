@@ -25,6 +25,7 @@ angular
     'timer',
     'ngImgCrop',
     'ngExcel',
+    'textAngular',
     'angular.filter'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
