@@ -26,7 +26,8 @@
     "moment-timezone": "^0.5.5",
     "ng-img-crop": "ngImgCrop#^0.3.2",
     "ng-excel": "*",
-    "textAngular": "^1.5.12"
+    "textAngular": "^1.5.12",
+    "angular-filter": "^0.5.11"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.8"

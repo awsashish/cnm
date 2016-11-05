@@ -28,15 +28,25 @@ angular.module('coinomiaFrontendApp')
         $scope.getTransctions();
     }
 
+    // Get Transaction Details
     $scope.getTransctions = function() {
+      $scope.transactionData = [];
       coinomiaService.getTransactionDetails($scope.currentPage)
         .then(function(res){
-          if(res === 200) {
-            $scope.transactionDetails = res.data;
+          if(res.status === 200) {
+            var transaction = res.data.rows;
+            transaction.forEach(function(info) {
+              $scope.transactionData.push(info);
+            });
           }
         })
     }
 
+    $scope.printInvoice = function() {
+      $window.print();
+    }
+
+    // Close Pop Up
     $scope.closePopup = function() {
       $uibModalStack.dismissAll();
       $window.location.reload();
@@ -62,5 +72,24 @@ angular.module('coinomiaFrontendApp')
       })
     }
 
+    // Check Added Fund Status
+    $scope.checkStatus = function(btcAddress) {
+      var btcAddress = JSON.stringify(btcAddress);
+      coinomiaService.fundStatus(btcAddress)
+      .then(function(res) {
+        if (res.status === 200 && res.data.payment_status === 'PENDING') {
+          $scope.pendingStatus = true;
+        }else if (res.status === 200 && res.data.payment_status === 'SUCCESS') {
+          $scope.successStatus = true;
+          setTimeout(function () {
+            $scope.closePopup();
+          }, 2000);
+        }else {
+          $scope.notPaid = true;
+        }
+      })
+    }
+
+    // Get Wallet Info
     $scope.walletInfo();
   });

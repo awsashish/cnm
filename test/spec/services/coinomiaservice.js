@@ -543,18 +543,13 @@ describe('service coinomiaService', function() {
       expect(coinomiaService.getTransactionDetails).not.toEqual(null);
     });
 
-    it('should not exceed page number and pagesize', function() {
-      expect(pagination.pageno).not.toBeGreaterThan(10);
-      expect(pagination.pagesize).not.toBeGreaterThan(25);
-    });
-
 
     it('should returns records succesfully', function() {
       $httpBackend
-      .expect('GET', coinomiaService.apiHost + 'user/transaction/'+pagination.pageno+'/'+pagination.pagesize)
+      .expect('GET', coinomiaService.apiHost + 'user/latest-transaction/')
       .respond(200, {'total':'some-value','rows':[]});
       var data;
-      coinomiaService.getTransactionDetails(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
+      coinomiaService.getTransactionDetails().then(function(fetchedData) {
         data = fetchedData.data;
       });
       $httpBackend.flush();
@@ -565,9 +560,9 @@ describe('service coinomiaService', function() {
 
     it('should log referral error', function() {
       $httpBackend
-      .expect('GET', coinomiaService.apiHost + 'user/transaction/'+pagination.pageno+'/'+pagination.pagesize)
+      .expect('GET', coinomiaService.apiHost + 'user/latest-transaction/')
       .respond(500, 'Internal Server Error.');
-      coinomiaService.getTransactionDetails(pagination.pageno, pagination.pagesize);
+      coinomiaService.getTransactionDetails();
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });

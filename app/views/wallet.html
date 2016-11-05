@@ -1,13 +1,13 @@
-<main-header class="main-header"></main-header>
+<main-header class="main-header no-print"></main-header>
 <section>
   <div class="mainwrapper">
-    <navigation></navigation>
+    <navigation class="no-print"></navigation>
     <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
     }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}
     </style>
     <div class="mainpanel">
       <!-- <coming-soon text-value="'Mining'"></coming-soon> -->
-      <div class="contentpanel">
+      <div class="contentpanel no-print">
        <div class="col-md-12 nomargin nopadding">
           <h2 class="mb35"><i class="fa fa-google-wallet icon-lg border-round" aria-hidden="true" style="padding-left:5px;"></i> <strong>Wallet</strong></h2>
           <hr />
@@ -34,19 +34,22 @@
                                   <th><strong class="white-color">Date</strong></th>
                                   <th><strong class="white-color">User ID</strong> </th>
                                   <th><strong class="white-color">Transaction</strong> </th>
+                                  <th><strong class="white-color">Transaction No</strong> </th>
+                                  <th><strong class="white-color">Invoice No</strong> </th>
                                   <th><strong class="white-color">Description</strong></th>
+                                  <th><strong class="white-color">Status</strong></th>
                                </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td colspan="5" class="text-center">No Transaction Found.</td>
-                              </tr>
-                               <tr ng-hide="true">
-                                  <td>1</td>
-                                  <td>12/12/2015(12:30:12)</td>
-                                  <td>COIN34975934</td>
-                                  <td>$900</td>
-                                  <td>Withdrawal </td>
+                               <tr ng-repeat="transaction in transactionData">
+                                  <td>{{$index+1}}</td>
+                                  <td>{{transaction.Date}}</td>
+                                  <td>{{userInfo.username}}</td>
+                                  <td>{{transaction.Amount | currency }}</td>
+                                  <td>{{transaction.transaction_number?transaction.transaction_number:'-'}} </td>
+                                  <td>{{transaction.invoice_number}} </td>
+                                  <td>{{transaction.Description}} </td>
+                                  <td>{{transaction.payment_status?transaction.payment_status:'Not Paid'}} </td>
                                </tr>
                             </tbody>
                          </table>
@@ -212,7 +215,7 @@
 
       <!-- contentpanel -->
     </div>
-    <main-footer></main-footer>
+    <main-footer class="no-print"></main-footer>
   </div>
   <!-- mainwrapper -->
 </section>

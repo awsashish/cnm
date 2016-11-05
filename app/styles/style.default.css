@@ -122,6 +122,30 @@ a:focus {
   top: -10px;
 }
 
+.transaction .table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.transaction .table>tbody>tr>td {
+  word-wrap: break-word;
+}
+
+.fund-button { padding: 0;}
+
+button.close {
+  position: absolute;
+  z-index: 99;
+  right: 10px;
+}
+
+.banlinks li a {
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+  position: relative;
+}
+
 #loadingDiv {
   position:fixed;
   top:0px;
@@ -303,8 +327,12 @@ map area{
   font-weight: bold;
 }
 
+.overall-signup {
+  overflow-x: hidden;
+}
+
 .transaction_heading {
-  width: 50%;
+  width: 50% !important;
 }
 
 .main-header{
@@ -338,6 +366,15 @@ map area{
     text-align: center;
     width: 100%;
     display: block;
+}
+
+.custom_day {
+  float: right;
+  padding: 29% 5% 0 0 !important;
+}
+
+.custom_date {
+    float: left;
 }
 
 .mobile-scroll{ overflow-x: hidden;}
@@ -4798,7 +4835,18 @@ h4.great {
     top: 5px;
   }
   .transaction_heading {
-    width: 90%;
+    width: 90% !important;
+  }
+  .transaction .table {
+    width: 100%;
+    table-layout: auto;
+  }
+
+  .transaction .table>tbody>tr>td {
+    word-wrap: normal;
+  }
+  .overall-signup {
+    overflow-x: auto;
   }
 }
 
@@ -4820,15 +4868,22 @@ h4.great {
     cursor: pointer;
     margin-right: 0;
     margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
   }
-  .sponsor-wrapper{ float: left; margin: 0; left:-20px; }
+  .sponsor-wrapper{ float: left; margin: 0; left:0px; }
   .sponser-name{ white-space: nowrap; }
   .coming-soon-wrapper { width: 100%; }
   .panel-dashboard {width: 90%;}
   .table-content { overflow-x: scroll;}
   .cal-dash { margin: 16px 0 0 10px; }
   .add-funds-popup {text-align: center;}
-  .add-funds-popup strong { float: left;width: 100%;}
+  .add-funds-popup strong { float: left;width: 100%}
+  .default-error { text-align: left; top:10px; left:0}
+  .search-userbox { margin-left: 0}
+  .sponsor-name {position: relative;}
+  .fund-button { padding: 0 10px;}
+  .fund-section { width: 100% !important;}
 }
 
 .pageheader{ padding: 10px 10px 20px;}
@@ -5650,4 +5705,19 @@ h1{
 .inactive-affiliate{background:#f2f2f2; display:inline-block;  border-radius:4px; padding:5px 50px; font-size:30px; color:#999 !important; border-bottom:4px solid #ccc;}
 @media(max-width:540px){
   .affiliate{ font-size:25px;}
+}
+
+@media print
+{
+    @page { margin: 0; }
+    body { margin: 1.6cm; }
+
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+
+    #tawkchat-iframe-container {
+      display: none !important;
+    }
 }
