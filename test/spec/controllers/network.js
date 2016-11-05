@@ -54,8 +54,8 @@ describe('Controller: NetworksCtrl', function () {
   });
 
   it('should get direct users of logged in user', function() {
-    scope.userDirects(scope.currentPage);
-    expect(coinomiaService.getUserDirects).toHaveBeenCalledWith(scope.currentPage);
+    scope.userDirects(scope.currentPage, scope.pageLimit);
+    expect(coinomiaService.getUserDirects).toHaveBeenCalledWith(scope.currentPage, scope.pageLimit);
   });
 
   it('should export data to excel sheet', function() {
