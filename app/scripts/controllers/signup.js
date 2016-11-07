@@ -69,10 +69,12 @@ angular.module('coinomiaFrontendApp')
     }else if($location.search().id && $location.search().campaignid === "0") {
       var sponsorInfo = $location.search();
       var sponsorId = JSON.stringify(sponsorInfo.id);
+      $scope.user.campaignId = parseInt($location.search().campaignid);
       $scope.verifySponsor(sponsorId);
     }else if($cookies.get('sponsorId')){
       $scope.user.sponsor = $cookies.get('sponsorId');
       $scope.user.sponsorName = $cookies.get('sponsorName');
+      $scope.user.campaignId = 0;
     }else{
       $scope.defaultSponsor();
     }
