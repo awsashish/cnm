@@ -55,18 +55,14 @@ angular.module('coinomiaFrontendApp')
       var sponsorInfo = $location.search();
       var sponsorId = JSON.stringify(sponsorInfo.id);
       var campaignData = {
-        "campaignid": $location.search().campaignid,
-        "userid":sponsorId
+        "campaignid": parseInt($location.search().campaignid),
+        "userid":$location.search().id
       }
       $scope.verifySponsor(sponsorId);
       coinomiaService.hitCampaign(campaignData);
     }else if($location.search().id && $location.search().campaignid === "0") {
       var sponsorInfo = $location.search();
       var sponsorId = JSON.stringify(sponsorInfo.id);
-      var campaignData = {
-        "campaignid": $location.search().campaignid,
-        "userid":sponsorId
-      }
       $scope.verifySponsor(sponsorId);
     }else if($cookies.get('sponsorId')){
       $scope.user.sponsor = $cookies.get('sponsorId');
