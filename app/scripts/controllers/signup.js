@@ -59,7 +59,13 @@ angular.module('coinomiaFrontendApp')
         "userid":$location.search().id
       }
       $scope.verifySponsor(sponsorId);
-      coinomiaService.hitCampaign(campaignData);
+      coinomiaService.hitCampaign(campaignData)
+      .then(function(res) {
+        if(res.status === 200) {
+          var data = res.data
+          $scope.user.campaignId = parseInt($location.search().campaignid);
+        }
+      });
     }else if($location.search().id && $location.search().campaignid === "0") {
       var sponsorInfo = $location.search();
       var sponsorId = JSON.stringify(sponsorInfo.id);
@@ -151,8 +157,10 @@ angular.module('coinomiaFrontendApp')
           'IPAdr':$scope.user.ipadr,
           'Password':$scope.user.password,
           'ConfirmPassword':$scope.user.confirmPassword,
+          'campaignid': $scope.user.campaignId,
           'Leg':''
         };
+
         $scope.error = false;
         coinomiaService.signup(formData).then(function(res) {
           $scope.loadingMessage = false;
