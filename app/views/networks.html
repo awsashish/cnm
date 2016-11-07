@@ -15,6 +15,12 @@
               <div class="tabbable-line" >
                 <div align="center">
                   <ul  class="nav nav-tabs ">
+                    <!-- <li class="active">
+                    	<a href=".tab_default_11" data-toggle="tab" style="padding-right:30px !important; padding-left:30px !important" aria-expanded="true">
+                      	<i class="fa fa-user icon-lg" aria-hidden="true"></i><br>
+                        <strong>Affiliate </strong>
+                      </a>
+                    </li> -->
                     <li class="active">
                     	<a href=".tab_default_11" data-toggle="tab" style="padding-right:30px !important; padding-left:30px !important" aria-expanded="true">
                       	<i class="fa fa-user icon-lg" aria-hidden="true"></i><br>
@@ -774,7 +780,7 @@
                                     <br />
                                     <h4><strong>Subject: {{inboxMessage.subject}}</strong></h4>
                                     <br />
-                                    <div ng-bind-html="inboxMessage.body"></div>
+                                    <div text-angular ng-bind-html="inboxMessage.body"></div>
                                 </div>
                             </div>
                             <br />
@@ -887,7 +893,7 @@
                                     <br />
                                     <h4><strong>Subject: {{sentMessage.subject}}</strong></h4>
                                     <br />
-                                    <div ng-bind-html="sentMessage.body"></div>
+                                    <div text-angular ng-bind-html="sentMessage.body"></div>
                                 </div>
                             </div>
                             <br />
