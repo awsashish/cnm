@@ -62,9 +62,14 @@ angular.module('coinomiaFrontendApp')
           data.rows.forEach(function(item) {
             var path = item.path;
             item.path = path+'?id=';
-            $scope.landingPages.push(item)
+            $scope.landingPages.push(item);
           });
           $scope.loadingData = false;
+          var modalInstance = $uibModal.open({
+              templateUrl: 'views/modal/referrals.html',
+              scope: $scope,
+              size: 'md'
+          });
         }
       });
     }
@@ -112,12 +117,18 @@ angular.module('coinomiaFrontendApp')
     // Get Referral and Banner Reports
     $scope.reports = function(type) {
       $scope.loadingData = true;
+      $scope.allReports = [];
       coinomiaService.getReports(type)
       .then(function(res) {
         if(res.status === 200) {
           var data = res.data;
           $scope.totalReports = data.total;
-          $scope.allReports = data.rows;
+          $scope.allReports = [];
+          data.rows.forEach(function(item) {
+            var path = item.path;
+            item.path = path+'?id=';
+            $scope.allReports.push(item)
+          });
         }
         $scope.loadingData = false;
       });

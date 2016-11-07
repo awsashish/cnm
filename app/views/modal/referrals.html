@@ -12,12 +12,12 @@
        <div class="alert alert-danger fade in" ng-if="errorMessage" style="text-transform:capitalize;">
          {{errorMessage}}
        </div>
-       <input type="text" name="name" class="form-control" ng-model="campaign.campaignName" required /><br>
+       <input type="text" name="name" class="form-control" ng-model="campaign.campaignName" required />
        <div class="alert alert-danger fade in error-padding"
           ng-show="campaignForm.name.$touched && campaignForm.name.$invalid">
           This field is required.</div>
        <strong>Select Your Referral Campaign Lead Page</strong>
-       <div class="row mar20">{{re}}
+       <div class="row mar20">
           <div class="col-md-6 col-sm-12 mb20" ng-repeat="referral in landingPages">
             <input name="check-ref" type="radio" ng-model="$parent.campaign.referralId" value="{{referral.id}}">&nbsp;
             <strong class="text-capitalize">{{referral.Title}}</strong><br>
