@@ -1,0 +1,33 @@
+<!-- Modal -->
+<div class="modal-content">
+   <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <h4 class="modal-title" id="myModalLabel">Create Referral Campaign</h4>
+   </div>
+   <form name="campaignForm" ng-submit="createCampaign(campaign)" novalidate>
+     <div class="modal-body">
+       <div class="alert alert-success fade in" ng-if="successMessage">
+         <strong><i class="fa fa-check-circle fa-lg" aria-hidden="true"></i></strong> {{successMessage}}
+       </div>
+       <div class="alert alert-danger fade in" ng-if="errorMessage" style="text-transform:capitalize;">
+         {{errorMessage}}
+       </div>
+       <input type="text" name="name" class="form-control" ng-model="campaign.campaignName" required />
+       <div class="alert alert-danger fade in error-padding"
+          ng-show="campaignForm.name.$touched && campaignForm.name.$invalid">
+          This field is required.</div>
+       <strong>Select Your Referral Campaign Lead Page</strong>
+       <div class="row mar20">
+          <div class="col-md-6 col-sm-12 mb20" ng-repeat="referral in landingPages">
+            <input name="check-ref" type="radio" ng-model="$parent.campaign.referralId" value="{{referral.id}}">&nbsp;
+            <strong class="text-capitalize">{{referral.Title}}</strong><br>
+             <small>{{referral.path}}{{sponsorId}}</small><br>
+             <a ng-href="{{referral.path}}{{sponsorId}}" target="_blank">View Page</a>
+          </div>
+       </div>
+     </div>
+     <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-disabled="campaignForm.$invalid">Create Referral Campaign</button>
+     </div>
+  </form>
+</div>

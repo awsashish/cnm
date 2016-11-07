@@ -1,5 +1,5 @@
 /* Sticky Tooltip script (v1.0)
-* Created: Nov 25th, 2009. This notice must stay intact for usage 
+* Created: Nov 25th, 2009. This notice must stay intact for usage
 * Author: Dynamic Drive at http://www.dynamicdrive.com/
 * Visit http://www.dynamicdrive.com/ for full source code
 */
@@ -19,12 +19,12 @@ var stickytooltip={
 
 	positiontooltip:function($, $tooltip, e){
 		var x=e.pageX+this.tooltipoffsets[0], y=e.pageY+this.tooltipoffsets[1]
-		var tipw=$tooltip.outerWidth(), tiph=$tooltip.outerHeight(), 
+		var tipw=$tooltip.outerWidth(), tiph=$tooltip.outerHeight(),
 		x=(x+tipw>$(document).scrollLeft()+$(window).width())? x-tipw-(stickytooltip.tooltipoffsets[0]*2) : x
 		y=(y+tiph>$(document).scrollTop()+$(window).height())? $(document).scrollTop()+$(window).height()-tiph-10 : y
 		$tooltip.css({left:x, top:y})
 	},
-	
+
 	showbox:function($, $tooltip, e){
 		$tooltip.fadeIn(this.fadeinspeed)
 		this.positiontooltip($, $tooltip, e)
@@ -52,7 +52,7 @@ var stickytooltip={
 			var $alltips=$tooltip.find('div.atip')
 			if (!stickytooltip.rightclickstick)
 				stickytooltip.stickynotice1[1]=''
-			stickytooltip.stickynotice1=stickytooltip.stickynotice1.join(' ')
+			// stickytooltip.stickynotice1=stickytooltip.stickynotice1.join(' ')
 			stickytooltip.hidebox($, $tooltip)
 			$targets.bind('mouseenter', function(e){
 				$alltips.hide().filter('#'+$(this).attr('data-tooltip')).show()

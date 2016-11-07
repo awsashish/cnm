@@ -2,11 +2,11 @@
 <section>
   <div class="mainwrapper">
   <navigation></navigation>
-  <style>.nav-tabs > li > a{ padding: 10px 30px !important; color:#fff !important;
-  }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;} .box-gry{float: left;margin-top: 20px;width: 100%;}</style>
+  <style>.nav-tabs > li > a{ padding: 10px 25px !important; color:#fff !important;
+  }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;} .box-gry{float: left;margin-top: 0px;width: 100%;}</style>
   <div class="mainpanel">
     <div class="contentpanel">
-      <div class="container">
+      <div>
         <h2 class="mb35"><i class="fa fa-bullhorn icon-lg border-round" aria-hidden="true" style="padding-left:10px; padding-top:10px; "></i> <strong>Promote Coinomia</strong></h2>
         <hr />
         <div class="tabbable-panel" >
@@ -48,8 +48,14 @@
                   <i class="fa fa-facebook icon-lg" aria-hidden="true"></i><br />
                   <strong>Social Groups</strong> </a>
                 </li>
+                <li ng-class="(activeTab==='campaign'?'active':'')" ng-click="reports('referral')">
+                   <a href=".campaign" data-toggle="tab" style="padding:10px 25px !important;" aria-expanded="true">
+                   <i class="fa fa-list-alt icon-lg" aria-hidden="true"></i>
+                   <br>
+                   <strong>Campaign</strong> </a>
+                </li>
               </ul>
-            </div> 
+            </div>
             <div class="tab-content" style="padding:20px 20px; ">
               <div class="tab-pane tab_default_3" ng-class="(activeTab==='grab-concept'?'active':'')">
                 <h2 class="mb35-sm top-spacemob10"><i class="fa fa-lightbulb-o icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Grab the Concept </strong></h2>
@@ -214,14 +220,23 @@
                       <img ng-src="{{bannerInfo.bannerimage}}" />
                       <form class="mar20">
                         <div class="col-md-6 nomargin nopadding">
-                          <input type="text" name="banner-name" class="form-control" value="{{bannerInfo.bannername}}" disabled/>
+                          <input type="text" name="banner-name" ng-model="bannerName" class="form-control" />
                         </div>
                         <div class="col-md-6">
-                          <button ng-click="getBannerCode(key);" class="btn btn-default yelo-btn">
-                            <strong>Get Your Banner Referral Link</strong>
+                          <button ng-click="createBanner(key, bannerName)" class="btn btn-default yelo-btn">
+                            <strong>Create Your Banner</strong>
                           </button>
                         </div>
-                        <div ng-show="bannerInfo.showCode" class="box-gry mobile-scroll">&lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerheight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt;</div>
+                        <div class="row">
+                          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" ng-show="bannerInfo.showCode">
+                            <div class="alert alert-success fade in">
+                              <strong><i class="fa fa-check-circle fa-lg" aria-hidden="true"></i></strong> Banner created succesfully.
+                            </div>
+                          </div>
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 box-gry mobile-scroll" ng-show="bannerInfo.showCode">
+                            &lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&campaignid={{campaignId}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerheight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt;
+                          </div>
+                        </div>
                         <div class="clearfix"></div>
                       </form>
                     </div>
@@ -524,6 +539,161 @@
                   <div class="col-md-6"><img ng-src="{{s3Url}}social-groups.png" class="img-responsive" /></div>
                 </div>
               </div>
+              <div class="tab-pane campaign">
+               <h2 class="mb37 mar10" align="center" style="width:40%;">
+                  <span class="glyphicon glyphicon-minus"></span>
+                  Campaign<span class="glyphicon glyphicon-minus"></span>
+               </h2>
+               <br>
+               <!-- Nav tabs -->
+               <ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
+                  <li role="presentation" class="active" ng-click="reports('referral')">
+                    <a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab" aria-expanded="true"><strong><i class="fa fa-list-alt " aria-hidden="true"></i> Referral Campaign</strong></a>
+                  </li>
+                  <li role="presentation" ng-click="reports('referral')" style="border-right:1px solid #fff;">
+                    <a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab" aria-expanded="false"><strong><i class="fa fa-list-alt " aria-hidden="true"></i>  Referral Campaign Reports</strong></a>
+                  </li>
+                  <li role="presentation" ng-click="reports('banner')">
+                    <a href=".bnrr" aria-controls="bnrr" role="tab" data-toggle="tab" aria-expanded="false"><strong><i class="fa fa-list-alt " aria-hidden="true"></i> Banner Report
+                     </strong></a>
+                  </li>
+               </ul>
+               <!-- Tab panes -->
+               <div class="tab-content" style="border:0px !important">
+                  <div role="tabpanel" class="tab-pane dmp active">
+                     <br>
+                     <h2 class="mb35-sm top-spacemob10"><i class="fa fa-list-alt icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Referral Campaign</strong></h2>
+                     <hr>
+                     <div class="table-responsive">
+                        <div class="ref-box yelo-text01"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+                           <span id="copy-text-clipboard"></span> <button class="pull-right copy-btn " ng-click="getReferralLinks()"><i class="fa fa-chain "></i> Get Referral Link </button>
+                        </div>
+
+                        <div class="table-responsive">
+                           <table class="table table-dark-gry table-hover mb30 font16">
+                              <thead style="background:#525252;">
+                                 <tr style="color:#525252;">
+                                    <td><strong class="white-color">S.No</strong></td>
+                                    <td><strong class="white-color">Title</strong></td>
+                                    <td><strong class="white-color">Refferal Link</strong></td>
+                                    <td><strong class="white-color">Action</strong></td>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                <tr ng-if="loadingData==true">
+                                  <td>Loading data ... </td>
+                                </tr>
+                                <tr ng-repeat="referralReport in allReports">
+                                  <td>{{$index+1}}</td>
+                                  <td class="text-capitalize"><strong>{{referralReport.title}}</strong> </td>
+                                  <td>{{referralReport.title}}<br />
+                                    <small class="red-text02">{{referralReport.path}}{{sponsorId}}&amp;campaignid&#61;{{referralReport.campaignid}}</small>
+                                  </td>
+                                  <td><i class="fa fa-times" aria-hidden="true"></i>
+                                     Delete
+                                  </td>
+                                </tr>
+                              </tbody>
+                           </table>
+                           <!-- <div align="right">
+                              <ul class="pagination pagination-metro nomargin mt10">
+                                 <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                 <li><a href="#">1</a></li>
+                                 <li class="active"><a href="#">2</a></li>
+                                 <li><a href="#">3</a></li>
+                                 <li><a href="#">4</a></li>
+                                 <li><a href="#">5</a></li>
+                                 <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                              </ul>
+                           </div> -->
+                        </div>
+                     </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane rmp">
+                     <br>
+                     <h2 class="mb35-sm top-spacemob10"><i class="fa fa-list-alt icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Referral Campaign Reports</strong></h2>
+                     <hr>
+                     <div class="table-responsive">
+                        <table class="table table-dark-gry table-hover mb30 font16">
+                           <thead style="background:#525252;">
+                              <tr style="color:#525252;">
+                                 <!-- <td><strong class="white-color">Created at</strong></td> -->
+                                 <td><strong class="white-color">Campaign Name</strong></td>
+                                 <td><strong class="white-color">Visits</strong></td>
+                                 <td><strong class="white-color">Signups</strong></td>
+                              </tr>
+                           </thead>
+                           <tbody>
+                             <tr ng-if="loadingData==true">
+                               <td>Loading Data ...</td>
+                             </tr>
+                              <tr ng-repeat="referralReport in allReports">
+                                 <td class="text-capitalize"><strong>{{referralReport.campaignname}}</strong> </td>
+                                 <td>
+                                    <small class="red-text02">{{referralReport.visit | number}}</small>
+                                 </td>
+                                 <td>
+                                    {{referralReport.register | number}}
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <!-- <div align="right">
+                           <ul class="pagination pagination-metro nomargin mt10">
+                              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                              <li><a href="#">1</a></li>
+                              <li class="active"><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                              <li><a href="#">5</a></li>
+                              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                           </ul>
+                        </div> -->
+                     </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane bnrr">
+                     <br>
+                     <h2 class="mb35-sm top-spacemob10"><i class="fa fa-list-alt icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Banner Report</strong></h2>
+                     <hr>
+                     <div class="table-responsive">
+                        <table class="table table-dark-gry table-hover mb30 font16">
+                           <thead style="background:#525252;">
+                              <tr style="color:#525252;">
+                                 <td><strong class="white-color">Campaign Name</strong></td>
+                                 <td><strong class="white-color">Visits</strong></td>
+                                 <td><strong class="white-color">Sign Ups</strong></td>
+                              </tr>
+                           </thead>
+                           <tbody>
+                             <tr ng-if="loadingData==true">
+                               <td>Loading Data ...</td>
+                             </tr>
+                              <tr ng-repeat="bannerReport in allReports">
+                                 <td class="text-capitalize"><strong>{{bannerReport.campaignname}}</strong> </td>
+                                 <td>
+                                    <small class="red-text02">{{bannerReport.visit | number}}</small>
+                                 </td>
+                                 <td>
+                                    {{bannerReport.register | number}}
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <!-- <div align="right">
+                           <ul class="pagination pagination-metro nomargin mt10">
+                              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                              <li><a href="#">1</a></li>
+                              <li class="active"><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                              <li><a href="#">5</a></li>
+                              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                           </ul>
+                        </div> -->
+                     </div>
+                  </div>
+               </div>
+            </div>
             </div>
           </div>
         </div>

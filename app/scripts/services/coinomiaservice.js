@@ -907,17 +907,13 @@ angular.module('coinomiaFrontendApp')
 
     // Get All Dates Between Two Dates
     this.getAllDates = function(team) {
-
       var getLastRow = _.last(team);
-
       // Get All Dates Between Two Dates
       var lastDate = getLastRow.date;
       var futureDate = new moment(lastDate).add(18, 'day').format('YYYY-MM-DD');
 
       var getFutureDates = [];
       while(lastDate <= futureDate) {
-        // getFutureDates.push(moment(lastDate).format('YYYY-MM-DD'));
-        // console.log($scope.getDates);
         lastDate = moment(lastDate).add(1, 'day').format('YYYY-MM-DD');
         var _date = moment(lastDate);
         var _day = _date.format('ddd');
@@ -930,5 +926,23 @@ angular.module('coinomiaFrontendApp')
         getFutureDates.push(_myTeamData);
       }
       return getFutureDates;
+    }
+
+    // Hit Campaign Id on Sign Up
+    this.hitCampaign = function(campaignData) {
+      // On Success
+      function hitCampignRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function hitCampignRequestFailed(error) {
+        $log.error('XHR Failed for Hit Campaign.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'affiliate/hit-campaign', campaignData)
+        .then(hitCampignRequestComplete)
+        .catch(hitCampignRequestFailed);
     }
   });

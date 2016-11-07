@@ -43,7 +43,7 @@
                             </div>
                             <div class="ref-box yelo-text01" ng-repeat="referral in landingPages | filter:{id:landingPage}">
                               <i class="fa fa-check-square-o" aria-hidden="true"></i>
-                              <span id="copy-text-clipboard">{{referral.path}}{{sponsorId}}</span>
+                              <span id="copy-text-clipboard">{{referral.path}}{{sponsorId}}&campaignid=0</span>
                               <button ngclipboard data-clipboard-target="#copy-text-clipboard" class="pull-right copy-btn "><i class="fa fa-chain "></i> Copy Link</button>
                               <div class="clearfix"></div>
                             </div>
@@ -60,7 +60,7 @@
                                 <td>{{$index+1}}</td>
                                 <td><strong>{{referral.Title}}</strong> </td>
                                 <td>{{referral.Title}}<br />
-                                  <small class="red-text02">{{referral.path}}{{sponsorId}}</small>
+                                  <small class="red-text02">{{referral.path}}{{sponsorId}}&campaignid=0</small>
                                 </td>
                                 <td><button type="button" class="btn btn-warning" ng-disabled="landingPage==referral.id" ng-click="updatePage(referral.id)">Use this landing page</button>	</td>
                               </tr>

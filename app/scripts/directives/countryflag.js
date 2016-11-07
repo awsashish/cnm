@@ -13,6 +13,7 @@ angular.module('coinomiaFrontendApp')
       templateUrl: 'views/directiveTemplates/countryFlag.html',
       scope: {
         countryName: "=",
+        countryCode: "=",
         s3Url: "="
       }
     };

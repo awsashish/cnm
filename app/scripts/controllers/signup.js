@@ -51,13 +51,30 @@ angular.module('coinomiaFrontendApp')
       })
     }
 
-    if($location.search().id) {
+    if($location.search().id && $location.search().campaignid !== "0") {
       var sponsorInfo = $location.search();
       var sponsorId = JSON.stringify(sponsorInfo.id);
+      var campaignData = {
+        "campaignid": parseInt($location.search().campaignid),
+        "userid":$location.search().id
+      }
+      $scope.verifySponsor(sponsorId);
+      coinomiaService.hitCampaign(campaignData)
+      .then(function(res) {
+        if(res.status === 200) {
+          var data = res.data
+          $scope.user.campaignId = parseInt($location.search().campaignid);
+        }
+      });
+    }else if($location.search().id && $location.search().campaignid === "0") {
+      var sponsorInfo = $location.search();
+      var sponsorId = JSON.stringify(sponsorInfo.id);
+      $scope.user.campaignId = parseInt($location.search().campaignid);
       $scope.verifySponsor(sponsorId);
     }else if($cookies.get('sponsorId')){
       $scope.user.sponsor = $cookies.get('sponsorId');
       $scope.user.sponsorName = $cookies.get('sponsorName');
+      $scope.user.campaignId = 0;
     }else{
       $scope.defaultSponsor();
     }
@@ -142,8 +159,10 @@ angular.module('coinomiaFrontendApp')
           'IPAdr':$scope.user.ipadr,
           'Password':$scope.user.password,
           'ConfirmPassword':$scope.user.confirmPassword,
+          'campaignid': $scope.user.campaignId,
           'Leg':''
         };
+
         $scope.error = false;
         coinomiaService.signup(formData).then(function(res) {
           $scope.loadingMessage = false;

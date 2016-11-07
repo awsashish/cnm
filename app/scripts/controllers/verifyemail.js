@@ -8,8 +8,9 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('VerifyemailCtrl', function ($scope, coinomiaService, $state, $location) {
+  .controller('VerifyemailCtrl', function ($scope, coinomiaService, $state, $location, config) {
     $scope.loading = true;
+    $scope.s3Url = config.s3BucketUrl
     $scope.getToken = $location.path().split('/').pop();
     // console.log(getId);
     // Verifying Email

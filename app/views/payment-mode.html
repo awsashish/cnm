@@ -1,0 +1,36 @@
+<div class="modal-content">
+ <div class="modal-header">
+    <button type="button" class="close" ng-click="closePopup()">×</span></button>
+    <h4 class="modal-title" id="myModalLabel">Payment</h4>
+ </div>
+<form ng-submit="activeAffiliate(payment);">
+ <div class="modal-body">
+     <strong>Choose Your Payment Method</strong>
+     <div class="row mar20">
+        <div class="col-md-6 col-sm-12">
+          <input name="stp" ng-model="$parent.payment.mode" disabled="disabled" type="radio" value="STP">
+          <img src="{{s3Url}}stp.jpg" width="220" style="opacity:0.5">
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <input name="paypal" ng-model="$parent.payment.mode" disabled="disabled" type="radio" value="PAYPAL">
+          <img src="{{s3Url}}paypal.png" width="180" style="opacity:0.5">
+        </div>
+     </div>
+     <div class="row mar20">
+        <div class="col-md-6 col-sm-12">
+          <input name="check-ref" ng-model="$parent.payment.mode" type="radio" value="BTC">
+          <img src="{{s3Url}}bitcoin-logo.png" width="160">
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <input name="check-ref" ng-model="$parent.payment.mode" type="radio" value="ADVCASH">
+          <img src="{{s3Url}}advcash.png" width="170">
+        </div>
+     </div>
+   </div>
+   <br>
+   <br>
+   <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Payment</button>
+   </div>
+</form>
+</div>

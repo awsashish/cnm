@@ -52,6 +52,7 @@ describe('Controller: SignupCtrl', function () {
       'IPAdr':scope.user.ipadr,
       'Password':scope.user.password,
       'ConfirmPassword':scope.user.confirmPassword,
+      'campaignid':scope.user.campaignid,
       'Leg':''
     }
   }));

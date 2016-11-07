@@ -443,7 +443,7 @@ angular.module('coinomiaFrontendApp')
     // Open Angular Modal
     $scope.getReferrals = function() {
       var modalInstance = $uibModal.open({
-          templateUrl: 'views/automatic-referrals.html',
+          templateUrl: 'views/modal/automatic-referrals.html',
           scope: $scope,
           size: 'md'
       });
