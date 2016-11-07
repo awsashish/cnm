@@ -30,11 +30,13 @@ angular.module('coinomiaFrontendApp')
       coinomiaService.createCampaign(campaignData)
       .then(function(res) {
         if(res.status === 200) {
+          var data = res.data;
           banner.showCode = true;
+          $scope.campaignId = data.campaignid;
         }
       })
     }
-
+    
     // Get Banners
     coinomiaService.getBanners()
     .then(function(res) {

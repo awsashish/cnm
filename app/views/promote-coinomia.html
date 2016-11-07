@@ -3,7 +3,7 @@
   <div class="mainwrapper">
   <navigation></navigation>
   <style>.nav-tabs > li > a{ padding: 10px 25px !important; color:#fff !important;
-  }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;} .box-gry{float: left;margin-top: 20px;width: 100%;}</style>
+  }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;} .box-gry{float: left;margin-top: 0px;width: 100%;}</style>
   <div class="mainpanel">
     <div class="contentpanel">
       <div>
@@ -228,11 +228,13 @@
                           </button>
                         </div>
                         <div class="row">
-                          <div class="col-lg-8">
-                            <div ng-show="bannerInfo.showCode" class="alert alert-success fade in">
+                          <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" ng-show="bannerInfo.showCode">
+                            <div class="alert alert-success fade in">
                               <strong><i class="fa fa-check-circle fa-lg" aria-hidden="true"></i></strong> Banner created succesfully.
                             </div>
-                            <!-- &lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerheight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt; -->
+                          </div>
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 box-gry mobile-scroll" ng-show="bannerInfo.showCode">
+                            &lt;a href=&quot;{{signUpPath}}?id={{sponsorId}}&bannerid={{bannerInfo.bannerid}}&campaignid={{campaignId}}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{bannerInfo.bannerimage}}&quot; alt=&quot;{{name}}&quot; height=&quot;{{bannerInfo.bannerheight}}&quot; width=&quot;{{bannerInfo.bannerwidth}}&quot; /&gt;&lt;/a&gt;
                           </div>
                         </div>
                         <div class="clearfix"></div>
