@@ -1,5 +1,5 @@
-<main-header class="main-header"></main-header>
-<section>
+<main-header class="main-header no-print"></main-header>
+<section class="no-print">
   <div class="mainwrapper">
     <navigation></navigation>
     <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
@@ -15,19 +15,13 @@
               <div class="tabbable-line" >
                 <div align="center">
                   <ul  class="nav nav-tabs ">
-                    <!-- <li class="active">
-                    	<a href=".tab_default_11" data-toggle="tab" style="padding-right:30px !important; padding-left:30px !important" aria-expanded="true">
-                      	<i class="fa fa-user icon-lg" aria-hidden="true"></i><br>
-                        <strong>Affiliate </strong>
-                      </a>
-                    </li> -->
-                    <!-- <li class="active">
-                    	<a href=".tab_default_11" data-toggle="tab" style="padding-right:30px !important; padding-left:30px !important" aria-expanded="true">
-                      	<i class="fa fa-user icon-lg" aria-hidden="true"></i><br>
-                        <strong>Affiliate </strong>
-                      </a>
-                    </li> -->
                     <li class="active">
+                    	<a href=".tab_default_11" data-toggle="tab" style="padding-right:30px !important; padding-left:30px !important" aria-expanded="true">
+                      	<i class="fa fa-user icon-lg" aria-hidden="true"></i><br>
+                        <strong>Affiliate </strong>
+                      </a>
+                    </li>
+                    <li>
                       <a href=".tab_default_4" data-toggle="tab">
                       <i class="fa fa-user icon-lg" aria-hidden="true"></i><br />
                       <strong>My Directs</strong> </a>
@@ -61,7 +55,7 @@
                   </ul>
                 </div>
                 <div class="tab-content" style="padding:20px 20px; ">
-                  <div class="tab-pane tab_default_11">
+                  <div class="tab-pane tab_default_11 active">
                     <h2 class="mb35-sm top-spacemob10"><i class="fa fa-comments-o icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>Affiliate</strong></h2>
                     <hr>
                     <h4 class="font16" align="center">
@@ -90,7 +84,7 @@
                         <small>
                           <div id="affiliate-active">
                             <h3><strong>Affiliate Account</strong></h3>
-                            <p class="active-affiliate">
+                            <p ng-class="userInfo.affiliate_status==1?'inactive-affiliate':'active-affiliate'">
                             <i class="fa fa-check-circle" aria-hidden="true"></i> Active</p>
                             <h5>
                               <strong>Activated On: 12/04/2105<br><br>
@@ -99,7 +93,7 @@
                           </div>
                           <div id="affiliate-inactive">
                             <h3><strong>Affiliate Account</strong></h3>
-                            <p class="inactive-affiliate">
+                            <p ng-class="userInfo.affiliate_status==1?'active-affiliate':'inactive-affiliate'">
                             <i class="fa fa-check-circle" aria-hidden="true"></i> Inactive</p>
                             <button class="btn btn-block btn-warning">Activate Via Earnings</button>
                             <button class="btn btn-block btn-success" ng-click="ativatePayment()">Activate Via Payment</button>
@@ -108,7 +102,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="tab-pane tab_default_4 active">
+                  <div class="tab-pane tab_default_4">
                     <h2 class="mb35-sm  top-spacemob10"><i class="fa fa-user icon-lg-red border-round-red" aria-hidden="true"></i> <strong>My Directs</strong></h2>
                     <hr />
 

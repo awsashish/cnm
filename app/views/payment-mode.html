@@ -1,3 +1,4 @@
+<div id="loadingDiv" ng-if="activePayments"></div>
 <div class="modal-content">
  <div class="modal-header">
     <button type="button" class="close" ng-click="closePopup()">×</span></button>
@@ -6,7 +7,13 @@
 <form ng-submit="activeAffiliate(payment);">
  <div class="modal-body">
      <strong>Choose Your Payment Method</strong>
-     <div class="row mar20">
+     <div class="row mar20 text-center">
+       <div class="col-sm-12 col-md-12 col-sm-12">
+         <input name="check-ref" ng-model="$parent.payment.mode" type="radio" value="BTC">
+         <img src="{{s3Url}}bitcoin-logo.png" width="160">
+       </div>
+     </div>
+     <!-- <div class="row mar20">
         <div class="col-md-6 col-sm-12">
           <input name="stp" ng-model="$parent.payment.mode" disabled="disabled" type="radio" value="STP">
           <img src="{{s3Url}}stp.jpg" width="220" style="opacity:0.5">
@@ -25,7 +32,7 @@
           <input name="check-ref" ng-model="$parent.payment.mode" type="radio" value="ADVCASH">
           <img src="{{s3Url}}advcash.png" width="170">
         </div>
-     </div>
+     </div> -->
    </div>
    <br>
    <br>

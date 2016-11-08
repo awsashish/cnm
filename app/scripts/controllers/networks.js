@@ -388,6 +388,9 @@ angular.module('coinomiaFrontendApp')
 
 
     $scope.ativatePayment = function() {
+      $scope.payment = {
+        mode:"BTC"
+      }
       var modalInstance = $uibModal.open({
           templateUrl: 'views/payment-mode.html',
           scope: $scope,
@@ -399,8 +402,39 @@ angular.module('coinomiaFrontendApp')
       $uibModalStack.dismissAll();
     }
 
+    // Activate Affiliate Account
     $scope.activeAffiliate = function(payment) {
-      console.log(payment);
+      $scope.activePayments = true;
+      var affiliateData = {
+        paymode: payment.mode,
+        paytype:""
+      }
+
+      // Active Affiliate Account
+      coinomiaService.activeAffiliate(affiliateData)
+      .then(function(res) {
+        if(res.status === 200) {
+          $scope.activePayments = false;
+          $uibModalStack.dismissAll();
+          $scope.affiliateAccount = true;
+          var data = res.data;
+          $scope.transactionDetails = data;
+          $scope.transactionDate = moment().format('YYYY-MM-DD');
+          if(data.Message) {
+            $scope.accountStatus = true;
+          }
+          var modalInstance = $uibModal.open({
+              templateUrl: 'views/transaction-invoice.html',
+              scope: $scope,
+              size: 'md'
+          });
+        }
+      });
+    }
+
+    // Print Invoice
+    $scope.printInvoice = function() {
+      $window.print();
     }
 
 });

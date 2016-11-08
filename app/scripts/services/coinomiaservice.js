@@ -835,7 +835,7 @@ angular.module('coinomiaFrontendApp')
     }
 
     // Get Sent List
-    this.activeAffiliate = function(paymode, paytype) {
+    this.activeAffiliate = function(affiliateData) {
       // On Success
       function activeAffiliateRequestComplete(response) {
         return response;
@@ -843,11 +843,11 @@ angular.module('coinomiaFrontendApp')
 
       // On Failed
       function activeAffiliateRequestFailed(error) {
-        $log.error('XHR Failed for Sent List.\n' + angular.toJson(error.data, true));
+        $log.error('XHR Failed for Active Affiliate.\n' + angular.toJson(error.data, true));
         return error;
       }
 
-      return $http.get(this.apiHost +'active-affiliate')
+      return $http.post(this.apiHost +'user/active-affiliate', affiliateData)
         .then(activeAffiliateRequestComplete)
         .catch(activeAffiliateRequestFailed);
     }
