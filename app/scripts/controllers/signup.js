@@ -51,25 +51,30 @@ angular.module('coinomiaFrontendApp')
       })
     }
 
-    if($location.search().id && $location.search().campaignid !== "0") {
+    if($location.search().id && $location.search().campaignid) {
       var sponsorInfo = $location.search();
       var sponsorId = JSON.stringify(sponsorInfo.id);
       var campaignData = {
         "campaignid": parseInt($location.search().campaignid),
         "userid":$location.search().id
       }
+
       $scope.verifySponsor(sponsorId);
-      coinomiaService.hitCampaign(campaignData)
-      .then(function(res) {
-        if(res.status === 200) {
-          var data = res.data
-          $scope.user.campaignId = parseInt($location.search().campaignid);
-        }
-      });
-    }else if($location.search().id && $location.search().campaignid === "0") {
+      if($location.search().campaignid !== "0") {
+        coinomiaService.hitCampaign(campaignData)
+        .then(function(res) {
+          if(res.status === 200) {
+            var data = res.data
+            $scope.user.campaignId = parseInt($location.search().campaignid);
+          }
+        });
+      }else{
+        $scope.user.campaignId = parseInt($location.search().campaignid);
+      }
+    }else if($location.search().id) {
       var sponsorInfo = $location.search();
       var sponsorId = JSON.stringify(sponsorInfo.id);
-      $scope.user.campaignId = parseInt($location.search().campaignid);
+      $scope.user.campaignId = 0;
       $scope.verifySponsor(sponsorId);
     }else if($cookies.get('sponsorId')){
       $scope.user.sponsor = $cookies.get('sponsorId');
