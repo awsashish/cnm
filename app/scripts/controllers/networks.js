@@ -17,19 +17,6 @@ angular.module('coinomiaFrontendApp')
       perpage: config.pageLimit
     }
 
-    $scope.$on('userDetails', function(events, info){
-      $scope.loadingDates = false;
-     if(info.affiliate_status && info.affiliate_status===1) {
-       $scope.affiliateStatus = info.affiliate_status;
-       $scope.activationDate = moment(info.affiliate_expiry_date).subtract(1, 'year').format('DD/MM/YYYY');
-       $scope.expiryDate = '-';
-     }else if(info.affiliate_status && info.affiliate_status===0) {
-       $scope.affiliateStatus = info.affiliate_status;
-       $scope.expiryDate = moment(info.affiliate_expiry_date).format('DD/MM/YYYY');
-     }
-
-    })
-
     $scope.replyMail = {};
 
     $scope.selected = [];
@@ -414,6 +401,7 @@ angular.module('coinomiaFrontendApp')
 
     $scope.closePopup = function() {
       $uibModalStack.dismissAll();
+      $window.location.reload();
     }
 
     // Activate Affiliate Account
@@ -445,6 +433,20 @@ angular.module('coinomiaFrontendApp')
         }
       });
     }
+
+    // Get Affiliate status
+    $scope.$on('userDetails', function(events, info){
+      $scope.loadingDates = false;
+     if(info.affiliate_status===0) {
+       $scope.affiliateStatus = false;
+       $scope.activationDate = '-';
+       $scope.expiryDate = '-';
+     }else {
+       $scope.affiliateStatus = true;
+       $scope.activationDate = moment(info.affiliate_expiry_date).subtract(1, 'year').format('DD/MM/YYYY');
+       $scope.expiryDate = moment(info.affiliate_expiry_date).format('DD/MM/YYYY');
+     }
+    })
 
     // Print Invoice
     $scope.printInvoice = function() {

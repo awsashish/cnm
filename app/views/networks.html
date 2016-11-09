@@ -84,7 +84,7 @@
                         <small>
                           <div id="affiliate-active">
                             <h3><strong>Affiliate Account</strong></h3>
-                            <p ng-class="userInfo.affiliate_status==1?'inactive-affiliate':'active-affiliate'">
+                            <p ng-class="affiliateStatus?'active-affiliate':'inactive-affiliate'">
                             <i class="fa fa-check-circle" aria-hidden="true"></i> Active</p>
                             <div class="ajax_loader" ng-if="loadingDates"></div>
                             <h5>
@@ -94,7 +94,7 @@
                           </div>
                           <div id="affiliate-inactive">
                             <h3><strong>Affiliate Account</strong></h3>
-                            <p ng-class="userInfo.affiliate_status==1?'active-affiliate':'inactive-affiliate'">
+                            <p ng-class="!affiliateStatus?'active-affiliate':'inactive-affiliate'">
                             <i class="fa fa-check-circle" aria-hidden="true"></i> Inactive</p>
                             <button class="btn btn-block btn-warning">Activate Via Earnings</button>
                             <button class="btn btn-block btn-success" ng-click="ativatePayment()">Activate Via Payment</button>
