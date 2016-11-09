@@ -86,9 +86,10 @@
                             <h3><strong>Affiliate Account</strong></h3>
                             <p ng-class="userInfo.affiliate_status==1?'inactive-affiliate':'active-affiliate'">
                             <i class="fa fa-check-circle" aria-hidden="true"></i> Active</p>
+                            <div class="ajax_loader" ng-if="loadingDates"></div>
                             <h5>
-                              <strong>Activated On: 12/04/2105<br><br>
-                                Expiry:13/04/2016</strong>
+                              <strong>Activated On : {{activationDate}}<br><br>
+                                Expiry : {{expiryDate}}</strong>
                             </h5>
                           </div>
                           <div id="affiliate-inactive">
