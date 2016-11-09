@@ -453,4 +453,20 @@ angular.module('coinomiaFrontendApp')
       $window.print();
     }
 
+    // Get Wallet Amount
+    $scope.getWalletAmount = function() {
+      coinomiaService.getWalletInfo()
+      .then(function(res) {
+        if(res.status === 200) {
+          res.data.forEach(function(info) {
+            if(info.Wallet === 'USD') {
+              $scope.walletAmount = info.Balance;
+            }
+          })
+        }
+      });
+    }
+
+    $scope.getWalletAmount();
+
 });
