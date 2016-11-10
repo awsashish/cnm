@@ -461,6 +461,8 @@ angular.module('coinomiaFrontendApp')
 
 
     $scope.ativatePayment = function(type) {
+      $scope.walletEarnings = false;
+      $scope.negativeBalance = false;
       if(type === 'gateway') {
         $scope.payment = {
           mode:"BTC"
