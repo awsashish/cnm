@@ -404,10 +404,10 @@ angular.module('coinomiaFrontendApp')
       coinomiaService.activeAffiliate(affiliateData)
       .then(function(res) {
         if(res.status === 200) {
-          $scope.activePayments = false;
-          $uibModalStack.dismissAll();
-          $scope.affiliateAccount = true;
           var data = res.data;
+
+          $scope.affiliateAccount = true;
+          $uibModalStack.dismissAll();
           $scope.transactionDetails = data;
           $scope.transactionDate = moment().format('YYYY-MM-DD');
           if(data.Message) {
@@ -415,6 +415,22 @@ angular.module('coinomiaFrontendApp')
           }else if(data.message) {
             $scope.noBalance = true;
           }
+          
+          if(affiliateData.paymode==='WALLET' && !$scope.noBalance) {
+            // Get User Info 
+            coinomiaService.getUserInfo()
+            .then(function(_res) {
+              if(_res.status===200) {
+                $scope.transactionDetails = data;
+                var _info = _res.data;
+                $scope.activationDate = moment(_info.affiliate_expiry_date).subtract(1, 'year').format('DD/MM/YYYY');
+                $scope.expiryDate = moment(_info.affiliate_expiry_date).format('DD/MM/YYYY');
+                $scope.activePayments = false;
+                $scope.earningSuccess = true;
+              }
+            });
+          }
+
           var modalInstance = $uibModal.open({
               templateUrl: 'views/transaction-invoice.html',
               scope: $scope,

@@ -2,7 +2,7 @@
 <div class="modal-content">
  <div class="modal-header">
     <button type="button" class="close" ng-click="closePopup()">×</span></button>
-    <h4 class="modal-title" id="myModalLabel">Payment</h4>
+    <h4 class="modal-title" id="myModalLabel">{{walletEarnings?'Payment Information':'Payment'}}</h4>
  </div>
 <form ng-submit="activeAffiliate(payment);">
  <div class="modal-body">
@@ -15,12 +15,17 @@
        </div>
      </div>
    </div>
-   <div ng-if="walletEarnings">
-     <div class="row mar20 text-center">
-       <div class="col-sm-12 col-md-12 col-sm-12">
-         <strong>Coinomia wallet amount </strong>({{walletAmount}}) - <strong>Affiliate fee </strong>({{affiliateFees | currency}}) = <strong>Available balance will be </strong>({{availableBalance | currency}})
-       </div>
-     </div>
+   <div class="alert alert-danger fade in" ng-if="negativeBalance">
+       Sorry, You don't have enough balance into your Coinomia USD wallet.
+    </div>
+   <div ng-if="walletEarnings && !negativeBalance">
+    <h3><strong>You can activate your affiliate panel through your wallet earnings too!</strong></h3>
+    <hr>
+    <h3 class="gry-round-box"><strong>Your Current Balance: {{walletAmount | currency}}</strong></h3>
+    <h4><strong>Activation Fee For Affiliate Panel: {{affiliateFees | currency}}</strong></h4>
+    <h4 class="add-funds-popup">Remaining Balance after Activation:<strong> {{availableBalance | currency}}</strong></h4>
+    <br>
+    <p><strong>Affiliate panel will be active for an year!</strong></p>
    </div>
      <!-- <div class="row mar20">
         <div class="col-md-6 col-sm-12">
