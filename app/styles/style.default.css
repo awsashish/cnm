@@ -5740,13 +5740,15 @@ h1{
     }
 
     .modal-body::after {
-        content: url('https://s3-us-west-2.amazonaws.com/coinomia/images/logo-coinomia.png');
-        opacity: 0.2;
+        content: url(https://s3-us-west-2.amazonaws.com/coinomia/images/watermark.png);
+        opacity: 0.4;
         position: absolute;
-        left: 50%;
-        margin-left: -112px;
-        top: 50%;
-        margin-top: -33px;
+        top: 10%;
+        left: 25%;
+        width: 1px;
+        -webkit-transform: rotate(90deg) scale(0.2);
+        -ms-transform: rotate(90deg) scale(0.2);
+        transform: rotate(-45deg) scale(0.2);
     }
 
 }
