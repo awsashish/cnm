@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('NetworksCtrl', function ($scope, $rootScope, $timeout, $location, $uibModal, $uibModalStack, $window, coinomiaService, config, UtilsService) {
+  .controller('NetworksCtrl', function ($scope, $rootScope, $timeout, $location, $uibModal, $uibModalStack, $window, $filter, coinomiaService, config, UtilsService) {
     $scope.currentPage = config.currentPage;
     $scope.loadingDates = true;
     $scope.pagination = {
@@ -387,18 +387,6 @@ angular.module('coinomiaFrontendApp')
       angular.element("html, body").animate({ scrollTop: angular.element(document).height() }, 1000);
     }
 
-
-    $scope.ativatePayment = function() {
-      $scope.payment = {
-        mode:"BTC"
-      }
-      var modalInstance = $uibModal.open({
-          templateUrl: 'views/payment-mode.html',
-          scope: $scope,
-          size: 'md'
-      });
-    }
-
     $scope.closePopup = function() {
       $uibModalStack.dismissAll();
       $window.location.reload();
@@ -424,6 +412,8 @@ angular.module('coinomiaFrontendApp')
           $scope.transactionDate = moment().format('YYYY-MM-DD');
           if(data.Message) {
             $scope.accountStatus = true;
+          }else if(data.message) {
+            $scope.noBalance = true;
           }
           var modalInstance = $uibModal.open({
               templateUrl: 'views/transaction-invoice.html',
@@ -468,5 +458,30 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.getWalletAmount();
+
+
+    $scope.ativatePayment = function(type) {
+      if(type === 'gateway') {
+        $scope.payment = {
+          mode:"BTC"
+        }
+      }else{
+        $scope.walletEarnings = true;
+        $scope.affiliateFees = config.affiliateFees;
+        $scope.availableBalance = $scope.walletAmount - $scope.affiliateFees;
+        if($scope.availableBalance < 0) {
+          $scope.negativeBalance = true;
+        }
+        $scope.payment = {
+          mode:$filter('uppercase')(type)
+        }
+      }
+
+      var modalInstance = $uibModal.open({
+          templateUrl: 'views/payment-mode.html',
+          scope: $scope,
+          size: 'md'
+      });
+    }
 
 });

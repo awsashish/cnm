@@ -96,8 +96,8 @@
                             <h3><strong>Affiliate Account</strong></h3>
                             <p ng-class="!affiliateStatus?'active-affiliate':'inactive-affiliate'">
                             <i class="fa fa-check-circle" aria-hidden="true"></i> Inactive</p>
-                            <button class="btn btn-block btn-warning">Activate Via Earnings</button>
-                            <button class="btn btn-block btn-success" ng-click="ativatePayment()">Activate Via Payment</button>
+                            <button class="btn btn-block btn-warning" ng-click="ativatePayment('wallet')">Activate Via Earnings</button>
+                            <button class="btn btn-block btn-success" ng-click="ativatePayment('gateway')">Activate Via Payment</button>
                           </div>
                         </small>
                       </div>

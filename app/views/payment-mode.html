@@ -6,6 +6,7 @@
  </div>
 <form ng-submit="activeAffiliate(payment);">
  <div class="modal-body">
+   <div ng-if="!walletEarnings">
      <strong>Choose Your Payment Method</strong>
      <div class="row mar20 text-center">
        <div class="col-sm-12 col-md-12 col-sm-12">
@@ -13,6 +14,14 @@
          <img src="{{s3Url}}bitcoin-logo.png" width="160">
        </div>
      </div>
+   </div>
+   <div ng-if="walletEarnings">
+     <div class="row mar20 text-center">
+       <div class="col-sm-12 col-md-12 col-sm-12">
+         <strong>Coinomia wallet amount </strong>({{walletAmount}}) - <strong>Affiliate fee </strong>({{affiliateFees | currency}}) = <strong>Available balance will be </strong>({{availableBalance | currency}})
+       </div>
+     </div>
+   </div>
      <!-- <div class="row mar20">
         <div class="col-md-6 col-sm-12">
           <input name="stp" ng-model="$parent.payment.mode" disabled="disabled" type="radio" value="STP">
@@ -37,7 +46,7 @@
    <br>
    <br>
    <div class="modal-footer">
-      <button type="submit" class="btn btn-primary">Payment</button>
+      <button type="submit" class="btn btn-primary" ng-disabled="negativeBalance">Payment</button>
    </div>
 </form>
 </div>

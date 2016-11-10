@@ -22,6 +22,7 @@ angular.module('coinomiaFrontendApp')
     'ratesTitle': 'Current Rates',
     'ratesSubTitle': 'Offered by Coinomia as Now',
     'ratesIcon': 'dash-cur-rate.png',
+    'affiliateFees':100,
     'poolDropdown': [
       {value:1000, name:'1000'},
       {value:100, name:'100'},
