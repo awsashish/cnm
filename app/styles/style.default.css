@@ -5729,7 +5729,24 @@ h1{
         display: none !important;
     }
 
+    {-webkit-print-color-adjust:exact;}
+
     #tawkchat-iframe-container {
       display: none !important;
     }
+
+    .modal-body {
+        position: relative;
+    }
+
+    .modal-body::after {
+        content: url('https://s3-us-west-2.amazonaws.com/coinomia/images/logo-coinomia.png');
+        opacity: 0.2;
+        position: absolute;
+        left: 50%;
+        margin-left: -112px;
+        top: 50%;
+        margin-top: -33px;
+    }
+
 }
