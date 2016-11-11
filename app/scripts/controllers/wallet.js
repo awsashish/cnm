@@ -98,6 +98,8 @@ angular.module('coinomiaFrontendApp')
 
     // Verify User Id
     $scope.verifyUserId = function(userId) {
+      $scope.verifiedStatus = false;
+      $scope.verifiedUserId = false;
       var userId = userId;
       clearTimeout(timeout);
       if(userId.length > 0) {
@@ -123,7 +125,6 @@ angular.module('coinomiaFrontendApp')
         "amount":transferAmount
       }
       coinomiaService.transferFund(transferData).then(function(res) {
-        console.log(res);
         if(res.status === 200) {
           var data = res.data;
           if(data.message !== '!balance not available') {
