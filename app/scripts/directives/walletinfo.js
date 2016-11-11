@@ -21,7 +21,7 @@ angular.module('coinomiaFrontendApp')
         walletType: '@',
         s3Url:"="
       },
-      controller: function($scope, $rootScope, $element, $attrs) {
+      controller: function($scope, $rootScope, $element, $attrs, coinomiaService) {
         $scope.submit = function(amount) {
           $rootScope.addAmount = amount;
         }
@@ -33,6 +33,10 @@ angular.module('coinomiaFrontendApp')
             $scope.amountError = false;
             $rootScope.addAmount = amount;
           }
+        }
+
+        $scope.getUserId = function(userId) {
+          $rootScope.transferUserId = userId;
         }
       }
     };

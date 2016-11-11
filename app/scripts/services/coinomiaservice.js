@@ -945,4 +945,22 @@ angular.module('coinomiaFrontendApp')
         .then(hitCampignRequestComplete)
         .catch(hitCampignRequestFailed);
     }
+
+    // Transfer Fund to User
+    this.transferFund = function(transferData) {
+      // On Success
+      function transferFundRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function transferFundRequestFailed(error) {
+        $log.error('XHR Failed for Transfer Fund.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/fund-transfer', transferData)
+        .then(transferFundRequestComplete)
+        .catch(transferFundRequestFailed);
+    }
   });
