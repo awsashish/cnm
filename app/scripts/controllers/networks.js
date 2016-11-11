@@ -8,8 +8,9 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('NetworksCtrl', function ($scope, $timeout, $location, $uibModal, $uibModalStack, $window, coinomiaService, config, UtilsService) {
+  .controller('NetworksCtrl', function ($scope, $rootScope, $timeout, $location, $uibModal, $uibModalStack, $window, $filter, coinomiaService, config, UtilsService) {
     $scope.currentPage = config.currentPage;
+    $scope.loadingDates = true;
     $scope.pagination = {
       totalDirects: 0,
       totalTeam:0,
@@ -386,21 +387,119 @@ angular.module('coinomiaFrontendApp')
       angular.element("html, body").animate({ scrollTop: angular.element(document).height() }, 1000);
     }
 
+    $scope.closePopup = function() {
+      $uibModalStack.dismissAll();
+      $window.location.reload();
+    }
 
-    $scope.ativatePayment = function() {
+    // Activate Affiliate Account
+    $scope.activeAffiliate = function(payment) {
+      $scope.activePayments = true;
+      var affiliateData = {
+        paymode: payment.mode,
+        paytype:""
+      }
+
+      // Active Affiliate Account
+      coinomiaService.activeAffiliate(affiliateData)
+      .then(function(res) {
+        if(res.status === 200) {
+          var data = res.data;
+
+          $scope.affiliateAccount = true;
+          $uibModalStack.dismissAll();
+          $scope.transactionDetails = data;
+          $scope.transactionDate = moment().format('YYYY-MM-DD');
+          if(data.Message) {
+            $scope.accountStatus = true;
+          }else if(data.message) {
+            $scope.noBalance = true;
+          }
+          
+          if(affiliateData.paymode==='WALLET' && !$scope.noBalance) {
+            // Get User Info 
+            coinomiaService.getUserInfo()
+            .then(function(_res) {
+              if(_res.status===200) {
+                $scope.transactionDetails = data;
+                var _info = _res.data;
+                $scope.activationDate = moment(_info.affiliate_expiry_date).subtract(1, 'year').format('DD/MM/YYYY');
+                $scope.expiryDate = moment(_info.affiliate_expiry_date).format('DD/MM/YYYY');
+                $scope.activePayments = false;
+                $scope.earningSuccess = true;
+              }
+            });
+          }
+
+          var modalInstance = $uibModal.open({
+              templateUrl: 'views/transaction-invoice.html',
+              scope: $scope,
+              size: 'md'
+          });
+        }
+      });
+    }
+
+    // Get Affiliate status
+    $scope.$on('userDetails', function(events, info){
+      $scope.loadingDates = false;
+     if(info.affiliate_status===0) {
+       $scope.affiliateStatus = false;
+       $scope.activationDate = '-';
+       $scope.expiryDate = '-';
+     }else {
+       $scope.affiliateStatus = true;
+       $scope.activationDate = moment(info.affiliate_expiry_date).subtract(1, 'year').format('DD/MM/YYYY');
+       $scope.expiryDate = moment(info.affiliate_expiry_date).format('DD/MM/YYYY');
+     }
+    })
+
+    // Print Invoice
+    $scope.printInvoice = function() {
+      $window.print();
+    }
+
+    // Get Wallet Amount
+    $scope.getWalletAmount = function() {
+      coinomiaService.getWalletInfo()
+      .then(function(res) {
+        if(res.status === 200) {
+          res.data.forEach(function(info) {
+            if(info.Wallet === 'USD') {
+              $scope.walletAmount = info.Balance;
+            }
+          })
+        }
+      });
+    }
+
+    $scope.getWalletAmount();
+
+
+    $scope.ativatePayment = function(type) {
+      $scope.walletEarnings = false;
+      $scope.negativeBalance = false;
+      if(type === 'gateway') {
+        $scope.payment = {
+          mode:"BTC"
+        }
+      }else{
+        $scope.walletEarnings = true;
+        $scope.affiliateFees = config.affiliateFees;
+        $scope.availableBalance = $scope.walletAmount - $scope.affiliateFees;
+        if($scope.availableBalance < 0) {
+          $scope.negativeBalance = true;
+        }
+        $scope.payment = {
+          mode:$filter('uppercase')(type)
+        }
+      }
+
       var modalInstance = $uibModal.open({
           templateUrl: 'views/payment-mode.html',
           scope: $scope,
           size: 'md'
       });
-    }
-
-    $scope.closePopup = function() {
-      $uibModalStack.dismissAll();
-    }
-
-    $scope.activeAffiliate = function(payment) {
-      console.log(payment);
     }
 
 });

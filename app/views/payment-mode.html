@@ -1,12 +1,33 @@
+<div id="loadingDiv" ng-if="activePayments"></div>
 <div class="modal-content">
  <div class="modal-header">
     <button type="button" class="close" ng-click="closePopup()">×</span></button>
-    <h4 class="modal-title" id="myModalLabel">Payment</h4>
+    <h4 class="modal-title" id="myModalLabel">{{walletEarnings?'Payment Information':'Payment'}}</h4>
  </div>
 <form ng-submit="activeAffiliate(payment);">
  <div class="modal-body">
+   <div ng-if="!walletEarnings">
      <strong>Choose Your Payment Method</strong>
-     <div class="row mar20">
+     <div class="row mar20 text-center">
+       <div class="col-sm-12 col-md-12 col-sm-12">
+         <input name="check-ref" ng-model="$parent.payment.mode" type="radio" value="BTC">
+         <img src="{{s3Url}}bitcoin-logo.png" width="160">
+       </div>
+     </div>
+   </div>
+   <div class="alert alert-danger fade in" ng-if="negativeBalance">
+       Sorry, You don't have enough balance into your Coinomia USD wallet.
+    </div>
+   <div ng-if="walletEarnings && !negativeBalance">
+    <h3><strong>You can activate your affiliate panel through your wallet earnings too!</strong></h3>
+    <hr>
+    <h3 class="gry-round-box"><strong>Your Current Balance: {{walletAmount | currency}}</strong></h3>
+    <h4><strong>Activation Fee For Affiliate Panel: {{affiliateFees | currency}}</strong></h4>
+    <h4 class="add-funds-popup">Remaining Balance after Activation:<strong> {{availableBalance | currency}}</strong></h4>
+    <br>
+    <p><strong>Affiliate panel will be active for an year!</strong></p>
+   </div>
+     <!-- <div class="row mar20">
         <div class="col-md-6 col-sm-12">
           <input name="stp" ng-model="$parent.payment.mode" disabled="disabled" type="radio" value="STP">
           <img src="{{s3Url}}stp.jpg" width="220" style="opacity:0.5">
@@ -25,12 +46,12 @@
           <input name="check-ref" ng-model="$parent.payment.mode" type="radio" value="ADVCASH">
           <img src="{{s3Url}}advcash.png" width="170">
         </div>
-     </div>
+     </div> -->
    </div>
    <br>
    <br>
    <div class="modal-footer">
-      <button type="submit" class="btn btn-primary">Payment</button>
+      <button type="submit" class="btn btn-primary" ng-disabled="negativeBalance">Payment</button>
    </div>
 </form>
 </div>

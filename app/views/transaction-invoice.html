@@ -1,7 +1,8 @@
 <div class="modal-content">
    <div class="modal-header">
       <button type="button" class="close no-print" data-dismiss="modal" aria-label="Close" ng-click="closePopup()"><span aria-hidden="true">×</span></button>
-      <h4 class="modal-title no-print" id="myModalLabel"><img src="images/usd-wallet.png" width="35" class="pull-left img-responsive "> <strong>&nbsp;USD Wallet</strong></h4>
+      <h4 class="modal-title no-print" id="myModalLabel" ng-if="!earningSuccess && !noBalance"><img src="images/usd-wallet.png" width="35" class="pull-left img-responsive "> <strong>&nbsp;{{affiliateAccount?"Active Affiliate Account":"USD Wallet"}}</strong></h4>
+      <h4 class="modal-title no-print" id="myModalLabel" ng-if="earningSuccess || noBalance"><strong>&nbsp;Payment Invoice</strong></h4>
    </div>
    <div class="modal-body">
      <div class="alert alert-danger fade in" ng-if="notPaid">
@@ -13,26 +14,50 @@
      <div class="alert alert-success fade in" ng-if="successStatus">
        Your transaction has been confirmed.
      </div>
-     <form>
+     <div class="alert alert-success fade in" ng-if="accountStatus">
+       Your Account is already Activated.
+     </div>
+     <div class="alert alert-danger fade in" ng-if="noBalance">
+       Balance Not Available.
+     </div>
+     <div ng-if="earningSuccess">
+      <h4><strong style="color:#F90;">Congratulations ! Your affiliate panel is active. Now withdraw your payouts without any hassle.</strong></h4>
+      <hr>
+      <h4><strong>Invoice Number :</strong> {{transactionDetails.invoice_number}}</h4>
+      <h4><strong>Expiry Date :</strong>  {{expiryDate}}</h4>
+      <br>
+      <br>
+      <span style="font-size:12px;"><strong>Thank You,</strong><br>
+      Team Coinomia<br>
+      <img src="images/logo-coinomia.png" width="60"></span>
+     </div>
+     <form ng-if="!noBalance && !accountStatus">
          <h4>Transaction Funding</h4>
          <p>Please transfer your Bitcoins to the address given below. The funds will be credited to your wallet as soon as we get 6 confirmations from the Bitcoin network.</p>
          <div class="row">
-            <div class="col-md-12 col-sm-12" style="font-size:14px; text-align:justify;">
+            <div class="col-md-12 col-sm-12" style="font-size:14px">
                <h4 class="no-margin no-padding">Invoice Number : {{transactionDetails.invoice_number}}</h4>
                <h3><strong>Add Funds : {{transactionDetails.value_in_usd | currency}}</strong></h3>
-               <small class="red-text02"><strong>Note:</strong> Please pay the exact amount of BTC mentioned here. Any underpayments will remain unattended!</small>
+               <small class="col-xs-12 col-sm-12 red-text02"><strong>Note:</strong> Please pay the exact amount of BTC mentioned here. Any underpayments will remain unattended!</small>
                <h4 class="add-funds-popup">You have to Pay <strong>{{transactionDetails.value_in_btc}} BTC </strong> </h4><br>
-               <br><img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=bitcoin:{{transactionDetails.address}}?&amount={{transactionDetails.value_in_btc}}" class="pull-right" width="100">
-               <strong>Date :</strong> {{transactionDate}}<br><br>
-               <strong class="bit-address">Bitcoin Address :
-               {{transactionDetails.address}}</strong><br>
+               <div class="col-xs-12 col-sm-12 col-md-12">
+                 <strong>Date :</strong> {{transactionDate}}<br><br>
+               </div>
+               <div class="col-xs-8 col-sm-8 col-md-8 bit-address">
+                 <strong>Bitcoin Address :
+                 {{transactionDetails.address}}</strong>
+               </div>
+               <div class="qr_code">
+                 <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=bitcoin:{{transactionDetails.address}}?&amount={{transactionDetails.value_in_btc}}" width="100">
+               </div>
                <br><br>
+               <small class="col-xs-12 col-sm-12 col-md-12 red-text02"><strong>Attention!</strong> Please note that the Bitcoin address the system gave you for this funding is unique and can only be used once. Each new funding has to be initiated in Add Funds inside your account.</small><br>
                <br>
-               <small class="red-text02"><strong>Attention!</strong> Please note that the Bitcoin address the system gave you for this funding is unique and can only be used once. Each new funding has to be initiated in Add Funds inside your account.</small><br>
-               <br>
-               <span><strong>Thank You,</strong><br>
-               Team Coinomia<br>
-               <img src="images/logo-coinomia.png" width="60"></span>
+               <div class="col-xs-12 col-sm-12 col-md-12 mt10">
+                 <span><strong>Thank You,</strong><br>
+                 Team Coinomia<br>
+                 <img src="images/logo-coinomia.png" width="60"></span>
+               </div>
             </div>
          </div>
       </form>
@@ -41,6 +66,7 @@
    <br>
    <div class="modal-footer no-print">
       <button type="button" class="btn btn-info" ng-click="printInvoice()"><i class="fa fa-print"></i> Print</button>
-      <button type="button" class="btn btn-primary" ng-click="checkStatus(transactionDetails.address)">I have paid</button>
+      <button type="button" class="btn btn-primary" ng-if="!affiliateAccount" ng-click="checkStatus(transactionDetails.address)">I have paid</button>
+      <button type="button" class="btn btn-primary" ng-click="closePopup()" ng-if="affiliateAccount">{{noBalance || earningSuccess?'Payment':'Done'}}</button>
    </div>
 </div>

@@ -66,6 +66,8 @@ describe('service coinomiaService', function() {
 
     var token = 'f1608500-­c62f-­489a-­a3a9-­60c5bd2e4eec';
 
+    var searchValue = 'some-value';
+
     // Sign Up Data
     var signupData =   {
       'sponsor':'sponsor-name',
@@ -1400,6 +1402,74 @@ describe('service coinomiaService', function() {
       .expect('POST', coinomiaService.apiHost + 'user/compose', messageData)
       .respond(500, 'Internal Server Error.');
       coinomiaService.sendMessage(messageData);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Get Inbox List
+  describe('inbox list function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getInboxList).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/inbox-item/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(200, { "total": 1, "rows": [{"id": 15,"senderid": "coinomia","sendername": "Coinomia Technologies Ltd.", "subject": "Test Email", "body": "<h1>It's a just testing mail !!!</h1>", "ondate": "11/3/2016 2:15:54 AM"}]});
+      var data;
+      coinomiaService.getInboxList(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual(1);
+      expect(data.rows[0].senderid).toEqual("coinomia");
+      expect(data.rows[0].sendername).toEqual('Coinomia Technologies Ltd.');
+      expect(data.rows[0].subject).toEqual('Test Email');
+      expect(data.rows[0].body).toEqual("<h1>It's a just testing mail !!!</h1>");
+      expect(data.rows[0].ondate).toEqual("11/3/2016 2:15:54 AM");
+    });
+
+    it('should log inbox list error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/inbox-item/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getInboxList(pagination.pageno, pagination.pagesize);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Get Inbox List
+  describe('search inbox message function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getInboxSearch).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/inbox-item/'+searchValue+'/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(200, { "total": 1, "rows": [{"id": 15,"senderid": "coinomia","sendername": "Coinomia Technologies Ltd.", "subject": "Test Email", "body": "<h1>It's a just testing mail !!!</h1>", "ondate": "11/3/2016 2:15:54 AM"}]});
+      var data;
+      coinomiaService.getInboxSearch(searchValue, pagination.pageno, pagination.pagesize).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual(1);
+      expect(data.rows[0].senderid).toEqual("coinomia");
+      expect(data.rows[0].sendername).toEqual('Coinomia Technologies Ltd.');
+      expect(data.rows[0].subject).toEqual('Test Email');
+      expect(data.rows[0].body).toEqual("<h1>It's a just testing mail !!!</h1>");
+      expect(data.rows[0].ondate).toEqual("11/3/2016 2:15:54 AM");
+    });
+
+    it('should log search inbox message error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/inbox-item/'+searchValue+'/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getInboxSearch(searchValue, pagination.pageno, pagination.pagesize);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });

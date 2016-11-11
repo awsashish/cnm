@@ -122,6 +122,16 @@ a:focus {
   top: -10px;
 }
 
+.qr_code {
+  float: left;
+  margin-top: -10px;
+  margin-left: 20px;
+}
+
+.bit-address strong {
+  word-wrap: break-word;
+}
+
 .transaction .table {
   width: 100%;
   table-layout: fixed;
@@ -4878,12 +4888,14 @@ h4.great {
   .table-content { overflow-x: scroll;}
   .cal-dash { margin: 16px 0 0 10px; }
   .add-funds-popup {text-align: center;}
-  .add-funds-popup strong { float: left;width: 100%}
+  .add-funds-popup strong { float: left;width: 100%; word-wrap: break-word;}
   .default-error { text-align: left; top:10px; left:0}
   .search-userbox { margin-left: 0}
   .sponsor-name {position: relative;}
   .fund-button { padding: 0 10px;}
   .fund-section { width: 100% !important;}
+  .bit-address { width: 100%; text-align: center;}
+  .qr_code { float: left;margin-top: 0; margin-left: 0;text-align: center;width: 100%;}
 }
 
 .pageheader{ padding: 10px 10px 20px;}
@@ -5707,6 +5719,15 @@ h1{
   .affiliate{ font-size:25px;}
 }
 
+.gry-round-box {
+    background: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 5px 20px;
+    display: block;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+
 @media print
 {
     @page { margin: 0; }
@@ -5717,7 +5738,26 @@ h1{
         display: none !important;
     }
 
+    {-webkit-print-color-adjust:exact;}
+
     #tawkchat-iframe-container {
       display: none !important;
     }
+
+    .modal-body {
+        position: relative;
+    }
+
+    .modal-body::after {
+        content: url(https://s3-us-west-2.amazonaws.com/coinomia/images/watermark.png);
+        opacity: 0.4;
+        position: absolute;
+        top: 10%;
+        left: 25%;
+        width: 1px;
+        -webkit-transform: rotate(90deg) scale(0.2);
+        -ms-transform: rotate(90deg) scale(0.2);
+        transform: rotate(-45deg) scale(0.2);
+    }
+
 }

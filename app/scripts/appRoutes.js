@@ -84,6 +84,11 @@ angular.module('coinomiaFrontendApp')
         controller: 'SuccessCtrl'
     })
 
+    .state('invoice', {
+        url: '/invoice',
+        templateUrl: 'views/transaction-invoice.html'
+    })
+
     // Support page
     // .state('support', {
     //     url: '/support?return_url',

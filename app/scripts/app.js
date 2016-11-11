@@ -42,7 +42,7 @@ angular
         config.headers = config.headers || {};
         if ($cookies.get('token') || $localStorage.token) {
           var authToken = $localStorage.token || $cookies.get('token');
-          if(config.url.indexOf('oauth2/token') < 0 && config.url.indexOf('json/') < 0) {
+          if(config.url.indexOf('oauth2/token') < 0 && config.url.indexOf('json/') < 0 && config.url.indexOf('utilities/verify-sponsor') < 0) {
             config.headers.authorization = 'Bearer ' + authToken;
           }
           $rootScope.signin = false;

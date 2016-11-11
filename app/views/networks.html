@@ -1,5 +1,5 @@
-<main-header class="main-header"></main-header>
-<section>
+<main-header class="main-header no-print"></main-header>
+<section class="no-print">
   <div class="mainwrapper">
     <navigation></navigation>
     <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
@@ -15,18 +15,12 @@
               <div class="tabbable-line" >
                 <div align="center">
                   <ul  class="nav nav-tabs ">
-                    <!-- <li class="active">
+                    <!--<li class="active">
                     	<a href=".tab_default_11" data-toggle="tab" style="padding-right:30px !important; padding-left:30px !important" aria-expanded="true">
                       	<i class="fa fa-user icon-lg" aria-hidden="true"></i><br>
                         <strong>Affiliate </strong>
                       </a>
-                    </li> -->
-                    <!-- <li class="active">
-                    	<a href=".tab_default_11" data-toggle="tab" style="padding-right:30px !important; padding-left:30px !important" aria-expanded="true">
-                      	<i class="fa fa-user icon-lg" aria-hidden="true"></i><br>
-                        <strong>Affiliate </strong>
-                      </a>
-                    </li> -->
+                    </li>-->
                     <li class="active">
                       <a href=".tab_default_4" data-toggle="tab">
                       <i class="fa fa-user icon-lg" aria-hidden="true"></i><br />
@@ -76,7 +70,7 @@
                           <h4><strong> Total Earnings</strong><br>
                             <small>(Direct Referral Income,Binary Income,Re-Purchase Income)</small>
                           </h4>
-                          <p class="red-text04 "><small>$300</small>
+                          <p class="red-text04 "><small>{{walletAmount | currency}}</small>
                           </p>
                           <small>
                             <br>
@@ -90,19 +84,20 @@
                         <small>
                           <div id="affiliate-active">
                             <h3><strong>Affiliate Account</strong></h3>
-                            <p class="active-affiliate">
+                            <p ng-class="affiliateStatus?'active-affiliate':'inactive-affiliate'">
                             <i class="fa fa-check-circle" aria-hidden="true"></i> Active</p>
+                            <div class="ajax_loader" ng-if="loadingDates"></div>
                             <h5>
-                              <strong>Activated On: 12/04/2105<br><br>
-                                Expiry:13/04/2016</strong>
+                              <strong>Activated On : {{activationDate}}<br><br>
+                                Expiry : {{expiryDate}}</strong>
                             </h5>
                           </div>
                           <div id="affiliate-inactive">
                             <h3><strong>Affiliate Account</strong></h3>
-                            <p class="inactive-affiliate">
+                            <p ng-class="!affiliateStatus?'active-affiliate':'inactive-affiliate'">
                             <i class="fa fa-check-circle" aria-hidden="true"></i> Inactive</p>
-                            <button class="btn btn-block btn-warning">Activate Via Earnings</button>
-                            <button class="btn btn-block btn-success" ng-click="ativatePayment()">Activate Via Payment</button>
+                            <button class="btn btn-block btn-warning" ng-click="ativatePayment('wallet')">Activate Via Earnings</button>
+                            <button class="btn btn-block btn-success" ng-click="ativatePayment('gateway')">Activate Via Payment</button>
                           </div>
                         </small>
                       </div>

@@ -63,6 +63,8 @@ angular.module('coinomiaFrontendApp')
           $rootScope.autorotator = data.autorotator;
           $rootScope.landingPage = data.LandingPage;
 
+          $rootScope.$broadcast('userDetails', $rootScope.userInfo);
+
           if(data.sponsor === "0") {
             $rootScope.parentSponsor = false;
           }else{
