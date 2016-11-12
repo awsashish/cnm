@@ -21,7 +21,7 @@
                         <strong>Affiliate </strong>
                       </a>
                     </li>-->
-                    <li class="active">
+                    <li class="active" ng-click="userDirects(1, pagination.perpage)">
                       <a href=".tab_default_4" data-toggle="tab">
                       <i class="fa fa-user icon-lg" aria-hidden="true"></i><br />
                       <strong>My Directs</strong> </a>
@@ -41,7 +41,7 @@
                       <i class="fa fa-money icon-lg" aria-hidden="true"></i><br />
                       <strong>Commissions</strong> </a>
                     </li>
-                    <li ng-click="allReferral(currentPage)">
+                    <li ng-click="allReferral(teamCurrentPage)">
                       <a href=".tab_default_8" data-toggle="tab">
                       <i class="fa fa-users icon-lg" aria-hidden="true"></i><br />
                       <strong>My Team</strong> </a>
@@ -130,7 +130,7 @@
                         <tbody>
                           <!-- <img ng-src="{{s3Url}}flags/in.png" />  -->
                           <tr ng-repeat="(key,directs) in teamDirectsData">
-                            <td>{{(((currentPage - 1) * pagination.perpage) + (key + 1))}}</td>
+                            <td>{{(((directsCurrentPage - 1) * pagination.perpage) + (key + 1))}}</td>
                             <td><img ng-src="{{s3Url}}flags/{{allCountryCodes[directs.country] | lowercase}}.png" />&nbsp;{{directs.Name}}</td>
                             <td>{{directs.Email}}</td>
                             <td>{{directs.Mobile}}</td>
@@ -142,7 +142,7 @@
                         </tbody>
                       </table>
                       <div class="pagination-default">
-                        <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="pagination.totalDirects" ng-model="currentPage" max-size="5" ng-change="userDirects(currentPage)"></ul>
+                        <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="pagination.totalDirects" ng-model="directsCurrentPage" max-size="5" ng-change="userDirects(directsCurrentPage, pagination.perpage)"></ul>
                       </div>
                       <br />
                       <br />
@@ -660,7 +660,7 @@
                         </thead>
                         <tbody>
                           <tr ng-repeat="(key,team) in teamData">
-                            <td>{{(((currentPage - 1) * pagination.perpage) + (key + 1))}}</td>
+                            <td>{{(((teamCurrentPage - 1) * pagination.perpage) + (key + 1))}}</td>
                             <td><img ng-src="{{s3Url}}flags/{{allCountryCodes[team.country] | lowercase}}.png" /> {{team.Name}}</td>
                             <td>{{team.username}}</td>
                             <td>{{team.Sponsor}}</td>
@@ -671,7 +671,7 @@
                         </tbody>
                       </table>
                       <div class="pagination-default">
-                        <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="pagination.totalTeam" ng-model="currentPage" max-size="5" ng-change="allReferral(currentPage)"></ul>
+                        <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="pagination.totalTeam" ng-model="teamCurrentPage" max-size="5" ng-change="allReferral(teamCurrentPage)"></ul>
                       </div>
                       <br />
                       <br />
