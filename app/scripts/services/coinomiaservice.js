@@ -955,12 +955,48 @@ angular.module('coinomiaFrontendApp')
 
       // On Failed
       function directIncomeRequestFailed(error) {
-        $log.error('XHR Failed for Transfer Fund.\n' + angular.toJson(error.data, true));
+        $log.error('XHR Failed for Referral Income.\n' + angular.toJson(error.data, true));
         return error;
       }
 
       return $http.get(this.apiHost +'user/referral-income/'+currentPage+'/'+pageLimit)
         .then(directIncomeRequestComplete)
         .catch(directIncomeRequestComplete);
+    }
+
+    // Get Total Earning
+    this.totalEarning = function() {
+      // On Success
+      function totalEarningRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function totalEarningRequestFailed(error) {
+        $log.error('XHR Failed for Total Earning.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/total-earning')
+        .then(totalEarningRequestComplete)
+        .catch(totalEarningRequestFailed);
+    }
+
+    // Get Total Income
+    this.totalIncome = function(currentPage) {
+      // On Success
+      function totalIncomeRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function totalIncomeRequestFailed(error) {
+        $log.error('XHR Failed for Total Income.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/team-income/'+currentPage+'/'+pageLimit)
+        .then(totalIncomeRequestComplete)
+        .catch(totalIncomeRequestComplete);
     }
   });

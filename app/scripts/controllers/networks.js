@@ -517,4 +517,31 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
+    // Get Total Earning 
+    $scope.getTotalEarning = function() {
+      coinomiaService.totalEarning().then(function(res) {
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.totalEarning = data.amount;
+        }
+      });
+    }
+
+    // Get Total Income
+    $scope.getTotalIncome = function(currentPage) {      
+      coinomiaService.totalIncome(currentPage).then(function(res) {
+        if( res.status === 200 ) {
+          $scope.noRecords = false;
+          var data = res.data;
+          $scope.teamIncome = data.rows;
+          $scope.totalRows = data.total;
+          if($scope.totalRows === 0) {
+            $scope.noRecords = true;
+          }
+        }
+      });
+    }
+
+    $scope.getTotalEarning();
+
 });
