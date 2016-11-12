@@ -551,7 +551,7 @@
                     <div class="row">
                       <div class="col-md-3 col-md-12">
                         <h4><strong> Total Commission Earned</strong></h4>
-                        <p class="red-text04 pull-left">$300</p>
+                        <p class="red-text04 pull-left">{{totalEarning | currency}}</p>
                       </div>
                       <div class="col-md-3 col-md-offset-4 col-md-12">
                         <h4 class="red-text"> <strong>Balance</strong></h4>
@@ -561,7 +561,7 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs mar50" role="tablist" style="background:#ccc !important; color:#525252 !important;">
                       <li role="presentation" class="active" ><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><i class="fa fa-user " aria-hidden="true"></i> Total Direct Referral Income</strong></a></li>
-                      <li role="presentation" ><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><i class="fa fa-users " aria-hidden="true"></i>  Total Team Income</a></li>
+                      <li role="presentation" ng-click="getTotalIncome(currentPage)"><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><i class="fa fa-users " aria-hidden="true"></i>  Total Team Income</a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content" style="overflow:hidden;">
@@ -580,6 +580,9 @@
                               </tr>
                             </thead>
                             <tbody>
+                              <tr ng-if="noDirectRecords">
+                                <td>No Records Found</td>
+                              </tr>
                               <tr ng-repeat="referralIncome in directIncome">
                                 <td>{{referralIncome.Date}}</td>
                                 <td>{{referralIncome.Description}}</td>
@@ -609,28 +612,18 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>12/08/2016</td>
-                                <td>Commission Received by Purchase Binary = COIN45098 </td>
-                                <td>$270</td>
+                              <tr ng-if="noRecords">
+                                <td>No Records Found</td>
                               </tr>
-                              <tr>
-                                <td>12/08/2016</td>
-                                <td>Commission Received by Re-Purchase Binary = COIN8439 </td>
-                                <td>$70</td>
+                              <tr ng-repeat="totalIncome in teamIncome">
+                                <td>{{totalIncome.Date}}</td>
+                                <td>{{totalIncome.Description}}</td>
+                                <td>{{totalIncome.USD | currency}}</td>
                               </tr>
                             </tbody>
                           </table>
-                          <div class="pull-right">
-                            <ul class="pagination pagination-metro nomargin mt10">
-                              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                              <li><a href="#">1</a></li>
-                              <li class="active"><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">5</a></li>
-                              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                            </ul>
+                          <div class="pagination-default">
+                            <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="totalRows" ng-model="currentPage" max-size="5" ng-change="getTotalIncome(currentPage)"></ul>
                           </div>
                           <br />
                           <br />

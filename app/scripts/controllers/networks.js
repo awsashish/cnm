@@ -30,7 +30,7 @@ angular.module('coinomiaFrontendApp')
 
     // Get User Directs
     $scope.userDirects = function(currentPage, pageLimit) {
-      $scope.teamDirectsData  = [];
+      $scope.teamDirectsData = [];
       coinomiaService.getUserDirects(currentPage, pageLimit)
         .then(function(res) {
           if(res.status === 200) {
@@ -510,11 +510,42 @@ angular.module('coinomiaFrontendApp')
     $scope.getDirectIncome = function(currentPage) {
       coinomiaService.directIncome(currentPage).then(function(res) {
         if( res.status === 200 ) {
+          $scope.noDirectRecords = false;
           var data = res.data;
           $scope.directIncome = data.rows;
           $scope.totalRecords = data.total;
+          if($scope.totalRecords === 0) {
+            $scope.noDirectRecords = true;
+          }
         }
       });
     }
+
+    // Get Total Earning 
+    $scope.getTotalEarning = function() {
+      coinomiaService.totalEarning().then(function(res) {
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.totalEarning = data.amount;
+        }
+      });
+    }
+
+    // Get Total Income
+    $scope.getTotalIncome = function(currentPage) {      
+      coinomiaService.totalIncome(currentPage).then(function(res) {
+        if( res.status === 200 ) {
+          $scope.noRecords = false;
+          var data = res.data;
+          $scope.teamIncome = data.rows;
+          $scope.totalRows = data.total;
+          if($scope.totalRows === 0) {
+            $scope.noRecords = true;
+          }
+        }
+      });
+    }
+
+    $scope.getTotalEarning();
 
 });
