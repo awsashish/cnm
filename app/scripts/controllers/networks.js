@@ -510,9 +510,13 @@ angular.module('coinomiaFrontendApp')
     $scope.getDirectIncome = function(currentPage) {
       coinomiaService.directIncome(currentPage).then(function(res) {
         if( res.status === 200 ) {
+          $scope.noDirectRecords = false;
           var data = res.data;
           $scope.directIncome = data.rows;
           $scope.totalRecords = data.total;
+          if($scope.totalRecords === 0) {
+            $scope.noDirectRecords = true;
+          }
         }
       });
     }

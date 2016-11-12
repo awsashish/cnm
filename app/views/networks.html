@@ -580,6 +580,9 @@
                               </tr>
                             </thead>
                             <tbody>
+                              <tr ng-if="noDirectRecords">
+                                <td>No Records Found</td>
+                              </tr>
                               <tr ng-repeat="referralIncome in directIncome">
                                 <td>{{referralIncome.Date}}</td>
                                 <td>{{referralIncome.Description}}</td>
