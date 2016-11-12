@@ -526,7 +526,11 @@ angular.module('coinomiaFrontendApp')
       coinomiaService.totalEarning().then(function(res) {
         if(res.status === 200) {
           var data = res.data;
-          $scope.totalEarning = data.amount;
+          if(data.hasOwnProperty('amount')) {
+            $scope.totalEarning = data.amount;
+          }else{
+            $scope.totalEarning = 0;
+          }          
         }
       });
     }
