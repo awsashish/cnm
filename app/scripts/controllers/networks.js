@@ -10,6 +10,8 @@
 angular.module('coinomiaFrontendApp')
   .controller('NetworksCtrl', function ($scope, $rootScope, $timeout, $location, $uibModal, $uibModalStack, $window, $filter, coinomiaService, config, UtilsService) {
     $scope.currentPage = config.currentPage;
+    $scope.teamCurrentPage = config.currentPage;
+    $scope.directsCurrentPage = config.currentPage;
     $scope.loadingDates = true;
     $scope.pagination = {
       totalDirects: 0,
@@ -28,6 +30,7 @@ angular.module('coinomiaFrontendApp')
 
     // Get User Directs
     $scope.userDirects = function(currentPage, pageLimit) {
+      $scope.teamDirectsData  = [];
       coinomiaService.getUserDirects(currentPage, pageLimit)
         .then(function(res) {
           if(res.status === 200) {
@@ -99,6 +102,7 @@ angular.module('coinomiaFrontendApp')
 
     // Get All Referrals
     $scope.allReferral = function(page) {
+      $scope.teamData = [];
       coinomiaService.getAllReferral(page)
         .then(function(res) {
           if(res.status === 200) {
