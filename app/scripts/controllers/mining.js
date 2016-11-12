@@ -57,4 +57,16 @@ angular.module('coinomiaFrontendApp')
           }
         })
     }
+
+    $scope.setBtcQuantity = function(key, val) {
+      $scope.btcProducts[key].quantity = val;
+    }
+
+    $scope.setEthQuantity = function(key, val) {
+      $scope.ethProducts[key].quantity = val;
+    }
+
+    $scope.bookOrder = function() {
+      console.log($scope);
+    }
   });
