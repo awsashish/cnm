@@ -10,12 +10,13 @@ angular.module('coinomiaFrontendApp')
   .directive('uiSlider', function ($filter) {
     return {
       restrict: 'A',
-      scope: {
-        'model': '=',
-        'product': '='
-      },
+      // scope: {
+      //   'model': '=',
+      //   'product': '='
+      // },
+      scope: '@',
       link: function(scope, elem, attrs) {
-        if(scope.product === 'btc'){
+        if('undefined' != typeof scope.btc && scope.btc.coin.toLowerCase() === 'btc'){
           var sliderLabel  = '<label>SLIDER_VALUE<small>TH/s</small></label><div class="ui-slider-label-inner"></div>';
         }else{
           var sliderLabel  = '<label>SLIDER_VALUE<small>MH/s</small></label><div class="ui-slider-label-inner"></div>';
@@ -29,16 +30,27 @@ angular.module('coinomiaFrontendApp')
           step: +attrs.step,
           slide: function(event, ui) {
             scope.$apply(function() {
-              scope.model = ui.value;
               var el = angular.element(event.target).find('a');
-              el.html(sliderLabel.replace('SLIDER_VALUE', scope.model));
-              // scope.updateAmount({amount:attrs.amount, power:attrs.power, mining:attrs.mining});
+              if(attrs.product === 'btc') {
+                scope.btc.btcMining = ui.value;
+                el.html(sliderLabel.replace('SLIDER_VALUE', scope.btc.btcMining));
+              }
+              else if (attrs.product === 'eth') {
+                scope.eth.ethMining = ui.value;
+                el.html(sliderLabel.replace('SLIDER_VALUE', scope.eth.ethMining));
+              }
             });
           },
           create: function( event, ui ) {
             var el = angular.element(event.target).find('a');
             var sliderValue = $(elem).slider('value');
-            el.append(sliderLabel.replace('SLIDER_VALUE', scope.model));
+            if(attrs.product === 'btc') {
+              el.append(sliderLabel.replace('SLIDER_VALUE', scope.btc.btcMining));
+            }
+            else if (attrs.product === 'eth') {
+              el.append(sliderLabel.replace('SLIDER_VALUE', scope.eth.ethMining));
+            }
+            
           },
           change: function( event, ui ) {
             var btcPool = parseInt(angular.element("#btc-0").val());
@@ -65,9 +77,17 @@ angular.module('coinomiaFrontendApp')
 
           }
         });
-        scope.$watch('model', function(newVal) {
-          $(elem).slider('value', newVal);
-        });
+
+        if(attrs.product === 'btc') {
+          scope.$watch('btc.btcMining', function(newVal) {
+            $(elem).slider('value', newVal);
+          });
+        }
+        else if(attrs.product === 'eth') {
+          scope.$watch('eth.ethMining', function(newVal) {
+            $(elem).slider('value', newVal);
+          });
+        }
       }
     };
   });

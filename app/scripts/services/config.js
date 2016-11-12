@@ -117,4 +117,12 @@ angular.module('coinomiaFrontendApp')
       'ether-contributor.png',
       'ether-rack.png'
     ]
+    // 'productImage': {
+    //   'Bitcoin Pool Contract': 'contract-bitcoin.png',
+    //   'Bitcoin Machine Contract': 'contributor.png',
+    //   'Bitcoin Rack Contract': 'rack.png,
+    //   'Ethereum Pool Contract':'ether-contract.png',
+    //   'Ethereum Machine Contract':'ether-contributor',
+    //   'Ethereum Rack Contract':'ether-rack'
+    // }
   });

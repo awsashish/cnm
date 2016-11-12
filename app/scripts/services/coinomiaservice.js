@@ -963,4 +963,22 @@ angular.module('coinomiaFrontendApp')
         .then(transferFundRequestComplete)
         .catch(transferFundRequestFailed);
     }
+
+    // Book Order
+    this.bookOrder = function(orderData) {
+      // On Success
+      function bookOrderRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function bookOrderRequestFailed(error) {
+        $log.error('XHR Failed for Book Order.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/order', orderData)
+        .then(bookOrderRequestComplete)
+        .catch(bookOrderRequestFailed);
+    }
   });
