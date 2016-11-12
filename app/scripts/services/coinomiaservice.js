@@ -946,21 +946,21 @@ angular.module('coinomiaFrontendApp')
         .catch(hitCampignRequestFailed);
     }
 
-    // Transfer Fund to User
-    this.transferFund = function(transferData) {
+    // Get Direct Referral Income
+    this.directIncome = function(currentPage) {
       // On Success
-      function transferFundRequestComplete(response) {
+      function directIncomeRequestComplete(response) {
         return response;
       }
 
       // On Failed
-      function transferFundRequestFailed(error) {
+      function directIncomeRequestFailed(error) {
         $log.error('XHR Failed for Transfer Fund.\n' + angular.toJson(error.data, true));
         return error;
       }
 
-      return $http.post(this.apiHost +'user/fund-transfer', transferData)
-        .then(transferFundRequestComplete)
-        .catch(transferFundRequestFailed);
+      return $http.get(this.apiHost +'user/referral-income/'+currentPage+'/'+pageLimit)
+        .then(directIncomeRequestComplete)
+        .catch(directIncomeRequestComplete);
     }
   });

@@ -475,7 +475,7 @@ angular.module('coinomiaFrontendApp')
 
     $scope.getWalletAmount();
 
-
+    // Active Payment
     $scope.ativatePayment = function(type) {
       $scope.walletEarnings = false;
       $scope.negativeBalance = false;
@@ -499,6 +499,17 @@ angular.module('coinomiaFrontendApp')
           templateUrl: 'views/payment-mode.html',
           scope: $scope,
           size: 'md'
+      });
+    }
+
+    // Get Direct Income
+    $scope.getDirectIncome = function(currentPage) {
+      coinomiaService.directIncome(currentPage).then(function(res) {
+        if( res.status === 200 ) {
+          var data = res.data;
+          $scope.directIncome = data.rows;
+          $scope.totalRecords = data.total;
+        }
       });
     }
 
