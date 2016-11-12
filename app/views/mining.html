@@ -43,12 +43,7 @@
                    </ul>
                 </div>
                 <div class="tab-content" style="padding:20px 20px; min-height:700px;">
-                  <div class="tab-pane tab_default_4 active">
-                     <br />
-                     <p> Coming soon ... </p>
-                     <br />
-                   </div>
-                   <div class="tab-pane tab_default_41">
+                   <div class="tab-pane tab_default_4">
                       <br />
                       <h2 class="mb37" align="center" style="width:40%;">
                          <span class="glyphicon glyphicon-minus"></span>
@@ -612,40 +607,42 @@
                       <hr />
                       <div class="row" >
                         <div class="col-md-8 col-sm-12">
-                          <div class="price-box" ng-repeat="btc in btcProducts">
+                          <div class="price-box" ng-repeat="(key,btc) in btcProducts">
                              <form class="form-horizontal form-pricing" role="form">
                                 <div class="price-slider">
                                    <h4 class="great text-capitalize">{{btc.productname}}</h4>
                                    <img ng-src="{{s3Url}}{{btcImagePath[$index]}}" width="100" class="pull-right" />
                                    <div class="col-sm-12">
-                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="'btc'" min="{{btc.btcMining}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
+                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="btc" min="{{btc.btcMining}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
                                    </div>
                                 </div>
                                 <div class="price-form">
                                    <div class="form-group">
                                       <div class="col-sm-12">
                                          <input type="hidden" id="amount3" class="form-control">
-                                         <p class="price lead" id="amount-label3">{{btc.btcMining/btc.miningpower}}</p>
-                                         Number Of Contracts<strong class="price pull-right lead">Amount : {{btc.amount*btc.btcMining/btc.miningpower | currency}}</strong>
+                                         <p class="price lead" id="amount-label3">{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}
+                                           {{btc.quantity}}</p>
+                                         Number Of Contracts<strong class="price pull-right lead">Amount : {{(btc.amount*btc.btcMining/btc.miningpower) | currency}}</strong>
                                       </div>
                                    </div>
                                 </div>
                              </form>
                           </div>
-                           <div class="price-box" ng-repeat="eth in ethProducts">
+                           <div class="price-box" ng-repeat="(key,eth) in ethProducts">
                               <form class="form-horizontal form-pricing" role="form">
                                  <div class="price-slider">
                                     <h4 class="great text-capitalize">{{eth.productname}}</h4>
                                     <img ng-src="{{s3Url}}{{ethImagePath[$index]}}" width="100" class="pull-right" />
                                     <div class="col-sm-12">
-                                       <div ui-slider class="uiSlider" model="eth.ethMining" product="'eth'" min="{{eth.ethMining}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
+                                       <div ui-slider class="uiSlider" model="eth.ethMining" product="eth" min="{{eth.ethMining}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
                                     </div>
                                  </div>
                                  <div class="price-form">
                                     <div class="form-group">
                                        <div class="col-sm-12">
                                           <input type="hidden" id="amount3" class="form-control">
-                                          <p class="price lead" id="amount-label3">{{eth.ethMining/eth.miningpower | number:0}}</p>
+                                          <p class="price lead" id="amount-label3">{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}
+                                           {{eth.quantity | number:0}}</p>
                                           Number Of Contracts<strong class="price pull-right lead">Amount : {{eth.amount * eth.ethMining/eth.miningpower | currency}}</strong>
                                        </div>
                                     </div>
@@ -696,8 +693,8 @@
                                               <option>Bitcoin</option>
                                            </select>
                                            <hr />
-                                           <a href="#"><button type="button" class="btn btn-lg btn-success">Continue <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-                                           </button></a>
+                                           <button type="button" class="btn btn-lg btn-success" ng-click="bookOrder()">Continue <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                           </button>
                                         </div>
                                      </div>
                                   </div>
