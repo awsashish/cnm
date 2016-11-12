@@ -36,7 +36,7 @@
                       <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br />
                       <strong>Leaderboard</strong> </a>
                     </li>
-                    <li>
+                    <li ng-click="getDirectIncome(currentPage)">
                       <a href=".tab_default_7" data-toggle="tab">
                       <i class="fa fa-money icon-lg" aria-hidden="true"></i><br />
                       <strong>Commissions</strong> </a>
@@ -548,12 +548,6 @@
                   <div class="tab-pane tab_default_7">
                     <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-money icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>Commissions</strong></h2>
                     <hr />
-                    <p>Coming Soon ...</p>
-                  </div>
-                  <div class="tab-pane tab_default_71" ng-hide="true">
-                    <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-money icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>Commissions</strong></h2>
-                    <hr />
-                    <p>Coming Soon ...</p>
                     <div class="row">
                       <div class="col-md-3 col-md-12">
                         <h4><strong> Total Commission Earned</strong></h4>
@@ -561,7 +555,7 @@
                       </div>
                       <div class="col-md-3 col-md-offset-4 col-md-12">
                         <h4 class="red-text"> <strong>Balance</strong></h4>
-                        <p class="red-text04 pull-left mar10">$100</p>
+                        <p class="red-text04 pull-left mar10">{{walletAmount | currency}}</p>
                       </div>
                     </div>
                     <!-- Nav tabs -->
@@ -586,23 +580,15 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>12/08/2016</td>
-                                <td>Commission Received by Direct Referral ID = COIN0239809</td>
-                                <td>$20</td>
+                              <tr ng-repeat="referralIncome in directIncome">
+                                <td>{{referralIncome.Date}}</td>
+                                <td>{{referralIncome.Description}}</td>
+                                <td>{{referralIncome.USD | currency}}</td>
                               </tr>
                             </tbody>
                           </table>
-                          <div class="pull-right">
-                            <ul class="pagination pagination-metro nomargin mt10">
-                              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                              <li><a href="#">1</a></li>
-                              <li class="active"><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">5</a></li>
-                              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                            </ul>
+                          <div class="pagination-default">
+                            <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="totalRecords" ng-model="currentPage" max-size="5" ng-change="getDirectIncome(currentPage)"></ul>
                           </div>
                           <br />
                           <br />
