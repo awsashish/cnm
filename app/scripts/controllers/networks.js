@@ -506,4 +506,9 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
+    $scope.activeTab = function() {
+      angular.element( "ul.group_chat" ).find( "li" ).removeClass("active");
+      angular.element( "ul.group_chat" ).find( "li.send_message" ).addClass("active");
+    }
+
 });
