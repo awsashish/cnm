@@ -695,12 +695,12 @@
                     <h2 class="mb35-sm top-spacemob10"><i class="fa fa-comments-o icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px"  aria-hidden="true"></i> <strong>Group Chat</strong></h2>
                     <hr />
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
+                    <ul class="nav nav-tabs group_chat" role="tablist" style="background:#ccc !important; color:#525252 !important;">
                         <li role="presentation" class="active"><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><i class="fa fa-inbox " aria-hidden="true"></i> Inbox</strong></a>
                         </li>
                         <li role="presentation" ng-click="getSent(currentPage, limit)"><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><strong><i class="fa fa-paper-plane-o " aria-hidden="true"></i>  Sent</strong></a>
                         </li>
-                        <li role="presentation" ng-click="getUser(currentPage, 10)"><a href=".bnrr" aria-controls="bnrr" role="tab" data-toggle="tab"><strong><i class="fa fa-envelope-o " aria-hidden="true"></i> Send Message
+                        <li role="presentation" class="send_message" ng-click="getUser(currentPage, 10)"><a href=".bnrr" aria-controls="bnrr" role="tab" data-toggle="tab"><strong><i class="fa fa-envelope-o " aria-hidden="true"></i> Send Message
                       </strong></a>
                         </li>
                     </ul>
@@ -722,7 +722,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <a href="#" class="pull-right copy-btn "><i class="fa fa-paper-plane-o "></i> Compose</a>
+                                <a href=".bnrr" aria-controls="bnrr" role="tab" data-toggle="tab" class="pull-right copy-btn" ng-click="activeTab()"><i class="fa fa-paper-plane-o "></i> Compose</a>
                                 <br />
                                 <br />
                                 <div class="table-responsive">
