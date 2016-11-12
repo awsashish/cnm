@@ -134,7 +134,12 @@
                       <label class="mar10"><strong>Transfer USD Doller </strong></label><br>
                       <b style="font-size:25px; ">$</b> 
                       <input type="text" name="bitcoin-wallet" ng-model="transferAmount" class="form-control" style="margin-top:0px;" ng-disabled="verifiedStatus===false"><br>
-                      <button type="submit" class="btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#internal-transfer-invoice" ng-disabled="verifiedStatus===false" ng-click="transferFund(transferAmount, userId)">Send</button>
+                      <div class="col-xs-12 col-sm-3 col-md-3">
+                        <button type="submit" class="btn btn-default" data-toggle="modal" data-dismiss="modal" data-target="#internal-transfer-invoice" ng-disabled="verifiedStatus===false" ng-click="transferFund(transferAmount, userId)">Send</button>
+                      </div>
+                      <div class="col-xs-12 col-sm-9 col-md-9">
+                        <p class="red-text02"><strong>Note: Internal transfer costs 1% of the total transfer of payment on receivers end. Make sure you send appropriate amount.</strong></p>
+                      </div>
                   </div>
                 </form>
              </div>
