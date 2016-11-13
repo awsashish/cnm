@@ -20,7 +20,7 @@
      <div class="alert alert-danger fade in" ng-if="noBalance">
        Balance Not Available.
      </div>
-     <div ng-if="earningSuccess">
+     <div ng-if="earningSuccess && !accountStatus">
       <h4><strong style="color:#F90;">Congratulations ! Your affiliate panel is active. Now withdraw your payouts without any hassle.</strong></h4>
       <hr>
       <h4><strong>Invoice Number :</strong> {{transactionDetails.invoice_number}}</h4>

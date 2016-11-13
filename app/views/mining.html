@@ -680,21 +680,12 @@
                                      </div>
                                      <div align="center" class="col-md-12   col-sm-12">
                                         <div class="" style="margin-top:20px;">
-                                           <img ng-src="{{s3Url}}icon-payment.png" class="img-responsive" />
-                                           <p style="font-size:14px;"><strong>Payment type</strong><br />
-                                              Please choose your payment<br />
-                                              option below, e.g.,<br />
-                                              Bitcoin, Credit Card, Wires
-                                           </p>
                                            <hr />
-                                           <select name="" class="order-select">
-                                              <option>CREDIT CARD (USD)</option>
-                                              <option>Wire (USD)</option>
-                                              <option>Bitcoin</option>
-                                           </select>
-                                           <hr />
-                                           <button type="button" class="btn btn-lg btn-success" ng-click="bookOrder()">Continue <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-                                           </button>
+                                           <button type="button" class="btn btn-block btn-lg btn-success" ng-click="selectPayment()">Continue <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                           </button><br />
+                                           <div class="alert alert-danger fade in" ng-if="noOrder">
+       Please select any package.
+    </div>
                                         </div>
                                      </div>
                                   </div>
