@@ -26,7 +26,9 @@ angular
     'ngImgCrop',
     'ngExcel',
     'textAngular',
-    'angular.filter'
+    'angular.filter',
+    'ngMaterial', 
+    'md.data.table'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

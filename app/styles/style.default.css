@@ -44,6 +44,11 @@ URL: http://themepixels.com/
 
 /********** 1. IMPORTS **********/
 /********************************/
+
+html {
+    background: transparent !important;
+}
+
 body {
     font-size: 13px;
     color: #636E7B;

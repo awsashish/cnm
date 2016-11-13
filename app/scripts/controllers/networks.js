@@ -553,6 +553,7 @@ angular.module('coinomiaFrontendApp')
     $scope.getTotalEarning();
 
     $scope.activeTab = function() {
+      $scope.getUser($scope.currentPage, 10);
       angular.element( "ul.group_chat" ).find( "li" ).removeClass("active");
       angular.element( "ul.group_chat" ).find( "li.send_message" ).addClass("active");
     }
