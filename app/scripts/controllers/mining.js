@@ -136,7 +136,7 @@ angular.module('coinomiaFrontendApp')
         $scope.loadingData = false;
         if(res.status === 200) {
           var data = res.data;
-          if(data.message) {
+          if(data.message !== 'success') {
             $scope.noBalance = true;
           }else{
             $scope.purchase = data;
