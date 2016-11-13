@@ -963,4 +963,40 @@ angular.module('coinomiaFrontendApp')
         .then(transferFundRequestComplete)
         .catch(transferFundRequestFailed);
     }
+
+    // Order History
+    this.orderHistory = function(type, product) {
+       // On Success
+      function orderHistoryRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function orderHistoryRequestFailed(error) {
+        $log.error('XHR Failed for Order History.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/order-history/'+type+'/?package='+product)
+        .then(orderHistoryRequestComplete)
+        .catch(orderHistoryRequestFailed);
+    }
+
+    // Order History
+    this.orderHistory = function(type, product, currentPage) {
+       // On Success
+      function orderHistoryRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function orderHistoryRequestFailed(error) {
+        $log.error('XHR Failed for Order History.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/order-history/'+type+'/'+currentPage+'/'+pageLimit+'?package='+product)
+        .then(orderHistoryRequestComplete)
+        .catch(orderHistoryRequestFailed);
+    }
   });

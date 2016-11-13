@@ -43,12 +43,7 @@
                    </ul>
                 </div>
                 <div class="tab-content" style="padding:20px 20px; min-height:700px;">
-                  <div class="tab-pane tab_default_4 active">
-                     <br />
-                     <p> Coming soon ... </p>
-                     <br />
-                   </div>
-                   <div class="tab-pane tab_default_41">
+                   <div class="tab-pane tab_default_4 active">
                       <br />
                       <h2 class="mb37" align="center" style="width:40%;">
                          <span class="glyphicon glyphicon-minus"></span>
@@ -75,19 +70,19 @@
                                         <p class="pull-left">
                                         <h5><strong>Total Power</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">4375798.87439</p>
+                                        <p class="red-text04 pull-left">{{ethPoolPower}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Estimated Total Income(USD)</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{estimateIncome | currency}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Current Rate</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{currentRate | currency}}</p>
                                      </div>
                                   </div>
                                   <br />
@@ -104,7 +99,7 @@
                                            </tr>
                                         </thead>
                                         <tbody>
-                                           <tr>
+                                           <tr ng-repeat="pool in ethPoolRecords">
                                               <td>12/12/2015</td>
                                               <td>Pool Contract</td>
                                               <td>1000</td>
