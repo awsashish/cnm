@@ -946,21 +946,111 @@ angular.module('coinomiaFrontendApp')
         .catch(hitCampignRequestFailed);
     }
 
-    // Transfer Fund to User
-    this.transferFund = function(transferData) {
+    // Get Direct Referral Income
+    this.directIncome = function(currentPage) {
       // On Success
-      function transferFundRequestComplete(response) {
+      function directIncomeRequestComplete(response) {
         return response;
       }
 
       // On Failed
-      function transferFundRequestFailed(error) {
-        $log.error('XHR Failed for Transfer Fund.\n' + angular.toJson(error.data, true));
+      function directIncomeRequestFailed(error) {
+        $log.error('XHR Failed for Referral Income.\n' + angular.toJson(error.data, true));
         return error;
       }
 
-      return $http.post(this.apiHost +'user/fund-transfer', transferData)
-        .then(transferFundRequestComplete)
-        .catch(transferFundRequestFailed);
+      return $http.get(this.apiHost +'user/referral-income/'+currentPage+'/'+pageLimit)
+        .then(directIncomeRequestComplete)
+        .catch(directIncomeRequestComplete);
+    }
+
+    // Get Total Earning
+    this.totalEarning = function() {
+      // On Success
+      function totalEarningRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function totalEarningRequestFailed(error) {
+        $log.error('XHR Failed for Total Earning.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/total-earning')
+        .then(totalEarningRequestComplete)
+        .catch(totalEarningRequestFailed);
+    }
+
+    // Get Total Income
+    this.totalIncome = function(currentPage) {
+      // On Success
+      function totalIncomeRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function totalIncomeRequestFailed(error) {
+        $log.error('XHR Failed for Total Income.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/team-income/'+currentPage+'/'+pageLimit)
+        .then(totalIncomeRequestComplete)
+        .catch(totalIncomeRequestComplete);
+    }
+
+    // Book Order
+    this.bookOrder = function(orderData) {
+      // On Success
+      function bookOrderRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function bookOrderRequestFailed(error) {
+        $log.error('XHR Failed for Book Order.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/order', orderData)
+        .then(bookOrderRequestComplete)
+        .catch(bookOrderRequestFailed);
+    }
+
+    // Order History
+    this.orderHistory = function(type, product) {
+       // On Success
+      function orderHistoryRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function orderHistoryRequestFailed(error) {
+        $log.error('XHR Failed for Order History.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/order-history/'+type+'/?package='+product)
+        .then(orderHistoryRequestComplete)
+        .catch(orderHistoryRequestFailed);
+    }
+
+    // Order History
+    this.orderHistory = function(type, product, currentPage) {
+       // On Success
+      function orderHistoryRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function orderHistoryRequestFailed(error) {
+        $log.error('XHR Failed for Order History.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/order-history/'+type+'/'+currentPage+'/'+pageLimit+'?package='+product)
+        .then(orderHistoryRequestComplete)
+        .catch(orderHistoryRequestFailed);
     }
   });

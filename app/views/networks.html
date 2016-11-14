@@ -15,13 +15,13 @@
               <div class="tabbable-line" >
                 <div align="center">
                   <ul  class="nav nav-tabs ">
-                    <!--<li class="active">
+                    <li class="active">
                     	<a href=".tab_default_11" data-toggle="tab" style="padding-right:30px !important; padding-left:30px !important" aria-expanded="true">
                       	<i class="fa fa-user icon-lg" aria-hidden="true"></i><br>
                         <strong>Affiliate </strong>
                       </a>
-                    </li>-->
-                    <li class="active" ng-click="userDirects(1, pagination.perpage)">
+                    </li>
+                    <li ng-click="userDirects(1, pagination.perpage)">
                       <a href=".tab_default_4" data-toggle="tab">
                       <i class="fa fa-user icon-lg" aria-hidden="true"></i><br />
                       <strong>My Directs</strong> </a>
@@ -36,7 +36,7 @@
                       <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br />
                       <strong>Leaderboard</strong> </a>
                     </li>
-                    <li>
+                    <li ng-click="getDirectIncome(currentPage)">
                       <a href=".tab_default_7" data-toggle="tab">
                       <i class="fa fa-money icon-lg" aria-hidden="true"></i><br />
                       <strong>Commissions</strong> </a>
@@ -55,7 +55,7 @@
                   </ul>
                 </div>
                 <div class="tab-content" style="padding:20px 20px; ">
-                  <div class="tab-pane tab_default_11">
+                  <div class="tab-pane tab_default_11 active">
                     <h2 class="mb35-sm top-spacemob10"><i class="fa fa-comments-o icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>Affiliate</strong></h2>
                     <hr>
                     <h4 class="font16" align="center">
@@ -103,7 +103,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="tab-pane tab_default_4 active">
+                  <div class="tab-pane tab_default_4">
                     <h2 class="mb35-sm  top-spacemob10"><i class="fa fa-user icon-lg-red border-round-red" aria-hidden="true"></i> <strong>My Directs</strong></h2>
                     <hr />
 
@@ -548,26 +548,20 @@
                   <div class="tab-pane tab_default_7">
                     <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-money icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>Commissions</strong></h2>
                     <hr />
-                    <p>Coming Soon ...</p>
-                  </div>
-                  <div class="tab-pane tab_default_71" ng-hide="true">
-                    <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-money icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px" aria-hidden="true"></i> <strong>Commissions</strong></h2>
-                    <hr />
-                    <p>Coming Soon ...</p>
                     <div class="row">
                       <div class="col-md-3 col-md-12">
                         <h4><strong> Total Commission Earned</strong></h4>
-                        <p class="red-text04 pull-left">$300</p>
+                        <p class="red-text04 pull-left">{{totalEarning | currency}}</p>
                       </div>
                       <div class="col-md-3 col-md-offset-4 col-md-12">
                         <h4 class="red-text"> <strong>Balance</strong></h4>
-                        <p class="red-text04 pull-left mar10">$100</p>
+                        <p class="red-text04 pull-left mar10">{{walletAmount | currency}}</p>
                       </div>
                     </div>
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs mar50" role="tablist" style="background:#ccc !important; color:#525252 !important;">
                       <li role="presentation" class="active" ><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><i class="fa fa-user " aria-hidden="true"></i> Total Direct Referral Income</strong></a></li>
-                      <li role="presentation" ><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><i class="fa fa-users " aria-hidden="true"></i>  Total Team Income</a></li>
+                      <li role="presentation" ng-click="getTotalIncome(currentPage)"><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><i class="fa fa-users " aria-hidden="true"></i>  Total Team Income</a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content" style="overflow:hidden;">
@@ -586,23 +580,18 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>12/08/2016</td>
-                                <td>Commission Received by Direct Referral ID = COIN0239809</td>
-                                <td>$20</td>
+                              <tr ng-if="noDirectRecords">
+                                <td>No Records Found</td>
+                              </tr>
+                              <tr ng-repeat="referralIncome in directIncome">
+                                <td>{{referralIncome.Date}}</td>
+                                <td>{{referralIncome.Description}}</td>
+                                <td>{{referralIncome.USD | currency}}</td>
                               </tr>
                             </tbody>
                           </table>
-                          <div class="pull-right">
-                            <ul class="pagination pagination-metro nomargin mt10">
-                              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                              <li><a href="#">1</a></li>
-                              <li class="active"><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">5</a></li>
-                              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                            </ul>
+                          <div class="pagination-default">
+                            <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="totalRecords" ng-model="currentPage" max-size="5" ng-change="getDirectIncome(currentPage)"></ul>
                           </div>
                           <br />
                           <br />
@@ -623,28 +612,18 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>12/08/2016</td>
-                                <td>Commission Received by Purchase Binary = COIN45098 </td>
-                                <td>$270</td>
+                              <tr ng-if="noRecords">
+                                <td>No Records Found</td>
                               </tr>
-                              <tr>
-                                <td>12/08/2016</td>
-                                <td>Commission Received by Re-Purchase Binary = COIN8439 </td>
-                                <td>$70</td>
+                              <tr ng-repeat="totalIncome in teamIncome">
+                                <td>{{totalIncome.Date}}</td>
+                                <td>{{totalIncome.Description}}</td>
+                                <td>{{totalIncome.USD | currency}}</td>
                               </tr>
                             </tbody>
                           </table>
-                          <div class="pull-right">
-                            <ul class="pagination pagination-metro nomargin mt10">
-                              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                              <li><a href="#">1</a></li>
-                              <li class="active"><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#">5</a></li>
-                              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                            </ul>
+                          <div class="pagination-default">
+                            <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="pagination.perpage" boundary-links="true" total-items="totalRows" ng-model="currentPage" max-size="5" ng-change="getTotalIncome(currentPage)"></ul>
                           </div>
                           <br />
                           <br />
@@ -695,12 +674,12 @@
                     <h2 class="mb35-sm top-spacemob10"><i class="fa fa-comments-o icon-lg-red border-round-red" style="padding-top:5px; padding-left:5px"  aria-hidden="true"></i> <strong>Group Chat</strong></h2>
                     <hr />
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
+                    <ul class="nav nav-tabs group_chat" role="tablist" style="background:#ccc !important; color:#525252 !important;">
                         <li role="presentation" class="active"><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><i class="fa fa-inbox " aria-hidden="true"></i> Inbox</strong></a>
                         </li>
                         <li role="presentation" ng-click="getSent(currentPage, limit)"><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><strong><i class="fa fa-paper-plane-o " aria-hidden="true"></i>  Sent</strong></a>
                         </li>
-                        <li role="presentation" ng-click="getUser(currentPage, 10)"><a href=".bnrr" aria-controls="bnrr" role="tab" data-toggle="tab"><strong><i class="fa fa-envelope-o " aria-hidden="true"></i> Send Message
+                        <li role="presentation" class="send_message" ng-click="getUser(currentPage, 10)"><a href=".bnrr" aria-controls="bnrr" role="tab" data-toggle="tab"><strong><i class="fa fa-envelope-o " aria-hidden="true"></i> Send Message
                       </strong></a>
                         </li>
                     </ul>
@@ -722,7 +701,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <a href="#" class="pull-right copy-btn "><i class="fa fa-paper-plane-o "></i> Compose</a>
+                                <a href=".bnrr" aria-controls="bnrr" role="tab" data-toggle="tab" class="pull-right copy-btn" ng-click="activeTab()"><i class="fa fa-paper-plane-o "></i> Compose</a>
                                 <br />
                                 <br />
                                 <div class="table-responsive">
@@ -962,7 +941,36 @@
                             </div>
                             <br />
                             <br />
-                            <div class="table-responsive">
+
+                            <md-content laout="column" flex>
+                        <md-card>
+                          <md-table-container>
+                            <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
+                              <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder" style="background:#525252">
+                                <tr md-row>
+                                  <th md-column><span>Name of the User</span></th>
+                                  <th md-column class="align-left"><span>Email</span></th>
+                                </tr>
+                              </thead>
+                              <tbody md-body>
+                                <tr ng-if="teamDirectsUsers.length > 0" md-row md-select="directs" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="(key,directs) in teamDirectsUsers">
+                                  <td md-cell md-checked>{{directs.Name}}</td>
+                                  <td md-cell>{{directs.Email}}</td>
+                                </tr>
+                                <tr ng-if="teamDirectsUsers.length == 0" md-row>
+                                  <td md-cell colspan="2">
+                                    <p class="text-center"><strong>No member found</strong></p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </md-table-container>
+                          <md-table-pagination md-limit="query.limit" md-limit-options="[limit]" md-page="query.page" md-total="{{pagination.totalUsers}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="onPaginationChange"></md-table-pagination>
+                        </md-card>
+                      </md-content>
+
+                            
+                            <!--<div class="table-responsive">
                                 <div class="table-responsive">
                                     <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
@@ -990,14 +998,15 @@
                                     <div class="pagination-default" ng-if="pagination.totalUsers > 0">
                                       <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="pagination.totalUsers" ng-model="currentPage" max-size="5" ng-change="getUser(currentPage, 10)"></ul>
                                     </div>
-                                </div>
+                                </div>-->
                                 <br />
                                 <br />
                                 <div class="alert alert-danger" role="alert"><strong>Note :</strong> Please keep in mind that you can send only one message every 24 hours</div>
                                 <br />
                             </div>
                             <form name="sendForm" ng-submit="sendMessage(replyMail)" novalidate>
-                                <label><strong>To: {{selected.join(', ')}}</strong>
+                                <label><strong>To: <span ng-repeat="item in selected">
+                                  {{item.username}} {{selected[$index + 1]? ", " : " "}}</span></strong>
                                 </label><br /><br />
                                 <label><strong>Subject</strong></label>
                                 <br />

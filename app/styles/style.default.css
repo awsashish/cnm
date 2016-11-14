@@ -44,6 +44,11 @@ URL: http://themepixels.com/
 
 /********** 1. IMPORTS **********/
 /********************************/
+
+html {
+    background: transparent !important;
+}
+
 body {
     font-size: 13px;
     color: #636E7B;
@@ -419,6 +424,14 @@ map area{
   position: relative;
   top: 20%;
   z-index: 9999;
+}
+
+table.md-table th.md-column {
+    color:#fff !important;
+}
+
+th.md-checkbox-column .md-default-theme:not(.md-checked) .md-icon, th md-checkbox:not(.md-checked) .md-icon {
+    border-color: #fff !important;
 }
 
 .copy-btn{background:#fff; color:#000; font-size:12px; padding:4px; border:1px solid #000; border-bottom:2px solid #000; border-radius:3px; margin-top:-3px;}

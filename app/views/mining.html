@@ -21,15 +21,15 @@
                          <strong>Purchase</strong> </a>
                       </li>
                       <li>
-                         <a href=".tab_default_8disabled" data-toggle="tab">
+                         <a href=".tab_default_8" data-toggle="tab">
                          <i class="fa fa-credit-card-alt icon-lg" aria-hidden="true"></i><br />
                          <strong>Order</strong> </a>
                       </li>
-                      <li>
+                      <!--<li>
                          <a href=".tab_default_5" data-toggle="tab">
                          <i class="fa fa-circle-o icon-lg" aria-hidden="true"></i><br />
                          <strong>Live Contracts</strong> </a>
-                      </li>
+                      </li>-->
                       <li>
                          <a href=".tab_default_6" data-toggle="tab">
                          <i class="fa fa-newspaper-o icon-lg" aria-hidden="true"></i><br />
@@ -42,13 +42,8 @@
                       </li> -->
                    </ul>
                 </div>
-                <div class="tab-content" style="padding:20px 20px; min-height:700px;">
-                  <div class="tab-pane tab_default_4 active">
-                     <br />
-                     <p> Coming soon ... </p>
-                     <br />
-                   </div>
-                   <div class="tab-pane tab_default_41">
+                <div class="tab-content" style="padding:20px 20px;">
+                   <div class="tab-pane tab_default_4 active">
                       <br />
                       <h2 class="mb37" align="center" style="width:40%;">
                          <span class="glyphicon glyphicon-minus"></span>
@@ -57,12 +52,12 @@
                       <br />
                       <!-- Nav tabs -->
                       <ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-                         <li role="presentation" class="active" ><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
-                         <li role="presentation" ><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
+                         <li role="presentation" class="active"><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
+                         <li role="presentation" ><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
                       </ul>
                       <!-- Tab panes -->
                       <div class="tab-content" style="border:0px !important">
-                         <div role="tabpanel" class="tab-pane active dmp">
+                         <div role="tabpanel" class="tab-pane dmp">
                             <br />
                             <div class="panel panel-default">
                                <div class="panel-heading nopadding nomargin">
@@ -75,19 +70,19 @@
                                         <p class="pull-left">
                                         <h5><strong>Total Power</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">4375798.87439</p>
+                                        <p class="red-text04 pull-left">{{ethPoolPower}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Estimated Total Income(USD)</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{ethPoolEstimateIncome | currency}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Current Rate</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{ethPoolCurrentRate | currency}}</p>
                                      </div>
                                   </div>
                                   <br />
@@ -96,7 +91,7 @@
                                      <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
                                            <tr style="color:#525252;">
-                                              <th width="10%"><strong class="white-color">Date</strong></th>
+                                              <th width="20%"><strong class="white-color">Date</strong></th>
                                               <th width="20%"><strong class="white-color">Contract Name</strong></th>
                                               <th width="10%"><strong class="white-color">Units</strong></th>
                                               <th width="30%"><strong class="white-color">Power</strong></th>
@@ -104,26 +99,21 @@
                                            </tr>
                                         </thead>
                                         <tbody>
-                                           <tr>
-                                              <td>12/12/2015</td>
-                                              <td>Pool Contract</td>
-                                              <td>1000</td>
-                                              <td>3274832 TH/s</td>
-                                              <td>2 Month</td>
+                                          <tr ng-if="noEthPoolRecords">
+                                             <td>No Records Found</td>
+                                          </tr>
+                                           <tr ng-repeat="ethPool in ethPoolDetails">
+                                              <td>{{ethPool.Date | date }}</td>
+                                              <td>{{ethPool.ProductName}}</td>
+                                              <td>{{ethPool.quantity}}</td>
+                                              <td>{{ethPool.miningpower}} MH/s</td>
+                                              <td>{{ethPool.totaldays/12 | number:0}} Month</td>
                                            </tr>
                                         </tbody>
                                      </table>
-                                     <div class="pull-right">
-                                        <ul class="pagination pagination-metro nomargin mt10">
-                                           <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                           <li><a href="#">1</a></li>
-                                           <li class="active"><a href="#">2</a></li>
-                                           <li><a href="#">3</a></li>
-                                           <li><a href="#">4</a></li>
-                                           <li><a href="#">5</a></li>
-                                           <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                        </ul>
-                                     </div>
+                                     <div class="pagination-default" ng-if="ethPoolRecords > 0">
+                                      <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchaseEthPool('ETH', 'pool', ethPoolCurrentPage)"></ul>
+                                    </div>
                                      <br />
                                      <br />
                                   </div>
@@ -139,19 +129,19 @@
                                         <p class="pull-left">
                                         <h5><strong>Total Power</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">4375798.87439</p>
+                                        <p class="red-text04 pull-left">{{ethMachinePower}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Estimated Total Income(USD)</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{ethMachineEstimateIncome | currency}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Current Rate</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{ethMachineCurrentRate | currency}}</p>
                                      </div>
                                   </div>
                                   <br />
@@ -161,7 +151,7 @@
                                      <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
                                            <tr style="color:#525252;">
-                                              <th width="10%"><strong class="white-color">Date</strong></th>
+                                              <th width="20%"><strong class="white-color">Date</strong></th>
                                               <th width="20%"><strong class="white-color">Contract Name</strong></th>
                                               <th width="10%"><strong class="white-color">Units</strong></th>
                                               <th width="30%"><strong class="white-color">Power</strong></th>
@@ -169,26 +159,21 @@
                                            </tr>
                                         </thead>
                                         <tbody>
-                                           <tr>
-                                              <td>12/12/2015</td>
-                                              <td>Pool Contract</td>
-                                              <td>1000</td>
-                                              <td>3274832 TH/s</td>
-                                              <td>2 Month</td>
+                                          <tr ng-if="noEthMachineRecords">
+                                             <td>No Records Found</td>
+                                          </tr>
+                                           <tr ng-repeat="ethMachine in ethMachineDetails">
+                                              <td>{{ethMachine.Date | date }}</td>
+                                              <td>{{ethMachine.ProductName}}</td>
+                                              <td>{{ethMachine.quantity}}</td>
+                                              <td>{{ethMachine.miningpower}} MH/s</td>
+                                              <td>{{ethMachine.totaldays/12 | number:0}} Month</td>
                                            </tr>
                                         </tbody>
                                      </table>
-                                     <div class="pull-right">
-                                        <ul class="pagination pagination-metro nomargin mt10">
-                                           <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                           <li><a href="#">1</a></li>
-                                           <li class="active"><a href="#">2</a></li>
-                                           <li><a href="#">3</a></li>
-                                           <li><a href="#">4</a></li>
-                                           <li><a href="#">5</a></li>
-                                           <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                        </ul>
-                                     </div>
+                                     <div class="pagination-default" ng-if="ethMachineRecords > 0">
+                                      <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchaseEthPool('ETH', 'machine', ethMachineCurrentPage)"></ul>
+                                    </div>
                                      <br />
                                      <br />
                                   </div>
@@ -204,19 +189,19 @@
                                         <p class="pull-left">
                                         <h5><strong>Total Power</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">4375798.87439</p>
+                                        <p class="red-text04 pull-left">{{ethRackPower}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Estimated Total Income(USD)</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{ethRackEstimateIncome | currency}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Current Rate</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{ethRackCurrentRate | currency}}</p>
                                      </div>
                                   </div>
                                   <hr />
@@ -224,7 +209,7 @@
                                      <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
                                            <tr style="color:#525252;">
-                                              <th width="10%"><strong class="white-color">Date</strong></th>
+                                              <th width="20%"><strong class="white-color">Date</strong></th>
                                               <th width="20%"><strong class="white-color">Contract Name</strong></th>
                                               <th width="10%"><strong class="white-color">Units</strong></th>
                                               <th width="30%"><strong class="white-color">Power</strong></th>
@@ -232,33 +217,28 @@
                                            </tr>
                                         </thead>
                                         <tbody>
-                                           <tr>
-                                              <td>12/12/2015</td>
-                                              <td>Pool Contract</td>
-                                              <td>1000</td>
-                                              <td>3274832 TH/s</td>
-                                              <td>2 Month</td>
+                                           <tr ng-if="noEthRackRecords">
+                                             <td>No Records Found</td>
+                                          </tr>
+                                           <tr ng-repeat="ethRack in ethRackDetails">
+                                              <td>{{ethRack.Date | date }}</td>
+                                              <td>{{ethRack.ProductName}}</td>
+                                              <td>{{ethRack.quantity}}</td>
+                                              <td>{{ethRack.miningpower}} MH/s</td>
+                                              <td>{{ethRack.totaldays/12 | number:0}} Month</td>
                                            </tr>
                                         </tbody>
                                      </table>
-                                     <div class="pull-right">
-                                        <ul class="pagination pagination-metro nomargin mt10">
-                                           <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                           <li><a href="#">1</a></li>
-                                           <li class="active"><a href="#">2</a></li>
-                                           <li><a href="#">3</a></li>
-                                           <li><a href="#">4</a></li>
-                                           <li><a href="#">5</a></li>
-                                           <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                        </ul>
-                                     </div>
+                                     <div class="pagination-default" ng-if="ethRackRecords > 0">
+                                      <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethRackRecords" ng-model="ethRackCurrentPage" max-size="5" ng-change="purchaseEthRack('BTC', 'rack', ethRackCurrentPage)"></ul>
+                                    </div>
                                      <br />
                                      <br />
                                   </div>
                                </div>
                             </div>
                          </div>
-                         <div role="tabpanel" class="tab-pane rmp" >
+                         <div role="tabpanel" class="tab-pane rmp active" >
                             <br />
                             <div class="panel panel-default">
                                <div class="panel-heading nopadding nomargin">
@@ -271,19 +251,19 @@
                                         <p class="pull-left">
                                         <h5><strong>Total Power</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">4375798.87439</p>
+                                        <p class="red-text04 pull-left">{{btcPoolPower}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Estimated Total Income(USD)</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{btcPoolEstimateIncome | currency}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Current Rate</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{btcPoolCurrentRate | currency}}</p>
                                      </div>
                                   </div>
                                   <br />
@@ -292,7 +272,7 @@
                                      <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
                                            <tr style="color:#525252;">
-                                              <th width="10%"><strong class="white-color">Date</strong></th>
+                                              <th width="20%"><strong class="white-color">Date</strong></th>
                                               <th width="20%"><strong class="white-color">Contract Name</strong></th>
                                               <th width="10%"><strong class="white-color">Units</strong></th>
                                               <th width="30%"><strong class="white-color">Power</strong></th>
@@ -300,26 +280,21 @@
                                            </tr>
                                         </thead>
                                         <tbody>
-                                           <tr>
-                                              <td>12/12/2015</td>
-                                              <td>Pool Contract</td>
-                                              <td>1000</td>
-                                              <td>3274832 TH/s</td>
-                                              <td>2 Month</td>
+                                          <tr ng-if="noBtcPoolRecords">
+                                             <td>No Records Found</td>
+                                          </tr>
+                                           <tr ng-repeat="btcPool in btcPoolDetails">
+                                              <td>{{btcPool.Date | date }}</td>
+                                              <td>{{btcPool.ProductName}}</td>
+                                              <td>{{btcPool.quantity}}</td>
+                                              <td>{{btcPool.miningpower}} MH/s</td>
+                                              <td>{{btcPool.totaldays/12 | number:0}} Month</td>
                                            </tr>
                                         </tbody>
                                      </table>
-                                     <div class="pull-right">
-                                        <ul class="pagination pagination-metro nomargin mt10">
-                                           <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                           <li><a href="#">1</a></li>
-                                           <li class="active"><a href="#">2</a></li>
-                                           <li><a href="#">3</a></li>
-                                           <li><a href="#">4</a></li>
-                                           <li><a href="#">5</a></li>
-                                           <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                        </ul>
-                                     </div>
+                                     <div class="pagination-default" ng-if="ethPoolRecords > 0">
+                                      <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchaseBtcPool('ETH', 'pool', btcPoolCurrentPage)"></ul>
+                                    </div>
                                      <br />
                                      <br />
                                   </div>
@@ -330,34 +305,34 @@
                                   <h5 class="red-text08"><strong><img ng-src="{{s3Url}}contributor.png" width="60"> Machine Contract</strong></h5>
                                </div>
                                <div class="panel-body">
+                                  <hr />
                                   <div class="row">
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Total Power</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">4375798.87439</p>
+                                        <p class="red-text04 pull-left">{{btcMachinePower}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Estimated Total Income(USD)</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{btcMachineEstimateIncome | currency}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Current Rate</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{btcMachineCurrentRate | currency}}</p>
                                      </div>
                                   </div>
                                   <br />
                                   <br />
-                                  <hr />
                                   <div class="table-responsive">
                                      <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
                                            <tr style="color:#525252;">
-                                              <th width="10%"><strong class="white-color">Date</strong></th>
+                                              <th width="20%"><strong class="white-color">Date</strong></th>
                                               <th width="20%"><strong class="white-color">Contract Name</strong></th>
                                               <th width="10%"><strong class="white-color">Units</strong></th>
                                               <th width="30%"><strong class="white-color">Power</strong></th>
@@ -365,26 +340,21 @@
                                            </tr>
                                         </thead>
                                         <tbody>
-                                           <tr>
-                                              <td>12/12/2015</td>
-                                              <td>Pool Contract</td>
-                                              <td>1000</td>
-                                              <td>3274832 TH/s</td>
-                                              <td>2 Month</td>
+                                          <tr ng-if="noEthPoolRecords">
+                                             <td>No Records Found</td>
+                                          </tr>
+                                           <tr ng-repeat="ethPool in ethPoolDetails">
+                                              <td>{{btcMachine.Date | date }}</td>
+                                              <td>{{btcMachine.ProductName}}</td>
+                                              <td>{{btcMachine.quantity}}</td>
+                                              <td>{{btcMachine.miningpower}} MH/s</td>
+                                              <td>{{btcMachine.totaldays/12 | number:0}} Month</td>
                                            </tr>
                                         </tbody>
                                      </table>
-                                     <div class="pull-right">
-                                        <ul class="pagination pagination-metro nomargin mt10">
-                                           <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                           <li><a href="#">1</a></li>
-                                           <li class="active"><a href="#">2</a></li>
-                                           <li><a href="#">3</a></li>
-                                           <li><a href="#">4</a></li>
-                                           <li><a href="#">5</a></li>
-                                           <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                        </ul>
-                                     </div>
+                                     <div class="pagination-default" ng-if="ethMachineRecords > 0">
+                                      <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchaseBtcMachine('ETH', 'machine', btcMachineCurrentPage)"></ul>
+                                    </div>
                                      <br />
                                      <br />
                                   </div>
@@ -395,32 +365,34 @@
                                   <h5 class="red-text08"><strong><img ng-src="{{s3Url}}rack.png" width="60"> Rack Contract</strong></h5>
                                </div>
                                <div class="panel-body">
+                                  <hr />
                                   <div class="row">
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Total Power</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">4375798.87439</p>
+                                        <p class="red-text04 pull-left">{{btcRackPower}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Estimated Total Income(USD)</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{btcRackEstimateIncome | currency}}</p>
                                      </div>
                                      <div class="col-md-4 col-sm-12">
                                         <p class="pull-left">
                                         <h5><strong>Current Rate</strong></h5>
                                         </p>
-                                        <p class="red-text04 pull-left">$900</p>
+                                        <p class="red-text04 pull-left">{{btcRackCurrentRate | currency}}</p>
                                      </div>
                                   </div>
-                                  <hr />
+                                  <br />
+                                  <br />
                                   <div class="table-responsive">
                                      <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
                                            <tr style="color:#525252;">
-                                              <th width="10%"><strong class="white-color">Date</strong></th>
+                                              <th width="20%"><strong class="white-color">Date</strong></th>
                                               <th width="20%"><strong class="white-color">Contract Name</strong></th>
                                               <th width="10%"><strong class="white-color">Units</strong></th>
                                               <th width="30%"><strong class="white-color">Power</strong></th>
@@ -428,26 +400,21 @@
                                            </tr>
                                         </thead>
                                         <tbody>
-                                           <tr>
-                                              <td>12/12/2015</td>
-                                              <td>Pool Contract</td>
-                                              <td>1000</td>
-                                              <td>3274832 TH/s</td>
-                                              <td>2 Month</td>
+                                          <tr ng-if="nobtcRackRecords">
+                                             <td>No Records Found</td>
+                                          </tr>
+                                           <tr ng-repeat="btcRack in btcRackDetails">
+                                              <td>{{btcRack.Date | date }}</td>
+                                              <td>{{btcRack.ProductName}}</td>
+                                              <td>{{btcRack.quantity}}</td>
+                                              <td>{{btcRack.miningpower}} MH/s</td>
+                                              <td>{{btcRack.totaldays/12 | number:0}} Month</td>
                                            </tr>
                                         </tbody>
                                      </table>
-                                     <div class="pull-right">
-                                        <ul class="pagination pagination-metro nomargin mt10">
-                                           <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                           <li><a href="#">1</a></li>
-                                           <li class="active"><a href="#">2</a></li>
-                                           <li><a href="#">3</a></li>
-                                           <li><a href="#">4</a></li>
-                                           <li><a href="#">5</a></li>
-                                           <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                        </ul>
-                                     </div>
+                                     <div class="pagination-default" ng-if="btcRackRecords > 0">
+                                      <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="btcRackRecords" ng-model="btcRackCurrentPage" max-size="5" ng-change="purchaseBtcRack('BTC', 'rack', btcRackCurrentPage)"></ul>
+                                    </div>
                                      <br />
                                      <br />
                                   </div>
@@ -612,46 +579,51 @@
                       <hr />
                       <div class="row" >
                         <div class="col-md-8 col-sm-12">
-                          <div class="price-box" ng-repeat="btc in btcProducts">
+                          <div class="price-box" ng-repeat="(key,btc) in btcProducts">
                              <form class="form-horizontal form-pricing" role="form">
                                 <div class="price-slider">
                                    <h4 class="great text-capitalize">{{btc.productname}}</h4>
                                    <img ng-src="{{s3Url}}{{btcImagePath[$index]}}" width="100" class="pull-right" />
                                    <div class="col-sm-12">
-                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="'btc'" min="{{btc.btcMining}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
+                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="btc" min="{{btc.btcMining}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
                                    </div>
                                 </div>
                                 <div class="price-form">
                                    <div class="form-group">
                                       <div class="col-sm-12">
                                          <input type="hidden" id="amount3" class="form-control">
-                                         <p class="price lead" id="amount-label3">{{btc.btcMining/btc.miningpower}}</p>
-                                         Number Of Contracts<strong class="price pull-right lead">Amount : {{btc.amount*btc.btcMining/btc.miningpower | currency}}</strong>
+                                         <p class="price lead" id="amount-label3">{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}
+                                           {{btc.quantity}}</p>
+                                         Number Of Contracts<strong class="price pull-right lead">Amount : {{(btc.amount*btc.btcMining/btc.miningpower) | currency}}</strong>
                                       </div>
                                    </div>
                                 </div>
                              </form>
                           </div>
-                           <div class="price-box" ng-repeat="eth in ethProducts">
+                          <div>
+                            <img src="images/eth-slider-coming-soon.png" class="img-responsive" />
+                          </div>
+                           <!--<div class="price-box" ng-repeat="(key,eth) in ethProducts">
                               <form class="form-horizontal form-pricing" role="form">
                                  <div class="price-slider">
                                     <h4 class="great text-capitalize">{{eth.productname}}</h4>
                                     <img ng-src="{{s3Url}}{{ethImagePath[$index]}}" width="100" class="pull-right" />
                                     <div class="col-sm-12">
-                                       <div ui-slider class="uiSlider" model="eth.ethMining" product="'eth'" min="{{eth.ethMining}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
+                                       <div ui-slider class="uiSlider" model="eth.ethMining" product="eth" min="{{eth.ethMining}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
                                     </div>
                                  </div>
                                  <div class="price-form">
                                     <div class="form-group">
                                        <div class="col-sm-12">
                                           <input type="hidden" id="amount3" class="form-control">
-                                          <p class="price lead" id="amount-label3">{{eth.ethMining/eth.miningpower | number:0}}</p>
+                                          <p class="price lead" id="amount-label3">{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}
+                                           {{eth.quantity | number:0}}</p>
                                           Number Of Contracts<strong class="price pull-right lead">Amount : {{eth.amount * eth.ethMining/eth.miningpower | currency}}</strong>
                                        </div>
                                     </div>
                                  </div>
                               </form>
-                           </div>
+                           </div>-->
                         </div>
                          <div class="col-md-4 col-sm-12">
                             <div class="col-md-12 col-sm-12">
@@ -683,21 +655,12 @@
                                      </div>
                                      <div align="center" class="col-md-12   col-sm-12">
                                         <div class="" style="margin-top:20px;">
-                                           <img ng-src="{{s3Url}}icon-payment.png" class="img-responsive" />
-                                           <p style="font-size:14px;"><strong>Payment type</strong><br />
-                                              Please choose your payment<br />
-                                              option below, e.g.,<br />
-                                              Bitcoin, Credit Card, Wires
-                                           </p>
                                            <hr />
-                                           <select name="" class="order-select">
-                                              <option>CREDIT CARD (USD)</option>
-                                              <option>Wire (USD)</option>
-                                              <option>Bitcoin</option>
-                                           </select>
-                                           <hr />
-                                           <a href="#"><button type="button" class="btn btn-lg btn-success">Continue <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-                                           </button></a>
+                                           <button type="button" class="btn btn-block btn-lg btn-success" ng-click="selectPayment()">Continue <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                           </button><br />
+                                           <div class="alert alert-danger fade in" ng-if="noOrder">
+       Please select any package.
+    </div>
                                         </div>
                                      </div>
                                   </div>

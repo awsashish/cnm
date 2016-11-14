@@ -20,7 +20,7 @@
      <div class="alert alert-danger fade in" ng-if="noBalance">
        Balance Not Available.
      </div>
-     <div ng-if="earningSuccess">
+     <div ng-if="earningSuccess && !accountStatus">
       <h4><strong style="color:#F90;">Congratulations ! Your affiliate panel is active. Now withdraw your payouts without any hassle.</strong></h4>
       <hr>
       <h4><strong>Invoice Number :</strong> {{transactionDetails.invoice_number}}</h4>
@@ -31,7 +31,7 @@
       Team Coinomia<br>
       <img src="images/logo-coinomia.png" width="60"></span>
      </div>
-     <form ng-if="!noBalance && !accountStatus">
+     <form ng-if="!noBalance && !accountStatus && !earningSuccess">
          <h4>Transaction Funding</h4>
          <p>Please transfer your Bitcoins to the address given below. The funds will be credited to your wallet as soon as we get 6 confirmations from the Bitcoin network.</p>
          <div class="row">

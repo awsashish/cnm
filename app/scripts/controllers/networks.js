@@ -22,6 +22,21 @@ angular.module('coinomiaFrontendApp')
     $scope.replyMail = {};
 
     $scope.selected = [];
+    $scope.options  = {
+      rowSelection: true,
+      multiSelect: true,
+      autoSelect: true,
+      decapitate: false,
+      largeEditDialog: false,
+      boundaryLinks: true,
+      limitSelect: true,
+      pageSelect: true
+    };
+    $scope.query   = {
+      order: 'Name',
+      limit: 10,
+      page: 1
+    };
     $scope.teamColumnHead = config.teamColumnHead;
     $scope.sponsorId = '';
     $scope.order = config.columnOrder;
@@ -234,10 +249,9 @@ angular.module('coinomiaFrontendApp')
           $scope.sendError = false;
           var receiver = [];
           for(var i in $scope.selected) {
-            var id = {"id": $scope.selected[i]};
+            var id = {"id": $scope.selected[i].username};
             receiver.push(id);
           }
-
 
           if(replyMail.replyId && replyMail.replySubject) {
             // Reply Message Parameter
@@ -416,7 +430,7 @@ angular.module('coinomiaFrontendApp')
           $scope.transactionDate = moment().format('YYYY-MM-DD');
           if(data.Message) {
             $scope.accountStatus = true;
-          }else if(data.message) {
+          }else if(data.message !== 'success') {
             $scope.noBalance = true;
           }
           
@@ -479,7 +493,7 @@ angular.module('coinomiaFrontendApp')
 
     $scope.getWalletAmount();
 
-
+    // Active Payment
     $scope.ativatePayment = function(type) {
       $scope.walletEarnings = false;
       $scope.negativeBalance = false;
@@ -505,5 +519,61 @@ angular.module('coinomiaFrontendApp')
           size: 'md'
       });
     }
+
+    // Get Direct Income
+    $scope.getDirectIncome = function(currentPage) {
+      coinomiaService.directIncome(currentPage).then(function(res) {
+        if( res.status === 200 ) {
+          $scope.noDirectRecords = false;
+          var data = res.data;
+          $scope.directIncome = data.rows;
+          $scope.totalRecords = data.total;
+          if($scope.totalRecords === 0) {
+            $scope.noDirectRecords = true;
+          }
+        }
+      });
+    }
+
+    // Get Total Earning 
+    $scope.getTotalEarning = function() {
+      coinomiaService.totalEarning().then(function(res) {
+        if(res.status === 200) {
+          var data = res.data;
+          if(data.hasOwnProperty('amount')) {
+            $scope.totalEarning = data.amount;
+          }else{
+            $scope.totalEarning = 0;
+          }          
+        }
+      });
+    }
+
+    // Get Total Income
+    $scope.getTotalIncome = function(currentPage) {      
+      coinomiaService.totalIncome(currentPage).then(function(res) {
+        if( res.status === 200 ) {
+          $scope.noRecords = false;
+          var data = res.data;
+          $scope.teamIncome = data.rows;
+          $scope.totalRows = data.total;
+          if($scope.totalRows === 0) {
+            $scope.noRecords = true;
+          }
+        }
+      });
+    }
+
+    $scope.getTotalEarning();
+
+    $scope.activeTab = function() {
+      $scope.getUser($scope.currentPage, 10);
+      angular.element( "ul.group_chat" ).find( "li" ).removeClass("active");
+      angular.element( "ul.group_chat" ).find( "li.send_message" ).addClass("active");
+    }
+
+     $scope.onPaginationChange = function (page, limit) {
+      $scope.getUser(page, limit);
+    };
 
 });
