@@ -59,7 +59,7 @@ angular.module('coinomiaFrontendApp')
           }else{
             $rootScope.btcImage = true;
             $rootScope.convertUSDHeading = true;
-            $rootScope.convertUSDName = 'Convert BTC';
+            $rootScope.convertUSDName = 'Convert To BTC';
           }
         }
 
