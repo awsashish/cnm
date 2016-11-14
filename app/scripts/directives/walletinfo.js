@@ -40,7 +40,6 @@ angular.module('coinomiaFrontendApp')
         }
 
         $scope.getWallet = function(wallet, type, imageName) {
-          console.log(wallet, type, imageName);
           $rootScope.withdrawalHeading = false;
           $rootScope.convertUSDHeading = false;
           $rootScope.btcImage = false;
