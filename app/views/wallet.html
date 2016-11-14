@@ -65,12 +65,19 @@
           <div class="modal-content">
              <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}btc-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Bitcoin Wallet</strong></h4>
+                <h4 class="modal-title" id="myModalLabel" ng-if="withdrawalHeading">
+                  <img ng-src="{{s3Url}}{{imageName | lowercase}}-wallet.png" width="35" class="pull-left img-responsive " /> 
+                  <strong>&nbsp;{{walletName}} Wallet</strong></h4>
+
+                <h4 class="modal-title" id="myModalLabel" ng-if="convertUSDHeading">
+                  <img src="{{s3Url}}{{btcImage?'btc':'dollar'}}.png" width="35" class="pull-left img-responsive "> 
+                  <strong>&nbsp;{{convertUSDName}} ({{walletName}} Wallet)</strong>
+                </h4>
              </div>
              <div class="modal-body">
                 <form class="form-inline">
                    <div class="form-group">
-                      <label><strong>No Of Bitcoin you want to Withdraw</strong></label>
+                      <label><strong>No Of {{walletName}} you want to {{withdrawalHeading?'Withdraw':'Convert'}}</strong></label>
                       <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;top: -4px;position: relative;" class="btn btn-default" data-dismiss="modal">OK</button>
                    </div>
                 </form>

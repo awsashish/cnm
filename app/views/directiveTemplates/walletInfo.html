@@ -44,12 +44,14 @@
                  </form>
               </td>
                <td align="center" valign="middle" colspan="2" ng-if="info.Wallet !== 'USD'">
-                 <button data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ><strong>Withdraw</strong></button>
+                 <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(walletHeading[info.Wallet], 'withdrawal', info.Wallet)"><strong><img src="images/withdraw.png" width="30"> Withdraw</strong></a>
+
+                 <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ng-click="getWallet(walletHeading[info.Wallet], 'convertUSD', info.Wallet)"><strong><img src="{{s3Url}}dollar.png" width="30"> Convert to USD</strong></a>
                </td>
             </tr>
             <tr ng-if="type && info.Wallet === 'USD'">
               <td align="center" valign="middle">
-                 <a data-toggle="modal" data-target="#usd-wallet" class="btn btn-default btn-white" disabled><strong><img src="images/withdraw.png" width="30"> Withdraw</strong></a>
+                 <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(walletHeading[info.Wallet], 'convertBTC', info.Wallet)"><strong><img src="{{s3Url}}btc.png" width="30"> Convertto BTC</strong></a>
                </td>
                <td>
                  <a data-toggle="modal" data-target="#internal-transfer" class="btn btn-default"><strong><img src="images/transfer-funds.png" width="30"> Internal Transfer</strong></a>
