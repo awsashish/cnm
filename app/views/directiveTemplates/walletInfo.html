@@ -8,11 +8,7 @@
    <div class="table-responsive">
       <table class="table table-dark-gry table-hover mb30 font16">
          <tbody>
-            <tr ng-if="info.Wallet !== 'USD'">
-               <td valign="middle"><strong class="red-text02 " style="padding-top:30px;">Wallet Address</strong></td>
-               <td><input type="text" class="form-control" ng-model="info.Address"></td>
-            </tr>
-            <tr ng-if="type && info.Wallet !== 'USD'">
+           <tr ng-if="type && info.Wallet !== 'USD'">
                <td valign="middle"><strong class="red-text02" >Balance {{walletHeading[info.Wallet]}}</strong></td>
                <td ng-if="info.Wallet !== 'USD'"><h4 class="nomargin nopadding"><strong>{{info.Balance}} {{info.Wallet}}</strong></h4></td>
                <td><h4 class="nomargin nopadding" ng-if="info.Wallet === 'USD'"><strong>{{info.Balance | currency}} </strong></h4></td>
@@ -21,6 +17,10 @@
                <td valign="middle"><strong class="red-text02" >Balance {{walletHeading[info.Wallet]}}</strong></td>
                <td ng-if="info.Wallet !== 'USD'"><h4 class="nomargin nopadding"><strong>{{info.Balance}} {{info.Wallet}}</strong></h4></td>
                <td><h3 class="nomargin nopadding" ng-if="info.Wallet === 'USD'"><strong>{{info.Balance | currency}} </strong></h3></td>
+            </tr>
+            <tr ng-if="info.Wallet !== 'USD'">
+               <td valign="middle"><strong class="red-text02 " style="padding-top:30px;">Wallet Address</strong></td>
+               <td><input type="text" class="form-control" ng-model="info.Address"></td>
             </tr>
             <tr ng-if="type">
               <td align="center" valign="middle" colspan="2" ng-if="info.Wallet === 'USD'">
