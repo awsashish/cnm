@@ -102,6 +102,8 @@ angular.module('coinomiaFrontendApp')
         i++;
       });
 
+      console.log($scope.orderDetails);
+
       $scope.ethProducts.forEach(function(ethInfo) {
         if(ethInfo.quantity !== 0) {
           var ethAmount = ethInfo.amount * ethInfo.ethMining/ethInfo.miningpower;
@@ -112,9 +114,11 @@ angular.module('coinomiaFrontendApp')
       });
 
       $scope.orderParams = [];
-
+      
       $scope.orderDetails.forEach(function(info) {
-        $scope.orderParams.push(info.data);
+        if(info.data.quantity !== undefined) {
+          $scope.orderParams.push(info.data);
+        }
       });
 
       if($scope.orderParams.length > 0) {
