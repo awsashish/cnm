@@ -52,12 +52,12 @@
                       <br />
                       <!-- Nav tabs -->
                       <ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-                         <li role="presentation" class="active" ><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
-                         <li role="presentation" ><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
+                         <li role="presentation" class="active"><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
+                         <li role="presentation" ><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
                       </ul>
                       <!-- Tab panes -->
                       <div class="tab-content" style="border:0px !important">
-                         <div role="tabpanel" class="tab-pane active dmp">
+                         <div role="tabpanel" class="tab-pane dmp">
                             <br />
                             <div class="panel panel-default">
                                <div class="panel-heading nopadding nomargin">
@@ -238,7 +238,7 @@
                                </div>
                             </div>
                          </div>
-                         <div role="tabpanel" class="tab-pane rmp" >
+                         <div role="tabpanel" class="tab-pane rmp active" >
                             <br />
                             <div class="panel panel-default">
                                <div class="panel-heading nopadding nomargin">
@@ -280,7 +280,7 @@
                                            </tr>
                                         </thead>
                                         <tbody>
-                                          <tr ng-if="noEthPoolRecords">
+                                          <tr ng-if="noBtcPoolRecords">
                                              <td>No Records Found</td>
                                           </tr>
                                            <tr ng-repeat="btcPool in btcPoolDetails">
