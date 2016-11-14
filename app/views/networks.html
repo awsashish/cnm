@@ -962,7 +962,36 @@
                             </div>
                             <br />
                             <br />
-                            <div class="table-responsive">
+
+                            <md-content laout="column" flex>
+                        <md-card>
+                          <md-table-container>
+                            <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
+                              <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder" style="background:#525252">
+                                <tr md-row>
+                                  <th md-column><span>Name of the User</span></th>
+                                  <th md-column class="align-left"><span>Email</span></th>
+                                </tr>
+                              </thead>
+                              <tbody md-body>
+                                <tr ng-if="teamDirectsUsers.length > 0" md-row md-select="directs" md-on-select="logItem" md-auto-select="options.autoSelect" ng-repeat="(key,directs) in teamDirectsUsers">
+                                  <td md-cell md-checked>{{directs.Name}}</td>
+                                  <td md-cell>{{directs.Email}}</td>
+                                </tr>
+                                <tr ng-if="teamDirectsUsers.length == 0" md-row>
+                                  <td md-cell colspan="2">
+                                    <p class="text-center"><strong>No member found</strong></p>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </md-table-container>
+                          <md-table-pagination md-limit="query.limit" md-limit-options="[limit]" md-page="query.page" md-total="{{pagination.totalUsers}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="onPaginationChange"></md-table-pagination>
+                        </md-card>
+                      </md-content>
+
+                            
+                            <!--<div class="table-responsive">
                                 <div class="table-responsive">
                                     <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
@@ -990,14 +1019,15 @@
                                     <div class="pagination-default" ng-if="pagination.totalUsers > 0">
                                       <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="pagination.totalUsers" ng-model="currentPage" max-size="5" ng-change="getUser(currentPage, 10)"></ul>
                                     </div>
-                                </div>
+                                </div>-->
                                 <br />
                                 <br />
                                 <div class="alert alert-danger" role="alert"><strong>Note :</strong> Please keep in mind that you can send only one message every 24 hours</div>
                                 <br />
                             </div>
                             <form name="sendForm" ng-submit="sendMessage(replyMail)" novalidate>
-                                <label><strong>To: {{selected.join(', ')}}</strong>
+                                <label><strong>To: <span ng-repeat="item in selected">
+                                  {{item.username}} {{selected[$index + 1]? ", " : " "}}</span></strong>
                                 </label><br /><br />
                                 <label><strong>Subject</strong></label>
                                 <br />

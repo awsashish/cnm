@@ -22,6 +22,21 @@ angular.module('coinomiaFrontendApp')
     $scope.replyMail = {};
 
     $scope.selected = [];
+    $scope.options  = {
+      rowSelection: true,
+      multiSelect: true,
+      autoSelect: true,
+      decapitate: false,
+      largeEditDialog: false,
+      boundaryLinks: true,
+      limitSelect: true,
+      pageSelect: true
+    };
+    $scope.query   = {
+      order: 'Name',
+      limit: 10,
+      page: 1
+    };
     $scope.teamColumnHead = config.teamColumnHead;
     $scope.sponsorId = '';
     $scope.order = config.columnOrder;
@@ -234,10 +249,9 @@ angular.module('coinomiaFrontendApp')
           $scope.sendError = false;
           var receiver = [];
           for(var i in $scope.selected) {
-            var id = {"id": $scope.selected[i]};
+            var id = {"id": $scope.selected[i].username};
             receiver.push(id);
           }
-
 
           if(replyMail.replyId && replyMail.replySubject) {
             // Reply Message Parameter
@@ -510,5 +524,9 @@ angular.module('coinomiaFrontendApp')
       angular.element( "ul.group_chat" ).find( "li" ).removeClass("active");
       angular.element( "ul.group_chat" ).find( "li.send_message" ).addClass("active");
     }
+
+     $scope.onPaginationChange = function (page, limit) {
+      $scope.getUser(page, limit);
+    };
 
 });
