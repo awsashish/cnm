@@ -38,6 +38,30 @@ angular.module('coinomiaFrontendApp')
         $scope.getUserId = function(userId) {
           $rootScope.transferUserId = userId;
         }
+
+        $scope.getWallet = function(wallet, type, imageName) {
+          $rootScope.withdrawalHeading = false;
+          $rootScope.convertUSDHeading = false;
+          $rootScope.btcImage = false;
+          if(imageName === 'USD') {
+             $rootScope.walletName = imageName;
+          }else{
+             $rootScope.walletName = wallet;            
+          }
+         
+          $rootScope.imageName = imageName;
+          if(type === 'withdrawal') {
+            $rootScope.withdrawalHeading = true;
+          }else if(type === 'convertUSD'){
+            $rootScope.convertUSDHeading = true;
+            $rootScope.convertUSDName = 'Convert USD';
+          }else{
+            $rootScope.btcImage = true;
+            $rootScope.convertUSDHeading = true;
+            $rootScope.convertUSDName = 'Convert To BTC';
+          }
+        }
+
       }
     };
   });

@@ -101,20 +101,23 @@ angular.module('coinomiaFrontendApp')
         }
         i++;
       });
-
-      $scope.ethProducts.forEach(function(ethInfo) {
-        if(ethInfo.quantity !== 0) {
-          var ethAmount = ethInfo.amount * ethInfo.ethMining/ethInfo.miningpower;
-          $scope.purchaseTotal += ethAmount;
-          $scope.orderDetails.push({data:{id:ethInfo.id, quantity:ethInfo.quantity}, name:ethInfo.productname,  price:ethAmount, path:$scope.ethImagePath[j]});
-          j++;
-        }
-      });
+      
+      // $scope.ethProducts.forEach(function(ethInfo) {
+      //   if(ethInfo.quantity !== 0) {
+      //     console.log(ethInfo.quantity)
+      //     var ethAmount = ethInfo.amount * ethInfo.ethMining/ethInfo.miningpower;
+      //     $scope.purchaseTotal += ethAmount;
+      //     $scope.orderDetails.push({data:{id:ethInfo.id, quantity:ethInfo.quantity}, name:ethInfo.productname,  price:ethAmount, path:$scope.ethImagePath[j]});
+      //     j++;
+      //   }
+      // });
 
       $scope.orderParams = [];
-
+      
       $scope.orderDetails.forEach(function(info) {
-        $scope.orderParams.push(info.data);
+        if(info.data.quantity !== undefined) {
+          $scope.orderParams.push(info.data);
+        }
       });
 
       if($scope.orderParams.length > 0) {
