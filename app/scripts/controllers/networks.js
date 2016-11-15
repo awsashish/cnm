@@ -188,21 +188,22 @@ angular.module('coinomiaFrontendApp')
       })
 
       // Get User Team Leader Board
-      // coinomiaService.getTeamLeaderboard()
-      // .then(function(res){
-      //   if(res.status == 200){
-      //     var _members = res.data;
-      //     var _length  = Math.max(Math.max(_members.Last7Days.length, _members.Last30Days.length), _members.alltime.length);
-      //     $scope.maxTeam = [];
-      //     for(var idx = 0; idx < length; idx++) {
-      //       $scope.maxTeam.push({
-      //         last7Days: _members.Last7Days[idx] ? _members.Last7Days[idx] : {},
-      //         last30Days: _members.Last30Days[idx] ? _members.Last30Days[idx] : {},
-      //         allTime: _members.alltime[idx] ? _members.alltime[idx] : {}
-      //       })
-      //     };
-      //   }
-      // })
+      coinomiaService.getTeamLeaderboard()
+      .then(function(res){
+        if(res.status == 200){
+          var _members = res.data;
+          var _length  = Math.max(Math.max(_members.Last7Days.length, _members.Last30Days.length), _members.alltime.length);
+          $scope.maxTeam = [];
+          for(var idx = 0; idx < length; idx++) {
+            $scope.maxTeam.push({
+              last7Days: _members.Last7Days[idx] ? _members.Last7Days[idx] : {},
+              last30Days: _members.Last30Days[idx] ? _members.Last30Days[idx] : {},
+              allTime: _members.alltime[idx] ? _members.alltime[idx] : {}
+            })
+          };
+        }
+      })
+      console.log($scope.maxTeam);
     }
 
     $scope.searchDownline = function(sponsorId) {
