@@ -588,12 +588,14 @@
                                       <div ui-slider class="uiSlider" model="btc.btcMining" product="btc" min="{{btc.btcMining}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
                                    </div>
                                 </div>
-                                <div class="price-form">
+                                <div class="price-form" id="quantity-{{key}}">
                                    <div class="form-group">
                                       <div class="col-sm-12">
-                                         <input type="hidden" id="amount3" class="form-control">
-                                         <p class="price lead" id="amount-label3">{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}
-                                           {{btc.quantity}}</p>
+                                         <input type="hidden" id="amount3" class="form-control">                                        <input type="hidden" id="amount3" class="form-control">
+                                         
+                                         <p class="price lead" id="amount-label3"><input type="number" ng-model="btc.quantity" min="0" ng-change="calculateAmount(key, btc.quantity, btc.miningpower, productMaxUnit[$index])" style="width: 80px;"/>
+                                           <!--{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}-->
+                                           </p>
                                          Number Of Contracts<strong class="price pull-right lead">Amount : {{(btc.amount*btc.btcMining/btc.miningpower) | currency}}</strong>
                                       </div>
                                    </div>

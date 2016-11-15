@@ -75,12 +75,20 @@ angular.module('coinomiaFrontendApp')
       $scope.btcProducts[key].quantity = val;
     }
 
-    $scope.setEthQuantity = function(key, val) {
-      $scope.ethProducts[key].quantity = val;
+    $scope.calculateAmount = function(key, quantity, miningpower, maxUnit) {
+      if(quantity > maxUnit) {
+        $scope.btcProducts[key].quantity = maxUnit;
+        $scope.btcProducts[key].btcMining = maxUnit*miningpower;
+        angular.element("#quantity-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.btcProducts[key].btcMining+'<small>TH/s</small>');
+        return false;
+      }else{
+        $scope.btcProducts[key].btcMining = quantity*miningpower;
+        angular.element("#quantity-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.btcProducts[key].btcMining+'<small>TH/s</small>');
+      }
     }
 
-    $scope.calculateAmount = function(key, quantity, miningPower) {
-      $scope.btcProducts[key].btcMining = quantity*miningPower;
+    $scope.setEthQuantity = function(key, val) {
+      $scope.ethProducts[key].quantity = val;
     }
 
 
@@ -121,7 +129,7 @@ angular.module('coinomiaFrontendApp')
       $scope.orderParams = [];
       
       $scope.orderDetails.forEach(function(info) {
-        if(info.data.quantity !== undefined) {
+        if(info.data.quantity !== undefined && info.data.quantity !== null) {
           $scope.orderParams.push(info.data);
         }
       });
