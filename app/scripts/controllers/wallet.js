@@ -120,12 +120,15 @@ angular.module('coinomiaFrontendApp')
 
     // Transfer Fund
     $scope.transferFund = function(transferAmount, userId) {
+      $scope.loadingData = true;
       var transferData = {
         "userid":userId,
         "amount":transferAmount
       }
       coinomiaService.transferFund(transferData).then(function(res) {
         if(res.status === 200) {
+          $uibModalStack.dismissAll();
+          $scope.loadingData = false;
           var data = res.data;
           if(data.message !== '!balance not available') {
             $scope.transferSuccess = true;
