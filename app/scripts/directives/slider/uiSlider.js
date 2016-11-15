@@ -33,6 +33,7 @@ angular.module('coinomiaFrontendApp')
               var el = angular.element(event.target).find('a');
               if(attrs.product === 'btc') {
                 scope.btc.btcMining = ui.value;
+                scope.btc.quantity = scope.btc.btcMining/scope.btc.miningpower;
                 el.html(sliderLabel.replace('SLIDER_VALUE', scope.btc.btcMining));
               }
               else if (attrs.product === 'eth') {
@@ -52,7 +53,7 @@ angular.module('coinomiaFrontendApp')
             }
             
           },
-          change: function( event, ui ) {
+          change: function() {
             var btcPool = parseInt(angular.element("#btc-0").val());
             var btcMachine = parseInt(angular.element("#btc-1").val());
             var btcRack = parseInt(angular.element("#btc-2").val());
@@ -81,6 +82,10 @@ angular.module('coinomiaFrontendApp')
         if(attrs.product === 'btc') {
           scope.$watch('btc.btcMining', function(newVal) {
             $(elem).slider('value', newVal);
+          });
+          scope.$watch('btc.quantity', function(newVal) {
+            $(elem).slider('value', scope.btc.btcMining);
+            $(elem).trigger('change');
           });
         }
         else if(attrs.product === 'eth') {

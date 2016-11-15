@@ -591,9 +591,10 @@
                                 <div class="price-form">
                                    <div class="form-group">
                                       <div class="col-sm-12">
-                                         <input type="hidden" id="amount3" class="form-control">
-                                         <p class="price lead" id="amount-label3">{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}
-                                           {{btc.quantity}}</p>
+                                         <input type="hidden" id="amount3" class="form-control">{{btc.quantity}}                                         <input type="hidden" id="amount3" class="form-control">
+                                         <p class="price lead" id="amount-label3"><input type="number" ng-model="btc.quantity" ng-change="calculateAmount(key, btc.quantity, btc.miningpower)"/>
+                                           <!--{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}-->
+                                           {{btc.btcMining/btc.miningpower}}</p>
                                          Number Of Contracts<strong class="price pull-right lead">Amount : {{(btc.amount*btc.btcMining/btc.miningpower) | currency}}</strong>
                                       </div>
                                    </div>
