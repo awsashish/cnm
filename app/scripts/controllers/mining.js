@@ -172,6 +172,8 @@ angular.module('coinomiaFrontendApp')
             $scope.orderDetails = $scope.orderDetails;
           }
 
+          $scope.transactionDate = moment().format('YYYY-MM-DD');
+
           var modalInstance = $uibModal.open({
                 templateUrl: 'views/modal/purchase-invoice.html',
                 scope: $scope,

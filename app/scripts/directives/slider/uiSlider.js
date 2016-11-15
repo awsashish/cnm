@@ -8,6 +8,30 @@
  */
 angular.module('coinomiaFrontendApp')
   .directive('uiSlider', function ($filter) {
+    var totalAmount = function() {
+
+      var btcPool = parseInt(angular.element("#btc-0").val());
+      var btcMachine = parseInt(angular.element("#btc-1").val());
+      var btcRack = parseInt(angular.element("#btc-2").val());
+
+      // ETH Value
+      var ethPool = parseInt(angular.element("#eth-0").val());
+      var ethMachine = parseInt(angular.element("#eth-1").val());
+      var ethRack = parseInt(angular.element("#eth-2").val());
+
+      var btcTotal = btcPool + btcMachine + btcRack;
+      var ethTotal = ethPool + ethMachine + ethRack;
+      var total = btcTotal + ethTotal;
+      if(total){
+        var total = $filter('currency')(total);
+        
+        var totalAmount = '<strong>Total - '+total+'</strong>';
+        angular.element(".total-price").html(totalAmount);
+      }else{
+        var totalAmount = '<strong>Total - $0.00</strong>';
+        angular.element(".total-price").html(totalAmount);
+      }
+    }
     return {
       restrict: 'A',
       // scope: {
@@ -54,28 +78,7 @@ angular.module('coinomiaFrontendApp')
             
           },
           change: function() {
-            var btcPool = parseInt(angular.element("#btc-0").val());
-            var btcMachine = parseInt(angular.element("#btc-1").val());
-            var btcRack = parseInt(angular.element("#btc-2").val());
-
-            // ETH Value
-            var ethPool = parseInt(angular.element("#eth-0").val());
-            var ethMachine = parseInt(angular.element("#eth-1").val());
-            var ethRack = parseInt(angular.element("#eth-2").val());
-
-            scope.btcTotal = btcPool + btcMachine + btcRack;
-            scope.ethTotal = ethPool + ethMachine + ethRack;
-            scope.total = scope.btcTotal + scope.ethTotal;
-
-            if(scope.total){
-              var total = $filter('currency')(scope.total);
-              var totalAmount = '<strong>Total - '+total+'</strong>';
-              angular.element(".total-price").html(totalAmount);
-            }else{
-              var totalAmount = '<strong>Total - $0.00</strong>';
-              angular.element(".total-price").html(totalAmount);
-            }
-
+            totalAmount();
           }
         });
 
@@ -85,6 +88,9 @@ angular.module('coinomiaFrontendApp')
           });
           scope.$watch('btc.quantity', function(newVal) {
             $(elem).slider('value', scope.btc.btcMining);
+            setTimeout(function() {
+              totalAmount.call();
+            }, 500)            
           });
         }
         else if(attrs.product === 'eth') {

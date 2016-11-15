@@ -14,9 +14,16 @@
       Please Find the Details About Your New Purchase Below.<br>
       <hr>
       <strong>Mode of Purchase</strong>: <img ng-src="{{s3Url}}{{payment.mode=='BTC'?'bitcoin-logo':'coinomia-wallet'}}.png" width="100"><br><br>
+      <h4 class="add-funds-popup">You have to Pay <strong>{{purchase.value_in_btc}} BTC </strong> </h4><br>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <strong>Date :</strong> {{transactionDate}}<br><br>
+      </div>
       <p class="add-funds-popup" ng-if="payment.mode=='BTC'">Bitcoin Address : <strong>{{purchase.address}}</strong></p>
-      <br>
-      <p class="bit-address"><strong>Invoice Number</strong> : {{purchase.invoice_number}}</p>
+      <br><br />
+      <p class="bit-address" style="float:left;"><strong>Invoice Number</strong> : {{purchase.invoice_number}}</p>
+      <div class="qr_code">
+        <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=bitcoin:{{purchase.address}}?&amount={{purchase.value_in_btc}}" width="90">
+      </div>
       <table class="table table-bordered">
          <tbody>
             <tr>
@@ -35,8 +42,8 @@
       <div class="clearfix"></div>
       </div>
       <hr>
-      <p></p>
-      <br>
+      <small class="red-text02">Note : The invoice will be expired in Half an hour. Make sure you make the payment before expiry of the invoice!</small>
+      <br><br />
       <span><strong>Thank You,</strong><br>
       Team Coinomia<br>
       <img src="images/logo-coinomia.png" width="60"></span>
