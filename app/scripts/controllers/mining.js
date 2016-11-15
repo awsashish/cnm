@@ -158,28 +158,28 @@ angular.module('coinomiaFrontendApp')
         "OrderDetails" : $scope.orderParams
       } 
 
-      console.log(orderData);
+      // console.log(orderData);
       // Book Order 
-      // coinomiaService.bookOrder(orderData).then(function(res) {
-      //   $uibModalStack.dismissAll();
-      //   $scope.loadingData = false;
-      //   if(res.status === 200) {
-      //     var data = res.data;
-      //     if(data.message !== 'success') {
-      //       $scope.noBalance = true;
-      //     }else{
-      //       $scope.purchase = data;
-      //       $scope.orderDetails = $scope.orderDetails;
-      //     }
+      coinomiaService.bookOrder(orderData).then(function(res) {
+        $uibModalStack.dismissAll();
+        $scope.loadingData = false;
+        if(res.status === 200) {
+          var data = res.data;
+          if(data.message && data.message !== 'success') {
+            $scope.noBalance = true;
+          }else{
+            $scope.purchase = data;
+            $scope.orderDetails = $scope.orderDetails;
+          }
 
-      //     var modalInstance = $uibModal.open({
-      //           templateUrl: 'views/modal/purchase-invoice.html',
-      //           scope: $scope,
-      //           size: 'md',
-      //           backdrop: 'static'
-      //       });
-      //   }
-      // })
+          var modalInstance = $uibModal.open({
+                templateUrl: 'views/modal/purchase-invoice.html',
+                scope: $scope,
+                size: 'md',
+                backdrop: 'static'
+            });
+        }
+      })
     }
 
     // Get Purchase History
