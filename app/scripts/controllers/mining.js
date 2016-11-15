@@ -38,9 +38,11 @@ angular.module('coinomiaFrontendApp')
         productsData.forEach(function(products) {
           if(products.coin === 'BTC') {
             products.btcMining = 0;
+            products.quantity = 0;
             $scope.btcProducts.push(products);
           }else{
             products.ethMining = 0;
+            products.quantity = 0;
             $scope.ethProducts.push(products);
           }
           // $scope.total += products.amount;
@@ -75,6 +77,10 @@ angular.module('coinomiaFrontendApp')
 
     $scope.setEthQuantity = function(key, val) {
       $scope.ethProducts[key].quantity = val;
+    }
+
+    $scope.calculateAmount = function(key, quantity, miningPower) {
+      $scope.btcProducts[key].btcMining = quantity*miningPower;
     }
 
 
@@ -151,7 +157,7 @@ angular.module('coinomiaFrontendApp')
         $scope.loadingData = false;
         if(res.status === 200) {
           var data = res.data;
-          if(data.message !== 'success') {
+          if(data.message && data.message !== 'success') {
             $scope.noBalance = true;
           }else{
             $scope.purchase = data;
