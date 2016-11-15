@@ -216,7 +216,7 @@
                                               <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
                                            </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody>{{noEthRackRecords}}
                                            <tr ng-if="noEthRackRecords">
                                              <td>No Records Found</td>
                                           </tr>
@@ -287,7 +287,7 @@
                                               <td>{{btcPool.Date | date }}</td>
                                               <td>{{btcPool.ProductName}}</td>
                                               <td>{{btcPool.quantity}}</td>
-                                              <td>{{btcPool.miningpower}} MH/s</td>
+                                              <td>{{btcPool.miningpower}} TH/s</td>
                                               <td>{{btcPool.totaldays/30 | number:0}} Months</td>
                                            </tr>
                                         </tbody>
@@ -340,14 +340,14 @@
                                            </tr>
                                         </thead>
                                         <tbody>
-                                          <tr ng-if="noEthPoolRecords">
+                                          <tr ng-if="nobtcMachineRecords">
                                              <td>No Records Found</td>
                                           </tr>
-                                           <tr ng-repeat="ethPool in ethPoolDetails">
+                                           <tr ng-repeat="btcMachine in btcMachineDetails">
                                               <td>{{btcMachine.Date | date }}</td>
                                               <td>{{btcMachine.ProductName}}</td>
                                               <td>{{btcMachine.quantity}}</td>
-                                              <td>{{btcMachine.miningpower}} MH/s</td>
+                                              <td>{{btcMachine.miningpower}} TH/s</td>
                                               <td>{{btcMachine.totaldays/30 | number:0}} Months</td>
                                            </tr>
                                         </tbody>
@@ -407,7 +407,7 @@
                                               <td>{{btcRack.Date | date }}</td>
                                               <td>{{btcRack.ProductName}}</td>
                                               <td>{{btcRack.quantity}}</td>
-                                              <td>{{btcRack.miningpower}} MH/s</td>
+                                              <td>{{btcRack.miningpower}} TH/s</td>
                                               <td>{{btcRack.totaldays/30 | number:0}} Months</td>
                                            </tr>
                                         </tbody>
@@ -588,13 +588,14 @@
                                       <div ui-slider class="uiSlider" model="btc.btcMining" product="btc" min="{{btc.btcMining}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
                                    </div>
                                 </div>
-                                <div class="price-form">
+                                <div class="price-form" id="quantity-{{key}}">
                                    <div class="form-group">
                                       <div class="col-sm-12">
-                                         <input type="hidden" id="amount3" class="form-control">{{btc.quantity}}                                         <input type="hidden" id="amount3" class="form-control">
-                                         <p class="price lead" id="amount-label3"><input type="number" ng-model="btc.quantity" ng-change="calculateAmount(key, btc.quantity, btc.miningpower)"/>
+                                         <input type="hidden" id="amount3" class="form-control">                                        <input type="hidden" id="amount3" class="form-control">
+                                         
+                                         <p class="price lead" id="amount-label3"><input type="number" ng-model="btc.quantity" min="0" ng-change="calculateAmount(key, btc.quantity, btc.miningpower, productMaxUnit[$index])" style="width: 80px;"/>
                                            <!--{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}-->
-                                           {{btc.btcMining/btc.miningpower}}</p>
+                                           </p>
                                          Number Of Contracts<strong class="price pull-right lead">Amount : {{(btc.amount*btc.btcMining/btc.miningpower) | currency}}</strong>
                                       </div>
                                    </div>

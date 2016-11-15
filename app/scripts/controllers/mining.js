@@ -38,9 +38,11 @@ angular.module('coinomiaFrontendApp')
         productsData.forEach(function(products) {
           if(products.coin === 'BTC') {
             products.btcMining = 0;
+            products.quantity = 0;
             $scope.btcProducts.push(products);
           }else{
             products.ethMining = 0;
+            products.quantity = 0;
             $scope.ethProducts.push(products);
           }
           // $scope.total += products.amount;
@@ -71,6 +73,18 @@ angular.module('coinomiaFrontendApp')
 
     $scope.setBtcQuantity = function(key, val) {
       $scope.btcProducts[key].quantity = val;
+    }
+
+    $scope.calculateAmount = function(key, quantity, miningpower, maxUnit) {
+      if(quantity > maxUnit) {
+        $scope.btcProducts[key].quantity = maxUnit;
+        $scope.btcProducts[key].btcMining = maxUnit*miningpower;
+        angular.element("#quantity-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.btcProducts[key].btcMining+'<small>TH/s</small>');
+        return false;
+      }else{
+        $scope.btcProducts[key].btcMining = quantity*miningpower;
+        angular.element("#quantity-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.btcProducts[key].btcMining+'<small>TH/s</small>');
+      }
     }
 
     $scope.setEthQuantity = function(key, val) {
@@ -115,7 +129,7 @@ angular.module('coinomiaFrontendApp')
       $scope.orderParams = [];
       
       $scope.orderDetails.forEach(function(info) {
-        if(info.data.quantity !== undefined) {
+        if(info.data.quantity !== undefined && info.data.quantity !== null) {
           $scope.orderParams.push(info.data);
         }
       });
@@ -144,28 +158,28 @@ angular.module('coinomiaFrontendApp')
         "OrderDetails" : $scope.orderParams
       } 
 
-      // console.log(orderData);
+      console.log(orderData);
       // Book Order 
-      coinomiaService.bookOrder(orderData).then(function(res) {
-        $uibModalStack.dismissAll();
-        $scope.loadingData = false;
-        if(res.status === 200) {
-          var data = res.data;
-          if(data.message !== 'success') {
-            $scope.noBalance = true;
-          }else{
-            $scope.purchase = data;
-            $scope.orderDetails = $scope.orderDetails;
-          }
+      // coinomiaService.bookOrder(orderData).then(function(res) {
+      //   $uibModalStack.dismissAll();
+      //   $scope.loadingData = false;
+      //   if(res.status === 200) {
+      //     var data = res.data;
+      //     if(data.message !== 'success') {
+      //       $scope.noBalance = true;
+      //     }else{
+      //       $scope.purchase = data;
+      //       $scope.orderDetails = $scope.orderDetails;
+      //     }
 
-          var modalInstance = $uibModal.open({
-                templateUrl: 'views/modal/purchase-invoice.html',
-                scope: $scope,
-                size: 'md',
-                backdrop: 'static'
-            });
-        }
-      })
+      //     var modalInstance = $uibModal.open({
+      //           templateUrl: 'views/modal/purchase-invoice.html',
+      //           scope: $scope,
+      //           size: 'md',
+      //           backdrop: 'static'
+      //       });
+      //   }
+      // })
     }
 
     // Get Purchase History

@@ -85,7 +85,6 @@ angular.module('coinomiaFrontendApp')
           });
           scope.$watch('btc.quantity', function(newVal) {
             $(elem).slider('value', scope.btc.btcMining);
-            $(elem).trigger('change');
           });
         }
         else if(attrs.product === 'eth') {
