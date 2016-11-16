@@ -147,6 +147,10 @@ angular.module('coinomiaFrontendApp')
 
     }
 
+    $scope.printInvoice = function() {
+      $window.print();
+    }
+
     $scope.purchaseTotal = 0;
 
     $scope.bookOrder = function(payment) {
