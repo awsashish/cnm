@@ -1,7 +1,7 @@
 <div class="modal-content">
    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="closeModal()"><span aria-hidden="true">×</span></button>
-      <h4 align="left" class="modal-title" id="myModalLabel">Purchase Invoice</h4>
+      <button type="button" class="close no-print" data-dismiss="modal" aria-label="Close" ng-click="closeModal()"><span aria-hidden="true">×</span></button>
+      <h4 align="left" class="modal-title no-print" id="myModalLabel">Purchase Invoice</h4>
    </div>
    
    <div align="left" class="modal-body text-capitalize" style="font-size:16px;">
@@ -48,7 +48,8 @@
       Team Coinomia<br>
       <img src="images/logo-coinomia.png" width="60"></span>
    </div>
-   <div class="modal-footer">
+   <div class="modal-footer no-print">
+     <button type="button" class="btn btn-info" ng-click="printInvoice()"><i class="fa fa-print"></i> Print</button>
       <button type="button" class="btn btn-default" ng-click="closeModal()">Purchase</button>
    </div>
 </div>

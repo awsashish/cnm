@@ -157,7 +157,14 @@ angular.module('coinomiaFrontendApp')
         .then(function(res) {
           if(res.status === 200) {
             $scope.responseError = false;
+            var treeData = res.data;
             $scope.downline  = res.data;
+            for(var i in treeData) {
+              if(treeData[i].ItemName !== undefined && treeData[i].ItemName.indexOf(' ') >= 0) {
+                    var itemName = treeData[i].ItemName.split(' ');
+                    $scope.downline[i].ItemName = itemName[0];
+              }
+            }
             $scope.tableInfo = res.data["0"];
             $scope.loadingData = false;
           }else{
