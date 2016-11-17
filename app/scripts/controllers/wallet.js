@@ -147,4 +147,45 @@ angular.module('coinomiaFrontendApp')
         }
       });
     }
+
+    // Withdrawal And Conversion
+    $scope.walletActivity = function (amount, wallet, activity) {
+      var data = JSON.stringify(amount);
+      $scope.conversion = false;
+      
+      // Withdrawal Amount
+      if(wallet.toLowerCase() === 'bitcoin' && activity === 'withdrawal') {
+        var type = 'btc';
+      }else if(wallet.toLowerCase() === 'bitcoin' && activity === 'withdrawal') {
+        console.log(amount, wallet, activity);
+      }else{
+        $scope.conversion = true;
+      }
+
+
+      // Convert Amount
+      if($scope.conversion) {
+        if(wallet.toLowerCase() === 'bitcoin') {
+          var type = 'btc';
+          var data = JSON.stringify(amount);     
+        }else if(wallet.toLowerCase() === 'ether') {
+          var type = 'eth';
+          var data = JSON.stringify(amount);
+        }else if(wallet.toLowerCase() === 'usd') {
+          var type = 'usd';
+          var data = JSON.stringify(amount); 
+        }
+
+        // Convert Amount to USD 
+        coinomiaService.convertUSD(data, type).then(function(res) {
+          console.log(res);
+        });
+      }else{
+
+        // Withdrawal Amount
+        coinomiaService.withdrawalAmount(data, type).then(function(res) {
+          console.log(res);
+        });
+      }
+    }
   });

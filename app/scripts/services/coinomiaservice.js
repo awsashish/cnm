@@ -9,7 +9,7 @@
  */
 angular.module('coinomiaFrontendApp')
   .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage, $location, config) {
-    console.log($location.host());
+    
     var pageLimit = config.pageLimit;
 
     // API URL
@@ -1078,5 +1078,41 @@ angular.module('coinomiaFrontendApp')
       return $http.post(this.apiHost +'user/fund-transfer', transferData)
         .then(transferFundRequestComplete)
         .catch(transferFundRequestFailed);
+    }
+
+    // Withdrawal Amount
+    this.withdrawalAmount = function(data, type) {
+      // On Success
+      function withdrawalAmountRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function withdrawalAmountRequestFailed(error) {
+        $log.error('XHR Failed for Withdrawal Amount.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/withdrawal-'+type, data)
+        .then(withdrawalAmountRequestComplete)
+        .catch(withdrawalAmountRequestFailed);
+    }
+
+    // Convert Amount to USD
+    this.convertUSD = function(data, type) {
+      // On Success
+      function convertUSDRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function convertUSDRequestFailed(error) {
+        $log.error('XHR Failed for Convert Amount.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/convert-'+type, data)
+        .then(convertUSDRequestComplete)
+        .catch(convertUSDRequestFailed);
     }
   });
