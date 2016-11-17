@@ -1,14 +1,16 @@
 <div class="modal-content">
    <div class="modal-header">
       <button type="button" class="close no-print" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      <h4 class="modal-title no-print" id="myModalLabel"><img src="images/usd-wallet.png" width="35" class="pull-left img-responsive "><strong>&nbsp; Purchase Contract</strong></h4>
+      <h4 class="modal-title no-print" id="myModalLabel"><img ng-src="images/usd-wallet.png" width="35" class="pull-left img-responsive "><strong>&nbsp; Purchase Contract</strong></h4>
    </div>
    <div id="loadingDiv" ng-if="loadingData"></div>
    <div class="modal-body">
-     <div align="center" class="col-md-12  col-sm-12 mar10">  <img src="images/icon-payment.png" width="200" class="img-responsive">
+     <div align="center" class="col-md-12  col-sm-12 mar10">
+       <img ng-src="{{s3Url}}error_01.png" class="img-responsive">
+       <!--<img src="images/icon-payment.png" width="200" class="img-responsive">-->
      </div>
      <div class="clearfix"></div>
-     <form>
+     <!--<form>
         <h4 align="center">
            <hr>
            <strong>Please choose your payment
@@ -26,5 +28,5 @@
    </div>
    <div class="modal-footer no-print">
       <button type="button" class="btn btn-primary" ng-click="bookOrder(payment)"> Purchase</button>
-   </div>
+   </div>-->
 </div>
