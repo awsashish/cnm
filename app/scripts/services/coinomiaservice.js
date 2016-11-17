@@ -9,9 +9,9 @@
  */
 angular.module('coinomiaFrontendApp')
   .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage, $location, config) {
-    
-    var pageLimit = config.pageLimit;
 
+    var pageLimit = config.pageLimit;
+    
     // API URL
     if($location.host() === 'login.coinomia.com') {
       this.apiHost = 'https://api.coinomia.com/';
