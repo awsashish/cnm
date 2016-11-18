@@ -510,7 +510,7 @@
                               </tr>
                                <tr ng-repeat="payout in payoutDetails">
                                   <td>{{payout.Date}}</td>
-                                  <td>{{payout.USD | currency}}</td>
+                                  <td><img width="20" ng-src="https://s3-us-west-2.amazonaws.com/coinomia/images/bitcoin.png" src="https://s3-us-west-2.amazonaws.com/coinomia/images/bitcoin.png"> {{payout.USD | number:8}}</td>
                                   <td>{{payout.Wallet}}</td>
                                   <td>{{payout.Description}}</td>
                                </tr>
