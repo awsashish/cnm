@@ -11,13 +11,13 @@ angular.module('coinomiaFrontendApp')
   .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage, $location, config) {
 
     var pageLimit = config.pageLimit;
-    
+    this.apiHost = 'https://api.coinomia.com/';
     // API URL
-    if($location.host() === 'login.coinomia.com') {
-      this.apiHost = 'https://api.coinomia.com/';
-    }else{
-      this.apiHost = 'https://testcoinomiaapi.azurewebsites.net/';
-    }
+    // if($location.host() === 'login.coinomia.com') {
+    //   this.apiHost = 'https://api.coinomia.com/';
+    // }else{
+    //   this.apiHost = 'https://testcoinomiaapi.azurewebsites.net/';
+    // }
 
     this.requestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
