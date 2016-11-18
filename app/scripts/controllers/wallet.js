@@ -164,7 +164,7 @@ angular.module('coinomiaFrontendApp')
           var type = 'usd';
         }
 
-        // Withdrawal Amount
+        // Withdrawal Amount 
         coinomiaService.withdrawalAmount(data, type).then(function(res) {
           if(res.status === 200) {
             $scope.loadingData = false;
