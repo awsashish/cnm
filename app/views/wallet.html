@@ -70,7 +70,7 @@
                   <strong>&nbsp;{{walletName}} Wallet</strong>
                 </h4>
 
-                <h4 class="modal-title" id="myModalLabel" ng-if="responseSuccess">
+                <h4 class="modal-title" id="myModalLabel" ng-if="responseSuccess && !convertSuccess && !convertError">
                   <img ng-src="{{s3Url}}{{imageName | lowercase}}-wallet.png" width="35" class="pull-left img-responsive " /> 
                   <strong>&nbsp;Withdrawal</strong>
                 </h4>
@@ -85,7 +85,7 @@
                <h4 ng-if="convertSuccess"><strong>Congratulations !!!</strong> You have Successfully Withdraw  </h4>
 
                 <!-- Withdrawal Error-->
-               <h4 ng-if="withdrawalError">{{errorMessage}}</h4>
+               <h4 ng-if="withdrawalError || convertError">{{errorMessage}}</h4>
                <br />
                <div class="ajax_loader" ng-if="loadingData"></div>
                 <form name="withdrawal" class="form-inline" ng-submit="walletActivity(walletAmount, walletName, walletType)" ng-if="!convertSuccess && ! withdrawalSuccess && !withdrawalError && !convertError" novalidate>
