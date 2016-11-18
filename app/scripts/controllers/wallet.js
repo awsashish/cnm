@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('WalletCtrl', function ($scope, $uibModal, $uibModalStack, $window, coinomiaService, config) {
+  .controller('WalletCtrl', function ($scope, $rootScope, $uibModal, $uibModalStack, $window, coinomiaService, config) {
 
     $scope.walletHeading = config.wallet;
     $scope.currentPage = config.currentPage;
@@ -146,5 +146,65 @@ angular.module('coinomiaFrontendApp')
           });
         }
       });
+    }
+
+    // Withdrawal And Conversion
+    $scope.walletActivity = function (amount, wallet, activity) {
+
+      $scope.loadingData = true;
+      var data = JSON.stringify(amount);
+      $scope.conversion = false;
+
+
+      if(activity === 'withdrawal') {
+        // Withdrawal Amount
+        if(wallet.toLowerCase() === 'bitcoin') {
+          var type = 'btc';
+        }else if(wallet.toLowerCase() === 'usd') {
+          var type = 'usd';
+        }
+
+        // Withdrawal Amount 
+        coinomiaService.withdrawalAmount(data, type).then(function(res) {
+          if(res.status === 200) {
+            $scope.loadingData = false;
+            $rootScope.responseSuccess = true;
+            var data = res.data;
+            if(data === '#Successfully Request Added') {
+              $rootScope.withdrawalSuccess = true; 
+            }else{
+              $rootScope.withdrawalError = true;
+              $scope.errorMessage = data.message;
+            }
+          }
+        });
+      }else {
+        // Convert Amount
+        if(wallet.toLowerCase() === 'bitcoin') {
+          var type = 'btc';
+          var data = JSON.stringify(amount);     
+        }else if(wallet.toLowerCase() === 'ether') {
+          var type = 'eth';
+          var data = JSON.stringify(amount);
+        }else if(wallet.toLowerCase() === 'usd') {
+          var type = 'usd';
+          var data = JSON.stringify(amount); 
+        }
+
+        // Convert Amount to USD 
+        coinomiaService.convertUSD(data, type).then(function(res) {
+          if(res.status === 200) {
+            $scope.loadingData = false;
+            $scope.responseSuccess = true;
+            var data = res.data;
+            if(data === '#Successfully Request Added') {
+              $rootScope.convertSuccess = true; 
+            }else{
+              $rootScope.convertError = true;
+              $scope.errorMessage = data.message;
+            }
+          }
+        });
+      }
     }
   });

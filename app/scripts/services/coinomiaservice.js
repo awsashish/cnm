@@ -9,9 +9,10 @@
  */
 angular.module('coinomiaFrontendApp')
   .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage, $location, config) {
+
     var pageLimit = config.pageLimit;
     this.apiHost = 'https://api.coinomia.com/';
-    // // API URL
+
     // if($location.host() === 'login.coinomia.com') {
     //   this.apiHost = 'https://api.coinomia.com/';
     // }else{
@@ -1043,24 +1044,6 @@ angular.module('coinomiaFrontendApp')
         .catch(orderHistoryRequestFailed);
     }
 
-    // Order History
-    this.orderHistory = function(type, product, currentPage) {
-       // On Success
-      function orderHistoryRequestComplete(response) {
-        return response;
-      }
-
-      // On Failed
-      function orderHistoryRequestFailed(error) {
-        $log.error('XHR Failed for Order History.\n' + angular.toJson(error.data, true));
-        return error;
-      }
-
-      return $http.get(this.apiHost +'user/order-history/'+type+'/'+currentPage+'/'+pageLimit+'?package='+product)
-        .then(orderHistoryRequestComplete)
-        .catch(orderHistoryRequestFailed);
-    }
-
     // Transfer Fund
     this.transferFund = function(transferData) {
       // On Success
@@ -1079,6 +1062,42 @@ angular.module('coinomiaFrontendApp')
         .catch(transferFundRequestFailed);
     }
 
+    // Withdrawal Amount
+    this.withdrawalAmount = function(data, type) {
+      // On Success
+      function withdrawalAmountRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function withdrawalAmountRequestFailed(error) {
+        $log.error('XHR Failed for Withdrawal Amount.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/withdrawal-'+type, data)
+        .then(withdrawalAmountRequestComplete)
+        .catch(withdrawalAmountRequestFailed);
+    }
+
+    // Convert Amount to USD
+    this.convertUSD = function(data, type) {
+      // On Success
+      function convertUSDRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function convertUSDRequestFailed(error) {
+        $log.error('XHR Failed for Convert Amount.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/convert-'+type, data)
+        .then(convertUSDRequestComplete)
+        .catch(convertUSDRequestFailed);
+    }
+
     // Get Mining Payouts
     this.getPayouts = function(currentPage) {
        // On Success
@@ -1088,7 +1107,7 @@ angular.module('coinomiaFrontendApp')
 
       // On Failed
       function getPayoutsRequestFailed(error) {
-        $log.error('XHR Failed for Mining Payouts.\n' + angular.toJson(error.data, true));
+        $log.error('XHR Failed for Mining Payout.\n' + angular.toJson(error.data, true));
         return error;
       }
 
@@ -1096,4 +1115,5 @@ angular.module('coinomiaFrontendApp')
         .then(getPayoutsRequestComplete)
         .catch(getPayoutsRequestFailed);
     }
+
   });
