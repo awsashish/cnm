@@ -46,7 +46,7 @@
                <td align="center" valign="middle" colspan="2" ng-if="info.Wallet !== 'USD'">
                  <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(walletHeading[info.Wallet], 'withdrawal', info.Wallet)" ng-disabled="info.Wallet==='ETH'"><strong><img ng-src="images/withdraw.png" width="30"> Withdraw</strong></a>
 
-                 <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ng-click="getWallet(walletHeading[info.Wallet], 'convertUSD', info.Wallet)" {{info.Wallet==='Ether'?'disabled':''}} ng-disabled="info.Wallet==='ETH'"><strong><img ng-src="{{s3Url}}dollar.png" width="30"> Convert to USD</strong></a>
+                 <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ng-click="getWallet(walletHeading[info.Wallet], 'convertUSD', info.Wallet)" ng-disabled="info.Wallet==='ETH'"><strong><img ng-src="{{s3Url}}dollar.png" width="30"> Convert to USD</strong></a>
                </td>
             </tr>
             <tr ng-if="type && info.Wallet === 'USD'">
