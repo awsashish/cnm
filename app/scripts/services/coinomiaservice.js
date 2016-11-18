@@ -12,7 +12,7 @@ angular.module('coinomiaFrontendApp')
 
     var pageLimit = config.pageLimit;
     this.apiHost = 'https://api.coinomia.com/';
-    // API URL
+
     // if($location.host() === 'login.coinomia.com') {
     //   this.apiHost = 'https://api.coinomia.com/';
     // }else{
@@ -1044,24 +1044,6 @@ angular.module('coinomiaFrontendApp')
         .catch(orderHistoryRequestFailed);
     }
 
-    // Order History
-    this.orderHistory = function(type, product, currentPage) {
-       // On Success
-      function orderHistoryRequestComplete(response) {
-        return response;
-      }
-
-      // On Failed
-      function orderHistoryRequestFailed(error) {
-        $log.error('XHR Failed for Order History.\n' + angular.toJson(error.data, true));
-        return error;
-      }
-
-      return $http.get(this.apiHost +'user/order-history/'+type+'/'+currentPage+'/'+pageLimit+'?package='+product)
-        .then(orderHistoryRequestComplete)
-        .catch(orderHistoryRequestFailed);
-    }
-
     // Transfer Fund
     this.transferFund = function(transferData) {
       // On Success
@@ -1115,4 +1097,23 @@ angular.module('coinomiaFrontendApp')
         .then(convertUSDRequestComplete)
         .catch(convertUSDRequestFailed);
     }
+
+    // Get Mining Payouts
+    this.getPayouts = function(currentPage) {
+       // On Success
+      function getPayoutsRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getPayoutsRequestFailed(error) {
+        $log.error('XHR Failed for Mining Payout.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/mining-payout/'+currentPage+'/'+pageLimit)
+        .then(getPayoutsRequestComplete)
+        .catch(getPayoutsRequestFailed);
+    }
+
   });

@@ -12,6 +12,7 @@ angular.module('coinomiaFrontendApp')
 
     $scope.walletHeading = config.wallet;
     $scope.currentPage = config.currentPage;
+    $scope.payoutCurrentPage = config.currentPage;
     $scope.ethPoolCurrentPage = config.currentPage;
     $scope.ethMachineCurrentPage = config.currentPage;
     $scope.ethRackCurrentPage = config.currentPage;
@@ -67,6 +68,21 @@ angular.module('coinomiaFrontendApp')
         .then(function(res){
           if(res === 200) {
             $scope.transactionDetails = res.data;
+          }
+        })
+    }
+
+    // Get Mining Payouts
+    $scope.miningPayouts = function(payoutCurrentPage) {
+      coinomiaService.getPayouts(payoutCurrentPage)
+        .then(function(res){
+          if(res.status === 200) {
+            var data = res.data;
+            $scope.payoutDetails = data.rows;
+            $scope.payoutTotal = data.total;
+            if($scope.payoutTotal === 0) {
+              $scope.noPayout = true;
+            }
           }
         })
     }
