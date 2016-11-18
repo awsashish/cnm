@@ -44,6 +44,7 @@ angular.module('coinomiaFrontendApp')
           $rootScope.withdrawalError = false;
           $rootScope.convertSuccess = false;
           $rootScope.responseSuccess = false;
+          $rootScope.convertError = false;
 
           $rootScope.walletAmount = '';
 
