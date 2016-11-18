@@ -40,6 +40,13 @@ angular.module('coinomiaFrontendApp')
         }
 
         $scope.getWallet = function(wallet, type, imageName) {
+          $rootScope.withdrawalSuccess = false;
+          $rootScope.withdrawalError = false;
+          $rootScope.convertSuccess = false;
+          $rootScope.responseSuccess = false;
+
+          $rootScope.walletAmount = '';
+
           $rootScope.withdrawalHeading = false;
           $rootScope.convertUSDHeading = false;
           $rootScope.btcImage = false;
@@ -51,11 +58,14 @@ angular.module('coinomiaFrontendApp')
          
           $rootScope.imageName = imageName;
           if(type === 'withdrawal') {
+            $rootScope.walletType = type;
             $rootScope.withdrawalHeading = true;
           }else if(type === 'convertUSD'){
+            $rootScope.walletType = type;
             $rootScope.convertUSDHeading = true;
             $rootScope.convertUSDName = 'Convert USD';
           }else{
+            $rootScope.walletType = type; 
             $rootScope.btcImage = true;
             $rootScope.convertUSDHeading = true;
             $rootScope.convertUSDName = 'Convert To BTC';
