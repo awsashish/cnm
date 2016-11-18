@@ -65,23 +65,39 @@
           <div class="modal-content">
              <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel" ng-if="withdrawalHeading">
+                <h4 class="modal-title" id="myModalLabel" ng-if="withdrawalHeading && !responseSuccess">
                   <img ng-src="{{s3Url}}{{imageName | lowercase}}-wallet.png" width="35" class="pull-left img-responsive " /> 
-                  <strong>&nbsp;{{walletName}} Wallet</strong></h4>
+                  <strong>&nbsp;{{walletName}} Wallet</strong>
+                </h4>
+
+                <h4 class="modal-title" id="myModalLabel" ng-if="responseSuccess">
+                  <img ng-src="{{s3Url}}{{imageName | lowercase}}-wallet.png" width="35" class="pull-left img-responsive " /> 
+                  <strong>&nbsp;Withdrawal</strong>
+                </h4>
 
                 <h4 class="modal-title" id="myModalLabel" ng-if="convertUSDHeading">
                   <img ng-src="{{s3Url}}{{btcImage?'btc':'dollar'}}.png" width="35" class="pull-left img-responsive "> 
                   <strong>&nbsp;{{convertUSDName}} ({{walletName}} Wallet)</strong>
                 </h4>
              </div>
-             <div class="modal-body">
-                <form class="form-inline" ng-submit="walletActivity(walletAmount, walletName, walletType)">
+             <div class="modal-body" >
+               <h4 ng-if="withdrawalSuccess"><strong>Congratulations !!!</strong> You have Successfully Withdraw  </h4>
+               <h4 ng-if="convertSuccess"><strong>Congratulations !!!</strong> You have Successfully Withdraw  </h4>
+
+                <!-- Withdrawal Error-->
+               <h4 ng-if="withdrawalError">{{errorMessage}}</h4>
+               <br />
+               <div class="ajax_loader" ng-if="loadingData"></div>
+                <form name="withdrawal" class="form-inline" ng-submit="walletActivity(walletAmount, walletName, walletType)" ng-if="!convertSuccess && ! withdrawalSuccess && !withdrawalError && !convertError" novalidate>
                    <div class="form-group">
                       <label>
                         <strong>No Of {{walletName}} you want to {{withdrawalHeading?'Withdraw':'Convert'}}</strong>
                       </label>
-                      <input type="number" name="walletAmount" min="0" ng-model="walletAmount" class="form-control" style="width:80%;"/> 
-                      <button type="submit" style="padding:10px;top: -4px;position: relative;" class="btn btn-default">OK</button>
+                      <input type="number" name="walletAmount" min="0" ng-model="walletAmount" class="form-control" style="width:80%;" required />
+                      <button type="submit" style="padding:10px;top: -4px;position: relative;" class="btn btn-default" ng-disabled="withdrawal.$invalid">OK</button>
+                      <div class="alert alert-danger fade in error-padding"
+                        ng-show="withdrawal.walletAmount.$touched && withdrawal.walletAmount.$invalid" style="width:80%;">
+                        Please enter any amount</div>
                    </div>
                 </form>
              </div>
