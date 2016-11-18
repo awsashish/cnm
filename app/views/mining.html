@@ -30,7 +30,7 @@
                          <i class="fa fa-circle-o icon-lg" aria-hidden="true"></i><br />
                          <strong>Live Contracts</strong> </a>
                       </li>-->
-                      <li>
+                      <li ng-click="miningPayouts(payoutCurrentPage)">
                          <a href=".tab_default_6" data-toggle="tab">
                          <i class="fa fa-newspaper-o icon-lg" aria-hidden="true"></i><br />
                          <strong>Mining Payouts</strong> </a>
@@ -489,12 +489,7 @@
                          <br />
                       </div>
                    </div>
-                   <div class="tab-pane tab_default_6">
-                      <br />
-                      <p> Coming soon ... </p>
-                      <br />
-                  </div>
-                   <div class="tab-pane tab_default_61" >
+                   <div class="tab-pane tab_default_6" >
                       <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-newspaper-o icon-lg-red border-round-red" style="padding-top:5px; padding-left:3px" aria-hidden="true"></i> <strong>Mining Payouts</strong></h2>
                       <hr />
                       <div class="table-responsive">
@@ -510,25 +505,20 @@
                                </tr>
                             </thead>
                             <tbody>
-                               <tr>
-                                  <td>12/08/2016</td>
-                                  <td>$2300</td>
-                                  <td>$800</td>
-                                  <td>Commission Received by Direct Referral ID = COIN0239809</td>
+                              <tr ng-if="noPayout">
+                                <td>No data found</td>
+                              </tr>
+                               <tr ng-repeat="payout in payoutDetails">
+                                  <td>{{payout.Date}}</td>
+                                  <td><img width="20" ng-src="https://s3-us-west-2.amazonaws.com/coinomia/images/bitcoin.png" src="https://s3-us-west-2.amazonaws.com/coinomia/images/bitcoin.png"> {{payout.USD | number:8}}</td>
+                                  <td>{{payout.Wallet}}</td>
+                                  <td>{{payout.Description}}</td>
                                </tr>
                             </tbody>
                          </table>
-                         <div class="pull-right">
-                            <ul class="pagination pagination-metro nomargin mt10">
-                               <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                               <li><a href="#">1</a></li>
-                               <li class="active"><a href="#">2</a></li>
-                               <li><a href="#">3</a></li>
-                               <li><a href="#">4</a></li>
-                               <li><a href="#">5</a></li>
-                               <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                            </ul>
-                         </div>
+                         <div class="pagination-default" ng-if="payoutTotal > 0">
+                            <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="payoutTotal" ng-model="payoutCurrentPage" max-size="5" ng-change="miningPayouts(payoutCurrentPage)"></ul>
+                          </div>
                          <br />
                          <br />
                       </div>
