@@ -60,6 +60,10 @@ module.exports = function(config) {
       'bower_components/angular-messages/angular-messages.js',
       'bower_components/angular-material/angular-material.js',
       'bower_components/angular-material-data-table/dist/md-data-table.js',
+      'bower_components/js-xlsx/dist/xlsx.js',
+      'bower_components/file-saver-saveas-js/FileSaver.js',
+      'bower_components/angular-xlsx/angular-xlsx.js',
+      'bower_components/jszip/dist/jszip.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

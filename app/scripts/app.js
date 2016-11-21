@@ -28,7 +28,8 @@ angular
     'textAngular',
     'angular.filter',
     'ngMaterial', 
-    'md.data.table'
+    'md.data.table',
+    'ngXlsx'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
