@@ -118,6 +118,30 @@ angular.module('coinomiaFrontendApp')
       }
     }
 
+     // Calculate Withdrawal Fees
+    $scope.calcFees = function(requestAmount, balance, fees) {
+      if(balance >= requestAmount) {
+        $scope.requestAmount = requestAmount;
+        
+        if(balance > 1) {
+          $scope.percentAmount = 1*requestAmount/100;
+          $scope.withdrawalAmount = requestAmount - $scope.percentAmount;
+          $scope.fees = fees+'%';
+        }else{
+          $scope.withdrawalAmount = requestAmount - fees;
+          $scope.fees = fees;
+        }
+        
+        if($scope.withdrawalAmount < 0) {
+          $rootScope.withdrawalAmountError = true;
+        }else{
+          $rootScope.withdrawalInfo = true;
+        }
+      }else {
+        $rootScope.withdrawalAmountError = true;
+      }
+    }
+
     // Transfer Fund
     $scope.transferFund = function(transferAmount, userId) {
       $scope.loadingData = true;
@@ -148,9 +172,18 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
+
+    $scope.verifyAndSubmit = function(activity, requestAmount, type) {
+      if(activity.toLowerCase() === 'withdrawal' && type === 'BTC') {
+        $scope.calcFees(requestAmount, $rootScope.balance, $rootScope.networkFees);
+      }else{
+        $scope.walletActivity(requestAmount, $rootScope.walletName, activity);
+      }
+    }
+
     // Withdrawal And Conversion
     $scope.walletActivity = function (amount, wallet, activity) {
-
+      // console.log(amount, wallet, activity);
       $scope.loadingData = true;
       var data = JSON.stringify(amount);
       $scope.conversion = false;
@@ -158,7 +191,7 @@ angular.module('coinomiaFrontendApp')
 
       if(activity === 'withdrawal') {
         // Withdrawal Amount
-        if(wallet.toLowerCase() === 'bitcoin') {
+        if(wallet.toLowerCase() === 'btc') {
           var type = 'btc';
         }else if(wallet.toLowerCase() === 'usd') {
           var type = 'usd';
@@ -170,7 +203,7 @@ angular.module('coinomiaFrontendApp')
             $scope.loadingData = false;
             $rootScope.responseSuccess = true;
             var data = res.data;
-            if(data === '#Successfully Request Added') {
+            if(data.message === '#Successfully Request Added') {
               $rootScope.withdrawalSuccess = true; 
             }else{
               $rootScope.withdrawalError = true;
@@ -180,12 +213,9 @@ angular.module('coinomiaFrontendApp')
         });
       }else {
         // Convert Amount
-        if(wallet.toLowerCase() === 'bitcoin') {
+        if(wallet.toLowerCase() === 'btc') {
           var type = 'btc';
           var data = JSON.stringify(amount);     
-        }else if(wallet.toLowerCase() === 'ether') {
-          var type = 'eth';
-          var data = JSON.stringify(amount);
         }else if(wallet.toLowerCase() === 'usd') {
           var type = 'usd';
           var data = JSON.stringify(amount); 
@@ -197,7 +227,7 @@ angular.module('coinomiaFrontendApp')
             $scope.loadingData = false;
             $scope.responseSuccess = true;
             var data = res.data;
-            if(data === '#Successfully Request Added') {
+            if(data.message === '#Successfully Request Added') {
               $rootScope.convertSuccess = true; 
             }else{
               $rootScope.convertError = true;
