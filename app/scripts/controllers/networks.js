@@ -438,7 +438,7 @@ angular.module('coinomiaFrontendApp')
           $scope.transactionDate = moment().format('YYYY-MM-DD');
           if(data.Message) {
             $scope.accountStatus = true;
-          }else if(data.message !== 'success') {
+          }else if(data.message && data.message !== 'success') {
             $scope.noBalance = true;
           }
           
