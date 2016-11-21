@@ -127,6 +127,31 @@ a:focus {
   top: -10px;
 }
 
+.overlay-text {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.2);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.overlay-wrapper {
+    position:relative;
+}
+
+.overlay-text p {
+    position: absolute;
+    left: 50%;
+    margin-left: -70px;
+    top: 50%;
+    margin-top: -20px;
+    font-size: 25px;
+    color: #fff;
+    font-weight: bold;
+    font-family: Oswald,sans-serif;
+}
+
 .modal-body::after {
     content: url(https://s3-us-west-2.amazonaws.com/coinomia/images/watermark.png);
     opacity: 0.4;

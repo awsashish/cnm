@@ -59,9 +59,10 @@ angular.module('coinomiaFrontendApp')
             // });
             // $scope.getExcelData($scope.arrayList);
             // $scope.getFlags(0, $scope.teamDirectsData, $scope.teamDirectsData.length);
-            if(currentPage === 1 && !$scope.arrayList) {
-              $scope.getAllUser('all', $scope.pagination.totalDirects);
-            }
+          }
+          
+          if(currentPage === 1 && !$scope.arrayList && $scope.pagination.totalDirects > 0) {
+            $scope.getAllUser('all', $scope.pagination.totalDirects);
           }
       });
     }
@@ -106,7 +107,7 @@ angular.module('coinomiaFrontendApp')
 
       var result = ngXlsx.writeXlsx([
       {
-        sheetName: "testSheet",
+        sheetName: "userSheet",
         columnDefs: config.teamColumnHead,
         data: excelData
       }
@@ -455,7 +456,7 @@ angular.module('coinomiaFrontendApp')
           $scope.transactionDate = moment().format('YYYY-MM-DD');
           if(data.Message) {
             $scope.accountStatus = true;
-          }else if(data.message !== 'success') {
+          }else if(data.message && data.message !== 'success') {
             $scope.noBalance = true;
           }
           
