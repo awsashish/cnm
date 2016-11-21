@@ -84,16 +84,16 @@ angular.module('coinomiaFrontendApp')
     'signUpPath':'http://login.coinomia.com/#/signup',
     's3BucketUrl':'https://s3-us-west-2.amazonaws.com/coinomia/images/',
     'teamColumnHead': [
-      'Name of the User',
-      'Email',
-      'Sponsor Name',
-      'Username',
-      'Contact Number',
-      'Country',
-      'Contract Purchased',
-      'Total Purchased Value',
-      'Joined At',
-      'Team Members'
+      {field:'colA', displayName:'Name of the User'},
+      {field:'colB', displayName:'Email'},
+      {field:'colC', displayName:'Sponsor Name'},
+      {field:'colD', displayName:'Username'},
+      {field:'colE', displayName:'Contact Number'},
+      {field:'colF', displayName:'Country'},
+      {field:'colG', displayName:'Contract Purchased'},
+      {field:'colH', displayName:'Total Purchased Value'},
+      {field:'colI', displayName:'Joined At'},
+      {field:'colJ', displayName:'Team Members'}
     ],
     'columnOrder': [
       'Name',

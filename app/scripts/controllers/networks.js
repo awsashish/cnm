@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('NetworksCtrl', function ($scope, $rootScope, $timeout, $location, $uibModal, $uibModalStack, $window, $filter, coinomiaService, config, UtilsService) {
+  .controller('NetworksCtrl', function ($scope, $rootScope, $timeout, $location, $uibModal, $uibModalStack, $window, $filter, coinomiaService, config, UtilsService, ngXlsx) {
     $scope.currentPage = config.currentPage;
     $scope.teamCurrentPage = config.currentPage;
     $scope.directsCurrentPage = config.currentPage;
@@ -43,6 +43,7 @@ angular.module('coinomiaFrontendApp')
     $scope.pageLimit = config.pageLimit;
     $scope.limit = config.messageLimit;
 
+
     // Get User Directs
     $scope.userDirects = function(currentPage, pageLimit) {
       $scope.teamDirectsData = [];
@@ -50,9 +51,6 @@ angular.module('coinomiaFrontendApp')
         .then(function(res) {
           if(res.status === 200) {
             var data = res.data;
-            $scope.arrayList = [
-              config.teamColumnHead
-            ];
             $scope.pagination.totalDirects = data.total;
             $scope.teamDirectsData  = data.rows;
             // data.rows.forEach(function(info){
@@ -61,27 +59,27 @@ angular.module('coinomiaFrontendApp')
             // });
             // $scope.getExcelData($scope.arrayList);
             // $scope.getFlags(0, $scope.teamDirectsData, $scope.teamDirectsData.length);
+            if(currentPage === 1 && !$scope.arrayList) {
+              $scope.getAllUser('all', $scope.pagination.totalDirects);
+            }
           }
       });
     }
 
-    $scope.getAllUser = function(pages) {
+    $scope.getAllUser = function(pages, limit) {
       var currentPage = pages;
-      var pageLimit = pages;
-      coinomiaService.getUserDirects(currentPage, pageLimit)
+      coinomiaService.getUserDirects(currentPage, limit)
         .then(function(res) {
           if(res.status === 200) {
             var data = res.data;
-            $scope.arrayList = [
-              config.teamColumnHead
-            ];
+            $scope.arrayList = [];
 
             $scope.directUsers  = data.rows;
             data.rows.forEach(function(info){
-              var excelArray = [info.Name, info.Email, info.Sponsor, info.username, info.Mobile, info.country, info.TotalContract, info.TotalPurchased, info.DOJ, info.TotalDirect];
+              var excelArray = {colA:info.Name, colB:info.Email, colC:info.Sponsor, colD:info.username, colE:info.Mobile, colF:info.country, colG:info.TotalContract, colH:info.TotalPurchased, colI:info.DOJ, colJ:info.TotalDirect};
               $scope.arrayList.push(excelArray);
             });
-            $scope.getExcelData($scope.arrayList);
+
             // $scope.getFlags(0, $scope.teamDirectsData, $scope.teamDirectsData.length);
           }
       });
@@ -98,6 +96,25 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
+    $scope.exportExcel = function(excelData) {
+      function s2ab(s) {
+        var buf = new ArrayBuffer(s.length);
+        var view = new Uint8Array(buf);
+        for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+        return buf;
+      }
+
+      var result = ngXlsx.writeXlsx([
+      {
+        sheetName: "testSheet",
+        columnDefs: config.teamColumnHead,
+        data: excelData
+      }
+      ]);
+      /* the saveAs call downloads a file on the local machine */
+      saveAs(new Blob([s2ab(result)],{type:"application/octet-stream"}), "direct-user.xlsx");
+    }
+
     /*** Excel Export ***/
     $scope.getExcelData = function(excelData) {
       $scope.exportData = [{
@@ -106,14 +123,14 @@ angular.module('coinomiaFrontendApp')
       }];
     }
 
-    $scope.exportExcel = {
-      down: function() {},
-    };
+    // $scope.exportExcel = {
+    //   down: function() {},
+    // };
     /** -- Excel Export -- **/
 
     $scope.userDirects($scope.currentPage, $scope.pageLimit);
 
-    $scope.getAllUser('all');
+    // $scope.getAllUser('all');
 
     // Get All Referrals
     $scope.allReferral = function(page) {
@@ -210,7 +227,7 @@ angular.module('coinomiaFrontendApp')
           };
         }
       })
-      console.log($scope.maxTeam);
+      // console.log($scope.maxTeam);
     }
 
     $scope.searchDownline = function(sponsorId) {
