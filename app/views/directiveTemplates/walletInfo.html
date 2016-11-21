@@ -6,7 +6,7 @@
    </h2>
    <br>
    <div class="table-responsive">
-      <table class="table table-dark-gry table-hover mb30 font16">
+      <table class="table table-dark-gry table-hover mb30 font16 overlay-wrapper">
          <tbody>
            <tr ng-if="type && info.Wallet !== 'USD'">
                <td valign="middle"><strong class="red-text02" >Balance {{walletHeading[info.Wallet]}}</strong></td>
@@ -67,6 +67,11 @@
                <td align="center" valign="middle" colspan="2">
                  <button class="btn btn-lg btn-default white-btn" ng-click="updateWallet({wallet:info.Wallet, address:info.Address})"><strong>Save </strong></button>
                </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="overlay-text" ng-if="type && info.Wallet === 'ETH'"><p>Coming Soon ...</p></span>
+              </td>
             </tr>
          </tbody>
       </table>

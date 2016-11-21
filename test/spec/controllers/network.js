@@ -58,14 +58,6 @@ describe('Controller: NetworksCtrl', function () {
     expect(coinomiaService.getUserDirects).toHaveBeenCalledWith(scope.currentPage, scope.pageLimit);
   });
 
-  it('should export data to excel sheet', function() {
-    scope.getExcelData(excelData);
-    expect(scope.exportData[0].name).toEqual('sheet1');
-    expect(scope.exportData[0].data).toEqual(excelData);
-    expect(scope.exportExcel).toEqual(jasmine.any(Object));
-  });
-
-
   it('should get all referral', function() {
     scope.allReferral(page);
     expect(coinomiaService.getAllReferral).toHaveBeenCalledWith(page);
