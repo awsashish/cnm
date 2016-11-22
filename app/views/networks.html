@@ -36,7 +36,7 @@
                       <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br />
                       <strong>Leaderboard</strong> </a>
                     </li>
-                    <li ng-click="getDirectIncome(currentPage)">
+                    <li ng-click="getCommission()">
                       <a href=".tab_default_7" data-toggle="tab">
                       <i class="fa fa-money icon-lg" aria-hidden="true"></i><br />
                       <strong>Commissions</strong> </a>
@@ -553,19 +553,19 @@
                     <div class="row">
                       <div class="col-md-3 col-md-12">
                         <h4><strong> Total Commission</strong></h4>
-                        <p class="red-text04 pull-left">{{totalEarning | currency}}</p>
+                        <p class="red-text04 pull-left">{{totalCommission | currency}}</p>
                       </div>
                       <div class="col-xs-5 col-sm-5 col-md-3">
-                        <h4> <strong>Balance</strong></h4>
-                        <p class="red-text04 pull-left">{{walletAmount | currency}}</p>
+                        <h4> <strong>Direct Referral Income</strong></h4>
+                        <p class="red-text04 pull-left">{{referralIncome | currency}}</p>
                       </div>
                       <div class="col-xs-5 col-sm-5 col-md-3">
                         <h4><strong> Purchase Binary Income</strong></h4>
-                        <p class="red-text04 pull-left">$100.00</p>
+                        <p class="red-text04 pull-left">{{purchaseIncome | currency}}</p>
                       </div>
                       <div class="col-xs-5 col-sm-5 col-md-3">
                         <h4> <strong>Repurchase Binary Income</strong></h4>
-                        <p class="red-text04 pull-left">$100.00</p>
+                        <p class="red-text04 pull-left">{{rePurchaseIncome | currency}}</p>
                       </div>
                     </div>
                     <!-- Nav tabs -->

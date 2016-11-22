@@ -990,6 +990,24 @@ angular.module('coinomiaFrontendApp')
         .catch(totalEarningRequestFailed);
     }
 
+    // Get User Commission
+    this.totalCommission = function() {
+      // On Success
+      function totalCommissionRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function totalCommissionRequestFailed(error) {
+        $log.error('XHR Failed for Total Commission.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/total-commission')
+        .then(totalCommissionRequestComplete)
+        .catch(totalCommissionRequestFailed);
+    }
+
     // Get Total Income
     this.totalIncome = function(currentPage) {
       // On Success

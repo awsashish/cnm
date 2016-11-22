@@ -575,6 +575,19 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
+    // Get Commision Earning 
+    $scope.getCommission = function() {
+      coinomiaService.totalCommission().then(function(res) {
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.totalCommission = data.total;
+          $scope.referralIncome = data.Referral;
+          $scope.purchaseIncome = data.Purchase;
+          $scope.rePurchaseIncome = data.Repurchase;
+        }
+      });
+    }
+
     // Get Total Income
     $scope.getTotalIncome = function(currentPage) {      
       coinomiaService.totalIncome(currentPage).then(function(res) {
@@ -589,6 +602,9 @@ angular.module('coinomiaFrontendApp')
         }
       });
     }
+    
+
+    
 
     $scope.getTotalEarning();
 
