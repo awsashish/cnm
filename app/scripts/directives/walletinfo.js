@@ -39,14 +39,22 @@ angular.module('coinomiaFrontendApp')
           $rootScope.transferUserId = userId;
         }
 
-        $scope.getWallet = function(wallet, type, imageName) {
+        $scope.getWallet = function(data, type, imageName) {
+          $rootScope.withdrawalAmountError = false;
+          $rootScope.withdrawalInfo = false;
           $rootScope.withdrawalSuccess = false;
           $rootScope.withdrawalError = false;
           $rootScope.convertSuccess = false;
           $rootScope.responseSuccess = false;
           $rootScope.convertError = false;
+          $rootScope.walletAmount = '';          
 
-          $rootScope.walletAmount = '';
+          $rootScope.networkFees = 0.0004;
+          $rootScope.balance = data.Balance;
+          if(data.Balance > 1) {
+            $rootScope.networkFees = 1;
+          }
+
 
           $rootScope.withdrawalHeading = false;
           $rootScope.convertUSDHeading = false;
@@ -54,7 +62,7 @@ angular.module('coinomiaFrontendApp')
           if(imageName === 'USD') {
              $rootScope.walletName = imageName;
           }else{
-             $rootScope.walletName = wallet;            
+             $rootScope.walletName = data.Wallet;            
           }
          
           $rootScope.imageName = imageName;

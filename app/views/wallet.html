@@ -81,14 +81,29 @@
                 </h4>
              </div>
              <div class="modal-body" >
-               <h4 ng-if="withdrawalSuccess"><strong>Congratulations !!!</strong> You have Successfully Withdraw  </h4>
-               <h4 ng-if="convertSuccess"><strong>Congratulations !!!</strong> You have Successfully Withdraw  </h4>
+               <h4 ng-if="withdrawalSuccess"><strong>Congratulations !!!</strong> You have Successfully Withdraw.  </h4>
+               <h4 ng-if="convertSuccess"><strong>Congratulations !!!</strong> You have Successfully Withdraw.  </h4>
 
                 <!-- Withdrawal Error-->
                <h4 ng-if="withdrawalError || convertError">{{errorMessage}}</h4>
                <br />
                <div class="ajax_loader" ng-if="loadingData"></div>
-                <form name="withdrawal" class="form-inline" ng-submit="walletActivity(walletAmount, walletName, walletType)" ng-if="!convertSuccess && ! withdrawalSuccess && !withdrawalError && !convertError" novalidate>
+               <div ng-if="withdrawalInfo && !withdrawalSuccess && !withdrawalError">
+                  <div class="col-xs-8 col-sm-8 col-md-8">
+                    <h4><strong>Request Amount :
+                    {{requestAmount}}</strong></h4>
+                  </div>
+                  <div class="col-xs-8 <col-sm-8></col-sm-8> col-md-8">
+                    <h4><strong>Network Fees :
+                    {{fees}}</strong></h4>
+                  </div>
+                  <h4 class="add-funds-popup">Withdraw Amount <strong class="ng-binding">{{withdrawalAmount | number:6}} </strong> </h4><br />
+                  <div class="mt10">
+                    <button type="button" class="btn btn-info" data-dismiss="modal" aria-label="Close">Cancel</button>
+                    <button type="button" class="btn btn-primary" ng-click="walletActivity(requestAmount, walletName, walletType)">Confirm</button>
+                  </div>
+                </div>
+                <form name="withdrawal" class="form-inline" ng-submit="verifyAndSubmit(walletType, walletAmount, walletName)" ng-if="!convertSuccess && ! withdrawalSuccess && !withdrawalError && !convertError && !withdrawalInfo" novalidate>
                    <div class="form-group">
                       <label>
                         <strong>No Of {{walletName}} you want to {{withdrawalHeading?'Withdraw':'Convert'}}</strong>
@@ -98,6 +113,9 @@
                       <div class="alert alert-danger fade in error-padding"
                         ng-show="withdrawal.walletAmount.$touched && withdrawal.walletAmount.$invalid" style="width:80%;">
                         Please enter any amount</div>
+                      <div class="alert alert-danger fade in error-padding"
+                        ng-if="withdrawalAmountError" style="width:80%;">
+                        Please enter sufficient amount to withdraw</div>
                    </div>
                 </form>
              </div>
