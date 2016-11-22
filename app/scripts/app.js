@@ -29,7 +29,8 @@ angular
     'angular.filter',
     'ngMaterial', 
     'md.data.table',
-    'ngXlsx'
+    'ngXlsx',
+    'summernote'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

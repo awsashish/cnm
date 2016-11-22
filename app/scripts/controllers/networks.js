@@ -13,6 +13,7 @@ angular.module('coinomiaFrontendApp')
     $scope.teamCurrentPage = config.currentPage;
     $scope.directsCurrentPage = config.currentPage;
     $scope.loadingDates = true;
+    $scope.sendMessageBox = false;
     $scope.pagination = {
       totalDirects: 0,
       totalTeam:0,
@@ -42,6 +43,26 @@ angular.module('coinomiaFrontendApp')
     $scope.order = config.columnOrder;
     $scope.pageLimit = config.pageLimit;
     $scope.limit = config.messageLimit;
+
+    // Toolbar Options 
+    $scope.toolbarOptions = {
+      height: 300,
+      focus: true,
+      airMode: false,
+      toolbar: [
+        ['edit',['undo','redo']],
+        ['headline', ['style']],
+        ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
+        ['fontface', ['fontname']],
+        ['textsize', ['fontsize']],
+        ['fontclr', ['color']],
+        ['alignment', ['ul', 'ol', 'paragraph', 'lineheight']],
+        ['height', ['height']],
+        ['table', ['table']],
+        ['insert', ['link','picture','video','hr']],
+        ['view', ['fullscreen', 'codeview']],
+      ]
+    };
 
 
     // Get User Directs
@@ -87,6 +108,8 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.getUser = function(currentPage, pageLimit) {
+      $scope.sendMessageBox = true;
+      $scope.replyMail.message = '';
       coinomiaService.getUserDirects(currentPage, pageLimit)
         .then(function(res) {
           if(res.status === 200) {

@@ -65,6 +65,8 @@ module.exports = function(config) {
       'bower_components/js-xlsx/dist/xlsx.js',
       'bower_components/file-saver-saveas-js/FileSaver.js',
       'bower_components/angular-xlsx/angular-xlsx.js',
+      'bower_components/summernote/dist/summernote.js',
+      'bower_components/angular-summernote/dist/angular-summernote.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

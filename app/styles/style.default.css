@@ -458,6 +458,10 @@ map area{
   color: #a94442;
 }
 
+.ui-tooltip.ui-widget.ui-corner-all.ui-widget-content {
+    display: none;
+}
+
 .coming-soon {
   margin-top: 0;
   position: relative;
