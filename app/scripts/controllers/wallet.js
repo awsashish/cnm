@@ -227,7 +227,7 @@ angular.module('coinomiaFrontendApp')
             $scope.loadingData = false;
             $scope.responseSuccess = true;
             var data = res.data;
-            if(data.message === '#Successfully Request Added') {
+            if(data.message === '#Successfully Convert') {
               $rootScope.convertSuccess = true; 
             }else{
               $rootScope.convertError = true;

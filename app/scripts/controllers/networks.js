@@ -324,7 +324,7 @@ angular.module('coinomiaFrontendApp')
           .then(function(res){
             if(res.status === 200) {
               $scope.sendMessage = true;
-              $window.relocation.reload();
+              $window.location.reload();
             }else{
               $scope.sendMessage = false;
             }
