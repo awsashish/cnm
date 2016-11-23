@@ -20,7 +20,9 @@
             </tr>
             <tr ng-if="info.Wallet !== 'USD'">
                <td valign="middle"><strong class="red-text02 " style="padding-top:30px;">Wallet Address</strong></td>
-               <td><input type="text" class="form-control" ng-model="info.Address"></td>
+               <td>
+                 <input type="text" class="form-control" ng-model="info.Address">
+               </td>
             </tr>
             <tr ng-if="type">
               <td align="center" valign="middle" colspan="2" ng-if="info.Wallet === 'USD'">

@@ -764,6 +764,7 @@
                                     <br />
                                     <h4><strong>Subject: {{inboxMessage.subject}}</strong></h4>
                                     <br />
+                                    <!--<summernote ng-model="inboxMessage.body" config="options"></summernote>-->
                                     <div text-angular ng-bind-html="inboxMessage.body"></div>
                                 </div>
                             </div>
@@ -792,7 +793,8 @@
                                        Subject is required</div>
 
                                     <label><strong>Message</strong></label>
-                                    <div text-angular ng-model="replyMail.message"></div>
+                                    <summernote ng-model="replyMail.message" config="toolbarOptions"></summernote>
+                                    <!--<div text-angular ng-model="replyMail.message"></div>-->
                                     <!-- <textarea texteditor id="txtEditor1" ng-model="message" class="form-control"></textarea> -->
 
                                     <div class="alert alert-danger fade in error-padding" ng-if="messageError">
@@ -877,6 +879,7 @@
                                     <br />
                                     <h4><strong>Subject: {{sentMessage.subject}}</strong></h4>
                                     <br />
+                                    <!--<summernote ng-model="sentMessage.body" config="options"></summernote>-->
                                     <div text-angular ng-bind-html="sentMessage.body"></div>
                                 </div>
                             </div>
@@ -905,7 +908,8 @@
                                        Subject is required</div>
 
                                     <label><strong>Message</strong></label>
-                                    <div text-angular ng-model="replyMail.message"></div>
+                                    <summernote ng-model="replyMail.message" config="toolbarOptions"></summernote>
+                                    <!--<div text-angular ng-model="replyMail.message"></div>-->
                                     <!-- <textarea texteditor id="txtEditor1" ng-model="message" class="form-control"></textarea> -->
 
                                     <div class="alert alert-danger fade in error-padding" ng-if="messageError">
@@ -1014,7 +1018,7 @@
                                 <div class="alert alert-danger" role="alert"><strong>Note :</strong> Please keep in mind that you can send only one message every 24 hours</div>
                                 <br />
                             </div>
-                            <form name="sendForm" ng-submit="sendMessage(replyMail)" novalidate>
+                            <form name="sendForm" ng-submit="sendMessage(replyMail)" novalidate ng-if="sendMessageBox">
                                 <label><strong>To: <span ng-repeat="item in selected">
                                   {{item.username}} {{selected[$index + 1]? ", " : " "}}</span></strong>
                                 </label><br /><br />
@@ -1025,8 +1029,10 @@
                                    ng-show="sendForm.subject.$touched && sendForm.subject.$invalid">
                                    Subject is required</div>
 
+
                                 <label><strong>Message</strong></label>
-                                <div text-angular ng-model="replyMail.message"></div>
+                                <summernote ng-model="replyMail.message" config="toolbarOptions"></summernote>
+                                <!--<div text-angular ng-model="replyMail.message"></div>-->
                                 <!-- <textarea texteditor id="txtEditor1" ng-model="message" class="form-control"></textarea> -->
 
                                 <div class="alert alert-danger fade in error-padding" ng-if="messageError">
