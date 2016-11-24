@@ -842,7 +842,7 @@ angular.module('coinomiaFrontendApp')
       }
     }
 
-    // Get Sent List
+    // Active affiliate
     this.activeAffiliate = function(affiliateData) {
       // On Success
       function activeAffiliateRequestComplete(response) {
