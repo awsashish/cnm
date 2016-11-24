@@ -249,7 +249,7 @@ angular.module('coinomiaFrontendApp')
     // Get User Location
 
     this.getUserLocation = function() {
-      return $http.get('http://freegeoip.net/json/')
+      return $http.get('https://freegeoip.net/json/')
       .catch(this.requestFailed);
     };
 
