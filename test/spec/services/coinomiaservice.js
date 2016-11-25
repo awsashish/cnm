@@ -17,6 +17,14 @@ describe('service coinomiaService', function() {
       'grant_type':'password'
     };
 
+    var affiliateData = {
+        paymode: "BTC",
+        paytype:""
+      }
+
+    var type = "inbox";
+    var messageId = 15;
+
     var campaignData = {
       "CampaignType": "referral",
       "Bannerid":"",
@@ -42,6 +50,9 @@ describe('service coinomiaService', function() {
           }
        ]
     }
+
+    var filterType = "Email";
+    var filter = "some@email.com";
 
     var resetData = {
       EmailId: 'some@gmail.com',
@@ -1441,7 +1452,40 @@ describe('service coinomiaService', function() {
     });
   });
 
-  // Get Inbox List
+  // Get Sent List
+  describe('sent list function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.getSentList).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/sent-item/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(200, { "total": 1, "rows": [{"id": 15,"receiverid": "coinomia","receivername": "Coinomia Technologies Ltd.", "subject": "Test Email", "ondate": "11/3/2016 2:15:54 AM"}]});
+      var data;
+      coinomiaService.getSentList(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual(1);
+      expect(data.rows[0].receiverid).toEqual("coinomia");
+      expect(data.rows[0].receivername).toEqual('Coinomia Technologies Ltd.');
+      expect(data.rows[0].subject).toEqual('Test Email');
+      expect(data.rows[0].ondate).toEqual("11/3/2016 2:15:54 AM");
+    });
+
+    it('should log inbox list error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/sent-item/'+pagination.pageno+'/'+pagination.pagesize)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.getSentList(pagination.pageno, pagination.pagesize);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Search Inbox List
   describe('search inbox message function', function() {
     it('should exist', function() {
       expect(coinomiaService.getInboxSearch).not.toEqual(null);
@@ -1474,4 +1518,68 @@ describe('service coinomiaService', function() {
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });
   });
+
+  // Search User All Group
+  describe('search inbox message function', function() {
+    it('should exist', function() {
+      expect(coinomiaService.searchUser).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/all-group/'+filterType+'/'+filter+'/'+pagination.pagesize)
+      .respond(200, { "total": 1, "rows": [{"username":"some-text", "Name":"Some Name", "Email":"some@email.com"}]});
+      var data;
+      coinomiaService.searchUser(filterType, filter, pagination.pagesize).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.total).toEqual(1);
+      expect(data.rows[0].username).toEqual("some-text");
+      expect(data.rows[0].Name).toEqual('Some Name');
+      expect(data.rows[0].Email).toEqual('some@email.com');
+    });
+
+    it('should log search inbox message error', function() {
+      $httpBackend
+      .expect('GET', coinomiaService.apiHost + 'user/all-group/'+filterType+'/'+filter+'/'+pagination.pagesize)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.searchUser(filterType, filter, pagination.pagesize);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
+  // Active Affiliate
+  describe('active affiliate', function() {
+    it('should exist', function() {
+      expect(coinomiaService.activeAffiliate).not.toEqual(null);
+    });
+
+    it('should return success message', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/active-affiliate', affiliateData)
+      .respond(200, {"address":"cdfds", "value_in_btc":0.0894324, "invoice_number":"fsdfsd-fdsf"});
+      var data;
+      coinomiaService.activeAffiliate(affiliateData).then(function(fetchedData) {
+        data = fetchedData.data;
+      });
+      $httpBackend.flush();
+      expect(data).toEqual(jasmine.any(Object));
+      expect(data.address).toEqual('cdfds');
+      expect(data.value_in_btc).toEqual(0.0894324);
+      expect(data.invoice_number).toEqual('fsdfsd-fdsf');
+    });
+
+    it('should log send message error', function() {
+      $httpBackend
+      .expect('POST', coinomiaService.apiHost + 'user/active-affiliate', affiliateData)
+      .respond(500, 'Internal Server Error.');
+      coinomiaService.activeAffiliate(affiliateData);
+      $httpBackend.flush();
+      expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
+    });
+  });
+
 });
