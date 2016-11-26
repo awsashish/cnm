@@ -426,14 +426,14 @@ angular.module('coinomiaFrontendApp')
     }
 
     // Open Reward Structure Modal
-    // if(!$localStorage.viewPopup) {
-    //   var modalInstance = $uibModal.open({
-    //       templateUrl: 'views/reward-structure.html',
-    //       scope: $scope,
-    //       size: 'lg',
-    //       backdrop: 'static'
-    //   });
-    // }
+    if(!$localStorage.viewPopup) {
+      var modalInstance = $uibModal.open({
+          templateUrl: 'views/reward-structure.html',
+          scope: $scope,
+          size: 'lg',
+          backdrop: 'static'
+      });
+    }
 
     $scope.closePopup = function() {
       $localStorage.$default({viewPopup: 1});
