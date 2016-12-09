@@ -153,8 +153,8 @@ a:focus {
     font-size: 40px;
 }
 
-.promote li:nth-child(even) {
-    width:155px;
+.promote li {
+    width:160px;
 }
 
 .overlay-wrapper {
@@ -5798,7 +5798,7 @@ h1{
 .inactive-affiliate{background:#f2f2f2; display:inline-block;  border-radius:4px; padding:5px 50px; font-size:30px; color:#999 !important; border-bottom:4px solid #ccc;}
 @media(max-width:540px){
   .affiliate{ font-size:25px;}
-  .promote li:nth-child(even) {
+  .promote li {
         width: 100%;
    }
 }
