@@ -134,6 +134,27 @@ a:focus {
     right: 0;
     top: 0;
     bottom: 0;
+    z-index: 9999;
+}
+
+.overlay-text.ether {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9999;
+}
+
+.overlay-text.ether p {
+    left: 45%;
+    top: 20%;
+    font-size: 40px;
+}
+
+.promote li {
+    width:12.5%;
 }
 
 .overlay-wrapper {
@@ -4080,6 +4101,11 @@ body.signin {
         position: static;
     }
 
+    .promote li {
+        width: 32.5%;
+        height: 83px;
+    }
+
 
     .navbar-toggle {
       position: absolute;
@@ -5777,6 +5803,10 @@ h1{
 .inactive-affiliate{background:#f2f2f2; display:inline-block;  border-radius:4px; padding:5px 50px; font-size:30px; color:#999 !important; border-bottom:4px solid #ccc;}
 @media(max-width:540px){
   .affiliate{ font-size:25px;}
+  .promote li {
+        width: 100%;
+        height:auto;
+    }
 }
 
 .gry-round-box {

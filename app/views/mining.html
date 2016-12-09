@@ -1,4 +1,9 @@
 <main-header class="main-header"></main-header>
+<style>
+.panel {
+  position: initial;
+}
+</style>
 <section>
   <div class="mainwrapper">
     <navigation></navigation>
@@ -56,8 +61,11 @@
                          <li role="presentation" ><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
                       </ul>
                       <!-- Tab panes -->
-                      <div class="tab-content" style="border:0px !important">
+                      <div class="tab-content overlay-wrapper" style="border:0px !important">
                          <div role="tabpanel" class="tab-pane dmp">
+                           <span class="overlay-text ether" style="top:10px;">
+                              <p>Coming Soon ...</p>
+                            </span>
                             <br />
                             <div class="panel panel-default">
                                <div class="panel-heading nopadding nomargin">
