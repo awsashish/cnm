@@ -137,6 +137,22 @@ a:focus {
     z-index: 9999;
 }
 
+.overlay-text.ether {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9999;
+}
+
+.overlay-text.ether p {
+    left: 45%;
+    top: 20%;
+    font-size: 40px;
+}
+
 .promote li:nth-child(even) {
     width:155px;
 }
