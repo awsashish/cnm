@@ -150,6 +150,7 @@ angular.module('coinomiaFrontendApp')
         }
       });
 
+
       if($scope.orderParams.length > 0) {
         var modalInstance = $uibModal.open({
             templateUrl: 'views/modal/purchase-contract.html',
