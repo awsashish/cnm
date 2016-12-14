@@ -434,7 +434,6 @@ angular.module('coinomiaFrontendApp')
     //       backdrop: 'static'
     //   });
     // }
-    
 
     $scope.closePopup = function() {
       $localStorage.$default({viewPopup: 1});
