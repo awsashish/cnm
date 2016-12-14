@@ -108,6 +108,7 @@ angular.module('coinomiaFrontendApp')
     .state('terms-and-conditions', {
         url: '/terms-and-conditions',
         templateUrl: 'views/terms.html',
+        controller: 'MainCtrl'
     })
 
     // Verify Email page

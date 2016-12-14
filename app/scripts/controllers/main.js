@@ -8,9 +8,12 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('MainCtrl', function ($scope, $rootScope, $cookies, $state, $window, coinomiaService) {
+  .controller('MainCtrl', function ($scope, $rootScope, $cookies, $state, $window, $location, coinomiaService, config) {
+
+    $rootScope.s3Url = config.s3BucketUrl;
+
     // Authenticate User
-    if(coinomiaService.isAuthenticated){
+    if($location.path() !== '/terms-and-conditions' && coinomiaService.isAuthenticated){
       $state.go('dashboard');
     }
     
