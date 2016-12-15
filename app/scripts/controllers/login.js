@@ -18,6 +18,12 @@ angular.module('coinomiaFrontendApp')
       $state.go('dashboard');
     }
 
+    if($location.search().t) {
+      var token = $location.search().t;
+      $scope.$storage = $localStorage.$default({token:token});
+      $state.go('dashboard');
+    }
+
     // For Testing
     // $scope.username = 'coinomia';
     // $scope.password = 'coinomia';
