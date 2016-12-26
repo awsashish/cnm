@@ -59,7 +59,8 @@
                       </div>
                       <div class="collapse reward-{{$index}}">
                         <div class="well">
-                          <div class="reward-detail" ng-bind-html="reward.description">
+                          <div class="reward-detail">
+                            <img ng-src="{{s3Url}}{{reward.image}}" width="100%">
                           </div>
                         </div>
                       </div>
