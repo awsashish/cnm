@@ -127,6 +127,12 @@ a:focus {
   top: -10px;
 }
 
+.top-arrow { display: block; }
+
+.promote-img {
+    width: 200px;
+}
+
 .short-description {
     color: #525252 !important;
 }
@@ -4090,6 +4096,13 @@ body.signin {
     text-align: center;
   }
 
+  .promote-img {
+    width: auto;
+    margin-bottom: 20px;
+   }
+
+  .top-arrow { display: none;}
+
   .counter-date {
     float: none;
     display: table;
@@ -4112,6 +4125,7 @@ body.signin {
         height: 83px;
     }
 
+    .top-arrow { display: none; }
 
     .navbar-toggle {
       position: absolute;
@@ -5826,8 +5840,9 @@ h1{
     margin-bottom: 30px;
 }
 
-
 /******************** 12/7/2016 **************************************************/
+
+.lft-space { margin-bottom: 30px;}
 .achievement{font-family: 'Russo One', sans-serif; font-size:20px;}
 .pad-r20{ padding-right:20px;}
 .pad-r10{padding-right:10px;}
@@ -5847,11 +5862,10 @@ h1{
 .ranker-heading2{margin:0px; margin:0px; background: #F90; color:#fff; display:inline-block; padding-left:20px; padding-right:20px; padding-top:5px; padding-bottom:5px; border-radius:0px 40px 0px 0px}
 
 
-.reward01{ background: url(../images/bg-reward.png) repeat-x bottom #f9ecd0 ; border-bottom:2px solid #cfb57f; cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252 !important; border-radius:5px; text-align:left;}
+.reward01{ background: url(../images/bg-reward.png) repeat-x bottom #f9ecd0 ; border-bottom:2px solid #cfb57f; cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
 .reward01 h4{ padding-top:20px; font-size:23px; color:#be8d22;}
 .reward01 p{ font-size:16px !important;}
 .reward01 .prize-img { width:90%; height: 90%; }
-
 
 .reward02{ background:url(../images/bg-reward.png) repeat-x bottom #f1f1f1 ;  border-bottom:2px solid #ccc;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
 
@@ -5900,21 +5914,20 @@ h1{
 
 .reward08 h4{ padding-top:20px; padding-left:20px; font-size:23px; color:#4baadd;}
 .reward08 p{padding-left:20px; font-size:16px !important;}
-.reward08 .prize-img { width:100%; height: 100%; padding:20px 0 50px;}
 
-.reward-detail{background:#fff; text-transform:capitalize; padding:20px; font-size:16px; font-weight:normal; line-height:20px; border:1px solid #ccc; font-family: 'Raleway', sans-serif;}
+.reward-detail{background:#fff; text-transform:capitalize; padding:5px; font-size:16px; font-weight:normal; line-height:20px; border:1px solid #ccc; font-family: 'Raleway', sans-serif; margin-top:-23px !important;}
 .reward-detail strong{ color: #FC0 !important;}
 .reward-detail h2{ text-transform: capitalize !important; font-size:25px;}
 .reward-detail h3{ background:#FC0; color:#fff; padding:10px; border-left:15px solid #F90;}
 .reward-detail b{ color:#000;}
 .reward-lft-icon{position:absolute; right:10px;}
 .reward-tree{position: absolute; margin-left:115px; margin-top:25px;}
+.well{ background:transparent !important; padding:0px !important;}
 
 @media(min-width:1366px) and (max-width:1366px){.lft-space{ margin-left:55px;}}
 @media(min-width:1400px) and (max-width:1400px){.lft-space{ margin-left:155px;}}
 
 @media(min-width:1200px) and (max-width:!366px){ .left-para{ alignment-baseline:hanging !important; animation-iteration-count:infinite;}}
-
 
 
 @media print

@@ -5,11 +5,120 @@
     <style>.price-box{ margin-bottom:20px; padding:20px; background:#f5f5f5;}.container .jumbotron{ padding-left:0px !important; padding-right:0px !important;}label {font-size: 11px;}.nav-tabs > li > a{ padding: 5px !important; color:#fff !important; font-family:'Oswald', sans-serif;}.nav-tabs{background: #ccc  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background:#b73632 !important;} .nav-tabs > li > a { font-size: 20px; } select { -webkit-appearance: menulist;}
    </style>
     <div class="mainpanel">
-      <div class="contentpanel" style="overflow:hidden">
-        <div class="col-md-7 col-sm-12 col-lg-8">
+      <div class="contentpanel" style="overflow:hidden;padding-top:0;">
+        <div class="container lft-space">
+          <p align="center"><img src="{{s3Url}}top-arrow.jpg" class="top-arrow" style="padding-right:120px;"></p>
+          <div class="col-md-2 col-sm-12 text-center">
+            <a href="#promote-coinomia/social-group" title="Get Started">
+              <img src="{{s3Url}}top-link01.png" class="promote-img" />
+            </a>
+          </div>
+          <div class="col-md-2 col-sm-12 text-center">
+            <a href="#promote-coinomia/grab-concept" title="Grab the Concept">
+              <img src="{{s3Url}}top-link02.png" class="promote-img" />
+            </a>
+          </div>
+          <div class="col-md-2 col-sm-12 text-center">
+            <a href="#referral-link" title="Your Referral Link">
+              <img src="{{s3Url}}top-link03.png" class="promote-img" />
+            </a>
+          </div>
+          <div class="col-md-2 col-sm-12 text-center">
+            <a href="#promote-coinomia/sms-blast" title="Get, Set, Go!">
+              <img src="{{s3Url}}top-link04.png" class="promote-img" />
+            </a>
+          </div>
+          <div class="col-md-2 col-sm-12 text-center">
+            <a ng-click="getReferrals()" title="Get Automatic Referral!" style="cursor:pointer;">
+              <img src="{{s3Url}}top-link05.png" class="promote-img" />
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-lg-4">
           <news-feeds></news-feeds>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+        <div class="col-md-8 col-sm-12" style="border:1px solid #ccc; border-radius:5px; padding:0px;">
+          <h3 class="no-margin no-padding reward-head-dash text-center" style="margin:0 0 15px 0 !important;"><strong><img src="images/rankers.png" width="50"> Coinomia Leadership Reward</strong></h3>
+        <div class="col-md-6">
+          <h4 class="ranker-heading1"><strong><i class="fa fa-users" aria-hidden="true"></i> Recent Rankers</strong></h4>
+          <table width="100%" style="border:1px solid #f2f2f2;">
+            <tbody>
+              <tr class="ranker1-odd">
+                <td height="35"><img src="{{s3Url}}flags/ad.png"> uttam32493</td>
+                <td><img src="{{s3Url}}bronze.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+              <tr class="ranker1-even">
+                <td height="35"><img src="{{s3Url}}flags/in.png"> dvnvn430985</td>
+                <td><img src="{{s3Url}}blackdiamond.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+              <tr class="ranker1-odd">
+                <td height="35"><img src="{{s3Url}}flags/al.png"> cnvhb435743</td>
+                <td><img src="{{s3Url}}emerld.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+              <tr class="ranker1-even">
+                <td height="35"><img src="{{s3Url}}flags/ag.png"> porut88595</td>
+                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+              <tr class="ranker1-odd">
+                <td height="35"><img src="{{s3Url}}flags/bg.png"> rfgh565657</td>
+                <td><img src="{{s3Url}}silver.png" width="40" class="pull-right pad-r10"> </td>
+              </tr>
+              <tr class="ranker1-even">
+                <td height="35"><img src="{{s3Url}}flags/bh.png"> porut88595</td>
+                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+              <tr class="ranker1-odd">
+                <td height="35"><img src="{{s3Url}}flags/bt.png"> rfgh565657</td>
+                <td><img src="{{s3Url}}silver.png" width="40" class="pull-right pad-r10"> </td>
+              </tr>
+              <tr class="ranker1-even">
+                <td height="35"><img src="{{s3Url}}flags/bi.png"> porut88595</td>
+                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <h4 class="ranker-heading2"><strong><i class="fa fa-users" aria-hidden="true"></i> All Time Rankers</strong></h4>
+          <table width="100%" style="border:1px solid #f2f2f2;">
+            <tbody>
+              <tr class="ranker1-even">
+                <td height="35"><img src="{{s3Url}}flags/ag.png"> utjmk05904</td>
+                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+              <tr class="ranker1-odd">
+                <td height="35"><img src="{{s3Url}}flags/bi.png"> rfgh565657</td>
+                <td><img src="{{s3Url}}silver.png" width="40" class="pull-right pad-r10"> </td>
+              </tr>
+              <tr class="ranker1-even">
+                <td height="35"><img src="{{s3Url}}flags/bh.png"> porut88595</td>
+                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+              <tr class="ranker1-odd">
+                <td height="35"><img src="{{s3Url}}flags/bv.png"> uttam32493</td>
+                <td><img src="{{s3Url}}bronze.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+              <tr class="ranker1-even">
+                <td height="35"><img src="{{s3Url}}flags/bw.png"> dvnvn430985</td>
+                <td><img src="{{s3Url}}blackdiamond.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+              <tr class="ranker1-odd">
+                <td height="35"><img src="{{s3Url}}flags/by.png"> cnvhb435743</td>
+                <td><img src="{{s3Url}}emerld.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+              <tr class="ranker1-even">
+                <td height="35"><img src="{{s3Url}}flags/bz.png"> porut88595</td>
+                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
+              </tr>
+              <tr class="ranker1-odd">
+                <td height="35"><img src="{{s3Url}}flags/in.png"> rfgh565657</td>
+                <td><img src="{{s3Url}}silver.png" width="40" class="pull-right pad-r10"> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+        <!--<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
           <a href="#promote-coinomia/social-group">
             <div class="box-outer"><img src="{{s3Url}}facebook.png" width="70" /> &nbsp;&nbsp;Get Connected  </div>
           </a>
@@ -25,10 +134,10 @@
           <a ng-click="getReferrals()" style="cursor:pointer;">
             <div class="box-outer"><img src="{{s3Url}}plan.png" width="70" /> &nbsp;&nbsp;Get Automatic Referrals!</div>
           </a>
-        </div>
+        </div>-->
 
         <div>
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt20">
             <div class="tabbable-panel" >
               <div class="tabbable-line" >
                 <div align="center">
@@ -83,7 +192,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mb20">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt20 mb20">
             <h3 align="left" class="latest-signup">
               <i class="fa fa-user-plus"></i> Total Sign ups
             </h3>
