@@ -1,0 +1,254 @@
+<main-header class="main-header"></main-header>
+<section>
+  <div class="mainwrapper">
+    <navigation></navigation>
+    <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
+    }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}
+    </style>
+    <div class="mainpanel">
+      <!-- <coming-soon text-value="'Mining'"></coming-soon> -->
+      <div class="contentpanel">
+       <div class="col-xs-12 col-md-12 nomargin nopadding" style="min-height:800px;">
+         <h1 align="center" class="reward-main-heading-top"><img src="images/rankers.png" width="100"> <strong><u>Coinomia</u> <strong style="color:#d71818; font-family: Kaushan Script,cursive; font-size:60px; ">Leadership</strong> <u>Reward</u></strong></h1>
+         <hr>
+         <div class="tabbable-panel">
+           <div class="tabbable-line">
+             <div align="center">
+               <ul class="nav nav-tabs reward-tab">
+                 <li class="active">
+                   <a href=".tab_default_4" data-toggle="tab">
+                   <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br>
+                   <strong>Leadership Reward</strong> </a>
+                 </li>
+                 <li>
+                   <a href=".tab_default_5" data-toggle="tab">
+                   <i class="fa fa-newspaper-o icon-lg" aria-hidden="true"></i><br>
+                   <strong>Achievement History</strong> </a>
+                 </li>
+                 <li>
+                   <a href=".tab_default_6" data-toggle="tab">
+                   <i class="fa fa-users icon-lg" aria-hidden="true"></i><br>
+                   <strong>Leaderboard Reward</strong> </a>
+                 </li>
+               </ul>
+             </div>
+             <div class="tab-content" style="padding:20px 20px; ">
+               <div class="tab-pane tab_default_4 active">
+                 <div class="row">
+                   <img ng-src="{{s3Url}}reward-top-header.png" width="100%" style="border-bottom:5px solid #FC0; border-radius:10px 10px 0px 0px; margin-top:-10px;"><br>
+                   <br>
+                   <div class="col-md-12">
+                     <div ng-repeat="reward in rewards">
+                      <div class="{{reward.class}}">
+                        <div class="row">
+                          <a title="Click More Details " data-toggle="collapse" data-target=".reward-{{$index}}" aria-expanded="false" aria-controls="reward-{{$index}}">
+                            <div class="col-md-3 col-sm-12"><img ng-src="{{s3Url}}{{reward.type}}" width="80%" height="80%" style="padding:25px 10px;"></div>
+                            <div class="col-md-4 col-sm-12">
+                              <h4 class="reward-main-heading"><strong class="text-uppercase">{{reward.title}}</strong> <br>
+                                {{reward.subtitle}}
+                              </h4>
+                              <p><img src="images/DecoBorderBottom.png" width="90%"><br> 
+                                <span class="short-description" ng-bind-html="reward.shortDescription"></span>
+                              </p>
+                            </div>
+                            <div align="right" class="col-md-5 col-sm-12" style=" margin:0px; padding:0px;">
+                              <img class="prize-img" ng-src="{{s3Url}}{{reward.prize}}">
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="collapse reward-{{$index}}">
+                        <div class="well">
+                          <div class="reward-detail" ng-bind-html="reward.description">
+                          </div>
+                        </div>
+                      </div>
+                    </div>                     
+                   </div>
+                 </div>
+               </div>
+               <div class="tab-pane tab_default_5" style="height:500px;">
+                 <h2 class="mb35-sm top-spacemob10"><i class="fa fa-newspaper-o icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Achievement History</strong></h2>
+                 <hr>
+                 <table class="table table-dark-gry table-hover mb30 font16">
+                   <thead style="background:#525252;">
+                     <tr style="color:#525252;">
+                       <td width="10%"><strong class="white-color">S.No</strong></td>
+                       <td width="25%"><strong class="white-color">Date</strong></td>
+                       <td width="15%"><strong class="white-color">Rank</strong></td>
+                       <td width="25%"><strong class="white-color">Reward</strong></td>
+                       <td width="25%" align="center"><strong class="white-color">Consecutive Day(s)</strong></td>
+                     </tr>
+                   </thead>
+                   <tbody>
+                     <tr>
+                       <td>01</td>
+                       <td>01/02/2016</td>
+                       <td><img src="{{s3Url}}gold.png" width="30"></td>
+                       <td></td>
+                       <td align="center">01</td>
+                     </tr>
+                     <tr>
+                       <td>02</td>
+                       <td>02/02/2016</td>
+                       <td><img src="{{s3Url}}silver.png" width="30"></td>
+                       <td></td>
+                       <td align="center">05</td>
+                     </tr>
+                     <tr>
+                       <td>03</td>
+                       <td>03/02/2016</td>
+                       <td><img src="{{s3Url}}gold.png" width="30"></td>
+                       <td></td>
+                       <td align="center">03</td>
+                     </tr>
+                     <tr>
+                       <td>04</td>
+                       <td>04/02/2016</td>
+                       <td><img src="{{s3Url}}silver.png" width="30"></td>
+                       <td></td>
+                       <td align="center">02</td>
+                     </tr>
+                     <tr>
+                       <td>05</td>
+                       <td>05/02/2016</td>
+                       <td><img src="{{s3Url}}gold.png" width="30"></td>
+                       <td></td>
+                       <td align="center">01</td>
+                     </tr>
+                     <tr>
+                       <td>06</td>
+                       <td>06/02/2016</td>
+                       <td><img src="{{s3Url}}silver.png" width="30"></td>
+                       <td></td>
+                       <td align="center">05</td>
+                     </tr>
+                     <tr>
+                       <td>07</td>
+                       <td>06/02/2016</td>
+                       <td><img src="{{s3Url}}silver.png" width="30"></td>
+                       <td><img src="http://st.motortrend.com/uploads/sites/10/2015/11/2015-bmw-528-i-sedan-angular-front.png" width="30" height="30"> <strong>Reward Brand New BMW-5</strong></td>
+                       <td align="center">05</td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+               <div class="tab-pane tab_default_6">
+                 <h2 class="mb35-sm top-spacemob10"><i class="fa fa-users icon-lg-red border-round-red" style="padding-left:3px;" aria-hidden="true"></i> <strong>Leaderboard Reward</strong></h2>
+                 <hr>
+                 <div class="row">
+                   <div class="col-md-6 col-sm-12">
+                     <h3><strong>Recent Rankers</strong><small>(7 Day's)</small></h3>
+                     <table class="table table-dark-gry table-hover mb30 font16">
+                       <thead style="background:#525252;">
+                         <tr style="color:#525252;">
+                           <td><strong class="white-color">S.No</strong></td>
+                           <td><strong class="white-color">User ID</strong></td>
+                           <td><strong class="white-color">Name</strong></td>
+                           <td><strong class="white-color">Rank</strong></td>
+                         </tr>
+                       </thead>
+                       <tbody>
+                         <tr>
+                           <td>01</td>
+                           <td><strong><img src="{{s3Url}}flags/in.png"> usdf34763</strong> </td>
+                           <td>Uttam Singh</td>
+                           <td><img src="{{s3Url}}silver.png" width="30"></td>
+                         </tr>
+                         <tr>
+                           <td>02</td>
+                           <td><strong><img src="{{s3Url}}flags/ae.png"> rhg99404</strong> </td>
+                           <td>Rashmi sharma</td>
+                           <td><img src="{{s3Url}}gold.png" width="30"></td>
+                         </tr>
+                         <tr>
+                           <td>03</td>
+                           <td><strong><img src="{{s3Url}}flags/bi.png"> yhj84545</strong> </td>
+                           <td>Yash Sen</td>
+                           <td><img src="{{s3Url}}silver.png" width="30"></td>
+                         </tr>
+                         <tr>
+                           <td>04</td>
+                           <td><strong><img src="{{s3Url}}flags/ae.png"> amdfj43095</strong> </td>
+                           <td>Amit Rastogi</td>
+                           <td><img src="{{s3Url}}gold.png" width="30"></td>
+                         </tr>
+                         <tr>
+                           <td>05</td>
+                           <td><strong><img src="{{s3Url}}flags/in.png"> rsdfh4387</strong> </td>
+                           <td>Ramkripal sharma</td>
+                           <td><img src="{{s3Url}}silver.png" width="30"></td>
+                         </tr>
+                         <tr>
+                           <td>06</td>
+                           <td><strong><img src="{{s3Url}}flags/ae.png"> sjsdf99r043</strong> </td>
+                           <td>Sanchita Roy</td>
+                           <td><img src="{{s3Url}}gold.png" width="30"></td>
+                         </tr>
+                       </tbody>
+                     </table>
+                   </div>
+                   <div class="col-md-6 col-sm-12">
+                     <h3><strong>All Time Rankers</strong></h3>
+                     <table class="table table-dark-gry table-hover mb30 font16">
+                       <thead style="background:#525252;">
+                         <tr style="color:#525252;">
+                           <td><strong class="white-color">S.No</strong></td>
+                           <td><strong class="white-color">User ID</strong></td>
+                           <td><strong class="white-color">Name</strong></td>
+                           <td><strong class="white-color">Rank</strong></td>
+                         </tr>
+                       </thead>
+                       <tbody>
+                         <tr>
+                           <td>01</td>
+                           <td><strong><img src="{{s3Url}}flags/in.png"> usdf34763</strong> </td>
+                           <td>Uttam Singh</td>
+                           <td><img src="{{s3Url}}silver.png" width="30"></td>
+                         </tr>
+                         <tr>
+                           <td>02</td>
+                           <td><strong><img src="{{s3Url}}flags/ae.png"> rhg99404</strong> </td>
+                           <td>Rashmi sharma</td>
+                           <td><img src="{{s3Url}}gold.png" width="30"></td>
+                         </tr>
+                         <tr>
+                           <td>03</td>
+                           <td><strong><img src="{{s3Url}}flags/bi.png"> yhj84545</strong> </td>
+                           <td>Yash Sen</td>
+                           <td><img src="{{s3Url}}silver.png" width="30"></td>
+                         </tr>
+                         <tr>
+                           <td>04</td>
+                           <td><strong><img src="{{s3Url}}flags/ae.png"> amdfj43095</strong> </td>
+                           <td>Amit Rastogi</td>
+                           <td><img src="{{s3Url}}gold.png" width="30"></td>
+                         </tr>
+                         <tr>
+                           <td>05</td>
+                           <td><strong><img src="{{s3Url}}flags/in.png"> rsdfh4387</strong> </td>
+                           <td>Ramkripal sharma</td>
+                           <td><img src="{{s3Url}}silver.png" width="30"></td>
+                         </tr>
+                         <tr>
+                           <td>06</td>
+                           <td><strong><img src="{{s3Url}}flags/ae.png"> sjsdf99r043</strong> </td>
+                           <td>Sanchita Roy</td>
+                           <td><img src="{{s3Url}}gold.png" width="30"></td>
+                         </tr>
+                       </tbody>
+                     </table>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+      <!-- contentpanel -->
+    </div>
+    <main-footer></main-footer>
+  </div>
+  <!-- mainwrapper -->
+</section>

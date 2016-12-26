@@ -11,6 +11,10 @@
   <!-- media -->
   <nav id="nav">
     <ul class="nav nav-pills nav-stacked" id="menu-content">
+      <li><a href="#/reward" ng-class="(activeMenu==='reward'?'highlite':'')">
+          <img ng-src="{{s3Url}}reward-icon.png" width="100%" style="padding:5px;">
+        </a>
+      </li>
       <li ><a href="#/dashboard" id="default" ng-class="(activeMenu==='dashboard'?'highlite':'')"><i class="fa fa-home lg-i"></i> <br />
         <span>Dashboard</span></a>
       </li>

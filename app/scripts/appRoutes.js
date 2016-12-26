@@ -77,6 +77,14 @@ angular.module('coinomiaFrontendApp')
         authenticate:true
     })
 
+    // Reward page
+    .state('reward', {
+        url: '/reward',
+        templateUrl: 'views/reward.html',
+        controller: 'RewardCtrl',
+        authenticate:true
+    })
+
     // Successful page
     .state('success', {
         url: '/success',
