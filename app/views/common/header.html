@@ -8,7 +8,7 @@
     <strong><i class="fa fa-user"></i> Welcome {{name}}, <country-flag country-name="country" country-code="allCountryCodes[country]" s3-url="s3Url"/> </strong>
   </p>
 </div>
-<div class="col-md-7" style="z-index:9999;">
+<div class="col-md-7" style="z-index:999;">
   <!--<div class="counter-date">
     <timer countdown="remainingTime" max-time-unit="'day'" class="timer" interval="1000">
       <span class="countdown-amount">{{ddays}}</span><span class="timer-text">Day{{daysS}}</span>
@@ -19,7 +19,7 @@
   </div>
   <p class="cal-dash pull-left">To Launch...</p>-->
   <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo pull-right" width="200" style="padding:20px 20px 0px;">
-  <a class="header-logo pull-right" ng-click="openVideo()" style="cursor:pointer;">
+  <a class="header-logo pull-right"  data-toggle="modal" data-target="#myModal" style="cursor:pointer;">
     <img ng-src="{{s3Url}}coinomiacademy7.png" width="180" style="padding: 6px 20px 0px;" />
   </a>
 </div>
@@ -57,4 +57,22 @@
       </li>
     </ul>
   </nav>
+</div>
+
+<style>
+  .modal-dialog { top: 10%; };
+</style>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <iframe src="https://player.vimeo.com/video/197114098" width="100%" height="478" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
 </div>

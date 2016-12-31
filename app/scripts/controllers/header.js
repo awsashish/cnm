@@ -108,11 +108,14 @@ angular.module('coinomiaFrontendApp')
 
     // Open Video Modal
     $scope.openVideo = function() {
-      console.log(1);
       var modalInstance = $uibModal.open({
-          templateUrl: 'views/modal/academy-video.html',
-          size: 'md'
+          templateUrl: 'views/academy-video.html',
+          size: 'lg'
       });
+    }
+
+    $scope.closePopup = function() {
+      $uibModalStack.dismissAll();
     }
 
   });
