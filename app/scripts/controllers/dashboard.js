@@ -435,6 +435,22 @@ angular.module('coinomiaFrontendApp')
     //   });
     // }
 
+    // Open Video Pop up
+    if(!$localStorage.viewPopup) {
+      var modalInstance = $uibModal.open({
+          templateUrl: 'views/academy-video.html',
+          scope: $scope,
+          size: 'lg',
+          backdrop: 'static'
+      });
+    }
+
+    $scope.closeModal = function() {
+      console.log(1);
+      $localStorage.$default({viewPopup: 1});
+      $uibModalStack.dismissAll();
+    }
+
     $scope.closePopup = function() {
       $localStorage.$default({viewPopup: 1});
       $uibModalStack.dismissAll();

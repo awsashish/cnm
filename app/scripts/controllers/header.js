@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('HeaderCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, coinomiaService, UtilsService, config) {
+  .controller('HeaderCtrl', function ($scope, $cookies, $state, $rootScope, $localStorage, $timeout, $uibModal, $uibModalStack, coinomiaService, UtilsService, config) {
 
       $rootScope.s3Url = config.s3BucketUrl;
 
@@ -105,5 +105,17 @@ angular.module('coinomiaFrontendApp')
         $rootScope.latestSignup = res.data.data;
       }
     })
+
+    // Open Video Modal
+    $scope.openVideo = function() {
+      var modalInstance = $uibModal.open({
+          templateUrl: 'views/academy-video.html',
+          size: 'lg'
+      });
+    }
+
+    $scope.closePopup = function() {
+      $uibModalStack.dismissAll();
+    }
 
   });
