@@ -22,6 +22,7 @@ angular.module('coinomiaFrontendApp')
     'ratesTitle': 'Current Rates',
     'ratesSubTitle': 'Offered by Coinomia as Now',
     'ratesIcon': 'dash-cur-rate.png',
+    'academyUrl': 'https://www.youtube.com/embed/YB1qiuxiCbk?autoplay=',
     'affiliateFees':100,
     'poolDropdown': [
       {value:1000, name:'1000'},

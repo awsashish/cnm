@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('DashboardCtrl', function ($scope, $rootScope, $localStorage, $location, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config) {
+  .controller('DashboardCtrl', function ($scope, $sce, $rootScope, $localStorage, $location, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config) {
 
     $scope.goToSection = function(id) {
       $location.hash(id);
@@ -434,6 +434,24 @@ angular.module('coinomiaFrontendApp')
     //       backdrop: 'static'
     //   });
     // }
+
+    // Open Video Pop up
+    if(!$localStorage.viewPopup) {
+      var url = config.academyUrl;
+      var autoplay = true;
+      $scope.videoUrl = $sce.trustAsResourceUrl(url+autoplay);
+      var modalInstance = $uibModal.open({
+          templateUrl: 'views/modal/academy-video.html',
+          scope: $scope,
+          size: 'lg',
+          backdrop: 'static'
+      });
+    }
+
+    $scope.closeModal = function() {
+      $localStorage.$default({viewPopup: 1});
+      $uibModalStack.dismissAll();
+    }
 
     $scope.closePopup = function() {
       $localStorage.$default({viewPopup: 1});

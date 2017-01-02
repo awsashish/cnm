@@ -8,7 +8,7 @@
     <strong><i class="fa fa-user"></i> Welcome {{name}}, <country-flag country-name="country" country-code="allCountryCodes[country]" s3-url="s3Url"/> </strong>
   </p>
 </div>
-<div class="col-md-7">
+<div class="col-md-7" style="z-index:999;">
   <!--<div class="counter-date">
     <timer countdown="remainingTime" max-time-unit="'day'" class="timer" interval="1000">
       <span class="countdown-amount">{{ddays}}</span><span class="timer-text">Day{{daysS}}</span>
@@ -18,7 +18,10 @@
     </timer>
   </div>
   <p class="cal-dash pull-left">To Launch...</p>-->
-  <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo pull-right" width="200" style="padding:10px 20px 0px;">
+  <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo pull-right" width="200" style="padding:20px 20px 0px;">
+  <a class="header-logo pull-right" ng-click="openVideo()" style="cursor:pointer;">
+    <img ng-src="{{s3Url}}coinomiacademy7.png" width="180" style="padding: 6px 20px 0px;" />
+  </a>
 </div>
 <div class="col-md-12 mobile-navigation collapse" id="bs-example-navbar-collapse-1">
   <nav id="nav">
@@ -59,3 +62,4 @@
     </ul>
   </nav>
 </div>
+
