@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('DashboardCtrl', function ($scope, $rootScope, $localStorage, $location, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config) {
+  .controller('DashboardCtrl', function ($scope, $sce, $rootScope, $localStorage, $location, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config) {
 
     $scope.goToSection = function(id) {
       $location.hash(id);
@@ -437,8 +437,11 @@ angular.module('coinomiaFrontendApp')
 
     // Open Video Pop up
     if(!$localStorage.viewPopup) {
+      var url = config.academyUrl;
+      var autoplay = true;
+      $scope.videoUrl = $sce.trustAsResourceUrl(url+autoplay);
       var modalInstance = $uibModal.open({
-          templateUrl: 'views/academy-video.html',
+          templateUrl: 'views/modal/academy-video.html',
           scope: $scope,
           size: 'lg',
           backdrop: 'static'
@@ -446,7 +449,6 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.closeModal = function() {
-      console.log(1);
       $localStorage.$default({viewPopup: 1});
       $uibModalStack.dismissAll();
     }
