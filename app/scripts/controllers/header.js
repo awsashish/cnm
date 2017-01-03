@@ -114,7 +114,8 @@ angular.module('coinomiaFrontendApp')
       var modalInstance = $uibModal.open({
           templateUrl: 'views/modal/academy-video.html',
           scope: $scope,
-          size: 'lg'
+          size: 'lg',
+          windowClass: 'academy-video'
       });
     }
 
