@@ -479,6 +479,10 @@ map area{
   color: #a94442;
 }
 
+.academy-video {
+    z-index: 20000000000 !important;
+}
+
 .ui-tooltip.ui-widget.ui-corner-all.ui-widget-content {
     display: none;
 }

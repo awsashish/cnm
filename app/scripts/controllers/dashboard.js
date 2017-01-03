@@ -443,7 +443,8 @@ angular.module('coinomiaFrontendApp')
       $scope.modalInstance = $uibModal.open({
           templateUrl: 'views/modal/academy-video.html',
           scope: $scope,
-          size: 'lg'
+          size: 'lg',
+          windowClass: 'academy-video',
       });
 
       $scope.modalInstance.result.then(function(){
