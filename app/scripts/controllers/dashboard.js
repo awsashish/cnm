@@ -440,11 +440,16 @@ angular.module('coinomiaFrontendApp')
       var url = config.academyUrl;
       var autoplay = true;
       $scope.videoUrl = $sce.trustAsResourceUrl(url+autoplay);
-      var modalInstance = $uibModal.open({
+      $scope.modalInstance = $uibModal.open({
           templateUrl: 'views/modal/academy-video.html',
           scope: $scope,
-          size: 'lg',
-          backdrop: 'static'
+          size: 'lg'
+      });
+
+      $scope.modalInstance.result.then(function(){
+          $localStorage.$default({viewPopup: 1});
+      }, function(){
+          $localStorage.$default({viewPopup: 1});
       });
     }
 
