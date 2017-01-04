@@ -44,7 +44,12 @@ angular.module('coinomiaFrontendApp')
           if(res.status === 200) {
             if(res.data.total > 0) {
               $scope.noRecords = false;
-              $scope.achievements = res.data;
+              $scope.achievements = [];
+              var data =  res.data.rows;
+              data.forEach(function(_data) {
+                _data.ondate = new Date(_data.ondate);
+                $scope.achievements.push(_data);
+              });
             }else{
               $scope.noRecords = true;
             }
