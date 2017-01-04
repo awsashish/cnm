@@ -1172,4 +1172,23 @@ angular.module('coinomiaFrontendApp')
         .catch(get7daysRewardsRequestFailed);
     }
 
+    // Get Achievement Rewards
+    this.getAchievements = function() {
+      
+      // On Success
+      function getAchievementsRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getAchievementsRequestFailed(error) {
+        $log.error('XHR Failed for Rewards.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/reward')
+        .then(getAchievementsRequestComplete)
+        .catch(getAchievementsRequestFailed);
+    }
+
   });

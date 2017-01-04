@@ -82,54 +82,15 @@
                      </tr>
                    </thead>
                    <tbody>
-                     <tr>
-                       <td>01</td>
-                       <td>01/02/2016</td>
-                       <td><img src="{{s3Url}}gold.png" width="30"></td>
-                       <td></td>
-                       <td align="center">01</td>
+                     <tr ng-if="noRecords">
+                       <td colspan="4"> No Records Found.</td>
                      </tr>
-                     <tr>
-                       <td>02</td>
-                       <td>02/02/2016</td>
-                       <td><img src="{{s3Url}}silver.png" width="30"></td>
-                       <td></td>
-                       <td align="center">05</td>
-                     </tr>
-                     <tr>
-                       <td>03</td>
-                       <td>03/02/2016</td>
-                       <td><img src="{{s3Url}}gold.png" width="30"></td>
-                       <td></td>
-                       <td align="center">03</td>
-                     </tr>
-                     <tr>
-                       <td>04</td>
-                       <td>04/02/2016</td>
-                       <td><img src="{{s3Url}}silver.png" width="30"></td>
-                       <td></td>
-                       <td align="center">02</td>
-                     </tr>
-                     <tr>
-                       <td>05</td>
-                       <td>05/02/2016</td>
-                       <td><img src="{{s3Url}}gold.png" width="30"></td>
-                       <td></td>
-                       <td align="center">01</td>
-                     </tr>
-                     <tr>
-                       <td>06</td>
-                       <td>06/02/2016</td>
-                       <td><img src="{{s3Url}}silver.png" width="30"></td>
-                       <td></td>
-                       <td align="center">05</td>
-                     </tr>
-                     <tr>
-                       <td>07</td>
-                       <td>06/02/2016</td>
-                       <td><img src="{{s3Url}}silver.png" width="30"></td>
-                       <td><img src="http://st.motortrend.com/uploads/sites/10/2015/11/2015-bmw-528-i-sedan-angular-front.png" width="30" height="30"> <strong>Reward Brand New BMW-5</strong></td>
-                       <td align="center">05</td>
+                     <tr ng-repeat="achievement in achievements" ng-if="!noRecords">
+                       <td>{{$index+1}}</td>
+                       <td>{{achievement.ondate | date:'MM/dd/yyyy'}}</td>
+                       <td><img src="{{s3Url}}{{achievement.Rank | lowercase}}.png" width="30"></td>
+                       <td>{{achievement.RewardName}}</td>
+                       <td align="center">{{achievement.consecutive_days}}</td>
                      </tr>
                    </tbody>
                  </table>

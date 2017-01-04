@@ -37,7 +37,24 @@ angular.module('coinomiaFrontendApp')
         })
     }
 
-     $scope.getAllRewards();
-     $scope.get7daysRewards();
+    // Get Achievements History
+    $scope.getAchievements = function() {
+      coinomiaService.getAchievements()
+        .then(function(res) {
+          if(res.status === 200) {
+            if(res.data.total > 0) {
+              $scope.noRecords = false;
+              $scope.achievements = res.data;
+            }else{
+              $scope.noRecords = true;
+            }
+            
+          }
+        });
+    }
+     
+    $scope.getAllRewards();
+    $scope.get7daysRewards();
+    $scope.getAchievements();
 
   });
