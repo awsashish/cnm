@@ -144,47 +144,16 @@
                        <thead style="background:#525252;">
                          <tr style="color:#525252;">
                            <td><strong class="white-color">S.No</strong></td>
-                           <td><strong class="white-color">User ID</strong></td>
+                           <!--<td><strong class="white-color">User ID</strong></td>-->
                            <td><strong class="white-color">Name</strong></td>
                            <td><strong class="white-color">Rank</strong></td>
                          </tr>
                        </thead>
                        <tbody>
-                         <tr>
-                           <td>01</td>
-                           <td><strong><img src="{{s3Url}}flags/in.png"> usdf34763</strong> </td>
-                           <td>Uttam Singh</td>
-                           <td><img src="{{s3Url}}silver.png" width="30"></td>
-                         </tr>
-                         <tr>
-                           <td>02</td>
-                           <td><strong><img src="{{s3Url}}flags/ae.png"> rhg99404</strong> </td>
-                           <td>Rashmi sharma</td>
-                           <td><img src="{{s3Url}}gold.png" width="30"></td>
-                         </tr>
-                         <tr>
-                           <td>03</td>
-                           <td><strong><img src="{{s3Url}}flags/bi.png"> yhj84545</strong> </td>
-                           <td>Yash Sen</td>
-                           <td><img src="{{s3Url}}silver.png" width="30"></td>
-                         </tr>
-                         <tr>
-                           <td>04</td>
-                           <td><strong><img src="{{s3Url}}flags/ae.png"> amdfj43095</strong> </td>
-                           <td>Amit Rastogi</td>
-                           <td><img src="{{s3Url}}gold.png" width="30"></td>
-                         </tr>
-                         <tr>
-                           <td>05</td>
-                           <td><strong><img src="{{s3Url}}flags/in.png"> rsdfh4387</strong> </td>
-                           <td>Ramkripal sharma</td>
-                           <td><img src="{{s3Url}}silver.png" width="30"></td>
-                         </tr>
-                         <tr>
-                           <td>06</td>
-                           <td><strong><img src="{{s3Url}}flags/ae.png"> sjsdf99r043</strong> </td>
-                           <td>Sanchita Roy</td>
-                           <td><img src="{{s3Url}}gold.png" width="30"></td>
+                         <tr ng-repeat="weekRankers in weekRewards">
+                           <td>{{$index+1}}</td>
+                           <td><strong><img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName}}</strong> </td>
+                           <td><img src="{{s3Url}}{{weekRankers.RewardName | lowercase}}.png" width="30"></td>
                          </tr>
                        </tbody>
                      </table>
@@ -195,47 +164,15 @@
                        <thead style="background:#525252;">
                          <tr style="color:#525252;">
                            <td><strong class="white-color">S.No</strong></td>
-                           <td><strong class="white-color">User ID</strong></td>
                            <td><strong class="white-color">Name</strong></td>
                            <td><strong class="white-color">Rank</strong></td>
                          </tr>
                        </thead>
                        <tbody>
-                         <tr>
-                           <td>01</td>
-                           <td><strong><img src="{{s3Url}}flags/in.png"> usdf34763</strong> </td>
-                           <td>Uttam Singh</td>
-                           <td><img src="{{s3Url}}silver.png" width="30"></td>
-                         </tr>
-                         <tr>
-                           <td>02</td>
-                           <td><strong><img src="{{s3Url}}flags/ae.png"> rhg99404</strong> </td>
-                           <td>Rashmi sharma</td>
-                           <td><img src="{{s3Url}}gold.png" width="30"></td>
-                         </tr>
-                         <tr>
-                           <td>03</td>
-                           <td><strong><img src="{{s3Url}}flags/bi.png"> yhj84545</strong> </td>
-                           <td>Yash Sen</td>
-                           <td><img src="{{s3Url}}silver.png" width="30"></td>
-                         </tr>
-                         <tr>
-                           <td>04</td>
-                           <td><strong><img src="{{s3Url}}flags/ae.png"> amdfj43095</strong> </td>
-                           <td>Amit Rastogi</td>
-                           <td><img src="{{s3Url}}gold.png" width="30"></td>
-                         </tr>
-                         <tr>
-                           <td>05</td>
-                           <td><strong><img src="{{s3Url}}flags/in.png"> rsdfh4387</strong> </td>
-                           <td>Ramkripal sharma</td>
-                           <td><img src="{{s3Url}}silver.png" width="30"></td>
-                         </tr>
-                         <tr>
-                           <td>06</td>
-                           <td><strong><img src="{{s3Url}}flags/ae.png"> sjsdf99r043</strong> </td>
-                           <td>Sanchita Roy</td>
-                           <td><img src="{{s3Url}}gold.png" width="30"></td>
+                         <tr ng-repeat="allRankers in allRewards">
+                           <td>{{$index+1}}</td>
+                           <td><strong><img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName}}</strong> </td>
+                           <td><img src="{{s3Url}}{{allRankers.RewardName | lowercase}}.png" width="30"></td>
                          </tr>
                        </tbody>
                      </table>

@@ -37,43 +37,15 @@
         <div class="col-md-4 col-sm-12 col-lg-4">
           <news-feeds></news-feeds>
         </div>
-        <div class="col-md-8 col-sm-12" style="border:1px solid #ccc; border-radius:5px; padding:0px;">
+        <div class="col-md-8 col-sm-12" style="border:1px solid #ccc; border-radius:5px; padding:0px;min-height: 375px;">
           <h3 class="no-margin no-padding reward-head-dash text-center" style="margin:0 0 15px 0 !important;"><strong><img src="images/rankers.png" width="50"> Coinomia Leadership Reward</strong></h3>
         <div class="col-md-6">
           <h4 class="ranker-heading1"><strong><i class="fa fa-users" aria-hidden="true"></i> Recent Rankers</strong></h4>
           <table width="100%" style="border:1px solid #f2f2f2;">
             <tbody>
-              <tr class="ranker1-odd">
-                <td height="35"><img src="{{s3Url}}flags/ad.png"> uttam32493</td>
-                <td><img src="{{s3Url}}bronze.png" width="40" class="pull-right pad-r10 "> </td>
-              </tr>
-              <tr class="ranker1-even">
-                <td height="35"><img src="{{s3Url}}flags/in.png"> dvnvn430985</td>
-                <td><img src="{{s3Url}}blackdiamond.png" width="40" class="pull-right pad-r10 "> </td>
-              </tr>
-              <tr class="ranker1-odd">
-                <td height="35"><img src="{{s3Url}}flags/al.png"> cnvhb435743</td>
-                <td><img src="{{s3Url}}emerld.png" width="40" class="pull-right pad-r10 "> </td>
-              </tr>
-              <tr class="ranker1-even">
-                <td height="35"><img src="{{s3Url}}flags/ag.png"> porut88595</td>
-                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
-              </tr>
-              <tr class="ranker1-odd">
-                <td height="35"><img src="{{s3Url}}flags/bg.png"> rfgh565657</td>
-                <td><img src="{{s3Url}}silver.png" width="40" class="pull-right pad-r10"> </td>
-              </tr>
-              <tr class="ranker1-even">
-                <td height="35"><img src="{{s3Url}}flags/bh.png"> porut88595</td>
-                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
-              </tr>
-              <tr class="ranker1-odd">
-                <td height="35"><img src="{{s3Url}}flags/bt.png"> rfgh565657</td>
-                <td><img src="{{s3Url}}silver.png" width="40" class="pull-right pad-r10"> </td>
-              </tr>
-              <tr class="ranker1-even">
-                <td height="35"><img src="{{s3Url}}flags/bi.png"> porut88595</td>
-                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
+              <tr class="ranker1-odd" ng-repeat="weekRankers in weekRewards">
+                <td height="35"><img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName}}</td>
+                <td><img src="{{s3Url}}{{weekRankers.RewardName | lowercase}}.png" width="40" class="pull-right pad-r10 "> </td>
               </tr>
             </tbody>
           </table>
@@ -82,37 +54,9 @@
           <h4 class="ranker-heading2"><strong><i class="fa fa-users" aria-hidden="true"></i> All Time Rankers</strong></h4>
           <table width="100%" style="border:1px solid #f2f2f2;">
             <tbody>
-              <tr class="ranker1-even">
-                <td height="35"><img src="{{s3Url}}flags/ag.png"> utjmk05904</td>
-                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
-              </tr>
-              <tr class="ranker1-odd">
-                <td height="35"><img src="{{s3Url}}flags/bi.png"> rfgh565657</td>
-                <td><img src="{{s3Url}}silver.png" width="40" class="pull-right pad-r10"> </td>
-              </tr>
-              <tr class="ranker1-even">
-                <td height="35"><img src="{{s3Url}}flags/bh.png"> porut88595</td>
-                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
-              </tr>
-              <tr class="ranker1-odd">
-                <td height="35"><img src="{{s3Url}}flags/bv.png"> uttam32493</td>
-                <td><img src="{{s3Url}}bronze.png" width="40" class="pull-right pad-r10 "> </td>
-              </tr>
-              <tr class="ranker1-even">
-                <td height="35"><img src="{{s3Url}}flags/bw.png"> dvnvn430985</td>
-                <td><img src="{{s3Url}}blackdiamond.png" width="40" class="pull-right pad-r10 "> </td>
-              </tr>
-              <tr class="ranker1-odd">
-                <td height="35"><img src="{{s3Url}}flags/by.png"> cnvhb435743</td>
-                <td><img src="{{s3Url}}emerld.png" width="40" class="pull-right pad-r10 "> </td>
-              </tr>
-              <tr class="ranker1-even">
-                <td height="35"><img src="{{s3Url}}flags/bz.png"> porut88595</td>
-                <td><img src="{{s3Url}}gold.png" width="40" class="pull-right pad-r10 "> </td>
-              </tr>
-              <tr class="ranker1-odd">
-                <td height="35"><img src="{{s3Url}}flags/in.png"> rfgh565657</td>
-                <td><img src="{{s3Url}}silver.png" width="40" class="pull-right pad-r10"> </td>
+              <tr class="ranker1-odd" ng-repeat="allRankers in allRewards">
+                <td height="35"><img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName}}</td>
+                <td><img src="{{s3Url}}{{allRankers.RewardName | lowercase}}.png" width="40" class="pull-right pad-r10 "> </td>
               </tr>
             </tbody>
           </table>
