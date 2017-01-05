@@ -1,0 +1,20 @@
+<style>
+  .modal-dialog { top: 10%; };
+</style>
+<div class="modal-header" style="border:0;">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+  <!-- ngIf: withdrawalHeading && !responseSuccess -->
+  <h4 class="modal-title ng-scope" id="myModalLabel">
+    <strong class="ng-binding">&nbsp;Ethereum Cloud Mining @ Coinomia</strong>
+  </h4><!-- end ngIf: withdrawalHeading && !responseSuccess -->
+
+  <!-- ngIf: responseSuccess && !convertSuccess && !convertError -->
+
+  <!-- ngIf: convertUSDHeading -->
+</div>
+<div class="modal-body" style="padding: 0;">
+ <iframe width="100%" height="478" ng-src="https://www.youtube.com/embed/Bq17YBv7E4c?autoplay=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+<div class="modal-footer">
+   <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closePopup()">Close</button>
+</div>

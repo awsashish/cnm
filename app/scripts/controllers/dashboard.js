@@ -437,11 +437,8 @@ angular.module('coinomiaFrontendApp')
 
     // Open Video Pop up
     if(!$localStorage.viewPopup) {
-      var url = config.academyUrl;
-      var autoplay = true;
-      $scope.videoUrl = $sce.trustAsResourceUrl(url+autoplay);
       $scope.modalInstance = $uibModal.open({
-          templateUrl: 'views/modal/academy-video.html',
+          templateUrl: 'views/modal/cloud-mining-video.html',
           scope: $scope,
           size: 'lg',
           windowClass: 'academy-video',
