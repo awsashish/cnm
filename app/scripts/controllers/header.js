@@ -109,7 +109,7 @@ angular.module('coinomiaFrontendApp')
     // Open Video Modal
     $scope.openVideo = function() {
       var url = config.academyUrl;
-      var autoplay = false;
+      var autoplay = true;
       $scope.videoUrl = $sce.trustAsResourceUrl(url+autoplay);
       var modalInstance = $uibModal.open({
           templateUrl: 'views/modal/academy-video.html',
