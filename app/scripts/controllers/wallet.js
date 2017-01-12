@@ -16,6 +16,9 @@ angular.module('coinomiaFrontendApp')
     $scope.btcImagePath = config.btcImagePath;
     $scope.ethImagePath = config.ethImagePath;
     $scope.verifiedStatus = false;
+    $scope.pagination = {
+      perpage: config.pageLimit
+    }
 
 
     // Get Wallet Info
@@ -26,16 +29,17 @@ angular.module('coinomiaFrontendApp')
             $scope.walletData = res.data;
           }
         });
-        $scope.getTransctions();
+        $scope.getTransctions($scope.currentPage, $scope.pagination.perpage);
     }
 
     // Get Transaction Details
     $scope.getTransctions = function() {
       $scope.transactionData = [];
-      coinomiaService.getTransactionDetails($scope.currentPage)
+      coinomiaService.getTransactionDetails($scope.currentPage, $scope.pagination.perpage)
         .then(function(res){
           if(res.status === 200) {
             var transaction = res.data.rows;
+            $scope.totalTransactions = res.data.total;
             transaction.forEach(function(info) {
               $scope.transactionData.push(info);
             });

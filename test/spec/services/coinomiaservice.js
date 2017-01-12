@@ -559,10 +559,10 @@ describe('service coinomiaService', function() {
 
     it('should returns records succesfully', function() {
       $httpBackend
-      .expect('GET', coinomiaService.apiHost + 'user/latest-transaction/')
+      .expect('GET', coinomiaService.apiHost + 'user/latest-transaction/'+pagination.pageno+'/'+pagination.pagesize)
       .respond(200, {'total':'some-value','rows':[]});
       var data;
-      coinomiaService.getTransactionDetails().then(function(fetchedData) {
+      coinomiaService.getTransactionDetails(pagination.pageno, pagination.pagesize).then(function(fetchedData) {
         data = fetchedData.data;
       });
       $httpBackend.flush();
@@ -573,9 +573,9 @@ describe('service coinomiaService', function() {
 
     it('should log referral error', function() {
       $httpBackend
-      .expect('GET', coinomiaService.apiHost + 'user/latest-transaction/')
+      .expect('GET', coinomiaService.apiHost + 'user/latest-transaction/'+pagination.pageno+'/'+pagination.pagesize)
       .respond(500, 'Internal Server Error.');
-      coinomiaService.getTransactionDetails();
+      coinomiaService.getTransactionDetails(pagination.pageno, pagination.pagesize);
       $httpBackend.flush();
       expect($log.error.logs).toEqual(jasmine.stringMatching('XHR Failed for'));
     });

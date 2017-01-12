@@ -213,7 +213,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get Latest Transaction and Withdrawals
-    this.getTransactionDetails = function(currentPage) {
+    this.getTransactionDetails = function(currentPage, pageLimit) {
 
       function transactionComplete(response) {
         return response;
@@ -224,7 +224,7 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.get(this.apiHost +'user/latest-transaction/')
+      return $http.get(this.apiHost +'user/latest-transaction/'+currentPage+'/'+pageLimit)
         .then(transactionComplete)
         .catch(transactionFailed);
     };
