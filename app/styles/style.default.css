@@ -5892,3 +5892,11 @@ h1{
 .inner-top-dash{ background:#f1f1f1; padding:20px; border-bottom:2px solid #ccc; color:#525252; border-radius:10px; margin:5px; line-height:25px !important;}
 
 .counter-dash{ margin:0px !important; padding-top:10px !important; font-size:35px; color:#525252; font-weight:bold;font-family: "Oswald",sans-serif;}
+
+.available-package div {
+    border-right: 1px solid #ccc;
+}
+
+.available-package div:last-child {
+    border: none;
+}
