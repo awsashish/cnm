@@ -59,6 +59,8 @@ angular.module('coinomiaFrontendApp')
     $scope.poolOptions = config.poolDropdown;
     $scope.machineOptions = config.machineDropdown;
     $scope.rackOptions = config.rackDropdown;
+    
+    $scope.packageImage = config.productImage;
 
     // Get Date Ranges
     var startDate = moment('2016-09-01').format('YYYY-MM-DD');
@@ -473,5 +475,17 @@ angular.module('coinomiaFrontendApp')
     $scope.closeModal = function() {
       $uibModalStack.dismissAll();
     }
+
+    // Get Available Package
+    $scope.packageStock = function() {
+      coinomiaService.getPackageStock()
+        .then(function(res) {
+          if(res.status === 200) {
+            $scope.availablePackage = res.data;
+          }
+        });
+    }
+
+    $scope.packageStock();
 
    });

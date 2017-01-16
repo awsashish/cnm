@@ -7,7 +7,7 @@
     <div class="mainpanel">
 
       <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="container top-dashboard-pro">            
+        <div class="container top-dashboard-pro">    
 
           <div class="col-md-8 ">
             <div class="inner-top-dash">Coinomia started with a huge Mining setup however, positive word of mouth and teamwork sailed like a spark! Most of our contracts are sold out and now there are just a few leftovers.
@@ -15,21 +15,12 @@
             </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-4 available-package">
             <h4 align="center" style="color:#C30"><strong>REMAINING CONTRACTS</strong></h4>
             <div class="clearfix"></div>
-            <div align="center" class="col-xs-4 col-sm-4 col-md-4" style="border-right:1px solid #ccc;">
-              <img ng-src="{{s3Url}}contract-bitcoin.png" width="70">
-              <h1 class="counter-dash">100</h1>
-            </div>
-            <div align="center" class="col-xs-4 col-sm-4 col-md-4" style="border-right:1px solid #ccc;">
-              <img src="{{s3Url}}contributor.png" width="70">
-              <h1 class="counter-dash">120</h1>
-            </div>
-            
-            <div align="center" class="col-xs-4 col-sm-4 col-md-4">
-              <img src="{{s3Url}}rack.png" width="70">
-              <h1 class="counter-dash">38</h1>
+            <div align="center" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="stock in availablePackage" ng-if="stock.isenable">
+              <img ng-src="{{s3Url}}{{packageImage[stock.productname]}}" width="70">
+              <h1 class="counter-dash">{{stock.available}}</h1>
             </div>
           </div>
 

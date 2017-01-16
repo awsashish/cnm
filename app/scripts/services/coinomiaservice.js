@@ -1134,4 +1134,23 @@ angular.module('coinomiaFrontendApp')
         .catch(getPayoutsRequestFailed);
     }
 
+    // Get Available Stock
+    this.getPackageStock = function() {
+
+       // On Success
+      function getStockRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getStockRequestFailed(error) {
+        return error;
+      }
+
+      return $http.get(this.apiHost + 'user/available-stock')
+        .then(getStockRequestComplete)
+        .catch(getStockRequestFailed);
+    
+    }
+
   });
