@@ -123,7 +123,7 @@ angular.module('coinomiaFrontendApp')
       'Bitcoin Machine Contract': 'contributor.png',
       'Bitcoin Rack Contract': 'rack.png',
       'Ethereum Pool Contract':'ether-contract.png',
-      'Ethereum Machine Contract':'ether-contributor',
-      'Ethereum Rack Contract':'ether-rack'
+      'Ethereum Machine Contract':'ether-contributor.png',
+      'Ethereum Rack Contract':'ether-rack.png'
     }
   });
