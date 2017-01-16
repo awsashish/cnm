@@ -62,6 +62,7 @@ angular.module('coinomiaFrontendApp')
               }
               else if (attrs.product === 'eth') {
                 scope.eth.ethMining = ui.value;
+                scope.eth.quantity = scope.eth.ethMining/scope.eth.miningpower;
                 el.html(sliderLabel.replace('SLIDER_VALUE', scope.eth.ethMining));
               }
             });
@@ -96,6 +97,12 @@ angular.module('coinomiaFrontendApp')
         else if(attrs.product === 'eth') {
           scope.$watch('eth.ethMining', function(newVal) {
             $(elem).slider('value', newVal);
+          });
+          scope.$watch('eth.quantity', function(newVal) {
+            $(elem).slider('value', scope.eth.ethMining);
+            setTimeout(function() {
+              totalAmount.call();
+            }, 500)            
           });
         }
       }

@@ -591,7 +591,8 @@
                                       <div class="col-sm-12">
                                          <input type="hidden" id="amount3" class="form-control">                                        <input type="hidden" id="amount3" class="form-control">
                                          
-                                         <p class="price lead" id="amount-label3"><input type="number" ng-model="btc.quantity" min="0" ng-change="calculateAmount(key, btc.quantity, btc.miningpower, productMaxUnit[$index])" style="width: 80px;"/>
+                                         <p class="price lead" id="amount-label3">
+                                           <input type="number" ng-model="btc.quantity" min="0" ng-change="calculateBtcAmount(key, btc.quantity, btc.miningpower, productMaxUnit[$index])" style="width: 80px;"/>
                                            <!--{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}-->
                                            </p>
                                          Number Of Contracts<strong class="price pull-right lead">Amount : {{(btc.amount*btc.btcMining/btc.miningpower) | currency}}</strong>
@@ -612,12 +613,16 @@
                                        <div ui-slider class="uiSlider" model="eth.ethMining" product="eth" min="{{eth.ethMining}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
                                     </div>
                                  </div>
-                                 <div class="price-form">
+                                 <div class="price-form" id="quantity-eth-{{key}}">
                                     <div class="form-group">
                                        <div class="col-sm-12">
                                           <input type="hidden" id="amount3" class="form-control">
-                                          <p class="price lead" id="amount-label3">{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}
-                                           {{eth.quantity | number:0}}</p>
+                                          <p class="price lead" id="amount-label3">
+                                           <input type="number" ng-model="eth.quantity" min="0" ng-change="calculateEthAmount(key, eth.quantity, eth.miningpower, productMaxUnit[$index])" style="width: 80px;"/>
+                                           <!--{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}-->
+                                           </p>
+                                          <!--<p class="price lead" id="amount-label3">{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}
+                                           {{eth.quantity | number:0}}</p>-->
                                           Number Of Contracts<strong class="price pull-right lead">Amount : {{eth.amount * eth.ethMining/eth.miningpower | currency}}</strong>
                                        </div>
                                     </div>

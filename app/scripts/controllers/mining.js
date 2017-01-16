@@ -88,10 +88,12 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.setBtcQuantity = function(key, val) {
+      console.log(key, val);
       $scope.btcProducts[key].quantity = val;
     }
 
-    $scope.calculateAmount = function(key, quantity, miningpower, maxUnit) {
+    $scope.calculateBtcAmount = function(key, quantity, miningpower, maxUnit) {
+      console.log(quantity, maxUnit);
       if(quantity > maxUnit) {
         $scope.btcProducts[key].quantity = maxUnit;
         $scope.btcProducts[key].btcMining = maxUnit*miningpower;
@@ -100,6 +102,18 @@ angular.module('coinomiaFrontendApp')
       }else{
         $scope.btcProducts[key].btcMining = quantity*miningpower;
         angular.element("#quantity-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.btcProducts[key].btcMining+'<small>TH/s</small>');
+      }
+    }
+
+    $scope.calculateEthAmount = function(key, quantity, miningpower, maxUnit) {
+      if(quantity > maxUnit) {
+        $scope.ethProducts[key].quantity = maxUnit;
+        $scope.ethProducts[key].ethMining = maxUnit*miningpower;
+        angular.element("#quantity-eth-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.ethProducts[key].ethMining+'<small>MH/s</small>');
+        return false;
+      }else{
+        $scope.ethProducts[key].ethMining = quantity*miningpower;
+        angular.element("#quantity-eth-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.ethProducts[key].ethMining+'<small>MH/s</small>');
       }
     }
 
