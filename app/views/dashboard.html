@@ -5,6 +5,29 @@
     <style>.price-box{ margin-bottom:20px; padding:20px; background:#f5f5f5;}.container .jumbotron{ padding-left:0px !important; padding-right:0px !important;}label {font-size: 11px;}.nav-tabs > li > a{ padding: 5px !important; color:#fff !important; font-family:'Oswald', sans-serif;}.nav-tabs{background: #ccc  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background:#b73632 !important;} .nav-tabs > li > a { font-size: 20px; } select { -webkit-appearance: menulist;}
    </style>
     <div class="mainpanel">
+
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="container top-dashboard-pro">    
+
+          <div class="col-md-8 ">
+            <div class="inner-top-dash">Coinomia started with a huge Mining setup however, positive word of mouth and teamwork sailed like a spark! Most of our contracts are sold out and now there are just a few leftovers.
+          Our new Bitcoin Mining hardware is already at our doorsteps. It will take a while before we set it up for production and roll out fresh Mining Contracts for Coinomia Affiliates.
+            </div>
+          </div>
+
+          <div class="col-md-4 available-package">
+            <h4 align="center" style="color:#C30"><strong>REMAINING CONTRACTS</strong></h4>
+            <div class="clearfix"></div>
+            <div align="center" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="stock in availablePackage" ng-if="stock.isenable">
+              <img ng-src="{{s3Url}}{{packageImage[stock.productname]}}" width="70">
+              <h1 class="counter-dash">{{stock.available}}</h1>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
       <div class="contentpanel" style="overflow:hidden">
         <div class="col-md-7 col-sm-12 col-lg-8">
           <news-feeds></news-feeds>

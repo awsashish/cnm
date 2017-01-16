@@ -1091,6 +1091,7 @@ select {
   float: left;
   background:#666;
   z-index: 9999;
+  margin-top: 20px;
 }
 
 .mobile-navigation .nav > li > a {
@@ -4462,12 +4463,15 @@ body.signin {
 }
 
 @media(min-width:320px) and (max-width:768px)
-{.headerwrapper .header-left {
-    width: 230px !important;}
-.leftpanel .profile-left .profile-thumb img{ width:70px;}
-.leftpanel .profile-left .media-heading{ font-size:12px;}
-.leftpanel .profile-left{ height:110px;}
+{
+    .headerwrapper .header-left { width: 230px !important;}
+    .leftpanel .profile-left .profile-thumb img{ width:70px;}
+    .leftpanel .profile-left .media-heading{ font-size:12px;}
+    .leftpanel .profile-left{ height:110px;}
+    .right-logo { display:none; }
 }
+
+
 
 
 .btn-white{ background:#fff !important;}
@@ -5869,4 +5873,30 @@ h1{
         transform: rotate(-45deg) scale(0.2);
     }
 
+}
+
+.heart {
+	font-size: 15px;
+	color: #fff; display:inline-block; background:#f00;
+	animation: beat .35s infinite alternate; font-weight:bold;  margin-top:0px; width:40px; border-radius:10%; padding:5px; height:35px; 
+	transform-origin: center; margin-right:20px; line-height:10px; border-bottom:2px solid #C00;
+}
+.heart small{ font-size:8px !important; animation-iteration-count:infinite !important;}
+/* Heart beat animation */
+@keyframes beat{
+	to { transform: scale(1.5); }
+}
+
+.top-dashboard-pro{padding:10px 0; text-align:justify; border:1px solid #ccc; background:#FFF; font-size:17px; font-weight:bold;  border-radius:10px; text-transform:capitalize; margin-top:20px; font-family: 'Raleway', sans-serif;  box-shadow:2px 2px #f2f2f2; width:100%;}
+
+.inner-top-dash{ background:#f1f1f1; padding:20px; border-bottom:2px solid #ccc; color:#525252; border-radius:10px; margin:5px; line-height:25px !important;}
+
+.counter-dash{ margin:0px !important; padding-top:10px !important; font-size:35px; color:#525252; font-weight:bold;font-family: "Oswald",sans-serif;}
+
+.available-package div {
+    border-right: 1px solid #ccc;
+}
+
+.available-package div:last-child {
+    border: none;
 }
