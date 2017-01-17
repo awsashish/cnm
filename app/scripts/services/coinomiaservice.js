@@ -1150,7 +1150,63 @@ angular.module('coinomiaFrontendApp')
       return $http.get(this.apiHost + 'user/available-stock')
         .then(getStockRequestComplete)
         .catch(getStockRequestFailed);
-    
+
+    }
+
+    // Get All Time Rewards
+    this.getAllRewards = function() {
+      
+      // On Success
+      function getAllRewardsRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function getAllRewardsRequestFailed(error) {
+        $log.error('XHR Failed for Rewards.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/rewardalldays')
+        .then(getAllRewardsRequestComplete)
+        .catch(getAllRewardsRequestFailed);
+    }
+
+    // Get 7 Days Rewards
+    this.get7daysRewards = function() {
+      
+      // On Success
+      function get7daysRewardsRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function get7daysRewardsRequestFailed(error) {
+        $log.error('XHR Failed for Rewards.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/reward7days')
+        .then(get7daysRewardsRequestComplete)
+        .catch(get7daysRewardsRequestFailed);
+    }
+
+    // Get Achievement Rewards
+    this.getAchievements = function() {
+      
+      // On Success
+      function getAchievementsRequestComplete(response) {
+        return response;
+      }
+
+      function getAchievementsRequestFailed(error) {
+        $log.error('XHR Failed for Rewards.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/reward')
+        .then(getAchievementsRequestComplete)
+        .catch(getAchievementsRequestFailed);
     }
 
   });
