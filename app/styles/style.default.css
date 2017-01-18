@@ -5900,3 +5900,26 @@ h1{
 .available-package div:last-child {
     border: none;
 }
+
+.out-stock {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.07);
+    left: 11px;
+    right: 50px;
+    top: 0;
+    height: 212px;
+    z-index: 999;
+    border-radius: 5px;
+}
+
+.out-stock p {
+    position: relative;
+    left: 50%;
+    margin-left: -70px;
+    top: 50%;
+    margin-top: -20px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    font-family: Oswald,sans-serif;
+}
