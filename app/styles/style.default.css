@@ -5915,10 +5915,10 @@ h1{
 }
 
 .out-stock p {
-    position: relative;
+    position: absolute;
     left: 30%;
     top: 20%;
-    margin-top: -20px;
+    margin-top: -14px;
     font-size: 24px;
     color: #fff;
     font-weight: bold;
