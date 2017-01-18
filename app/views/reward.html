@@ -37,33 +37,65 @@
                  <div class="row">
                    <img ng-src="{{s3Url}}reward-top-header.png" width="100%" style="border-bottom:5px solid #FC0; border-radius:10px 10px 0px 0px; margin-top:-10px;"><br>
                    <br>
-                   <div class="col-md-12">
-                     <div ng-repeat="reward in rewards">
+                   <div class="col-md-12 no-pad">
+                     <div ng-repeat="reward in rewards" style="float:left;margin-top:20px;">
                       <div class="{{reward.class}}">
-                        <div class="row">
                           <a title="Click More Details " data-toggle="collapse" data-target=".reward-{{$index}}" aria-expanded="false" aria-controls="reward-{{$index}}">
-                            <div class="col-md-3 col-sm-12"><img ng-src="{{s3Url}}{{reward.type}}" width="80%" height="80%" style="padding:25px 10px;"></div>
-                            <div class="col-md-4 col-sm-12">
-                              <h4 class="reward-main-heading"><strong class="text-uppercase">{{reward.title}}</strong> <br>
-                                {{reward.subtitle}}
-                              </h4>
-                              <p><img src="images/DecoBorderBottom.png" width="90%"><br> 
+                            <div class="icon-section">
+                              <img class="icon-img img-responsive" ng-src="images/rewards/{{reward.icon}}">
+                            </div>
+                            <div class="reward-section text-center title-section">
+                              <img class="title-img" ng-src="images/rewards/{{reward.title}}">
+                              <!--<h4 class="reward-main-heading"><strong class="text-uppercase">{{reward.title}}</strong> <br>
+                                
+                              </h4>-->
+                              <h3 class="reward-title">{{reward.subtitle}}</h3>
+                              <p> 
                                 <span class="short-description" ng-bind-html="reward.shortDescription"></span>
                               </p>
                             </div>
-                            <div align="right" class="col-md-5 col-sm-12" style=" margin:0px; padding:0px;">
-                              <img class="prize-img" ng-src="{{s3Url}}{{reward.prize}}">
+                            <div align="right" class="reward-section reward-img" style=" margin:0px; padding:0px;">
+                              <img class="img-responsive" ng-src="images/rewards/{{reward.prize}}" style="margin: 0 auto;">
                             </div>
                           </a>
-                        </div>
                       </div>
-                      <div class="collapse reward-{{$index}}">
-                        <div class="well">
-                          <div class="reward-detail">
-                            <img ng-src="{{s3Url}}{{reward.image}}" width="100%">
+                      <div class="collapse reward-{{$index}} reward col-xs-12 col-sm-12 col-md-12 no-pad">
+                      
+                        <div class="col-md-12 no-pad" ng-if="reward.type !== 'gold'">
+                          <div class="col-md-6 text-center bronze-desc no-pad" ng-if="reward.type === 'ruby' || reward.type === 'doublediamond'">
+                            <img class="bronze-reward" ng-src="images/rewards/{{reward.description.prize}}" ng-if="reward.noImage===false" />
+                          </div>
+
+                          <div class="col-md-5 bronze">
+                              <img class="desc-title" ng-src="images/rewards/{{reward.description.title}}" />
+                              <p class="reward-desc" ng-bind-html="reward.description.subtitle"></p>
+                          </div>
+
+                          <div class="col-md-7 text-center bronze-desc" ng-if="reward.type !== 'ruby' && reward.type !== 'doublediamond'">
+                            <img class="bronze-reward" ng-src="images/rewards/{{reward.description.prize}}" ng-if="reward.noImage===false" />
+                          </div>
+                        </div>
+
+                        <!-- Gold Pack-->
+                        <div class="col-md-12 no-pad" ng-if="reward.type === 'gold'">
+                          <div class="col-md-4 no-pad">
+                            <img class="gold-reward img-responsive" ng-src="images/rewards/{{reward.description.prize1}}" width="300px" />
+                          </div>
+                          <div class="col-md-4 text-center" style="padding:40px 0 0;">
+                            <img class="desc-title" ng-src="images/rewards/{{reward.description.title}}" />
+                            <p class="reward-desc" ng-bind-html="reward.description.subtitle"></p>
+                          </div>
+                          <div class="col-md-4 no-pad">
+                            <img class="gold-reward img-responsive" ng-src="images/rewards/{{reward.description.prize2}}" width="300px" />
                           </div>
                         </div>
                       </div>
+
+                        <!--<div class="well">
+                          <div class="reward-detail">
+                            <img ng-src="{{s3Url}}{{reward.image}}" width="100%">
+                          </div>
+                        </div>-->
                     </div>                     
                    </div>
                  </div>

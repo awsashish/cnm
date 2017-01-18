@@ -45,6 +45,21 @@ URL: http://themepixels.com/
 /********** 1. IMPORTS **********/
 /********************************/
 
+@font-face {
+  font-family: "Futura";
+  src: url("futura.eot"); /* IE9*/
+  src: url("futura.eot?#iefix") format("embedded-opentype"),
+  url("futura.woff2") format("woff2"),
+  url("futura.woff") format("woff"),
+  url("futura.ttf") format("truetype")
+  url("futura.svg#Futura Condensed Medium") format("svg");
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("font/helvetica-normal.ttf") format("truetype");
+}
+
 html {
     background: transparent !important;
 }
@@ -127,6 +142,113 @@ a:focus {
   top: -10px;
 }
 
+.reward { 
+    float: left;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #f5f1f1;
+    margin-top: 10px; 
+}
+
+.reward-1 .bronze-desc {
+    background: url(../images/rewards/macbook-bingo.png);
+    text-align: left;
+    height: 263px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    right: -10px;
+}
+
+.reward-3 .bronze-desc {
+    background: url(../images/rewards/ruby_bingo.png);
+    text-align: left;
+    height: 263px;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.reward-4 .bronze-desc {
+    background: url(../images/rewards/emerald_bingo.png);
+    text-align: left;
+    height: 270px;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: 100%;
+}
+
+.reward-5 .bronze-desc {
+    background: url(../images/rewards/diamond_bingo.png);
+    text-align: left;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: 100%;
+}
+
+.reward-6 .bronze-desc {
+    background: url(../images/rewards/doublediamond_bingo.png);
+    text-align: left;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: 100%;
+}
+
+.reward-7 .bronze-desc { 
+    background: url(../images/rewards/blackdiamond_transparentbg.png); 
+    background-size: cover;
+    height: 300px;
+    background-position: 100%;
+    text-align: right;
+}
+
+.reward-7 .bronze-desc .bronze-reward {
+    padding: 40px 0px;
+}
+
+.icon-section, .reward-section{
+    float:left;
+    width:30%;
+}
+
+.title-section {
+    float:left;
+    width: 40%;
+}
+
+
+
+.bronze-desc { background: url(../images/rewards/bronze-reward-bg.png); background-size: cover;}
+.bronze-reward { width: 530px; }
+
+.reward-title { font-family: 'Futura'; color: #000000; font-size: 23px;}
+/*.reward-0 { background: url(../images/rewards/reward-bg.jpg)}*/
+
+.desc-title { width: 200px; padding: 0px;}
+
+.title-img { width: 80%; }
+.icon-img { width: 89%; }
+
+.bronze { text-align: center; padding: 50px 0 0;}
+.reward-desc {
+    font-family: 'Helvetica';
+    font-size: 18px;
+    color: #000;
+}
+
+.reward02 .reward-img img {
+    width: 86%;
+}
+
+.title-section {
+    padding: 50px 0 0;
+}
+
+.gold-reward {
+    width: 430px;
+}
+
 .top-arrow { display: block; }
 
 .promote-img {
@@ -134,7 +256,8 @@ a:focus {
 }
 
 .short-description {
-    color: #525252 !important;
+    color: #000000 !important;
+    font-family: 'Helvetica';
 }
 
 .overlay-text {
@@ -4101,6 +4224,15 @@ body.signin {
     text-align: center;
   }
 
+  .reward-4 .bronze-desc {
+    top: 10px;
+    background-size: contain;
+    background-position: 100%;
+    position: relative;
+  }
+
+  .gold-reward { width: 100%; position:relative; top: 10px;}
+
   .promote-img {
     width: auto;
     margin-bottom: 20px;
@@ -4491,6 +4623,9 @@ body.signin {
     .leftpanel .profile-left .media-heading{ font-size:12px;}
     .leftpanel .profile-left{ height:110px;}
     .right-logo { display:none; }
+    .title-img { margin: 0 auto; }
+    .bronze-reward { width: 100%; }
+    .desc-title { width: 60%; }
 }
 
 
@@ -5884,47 +6019,47 @@ h1{
 .ranker-heading2{margin:0px; margin:0px; background: #F90; color:#fff; display:inline-block; padding-left:20px; padding-right:20px; padding-top:5px; padding-bottom:5px; border-radius:0px 40px 0px 0px}
 
 
-.reward01{ background: url(../images/bg-reward.png) repeat-x bottom #f9ecd0 ; border-bottom:2px solid #cfb57f; cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
-.reward01 h4{ padding-top:20px; font-size:23px; color:#be8d22;}
+.reward01, .reward03 { background: url(../images/rewards/bg-reward.jpg) repeat-x bottom !important; border-bottom:2px solid #ccc; cursor:pointer;font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;float:left;}
+.reward01 h4{ padding-top:20px; font-size:23px; color:#be8d22;background-size:cover}
 .reward01 p{ font-size:16px !important;}
 .reward01 .prize-img { width:90%; height: 90%; }
 
-.reward02{ background:url(../images/bg-reward.png) repeat-x bottom #f1f1f1 ;  border-bottom:2px solid #ccc;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
+.reward02{ background:url(../images/rewards/silver_bg.jpg) repeat-x bottom;  border-bottom:2px solid #ccc;  cursor:pointer; font-family: "Helvetica";  color:#525252; border-radius:5px; text-align:left;float:left;}
 
 .reward02 h4{ padding-top:20px; padding-left:20px; font-size:23px; color: #525252;}
 .reward02 p{padding-left:20px; font-size:16px !important;}
 .reward02 .prize-img { width:90%; height: 90%; padding: 20px;}
 
 
-.reward03{ background: url(../images/bg-reward.png) repeat-x bottom #fff3b2 ; border-bottom:2px solid #fac34f;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
+.reward03{ background: url(../images/bg-reward.png) repeat-x bottom ; border-bottom:2px solid #fac34f;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
 
 .reward03 h4{ padding-top:20px; padding-left:20px; font-size:23px; color:#fabf20;}
 .reward03 p{padding-left:20px; font-size:16px !important;}
 .reward03 .prize-img { width:70%; height: 70%; }
 
 
-.reward04{ background:url(../images/bg-reward.png) repeat-x bottom #ebd3d3 ; border-bottom:2px solid #d27b7b;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
+.reward04{ background:url(../images/bg-reward.png) repeat-x bottom ; border-bottom:2px solid #d27b7b;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
 
 .reward04 h4{ padding-top:20px; padding-left:20px; font-size:23px; color:#a81010;}
 .reward04 p{padding-left:20px; font-size:16px !important;}
 .reward04 .prize-img { width:70%; height: 70%; }
 
 
-.reward05{ background:url(../images/bg-reward.png) repeat-x bottom #dafed1 ; border-bottom:2px solid #a7db9b;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
+.reward05{ background:url(../images/bg-reward.png) repeat-x bottom ; border-bottom:2px solid #a7db9b;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
 
 .reward05 h4{ padding-top:20px; padding-left:20px; font-size:23px; color:#1c8901;}
 .reward05 p{padding-left:20px; font-size:16px !important;}
 .reward05 .prize-img { width:100%; height: 100%; padding-top: 20px;}
 
 
-.reward06{ background: url(../images/bg-reward.png) repeat-x bottom #fae6b9 ; border-bottom:2px solid #eacd8b;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
+.reward06{ background: url(../images/bg-reward.png) repeat-x bottom ; border-bottom:2px solid #eacd8b;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
 
 .reward06 h4{ padding-top:20px; padding-left:20px; font-size:23px; color:#d3a837;}
 .reward06 p{padding-left:20px; font-size:16px !important;}
 .reward06 .prize-img { width:90%; height: 90%; padding: 25px;}
 
 
-.reward07{ background: url(../images/bg-reward.png) repeat-x bottom #ecd8f3 ; border-bottom:2px solid #d8b6e4;  cursor:pointer;  margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
+.reward07{ background: url(../images/bg-reward.png) repeat-x bottom ; border-bottom:2px solid #d8b6e4;  cursor:pointer;  margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left;}
 
 .reward07 h4{ padding-top:20px; padding-left:20px; font-size:23px; color:#7f5a8f;}
 .reward07 p{padding-left:20px; font-size:16px !important;}
@@ -5932,7 +6067,7 @@ h1{
 
 .reward-head-dash{background:#b73632;  color:#fff; padding:5px; border-radius:5px 5px 0px 0px; border-top:3px solid #900; font-family: "Oswald",sans-serif; font-weight:normal;}
 
-.reward08{ background: url(../images/bg-reward.png) repeat-x bottom #dbebf3 ; border-bottom:2px solid #c4dae5;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left; }
+.reward08{ background: url(../images/bg-reward.png) repeat-x bottom ; border-bottom:2px solid #c4dae5;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left; }
 
 .reward08 h4{ padding-top:20px; padding-left:20px; font-size:23px; color:#4baadd;}
 .reward08 p{padding-left:20px; font-size:16px !important;}
