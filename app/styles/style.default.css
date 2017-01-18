@@ -217,7 +217,26 @@ a:focus {
     width: 40%;
 }
 
+.reward-main-banner {
+    background: url('../images/banner-bg.jpg');
+    background-size: 100%;
+}
 
+.reward-main-banner .icon {
+    padding: 28px 0;
+}
+
+.reward-main-banner .icon img {
+    width: 172px;
+    position: relative;
+    top: 28px;
+}
+
+.text-image {
+    padding: 0px 40px 0 0px;
+    position: relative;
+    top: 130px;
+}
 
 .bronze-desc { background: url(../images/rewards/bronze-reward-bg.png); background-size: cover;}
 .bronze-reward { width: 530px; }

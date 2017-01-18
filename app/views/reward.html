@@ -35,7 +35,15 @@
              <div class="tab-content" style="padding:20px 20px; ">
                <div class="tab-pane tab_default_4 active">
                  <div class="row">
-                   <img ng-src="{{s3Url}}reward-top-header.png" width="100%" style="border-bottom:5px solid #FC0; border-radius:10px 10px 0px 0px; margin-top:-10px;"><br>
+                   <div class="col-md-12 reward-main-banner">
+                     <div class="col-md-4 icon text-center">
+                       <img src="images/trophy.png" />
+                     </div>
+                     <div class="col-md-8 text-image">
+                       <img class="img-responsive" src="images/text.png" />
+                     </div>
+                   </div>
+                   <!--<img ng-src="{{s3Url}}reward-top-header.png" width="100%" style="border-bottom:5px solid #FC0; border-radius:10px 10px 0px 0px; margin-top:-10px;"><br>-->
                    <br>
                    <div class="col-md-12 no-pad">
                      <div ng-repeat="reward in rewards" style="float:left;margin-top:20px;">
