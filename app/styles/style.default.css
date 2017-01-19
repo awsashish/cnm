@@ -46,18 +46,30 @@ URL: http://themepixels.com/
 /********************************/
 
 @font-face {
-  font-family: "Futura";
-  src: url("futura.eot"); /* IE9*/
-  src: url("futura.eot?#iefix") format("embedded-opentype"),
-  url("futura.woff2") format("woff2"),
-  url("futura.woff") format("woff"),
-  url("futura.ttf") format("truetype")
-  url("futura.svg#Futura Condensed Medium") format("svg");
+    font-family: "masterofbreak";
+    src: url("font/master_of_break.eot"); /* IE9*/
+    src: url("font/master_of_break.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "Helvetica";
-  src: url("font/helvetica-normal.ttf") format("truetype");
+    font-family: "Futura";
+    src: url("futura.eot"); /* IE9*/
+    src: url("futura.eot?#iefix") format("embedded-opentype"),
+    url("futura.woff2") format("woff2"),
+    url("futura.woff") format("woff"),
+    url("futura.ttf") format("truetype")
+    url("futura.svg#Futura Condensed Medium") format("svg");
+}
+
+@font-face {
+    font-family: "Helvetica";
+    src: url("font/helvetica-normal.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'BebasNeuewebfont';
+    src: url('font/BebasNeuewebfont.eot');
+    src: local('BebasNeuewebfont'), url('font/BebasNeuewebfont.woff') format('woff'), url('font/BebasNeuewebfont.ttf') format('truetype');
 }
 
 html {
@@ -169,7 +181,7 @@ a:focus {
 }
 
 .reward-4 .bronze-desc {
-    background: url(../images/rewards/emerald_bingo.png);
+    background: url(../images/rewards/emerald-bingo.png);
     text-align: left;
     height: 270px;
     background-repeat: no-repeat;
@@ -6228,4 +6240,8 @@ h1{
 
 .sold-out {
     width: 250px;
+}
+
+.neu_font {
+    font-family : 'BebasNeuewebfont';
 }
