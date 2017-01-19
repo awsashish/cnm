@@ -301,7 +301,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
-          src: ['{,*/}*.{png,jpg,jpeg,gif}', '!flags/**', '!download/**', '!package/**'],
+          src: ['{,*/}*.{png,jpg,jpeg,gif}', '!flags/**', '!download/**', '!package/**', '!rewards/**'],
           dest: '<%= yeoman.dist %>/images'
         }]
       }
@@ -414,6 +414,12 @@ module.exports = function (grunt) {
         dest: '<%= yeoman.dist %>/images',
         src: 'package/{,*/}*.{png,jpg,jpeg,gif}'
       },
+      uncompressedRewardsFiles: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/images',
+        dest: '<%= yeoman.dist %>/images',
+        src: 'rewards/{,*/}*.{png,jpg,jpeg,gif}'
+      },
       uncompressedPdfZipFiles: {
         expand: true,
         cwd: '<%= yeoman.app %>/images',
@@ -494,7 +500,8 @@ module.exports = function (grunt) {
     'htmlmin',
     'copy:uncompressedImageFiles',
     'copy:uncompressedPdfZipFiles',
-    'copy:uncompressedPackageFiles'
+    'copy:uncompressedPackageFiles',
+    'copy:uncompressedRewardsFiles'
   ]);
 
   grunt.registerTask('default', [
