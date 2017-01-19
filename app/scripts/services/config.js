@@ -138,7 +138,7 @@ angular.module('coinomiaFrontendApp')
         'shortDescription': 'When you hit the slab of 3:3, you are ranked Bronze. <br />Hitting for 7 consecutive days, you get rewarded with <strong> $400 </strong>',
         'prize':'bronze-reward.png',
         'description': {
-          'title': 'bronze-desc-title.png',
+          'title': 'bronze_bingo_title.png',
           'subtitle': 'You can win <strong>$400 </strong> extra above daily repurchase returns just by hitting <strong>Bronze</strong> for 7 consecutive days!',
           'prize': 'bronze-prize.png'
         }
@@ -154,7 +154,7 @@ angular.module('coinomiaFrontendApp')
         'shortDescription': 'When you hit the slab of 9:9, you are ranked Silver.<br /> Hitting for 7 Consecutive days, grab a <strong>Macbook Pro</strong>.',
         'prize':'macbook.png',
         'description': {
-          'title': 'bronze-desc-title.png',
+          'title': 'silver_bingo_title.png',
           'subtitle': 'Hitting Silver For 7 Days Continuously will add a more gadget to your kitty. You will be getting a brand New <strong>Macbook Pro</strong>,the Best of the kind! You cannot beat the class of this machine',
           'prize': 'macbook-bingo.png'
         }
@@ -169,7 +169,7 @@ angular.module('coinomiaFrontendApp')
         'shortDescription': 'When you hit the slab of 27:27, you are ranked Gold. Hitting for 7 Consecutive days, fly to <strong>Dubai/Tashkent for 3 Nights/4 days</strong>.',
         'prize':'dubai-trip.png',
         'description': {
-          'title': 'bronze-desc-title.png',
+          'title': 'gold_bingo_title.png',
           'subtitle': 'Hitting gold for 7 consecutive days will be an achievement for you! In spite of making $270 for 7 days, you will also be sponsored a trip to <strong>Dubai/Tashkent for 4 days!!</strong>',
           'prize1': 'gold_bingo_imageleft.png',
           'prize2': 'gold_bingo_imageright.png'
@@ -186,7 +186,7 @@ angular.module('coinomiaFrontendApp')
         'shortDescription': 'When you hit the slab of 81:81, you are ranked Ruby.Hitting for 7 Consecutive days, fly to <strong>Vegas for 6 Nights/7 days</strong>.',
         'prize':'ruby_vegas.png',
         'description': {
-          'title': 'bronze-desc-title.png',
+          'title': 'ruby_bingo_title.png',
           'subtitle': "Ruby, as The name says, is a Luxury in itself! Hitting Ruby for 7 continuous days lands you to a 7 Days trip to VEGAS!!! Yes, it's true! When you maintain the rank for 7 days your trip will be sponsored by <strong>Coinomia</strong>.",
           'prize': 'ruby_bingo.png'
         }
@@ -201,9 +201,9 @@ angular.module('coinomiaFrontendApp')
         'shortDescription': 'When you hit the slab of 243:243, you are ranked <strong>Emerald</strong>.Hitting for 7 Consecutive days, <strong>grab a BMW 5 Series</strong>.',
         'prize':'emerald_BMW5.png',
         'description': {
-          'title': 'bronze-desc-title.png',
+          'title': 'emerald_bingo_title.png',
           'subtitle': "Hitting <strong>Emerald</strong> for 7 continuous days makes you awesome! Thus, not only you make a heavy amount daily by repurchase, you also get a powerful <strong>BMW 5</strong> series. No further explanations but the brand speaks itself.",
-          'prize': 'emerald_bingo.png'
+          'prize': 'emerald_bingo.png' 
         }
       },
       {
@@ -216,7 +216,7 @@ angular.module('coinomiaFrontendApp')
         'shortDescription': 'When you hit the slab of 729:729, you are ranked <strong>Diamond</strong>. Hitting for 7 Consecutive days, <strong>Grab a brand new BMW I8</strong>.',
         'prize':'diamond_BMWi8.png',
         'description': {
-          'title': 'bronze-desc-title.png',
+          'title': 'diamond_bingo_title.png',
           'subtitle': "Hitting <strong>Diamond</strong> for 7 continuous days makes you a Star! Your garage cannot wait to append another contrivance and that would be a <strong>BMW i8</strong> ahead of your <strong> Repurchase income!</strong>",
           'prize': 'diamond_bingo.png'
         }
@@ -231,7 +231,7 @@ angular.module('coinomiaFrontendApp')
         'shortDescription': 'When you hit the slab of 2143:2143, you are ranked <strong>Diamond</strong>. Hitting for 7 Consecutive days, <strong>Grab a brand new Ferrai Italia</strong>.',
         'prize':'doublediamond_ferrari.png',
         'description': {
-          'title': 'bronze-desc-title.png',
+          'title': 'doublediamond_bingo_title.png',
           'subtitle': "Your motivation and dedication brought you up here. Hitting <strong> Double Diamond</strong> for 7 consecutive days makes you the Almighty's favourite! you will be making - <strong>$21870 Daily + A Brand New Ferrari Italia !! </strong>",
           'prize': 'doublediamond_bingo.png'
         }
@@ -246,7 +246,7 @@ angular.module('coinomiaFrontendApp')
         'shortDescription': 'When you hit the slab of 6561:6561, you are ranked <strong>Black Diamond</strong>. Hitting for 7 Consecutive days, book an apartment in <strong>BurjKhalifa</strong>.',
         'prize':'blackdiamond_apartment.png',
         'description': {
-          'title': 'bronze-desc-title.png',
+          'title': 'blackdiamond_bingo_title.png',
           'subtitle': "You can now own an Apartment at world's tallest building <strong>Burj Khalifa, Dubai, </strong> above a daily repurchase returns just by hitting <strong>Black Diamond</strong> for 7 consecutive days.",
           'prize': 'blackdiamond_bingo.png'
         }
