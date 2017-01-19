@@ -4693,6 +4693,7 @@ body.signin {
 	border-radius: 10px;
 	padding: 2px;
 	width: 500px;
+    position: relative;
 }
 
 .ui-widget-content {
@@ -5214,6 +5215,7 @@ h4.great {
   .fund-section { width: 100% !important;}
   .bit-address { width: 100%; text-align: center;}
   .qr_code { float: left;margin-top: 0; margin-left: 0;text-align: center;width: 100%;}
+  .sold-out { width: 200px !important;}
 }
 
 .pageheader{ padding: 10px 10px 20px;}
@@ -6200,4 +6202,30 @@ h1{
 
 .available-package div:last-child {
     border: none;
+}
+
+.out-stock {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.2);
+    left: -40px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 999;
+    border-radius: 5px;
+}
+
+.out-stock p {
+    position: absolute;
+    left: 30%;
+    top: 20%;
+    margin-top: -14px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+    font-family: Oswald,sans-serif;
+}
+
+.sold-out {
+    width: 250px;
 }
