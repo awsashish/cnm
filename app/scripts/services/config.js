@@ -203,7 +203,7 @@ angular.module('coinomiaFrontendApp')
         'description': {
           'title': 'emerald_bingo_title.png',
           'subtitle': "Hitting <strong>Emerald</strong> for 7 continuous days makes you awesome! Thus, not only you make a heavy amount daily by repurchase, you also get a powerful <strong>BMW 5</strong> series. No further explanations but the brand speaks itself.",
-          'prize': 'emerald_bingo.png' 
+          'prize': 'emerald-bingo.png' 
         }
       },
       {
