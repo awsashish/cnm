@@ -24,4 +24,8 @@ angular.module('coinomiaFrontendApp')
           console.log('Thank You');
         });
     }
+
+    $scope.saveFeedback = function(info) {
+      $scope.submit(info);
+    }
   });
