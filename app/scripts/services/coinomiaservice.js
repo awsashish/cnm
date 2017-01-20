@@ -1153,4 +1153,22 @@ angular.module('coinomiaFrontendApp')
     
     }
 
+    // Save Skype details
+    this.academyContact = function(data) {
+      // On Success
+      function academyContactRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function academyContactRequestFailed(error) {
+        $log.error('XHR Failed for Convert Amount.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/academy', data)
+        .then(academyContactRequestComplete)
+        .catch(academyContactRequestFailed);
+    }
+
   });

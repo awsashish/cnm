@@ -202,6 +202,13 @@ angular.module('coinomiaFrontendApp')
       authenticate: true
     })
 
+    // Academy video page
+    .state('academyVideo', {
+        url: '/academy-video',
+        templateUrl: 'views/academy-video.html',
+        controller: 'AcademyvideoCtrl'
+    })
+
     //
     // $locationProvider.html5Mode(true);
 });
