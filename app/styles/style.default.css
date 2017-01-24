@@ -4053,6 +4053,14 @@ body.signin {
     cursor: pointer;
 }
 
+.bottom-text {
+    font-size:80px; 
+    color:#fff; 
+    padding-top:20px; 
+    text-shadow:2px 2px #000; 
+    font-family: 'Tangerine', cursive;
+}
+
 /********** 13. MEDIA QUERIES **********/
 /***************************************/
 
@@ -4062,6 +4070,11 @@ body.signin {
     body {
         width: 100%;
         overflow-x: hidden;
+    }
+
+    .top-form {
+        margin: 0px auto !important;
+        min-height: 300px;
     }
 
     /* indicator that page is 1024 */
@@ -4118,6 +4131,10 @@ body.signin {
 
     .logo {
         position: static;
+    }
+
+    .bottom-text {
+        font-size:60px; 
     }
 
     .promote li {
@@ -4462,6 +4479,12 @@ body.signin {
 
 }
 
+@media (min-width : 768px) and (max-width : 991px) {
+    .academy-title { font-size: 35px !important; text-align:center !important;}
+    .person-name { text-align:center; }
+    .person-name em { font-size: 35px !important;}
+}
+
 @media(min-width:320px) and (max-width:768px)
 {
     .headerwrapper .header-left { width: 230px !important;}
@@ -4469,6 +4492,10 @@ body.signin {
     .leftpanel .profile-left .media-heading{ font-size:12px;}
     .leftpanel .profile-left{ height:110px;}
     .right-logo { display:none; }
+
+    .academy-title { font-size: 25px !important; text-align:center !important;}
+    .person-name { text-align:center; }
+    .person-name em { font-size: 25px !important;}
 }
 
 
@@ -4990,6 +5017,13 @@ h4.great {
     width: 100%;
     text-align: center;
   }
+  .bottom-text {
+    font-size:40px; 
+  }
+  #msform fieldset {
+    padding : 20px 0 !important;
+  }
+  .fs-title { font-size: 60px;}
   .sponsor-wrapper{ float: left; margin: 0; left:0px; }
   .sponser-name{ white-space: nowrap; }
   .coming-soon-wrapper { width: 100%; }

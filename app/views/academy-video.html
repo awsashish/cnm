@@ -1,17 +1,17 @@
     <title>Welcome to Coinomia Academy ::::</title>    
     <style>
       .bg-top { 
-      background: url(../images/co06.jpg) no-repeat top  ; 
-      -webkit-background-size: cover; height:850px; overflow:hidden;
-      -moz-background-size: cover; border-bottom:2px solid #fff;
-      -o-background-size: cover;
-      background-size: cover; padding-bottom:50px;
+        background: url(../images/co06.jpg) no-repeat top  ; 
+        -webkit-background-size: cover; min-height:850px; overflow:hidden;
+        -moz-background-size: cover; border-bottom:2px solid #fff;
+        -o-background-size: cover;
+        background-size: cover; padding-bottom:50px;
       }
       .help-block { color: #d80404; }
       .label{ font-size:13px !important;}
       .form-block{background: url(../images/bg.png) repeat #ccc; border-top:5px solid #999; padding:10px; min-height:660px; overflow:hidden; height:auto; margin-top:20px;}
       .grn-btn{background: #090 !important; color:#fff !important; padding:7px !important; width:100% !important;  font-family: 'Cabin Condensed', sans-serif !important; font-size:20px !important; border-radius:50px !important; margin-top:0px !important; border:0px !important; border-bottom:4px solid #060 !important; margin-bottom:0px !important;}
-      body .academy{ background: url(../images/bg-top.jpg) repeat-x bottom #f5f5f5;}
+      body .academy{ background: url(../images/bg-top.jpg) repeat-x bottom #f5f5f5; color: #333;}
       /*form styles*/
       input[type="text"]{  border:0px !important; border-radius:10px !important; border-bottom:2px solid #525252 !important; background:transparent;}
       #msform {
@@ -131,16 +131,25 @@
       {font-size:50px;text-shadow:0px  2px #fff; color:#960}
       .txt-rgt-top-block{font-size:50px !important; text-shadow:0px  2px #fff !important; color:#960 !important;}
       .subtit2{ font-size:12px !important; color:#000 !important; text-shadow:0px  1px #fff !important; line-height:15px !important; }
+      .academy-title { font-size: 40px; text-shadow: 0px 2px #fff; font-family: 'Droid Serif', serif; margin: 10px 0 10px;text-align: right;}
     </style>
     <div class="container-fluid bg-top">
       <p align="center"><img width="250" style="padding-top:15px;" ng-src="{{s3Url}}Coinomia-Academy/coin-aca.png" /></p>
-      <h2 align="center" style="font-size:40px; text-shadow:0px  2px #fff;
-        font-family: 'Droid Serif', serif;"><strong >Welcome to Coinomia Academy 
-        with 
-        </strong> <em style="background:#F30; color:#fff; padding:5px 20px; ">Smiljan Mori!</em> 
-      </h2>
       <div class=" container " style="margin-top:20px;">
-        <div class="col-md-8 col-sm-12">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-8">
+              <h2 align="center" class="academy-title"><strong >Welcome to Coinomia Academy 
+                with 
+                </strong>
+              </h2>
+            </div>
+            <div class="col-md-4 person-name">
+                <em style="background:#F30; color:#fff; padding:5px 20px; font-family: 'Droid Serif'; font-size: 38px;">Smiljan Mori!</em>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 col-sm-12 mt10">
          <iframe width="100%" height="450" src="https://www.youtube.com/embed/YB1qiuxiCbk" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
           <!--<video width="800" height="500"  controls autoplay style="border:10px solid #fff; background:#000; box-shadow:0px 0px 2px 2px #ccc;">
             <source src="img/smiljan-mori.mp4" type="video/mp4">
@@ -149,7 +158,7 @@
           </video>-->
         </div>
         <div class="col-md-4 col-sm-12">
-          <form id="msform" method="post" ng-submit="submit(info)">
+          <form id="msform" method="post" class="top-form" ng-submit="submit(info)">
             <fieldset style="background:transparent; box-shadow:none !important;" >
               <h2 class="fs-title txt-rgt-top-block">Here We Go!</h2>
               <h3 class="fs-subtitle subtit2">Lets get connected through Skype and go head 
@@ -266,7 +275,7 @@
           </form>
         </div>
       </div>
-      <p align="center" style="font-size:80px; color:#fff; padding-top:20px; text-shadow:2px 2px #000; font-family: 'Tangerine', cursive;">Finally live the life you want!</p>
+      <p align="center" class="bottom-text">Finally live the life you want!</p>
       <div class="clearfix"></div>
     </div>
     <div class="container" align="center" style="font-family: 'Didact Gothic', sans-serif; font-size:18px;">
