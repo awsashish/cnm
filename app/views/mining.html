@@ -63,9 +63,9 @@
                       <!-- Tab panes -->
                       <div class="tab-content overlay-wrapper" style="border:0px !important">
                          <div role="tabpanel" class="tab-pane dmp">
-                           <span class="overlay-text ether" style="top:10px;">
+                           <!--<span class="overlay-text ether" style="top:10px;">
                               <p>Coming Soon ...</p>
-                            </span>
+                            </span>-->
                             <br />
                             <div class="panel panel-default">
                                <div class="panel-heading nopadding nomargin">
@@ -109,12 +109,12 @@
                                         <tbody>
                                           <tr ng-if="noEthPoolRecords">
                                              <td>No Records Found</td>
-                                          </tr>
+                                          </tr>{{ethPool}}
                                            <tr ng-repeat="ethPool in ethPoolDetails">
                                               <td>{{ethPool.Date | date }}</td>
                                               <td>{{ethPool.ProductName}}</td>
                                               <td>{{ethPool.quantity}}</td>
-                                              <td>{{ethPool.miningpower}} MH/s</td>
+                                              <td>{{ethPool.miningpower | number:4}} MH/s</td>
                                               <td>{{ethPool.totaldays/30 | number:0}} Months</td>
                                            </tr>
                                         </tbody>
@@ -435,7 +435,7 @@
                       <br />
                       <p> Coming soon ... </p>
                       <br />
-                  </div>
+                   </div>
                    <div class="tab-pane tab_default_51" style="height:500px;" >
                       <h2 class="mb35-sm top-spacemob10"><i class="fa fa-circle-o icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Live Contracts</strong></h2>
                       <hr />
@@ -596,7 +596,8 @@
                                       <div class="col-sm-12">
                                          <input type="hidden" id="amount3" class="form-control">                                        <input type="hidden" id="amount3" class="form-control">
                                          
-                                         <p class="price lead" id="amount-label3"><input type="number" ng-model="btc.quantity" min="0" ng-change="calculateAmount(key, btc.quantity, btc.miningpower, productMaxUnit[$index])" style="width: 80px;"/>
+                                         <p class="price lead" id="amount-label3">
+                                           <input type="number" ng-model="btc.quantity" min="0" ng-change="calculateBtcAmount(key, btc.quantity, btc.miningpower, productMaxUnit[$index])" style="width: 80px;"/>
                                            <!--{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}-->
                                            </p>
                                          Number Of Contracts<strong class="price pull-right lead">Amount : {{(btc.amount*btc.btcMining/btc.miningpower) | currency}}</strong>
@@ -605,10 +606,10 @@
                                 </div>
                              </form>
                           </div>
-                          <div>
+                          <!--<div>
                             <img src="images/eth-slider-coming-soon.png" class="img-responsive" />
-                          </div>
-                           <!--<div class="price-box" ng-repeat="(key,eth) in ethProducts">
+                          </div>-->
+                           <div class="price-box" ng-repeat="(key,eth) in ethProducts">
                               <form class="form-horizontal form-pricing" role="form">
                                  <div class="price-slider">
                                     <h4 class="great text-capitalize">{{eth.productname}}</h4>
@@ -617,18 +618,22 @@
                                        <div ui-slider class="uiSlider" model="eth.ethMining" product="eth" min="{{eth.ethMining}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
                                     </div>
                                  </div>
-                                 <div class="price-form">
+                                 <div class="price-form" id="quantity-eth-{{key}}">
                                     <div class="form-group">
                                        <div class="col-sm-12">
                                           <input type="hidden" id="amount3" class="form-control">
-                                          <p class="price lead" id="amount-label3">{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}
-                                           {{eth.quantity | number:0}}</p>
+                                          <p class="price lead" id="amount-label3">
+                                           <input type="number" ng-model="eth.quantity" min="0" ng-change="calculateEthAmount(key, eth.quantity, eth.miningpower, productMaxUnit[$index])" style="width: 80px;"/>
+                                           <!--{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}-->
+                                           </p>
+                                          <!--<p class="price lead" id="amount-label3">{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}
+                                           {{eth.quantity | number:0}}</p>-->
                                           Number Of Contracts<strong class="price pull-right lead">Amount : {{eth.amount * eth.ethMining/eth.miningpower | currency}}</strong>
                                        </div>
                                     </div>
                                  </div>
                               </form>
-                           </div>-->
+                           </div>
                         </div>
                          <div class="col-md-4 col-sm-12">
                             <div class="col-md-12 col-sm-12">
