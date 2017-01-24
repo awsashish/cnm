@@ -63,9 +63,9 @@
                       <!-- Tab panes -->
                       <div class="tab-content overlay-wrapper" style="border:0px !important">
                          <div role="tabpanel" class="tab-pane dmp">
-                           <span class="overlay-text ether" style="top:10px;">
+                           <!--<span class="overlay-text ether" style="top:10px;">
                               <p>Coming Soon ...</p>
-                            </span>
+                            </span>-->
                             <br />
                             <div class="panel panel-default">
                                <div class="panel-heading nopadding nomargin">
@@ -109,12 +109,12 @@
                                         <tbody>
                                           <tr ng-if="noEthPoolRecords">
                                              <td>No Records Found</td>
-                                          </tr>
+                                          </tr>{{ethPool}}
                                            <tr ng-repeat="ethPool in ethPoolDetails">
                                               <td>{{ethPool.Date | date }}</td>
                                               <td>{{ethPool.ProductName}}</td>
                                               <td>{{ethPool.quantity}}</td>
-                                              <td>{{ethPool.miningpower}} MH/s</td>
+                                              <td>{{ethPool.miningpower | number:4}} MH/s</td>
                                               <td>{{ethPool.totaldays/30 | number:0}} Months</td>
                                            </tr>
                                         </tbody>
