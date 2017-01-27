@@ -12,6 +12,7 @@ angular.module('coinomiaFrontendApp')
     $scope.sigin = true;
     $scope.loginError = '';
     $scope.s3Url = config.s3BucketUrl;
+    $scope.otpRequest = false;
 
     // Authenticate User
     if(coinomiaService.isAuthenticated()){
@@ -29,8 +30,14 @@ angular.module('coinomiaFrontendApp')
     // $scope.password = 'coinomia';
     // $scope.grant_type = 'password';
 
+    $scope.back = function() {
+      $scope.otpRequest = false;
+    }
+
     // Login Process
     $scope.submit = function() {
+
+      // $scope.otpRequest = true;
 
       if($scope.login.$valid){
         var loginData = {
@@ -39,9 +46,14 @@ angular.module('coinomiaFrontendApp')
           'grant_type':'password',
         };
 
-        coinomiaService.login(loginData).then(function(res) {
+        var checkCredentials = {
+          'UserName': $scope.username,
+          'Password': $scope.password
+        }
+
+        coinomiaService.checkLoginCredentials(loginData).then(function(res) {
             var data = res.data;
-            if(res.status === 200){
+            if(res.status === 200 && data.Message !== 'success'){
               if($scope.remember === true) {
                 $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
                 $scope.$storage = $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
@@ -54,10 +66,15 @@ angular.module('coinomiaFrontendApp')
               }else{
                 $state.go( "dashboard" );
               }
+
+              console.log(2);
             }else{
-              $scope.loginError = data.error_description;
+              console.log(1);
+              $scope.loginError = data.Message;
             }
         });
+
+        
       }
     };
   });
