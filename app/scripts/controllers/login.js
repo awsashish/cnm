@@ -35,12 +35,10 @@ angular.module('coinomiaFrontendApp')
     }
 
     // Login Process
-    $scope.submit = function() {
+    $scope.submit = function() {      
 
-      // $scope.otpRequest = true;
-
-      if($scope.login.$valid){
-        var loginData = {
+      if($scope.login.$valid) {
+        $scope.loginData = {
           'username': $scope.username,
           'password': $scope.password,
           'grant_type':'password',
@@ -51,13 +49,29 @@ angular.module('coinomiaFrontendApp')
           'Password': $scope.password
         }
 
-        coinomiaService.checkLoginCredentials(loginData).then(function(res) {
+        var otp = $scope.otp;
+
+        coinomiaService.checkLoginCredentials(checkCredentials).then(function(res) {
             var data = res.data;
-            if(res.status === 200 && data.Message !== 'success'){
+            if(res.status === 200 && data.Message === 'success') {
+              $scope.otpRequest = true;
+            }else{
+              $scope.loginError = data.Message;
+            }
+        });
+      }
+    };
+
+
+    $scope.otpLogin = function() {
+      coinomiaService.otpLogin($scope.loginData, $scope.otpNumber).then(function(res) {
+            var data = res.data;
+            if(res.status === 200) {
               if($scope.remember === true) {
                 $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
                 $scope.$storage = $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
               }
+  
               $scope.$storage = $localStorage.$default({token: data.access_token});
               // $window.sessionStorage.setItem('token', data.access_token);
               if($location.search().return_url){
@@ -66,15 +80,9 @@ angular.module('coinomiaFrontendApp')
               }else{
                 $state.go( "dashboard" );
               }
-
-              console.log(2);
             }else{
-              console.log(1);
-              $scope.loginError = data.Message;
+              $scope.otpError = data.error_description;
             }
         });
-
-        
-      }
-    };
+    }
   });
