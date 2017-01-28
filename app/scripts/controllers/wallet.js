@@ -177,7 +177,7 @@ angular.module('coinomiaFrontendApp')
     }
 
 
-    $scope.verifyAndSubmit = function(activity, requestAmount, type) { 
+    $scope.verifyAndSubmit = function(activity, requestAmount, type) {
       if(activity.toLowerCase() === 'withdrawal' && (type === 'BTC' || type === 'ETH')) {
         $scope.calcFees(requestAmount, $rootScope.balance, $rootScope.networkFees);
       }else{
