@@ -113,6 +113,7 @@
                       </label>
                       <input type="number" name="walletAmount" min="0" ng-model="walletAmount" class="form-control" style="width:80%;" required />
                       <small class="col-md-12 red-text02" ng-if="walletName === 'BTC'">Note : Minimum balance should be 0.0005 BTC</small>
+                      <small class="col-md-12 red-text02" ng-if="walletName === 'ETH'">Note : Minimum balance should be 0.05 ETH</small>
                       <button type="submit" style="padding:10px;top: -4px;position: relative;" class="btn btn-default" ng-disabled="withdrawal.$invalid">OK</button>
                       <div class="alert alert-danger fade in error-padding"
                         ng-show="withdrawal.walletAmount.$touched && withdrawal.walletAmount.$invalid" style="width:80%;">

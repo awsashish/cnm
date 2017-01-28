@@ -49,7 +49,13 @@ angular.module('coinomiaFrontendApp')
           $rootScope.convertError = false;
           $rootScope.walletAmount = '';          
 
-          $rootScope.networkFees = 0.0004;
+          if(imageName === 'BTC') {
+            $rootScope.networkFees = 0.0004;
+          }else if(imageName === 'ETH') {
+            $rootScope.networkFees = 0.04;
+          }
+
+          
           $rootScope.balance = data.Balance;
           if(data.Balance > 1) {
             $rootScope.networkFees = 1;
