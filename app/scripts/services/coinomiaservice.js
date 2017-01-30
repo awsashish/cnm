@@ -12,7 +12,7 @@ angular.module('coinomiaFrontendApp')
 
     var pageLimit = config.pageLimit;
     this.apiHost = 'https://api.coinomia.com/';
-
+    
     // if($location.host() === 'login.coinomia.com') {
     //   this.apiHost = 'https://api.coinomia.com/';
     // }else{
