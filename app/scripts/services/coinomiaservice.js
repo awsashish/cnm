@@ -11,9 +11,8 @@ angular.module('coinomiaFrontendApp')
   .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage, $location, config) {
 
     var pageLimit = config.pageLimit;
-    
     this.apiHost = 'https://api.coinomia.com/';
-
+    
     // if($location.host() === 'login.coinomia.com') {
     //   this.apiHost = 'https://api.coinomia.com/';
     // }else{
@@ -29,7 +28,7 @@ angular.module('coinomiaFrontendApp')
             }
             return str.join("&");
           }
-    };
+    };    
 
     this.requestFailed = function (error) {
       return error;
@@ -53,6 +52,53 @@ angular.module('coinomiaFrontendApp')
         .then(loginComplete)
         .catch(loginFailed);
     };
+
+    this.checkLoginCredentials =  function(formData) {
+      var data = formData;
+
+      function checkCredentialsComplete(response) {
+        return response;
+      }
+
+      function checkCredentialsFailed(error) {
+        $log.error('XHR Failed for login.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost + 'user/login', data, this.requestConfig)
+        .then(checkCredentialsComplete)
+        .catch(checkCredentialsFailed);
+    }
+
+    this.otpLogin = function(formData, otp) {
+      var data = formData;
+      var otpRequestHeader = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'otp': otp
+        },
+        transformRequest: function(obj) {
+          var str = [];
+          for(var p in obj) {
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+          }
+          return str.join("&");
+        }
+      }
+
+      function otpLoginComplete(response) {
+        return response;
+      }
+
+      function otpLoginFailed(error) {
+        $log.error('XHR Failed for login.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+  
+      return $http.post(this.apiHost + 'oauth2/token', data, otpRequestHeader)
+        .then(otpLoginComplete)
+        .catch(otpLoginFailed);
+    }
 
     // Sign Up process
     this.signup = function(formData) {

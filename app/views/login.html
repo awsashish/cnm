@@ -1,6 +1,6 @@
 <section>
   <div class="panel panel-signin">
-    <div class="panel-body">
+    <div class="panel-body" ng-show="!otpRequest">
       <div class="logo text-center">
         <img ng-src="{{s3Url}}logo-coinomia.png" alt="Coinomia" >
       </div>
@@ -44,7 +44,7 @@
       </form>
     </div>
     <!-- panel-body -->
-    <div class="panel-footer">
+    <div class="panel-footer" ng-if="!otpRequest">
       <div class="col-md-6 nomargin nopadding">
         <a href="#/forgot-password" class=" btn btn-default btn-block" style="border:1px solid #ccc;">Forgot Password</a>
       </div>
@@ -55,6 +55,30 @@
       <a href="#/signup" class="mar10 btn btn-primary btn-block">Not a Member Yet ? Create a Free Account</a>
     </div>
     <!-- panel-footer -->
+
+    <!-- OTP Request-->
+    <div class="panel-body" ng-show="otpRequest">
+      <div class="logo text-center">
+        <img ng-src="{{s3Url}}logo-coinomia.png" alt="Coinomia" >
+      </div>
+      <br />      
+      <!--<h4 class="text-center mb5">Already a Member?</h4>-->
+      <p class="text-center">We have sent an OTP to your Registered Email. Please enter the OTP to access your account. Do not share the OTP with anyone.</p>
+      <div class="alert alert-danger fade in error-padding text-center no-arrow text-capitalize" ng-if="otpError" style="position:relative;">{{otpError}}</div>
+      <div class="mb30"></div>
+      <form name="otp" ng-submit="otpLogin()" novalidate>
+        <div class="input-group mb15">
+          <span class="input-group-addon"><i class="fa fa-key"></i></span>
+          <input type="text" name="otp" ng-model="otpNumber" class="form-control" placeholder="Enter OTP" required>
+        </div>
+        <div class="pull-left">
+          <button type="button" ng-click="back()" class="btn btn-success"><i class="fa fa-angle-left ml5"> Back </i></button>
+        </div>
+        <div class="pull-right">
+          <button type="submit" class="btn btn-success">Proceed <i class="fa fa-angle-right ml5"></i></button>
+        </div>
+      </form>
+    </div>
   </div>
   <!-- panel -->
 </section>
