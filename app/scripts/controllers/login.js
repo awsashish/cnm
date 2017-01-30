@@ -51,20 +51,7 @@ angular.module('coinomiaFrontendApp')
 
         var otp = $scope.otp;
 
-        coinomiaService.checkLoginCredentials(checkCredentials).then(function(res) {
-            var data = res.data;
-            if(res.status === 200 && data.Message === 'success') {
-              $scope.otpRequest = true;
-            }else{
-              $scope.loginError = data.Message;
-            }
-        });
-      }
-    };
-
-
-    $scope.otpLogin = function() {
-      coinomiaService.otpLogin($scope.loginData, $scope.otpNumber).then(function(res) {
+        coinomiaService.login($scope.loginData).then(function(res) {
             var data = res.data;
             if(res.status === 200) {
               if($scope.remember === true) {
@@ -84,5 +71,7 @@ angular.module('coinomiaFrontendApp')
               $scope.otpError = data.error_description;
             }
         });
-    }
+      }
+    };
+
   });
