@@ -61,6 +61,6 @@ describe('Controller: LoginCtrl', function () {
   it('should be defined and call Login services', function() {
     scope.login.$valid = true;
     scope.submit();
-    expect(coinomiaService.checkLoginCredentials).toHaveBeenCalledWith(checkCredentials);
+    expect(coinomiaService.loginData).toHaveBeenCalledWith(login);
   });
 });
