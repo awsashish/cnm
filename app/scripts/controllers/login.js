@@ -12,6 +12,7 @@ angular.module('coinomiaFrontendApp')
     $scope.sigin = true;
     $scope.loginError = '';
     $scope.s3Url = config.s3BucketUrl;
+    $scope.otpRequest = false;
 
     // Authenticate User
     if(coinomiaService.isAuthenticated()){
@@ -29,23 +30,48 @@ angular.module('coinomiaFrontendApp')
     // $scope.password = 'coinomia';
     // $scope.grant_type = 'password';
 
-    // Login Process
-    $scope.submit = function() {
+    $scope.back = function() {
+      $scope.otpRequest = false;
+    }
 
-      if($scope.login.$valid){
-        var loginData = {
+    // Login Process
+    $scope.submit = function() {      
+
+      if($scope.login.$valid) {
+        $scope.loginData = {
           'username': $scope.username,
           'password': $scope.password,
           'grant_type':'password',
         };
 
-        coinomiaService.login(loginData).then(function(res) {
+        var checkCredentials = {
+          'UserName': $scope.username,
+          'Password': $scope.password
+        }
+
+        var otp = $scope.otp;
+
+        coinomiaService.checkLoginCredentials(checkCredentials).then(function(res) {
             var data = res.data;
-            if(res.status === 200){
+            if(res.status === 200 && data.Message === 'success') {
+              $scope.otpRequest = true;
+            }else{
+              $scope.loginError = data.Message;
+            }
+        });
+      }
+    };
+
+
+    $scope.otpLogin = function() {
+      coinomiaService.otpLogin($scope.loginData, $scope.otpNumber).then(function(res) {
+            var data = res.data;
+            if(res.status === 200) {
               if($scope.remember === true) {
                 $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
                 $scope.$storage = $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
               }
+  
               $scope.$storage = $localStorage.$default({token: data.access_token});
               // $window.sessionStorage.setItem('token', data.access_token);
               if($location.search().return_url){
@@ -55,9 +81,8 @@ angular.module('coinomiaFrontendApp')
                 $state.go( "dashboard" );
               }
             }else{
-              $scope.loginError = data.error_description;
+              $scope.otpError = data.error_description;
             }
         });
-      }
-    };
+    }
   });
