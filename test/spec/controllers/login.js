@@ -11,6 +11,7 @@ describe('Controller: LoginCtrl', function () {
       spy,
       coinomiaService,
       coinomiaServiceDeferred,
+      checkCredentials,
       loginData;
 
   // Initialize the controller and a mock scope
@@ -21,7 +22,7 @@ describe('Controller: LoginCtrl', function () {
     scope = $rootScope.$new();
     coinomiaServiceDeferred = $q.defer();
 
-    spyOn(coinomiaService, 'login').and.returnValue(coinomiaServiceDeferred.promise);
+    spyOn(coinomiaService, 'checkLoginCredentials').and.returnValue(coinomiaServiceDeferred.promise);
     spyOn(coinomiaService, 'isAuthenticated').and.returnValue(coinomiaServiceDeferred.promise);
 
     LoginCtrl = $controller('LoginCtrl', {
@@ -40,6 +41,11 @@ describe('Controller: LoginCtrl', function () {
       password: scope.password,
       grant_type: scope.grant_type,
     }
+
+    checkCredentials = {
+      'UserName': scope.username,
+      'Password': scope.password
+    }
   }));
 
   it('should start with username and password populated', function () {
@@ -55,6 +61,6 @@ describe('Controller: LoginCtrl', function () {
   it('should be defined and call Login services', function() {
     scope.login.$valid = true;
     scope.submit();
-    expect(coinomiaService.login).toHaveBeenCalledWith(loginData);
+    expect(coinomiaService.checkLoginCredentials).toHaveBeenCalledWith(checkCredentials);
   });
 });
