@@ -551,6 +551,26 @@ select {
   z-index: 99;
 }
 
+#youtube-player .nav-tabs {
+    background: transparent !important;
+    border: 0;
+}
+
+#youtube-player .nav-tabs>li {
+    padding: 10px;
+}
+
+#youtube-player .nav-tabs > li.active > a {
+    background: transparent !important;
+    border: 0;
+}
+
+#youtube-player .nav-tabs > li.active {
+    border: 1px solid #fff;
+    border-bottom: 0;
+    border-radius: 4px 4px 0 0;
+}
+
 .fileUpload {
   margin-bottom: 0.5%;
   position: relative;

@@ -106,13 +106,19 @@ angular.module('coinomiaFrontendApp')
       }
     })
 
+    $scope.videoOne = config.videoIdOne;
+    $scope.videoTwo = config.videoIdTwo;
+    $scope.playerAttr = {
+        autoplay: true
+    };
+
     // Open Video Modal
     $scope.openVideo = function() {
       var url = config.academyUrl;
       var autoplay = true;
       $scope.videoUrl = $sce.trustAsResourceUrl(url+autoplay);
       var modalInstance = $uibModal.open({
-          templateUrl: 'views/modal/academy-video.html',
+          templateUrl: 'views/modal/cloud-mining-video.html',
           scope: $scope,
           size: 'lg',
           windowClass: 'academy-video'
