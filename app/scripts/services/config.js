@@ -16,7 +16,7 @@ angular.module('coinomiaFrontendApp')
     'purchasedTitle': 'Purchased',
     'purchasedSubTitle': 'Power',
     'purchasedIcon': 'dash-pur-pow.png',
-    'incomeTitle': 'Total',
+    'incomeTitle': 'Mining',
     'incomeSubTitle': 'Income',
     'incomeIcon': 'dash-tot-inc.png',
     'ratesTitle': 'Current Rates',
