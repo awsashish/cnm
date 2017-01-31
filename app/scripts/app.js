@@ -30,7 +30,8 @@ angular
     'ngMaterial', 
     'md.data.table',
     'ngXlsx',
-    'summernote'
+    'summernote',
+    'youtube-embed'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
