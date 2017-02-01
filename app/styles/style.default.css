@@ -563,12 +563,15 @@ select {
 #youtube-player .nav-tabs > li.active > a {
     background: transparent !important;
     border: 0;
+    color: #990000 !important;
 }
 
 #youtube-player .nav-tabs > li.active {
-    border: 1px solid #fff;
+    border: 1px solid #f1f1f1;
     border-bottom: 0;
     border-radius: 4px 4px 0 0;
+    color: red;
+    background: #fff;
 }
 
 .fileUpload {
