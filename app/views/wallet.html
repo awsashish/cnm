@@ -84,8 +84,8 @@
                 </h4>
              </div>
              <div class="modal-body" >
-               <h4 ng-if="withdrawalSuccess"><strong>Congratulations !!!</strong> You have Successfully Withdraw.  </h4>
-               <h4 ng-if="convertSuccess"><strong>Congratulations !!!</strong> You have Successfully Converted your BTC Coins.  </h4>
+               <h4 ng-if="withdrawalSuccess"><strong>Congratulations !!!</strong> You have Successfully Withdrawal.  </h4>
+               <h4 ng-if="convertSuccess"><strong>Congratulations !!!</strong> You have Successfully Converted your {{walletName}} Coins.  </h4>
 
                 <!-- Withdrawal Error-->
                <h4 ng-if="withdrawalError || convertError">{{errorMessage}}</h4>
@@ -113,6 +113,7 @@
                       </label>
                       <input type="number" name="walletAmount" min="0" ng-model="walletAmount" class="form-control" style="width:80%;" required />
                       <small class="col-md-12 red-text02" ng-if="walletName === 'BTC'">Note : Minimum balance should be 0.0005 BTC</small>
+                      <small class="col-md-12 red-text02" ng-if="walletName === 'ETH'">Note : Minimum balance should be 0.05 ETH</small>
                       <button type="submit" style="padding:10px;top: -4px;position: relative;" class="btn btn-default" ng-disabled="withdrawal.$invalid">OK</button>
                       <div class="alert alert-danger fade in error-padding"
                         ng-show="withdrawal.walletAmount.$touched && withdrawal.walletAmount.$invalid" style="width:80%;">

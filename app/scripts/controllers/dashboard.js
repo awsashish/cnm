@@ -437,6 +437,12 @@ angular.module('coinomiaFrontendApp')
     //   });
     // }
 
+    $scope.videoOne = config.videoIdOne;
+    $scope.videoTwo = config.videoIdTwo;
+    $scope.playerAttr = {
+        autoplay: true
+    };
+
     // Open Video Pop up
     if(!$localStorage.viewPopup) {
       $scope.modalInstance = $uibModal.open({

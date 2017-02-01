@@ -5,7 +5,8 @@
     <style>.price-box{ margin-bottom:20px; padding:20px; background:#f5f5f5;}.container .jumbotron{ padding-left:0px !important; padding-right:0px !important;}label {font-size: 11px;}.nav-tabs > li > a{ padding: 5px !important; color:#fff !important; font-family:'Oswald', sans-serif;}.nav-tabs{background: #ccc  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background:#b73632 !important;} .nav-tabs > li > a { font-size: 20px; } select { -webkit-appearance: menulist;}
    </style>
     <div class="mainpanel">
-      <div class="col-xs-12 col-sm-12 col-md-12">
+
+      <!--<div class="col-xs-12 col-sm-12 col-md-12">
         <div class="container top-dashboard-pro">    
 
           <div class="col-md-8 ">
@@ -25,7 +26,7 @@
 
 
         </div>
-      </div>
+      </div>-->
 
       <div class="contentpanel" style="overflow:hidden;padding-top:0;">
         <div class="container lft-space mt20">
@@ -106,6 +107,9 @@
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt20">
             <div class="tabbable-panel" >
               <div class="tabbable-line" >
+                <h3 align="left" class="latest-signup">
+                  <i class="fa fa-users"></i> Signup Data
+                </h3>
                 <div align="center">
                   <ul class="nav nav-tabs">
                    <li class="active" style="width:50%;">
@@ -160,7 +164,7 @@
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt20 mb20">
             <h3 align="left" class="latest-signup">
-              <i class="fa fa-user-plus"></i> Total Sign ups
+              <i class="fa fa-user-plus"></i> Recent Sign ups
             </h3>
             <p class="total-signup">Total Sign Ups ({{totalUsers | number}})</p>
 
@@ -251,7 +255,7 @@
                   on Launch Day</strong>
                 </h3>
                 <p class="grand-total">${{payCheckTotal | number:2}}</p>
-                <small>*Above mentioned figures are based on an average of referral and team commissions, calculated on behalf of estimated purchases of your current downlines. It represents the income potential of this marketing system. However, your real paycheque depends upon the real purchases on Coinomia Launch.</small>
+                <small>*Above mentioned figures are based on an average of referral and team commissions, calculated on behalf of estimated purchases of your current downlines. It represents the income potential of this marketing system.</small>
               </div>
             </div>
           </div>

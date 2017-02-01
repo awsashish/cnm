@@ -57,6 +57,11 @@ angular.module('coinomiaFrontendApp')
           }
         });
     }
+
+    $scope.frontlineCommission = config.reward_commission.frontline_commission;
+    $scope.maximumCommission = config.reward_commission.referral_commission;
+    $scope.paidCommission = config.reward_commission.paid_commission;
+    $scope.repurchaseCheque = config.reward_commission.repurchase_cheque;
      
     $scope.getAllRewards();
     $scope.get7daysRewards();

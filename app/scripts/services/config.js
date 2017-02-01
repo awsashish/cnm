@@ -16,12 +16,14 @@ angular.module('coinomiaFrontendApp')
     'purchasedTitle': 'Purchased',
     'purchasedSubTitle': 'Power',
     'purchasedIcon': 'dash-pur-pow.png',
-    'incomeTitle': 'Total',
+    'incomeTitle': 'Mining',
     'incomeSubTitle': 'Income',
     'incomeIcon': 'dash-tot-inc.png',
     'ratesTitle': 'Current Rates',
     'ratesSubTitle': 'Offered by Coinomia as Now',
     'ratesIcon': 'dash-cur-rate.png',
+    'videoIdOne': 'YB1qiuxiCbk',
+    'videoIdTwo': 'fmWgYnmgcew',
     'academyUrl': 'https://www.youtube.com/embed/YB1qiuxiCbk?autoplay=',
     'affiliateFees':100,
     'poolDropdown': [
@@ -125,6 +127,216 @@ angular.module('coinomiaFrontendApp')
       'Ethereum Pool Contract':'ether-contract.png',
       'Ethereum Machine Contract':'ether-contributor',
       'Ethereum Rack Contract':'ether-rack'
+    },
+    'reward_commission': {
+      'frontline_commission': [
+        {
+          'memberid': 'mlmguruankur',
+          'country': 'Malaysia',
+          'amount': 2028
+        },
+        {
+          'memberid': 'Dreamsultd',
+          'country': 'USA',
+          'amount': 1590
+        },
+        {
+          'memberid': 'coinomia',
+          'country': 'Russia',
+          'amount': 1500
+        },
+        {
+          'memberid': 'azamriaz381',
+          'country': 'Pakistan',
+          'amount': 460
+        },
+        {
+          'memberid': 'Tapsillc',
+          'country': 'USA',
+          'amount': 440
+        },
+        {
+          'memberid': 'FraankSG',
+          'country': 'Singapore',
+          'amount': 330
+        },
+        {
+          'memberid': 'incomeguy',
+          'country': 'Yugoslavia',
+          'amount': 312
+        },
+        {
+          'memberid': 'freedomrsa',
+          'country': 'South Africa',
+          'amount': 2028
+        },
+        {
+          'memberid': 'Ivicagrozni',
+          'country': 'Hungary',
+          'amount': 240
+        },
+        {
+          'memberid': 'EarnWithMe',
+          'country': 'Turkey',
+          'amount': 232
+        }
+      ],
+      'referral_commission': [
+        {
+          'memberid': 'coinomia',
+          'country': 'Russia',
+          'amount': 17212
+        },
+        {
+          'memberid': 'mlmguruankur',
+          'country': 'Malaysia',
+          'amount': 4267
+        },
+        {
+          'memberid': 'cadastro',
+          'country': 'Brazil',
+          'amount': 2156
+        },
+        {
+          'memberid': 'dreamsultd',
+          'country': 'USA',
+          'amount': 1781
+        },
+        {
+          'memberid': 'azamriaz381',
+          'country': 'Pakistan',
+          'amount': 1715
+        },
+        {
+          'memberid': 'Thema',
+          'country': 'Israel',
+          'amount': 1514
+        },
+        {
+          'memberid': 'Tomkent023',
+          'country': 'Australia',
+          'amount': 1380
+        },
+        {
+          'memberid': 'hoon11',
+          'country': 'Korea, South',
+          'amount': 1199
+        },
+        {
+          'memberid': 'star005',
+          'country': 'Brazil',
+          'amount': 1140
+        },
+        {
+          'memberid': '247success',
+          'country': 'Canada',
+          'amount': 985
+        }
+      ],
+      'paid_commission': [
+        {
+          'memberid': 'coinomia',
+          'country': 'Russia',
+          'amount': 64
+        },
+        {
+          'memberid': 'mlmguruankur',
+          'country': 'Malaysia',
+          'amount': 60
+        },
+        {
+          'memberid': 'dreamsultd',
+          'country': 'USA',
+          'amount': 45
+        },
+        {
+          'memberid': 'incomeguy',
+          'country': 'Yugoslavia',
+          'amount': 21
+        },
+        {
+          'memberid': 'azamriaz381',
+          'country': 'Pakistan',
+          'amount': 16
+        },
+        {
+          'memberid': 'join',
+          'country': 'USA',
+          'amount': 11
+        },
+        {
+          'memberid': 'EarnWithMe',
+          'country': 'Turkey',
+          'amount': 10
+        },
+        {
+          'memberid': 'samresh123',
+          'country': 'Singapore',
+          'amount': 10
+        },
+        {
+          'memberid': 'profit4us',
+          'country': 'USA',
+          'amount': 9
+        },
+        {
+          'memberid': 'freedomrsa',
+          'country': 'South Africa',
+          'amount': 9
+        }
+      ],
+      'repurchase_cheque': [
+        {
+          'memberid': 'incomeguy',
+          'country': 'Yugoslavia',
+          'amount': 810
+        },
+        {
+          'memberid': 'join',
+          'country': 'USA',
+          'amount': 270
+        },
+        {
+          'memberid': 'LaptopLife',
+          'country': 'India',
+          'amount': 270
+        },
+        {
+          'memberid': 'mlmguruankur',
+          'country': 'Malaysia',
+          'amount': 270
+        },
+        {
+          'memberid': 'GrandDanois',
+          'country': 'Denmark',
+          'amount': 90
+        },
+        {
+          'memberid': 'dreamsultd',
+          'country': 'USA',
+          'amount': 90
+        },
+        {
+          'memberid': 'Tapsillc',
+          'country': 'USA',
+          'amount': 90
+        },
+        {
+          'memberid': 'dreambig1',
+          'country': 'USA',
+          'amount': 90
+        },
+        {
+          'memberid': 'mlmindiaa',
+          'country': 'India',
+          'amount': 90
+        },
+        {
+          'memberid': 'Amazing',
+          'country': 'Singapore',
+          'amount': 90
+        }
+      ]
     },
     'rewards': [
       {

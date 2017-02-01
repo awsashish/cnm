@@ -643,7 +643,7 @@ map area{
   color: #a94442;
 }
 
-.reward-tab li { width: 33.33333%; }
+.reward-tab li { width:25%; }
 
 .academy-video {
     z-index: 20000000000 !important;
@@ -715,6 +715,29 @@ select {
 .error-padding {
   position: relative;
   z-index: 99;
+}
+
+#youtube-player .nav-tabs {
+    background: transparent !important;
+    border: 0;
+}
+
+#youtube-player .nav-tabs>li {
+    padding: 10px;
+}
+
+#youtube-player .nav-tabs > li.active > a {
+    background: transparent !important;
+    border: 0;
+    color: #990000 !important;
+}
+
+#youtube-player .nav-tabs > li.active {
+    border: 1px solid #f1f1f1;
+    border-bottom: 0;
+    border-radius: 4px 4px 0 0;
+    color: red;
+    background: #fff !important;
 }
 
 .fileUpload {
