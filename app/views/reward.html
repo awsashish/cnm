@@ -51,8 +51,8 @@
                    <!--<img ng-src="{{s3Url}}reward-top-header.png" width="100%" style="border-bottom:5px solid #FC0; border-radius:10px 10px 0px 0px; margin-top:-10px;"><br>-->
                    <br>
                    <div class="col-md-12 no-pad">
-                     <div ng-repeat="reward in rewards" style="float:left;margin-top:20px;">
-                      <div class="{{reward.class}}">
+                     <div ng-repeat="reward in rewards" style="float:left;margin-top:20px;width:100%;">
+                      <div class="col-md-12 {{reward.class}}">
                           <a title="Click More Details " data-toggle="collapse" data-target=".reward-{{$index}}" aria-expanded="false" aria-controls="reward-{{$index}}">
                             <div class="icon-section">
                               <img class="icon-img img-responsive" ng-src="images/rewards/{{reward.icon}}">
