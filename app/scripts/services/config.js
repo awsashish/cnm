@@ -132,51 +132,61 @@ angular.module('coinomiaFrontendApp')
       'frontline_commission': [
         {
           'memberid': 'mlmguruankur',
+          'name': 'Ankur Agarwal',
           'country': 'Malaysia',
           'amount': 2028
         },
         {
           'memberid': 'Dreamsultd',
+          'name': 'HumanEyeballs.com Traffic',
           'country': 'USA',
           'amount': 1590
         },
         {
           'memberid': 'coinomia',
+          'name': 'Maksim Yemelyanov',
           'country': 'Russia',
           'amount': 1500
         },
         {
           'memberid': 'azamriaz381',
+          'name': 'Azam Riaz',
           'country': 'Pakistan',
           'amount': 460
         },
         {
           'memberid': 'Tapsillc',
+          'name': 'Nabeel',
           'country': 'USA',
           'amount': 440
         },
         {
           'memberid': 'FraankSG',
+          'name': 'Fraank Foo',
           'country': 'Singapore',
           'amount': 330
         },
         {
           'memberid': 'incomeguy',
+          'name': 'Nebojsa Zarada',
           'country': 'Yugoslavia',
           'amount': 312
         },
         {
           'memberid': 'freedomrsa',
+          'name': 'Tony Gouveia',
           'country': 'South Africa',
           'amount': 2028
         },
         {
           'memberid': 'Ivicagrozni',
+          'name': 'Ivica Plantak',
           'country': 'Hungary',
           'amount': 240
         },
         {
           'memberid': 'EarnWithMe',
+          'name': 'Sercan Cakir',
           'country': 'Turkey',
           'amount': 232
         }
@@ -184,51 +194,61 @@ angular.module('coinomiaFrontendApp')
       'referral_commission': [
         {
           'memberid': 'coinomia',
+          'name':'Maksim Yemelyanov ',
           'country': 'Russia',
           'amount': 17212
         },
         {
           'memberid': 'mlmguruankur',
+          'name':'Ankur Agarwal',
           'country': 'Malaysia',
           'amount': 4267
         },
         {
           'memberid': 'cadastro',
+          'name':'Eduardo Monteiro',
           'country': 'Brazil',
           'amount': 2156
         },
         {
           'memberid': 'dreamsultd',
+          'name':'HumanEyeballs.com Traffic',
           'country': 'USA',
           'amount': 1781
         },
         {
           'memberid': 'azamriaz381',
+          'name':'Azam Riaz',
           'country': 'Pakistan',
           'amount': 1715
         },
         {
           'memberid': 'Thema',
+          'name':'Arthur SysteMMoney',
           'country': 'Israel',
           'amount': 1514
         },
         {
           'memberid': 'Tomkent023',
+          'name':'Tom Kent',
           'country': 'Australia',
           'amount': 1380
         },
         {
           'memberid': 'hoon11',
+          'name':'Myonghoon Heo',
           'country': 'Korea, South',
           'amount': 1199
         },
         {
           'memberid': 'star005',
+          'name':'antonio santos',
           'country': 'Brazil',
           'amount': 1140
         },
         {
           'memberid': '247success',
+          'name':'Louis Martel',
           'country': 'Canada',
           'amount': 985
         }
@@ -236,51 +256,61 @@ angular.module('coinomiaFrontendApp')
       'paid_commission': [
         {
           'memberid': 'coinomia',
+          'name': 'Maksim Yemelyanov',
           'country': 'Russia',
           'amount': 64
         },
         {
           'memberid': 'mlmguruankur',
+          'name': 'Ankur Agarwal',
           'country': 'Malaysia',
           'amount': 60
         },
         {
           'memberid': 'dreamsultd',
+          'name': 'HumanEyeballs.com Traffic',
           'country': 'USA',
           'amount': 45
         },
         {
           'memberid': 'incomeguy',
+          'name': 'Nebojsa Zarada',
           'country': 'Yugoslavia',
           'amount': 21
         },
         {
           'memberid': 'azamriaz381',
+          'name': 'Azam Riaz',
           'country': 'Pakistan',
           'amount': 16
         },
         {
           'memberid': 'join',
+          'name': 'Brian S.',
           'country': 'USA',
           'amount': 11
         },
         {
           'memberid': 'EarnWithMe',
+          'name': 'Sercan Cakir',
           'country': 'Turkey',
           'amount': 10
         },
         {
           'memberid': 'samresh123',
+          'name': 'Samresh Kumar',
           'country': 'Singapore',
           'amount': 10
         },
         {
           'memberid': 'profit4us',
+          'name': 'Steve Bianco',
           'country': 'USA',
           'amount': 9
         },
         {
           'memberid': 'freedomrsa',
+          'name': 'Tony Gouveia',
           'country': 'South Africa',
           'amount': 9
         }
@@ -288,51 +318,61 @@ angular.module('coinomiaFrontendApp')
       'repurchase_cheque': [
         {
           'memberid': 'incomeguy',
+          'name': 'Nebojsa Zarada',
           'country': 'Yugoslavia',
           'amount': 810
         },
         {
           'memberid': 'join',
+          'name': 'Brian S.',
           'country': 'USA',
           'amount': 270
         },
         {
           'memberid': 'LaptopLife',
+          'name': 'Parth Dave',
           'country': 'India',
           'amount': 270
         },
         {
           'memberid': 'mlmguruankur',
+          'name': 'Ankur Agarwals',
           'country': 'Malaysia',
           'amount': 270
         },
         {
           'memberid': 'GrandDanois',
+          'name': 'Martin Germer',
           'country': 'Denmark',
           'amount': 90
         },
         {
           'memberid': 'dreamsultd',
+          'name': 'HumanEyeballs.com Traffic',
+          'country': 'USA',
+          'amount': 90
+        },        
+        {
+          'memberid': 'dreambig1',
+          'name': 'Sabai Marketing Group',
           'country': 'USA',
           'amount': 90
         },
         {
           'memberid': 'Tapsillc',
-          'country': 'USA',
-          'amount': 90
-        },
-        {
-          'memberid': 'dreambig1',
+          'name': 'Nabeel',
           'country': 'USA',
           'amount': 90
         },
         {
           'memberid': 'mlmindiaa',
+          'name': 'Ravi Soni',
           'country': 'India',
           'amount': 90
         },
         {
           'memberid': 'Amazing',
+          'name': 'Lucinda Lim',
           'country': 'Singapore',
           'amount': 90
         }

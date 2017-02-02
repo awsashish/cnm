@@ -218,13 +218,13 @@
                                           <tr style="color:#525252;">
                                               <th width="20%"><strong class="white-color">S.No</strong></th>
                                               <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount</strong></th>
+                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
                                           </tr>
                                         </thead>
                                         <tbody>
                                           <tr ng-repeat="frontline in frontlineCommission">
                                               <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[frontline.country] | lowercase}}.png" /> <strong>{{frontline.memberid}}</strong></td>
+                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[frontline.country] | lowercase}}.png" /> <strong>{{frontline.name}}</strong></td>
                                               <td class="ng-binding">{{frontline.amount}}</td>
                                           </tr>
                                         </tbody>
@@ -246,14 +246,14 @@
                                           <tr style="color:#525252;">
                                               <th width="20%"><strong class="white-color">S.No</strong></th>
                                               <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount</strong></th>
+                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
                                           </tr>
                                         </thead>
                                         <tbody>
                                           <!-- ngIf: noEthPoolRecords --><!-- ngRepeat: ethPool in ethPoolDetails -->
                                           <tr ng-repeat="maximum in maximumCommission" class="ng-scope">
                                               <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[maximum.country] | lowercase}}.png" /> <strong>{{maximum.memberid}}</strong></td>
+                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[maximum.country] | lowercase}}.png" /> <strong>{{maximum.name}}</strong></td>
                                               <td class="ng-binding">{{maximum.amount}}</td>
                                           </tr>
                                         </tbody>
@@ -275,14 +275,14 @@
                                           <tr style="color:#525252;">
                                               <th width="20%"><strong class="white-color">S.No</strong></th>
                                               <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount</strong></th>
+                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
                                           </tr>
                                         </thead>
                                         <tbody>
                                         
                                           <tr ng-repeat="paid in paidCommission">
                                               <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[paid.country] | lowercase}}.png" /> <strong>{{paid.memberid}}</strong></td>
+                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[paid.country] | lowercase}}.png" /> <strong>{{paid.name}}</strong></td>
                                               <td class="ng-binding">{{paid.amount}}</td>
                                           </tr>
                                           
@@ -305,14 +305,14 @@
                                           <tr style="color:#525252;">
                                               <th width="20%"><strong class="white-color">S.No</strong></th>
                                               <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount</strong></th>
+                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
                                           </tr>
                                         </thead>
                                         <tbody>
                                           
                                           <tr ng-repeat="repurchase in repurchaseCheque" class="ng-scope">
                                               <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[repurchase.country] | lowercase}}.png" /> <strong>{{repurchase.memberid}}</strong></td>
+                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[repurchase.country] | lowercase}}.png" /> <strong>{{repurchase.name}}</strong></td>
                                               <td class="ng-binding">{{repurchase.amount}}</td>
                                           </tr>
                                           
