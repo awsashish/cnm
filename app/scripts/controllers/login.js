@@ -53,8 +53,11 @@ angular.module('coinomiaFrontendApp')
 
         coinomiaService.checkLoginCredentials(checkCredentials).then(function(res) {
             var data = res.data;
-            if(res.status === 200 && data.Message === 'success') {
+            if(data.TwoFactorEnabled && (res.status === 200 && data.Message === 'success')) {
               $scope.otpRequest = true;
+            }else if(!data.TwoFactorEnabled && res.status === 200 && data.Message === 'success'){
+              $scope.otpNumber = '';
+              $scope.otpLogin();
             }else{
               $scope.loginError = data.Message;
             }
