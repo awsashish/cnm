@@ -8,10 +8,11 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('SettingCtrl', function ($scope, config, coinomiaService, $state, $timeout, $window, UtilsService) {
+  .controller('SettingCtrl', function ($scope, config, coinomiaService, $state, $timeout, $window, UtilsService, $uibModal, $uibModalStack, $localStorage) {
     $scope.confirmPassError = false;
     $scope.showSaveAvatar = false;
     $scope.changeImage = true;
+    $scope.otpStatus = $localStorage.otpStatus;
     $scope.user = {};
 
     $scope.walletHeading = config.wallet;
@@ -27,6 +28,8 @@ angular.module('coinomiaFrontendApp')
         return callback($scope.confirmPassError);
       }
     }
+
+    // $localStorage.$default({otpEnabled: true});
 
     // Change User Password
     $scope.changeUserPassword = function(data) {
@@ -123,6 +126,55 @@ angular.module('coinomiaFrontendApp')
         reader.readAsDataURL(file);
       }
     };
+
+
+    $scope.closePopup = function() {
+      $uibModalStack.dismissAll();
+    }
+
+    $scope.changeStatus = function(getValue) {
+      $scope.factorStatus = getValue;   
+
+      coinomiaService.requestOTP().then(function(res) {
+        if(res.Message === 'success') {
+          $scope.modalInstance = $uibModal.open({
+              templateUrl: 'views/modal/otp.html',
+              scope: $scope,
+              size: 'md'
+          });
+        }
+      });
+
+      // $scope.modalInstance = $uibModal.open({
+      //         templateUrl: 'views/modal/otp.html',
+      //         scope: $scope,
+      //         size: 'md'
+      //     });
+      
+    }
+
+    $scope.changeOTPStatus = function(factorValue, otp) {
+      $scope.otpErrorMessage = '';
+      var otpData = {
+        "TwoFactorEnabled":factorValue,
+        "OTP":otp
+      }
+      coinomiaService.enableOTP(otpData).then(function(res) {
+        var _data = res.data;
+        if(_data.Message === 'success' && $scope.otpStatus === true) {
+          $scope.otpStatus === false;
+          $localStorage.$default({otpEnabled: false});
+          $scope.closePopup();
+        }else if(_data.Message === 'success' && $scope.otpStatus === false){
+          $scope.otpStatus === true;
+          $localStorage.$default({otpEnabled: true});
+          $scope.closePopup();
+        }else{
+          $scope.otpErrorMessage = _data.Message;
+        }
+      });
+    }
+
 
     angular.element('#fileInput').on('change', handleFileSelect);
 
