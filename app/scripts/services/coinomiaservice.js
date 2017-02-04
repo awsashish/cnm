@@ -11,13 +11,13 @@ angular.module('coinomiaFrontendApp')
   .service('coinomiaService', function ($http, $log, $state, $window, $cookies, $localStorage, $location, config) {
 
     var pageLimit = config.pageLimit;
-    this.apiHost = 'https://api.coinomia.com/';
+    // this.apiHost = 'https://api.coinomia.com/';
     
-    // if($location.host() === 'login.coinomia.com') {
-    //   this.apiHost = 'https://api.coinomia.com/';
-    // }else{
-    //   this.apiHost = 'https://testcoinomiaapi.azurewebsites.net/';
-    // }
+    if($location.host() === 'login.coinomia.com') {
+      this.apiHost = 'https://api.coinomia.com/';
+    }else{
+      this.apiHost = 'http://coinomiadevapi.azurewebsites.net/';
+    }
 
     this.requestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -1198,6 +1198,41 @@ angular.module('coinomiaFrontendApp')
         .then(getStockRequestComplete)
         .catch(getStockRequestFailed);
     
+    }
+
+    // Request OTP
+    this.requestOTP = function() {
+
+      function requestOTPComplete(response) {
+        return response;
+      }
+
+      function requestOTPFailed(error) {
+        $log.error('XHR Failed for Request OTP .\n' + angular.toJson(error.data, true));
+      }
+
+      return $http.get(this.apiHost +'user/TwoFactorOTP')
+        .then(requestOTPComplete)
+        .catch(requestOTPFailed);
+
+    };
+
+    // Enable OTP
+    this.enableOTP = function(data) {
+      // On Success
+      function enableOTPComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function enableOTPtFailed(error) {
+        $log.error('XHR Failed for Enable OTP.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/TwoFactorStatusChange', data)
+        .then(enableOTPComplete)
+        .catch(enableOTPtFailed);
     }
 
   });

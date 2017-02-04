@@ -12,7 +12,7 @@ angular.module('coinomiaFrontendApp')
     $scope.sigin = true;
     $scope.loginError = '';
     $scope.s3Url = config.s3BucketUrl;
-    $scope.otpRequest = false;
+    $scope.otpRequest = false;    
 
     // Authenticate User
     if(coinomiaService.isAuthenticated()){
@@ -33,7 +33,7 @@ angular.module('coinomiaFrontendApp')
     $scope.back = function() {
       $scope.otpRequest = false;
     }
-
+    
     // Login Process
     $scope.submit = function() {      
 
@@ -53,8 +53,12 @@ angular.module('coinomiaFrontendApp')
 
         coinomiaService.checkLoginCredentials(checkCredentials).then(function(res) {
             var data = res.data;
-            if(res.status === 200 && data.Message === 'success') {
+            localStorage.setItem('otpStatus', data.TwoFactorEnabled);
+            if(data.TwoFactorEnabled && (res.status === 200 && data.Message === 'success')) {
               $scope.otpRequest = true;
+            }else if(!data.TwoFactorEnabled && res.status === 200 && data.Message === 'success'){
+              $scope.otpNumber = '';
+              $scope.otpLogin();
             }else{
               $scope.loginError = data.Message;
             }
@@ -68,6 +72,7 @@ angular.module('coinomiaFrontendApp')
             var data = res.data;
             if(res.status === 200) {
               if($scope.remember === true) {
+                localStorage.setItem('otpStatus', data.TwoFactorEnabled);
                 $cookies.put('token', data.access_token, {expires:moment().second(data.expires_in).toISOString()});
                 $scope.$storage = $localStorage.$default({token: data.access_token, expires:moment().second(data.expires_in).toISOString(), refresh_token:data.refresh_token});
               }
