@@ -141,14 +141,14 @@ angular.module('coinomiaFrontendApp')
       }
       coinomiaService.enableOTP(otpData).then(function(res) {
         var _data = res.data;
-        if(localStorage.getItem('otpStatus') && _data.Message === 'success') {
+        if(localStorage.getItem('otpStatus') === 'true' && _data.Message === 'success') {
           $rootScope.otpStatus = false;
           $scope.statusMessage = 'Your OTP has been disabled.'
           localStorage.setItem('otpStatus', false);
           setTimeout(function() {
             $scope.closePopup();
           }, 2000);
-        }else if(!localStorage.getItem('otpStatus') && _data.Message === 'success'){
+        }else if(localStorage.getItem('otpStatus') === 'false' && _data.Message === 'success'){
           $rootScope.otpStatus = true;
           $scope.statusMessage = 'Your OTP has been enabled.'
           localStorage.setItem('otpStatus', true);
