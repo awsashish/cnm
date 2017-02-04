@@ -114,8 +114,8 @@
                   <tbody>
                     <tr>
                       <td>Manage OTP Setting</td>
-                      <td><h5><spanstyle="padding: 10px 20px;"><strong>{{otpStatus?'Enable':'Disable'}}</strong></span></h5></td>
-                      <td><button type="button" class="btn" ng-class="(otpStatus?'btn-danger':'btn-success')" ng-click=changeStatus(otpStatus?0:1)>{{otpStatus?'Disable':'Enable'}}</button></td>
+                      <td><h5><spanstyle="padding: 10px 20px;"><strong>{{otpStatus=='true'?'Enable':'Disable'}}</strong></span></h5></td>
+                      <td><button type="button" class="btn" ng-class="(otpStatus=='true'?'btn-danger':'btn-success')" ng-click=changeStatus(otpStatus=='true'?0:1)>{{otpStatus=='true'?'Disable':'Enable'}}</button></td>
                     </tr>
                   </tbody>
                 </table>
