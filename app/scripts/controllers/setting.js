@@ -133,14 +133,17 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.changeStatus = function(getValue) {
+      $scope.loadingMessage = true;
       $scope.factorStatus = getValue;   
 
       coinomiaService.requestOTP().then(function(res) {
-        if(res.Message === 'success') {
+        $scope.loadingMessage = false;
+        if(res.data.Message === 'success') {
           $scope.modalInstance = $uibModal.open({
               templateUrl: 'views/modal/otp.html',
               scope: $scope,
-              size: 'md'
+              size: 'md',
+              windowClass: 'otp-modal'
           });
         }
       });
