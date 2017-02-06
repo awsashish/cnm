@@ -396,6 +396,17 @@ button.close {
   filter: alpha(opacity=40); /* For IE8 and earlier */
 }
 
+.otp-modal {
+    position: fixed;
+    top: 10%;
+    left: 18.5%;
+    z-index: 1050;
+    width: 80%;
+    height: 80%;
+    overflow: hidden !important;
+    margin-left: -10%;
+}
+
 .add-funds-popup {
   background: #FC0;
   padding: 10px;

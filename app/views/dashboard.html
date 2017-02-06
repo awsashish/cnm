@@ -173,14 +173,16 @@
                 <table class="table table-striped table-hover" style="width:50%">
                   <tbody>
                     <tr ng-repeat="(key, row) in latestSignup | limitTo:10">
-                       <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername}}</td>
+                       <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername | limitTo: 20}}</td>
+                       <td>{{row.DOJ | date:'HH:mm a'}}</td>
                     </tr>
                   </tbody>
                 </table>
                 <table class="table table-striped table-hover" style="width:50%">
                   <tbody>
                     <tr ng-repeat="(key, row) in latestSignup | limitTo:10:10">
-                       <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername}}</td>
+                       <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername | limitTo: 20}}</td>
+                       <td>{{row.DOJ | date:'HH:mm a'}}</td>
                     </tr>
                   </tbody>
                 </table>

@@ -8,10 +8,11 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('SettingCtrl', function ($scope, config, coinomiaService, $state, $timeout, $window, UtilsService) {
+  .controller('SettingCtrl', function ($scope, config, coinomiaService, $rootScope, $state, $timeout, $window, UtilsService, $uibModal, $uibModalStack, $localStorage) {
     $scope.confirmPassError = false;
     $scope.showSaveAvatar = false;
     $scope.changeImage = true;
+    $rootScope.otpStatus = localStorage.getItem('otpStatus');
     $scope.user = {};
 
     $scope.walletHeading = config.wallet;
@@ -27,6 +28,8 @@ angular.module('coinomiaFrontendApp')
         return callback($scope.confirmPassError);
       }
     }
+
+    // $localStorage.$default({otpEnabled: true});
 
     // Change User Password
     $scope.changeUserPassword = function(data) {
@@ -123,6 +126,66 @@ angular.module('coinomiaFrontendApp')
         reader.readAsDataURL(file);
       }
     };
+
+
+    $scope.closePopup = function() {
+      $uibModalStack.dismissAll();
+    }
+    
+    $scope.changeOTPStatus = function(factorValue, otp) {
+      $scope.otpErrorMessage = '';
+      $scope.statusMessage = '';
+      var otpData = {
+        "TwoFactorEnabled":factorValue,
+        "OTP":otp
+      }
+      coinomiaService.enableOTP(otpData).then(function(res) {
+        var _data = res.data;
+        if(localStorage.getItem('otpStatus') === 'true' && _data.Message === 'success') {
+          $rootScope.otpStatus = false;
+          $scope.statusMessage = 'Your OTP has been disabled.'
+          localStorage.setItem('otpStatus', false);
+          setTimeout(function() {
+            $scope.closePopup();
+          }, 2000);
+        }else if(localStorage.getItem('otpStatus') === 'false' && _data.Message === 'success'){
+          $rootScope.otpStatus = true;
+          $scope.statusMessage = 'Your OTP has been enabled.'
+          localStorage.setItem('otpStatus', true);
+          setTimeout(function() {
+            $scope.closePopup();
+          }, 2000);
+        }else{
+          $scope.otpErrorMessage = _data.Message;
+        }
+      });
+    }
+
+
+    $scope.changeStatus = function(getValue) {
+      $scope.loadingMessage = true;
+      $scope.factorStatus = getValue;   
+
+      coinomiaService.requestOTP().then(function(res) {
+        $scope.loadingMessage = false;
+        if(res.data.Message === 'success') {
+          $scope.modalInstance = $uibModal.open({
+              templateUrl: 'views/modal/otp.html',
+              scope: $scope,
+              size: 'md',
+              windowClass: 'otp-modal'
+          });
+        }
+      });
+
+      // $scope.modalInstance = $uibModal.open({
+      //         templateUrl: 'views/modal/otp.html',
+      //         scope: $scope,
+      //         size: 'md'
+      //     });
+      
+    }
+
 
     angular.element('#fileInput').on('change', handleFileSelect);
 
