@@ -498,7 +498,7 @@ describe('service coinomiaService', function() {
 
     it('should returns records succesfully', function() {
       $httpBackend
-      .expect('GET', coinomiaService.apiHost + 'user/current-mining/')
+      .expect('GET', coinomiaService.apiHost + 'user/products/')
       .respond(200, [{'coin':'BTC','current_mining':512}, {'coin':'ETH','current_mining':512}]);
       var data;
       coinomiaService.currentMining().then(function(fetchedData) {
@@ -512,7 +512,7 @@ describe('service coinomiaService', function() {
 
     it('should log referral error', function() {
       $httpBackend
-      .expect('GET', coinomiaService.apiHost + 'user/current-mining/')
+      .expect('GET', coinomiaService.apiHost + 'user/products/')
       .respond(500, 'Internal Server Error.');
       coinomiaService.currentMining();
       $httpBackend.flush();
