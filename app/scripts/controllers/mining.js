@@ -143,8 +143,8 @@ angular.module('coinomiaFrontendApp')
           var btcAmount = btcInfo.amount*btcInfo.btcMining/btcInfo.miningpower;
           $scope.purchaseTotal += btcAmount;
           $scope.orderDetails.push({data:{id:btcInfo.id, quantity:btcInfo.quantity}, name:btcInfo.productname, price:btcAmount, path:$scope.btcImagePath[i]});
+          i++;
         }
-        i++;
       });
       
       $scope.ethProducts.forEach(function(ethInfo) {
