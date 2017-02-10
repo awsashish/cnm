@@ -578,26 +578,25 @@
                       <div class="row" >
                         <div class="col-md-8 col-sm-12">
                           <div class="price-box" ng-repeat="(key,btc) in btcProducts">
-                            <div class="out-stock" ng-if="btc.productname !== 'Bitcoin Rack Contract'"> 
+                            <div class="out-stock" ng-if="btc.productname === 'Bitcoin Pool Contract' || btc.productname === 'Bitcoin Machine Contract'"> 
                               <p>
                                 <img class="sold-out" src="https://s3-us-west-2.amazonaws.com/coinomia/images/sold-out-png-19947.png" />
                               </p>
-                            </div> 
+                            </div>
                              <form class="form-horizontal form-pricing" role="form">
                                 <div class="price-slider">
                                    <h4 class="great text-capitalize">{{btc.productname}}</h4>
                                    <img ng-src="{{s3Url}}{{btcImagePath[$index]}}" width="100" class="pull-right" />
                                    <div class="col-sm-12">
-                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="btc" min="{{btc.btcMining}}" max="{{productMaxUnit[$index] * btc.miningpower}}" step="{{btc.miningpower}}"></div>
+                                      <div ui-slider class="uiSlider" model="btc.btcMining" product="btc" min="{{btc.btcMining}}" max="{{btc.maxunit * btc.miningpower}}" step="{{btc.miningpower}}"></div>
                                    </div>
                                 </div>
                                 <div class="price-form" id="quantity-{{key}}">
                                    <div class="form-group">
                                       <div class="col-sm-12">
                                          <input type="hidden" id="amount3" class="form-control">                                        <input type="hidden" id="amount3" class="form-control">
-                                         
                                          <p class="price lead" id="amount-label3">
-                                           <input type="number" ng-model="btc.quantity" min="0" ng-change="calculateBtcAmount(key, btc.quantity, btc.miningpower, productMaxUnit[$index])" style="width: 80px;"/>
+                                           <input type="number" ng-model="btc.quantity" min="0" ng-change="calculateBtcAmount(key, btc.quantity, btc.miningpower, btc.maxunit)" style="width: 80px;"/>
                                            <!--{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}-->
                                            </p>
                                          Number Of Contracts<strong class="price pull-right lead">Amount : {{(btc.amount*btc.btcMining/btc.miningpower) | currency}}</strong>
@@ -615,7 +614,7 @@
                                     <h4 class="great text-capitalize">{{eth.productname}}</h4>
                                     <img ng-src="{{s3Url}}{{ethImagePath[$index]}}" width="100" class="pull-right" />
                                     <div class="col-sm-12">
-                                       <div ui-slider class="uiSlider" model="eth.ethMining" product="eth" min="{{eth.ethMining}}" max="{{productMaxUnit[$index] * eth.miningpower}}" step="{{eth.miningpower}}"></div>
+                                       <div ui-slider class="uiSlider" model="eth.ethMining" product="eth" min="{{eth.ethMining}}" max="{{eth.maxunit * eth.miningpower}}" step="{{eth.miningpower}}"></div>
                                     </div>
                                  </div>
                                  <div class="price-form" id="quantity-eth-{{key}}">
@@ -623,7 +622,7 @@
                                        <div class="col-sm-12">
                                           <input type="hidden" id="amount3" class="form-control">
                                           <p class="price lead" id="amount-label3">
-                                           <input type="number" ng-model="eth.quantity" min="0" ng-change="calculateEthAmount(key, eth.quantity, eth.miningpower, productMaxUnit[$index])" style="width: 80px;"/>
+                                           <input type="number" ng-model="eth.quantity" min="0" ng-change="calculateEthAmount(key, eth.quantity, eth.miningpower, eth.maxunit)" style="width: 80px;"/>
                                            <!--{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}-->
                                            </p>
                                           <!--<p class="price lead" id="amount-label3">{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}
