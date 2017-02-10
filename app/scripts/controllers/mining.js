@@ -25,6 +25,7 @@ angular.module('coinomiaFrontendApp')
     $scope.btcImagePath = config.btcImagePath;
     $scope.ethImagePath = config.ethImagePath;
     $scope.pageLimit = config.pageLimit;
+    $scope.oldPackage = config.oldPackage;
 
     $scope.package = ['pool', 'rack', 'machine'];
 

@@ -127,5 +127,10 @@ angular.module('coinomiaFrontendApp')
       'Ethereum Pool Contract':'ether-contract.png',
       'Ethereum Machine Contract':'ether-contributor.png',
       'Ethereum Rack Contract':'ether-rack.png'
-    }
+    },
+    'oldPackage': [
+      'Bitcoin Pool Contract',
+      'Bitcoin Machine Contract',
+      'Bitcoin Rack Contract'
+    ]
   });
