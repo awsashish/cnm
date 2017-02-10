@@ -103,23 +103,27 @@ angular.module('coinomiaFrontendApp')
       var miningData = res.data;
       $scope.currentMining = {
         'btcMining':'',
+        'btc2Mining':'',
         'ethMining':'',
         'btcUsd':'',
+        'btc2Usd':'',
         'ethUsd':''
       };
+      console.log($scope.currentMining.ethMining);
       if(res.status === 200) {
         miningData.forEach(function(mining) {
-          if(mining.coin === 'BTC' && mining.miningpower === 3) {
+          if($scope.currentMining.btc2Mining === '' && mining.coin === 'BTC' && mining.miningpower === 3) {
             $scope.currentMining.btcMining = mining.product_mining_rate;
             $scope.currentMining.btcUsd = mining.USDPrice;
-          }else if(mining.coin === 'BTC' && mining.miningpower === 2) {
+          }else if($scope.currentMining.btc2Mining === '' && mining.coin === 'BTC' && mining.miningpower === 2) {
             $scope.currentMining.btc2Mining = mining.product_mining_rate;
             $scope.currentMining.btc2Usd = mining.USDPrice;
-          }else{
+          }else if($scope.currentMining.ethMining === '' && mining.coin === 'ETH'){
             $scope.currentMining.ethMining = mining.product_mining_rate;
             $scope.currentMining.ethUsd = mining.USDPrice;
           }
         });
+        console.log($scope.currentMining.ethMining);
       }
     });
 
@@ -306,24 +310,24 @@ angular.module('coinomiaFrontendApp')
 
     $scope.btcPoolMining = function(value, pool, mining) {
       var btcValue = pool.Price * value;
-      $scope.totalBtcPool = mining.btcMining * value;
-      $scope.btcPoolTotalUsd = mining.btcUsd * value;
+      $scope.totalBtcPool = mining.btc2Mining * value;
+      $scope.btcPoolTotalUsd = mining.btc2Usd * value;
       $scope.btcPoolPrice = btcValue;
       $scope.totalBtc();
     }
 
     $scope.btcContributorMining = function(value, contributor, mining) {
       var btcContributorValue = contributor.Price * value;
-      $scope.totalBtcContributor = mining.btcMining * value * config.contributorMining;
-      $scope.btcContributorTotalUsd = mining.btcUsd * value * config.contributorMining;
+      $scope.totalBtcContributor = mining.btc2Mining * value * config.contributorMining;
+      $scope.btcContributorTotalUsd = mining.btc2Usd * value * config.contributorMining;
       $scope.btcContributorPrice = btcContributorValue;
       $scope.totalBtc();
     }
 
-    $scope.btcRackMining = function(value, rack, mining) {
+    $scope.btcRackMining = function(value, rack, mining) {      
       var btcRackValue = rack.Price * value;
-      $scope.totalBtcRack = mining.btcMining * value * config.rackMining;
-      $scope.btcRackTotalUsd = mining.btcUsd * value * config.rackMining;
+      $scope.totalBtcRack = mining.btc2Mining * value * config.rackMining;
+      $scope.btcRackTotalUsd = mining.btc2Usd * value * config.rackMining;
       $scope.btcRackPrice = btcRackValue;
       $scope.totalBtc();
     }
