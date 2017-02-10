@@ -237,7 +237,7 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.get(this.apiHost +'user/current-mining/')
+      return $http.get(this.apiHost +'user/products/')
         .then(currentMiningComplete)
         .catch(currentMiningFailed);
     };

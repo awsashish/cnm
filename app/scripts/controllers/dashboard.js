@@ -109,11 +109,14 @@ angular.module('coinomiaFrontendApp')
       };
       if(res.status === 200) {
         miningData.forEach(function(mining) {
-          if(mining.coin === 'BTC') {
-            $scope.currentMining.btcMining = mining.current_mining;
+          if(mining.coin === 'BTC' && mining.miningpower === 3) {
+            $scope.currentMining.btcMining = mining.product_mining_rate;
             $scope.currentMining.btcUsd = mining.USDPrice;
+          }else if(mining.coin === 'BTC' && mining.miningpower === 2) {
+            $scope.currentMining.btc2Mining = mining.product_mining_rate;
+            $scope.currentMining.btc2Usd = mining.USDPrice;
           }else{
-            $scope.currentMining.ethMining = mining.current_mining;
+            $scope.currentMining.ethMining = mining.product_mining_rate;
             $scope.currentMining.ethUsd = mining.USDPrice;
           }
         });
