@@ -37,18 +37,20 @@ angular.module('coinomiaFrontendApp')
       $scope.btcProducts = [];
       $scope.ethProducts = [];
       if(res.status === 200) {
-        productsData.forEach(function(products) {
-          if(products.coin === 'BTC') {
+        var k = 0;
+        productsData.forEach(function(products) {          
+          if(products.coin === 'BTC' && $scope.oldPackage[k] !== products.productname) {
             products.btcMining = 0;
             products.quantity = 0;
             $scope.btcProducts.push(products);
-          }else{
+          }else if(products.coin === 'ETH' && $scope.oldPackage[k] !== products.productname){
             products.ethMining = 0;
             products.quantity = 0;
             $scope.ethProducts.push(products);
           }
+          k++;
           // $scope.total += products.amount;
-          // console.log($scope.total);
+          // console.log($scope.btcProducts);
         });
       }
     });
