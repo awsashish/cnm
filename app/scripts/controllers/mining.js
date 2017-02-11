@@ -145,8 +145,8 @@ angular.module('coinomiaFrontendApp')
           var btcAmount = btcInfo.amount*btcInfo.btcMining/btcInfo.miningpower;
           $scope.purchaseTotal += btcAmount;
           $scope.orderDetails.push({data:{id:btcInfo.id, quantity:btcInfo.quantity}, name:btcInfo.productname, price:btcAmount, path:$scope.btcImagePath[i]});
-          i++;
         }
+        i++;
       });
       
       $scope.ethProducts.forEach(function(ethInfo) {
@@ -154,8 +154,8 @@ angular.module('coinomiaFrontendApp')
           var ethAmount = ethInfo.amount * ethInfo.ethMining/ethInfo.miningpower;
           $scope.purchaseTotal += ethAmount;
           $scope.orderDetails.push({data:{id:ethInfo.id, quantity:ethInfo.quantity}, name:ethInfo.productname,  price:ethAmount, path:$scope.ethImagePath[j]});
-          j++;
         }
+        j++;
       });
 
       $scope.orderParams = [];
