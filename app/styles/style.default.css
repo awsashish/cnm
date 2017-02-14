@@ -659,7 +659,11 @@ map area{
     font-size: 20px !important;
 }
 
-.reward-tab li { width:25%; }
+.rewards_achiever li.active a {
+    margin: 0;
+}
+
+.reward-tab li, .rewards_achiever li { width:25% !important; text-align: center;}
 
 .academy-video {
     z-index: 20000000000 !important;
