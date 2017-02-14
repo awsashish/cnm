@@ -13,16 +13,17 @@ angular.module('coinomiaFrontendApp')
       var btcPool = parseInt(angular.element("#btc-0").val());
       var btcMachine = parseInt(angular.element("#btc-1").val());
       var btcRack = parseInt(angular.element("#btc-2").val());
-      var btcPool2 = parseInt(angular.element("#btc-3").val());
-      var btcMachine2 = parseInt(angular.element("#btc-4").val());
-      var btcRack2 = parseInt(angular.element("#btc-5").val());
+      // var btcPool2 = parseInt(angular.element("#btc-3").val());
+      // var btcMachine2 = parseInt(angular.element("#btc-4").val());
+      // var btcRack2 = parseInt(angular.element("#btc-5").val());
 
       // ETH Value
       var ethPool = parseInt(angular.element("#eth-0").val());
       var ethMachine = parseInt(angular.element("#eth-1").val());
       var ethRack = parseInt(angular.element("#eth-2").val());
 
-      var btcTotal = btcPool + btcMachine + btcRack + btcPool2 + btcMachine2 + btcRack2;
+      //var btcTotal = btcPool + btcMachine + btcRack + btcPool2 + btcMachine2 + btcRack2;
+      var btcTotal = btcPool + btcMachine + btcRack;
       var ethTotal = ethPool + ethMachine + ethRack;
       var total = btcTotal + ethTotal;
       if(total){

@@ -503,5 +503,10 @@ angular.module('coinomiaFrontendApp')
           'prize': 'blackdiamond_bingo.png'
         }
       }
+    ],
+    'oldPackage': [
+      'Bitcoin Pool Contract',
+      'Bitcoin Machine Contract',
+      'Bitcoin Rack Contract'
     ]
   });

@@ -25,6 +25,7 @@ angular.module('coinomiaFrontendApp')
     $scope.btcImagePath = config.btcImagePath;
     $scope.ethImagePath = config.ethImagePath;
     $scope.pageLimit = config.pageLimit;
+    $scope.oldPackage = config.oldPackage;
 
     $scope.package = ['pool', 'rack', 'machine'];
 
@@ -36,18 +37,20 @@ angular.module('coinomiaFrontendApp')
       $scope.btcProducts = [];
       $scope.ethProducts = [];
       if(res.status === 200) {
-        productsData.forEach(function(products) {
-          if(products.coin === 'BTC') {
+        var k = 0;
+        productsData.forEach(function(products) {          
+          if(products.coin === 'BTC' && $scope.oldPackage[k] !== products.productname) {
             products.btcMining = 0;
             products.quantity = 0;
             $scope.btcProducts.push(products);
-          }else{
+          }else if(products.coin === 'ETH' && $scope.oldPackage[k] !== products.productname){
             products.ethMining = 0;
             products.quantity = 0;
             $scope.ethProducts.push(products);
           }
+          k++;
           // $scope.total += products.amount;
-          // console.log($scope.total);
+          // console.log($scope.btcProducts);
         });
       }
     });
@@ -151,8 +154,8 @@ angular.module('coinomiaFrontendApp')
           var ethAmount = ethInfo.amount * ethInfo.ethMining/ethInfo.miningpower;
           $scope.purchaseTotal += ethAmount;
           $scope.orderDetails.push({data:{id:ethInfo.id, quantity:ethInfo.quantity}, name:ethInfo.productname,  price:ethAmount, path:$scope.ethImagePath[j]});
-          j++;
         }
+        j++;
       });
 
       $scope.orderParams = [];
