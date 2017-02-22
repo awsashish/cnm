@@ -2,7 +2,7 @@
 <section>
    <div class="mainwrapper">
       <navigation></navigation>
-      <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
+      <style>.nav-tabs > li > a{ padding: 14px 15px !important; color:#fff !important;
          }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}
       </style>
       <div class="mainpanel">
@@ -21,7 +21,7 @@
                            <li class="active">
                               <a href=".tab_default_4" data-toggle="tab">
                               <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br>
-                              <strong>Leadership Reward</strong> </a>
+                              <strong>Rewards Leadership</strong> </a>
                            </li>
                            <li>
                               <a href=".tab_default_5" data-toggle="tab">
@@ -36,7 +36,7 @@
                            <li>
                               <a href=".tab_default_7" data-toggle="tab">
                               <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br>
-                              <strong>Previous Rewards</strong> </a>
+                              <strong>Reward History</strong> </a>
                            </li>
                         </ul>
                      </div>
@@ -205,14 +205,15 @@
                                  </a>
                               </li>
                            </ul>
-                           <div class="tab-content overlay-wrapper" style="border:0 !important;">
+                           <div class="tab-content overlay-wrapper" style="border:0 !important;padding: 15px 0;">
 
                             <div role="tabpanel" class="tab-pane frontline active">
                                 <!--<span class="overlay-text ether" style="top:10px;">
                                   <p>Coming Soon ...</p>
                                   </span>-->
                                 <div class="panel panel-default">
-                                  <div class="table-responsive ng-binding">
+                                  <img ng-src="{{s3Url}}frontline+commision.png" class="img-responsive" />
+                                  <!--<div class="table-responsive ng-binding">
                                     <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
                                           <tr style="color:#525252;">
@@ -231,7 +232,7 @@
                                     </table>
                                     <br>
                                     <br>
-                                  </div>
+                                  </div>-->
                                 </div>
                             </div>
 
@@ -240,7 +241,8 @@
                                   <p>Coming Soon ...</p>
                                   </span>-->
                                 <div class="panel panel-default">
-                                  <div class="table-responsive ng-binding">
+                                  <img ng-src="{{s3Url}}refferal+slide.png" class="img-responsive" />
+                                  <!--<div class="table-responsive ng-binding">
                                     <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
                                           <tr style="color:#525252;">
@@ -250,7 +252,7 @@
                                           </tr>
                                         </thead>
                                         <tbody>
-                                          <!-- ngIf: noEthPoolRecords --><!-- ngRepeat: ethPool in ethPoolDetails -->
+                                          
                                           <tr ng-repeat="maximum in maximumCommission" class="ng-scope">
                                               <td class="ng-binding">{{$index+1}}</td>
                                               <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[maximum.country] | lowercase}}.png" /> <strong>{{maximum.name}}</strong></td>
@@ -260,7 +262,7 @@
                                     </table>
                                     <br>
                                     <br>
-                                  </div>
+                                  </div>-->
                                 </div>
                             </div>
 
@@ -269,7 +271,8 @@
                                   <p>Coming Soon ...</p>
                                   </span>-->
                                 <div class="panel panel-default">
-                                  <div class="table-responsive ng-binding">
+                                  <img ng-src="{{s3Url}}paidfrontline.png" class="img-responsive" />
+                                  <!--<div class="table-responsive ng-binding">
                                     <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
                                           <tr style="color:#525252;">
@@ -290,7 +293,7 @@
                                     </table>
                                     <br>
                                     <br>
-                                  </div>
+                                  </div>-->
                                 </div>
                             </div>
 
@@ -299,7 +302,8 @@
                                   <p>Coming Soon ...</p>
                                   </span>-->
                                 <div class="panel panel-default">
-                                  <div class="table-responsive ng-binding">
+                                <img ng-src="{{s3Url}}doubleyourcheque-2.png" class="img-responsive" />
+                                  <!--<div class="table-responsive ng-binding">
                                     <table class="table table-dark-gry table-hover mb30 font16">
                                         <thead style="background:#525252;">
                                           <tr style="color:#525252;">
@@ -320,7 +324,7 @@
                                     </table>
                                     <br>
                                     <br>
-                                  </div>
+                                  </div>-->
                                 </div>
                             </div>
                            </div>
