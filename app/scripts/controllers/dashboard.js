@@ -485,8 +485,24 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
-    $scope.closeModal = function() {
-      $uibModalStack.dismissAll();
+    // Get All Time Rewards
+    $scope.getAllRewards = function() {
+      coinomiaService.getAllRewards()
+        .then(function(res) {
+          if(res.status === 200) {
+            $scope.allRewards = res.data;
+          }
+        })
+    }
+
+    // Get All Time Rewards
+    $scope.get7daysRewards = function() {
+      coinomiaService.get7daysRewards()
+        .then(function(res) {
+          if(res.status === 200) {
+            $scope.weekRewards = res.data;
+          }
+        })
     }
 
     // Get Available Package
@@ -500,5 +516,7 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.packageStock();
-
+    $scope.getAllRewards();
+    $scope.get7daysRewards();
+    
    });
