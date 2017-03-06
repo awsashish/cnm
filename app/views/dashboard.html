@@ -3,18 +3,17 @@
   <div class="mainwrapper">
     <navigation></navigation>
     <style>.price-box{ margin-bottom:20px; padding:20px; background:#f5f5f5;}.container .jumbotron{ padding-left:0px !important; padding-right:0px !important;}label {font-size: 11px;}.nav-tabs > li > a{ padding: 5px !important; color:#fff !important; font-family:'Oswald', sans-serif;}.nav-tabs{background: #ccc  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background:#b73632 !important;} .nav-tabs > li > a { font-size: 20px; } select { -webkit-appearance: menulist;}
-   </style>
+    </style>
     <div class="mainpanel">
-
       <!--<div class="col-xs-12 col-sm-12 col-md-12">
         <div class="container top-dashboard-pro">    
-
+        
           <div class="col-md-8 ">
             <div class="inner-top-dash">Coinomia started with a huge Mining setup however, positive word of mouth and teamwork sailed like a spark! Most of our contracts are sold out and now there are just a few leftovers.
           Our new Bitcoin Mining hardware is already at our doorsteps. It will take a while before we set it up for production and roll out fresh Mining Contracts for Coinomia Affiliates.
             </div>
           </div>
-
+        
           <div class="col-md-4 available-package">
             <h4 align="center" style="color:#C30"><strong>REMAINING CONTRACTS</strong></h4>
             <div class="clearfix"></div>
@@ -23,72 +22,79 @@
               <h1 class="counter-dash">{{stock.available}}</h1>
             </div>
           </div>
-
-
+        
+        
         </div>
-      </div>-->
-
+        </div>-->
       <div class="contentpanel" style="overflow:hidden;padding-top:0;">
-        <div class="container lft-space mt20 rgt-space">
+        <div class="container lft-space mt20 rgt-space" style="margin:20px auto 30px;">
           <p align="center"><img src="{{s3Url}}top-arrow.jpg" class="top-arrow" style="padding-right:120px;"></p>
-          <div class="col-md-2 col-sm-12 text-center">
-            <a href="#promote-coinomia/social-group" title="Get Started">
+          <div class="text-center pull-right">
+            <div class="col-md-2 col-sm-12 text-center">
+              <a href="#promote-coinomia/social-group" title="Get Started">
               <img src="{{s3Url}}top-link01.png" class="promote-img" />
-            </a>
-          </div>
-          <div class="col-md-2 col-sm-12 text-center">
-            <a href="#promote-coinomia/grab-concept" title="Grab the Concept">
+              </a>
+            </div>
+            <div class="col-md-2 col-sm-12 text-center">
+              <a href="#promote-coinomia/grab-concept" title="Grab the Concept">
               <img src="{{s3Url}}top-link02.png" class="promote-img" />
-            </a>
-          </div>
-          <div class="col-md-2 col-sm-12 text-center">
-            <a href="#referral-link" title="Your Referral Link">
+              </a>
+            </div>
+            <div class="col-md-2 col-sm-12 text-center">
+              <a href="#referral-link" title="Your Referral Link">
               <img src="{{s3Url}}top-link03.png" class="promote-img" />
-            </a>
-          </div>
-          <div class="col-md-2 col-sm-12 text-center">
-            <a href="#promote-coinomia/sms-blast" title="Get, Set, Go!">
+              </a>
+            </div>
+            <div class="col-md-2 col-sm-12 text-center">
+              <a href="#promote-coinomia/sms-blast" title="Get, Set, Go!">
               <img src="{{s3Url}}top-link04.png" class="promote-img" />
-            </a>
-          </div>
-          <div class="col-md-2 col-sm-12 text-center">
-            <a ng-click="getReferrals()" title="Get Automatic Referral!" style="cursor:pointer;">
+              </a>
+            </div>
+            <div class="col-md-2 col-sm-12 text-center">
+              <a ng-click="getReferrals()" title="Get Automatic Referral!" style="cursor:pointer;">
               <img src="{{s3Url}}top-link05.png" class="promote-img" />
-            </a>
+              </a>
+            </div>
           </div>
         </div>
-        <div class="col-md-5 col-sm-12 col-lg-6">
+        <div class="col-md-12 col-sm-12 col-lg-12">
           <news-feeds></news-feeds>
         </div>
-        <div class="col-md-7 col-sm-12 col-lg-6" style="border:1px solid #ccc; border-radius:5px; padding:0px;min-height: 415px;">
+
+        <!-- Coinomia Leadership reward -->
+
+        <!--<div class="col-md-7 col-sm-12 col-lg-6" style="border:1px solid #ccc; border-radius:5px; padding:0px;min-height: 415px;">
           <h3 class="no-margin no-padding reward-head-dash text-center" style="margin:0 0 15px 0 !important;"><strong><img src="images/rankers.png" width="50"> Coinomia Leadership Reward</strong></h3>
-        <div class="col-md-6">
-          <h4 class="ranker-heading1"><strong><i class="fa fa-users" aria-hidden="true"></i> Recent Rankers</strong></h4>
-          <div style="max-height: 405px;overflow-y: scroll;overflow-x: hidden;">
-            <table width="100%" style="border:1px solid #f2f2f2;">
-              <tbody>
-                <tr class="ranker1-odd" ng-repeat="weekRankers in weekRewards">
-                  <td height="35"><img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName}}</td>
-                  <td><img src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="col-md-6">
+            <h4 class="ranker-heading1"><strong><i class="fa fa-users" aria-hidden="true"></i> Recent Rankers</strong></h4>
+            <div style="max-height: 405px;overflow-y: scroll;overflow-x: hidden;">
+              <table width="100%" style="border:1px solid #f2f2f2;">
+                <tbody>
+                  <tr class="ranker1-odd" ng-repeat="weekRankers in weekRewards">
+                    <td height="35"><img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName}}</td>
+                    <td><img src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <h4 class="ranker-heading2"><strong><i class="fa fa-users" aria-hidden="true"></i> All Time Rankers</strong></h4>
-          <div style="max-height: 405px;overflow-y: scroll;overflow-x: hidden;">
-            <table width="100%" style="border:1px solid #f2f2f2;">
-              <tbody>
-                <tr class="ranker1-odd" ng-repeat="allRankers in allRewards">
-                  <td height="35"><img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName}}</td>
-                  <td><img src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="col-md-6">
+            <h4 class="ranker-heading2"><strong><i class="fa fa-users" aria-hidden="true"></i> All Time Rankers</strong></h4>
+            <div style="max-height: 405px;overflow-y: scroll;overflow-x: hidden;">
+              <table width="100%" style="border:1px solid #f2f2f2;">
+                <tbody>
+                  <tr class="ranker1-odd" ng-repeat="allRankers in allRewards">
+                    <td height="35"><img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName}}</td>
+                    <td><img src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
-      </div>
+        </div>-->
+
+        <!-- Coinomia Leadership reward / -->
+
         <!--<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
           <a href="#promote-coinomia/social-group">
             <div class="box-outer"><img src="{{s3Url}}facebook.png" width="70" /> &nbsp;&nbsp;Get Connected  </div>
@@ -105,8 +111,7 @@
           <a ng-click="getReferrals()" style="cursor:pointer;">
             <div class="box-outer"><img src="{{s3Url}}plan.png" width="70" /> &nbsp;&nbsp;Get Automatic Referrals!</div>
           </a>
-        </div>-->
-
+          </div>-->
         <div>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt20">
             <div class="tabbable-panel" >
@@ -116,16 +121,16 @@
                 </h3>
                 <div align="center">
                   <ul class="nav nav-tabs">
-                   <li class="active" style="width:50%;">
+                    <li class="active" style="width:50%;">
                       <a href=".tab_default_4" data-toggle="tab" aria-expanded="true">
-                        <i class="fa fa-users " aria-hidden="true"></i>
-                        Company Wide </a>
-                   </li>
-                   <li style="width:50%;" class="">
+                      <i class="fa fa-users " aria-hidden="true"></i>
+                      Company Wide </a>
+                    </li>
+                    <li style="width:50%;" class="">
                       <a href=".tab_default_5" data-toggle="tab" aria-expanded="false">
                       <i class="fa fa-user " aria-hidden="true"></i>
                       My Team </a>
-                   </li>
+                    </li>
                   </ul>
                 </div>
                 <div class="tab-content" style="padding:20px 10px 0px; margin-bottom:20px; ">
@@ -133,16 +138,16 @@
                     <img src="images/arrow-bot.png" class="arrow-bot-lft">
                     <p ng-if="loadingData">Loading data ... </p>
                     <div class="responsive-calendar">
-                       <div class="day-headers">
-                          <div class="day header" ng-repeat="weekDay in coinomiaTeam | unique:'day'">{{weekDay.day}}</div>
-                       </div>
-                       <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
-                          <div class="day" ng-class="totalTeam.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="totalTeam in coinomiaTeam">
-                            <a class="custom_date">{{totalTeam.dayNumber}}</a>
-                            <!-- <a class="custom_day">{{totalTeam.day}}</a> -->
-                            <span class="badge">{{totalTeam.total}}</span>
-                          </div>
-                       </div>
+                      <div class="day-headers">
+                        <div class="day header" ng-repeat="weekDay in coinomiaTeam | unique:'day'">{{weekDay.day}}</div>
+                      </div>
+                      <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
+                        <div class="day" ng-class="totalTeam.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="totalTeam in coinomiaTeam">
+                          <a class="custom_date">{{totalTeam.dayNumber}}</a>
+                          <!-- <a class="custom_day">{{totalTeam.day}}</a> -->
+                          <span class="badge">{{totalTeam.total}}</span>
+                        </div>
+                      </div>
                     </div>
                     <!-- <ui-calendar data="coinomiaTeam" date-range="getDates" ng-if="hasCoinomiaTeamData"></ui-calendar> -->
                   </div>
@@ -150,16 +155,16 @@
                     <img src="images/arrow-bot.png" class="arrow-bot-rgt">
                     <p ng-if="loadingCoinomiaData">Loading data ... </p>
                     <div class="responsive-calendar">
-                       <div class="day-headers">
-                          <div class="day header" ng-repeat="calendar in myTeam | unique:'day'">{{calendar.day}}</div>
-                       </div>
-                       <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
-                          <div class="day" ng-class="team.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="team in myTeam">
-                            <a class="custom_date">{{team.dayNumber}}</a>
-                            <!-- <a class="custom_day">{{team.day}}</a> -->
-                            <span class="badge">{{team.total}}</span>
-                          </div>
-                       </div>
+                      <div class="day-headers">
+                        <div class="day header" ng-repeat="calendar in myTeam | unique:'day'">{{calendar.day}}</div>
+                      </div>
+                      <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
+                        <div class="day" ng-class="team.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="team in myTeam">
+                          <a class="custom_date">{{team.dayNumber}}</a>
+                          <!-- <a class="custom_day">{{team.day}}</a> -->
+                          <span class="badge">{{team.total}}</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -171,22 +176,21 @@
               <i class="fa fa-user-plus"></i> Recent Sign ups
             </h3>
             <p class="total-signup">Total Sign Ups ({{totalUsers | number}})</p>
-
             <div class="table-content">
               <div class="table-responsive overall-signup">
                 <table class="table table-striped table-hover" style="width:50%">
                   <tbody>
                     <tr ng-repeat="(key, row) in latestSignup | limitTo:10">
-                       <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername | limitTo: 20}}</td>
-                       <td>{{row.DOJ | date:'HH:mm a'}}</td>
+                      <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername | limitTo: 20}}</td>
+                      <td>{{row.DOJ | date:'HH:mm a'}}</td>
                     </tr>
                   </tbody>
                 </table>
                 <table class="table table-striped table-hover" style="width:50%">
                   <tbody>
                     <tr ng-repeat="(key, row) in latestSignup | limitTo:10:10">
-                       <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername | limitTo: 20}}</td>
-                       <td>{{row.DOJ | date:'HH:mm a'}}</td>
+                      <td><img src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername | limitTo: 20}}</td>
+                      <td>{{row.DOJ | date:'HH:mm a'}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -194,7 +198,6 @@
             </div>
           </div>
         </div>
-
         <div class="clearfix"></div>
         <div class="row row-stat">
           <div class="col-md-3" purchase-total
