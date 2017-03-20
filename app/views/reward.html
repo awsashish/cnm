@@ -134,7 +134,8 @@
                                     <td>{{$index+1}}</td>
                                     <td>{{achievement.ondate | date:'MM/dd/yyyy'}}</td>
                                     <td><img ng-src="{{s3Url}}{{achievement.Rank | lowercase}}.png" width="30"></td>
-                                    <td><img ng-src="{{s3Url}}{{achievement.Rank | lowercase}}-reward.png" width="120"></td>
+                                    <td ng-if="achievement.RewardName !== ''"><img ng-src="{{s3Url}}{{achievement.RewardName | lowercase}}-reward.png" width="120"></td>
+                                    <td ng-if="achievement.RewardName === ''"></td>
                                     <td align="center">{{achievement.consecutive_days}}</td>
                                  </tr>
                               </tbody>
