@@ -129,12 +129,12 @@
                               <tbody>
                                  <tr ng-if="noRecords">
                                     <td colspan="4"> No Records Found.</td>
-                                 </tr>
+                                 </tr>                                 
                                  <tr ng-repeat="achievement in achievements" ng-if="!noRecords">
                                     <td>{{$index+1}}</td>
                                     <td>{{achievement.ondate | date:'MM/dd/yyyy'}}</td>
-                                    <td><img src="{{s3Url}}{{achievement.Rank | lowercase}}.png" width="30"></td>
-                                    <td>{{achievement.RewardName}}</td>
+                                    <td><img ng-src="{{s3Url}}{{achievement.Rank | lowercase}}.png" width="30"></td>
+                                    <td><img ng-src="{{s3Url}}{{achievement.Rank | lowercase}}-reward.png" width="120"></td>
                                     <td align="center">{{achievement.consecutive_days}}</td>
                                  </tr>
                               </tbody>
