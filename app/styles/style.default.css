@@ -5294,7 +5294,7 @@ h4.great {
 .f-block-transparent-bg{ background:url(../images/pp-transbg.png) #d9534f bottom right no-repeat !important;}
 .s-block-transparent-bg{ background:url(../images/cr-transbg.png) #525252 bottom right no-repeat !important; color:#fff; border-bottom:10px solid #333 !important;}
 .t-block-transparent-bg{ background:url(../images/ti-bgtrans.png) #d9534f bottom right no-repeat !important;}
-.font18{font-size:18px !important; font-weight:bold;}
+.font18{font-size:18px !important; font-weight:bold;background: transparent;}
 .yelo-text{ color:#FC0 !important; font-weight:bold; border-bottom:1px solid #ccc; font-size:25px; padding-bottom:5px;}
 .red-text{ color: #F30 !important;  margin:0px; padding:0px;}
 .grey-bg{ background:#f2f2f2; border-radius:30px; padding:5px; color:#525252; font-weight:bold; font-size:19px; padding-bottom:5px; margin-bottom:0px; }
@@ -5498,6 +5498,10 @@ h4.great {
 .mb35-sm{ font-size:18px !important; margin:0px !important; color:#525252; padding:0px !important; }
 .border-round-red{border:2px solid #525252; border-radius:50%; width:30px; height:30px; padding:5px}
 .icon-lg-red{ font-size:16px !important; color:#f37a76 !important; text-align:center !important;}
+
+.top-box-rgt h4 strong {
+    color: #fff !important;
+}
 
 
 @media(max-width:540px){.red-text04 {
