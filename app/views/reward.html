@@ -160,13 +160,13 @@
                                        <tr ng-repeat="weekRankers in weekRewards">
                                           <td class="text-capitalize" style="vertical-align: middle">
                                             <span class="image-wrapper pull-left">
-                                              <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="40">
-                                            </span>
-                                            <span class="pull-left"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span><br />
-                                            <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName}}</strong> </span>
+                                              <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="50">
+                                            </span>                                            
+                                            <span class="pull-left" style="height: 20px;"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName}}</strong> </span><br />
+                                            <span class="pull-left"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
                                           </td>
                                           <!--<td style="vertical-align: middle"></td>-->
-                                          <td class="text-center"><img src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="70"></td>
+                                          <td class="text-center"><img src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="80"></td>
                                        </tr>
                                     </tbody>
                                  </table>
@@ -184,12 +184,12 @@
                                        <tr ng-repeat="allRankers in allRewards">
                                           <td class="text-capitalize" style="vertical-align: middle">
                                             <span class="image-wrapper pull-left">
-                                              <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="40">
-                                            </span>
-                                            <span class="pull-left"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span><br />
-                                            <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName}}</strong> </span>
+                                              <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="50">
+                                            </span>                                            
+                                            <span class="pull-left" style="height: 20px;"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName}}</strong> </span><br />
+                                            <span class="pull-left"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
                                           </td>
-                                          <td><img src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="70"></td>
+                                          <td><img src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="80"></td>
                                        </tr>
                                     </tbody>
                                  </table>
