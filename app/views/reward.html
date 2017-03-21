@@ -177,8 +177,8 @@
                                     </thead>
                                     <tbody>
                                        <tr ng-repeat="allRankers in allRewards">
-                                          <td>{{$index+1}}</td>
-                                          <td><strong><img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName}}</strong> </td>
+                                          <td style="vertical-align: middle">{{$index+1}}</td>
+                                          <td style="vertical-align: middle"><strong><img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName}}</strong> </td>
                                           <td><img src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="75"></td>
                                        </tr>
                                     </tbody>
