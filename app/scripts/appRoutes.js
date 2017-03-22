@@ -9,7 +9,7 @@ angular.module('coinomiaFrontendApp')
         url: '/',
         //templateUrl: 'views/index.html',
         controller: 'MainCtrl'
-    })
+    }) 
     // // Login page
     // .state('login', {
     //     url: '/login',

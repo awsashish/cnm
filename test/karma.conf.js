@@ -17,7 +17,7 @@ module.exports = function(config) {
     // as well as any additional frameworks (requirejs/chai/sinon/...)
     frameworks: [
       'jasmine'
-    ],
+    ], 
 
     // list of files / patterns to load in the browser
     files: [
