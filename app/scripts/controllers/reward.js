@@ -28,6 +28,16 @@ angular.module('coinomiaFrontendApp')
     }
 
     // Get All Time Rewards
+    $scope.getAchiever = function() {
+      coinomiaService.getAllTimeAchiever()
+        .then(function(res) {
+          if(res.status === 200) {
+            $scope.allAchiever = res.data;
+          }
+        })
+    }
+
+    // Get All Time Rewards
     $scope.get7daysRewards = function() {
       coinomiaService.get7daysRewards()
         .then(function(res) {
@@ -66,5 +76,6 @@ angular.module('coinomiaFrontendApp')
     $scope.getAllRewards();
     $scope.get7daysRewards();
     $scope.getAchievements();
+    $scope.getAchiever();
 
   });
