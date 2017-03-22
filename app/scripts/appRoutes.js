@@ -209,7 +209,6 @@ angular.module('coinomiaFrontendApp')
       controller: 'WalletCtrl',
       authenticate: true
     })
-
     //
     // $locationProvider.html5Mode(true);
 });
