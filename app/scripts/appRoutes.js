@@ -209,7 +209,7 @@ angular.module('coinomiaFrontendApp')
       controller: 'WalletCtrl',
       authenticate: true
     })
-
+    $locationProvider.hashPrefix('');
     //
     // $locationProvider.html5Mode(true);
 });
