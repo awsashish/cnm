@@ -150,7 +150,7 @@
                                  <table class="table table-dark-gry table-hover mb30 font16">
                                     <thead style="background:#525252;">
                                        <tr style="color:#525252;">
-                                          <td><strong class="white-color">Name</strong></td>
+                                          <td class="pd55"><strong class="white-color">Name</strong></td>
                                           <!--<td><strong class="white-color">User ID</strong></td>-->
                                           <!--<td><strong class="white-color"></strong></td>-->
                                           <td class="text-center"><strong class="white-color">Rank</strong></td>
@@ -163,7 +163,7 @@
                                               <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="50">
                                             </span>                                            
                                             <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
-                                            <span class="pull-left"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
+                                            <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
                                           </td>
                                           <!--<td style="vertical-align: middle"></td>-->
                                           <td class="text-center"><img src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="80"></td>
@@ -176,7 +176,7 @@
                                  <table class="table table-dark-gry table-hover mb30 font16">
                                     <thead style="background:#525252;">
                                        <tr style="color:#525252;">
-                                          <td><strong class="white-color">Name</strong></td>
+                                          <td class="pd55"><strong class="white-color">Name</strong></td>
                                           <td><strong class="white-color">Rank</strong></td>
                                        </tr>
                                     </thead>
@@ -187,7 +187,7 @@
                                               <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="50">
                                             </span>                                            
                                             <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
-                                            <span class="pull-left"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
+                                            <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
                                           </td>
                                           <td><img src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="80"></td>
                                        </tr>
@@ -200,7 +200,7 @@
                                  <table class="table table-dark-gry table-hover mb30 font16">
                                     <thead style="background:#525252;">
                                        <tr style="color:#525252;">
-                                          <td><strong class="white-color">Name</strong></td>
+                                          <td class="pd55"><strong class="white-color">Name</strong></td>
                                           <td><strong class="white-color">Rank</strong></td>
                                        </tr>
                                     </thead>
@@ -211,7 +211,7 @@
                                               <img class="img-circle" ng-src="{{achiever.avatar?achiever.avatar:'images/users/user5.png'}}" width="50">
                                             </span>
                                             <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[achiever.country] | lowercase}}.png"> {{achiever.MemberName | limitTo:18}}</strong> </span><br />
-                                            <span class="pull-left"> &nbsp;<strong>{{achiever.MemberId}}</strong></span>
+                                            <span class="pull-left user_id"> &nbsp;<strong>{{achiever.MemberId}}</strong></span>
                                           </td>
                                           <td><img src="images/icons/{{achiever.RewardName | lowercase}}.png" width="80"></td>
                                        </tr>

@@ -595,6 +595,10 @@ map area{
   margin-bottom: 20px;
 }
 
+.pd55 {
+    padding-left: 55px !important;
+}
+
 .ajax_loader {
     cursor: wait;
     opacity: 0.75;
