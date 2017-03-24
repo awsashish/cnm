@@ -3,7 +3,7 @@
    <div class="mainwrapper">
       <navigation></navigation>
       <style>.nav-tabs > li > a{ padding: 14px 15px !important; color:#fff !important;
-         }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}
+         }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td { padding: 8px 5px;}
       </style>
       <div class="mainpanel">
          <!-- <coming-soon text-value="'Mining'"></coming-soon> -->
@@ -145,12 +145,12 @@
                            <h2 class="mb35-sm top-spacemob10"><i class="fa fa-users icon-lg-red border-round-red" style="padding-left:3px;" aria-hidden="true"></i> <strong>Leaderboard Reward</strong></h2>
                            <hr>
                            <div class="row">
-                              <div class="col-md-6 col-sm-12">
+                              <div class="col-md-4 col-sm-12">
                                  <h3><strong>Recent Rankers</strong><small>(7 Day's)</small></h3>
                                  <table class="table table-dark-gry table-hover mb30 font16">
                                     <thead style="background:#525252;">
                                        <tr style="color:#525252;">
-                                          <td><strong class="white-color">Name</strong></td>
+                                          <td class="pd55"><strong class="white-color">Name</strong></td>
                                           <!--<td><strong class="white-color">User ID</strong></td>-->
                                           <!--<td><strong class="white-color"></strong></td>-->
                                           <td class="text-center"><strong class="white-color">Rank</strong></td>
@@ -162,8 +162,8 @@
                                             <span class="image-wrapper pull-left">
                                               <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="50">
                                             </span>                                            
-                                            <span class="pull-left" style="height: 20px;"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName}}</strong> </span><br />
-                                            <span class="pull-left"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
+                                            <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
+                                            <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
                                           </td>
                                           <!--<td style="vertical-align: middle"></td>-->
                                           <td class="text-center"><img src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="80"></td>
@@ -171,12 +171,12 @@
                                     </tbody>
                                  </table>
                               </div>
-                              <div class="col-md-6 col-sm-12">
+                              <div class="col-md-4 col-sm-12">
                                  <h3><strong>All Time Rankers</strong></h3>
                                  <table class="table table-dark-gry table-hover mb30 font16">
                                     <thead style="background:#525252;">
                                        <tr style="color:#525252;">
-                                          <td><strong class="white-color">Name</strong></td>
+                                          <td class="pd55"><strong class="white-color">Name</strong></td>
                                           <td><strong class="white-color">Rank</strong></td>
                                        </tr>
                                     </thead>
@@ -186,31 +186,38 @@
                                             <span class="image-wrapper pull-left">
                                               <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="50">
                                             </span>                                            
-                                            <span class="pull-left" style="height: 20px;"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName}}</strong> </span><br />
-                                            <span class="pull-left"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
+                                            <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
+                                            <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
                                           </td>
                                           <td><img src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="80"></td>
                                        </tr>
                                     </tbody>
                                  </table>
                               </div>
-                              <!--<div class="col-md-4 col-sm-12">
-                                 <h3><strong>All Time Achievement</strong></h3>
+                              
+                              <div class="col-md-4 col-sm-12">
+                                 <h3><strong>All Time Achievers</strong></h3>
                                  <table class="table table-dark-gry table-hover mb30 font16">
                                     <thead style="background:#525252;">
                                        <tr style="color:#525252;">
-                                          <td><strong class="white-color">User Id</strong></td>
-                                          <td><strong class="white-color">Name</strong></td>
+                                          <td class="pd55"><strong class="white-color">Name</strong></td>
                                           <td><strong class="white-color">Rank</strong></td>
                                        </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-if="noRecords">
-                                          <td colspan="4"> No Records Found.</td>
-                                        </tr>    
+                                       <tr ng-repeat="achiever in allAchiever">
+                                          <td class="text-capitalize" style="vertical-align: middle">
+                                            <span class="image-wrapper pull-left">
+                                              <img class="img-circle" ng-src="{{achiever.avatar?achiever.avatar:'images/users/user5.png'}}" width="50">
+                                            </span>
+                                            <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[achiever.country] | lowercase}}.png"> {{achiever.MemberName | limitTo:18}}</strong> </span><br />
+                                            <span class="pull-left user_id"> &nbsp;<strong>{{achiever.MemberId}}</strong></span>
+                                          </td>
+                                          <td><img src="images/icons/{{achiever.RewardName | lowercase}}.png" width="80"></td>
+                                       </tr>
                                     </tbody>
                                  </table>
-                              </div>-->
+                              </div>
                            </div>
                         </div>
                         <div class="tab-pane tab_default_7">

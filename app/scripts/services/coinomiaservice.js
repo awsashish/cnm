@@ -1256,6 +1256,24 @@ angular.module('coinomiaFrontendApp')
         .catch(getAchievementsRequestFailed);
     }
 
+    // Get Achievement Rewards
+    this.getAllTimeAchiever = function() {
+      
+      // On Success
+      function getAllTimeAchieverRequestComplete(response) {
+        return response;
+      }
+
+      function getAllTimeAchieverRequestFailed(error) {
+        $log.error('XHR Failed for Rewards Achiever.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.apiHost +'user/rewardachiever')
+        .then(getAllTimeAchieverRequestComplete)
+        .catch(getAllTimeAchieverRequestFailed);
+    }
+
     // Request OTP
     this.requestOTP = function() {
 

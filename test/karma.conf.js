@@ -17,7 +17,7 @@ module.exports = function(config) {
     // as well as any additional frameworks (requirejs/chai/sinon/...)
     frameworks: [
       'jasmine'
-    ],
+    ], 
 
     // list of files / patterns to load in the browser
     files: [
@@ -37,7 +37,7 @@ module.exports = function(config) {
       'bower_components/underscore/underscore.js',
       'bower_components/ngstorage/ngStorage.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-      'bower_components/jquery-ui/ui/jquery-ui.js',
+      'bower_components/jquery-ui/jquery-ui.js',
       'bower_components/angular-ui-slider/src/slider.js',
       'bower_components/angular-breadcrumb/release/angular-breadcrumb.js',
       'bower_components/angular-country-state-select/dist/angular-country-state-select.js',
@@ -62,7 +62,7 @@ module.exports = function(config) {
       'bower_components/angular-messages/angular-messages.js',
       'bower_components/angular-material/angular-material.js',
       'bower_components/angular-material-data-table/dist/md-data-table.js',
-      'bower_components/js-xlsx/dist/xlsx.js',
+      'bower_components/js-xlsx/dist/xlsx.core.min.js',
       'bower_components/file-saver-saveas-js/FileSaver.js',
       'bower_components/angular-xlsx/angular-xlsx.js',
       'bower_components/summernote/dist/summernote.js',

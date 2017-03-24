@@ -592,7 +592,11 @@ map area{
   box-shadow: 0 2px 3px rgba(0,0,0,0.03);
   float: left;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.pd55 {
+    padding-left: 55px !important;
 }
 
 .ajax_loader {
@@ -5384,6 +5388,10 @@ h4.great {
         right: 20px;
         bottom: 0px;
     }
+
+    .leadership-reward {
+        margin-top:10px;
+    }
 }
 
 
@@ -6124,8 +6132,8 @@ h1{
 
 
 .ranker1-odd{background:#fff;}
-.ranker1-odd > td{ padding-left:10px; font-weight:bold;}
-.ranker1-odd strong{font-size:12px; color:#525252; padding-left:20px; font-family: "Oswald",sans-serif;}
+.ranker1-odd > td{ padding-left:5px;}
+/*.ranker1-odd strong{font-size:12px; color:#525252; padding-left:20px; font-family: "Oswald",sans-serif;}*/
 .ranker1-even{background: #F7F7F7; border-bottom:1px solid #f1f1f1;}
 .ranker1-even strong{font-size:12px;  padding-left:10px;}
 .ranker1-even > td{ padding-left:10px; font-weight:bold;}
@@ -6179,7 +6187,9 @@ h1{
 .reward07 p{padding-left:20px; font-size:16px !important;}
 .reward07 .prize-img { width:100%; height: 100%; padding-top:50px;}
 
-.reward-head-dash{background:#b73632;  color:#fff; padding:5px; border-radius:5px 5px 0px 0px; border-top:3px solid #900; font-family: "Oswald",sans-serif; font-weight:normal;}
+.reward-head-dash{background:#b73632;  color:#fff; padding:5px; border-radius:5px 5px 0px 0px; border-top:3px solid #900; font-family: "Oswald",sans-serif; font-weight:normal;font-size: 20px;}
+
+.user_id strong{padding-left: 20px;}
 
 .reward08{ background: url(../images/bg-reward.png) repeat-x bottom ; border-bottom:2px solid #c4dae5;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left; }
 

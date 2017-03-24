@@ -27,7 +27,7 @@
         </div>
         </div>-->
       <div class="contentpanel" style="overflow:hidden;padding-top:0;">
-        <div class="container lft-space mt20 rgt-space" style="margin:20px auto 30px;">
+        <div class="container lft-space rgt-space" style="margin:0 auto 30px;">
           <p align="center"><img src="{{s3Url}}top-arrow.jpg" class="top-arrow" style="padding-right:120px;"></p>
           <div class="text-center pull-right">
             <div class="col-md-2 col-sm-12 text-center">
@@ -57,41 +57,53 @@
             </div>
           </div>
         </div>
-        <div class="col-md-12 col-sm-12 col-lg-12">
+        <div class="col-md-5 col-sm-12 col-lg-6">
           <news-feeds></news-feeds>
         </div>
 
         <!-- Coinomia Leadership reward -->
 
-        <!--<div class="col-md-7 col-sm-12 col-lg-6" style="border:1px solid #ccc; border-radius:5px; padding:0px;min-height: 415px;">
-          <h3 class="no-margin no-padding reward-head-dash text-center" style="margin:0 0 15px 0 !important;"><strong><img src="images/rankers.png" width="50"> Coinomia Leadership Reward</strong></h3>
-          <div class="col-md-6">
+        <div class="col-md-7 col-sm-12 col-lg-6 leadership-reward" style="border:1px solid #ccc; border-radius:5px; padding:0px;min-height: 415px;">
+          <h3 class="no-margin no-padding reward-head-dash text-center" style="margin:0 !important;"><strong><img src="images/rankers.png" width="40"> Coinomia Leadership Reward</strong></h3>
+          <div class="col-md-6 no-padding">
             <h4 class="ranker-heading1"><strong><i class="fa fa-users" aria-hidden="true"></i> Recent Rankers</strong></h4>
             <div style="max-height: 405px;overflow-y: scroll;overflow-x: hidden;">
               <table width="100%" style="border:1px solid #f2f2f2;">
                 <tbody>
                   <tr class="ranker1-odd" ng-repeat="weekRankers in weekRewards">
-                    <td height="35"><img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName}}</td>
+                    <td height="35">
+                      <span class="image-wrapper pull-left">
+                        <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="40">
+                      </span>
+                      <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
+                      <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
+                    </td>
                     <td><img src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 no-padding">
             <h4 class="ranker-heading2"><strong><i class="fa fa-users" aria-hidden="true"></i> All Time Rankers</strong></h4>
             <div style="max-height: 405px;overflow-y: scroll;overflow-x: hidden;">
               <table width="100%" style="border:1px solid #f2f2f2;">
                 <tbody>
                   <tr class="ranker1-odd" ng-repeat="allRankers in allRewards">
-                    <td height="35"><img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName}}</td>
+                    <td height="35">
+                      <span class="image-wrapper pull-left">
+                        <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="40">
+                      </span>
+                      <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
+                      <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
+                    </td>
                     <td><img src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-        </div>-->
+        </div>
 
         <!-- Coinomia Leadership reward / -->
 

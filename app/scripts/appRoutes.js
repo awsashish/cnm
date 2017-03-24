@@ -9,7 +9,7 @@ angular.module('coinomiaFrontendApp')
         url: '/',
         //templateUrl: 'views/index.html',
         controller: 'MainCtrl'
-    })
+    }) 
     // // Login page
     // .state('login', {
     //     url: '/login',
@@ -209,7 +209,6 @@ angular.module('coinomiaFrontendApp')
       controller: 'WalletCtrl',
       authenticate: true
     })
-
     //
     // $locationProvider.html5Mode(true);
 });
