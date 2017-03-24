@@ -592,7 +592,7 @@ map area{
   box-shadow: 0 2px 3px rgba(0,0,0,0.03);
   float: left;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .ajax_loader {
@@ -6183,7 +6183,9 @@ h1{
 .reward07 p{padding-left:20px; font-size:16px !important;}
 .reward07 .prize-img { width:100%; height: 100%; padding-top:50px;}
 
-.reward-head-dash{background:#b73632;  color:#fff; padding:5px; border-radius:5px 5px 0px 0px; border-top:3px solid #900; font-family: "Oswald",sans-serif; font-weight:normal;}
+.reward-head-dash{background:#b73632;  color:#fff; padding:5px; border-radius:5px 5px 0px 0px; border-top:3px solid #900; font-family: "Oswald",sans-serif; font-weight:normal;font-size: 20px;}
+
+.user_id strong{padding-left: 20px;}
 
 .reward08{ background: url(../images/bg-reward.png) repeat-x bottom ; border-bottom:2px solid #c4dae5;  cursor:pointer;   margin-bottom:20px; font-family: "Oswald",sans-serif;  color:#525252; border-radius:5px; text-align:left; }
 
