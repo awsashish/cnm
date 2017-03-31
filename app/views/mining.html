@@ -109,7 +109,7 @@
                                         <tbody>
                                           <tr ng-if="noEthPoolRecords">
                                              <td>No Records Found</td>
-                                          </tr>{{ethPool}}
+                                          </tr>
                                            <tr ng-repeat="ethPool in ethPoolDetails">
                                               <td>{{ethPool.Date | date }}</td>
                                               <td>{{ethPool.ProductName}}</td>
@@ -224,7 +224,7 @@
                                               <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
                                            </tr>
                                         </thead>
-                                        <tbody>{{noEthRackRecords}}
+                                        <tbody>
                                            <tr ng-if="noEthRackRecords">
                                              <td>No Records Found</td>
                                           </tr>
@@ -654,7 +654,7 @@
                                         <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}ether.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{eth.productname}}</h2>
                                         </p>
                                         <h3 class="mb36">{{eth.amount * eth.ethMining/eth.miningpower | number:2}} USD</h3>
-                                        <h3 class="mb36">{{eth.ethMining}} TH/s</h3>
+                                        <h3 class="mb36">{{eth.ethMining}} MH/s</h3>
                                         <input type="hidden" id="eth-{{$index}}" value="{{eth.amount * eth.ethMining/eth.miningpower}}" />
                                         <br />
                                      </div>
