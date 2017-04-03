@@ -120,10 +120,10 @@
                               <thead style="background:#525252;">
                                  <tr style="color:#525252;">
                                     <td width="10%"><strong class="white-color">S.No</strong></td>
-                                    <td width="25%"><strong class="white-color">Date</strong></td>
-                                    <td width="15%"><strong class="white-color">Rank</strong></td>
-                                    <td width="25%"><strong class="white-color">Reward</strong></td>
-                                    <td width="25%" align="center"><strong class="white-color">Consecutive Day(s)</strong></td>
+                                    <td width="30%"><strong class="white-color">Date</strong></td>
+                                    <td width="30%"><strong class="white-color">Rank</strong></td>
+                                    <td width="30%"><strong class="white-color">Reward</strong></td>
+                                    <!--<td width="25%" align="center"><strong class="white-color">Consecutive Day(s)</strong></td>-->
                                  </tr>
                               </thead>
                               <tbody>
@@ -136,7 +136,7 @@
                                     <td><img ng-src="{{s3Url}}{{achievement.Rank | lowercase}}.png" width="30"></td>
                                     <td ng-if="achievement.RewardName !== ''"><img ng-src="{{s3Url}}{{achievement.RewardName | lowercase}}-reward.png" width="120"></td>
                                     <td ng-if="achievement.RewardName === ''"></td>
-                                    <td align="center">{{achievement.consecutive_days}}</td>
+                                    <!--<td align="center">{{achievement.consecutive_days}}</td>-->
                                  </tr>
                               </tbody>
                            </table>
