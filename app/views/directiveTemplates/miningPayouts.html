@@ -68,7 +68,7 @@
               <div align="left" class="tab-inner">
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
-                    <select class="sm-txtbox1" ng-model="dashPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="ethPoolCalc({desContract:dashPoolContract, contractValue:poolDetails, mining:currentMining})">
+                    <select class="sm-txtbox1" ng-model="dashPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="dashPoolCalc({desContract:dashPoolContract, contractValue:poolDetails, mining:currentMining})">
                     </select>
                     <br><small>{{dashPoolContract*dashPoolValue}} MH/s</small>
                   </div>
