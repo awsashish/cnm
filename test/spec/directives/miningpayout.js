@@ -46,7 +46,7 @@ describe('Directive: miningPayout', function () {
   }));
 
   it('Should load template', function () {
-     expect(element.find('.table th').html()).toContain('Choose Mining <br>Contracts');  //Test if element has loaded template properly
+     expect(element.find('.table th').html()).toContain('Choose Mining Contracts');  //Test if element has loaded template properly
   });
 
   it('should have the scope values', function() {
