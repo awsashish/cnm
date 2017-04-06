@@ -124,6 +124,11 @@ angular.module('coinomiaFrontendApp')
       'ether-contributor.png',
       'ether-rack.png'
     ],
+    'dashImagePath':[
+      'dashpool.png',
+      'dashmahine.png',
+      'dashrack.png'
+    ],
     'productImage': {
       'Bitcoin Pool Contract': 'contract-bitcoin.png',
       'Bitcoin Machine Contract': 'contributor.png',

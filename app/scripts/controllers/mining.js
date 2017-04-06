@@ -24,6 +24,7 @@ angular.module('coinomiaFrontendApp')
     $scope.productMaxUnit = config.productMaxUnit;
     $scope.btcImagePath = config.btcImagePath;
     $scope.ethImagePath = config.ethImagePath;
+    $scope.dashImagePath = config.dashImagePath;
     $scope.pageLimit = config.pageLimit;
     $scope.oldPackage = config.oldPackage;
 
@@ -36,6 +37,7 @@ angular.module('coinomiaFrontendApp')
       var productsData = res.data;
       $scope.btcProducts = [];
       $scope.ethProducts = [];
+      $scope.dashProducts = [];
       if(res.status === 200) {
         var k = 0;
         productsData.forEach(function(products) {          
@@ -47,6 +49,10 @@ angular.module('coinomiaFrontendApp')
             products.ethMining = 0;
             products.quantity = 0;
             $scope.ethProducts.push(products);
+          }else if(products.coin === 'DASH' && $scope.oldPackage[k] !== products.productname){
+            products.dashMining = 0;
+            products.quantity = 0;
+            $scope.dashProducts.push(products);
           }
           k++;
           // $scope.total += products.amount;
@@ -91,12 +97,10 @@ angular.module('coinomiaFrontendApp')
     }
 
     $scope.setBtcQuantity = function(key, val) {
-      console.log(key, val);
       $scope.btcProducts[key].quantity = val;
     }
 
     $scope.calculateBtcAmount = function(key, quantity, miningpower, maxUnit) {
-      console.log(quantity, maxUnit);
       if(quantity > maxUnit) {
         $scope.btcProducts[key].quantity = maxUnit;
         $scope.btcProducts[key].btcMining = maxUnit*miningpower;
@@ -120,8 +124,24 @@ angular.module('coinomiaFrontendApp')
       }
     }
 
+    $scope.calculateDashAmount = function(key, quantity, miningpower, maxUnit) {
+      if(quantity > maxUnit) {
+        $scope.dashProducts[key].quantity = maxUnit;
+        $scope.dashProducts[key].dashMining = maxUnit*miningpower;
+        angular.element("#quantity-dash-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.dashProducts[key].dashMining+'<small>TH/s</small>');
+        return false;
+      }else{
+        $scope.dashProducts[key].dashMining = quantity*miningpower;
+        angular.element("#quantity-dash-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.dashProducts[key].dashMining+'<small>TH/s</small>');
+      }
+    }
+
     $scope.setEthQuantity = function(key, val) {
       $scope.ethProducts[key].quantity = val;
+    }
+
+    $scope.setDashQuantity = function(key, val) {
+      $scope.dashProducts[key].quantity = val;
     }
 
 
@@ -139,7 +159,7 @@ angular.module('coinomiaFrontendApp')
       }
 
       $scope.orderDetails = [];
-      var i = 0, j=0;
+      var i = 0, j=0, k=0;
       $scope.btcProducts.forEach(function(btcInfo) {
         if(btcInfo.quantity !== 0 && btcInfo.quantity !== null) {
           var btcAmount = btcInfo.amount*btcInfo.btcMining/btcInfo.miningpower;
@@ -156,6 +176,15 @@ angular.module('coinomiaFrontendApp')
           $scope.orderDetails.push({data:{id:ethInfo.id, quantity:ethInfo.quantity}, name:ethInfo.productname,  price:ethAmount, path:$scope.ethImagePath[j]});
         }
         j++;
+      });
+
+      $scope.dashProducts.forEach(function(dashInfo) {
+        if(dashInfo.quantity !== 0 && dashInfo.quantity !== null) {
+          var dashAmount = dashInfo.amount * dashInfo.dashMining/dashInfo.miningpower;
+          $scope.purchaseTotal += dashAmount;
+          $scope.orderDetails.push({data:{id:dashInfo.id, quantity:dashInfo.quantity}, name:dashInfo.productname,  price:dashAmount, path:$scope.dashImagePath[j]});
+        }
+        k++;
       });
 
       $scope.orderParams = [];
