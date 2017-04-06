@@ -373,24 +373,24 @@ angular.module('coinomiaFrontendApp')
 
     $scope.dashPoolMining = function(value, pool, mining) {
       var dashPoolValue = pool.Price * value;
-      $scope.totalDashPool = mining.btc2Mining * value;
-      $scope.dashPoolTotalUsd = mining.btc2Usd * value;
+      $scope.totalDashPool = mining.dashMining * value;
+      $scope.dashPoolTotalUsd = mining.dashUsd * value;
       $scope.dashPoolPrice = dashPoolValue;
       $scope.totalDash();
     }
 
     $scope.dashContributorMining = function(value, contributor, mining) {
       var dashContributorValue = contributor.Price * value;
-      $scope.totalDashContributor = mining.btc2Mining * value * config.contributorMining;
-      $scope.dashContributorTotalUsd = mining.btc2Usd * value * config.contributorMining;
+      $scope.totalDashContributor = mining.dashMining * value * config.contributorMining;
+      $scope.dashContributorTotalUsd = mining.dashUsd * value * config.contributorMining;
       $scope.dashContributorPrice = dashContributorValue;
       $scope.totalDash();
     }
 
     $scope.dashRackMining = function(value, rack, mining) {      
       var dashRackValue = rack.Price * value;
-      $scope.totalDashRack = mining.btc2Mining * value * config.rackMining;
-      $scope.dashRackTotalUsd = mining.btc2Usd * value * config.rackMining;
+      $scope.totalDashRack = mining.dashMining * value * config.rackMining;
+      $scope.dashRackTotalUsd = mining.dashUsd * value * config.rackMining;
       $scope.dashRackPrice = dashRackValue;
       $scope.totalDash();
     }
@@ -409,7 +409,7 @@ angular.module('coinomiaFrontendApp')
       if($scope.totalDashPool === 0 && $scope.totalDashContributor === 0 && $scope.totalDashRack === 0) {
         $scope.finalDash = 0;
         $scope.finalDashUsd = 0;
-      }else{
+      }else{        
         $scope.finalDash = $scope.totalDashPool + $scope.totalDashContributor + $scope.totalDashRack;
         $scope.finalDashUsd = $scope.dashPoolTotalUsd + $scope.dashContributorTotalUsd + $scope.dashRackTotalUsd;
       }
