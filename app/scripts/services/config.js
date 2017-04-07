@@ -85,7 +85,8 @@ angular.module('coinomiaFrontendApp')
     'salesBinaryHeading':'If all your Team Buy',
     'wallet':{
       'BTC': 'Bitcoin',
-      'ETH': 'Ether'
+      'ETH': 'Ether',
+      'DASH': 'Dash'
     },
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
     'signUpPath':'http://login.coinomia.com/#/signup',
