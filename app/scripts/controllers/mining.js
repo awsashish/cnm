@@ -164,6 +164,16 @@ angular.module('coinomiaFrontendApp')
 
       $scope.orderDetails = [];
       var i = 0, j=0, k=0;
+      
+      $scope.dashProducts.forEach(function(dashInfo) {
+        if(dashInfo.quantity !== 0 && dashInfo.quantity !== null) {
+          var dashAmount = dashInfo.amount * dashInfo.dashMining/dashInfo.miningpower;
+          $scope.purchaseTotal += dashAmount;
+          $scope.orderDetails.push({data:{id:dashInfo.id, quantity:dashInfo.quantity}, name:dashInfo.productname,  price:dashAmount, path:$scope.dashImagePath[k]});
+        }
+        k++;
+      });
+      
       $scope.btcProducts.forEach(function(btcInfo) {
         if(btcInfo.quantity !== 0 && btcInfo.quantity !== null) {
           var btcAmount = btcInfo.amount*btcInfo.btcMining/btcInfo.miningpower;
@@ -180,16 +190,7 @@ angular.module('coinomiaFrontendApp')
           $scope.orderDetails.push({data:{id:ethInfo.id, quantity:ethInfo.quantity}, name:ethInfo.productname,  price:ethAmount, path:$scope.ethImagePath[j]});
         }
         j++;
-      });
-
-      $scope.dashProducts.forEach(function(dashInfo) {
-        if(dashInfo.quantity !== 0 && dashInfo.quantity !== null) {
-          var dashAmount = dashInfo.amount * dashInfo.dashMining/dashInfo.miningpower;
-          $scope.purchaseTotal += dashAmount;
-          $scope.orderDetails.push({data:{id:dashInfo.id, quantity:dashInfo.quantity}, name:dashInfo.productname,  price:dashAmount, path:$scope.dashImagePath[k]});
-        }
-        k++;
-      });
+      });      
 
       $scope.orderParams = [];
       
