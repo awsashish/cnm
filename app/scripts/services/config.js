@@ -62,9 +62,9 @@ angular.module('coinomiaFrontendApp')
     'ethPoolValue':0.58,          // Mining payout ETH pool MH/s value
     'ethMachineValue':5.8,    // Mining payout ETH Machine or Contributor MH/s value
     'ethRackValue':58,
-    'dashPoolValue':30,          // Mining payout ETH pool MH/s value
-    'dashMachineValue':300,    // Mining payout ETH Machine or Contributor MH/s value
-    'dashRackValue':3000,              // Mining payout ETH Rack MH/s value
+    'dashPoolValue':50,          // Mining payout ETH pool MH/s value
+    'dashMachineValue':500,    // Mining payout ETH Machine or Contributor MH/s value
+    'dashRackValue':5000,              // Mining payout ETH Rack MH/s value
     'productMaxUnit':[
       1000,
       100,
