@@ -186,7 +186,7 @@ angular.module('coinomiaFrontendApp')
         if(dashInfo.quantity !== 0 && dashInfo.quantity !== null) {
           var dashAmount = dashInfo.amount * dashInfo.dashMining/dashInfo.miningpower;
           $scope.purchaseTotal += dashAmount;
-          $scope.orderDetails.push({data:{id:dashInfo.id, quantity:dashInfo.quantity}, name:dashInfo.productname,  price:dashAmount, path:$scope.dashImagePath[j]});
+          $scope.orderDetails.push({data:{id:dashInfo.id, quantity:dashInfo.quantity}, name:dashInfo.productname,  price:dashAmount, path:$scope.dashImagePath[k]});
         }
         k++;
       });
