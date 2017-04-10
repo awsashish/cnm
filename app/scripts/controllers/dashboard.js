@@ -148,13 +148,21 @@ angular.module('coinomiaFrontendApp')
         iconPath:config.incomeIcon
       };
       var totalIncomeData = res.data;
+      $scope.ethIncome = {};
+      $scope.btcIncome = {};
       $scope.totalIncome = [];
       if(res.status === 200) {
         totalIncomeData.forEach(function(income) {
-          if(income.coin != 'USD') {
+          if(income.coin != 'USD' && income.coin != 'ETH' && income.coin != 'BTC') {
             $scope.totalIncome.push(income);
+          }else if(income.coin != 'USD' && income.coin != 'ETH'){
+            $scope.btcIncome = income;
+          }else{
+            $scope.ethIncome = income;
           }
         });
+        $scope.totalIncome.push($scope.btcIncome);
+        $scope.totalIncome.push($scope.ethIncome);
       }
     });
 
