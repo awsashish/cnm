@@ -13,7 +13,7 @@
     <!-- media-body -->
     <hr>
     <div class="clearfix mt20" ng-if="purchasedAttr">
-      <div class="mb15" ng-repeat="purchased in purchasedAttr">
+      <div class="mb15" ng-repeat="purchased in purchasedAttr | orderBy: '-miningpower'">
         <h4 class="nomargin "> <strong>{{purchased.coin}}</strong></h4>
         <h4 class="arrow_box-top-lft-amout mar10">{{purchased.miningpower}} {{purchased.coin=='BTC'?'TH/s':'MH/s'}} </h4>
       </div>

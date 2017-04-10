@@ -22,10 +22,16 @@ angular.module('coinomiaFrontendApp')
       var ethMachine = parseInt(angular.element("#eth-1").val());
       var ethRack = parseInt(angular.element("#eth-2").val());
 
+      // DASH Value
+      var dashPool = parseInt(angular.element("#dash-0").val());
+      var dashMachine = parseInt(angular.element("#dash-1").val());
+      var dashRack = parseInt(angular.element("#dash-2").val());
+
       //var btcTotal = btcPool + btcMachine + btcRack + btcPool2 + btcMachine2 + btcRack2;
       var btcTotal = btcPool + btcMachine + btcRack;
       var ethTotal = ethPool + ethMachine + ethRack;
-      var total = btcTotal + ethTotal;
+      var dashTotal = dashPool + dashMachine + dashRack;
+      var total = btcTotal + ethTotal + dashTotal;
       if(total){
         var total = $filter('currency')(total);
         
@@ -69,6 +75,11 @@ angular.module('coinomiaFrontendApp')
                 scope.eth.quantity = scope.eth.ethMining/scope.eth.miningpower;
                 el.html(sliderLabel.replace('SLIDER_VALUE', scope.eth.ethMining));
               }
+              else if (attrs.product === 'dash') {
+                scope.dash.dashMining = ui.value;
+                scope.dash.quantity = scope.dash.dashMining/scope.dash.miningpower;
+                el.html(sliderLabel.replace('SLIDER_VALUE', scope.dash.dashMining));
+              }
             });
           },
           create: function( event, ui ) {
@@ -80,7 +91,9 @@ angular.module('coinomiaFrontendApp')
             else if (attrs.product === 'eth') {
               el.append(sliderLabel.replace('SLIDER_VALUE', scope.eth.ethMining));
             }
-            
+            else if (attrs.product === 'dash') {
+              el.append(sliderLabel.replace('SLIDER_VALUE', scope.dash.dashMining));
+            }
           },
           change: function() {
             totalAmount();
@@ -104,6 +117,17 @@ angular.module('coinomiaFrontendApp')
           });
           scope.$watch('eth.quantity', function(newVal) {
             $(elem).slider('value', scope.eth.ethMining);
+            setTimeout(function() {
+              totalAmount.call();
+            }, 500)            
+          });
+        }
+        else if(attrs.product === 'dash') {
+          scope.$watch('dash.dashMining', function(newVal) {
+            $(elem).slider('value', newVal);
+          });
+          scope.$watch('dash.quantity', function(newVal) {
+            $(elem).slider('value', scope.dash.dashMining);
             setTimeout(function() {
               totalAmount.call();
             }, 500)            

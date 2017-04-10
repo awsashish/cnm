@@ -55,12 +55,16 @@ angular.module('coinomiaFrontendApp')
     'poolSelectedValue': 1000,
     'machineSelectedValue': 100,
     'rackSelectedValue': 10,
+    'dashSelectedValue': 10,
     'btcPoolValue':2,          // Mining payout BTC pool TH/s value
     'btcMachineValue':20,    // Mining payout BTC Machine or Contributor TH/s value
     'btcRackValue':200,            // Mining payout BTC Rack TH/s value
     'ethPoolValue':0.58,          // Mining payout ETH pool MH/s value
     'ethMachineValue':5.8,    // Mining payout ETH Machine or Contributor MH/s value
-    'ethRackValue':58,            // Mining payout ETH Rack MH/s value
+    'ethRackValue':58,
+    'dashPoolValue':50,          // Mining payout ETH pool MH/s value
+    'dashMachineValue':500,    // Mining payout ETH Machine or Contributor MH/s value
+    'dashRackValue':5000,              // Mining payout ETH Rack MH/s value
     'productMaxUnit':[
       1000,
       100,
@@ -81,7 +85,8 @@ angular.module('coinomiaFrontendApp')
     'salesBinaryHeading':'If all your Team Buy',
     'wallet':{
       'BTC': 'Bitcoin',
-      'ETH': 'Ether'
+      'ETH': 'Ether',
+      'DASH': 'Dash'
     },
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
     'signUpPath':'http://login.coinomia.com/#/signup',
@@ -119,6 +124,11 @@ angular.module('coinomiaFrontendApp')
       'ether-contract.png',
       'ether-contributor.png',
       'ether-rack.png'
+    ],
+    'dashImagePath':[
+      'dashpool.png',
+      'dashmahine.png',
+      'dashrack.png'
     ],
     'productImage': {
       'Bitcoin Pool Contract': 'contract-bitcoin.png',

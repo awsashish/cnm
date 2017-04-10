@@ -291,6 +291,9 @@
                   eth-pool-value="ethPoolValue"
                   eth-machine-value="ethMachineValue"
                   eth-rack-value="ethRackValue"
+                  dash-pool-value="dashPoolValue"
+                  dash-machine-value="dashMachineValue"
+                  dash-rack-value="dashRackValue"
                   machine-options="machineOptions"
                   rack-options="rackOptions"
                   pool-details="poolDetails"
@@ -303,25 +306,38 @@
                   eth-pool-contract="ethPoolContract"
                   eth-contributor-contract="ethContributorContract"
                   eth-rack-contract="ethRackContract"
+                  dash-pool-contract="dashPoolContract"
+                  dash-contributor-contract="dashContributorContract"
+                  dash-rack-contract="dashRackContract"
                   btc-pool-price="btcPoolPrice"
                   btc-contributor-price="btcContributorPrice"
                   btc-rack-price="btcRackPrice"
                   eth-pool-price="ethPoolPrice"
                   eth-contributor-price="ethContributorPrice"
                   eth-rack-price="ethRackPrice"
+                  dash-pool-price="dashPoolPrice"
+                  dash-contributor-price="dashContributorPrice"
+                  dash-rack-price="dashRackPrice"
                   btc-pool-click="btcPoolClick(desContract, contractValue, mining)"
                   btc-machine-click="btcMachineClick(desContract, contractValue, mining)"
                   btc-rack-click="btcRackClick(desContract, contractValue, mining)"
                   eth-pool-click="ethPoolClick(desContract, contractValue, mining)"
                   eth-machine-click="ethMachineClick(desContract, contractValue, mining)"
                   eth-rack-click="ethRackClick(desContract, contractValue, mining)"
+                  dash-pool-click="dashPoolClick(desContract, contractValue, mining)"
+                  dash-machine-click="dashMachineClick(desContract, contractValue, mining)"
+                  dash-rack-click="dashRackClick(desContract, contractValue, mining)"
                   btc-pool-calc="btcPoolMining(desContract, contractValue, mining)"
                   btc-contributor-calc="btcContributorMining(desContract, contractValue, mining)"
                   btc-rack-calc="btcRackMining(desContract, contractValue, mining)"
                   eth-pool-calc="ethPoolMining(desContract, contractValue, mining)"
                   eth-contributor-calc="ethContributorMining(desContract, contractValue, mining)"
-                  eth-rack-calc="ethRackMining(desContract, contractValue, mining)" s3-url="s3Url"></div>
-                <p align="center"><button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd, $event)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button></p>
+                  eth-rack-calc="ethRackMining(desContract, contractValue, mining)"
+                  dash-pool-calc="dashPoolMining(desContract, contractValue, mining)"
+                  dash-contributor-calc="dashContributorMining(desContract, contractValue, mining)"
+                  dash-rack-calc="dashRackMining(desContract, contractValue, mining)" s3-url="s3Url"></div>
+                <p align="center">
+                  <button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd, finalDash, finalDashUsd, $event)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button></p>
                 <div class="clearfix"></div>
                 <h3 align="center" class="text-title02"><strong>Your Estimated income based on Current <br />
                   Exchange Values of Respective Currencies</strong>
@@ -332,12 +348,14 @@
                       <td><strong>#</strong></td>
                       <td><strong>BTC</strong></td>
                       <td><strong>ETH</strong></td>
+                      <td><strong>DASH</strong></td>
                       <td><strong>USD <small>(eq.)</small></strong></td>
                     </tr>
                     <tr ng-repeat="income in estIncome">
                       <td>{{income.duration}}</td>
                       <td>{{income.btc | number:5}}</td>
                       <td>{{income.eth | number:5}}</td>
+                      <td>{{income.dash | number:5}}</td>
                       <td><strong>${{income.miningUsd | number:5}}</strong></td>
                     </tr>
                   </table>
