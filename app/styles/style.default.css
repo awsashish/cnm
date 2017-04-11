@@ -5303,7 +5303,8 @@ h4.great {
 .f-block-transparent-bg{ background:url(../images/pp-transbg.png) #d9534f bottom right no-repeat !important;}
 .s-block-transparent-bg{ background:url(../images/cr-transbg.png) #525252 bottom right no-repeat !important; color:#fff; border-bottom:10px solid #333 !important;}
 .t-block-transparent-bg{ background:url(../images/ti-bgtrans.png) #d9534f bottom right no-repeat !important;}
-.font18{font-size:18px !important; font-weight:bold;background: transparent;} 
+.font18{font-size:18px !important; font-weight:bold;background: transparent;}
+.current-rates-fonts{font-size:16px !important; font-weight:bold;background: transparent;}  
 .yelo-text{ color:#FC0 !important; font-weight:bold; border-bottom:1px solid #ccc; font-size:25px; padding-bottom:5px;}
 .red-text{ color: #F30 !important;  margin:0px; padding:0px;}
 .grey-bg{ background:#f2f2f2; border-radius:30px; padding:5px; color:#525252; font-weight:bold; font-size:19px; padding-bottom:5px; margin-bottom:0px; }
@@ -5320,8 +5321,12 @@ h4.great {
 
 .arrow_box-top-lft-amout {
 	position: relative;
-	background: #a03a37; padding:5px; border-radius:5px;
-	border: 1px solid #c2e1f5; margin-bottom:0px;
+    background: #a03a37;
+    padding: 5px 0 5px 5px;
+    border-radius: 5px;
+    border: 1px solid #c2e1f5;
+    margin-bottom: 0;
+    font-size: 16px;
 }
 .arrow_box-top-lft-amout:after, .arrow_box-top-lft-amout:before {
 	bottom: 100%;
