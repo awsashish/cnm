@@ -178,7 +178,7 @@ angular.module('coinomiaFrontendApp')
 
 
     $scope.verifyAndSubmit = function(activity, requestAmount, type) {
-      if(activity.toLowerCase() === 'withdrawal' && (type === 'BTC' || type === 'ETH')) {
+      if(activity.toLowerCase() === 'withdrawal' && (type === 'BTC' || type === 'ETH' || type === 'DASH')) {
         $scope.calcFees(requestAmount, $rootScope.balance, $rootScope.networkFees);
       }else{
         $scope.walletActivity(requestAmount, $rootScope.walletName, activity);
@@ -192,13 +192,14 @@ angular.module('coinomiaFrontendApp')
       var data = JSON.stringify(amount);
       $scope.conversion = false;
 
-
       if(activity === 'withdrawal') {
         // Withdrawal Amount
         if(wallet.toLowerCase() === 'btc') {
           var type = 'btc';
         }else if(wallet.toLowerCase() === 'eth') {
           var type = 'eth';
+        }else if(wallet.toLowerCase() === 'dash') {
+          var type = 'dash';
         }else if(wallet.toLowerCase() === 'usd') {
           var type = 'usd';
         }
@@ -224,6 +225,9 @@ angular.module('coinomiaFrontendApp')
           var data = JSON.stringify(amount);     
         }else if(wallet.toLowerCase() === 'eth') {
           var type = 'eth';
+          var data = JSON.stringify(amount); 
+        }else if(wallet.toLowerCase() === 'dash') {
+          var type = 'dash';
           var data = JSON.stringify(amount); 
         }else if(wallet.toLowerCase() === 'usd') {
           var type = 'usd';
