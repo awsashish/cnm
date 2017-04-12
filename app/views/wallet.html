@@ -70,7 +70,7 @@
              <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel" ng-if="withdrawalHeading && !responseSuccess">
-                  <img ng-src="{{s3Url}}{{imageName | lowercase}}-wallet.png" width="35" class="pull-left img-responsive " /> 
+                  <img ng-src="{{s3Url}}package/{{imageName | lowercase}}-wallet.png" width="35" class="pull-left img-responsive " /> 
                   <strong>&nbsp;{{walletName}} Wallet</strong>
                 </h4>
 
@@ -115,6 +115,7 @@
                       <input type="number" name="walletAmount" min="0" ng-model="walletAmount" class="form-control" style="width:80%;" required />
                       <small class="col-md-12 red-text02" ng-if="walletName === 'BTC'">Note : Minimum balance should be 0.0005 BTC</small>
                       <small class="col-md-12 red-text02" ng-if="walletName === 'ETH'">Note : Minimum balance should be 0.05 ETH</small>
+                      <small class="col-md-12 red-text02" ng-if="walletName === 'DASH'">Note : Minimum balance should be 0.05 DASH</small>
                       <button type="submit" style="padding:10px;top: -4px;position: relative;" class="btn btn-default" ng-disabled="withdrawal.$invalid">OK</button>
                       <div class="alert alert-danger fade in error-padding"
                         ng-show="withdrawal.walletAmount.$touched && withdrawal.walletAmount.$invalid" style="width:80%;">
