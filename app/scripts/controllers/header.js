@@ -103,6 +103,24 @@ angular.module('coinomiaFrontendApp')
       if(res.status === 200) {
         $rootScope.totalUsers = res.data.totalusers;
         $rootScope.latestSignup = res.data.data;
+        $rootScope.latestSignup.forEach(function(_info, key) {
+
+          var currentDate = moment().tz("Europe/London");
+          var currentTime = currentDate.format("HH:mm:ss");
+
+          var signupDate = moment(_info.DOJ);
+          var signupTime = signupDate.format("HH:mm:ss");
+
+          var start = moment.duration(signupTime, "HH:mm:ss");
+          var end = moment.duration(currentTime, "HH:mm:ss");
+          var diff = end.subtract(start);
+
+          var _hours = diff.hours(); // return hours
+          var _minutes = diff.minutes(); // return minutes
+
+          $rootScope.latestSignup[key].minutes = (_hours * 60) + _minutes;
+
+        });
       }
     })
 
