@@ -114,11 +114,11 @@ angular.module('coinomiaFrontendApp')
           var start = moment.duration(signupTime, "HH:mm:ss");
           var end = moment.duration(currentTime, "HH:mm:ss");
           var diff = end.subtract(start);
+
           var _hours = diff.hours(); // return hours
           var _minutes = diff.minutes(); // return minutes
 
-          $rootScope.latestSignup[key].hours = _hours;
-          $rootScope.latestSignup[key].minutes = _minutes;
+          $rootScope.latestSignup[key].minutes = (_hours * 60) + _minutes;
 
         });
       }
