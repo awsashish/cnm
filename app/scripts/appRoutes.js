@@ -161,6 +161,13 @@ angular.module('coinomiaFrontendApp')
       authenticate: true
     })
 
+    .state('order-tab', {
+      url: '/mining/:orderTab',
+      templateUrl: 'views/mining.html',
+      controller: 'MiningCtrl',
+      authenticate: true
+    })
+
     // Business Plans
     .state('business-plan', {
       url: '/business-plan',
