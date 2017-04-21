@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('MiningCtrl', function ($scope, $uibModal, $uibModalStack, $window, coinomiaService, config) {
+  .controller('MiningCtrl', function ($scope, $uibModal, $uibModalStack, $window, coinomiaService, config, $stateParams) {
 
     $scope.walletHeading = config.wallet;
     $scope.currentPage = config.currentPage;
@@ -35,6 +35,11 @@ angular.module('coinomiaFrontendApp')
     $scope.package = ['pool', 'rack', 'machine'];
 
     $scope.total = 0;
+
+    if($stateParams.orderTab) {
+      $scope.activeTab = $stateParams.orderTab;
+    }
+    
     // Get Products
     coinomiaService.getProducts()
     .then(function(res) {

@@ -161,6 +161,13 @@ angular.module('coinomiaFrontendApp')
       authenticate: true
     })
 
+    .state('order-tab', {
+      url: '/mining/:orderTab',
+      templateUrl: 'views/mining.html',
+      controller: 'MiningCtrl',
+      authenticate: true
+    })
+
     // Business Plans
     .state('business-plan', {
       url: '/business-plan',
@@ -202,11 +209,16 @@ angular.module('coinomiaFrontendApp')
       },
       authenticate: true
     })
-
     .state('wallet', {
       url: '/wallet',
       templateUrl: 'views/wallet.html',
       controller: 'WalletCtrl',
+      authenticate: true
+    })
+    .state('coin-videos', {
+      url: '/coin-videos/:tabId',
+      templateUrl: 'views/coin-videos.html',
+      controller: 'CoinvideosCtrl',
       authenticate: true
     })
     //

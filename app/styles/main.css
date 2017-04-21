@@ -51,6 +51,10 @@ body {
   color:red;
 }
 
+.social-icons img {
+    width: 200px;
+}
+
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
@@ -84,7 +88,65 @@ body {
   padding: 0;
 }
 
+.social-icons {
+      margin-left: 11px;
+      margin-bottom: 0px;
+  }
+
 /* Responsive: Portrait tablets and up */
+
+@media screen and (min-width: 992px) {
+  .social-section {
+      width: 100% !important;
+  }
+  .social-icons img {
+      width: 170px;
+  }  
+}
+
+@media screen and (min-width: 1200px) {
+  .social-icons img {
+      width: 200px;
+  }
+
+  .social-icons {
+      margin-left: 11px;
+      margin-bottom: 0px;
+  }
+
+  .social-section {
+      width: 83.333% !important;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .coin-vid {
+    width: 100%;
+    margin-top:30px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .social-icons {
+    margin-left: 40px;
+    margin-bottom: 15px;
+  }
+
+  .social-icons.last {
+    text-align: center;
+    margin-left: 11px;
+  }
+
+  .arrow{
+    display: none;
+  }
+
+  .coin-vid {
+    margin-top:60px;
+  }
+}
+
+
 @media screen and (min-width: 768px) {
 
   .container {
@@ -108,8 +170,17 @@ body {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .signup-success {
     padding: 0 80px;
+  }
+
+  .arrow{
+    display: none;
+  }
+
+  .social-icons {
+    margin-bottom: 30px;
+    text-align: center;
   }
 }
