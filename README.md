@@ -8,27 +8,28 @@ npm version >= 3.10.8 and node version >= 6.9.1
 
 ## Steps of Installation
 
-git clone git@bitbucket.org:coinomia/coinomia-frontend.git
-cd coinomia-frontend
-git checkout latest-code
-npm install && bower install
-grunt serve
+- git clone git@bitbucket.org:coinomia/coinomia-frontend.git
+- cd coinomia-frontend
+- git checkout latest-code
+- npm install && bower install
+- grunt serve
 
 Visit URL http://localhost:9000/ to see the site
 
 
 # Server Configuration
- goto app/scripts/services/coinomiaservice.js
- goto line number 16 and update the below values
+- goto app/scripts/services/coinomiaservice.js
+- goto line number 16 and update the below values
 
- $location.host() === 'login.coinomia.com' to $location.host() === 'YOUR_API_PATH'
+- $location.host() === 'login.coinomia.com' to $location.host() === 'YOUR_API_PATH'
 
- change `apiHost` value for both Live server and Staging server
- For Live Server
- this.apiHost = 'https://api.coinomia.com/' to this.apiHost = 'https://YOUR_LIVE_SERVER_API_PATH/'
+- change `apiHost` value for both Live server and Staging server
 
- For Staging Server
- this.apiHost = 'https://api.coinomia.com/' to this.apiHost = 'https://YOUR_STAGING_SERVER_API_PATH/'
+- For Live Server
+- this.apiHost = 'https://api.coinomia.com/' to this.apiHost = 'https://YOUR_LIVE_SERVER_API_PATH/'
+
+- For Staging Server
+- this.apiHost = 'https://api.coinomia.com/' to this.apiHost = 'https://YOUR_STAGING_SERVER_API_PATH/'
 
     
 
@@ -43,8 +44,8 @@ Running `grunt test` will run the unit tests with karma.
 
 # Deployment process
 
-cd to YOUR_PROJECT_DIRECTORY
-grunt build
+- cd to YOUR_PROJECT_DIRECTORY
+- grunt build
 
 It will generate dist folder and move that folder on your server
 
