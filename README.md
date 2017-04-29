@@ -17,7 +17,7 @@ grunt serve
 Visit URL http://localhost:9000/ to see the site
 
 
-# Server Configuration
+## Server Configuration
  goto app/scripts/services/coinomiaservice.js
  goto line number 16 and update the below values
 
@@ -41,7 +41,7 @@ Run `grunt` for building and `grunt serve` for preview.
 Running `grunt test` will run the unit tests with karma.
 
 
-# Deployment process
+## Deployment process
 
 cd to YOUR_PROJECT_DIRECTORY
 grunt build
