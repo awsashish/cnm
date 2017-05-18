@@ -33,6 +33,19 @@ angular.module('coinomiaFrontendApp')
         controller: 'ForgotpasswordCtrl',
         authenticate: false
     })
+    // Coinomia Academy Page
+    .state('coinomia-academy', {
+        url: '/coinomia-academy',
+        templateUrl: 'views/coinomia-academy.html',
+        controller: 'CoinomiaAcademyCtrl',
+        authenticate: false
+    })
+    .state('coinomia-academy-cart', {
+        url: '/coinomia-academy-cart',
+        templateUrl: 'views/coinomia-academy-cart.html',
+        controller: 'CoinomiaAcademyCartCtrl',
+        authenticate: false
+    })
 
     // Resend Verification Email
     .state('resend-verification', {

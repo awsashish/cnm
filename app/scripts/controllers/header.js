@@ -142,7 +142,6 @@ angular.module('coinomiaFrontendApp')
           windowClass: 'academy-video'
       });
     }
-
     $scope.closePopup = function() {
       $uibModalStack.dismissAll();
     }
