@@ -32,7 +32,7 @@
                Review What Products are in Your Shopping Cart<span class="glyphicon glyphicon-minus"></span>
             </h2>
             <br />
-            <div  class="container" style=" min-height:400px; overflow:hidden;">
+            <div class="container" style=" min-height:400px; overflow:hidden;">
                <table class="table table-dark-gry table-hover mb30 font16">
                   <thead style="background:#525252;">
                      <td><strong class="white-color"></strong></td>
@@ -40,49 +40,21 @@
                      <td><strong class="white-color">Price</strong></td>
                      <td><strong class="white-color">Action</strong></td>
                   </thead>
-                  <tr>
+                  <tr ng-repeat="cartItem in cartItems">
                      <td><img src="images/package1.png" style="border:1px solid #ccc; padding:5px;" width="80"  /></td>
-                     <td> <strong>Coinomia 100$ Paket / Package</strong><br />
-                        Payment to BigU academy: 45$
+                     <td> <strong>{{cartItem.PackageName}}</strong><br />
+                        Payment to BigU academy:
                      </td>
                      <td>
-                        <h3 ><strong>$100</strong></h3>
-                     </td>
-                     <td>  <button type="button" class="btn btn-danger btn-xs mar10">Delete</button></td>
-                  </tr>
-                  <tr>
-                     <td><img src="images/package2.png" style="border:1px solid #ccc; padding:5px;" width="80"  /></td>
-                     <td> <strong>Package – Package value: 300$</strong><br />
-                        Payment to BigU academy: 74$
+                        <h3 ><strong>{{cartItem.Price}}</strong></h3>
                      </td>
                      <td>
-                        <h3><strong>$300</strong></h3>
+                        <button type="button" class="btn btn-danger btn-xs mar10" ng-click="removeFromCart(cartItem, $index);">Delete</button>
                      </td>
-                     <td>  <button type="button" class="btn btn-danger btn-xs mar10">Delete</button></td>
-                  </tr>
-                  <tr>
-                     <td><img src="images/package3.png" style="border:1px solid #ccc; padding:5px;" width="80"  /></td>
-                     <td> <strong>Package – Package value: 500$</strong><br />
-                        Payment to BigU academy: 124$
-                     </td>
-                     <td>
-                        <h3><strong>$500</strong></h3>
-                     </td>
-                     <td>  <button type="button" class="btn btn-danger btn-xs mar10">Delete</button></td>
-                  </tr>
-                  <tr>
-                     <td><img src="images/package4.png" style="border:1px solid #ccc; padding:5px;" width="80"  /></td>
-                     <td> <strong>Package – Package Value: 700$</strong><br />
-                        Payment to BigU Academy: 200$
-                     </td>
-                     <td>
-                        <h3><strong>$700</strong></h3>
-                     </td>
-                     <td>  <button type="button" class="btn btn-danger btn-xs mar10">Delete</button></td>
                   </tr>
                </table>
                <p style="border-bottom:4px solid #ccc; border-top:1px solid #ccc; padding:5px; height:60px;">
-                  <span class="mt5 pull-right" style=" color:#999;">Total Price : $1600</span>
+                  <span class="mt5 pull-right" style=" color:#999;">${{totalPrice}}</span>
                </p>
                <p style="border-bottom:1px solid #ccc;  padding:5px; height:80px;">
                   <span class="mt5 pull-right" style="color:#999;">Select Payment :   
