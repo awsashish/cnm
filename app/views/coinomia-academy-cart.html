@@ -54,22 +54,23 @@
                   </tr>
                </table>
                <p style="border-bottom:4px solid #ccc; border-top:1px solid #ccc; padding:5px; height:60px;">
-                  <span class="mt5 pull-right" style=" color:#999;">${{totalPrice}}</span>
+                  <span class="mt5 pull-right" style=" color:#999;">Total Price: ${{totalPrice}}</span>
                </p>
                <p style="border-bottom:1px solid #ccc;  padding:5px; height:80px;">
-                  <span class="mt5 pull-right" style="color:#999;">Select Payment :   
-                     <input name="bitcoin" type="radio" value="" checked="checked" />
-                     <img src="images/btc-wallet.png" width="60" />&nbsp;&nbsp;<input name="bitcoin" type="radio" value=""  />
+                  <span class="mt5 pull-right" style="color:#999;">Select Payment :
+                     <input name="bitcoin" type="radio" value="1" ng-model="payment"/>
+                     <img src="images/btc-wallet.png" width="60" />&nbsp;&nbsp;
+                     <input name="usd" type="radio" value="2" ng-model="payment"/>
                      <img src="images/usd-wallet.png" width="60" />
                   </span>
                </p>
                <p>
-                  <button type="button" data-toggle="modal" data-target="#purchase-summry" class="btn  btn-lg  btn-block btn-warning mar10">Proceed to Checkout</button>
+                  <button type="button" ng-disabled="!payment" data-toggle="modal" data-target="#purchase-summry" ng-click="placeOrder();" class="btn  btn-lg  btn-block btn-warning mar10">Proceed to Checkout</button>
                </p>
                <div class="clearfix"></div>
                <hr />
             </div>
-            <div class="modal fade" id="purchase-summry" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div ng-if="invoiceInfo" class="modal fade" id="purchase-summry" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                <div class="modal-dialog" role="document">
                   <div class="modal-content">
                      <div class="modal-header">
@@ -77,15 +78,15 @@
                         <h4 align="left" class="modal-title" id="myModalLabel">Purchase Invoice</h4>
                      </div>
                      <div align="left" class="modal-body" style="font-size:16px;">
-                        <em><strong>Hello Abhinandan,</strong></em><br />
+                        <em><strong>Hello {{name}},</strong></em><br />
                         <br />
                         Please Find the Details About Your New Purchase Below.<br />
                         <hr />
                         <strong>Mode of Purchase</strong>: <img src="images/bitcoin-logo.png" width="100" /><br /><br />
-                        <p class="add-funds-popup">Bitcoin Address : <strong>1FfmbHfnpaZjKFvyi1okTjJJusN455paPH</strong></p>
+                        <p class="add-funds-popup">Bitcoin Address : <strong>{{invoiceInfo.address}}</strong></p>
                         <br />
-                        <p class="bit-address"><strong>Invoice Number</strong> : SDJFSDJFS34793827429</p>
-                        <table class="table table-bordered">
+                        <p class="bit-address"><strong>Invoice Number</strong> : {{invoiceInfo.invoice_number}}</p>
+                        <!-- <table class="table table-bordered">
                            <tr>
                               <td><strong>Package Name</strong></td>
                               <td><strong>Price</strong></td>
@@ -98,8 +99,8 @@
                               <td><img src="images/package2.png" width="30" /> Coinomia Package 02</td>
                               <td>$200</td>
                            </tr>
-                        </table>
-                        <h3 class="pull-right nomargin nopadding"><strong>Total : $300</strong></h3>
+                        </table> -->
+                        <h3 class="pull-right nomargin nopadding"><strong>Total : ${{invoiceInfo.value_in_usd}}</strong></h3>
                         <div class="clearfix"></div>
                         <hr />
                         </p>

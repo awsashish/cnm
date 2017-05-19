@@ -1258,6 +1258,23 @@ angular.module('coinomiaFrontendApp')
 
     };
 
+    //Buy Packages
+    this.buyPackages = function(data) {
+
+      function packagesBought(response) {
+        return response;
+      }
+
+      function packageBuyFailed(error) {
+        $log.error('XHR Failed to Buy Packages.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.devHost +'user/academy-order', data)
+        .then(packagesBought)
+        .catch(packageBuyFailed);
+    };
+
     // Get Achievement Rewards
     this.getAchievements = function() {
       
