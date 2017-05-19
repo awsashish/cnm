@@ -42,11 +42,10 @@
                   </thead>
                   <tr ng-repeat="cartItem in cartItems">
                      <td><img src="images/package1.png" style="border:1px solid #ccc; padding:5px;" width="80"  /></td>
-                     <td> <strong>{{cartItem.PackageName}}</strong><br />
-                        Payment to BigU academy:
+                     <td style="vertical-align:middle;"> <strong>{{cartItem.PackageName}}</strong><br />
                      </td>
                      <td>
-                        <h3 ><strong>{{cartItem.Price}}</strong></h3>
+                        <h3 style="margin-top:10px;"><strong>{{cartItem.Price}}</strong></h3>
                      </td>
                      <td>
                         <button type="button" class="btn btn-danger btn-xs mar10" ng-click="removeFromCart(cartItem, $index);">Delete</button>
@@ -70,8 +69,8 @@
                <div class="clearfix"></div>
                <hr />
             </div>
-            <div ng-if="invoiceInfo" class="modal fade" id="purchase-summry" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-               <div class="modal-dialog" role="document">
+            <div class="modal fade" id="purchase-summry" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+               <div ng-if="invoiceInfo" class="modal-dialog" role="document">
                   <div class="modal-content">
                      <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -110,7 +109,7 @@
                         <img src="images/logo-coinomia.png" width="60" /></span>
                      </div>
                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Purchase</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal();">OK</button>
                      </div>
                   </div>
                </div>

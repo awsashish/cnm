@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', function ($scope, $state, $rootScope, coinomiaService) {
+angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', function ($scope, $uibModal, $uibModalStack, $window, $state, $rootScope, coinomiaService) {
 
 	$scope.totalPrice = 0;
   	$scope.getCartItems = function() {
@@ -28,7 +28,7 @@ angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', func
 		})
 
 		var data = {
-			"payment_method": ($scope.payment == "1") ? 'BTC' : 'USD',
+			"payment_method": ($scope.payment == "1") ? 'BTC' : 'WALLET',
 			"payment_type": '',
 			"OrderDetails": orderList
 		}
@@ -39,6 +39,11 @@ angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', func
 			}
 		})
 	};
-
+	// Close Modal 
+	$scope.closeModal = function() {
+		$uibModalStack.dismissAll();
+		$window.location.reload();
+		$state.go('coinomia-academy');
+	}
 	$scope.getCartItems();
 });
