@@ -85,20 +85,16 @@
                         <p class="add-funds-popup">Bitcoin Address : <strong>{{invoiceInfo.address}}</strong></p>
                         <br />
                         <p class="bit-address"><strong>Invoice Number</strong> : {{invoiceInfo.invoice_number}}</p>
-                        <!-- <table class="table table-bordered">
+                        <table class="table table-bordered">
                            <tr>
                               <td><strong>Package Name</strong></td>
                               <td><strong>Price</strong></td>
                            </tr>
-                           <tr>
-                              <td><img src="images/package1.png" width="30" /> Coinomia Package 01</td>
-                              <td>$100</td>
+                           <tr ng-repeat="cartItem in cartItems">
+                              <td><img src="images/package1.png" width="30" />{{cartItem.PackageName}}</td>
+                              <td>{{cartItem.Price}}</td>
                            </tr>
-                           <tr>
-                              <td><img src="images/package2.png" width="30" /> Coinomia Package 02</td>
-                              <td>$200</td>
-                           </tr>
-                        </table> -->
+                        </table>
                         <h3 class="pull-right nomargin nopadding"><strong>Total : ${{invoiceInfo.value_in_usd}}</strong></h3>
                         <div class="clearfix"></div>
                         <hr />
