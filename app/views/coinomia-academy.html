@@ -44,18 +44,18 @@
                      <div class="tab-content" style="padding:20px 20px; ">
                         <div class="tab-pane tab_default_3 active">
                            <div class="row" >
-                              <div class="col-md-4">
+                              <div class="col-md-4" ng-repeat="package in packages">
                                  <div class="panel panel-default">
                                     <div class="panel-body" style="padding:5px !important;">
                                        <img src="images/package1.png" width="100%" class="img-responsive" />  
                                     </div>
                                     <div align="center" class="panel-footer">
                                        <div class="row" align="left">
-                                          <div class="col-md-8 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">Coinomia Package 01</span><br />
-                                             Payment to BigU Academy: <strong>45$</strong>
+                                          <div class="col-md-8 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">{{package.PackageName}}</span><br />
+                                             Payment to BigU Academy: <strong></strong>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
-                                             <h2 class="counter-dash pack-price"><strong>$100</strong></h2>
+                                             <h2 class="counter-dash pack-price"><strong>{{package.Price}}</strong></h2>
                                           </div>
                                        </div>
                                        <hr />
@@ -71,91 +71,6 @@
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-md-4">
-                                 <div class="panel panel-default" >
-                                    <div class="panel-body" style="padding:5px !important;">
-                                       <img src="images/package2.png" width="100%" class="img-responsive" /> </a> 
-                                    </div>
-                                    <div align="center" class="panel-footer">
-                                       <div class="row" align="left">
-                                          <div class="col-md-8 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">Coinomia Package 02</span><br />
-                                             Payment to BigU Academy: <strong>74$</strong>
-                                          </div>
-                                          <div class="col-md-4 col-sm-12">
-                                             <h2 class="counter-dash pack-price"><strong>$300</strong></h2>
-                                          </div>
-                                       </div>
-                                       <hr />
-                                       <p align="left" style="font-size:12px; height:102px;"> - Business Development: Leadership Lisa Nichols<br />
-                                          - BigU Life system: BigU Life system<br />
-                                          - Business Development: Brian Tracy – 24 proven closing techniques
-                                       </p>
-                                       <a ui-sref="coinomia-academy-cart"  title="Buy Now" class="mar20" ><button type="button" class="btn btn-block btn-danger btn-xs pull-right" style="margin-top:20px; font-size:20px; padding:10px; font-weight:bold;"><i class="fa fa-download"></i> Buy Now</button></a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="col-md-4">
-                                 <div class="panel panel-default">
-                                    <div class="panel-body" style="padding:5px !important;">
-                                       <img src="images/package3.png" width="100%" class="img-responsive" /> </a> 
-                                    </div>
-                                    <div align="center" class="panel-footer">
-                                       <div class="row" align="left">
-                                          <div class="col-md-8 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">Coinomia Package 03</span><br />
-                                             Payment to BigU Academy: <strong>124$</strong>
-                                          </div>
-                                          <div class="col-md-4 col-sm-12">
-                                             <h2 class="counter-dash pack-price"><strong>$500</strong></h2>
-                                          </div>
-                                       </div>
-                                       <hr />
-                                       <p align="left" style="font-size:12px; height:102px;"> - Personal growth: law of attraction . Meta secret – mel gill<br />
-                                          - Business Development: tom schreiter – live in dallas – big all – live recruiting event<br />
-                                          - Brian Tracy – Wake up4 Live Event<br />
-                                          - Smiljan Mori – Wake up3 Live Event<br />
-                                          - speaking - world class speakers alliance - lisa nichols
-                                       </p>
-                                       <a ui-sref="coinomia-academy-cart"  title="Buy Now" class="mar20" ><button type="button" class="btn btn-block btn-danger btn-xs pull-right" style="margin-top:20px; font-size:20px; padding:10px; font-weight:bold;"><i class="fa fa-download"></i> Buy Now</button></a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="clearfix"></div>
-                              <div class="col-md-4">
-                                 <div class="panel panel-default">
-                                    <div class="panel-body" style="padding:5px !important;">
-                                       <img src="images/package4.png" width="100%" class="img-responsive" /> </a> 
-                                    </div>
-                                    <div align="center" class="panel-footer">
-                                       <div class="row" align="left">
-                                          <div class="col-md-8 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">Coinomia Package 04</span><br />
-                                             Payment to BigU Academy: <strong>200$</strong>
-                                          </div>
-                                          <div class="col-md-4 col-sm-12">
-                                             <h2 class="counter-dash pack-price"><strong>$700</strong></h2>
-                                          </div>
-                                       </div>
-                                       <hr />
-                                       <p align="left" style="font-size:12px;">- Network marketing: Habbits of succesful network marketers<br />
-                                          - Network marketing: 4 things you need in MLM<br />
-                                          - Network marketing: 4 things you do not need in MLM<br />
-                                          - Network marketing: MLM 4ever<br />
-                                          - Network marketing: Mindset of a business builder<br />
-                                          - Network marketing: 15 concept in MLM<br />
-                                          - Personal growth: Motivaction for life<br />
-                                          - Business Development: Leadership Lisa Nichols<br />
-                                          - Personal growth: BigU Life system<br />
-                                          - Business Development: Brian Tracy – 24 proven closing techniques<br />
-                                          - Personal growth: Law of attraction . meta secret – Mel gill<br />
-                                          - Business Development: Tom Schreiter – Live in dallas – big all – live recruiting event<br />
-                                          - Brian Tracy – Wake UP4 Live event<br />
-                                          -Smiljan Mori – Wake UP3 Live event<br />
-                                          - Speaking -world class speakers alliance - Lisa Nichols
-                                       </p>
-                                       <a ui-sref="coinomia-academy-cart"  title="Buy Now"   class="mar20" ><button type="button" class="btn btn-block btn-danger btn-xs pull-right" style="margin-top:20px; font-size:20px; padding:10px; font-weight:bold;"><i class="fa fa-download"></i> Buy Now</button></a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div></div>
                            </div>
                         </div>
                         <div class="tab-pane tab_default_4">

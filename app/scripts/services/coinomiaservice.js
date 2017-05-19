@@ -12,12 +12,14 @@ angular.module('coinomiaFrontendApp')
 
     var pageLimit = config.pageLimit;
     // this.apiHost = 'https://api.coinomia.com/';
-    
+
     if($location.host() === 'login.coinomia.com') {
       this.apiHost = 'https://api.coinomia.com/';
     }else{
       this.apiHost = 'https://api.coinomia.com/';
     }
+
+    this.devHost = 'http://coinomiadevapi.azurewebsites.net/';
 
     this.requestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -1237,6 +1239,24 @@ angular.module('coinomiaFrontendApp')
         .then(get7daysRewardsRequestComplete)
         .catch(get7daysRewardsRequestFailed);
     }
+
+    // Get Packages
+    this.academyPackages = function() {
+
+      function packagesRetrieved(response) {
+        return response;
+      }
+
+      function packageRetrieveFailed(error) {
+        $log.error('XHR Failed to Retrieve Package Information.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.devHost +'utilities/academy-packages')
+        .then(packagesRetrieved)
+        .catch(packageRetrieveFailed);
+
+    };
 
     // Get Achievement Rewards
     this.getAchievements = function() {
