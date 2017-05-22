@@ -9,7 +9,7 @@
          <!-- <coming-soon text-value="'Mining'"></coming-soon> -->
          <div class="contentpanel">
             <div class="col-xs-12 col-md-12 nomargin nopadding" style="min-height:800px;">
-               <h1 align="center" class="reward-main-heading-top"><img src="images/rankers.png" width="100"> 
+               <h1 align="center" class="reward-main-heading-top"><img ng-src="images/rankers.png" width="100"> 
                   <span class="neu_font">Coinomia</span> 
                   <strong style="color:#d71818; font-family: masterofbreak; font-weight: normal; margin: 0 10px; ">Leadership</strong> <span class="neu_font">Reward</span></strong>
                </h1>
@@ -162,11 +162,11 @@
                                             <span class="image-wrapper pull-left">
                                               <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="50">
                                             </span>                                            
-                                            <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
+                                            <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
                                             <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
                                           </td>
                                           <!--<td style="vertical-align: middle"></td>-->
-                                          <td class="text-center"><img src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="80"></td>
+                                          <td class="text-center"><img ng-src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="80"></td>
                                        </tr>
                                     </tbody>
                                  </table>
@@ -186,10 +186,10 @@
                                             <span class="image-wrapper pull-left">
                                               <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="50">
                                             </span>                                            
-                                            <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
+                                            <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
                                             <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
                                           </td>
-                                          <td><img src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="80"></td>
+                                          <td><img ng-src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="80"></td>
                                        </tr>
                                     </tbody>
                                  </table>
@@ -210,10 +210,10 @@
                                             <span class="image-wrapper pull-left">
                                               <img class="img-circle" ng-src="{{achiever.avatar?achiever.avatar:'images/users/user5.png'}}" width="50">
                                             </span>
-                                            <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[achiever.country] | lowercase}}.png"> {{achiever.MemberName | limitTo:18}}</strong> </span><br />
+                                            <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[achiever.country] | lowercase}}.png"> {{achiever.MemberName | limitTo:18}}</strong> </span><br />
                                             <span class="pull-left user_id"> &nbsp;<strong>{{achiever.MemberId}}</strong></span>
                                           </td>
-                                          <td><img src="images/icons/{{achiever.RewardName | lowercase}}.png" width="80"></td>
+                                          <td><img ng-src="images/icons/{{achiever.RewardName | lowercase}}.png" width="80"></td>
                                        </tr>
                                     </tbody>
                                  </table>
