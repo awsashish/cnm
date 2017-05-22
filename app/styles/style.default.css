@@ -63,7 +63,7 @@ URL: http://themepixels.com/
 
 @font-face {
     font-family: "Helvetica";
-    src: url("font/helvetica-normal.ttf") format("truetype");
+    src: url("font/helvetica-normal.woff") format("woff");
 }
 
 @font-face {
