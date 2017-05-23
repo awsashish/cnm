@@ -20,6 +20,7 @@ angular.module('coinomiaFrontendApp')
     }
 
     this.devHost = 'http://coinomiadevapi.azurewebsites.net/';
+    this.lsvtHost = 'https://webservices.lightspeedvt.net/lsvt_api_v35.ashx/';
 
     this.requestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -433,6 +434,24 @@ angular.module('coinomiaFrontendApp')
       return $http.get(this.apiHost +'utilities/packages')
         .then(getPackagesRequestComplete)
         .catch(getPackagesRequestFailed);
+    }
+
+    // Add User on LSVT
+    this.addLsvtUser = function(data) {
+      // On Success
+      function addUserSuccess(response) {
+        return response;
+      }
+
+      // On Failed
+      function addUserFailure(error) {
+        $log.error('XHR Failed to Add User.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.lsvtHost, data)
+        .then(addUserSuccess)
+        .catch(addUserFailure);
     }
 
     // Get User Virtual Tree Info
