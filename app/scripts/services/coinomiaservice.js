@@ -436,8 +436,26 @@ angular.module('coinomiaFrontendApp')
         .catch(getPackagesRequestFailed);
     }
 
+    // Get lgToken from LSVT
+    this.getlgToken = function(tokenInfo) {
+      // On Success
+      function lgTokenSuccess(response) {
+        return response;
+      }
+
+      // On Failed
+      function lgTokenFailure(error) {
+        $log.error('XHR Failed to retrieve LG Token.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.lsvtHost, tokenInfo)
+        .then(addUserSuccess)
+        .catch(addUserFailure);
+    }
+
     // Add User on LSVT
-    this.addLsvtUser = function(data) {
+    this.addLsvtUser = function(bigUData) {
       // On Success
       function addUserSuccess(response) {
         return response;
@@ -449,10 +467,27 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.post(this.lsvtHost, data)
+      return $http.post(this.lsvtHost, bigUData)
         .then(addUserSuccess)
         .catch(addUserFailure);
     }
+
+    // Add Coinomia Academy User
+    this.addAcademyUser= function(academyUser) {
+
+      function userAdded(response) {
+        return response;
+      }
+
+      function userAddFailed(error) {
+        $log.error('XHR Failed to Add Coinomia Academy User.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.devHost +'user/add-academy-user', academyUser)
+        .then(userAdded)
+        .catch(userAddFailed);
+    };
 
     // Get User Virtual Tree Info
     this.getVirtualTree = function() {
