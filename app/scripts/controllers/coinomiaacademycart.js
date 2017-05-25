@@ -49,24 +49,24 @@ angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', func
 		// 	}
 		// });
 
-		// var bigUData = {
-		// 	"command": 'addUser',
-		// 	"token": $scope.token,
-		// 	"login": $rootScope.userInfo.username,
-		// 	"password": 'coinomia1',
-		// 	"FName": $rootScope.userInfo.name,
-		// 	"LName": '',
-		// 	"Email": $rootScope.userInfo.Email,
-		// 	"isActive": 'True',
-		// 	"userAccessLevel": 7,
-		// 	"gdlrid": '85625'
-		// };
-		// coinomiaService.addLsvtUser(bigUData)
-		// .then(function(result) {
-		// 	if(result.status === 200) {
-		// 		$scope.userId = result.data;
-		// 	}
-		// });
+		var bigUData = {
+			"command": 'addUser',
+			"token": $scope.token,
+			"login": $rootScope.userInfo.username,
+			"password": 'coinomia1',
+			"FName": $rootScope.userInfo.name,
+			"LName": '',
+			"Email": $rootScope.userInfo.Email,
+			"isActive": 'True',
+			"userAccessLevel": 7,
+			"gdlrid": '85625'
+		};
+		coinomiaService.addLsvtUser(bigUData)
+		.then(function(result) {
+			if(result.status === 200) {
+				$scope.userId = result.data;
+			}
+		});
 		// var academyUser = {
 		// 	"GUserID": $scope.userId,
 		// 	"GUserLogin": $rootScope.userInfo.username,

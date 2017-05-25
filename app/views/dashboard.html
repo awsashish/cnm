@@ -62,40 +62,45 @@
           <h3 class="no-margin no-padding reward-head-dash text-center" style="margin:0 !important;"><strong><img src="images/rankers.png" width="40"> Coinomia Leadership Reward</strong></h3>
           <div class="col-md-6 no-padding">
             <h4 class="ranker-heading1"><strong><i class="fa fa-users" aria-hidden="true"></i> Recent Rankers</strong></h4>
-            <div style="max-height: 405px;overflow-y: auto;overflow-x: hidden;">
-              <table width="100%" style="border:1px solid #f2f2f2;">
-                <tbody>
-                  <tr class="ranker1-odd" ng-repeat="weekRankers in weekRewards">
-                    <td height="35">
-                      <span class="image-wrapper pull-left">
-                        <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="40">
-                      </span>
-                      <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
-                      <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
-                    </td>
-                    <td><img ng-src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div style="max-height: 405px;overflow-y:hidden;overflow-x: hidden;">
+              <marquee direction="up">
+                <table width="100%" style="border:1px solid #f2f2f2;">
+                  <tbody>
+                    <tr class="ranker1-odd" ng-repeat="weekRankers in weekRewards">
+                      <td height="35">
+                        <span class="image-wrapper pull-left">
+                          <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="40">
+                        </span>
+                        <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
+                        <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
+                      </td>
+                      <td><img ng-src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </marquee>
             </div>
           </div>
           <div class="col-md-6 no-padding">
             <h4 class="ranker-heading2"><strong><i class="fa fa-users" aria-hidden="true"></i> All Time Rankers</strong></h4>
-            <div style="max-height: 405px;overflow-y: auto;overflow-x: hidden;">
-              <table width="100%" style="border:1px solid #f2f2f2;">
-                <tbody>
-                  <tr class="ranker1-odd" ng-repeat="allRankers in allRewards">
-                    <td height="35">
-                      <span class="image-wrapper pull-left">
-                        <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="40">
-                      </span>
-                      <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
-                      <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
-                    </td>
-                    <td><img ng-src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div style="max-height: 405px;overflow-y:hidden;overflow-x: hidden;">
+              <marquee direction="up">
+                <table width="100%" style="border:1px solid #f2f2f2;">
+                  <tbody>
+                    <tr class="ranker1-odd" ng-repeat="allRankers in allRewards">
+                      <td height="35">
+                        <span class="image-wrapper pull-left">
+                          <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="40">
+                        </span>
+                        <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
+                        <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
+                      </td>
+                      <td><img ng-src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </marquee>
+              </div>
             </div>
           </div>
         </div>
