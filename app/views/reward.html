@@ -221,149 +221,175 @@
                            </div>
                         </div>
                         <div class="tab-pane tab_default_7">
-                           <h2 class="mb35-sm top-spacemob10"><i class="fa fa-users icon-lg-red border-round-red" style="padding-left:3px;" aria-hidden="true"></i> <strong>Launch day rewards Achievers</strong></h2>
-                           <hr>
-                           <ul class="nav nav-tabs rewards_achiever" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-                              <li role="presentation" class="active">
-                                 <a href=".frontline" aria-controls="frontline" role="tab" data-toggle="tab" aria-expanded="false"><strong> Frontline Commission</strong></a>
+                           <ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
+                              <li class="active">
+                                 <a href=".launch-day" role="tab" data-toggle="tab"><strong> Launch Day Rewards Achievers</strong></a>
                               </li>
-                              <li role="presentation" class="">
-                                 <a href=".maximum" aria-controls="maximum" role="tab" data-toggle="tab" aria-expanded="true"><strong> Maximum Referrals</strong>
-                                 </a>
-                              </li>
-                              <li role="presentation" class="">
-                                 <a href=".paid" aria-controls="paid" role="tab" data-toggle="tab" aria-expanded="true"><strong> Paid Referrals</strong>
-                                 </a>
-                              </li>
-                              <li role="presentation" class="">
-                                 <a href=".repurchase" aria-controls="dmp" role="tab" data-toggle="tab" aria-expanded="true"><strong> Double your Repurchase Check</strong>
+                              <li class="">
+                                 <a href=".repurchase-rewards" role="tab" data-toggle="tab"><strong>Repurchase Rewards</strong>
                                  </a>
                               </li>
                            </ul>
-                           <div class="tab-content overlay-wrapper" style="border:0 !important;padding: 15px 0;">
-
-                            <div role="tabpanel" class="tab-pane frontline active">
-                                <!--<span class="overlay-text ether" style="top:10px;">
-                                  <p>Coming Soon ...</p>
-                                  </span>-->
-                                <div class="panel panel-default">
-                                  <img ng-src="{{s3Url}}frontline+commision.png" class="img-responsive" />
-                                  <!--<div class="table-responsive ng-binding">
-                                    <table class="table table-dark-gry table-hover mb30 font16">
-                                        <thead style="background:#525252;">
-                                          <tr style="color:#525252;">
-                                              <th width="20%"><strong class="white-color">S.No</strong></th>
-                                              <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr ng-repeat="frontline in frontlineCommission">
-                                              <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[frontline.country] | lowercase}}.png" /> <strong>{{frontline.name}}</strong></td>
-                                              <td class="ng-binding">{{frontline.amount}}</td>
-                                          </tr>
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <br>
-                                  </div>-->
-                                </div>
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane maximum">
-                                <!--<span class="overlay-text ether" style="top:10px;">
-                                  <p>Coming Soon ...</p>
-                                  </span>-->
-                                <div class="panel panel-default">
-                                  <img ng-src="{{s3Url}}refferal+slide.png" class="img-responsive" />
-                                  <!--<div class="table-responsive ng-binding">
-                                    <table class="table table-dark-gry table-hover mb30 font16">
-                                        <thead style="background:#525252;">
-                                          <tr style="color:#525252;">
-                                              <th width="20%"><strong class="white-color">S.No</strong></th>
-                                              <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          
-                                          <tr ng-repeat="maximum in maximumCommission" class="ng-scope">
-                                              <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[maximum.country] | lowercase}}.png" /> <strong>{{maximum.name}}</strong></td>
-                                              <td class="ng-binding">{{maximum.amount}}</td>
-                                          </tr>
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <br>
-                                  </div>-->
-                                </div>
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane paid">
-                                <!--<span class="overlay-text ether" style="top:10px;">
-                                  <p>Coming Soon ...</p>
-                                  </span>-->
-                                <div class="panel panel-default">
-                                  <img ng-src="{{s3Url}}paidfrontline.png" class="img-responsive" />
-                                  <!--<div class="table-responsive ng-binding">
-                                    <table class="table table-dark-gry table-hover mb30 font16">
-                                        <thead style="background:#525252;">
-                                          <tr style="color:#525252;">
-                                              <th width="20%"><strong class="white-color">S.No</strong></th>
-                                              <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                        
-                                          <tr ng-repeat="paid in paidCommission">
-                                              <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[paid.country] | lowercase}}.png" /> <strong>{{paid.name}}</strong></td>
-                                              <td class="ng-binding">{{paid.amount}}</td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <br>
-                                  </div>-->
-                                </div>
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane repurchase">
-                                <!--<span class="overlay-text ether" style="top:10px;">
-                                  <p>Coming Soon ...</p>
-                                  </span>-->
-                                <div class="panel panel-default">
-                                <img ng-src="{{s3Url}}doubleyourcheque-2.png" class="img-responsive" />
-                                  <!--<div class="table-responsive ng-binding">
-                                    <table class="table table-dark-gry table-hover mb30 font16">
-                                        <thead style="background:#525252;">
-                                          <tr style="color:#525252;">
-                                              <th width="20%"><strong class="white-color">S.No</strong></th>
-                                              <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          
-                                          <tr ng-repeat="repurchase in repurchaseCheque" class="ng-scope">
-                                              <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[repurchase.country] | lowercase}}.png" /> <strong>{{repurchase.name}}</strong></td>
-                                              <td class="ng-binding">{{repurchase.amount}}</td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <br>
-                                  </div>-->
-                                </div>
-                            </div>
+                           <div class="tab-content" style="padding:20px 20px; ">
+                           <div class="tab-pane launch-day active">
+                              <ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
+                                 <li role="presentation" class="active">
+                                    <a href=".frontline" aria-controls="frontline" role="tab" data-toggle="tab" aria-expanded="false"><strong> Frontline Commission</strong></a>
+                                 </li>
+                                 <li role="presentation" class="">
+                                    <a href=".maximum" aria-controls="maximum" role="tab" data-toggle="tab" aria-expanded="true"><strong> Maximum Referrals</strong>
+                                    </a>
+                                 </li>
+                                 <li role="presentation" class="">
+                                    <a href=".paid" aria-controls="paid" role="tab" data-toggle="tab" aria-expanded="true"><strong> Paid Referrals</strong>
+                                    </a>
+                                 </li>
+                                 <li role="presentation" class="">
+                                    <a href=".repurchase" aria-controls="dmp" role="tab" data-toggle="tab" aria-expanded="true"><strong> Double your Repurchase Check</strong>
+                                    </a>
+                                 </li>
+                              </ul>
+                              <div class="tab-content overlay-wrapper" style="border:0 !important;padding: 15px 0;">
+                                 <div role="tabpanel" class="tab-pane frontline active">
+                                    <!--<span class="overlay-text ether" style="top:10px;">
+                                    <p>Coming Soon ...</p>
+                                    </span>-->
+                                    <div class="panel panel-default">
+                                       <img ng-src="{{s3Url}}frontline+commision.png" class="img-responsive" />
+                                       <!--<div class="table-responsive ng-binding">
+                                       <table class="table table-dark-gry table-hover mb30 font16">
+                                           <thead style="background:#525252;">
+                                             <tr style="color:#525252;">
+                                                 <th width="20%"><strong class="white-color">S.No</strong></th>
+                                                 <th width="20%"><strong class="white-color">Member Id</strong></th>
+                                                 <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
+                                             </tr>
+                                           </thead>
+                                           <tbody>
+                                             <tr ng-repeat="frontline in frontlineCommission">
+                                                 <td class="ng-binding">{{$index+1}}</td>
+                                                 <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[frontline.country] | lowercase}}.png" /> <strong>{{frontline.name}}</strong></td>
+                                                 <td class="ng-binding">{{frontline.amount}}</td>
+                                             </tr>
+                                           </tbody>
+                                       </table>
+                                       <br>
+                                       <br>
+                                     </div>-->
+                                   </div>
+                                 </div>
+                                 <div role="tabpanel" class="tab-pane maximum">
+                                    <!--<span class="overlay-text ether" style="top:10px;">
+                                    <p>Coming Soon ...</p>
+                                    </span>-->
+                                    <div class="panel panel-default">
+                                       <img ng-src="{{s3Url}}refferal+slide.png" class="img-responsive" />
+                                       <!--<div class="table-responsive ng-binding">
+                                             <table class="table table-dark-gry table-hover mb30 font16">
+                                                <thead style="background:#525252;">
+                                                   <tr style="color:#525252;">
+                                                      <th width="20%"><strong class="white-color">S.No</strong></th>
+                                                      <th width="20%"><strong class="white-color">Member Id</strong></th>
+                                                      <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <tr ng-repeat="maximum in maximumCommission" class="ng-scope">
+                                                      <td class="ng-binding">{{$index+1}}</td>
+                                                      <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[maximum.country] | lowercase}}.png" /> <strong>{{maximum.name}}</strong></td>
+                                                      <td class="ng-binding">{{maximum.amount}}</td>
+                                                   </tr>
+                                                </tbody>
+                                             </table>
+                                             <br>
+                                             <br>
+                                          </div>-->
+                                    </div>
+                                 </div>
+                                 <div role="tabpanel" class="tab-pane paid">
+                                    <!--<span class="overlay-text ether" style="top:10px;">
+                                       <p>Coming Soon ...</p>
+                                       </span>-->
+                                    <div class="panel panel-default">
+                                       <img ng-src="{{s3Url}}paidfrontline.png" class="img-responsive" />
+                                       <!--<div class="table-responsive ng-binding">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">S.No</strong></th>
+                                                   <th width="20%"><strong class="white-color">Member Id</strong></th>
+                                                   <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-repeat="paid in paidCommission">
+                                                   <td class="ng-binding">{{$index+1}}</td>
+                                                   <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[paid.country] | lowercase}}.png" /> <strong>{{paid.name}}</strong></td>
+                                                   <td class="ng-binding">{{paid.amount}}</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <br>
+                                          <br>
+                                       </div>-->
+                                    </div>
+                                 </div>
+                                 <div role="tabpanel" class="tab-pane repurchase">
+                                    <!--<span class="overlay-text ether" style="top:10px;">
+                                       <p>Coming Soon ...</p>
+                                       </span>-->
+                                    <div class="panel panel-default">
+                                       <img ng-src="{{s3Url}}doubleyourcheque-2.png" class="img-responsive" />
+                                       <!--<div class="table-responsive ng-binding">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">S.No</strong></th>
+                                                   <th width="20%"><strong class="white-color">Member Id</strong></th>
+                                                   <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                             <tr ng-repeat="repurchase in repurchaseCheque" class="ng-scope">
+                                                <td class="ng-binding">{{$index+1}}</td>
+                                                <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[repurchase.country] | lowercase}}.png" /> <strong>{{repurchase.name}}</strong></td>
+                                                <td class="ng-binding">{{repurchase.amount}}</td>
+                                             </tr>
+                                             </tbody>
+                                          </table>
+                                          <br>
+                                          <br>
+                                       </div>-->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="tab-pane repurchase-rewards" >
+                              <ul class="nav nav-tabs rewards_achiever achievers" role="tablist" style="background:#ccc !important; color:#525252 !important;">
+                                 <li class="active">
+                                    <a href=".silver-rewards" role="tab" data-toggle="tab"><strong>Silver Rewards</strong></a>
+                                 </li>
+                              </ul>
+                              <div class="panel panel-default" style="border:0 !important;padding: 15px 0;">
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/ankur.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/baburaja.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/chinkwee.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/coinomiaitalia.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/coinomialeader.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/dipnker.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/gennedi.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/jeet.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/leenachawda.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/nebojsa.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/rustem.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/sarmesh+kumar.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/stefeno.png" class="img-responsive" />
+                                 <img ng-src="{{s3Url}}Rewards-Achievers/vitali.png" class="img-responsive" />
+                              </div>
                            </div>
                         </div>
+                        </div>
+                        
                      </div>
                   </div>
                </div>
