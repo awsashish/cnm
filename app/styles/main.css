@@ -184,3 +184,13 @@ body {
     text-align: center;
   }
 }
+.rewards-achievers{
+  border:1px solid #737373;
+  padding:0px !important;
+  margin:0px !important;
+}
+@media screen and (min-width: 992px) {
+  .rewards-achievers{
+    min-height:320px;
+  }
+}
