@@ -185,7 +185,7 @@ body {
   }
 }
 .rewards-achievers{
-  border:1px solid #737373;
+  border-radius:1%;
   padding:0px !important;
   margin:0px !important;
 }
