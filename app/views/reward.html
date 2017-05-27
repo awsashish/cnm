@@ -1,367 +1,391 @@
 <main-header class="main-header"></main-header>
 <section>
    <div class="mainwrapper">
-      <navigation></navigation>
-      <style>.nav-tabs > li > a{ padding: 14px 15px !important; color:#fff !important;
-         }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td { padding: 8px 5px;}
-      </style>
-      <div class="mainpanel">
-         <!-- <coming-soon text-value="'Mining'"></coming-soon> -->
-         <div class="contentpanel">
-            <div class="col-xs-12 col-md-12 nomargin nopadding" style="min-height:800px;">
-               <h1 align="center" class="reward-main-heading-top"><img src="images/rankers.png" width="100"> 
-                  <span class="neu_font">Coinomia</span> 
-                  <strong style="color:#d71818; font-family: masterofbreak; font-weight: normal; margin: 0 10px; ">Leadership</strong> <span class="neu_font">Reward</span></strong>
-               </h1>
-               <hr>
-               <div class="tabbable-panel">
-                  <div class="tabbable-line">
-                     <div align="center">
-                        <ul class="nav nav-tabs reward-tab">
+   <navigation></navigation>
+   <style>.nav-tabs > li > a{ padding: 14px 15px !important; color:#fff !important;
+      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td { padding: 8px 5px;}
+      .slim-nav > li > a {padding:7px 12px !important;}
+   </style>
+   <div class="mainpanel">
+      <!-- <coming-soon text-value="'Mining'"></coming-soon> -->
+      <div class="contentpanel">
+         <div class="col-xs-12 col-md-12 nomargin nopadding" style="min-height:800px;">
+            <h1 align="center" class="reward-main-heading-top"><img ng-src="images/rankers.png" width="100"> 
+               <span class="neu_font">Coinomia</span> 
+               <strong style="color:#d71818; font-family: masterofbreak; font-weight: normal; margin: 0 10px; ">Leadership</strong> <span class="neu_font">Reward</span></strong>
+            </h1>
+            <hr>
+            <div class="tabbable-panel">
+               <div class="tabbable-line">
+                  <div align="center">
+                     <ul class="nav nav-tabs reward-tab">
+                        <li class="active">
+                           <a href=".tab_default_4" data-toggle="tab">
+                           <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br>
+                           <strong>Rewards Leadership</strong> </a>
+                        </li>
+                        <li>
+                           <a href=".tab_default_5" data-toggle="tab">
+                           <i class="fa fa-newspaper-o icon-lg" aria-hidden="true"></i><br>
+                           <strong>Achievement History</strong> </a>
+                        </li>
+                        <li>
+                           <a href=".tab_default_6" data-toggle="tab">
+                           <i class="fa fa-users icon-lg" aria-hidden="true"></i><br>
+                           <strong>Leaderboard Reward</strong> </a>
+                        </li>
+                        <li>
+                           <a href=".tab_default_7" data-toggle="tab">
+                           <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br>
+                           <strong>Coinomia Reward History</strong> </a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="tab-content" style="padding:20px 20px; ">
+                     <div class="tab-pane tab_default_4 active">
+                        <div class="row">
+                           <div class="col-md-12 no-pad">
+                              <img class="img-responsive" src="images/main-banner.jpg" style="width:100%;" />
+                           </div>
+                           <!--<div class="col-md-12 reward-main-banner">
+                              <div class="col-md-4 icon text-center">
+                                <img src="images/trophy.png" />
+                              </div>
+                              <div class="col-md-8 text-image">
+                                <img class="img-responsive" src="images/text.png" />
+                              </div>
+                              </div>-->
+                           <!--<img ng-src="{{s3Url}}reward-top-header.png" width="100%" style="border-bottom:5px solid #FC0; border-radius:10px 10px 0px 0px; margin-top:-10px;"><br>-->
+                           <br>
+                           <div class="col-md-12 no-pad">
+                              <div ng-repeat="reward in rewards" style="float:left;margin-top:20px;width:100%;">
+                                 <div class="col-md-12 no-pad {{reward.class}}">
+                                    <a title="Click More Details " data-toggle="collapse" data-target=".reward-{{$index}}" aria-expanded="false" aria-controls="reward-{{$index}}">
+                                       <div class="icon-section">
+                                          <img class="icon-img img-responsive" ng-src="images/rewards/{{reward.icon}}">
+                                       </div>
+                                       <div class="text-center title-section">
+                                          <img class="title-img" ng-src="images/rewards/{{reward.title}}">
+                                          <!--<h4 class="reward-main-heading"><strong class="text-uppercase">{{reward.title}}</strong> <br>
+                                             </h4>-->
+                                          <h3 class="reward-title">{{reward.subtitle}}</h3>
+                                          <p> 
+                                             <span class="short-description" ng-bind-html="reward.shortDescription"></span>
+                                          </p>
+                                       </div>
+                                       <div align="right" class="reward-section reward-img" style=" margin:0px; padding:0px;">
+                                          <img class="img-responsive" ng-src="images/rewards/{{reward.prize}}" style="margin: 0 auto;">
+                                       </div>
+                                    </a>
+                                 </div>
+                                 <div class="collapse reward-{{$index}} reward col-xs-12 col-sm-12 col-md-12 no-pad">
+                                    <div class="col-md-12 no-pad" ng-if="reward.type !== 'gold'">
+                                       <div class="col-md-6 text-center bronze-desc no-pad" ng-if="reward.type === 'ruby' || reward.type === 'doublediamond'">
+                                          <img class="bronze-reward" ng-src="images/rewards/{{reward.description.prize}}" ng-if="reward.noImage===false" />
+                                       </div>
+                                       <div class="col-md-5 bronze">
+                                          <img class="desc-title" ng-src="images/rewards/{{reward.description.title}}" />
+                                          <p class="reward-desc" ng-bind-html="reward.description.subtitle"></p>
+                                       </div>
+                                       <div class="col-md-7 text-center bronze-desc" ng-if="reward.type !== 'ruby' && reward.type !== 'doublediamond'">
+                                          <img class="bronze-reward" ng-src="images/rewards/{{reward.description.prize}}" ng-if="reward.noImage===false" />
+                                       </div>
+                                    </div>
+                                    <!-- Gold Pack-->
+                                    <div class="col-md-12 no-pad" ng-if="reward.type === 'gold'">
+                                       <div class="col-md-4 no-pad">
+                                          <img class="gold-reward img-responsive" ng-src="images/rewards/{{reward.description.prize1}}" width="300px" />
+                                       </div>
+                                       <div class="col-md-4 text-center" style="padding:40px 0 0;">
+                                          <img class="desc-title" ng-src="images/rewards/{{reward.description.title}}" />
+                                          <p class="reward-desc" ng-bind-html="reward.description.subtitle"></p>
+                                       </div>
+                                       <div class="col-md-4 no-pad">
+                                          <img class="gold-reward img-responsive" ng-src="images/rewards/{{reward.description.prize2}}" width="300px" />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!--<div class="well">
+                                    <div class="reward-detail">
+                                      <img ng-src="{{s3Url}}{{reward.image}}" width="100%">
+                                    </div>
+                                    </div>-->
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="tab-pane tab_default_5" style="height:500px;">
+                        <h2 class="mb35-sm top-spacemob10"><i class="fa fa-newspaper-o icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Achievement History</strong></h2>
+                        <hr>
+                        <table class="table table-dark-gry table-hover mb30 font16">
+                           <thead style="background:#525252;">
+                              <tr style="color:#525252;">
+                                 <td width="10%"><strong class="white-color">S.No</strong></td>
+                                 <td width="30%"><strong class="white-color">Date</strong></td>
+                                 <td width="30%"><strong class="white-color">Rank</strong></td>
+                                 <td width="30%"><strong class="white-color">Reward</strong></td>
+                                 <!--<td width="25%" align="center"><strong class="white-color">Consecutive Day(s)</strong></td>-->
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr ng-if="noRecords">
+                                 <td colspan="4"> No Records Found.</td>
+                              </tr>
+                              <tr ng-repeat="achievement in achievements" ng-if="!noRecords">
+                                 <td>{{$index+1}}</td>
+                                 <td>{{achievement.ondate | date:'MM/dd/yyyy'}}</td>
+                                 <td><img ng-src="{{s3Url}}{{achievement.Rank | lowercase}}.png" width="30"></td>
+                                 <td ng-if="achievement.RewardName !== ''"><img ng-src="{{s3Url}}{{achievement.RewardName | lowercase}}-reward.png" width="120"></td>
+                                 <td ng-if="achievement.RewardName === ''"></td>
+                                 <!--<td align="center">{{achievement.consecutive_days}}</td>-->
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class="tab-pane tab_default_6">
+                        <h2 class="mb35-sm top-spacemob10"><i class="fa fa-users icon-lg-red border-round-red" style="padding-left:3px;" aria-hidden="true"></i> <strong>Leaderboard Reward</strong></h2>
+                        <hr>
+                        <div class="row">
+                           <div class="col-md-4 col-sm-12">
+                              <h3><strong>Recent Rankers</strong><small>(7 Day's)</small></h3>
+                              <table class="table table-dark-gry table-hover mb30 font16">
+                                 <thead style="background:#525252;">
+                                    <tr style="color:#525252;">
+                                       <td class="pd55"><strong class="white-color">Name</strong></td>
+                                       <!--<td><strong class="white-color">User ID</strong></td>-->
+                                       <!--<td><strong class="white-color"></strong></td>-->
+                                       <td class="text-center"><strong class="white-color">Rank</strong></td>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr ng-repeat="weekRankers in weekRewards">
+                                       <td class="text-capitalize" style="vertical-align: middle">
+                                          <span class="image-wrapper pull-left">
+                                          <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="50">
+                                          </span>                                            
+                                          <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
+                                          <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
+                                       </td>
+                                       <!--<td style="vertical-align: middle"></td>-->
+                                       <td class="text-center"><img ng-src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="80"></td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                           <div class="col-md-4 col-sm-12">
+                              <h3><strong>All Time Rankers</strong></h3>
+                              <table class="table table-dark-gry table-hover mb30 font16">
+                                 <thead style="background:#525252;">
+                                    <tr style="color:#525252;">
+                                       <td class="pd55"><strong class="white-color">Name</strong></td>
+                                       <td><strong class="white-color">Rank</strong></td>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr ng-repeat="allRankers in allRewards">
+                                       <td class="text-capitalize" style="vertical-align: middle">
+                                          <span class="image-wrapper pull-left">
+                                          <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="50">
+                                          </span>                                            
+                                          <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
+                                          <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
+                                       </td>
+                                       <td><img ng-src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="80"></td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                           <div class="col-md-4 col-sm-12">
+                              <h3><strong>All Time Achievers</strong></h3>
+                              <table class="table table-dark-gry table-hover mb30 font16">
+                                 <thead style="background:#525252;">
+                                    <tr style="color:#525252;">
+                                       <td class="pd55"><strong class="white-color">Name</strong></td>
+                                       <td><strong class="white-color">Rank</strong></td>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr ng-repeat="achiever in allAchiever">
+                                       <td class="text-capitalize" style="vertical-align: middle">
+                                          <span class="image-wrapper pull-left">
+                                          <img class="img-circle" ng-src="{{achiever.avatar?achiever.avatar:'images/users/user5.png'}}" width="50">
+                                          </span>
+                                          <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[achiever.country] | lowercase}}.png"> {{achiever.MemberName | limitTo:18}}</strong> </span><br />
+                                          <span class="pull-left user_id"> &nbsp;<strong>{{achiever.MemberId}}</strong></span>
+                                       </td>
+                                       <td><img ng-src="images/icons/{{achiever.RewardName | lowercase}}.png" width="80"></td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="tab-pane tab_default_7">
+                        <ul class="nav nav-tabs slim-nav" role="tablist" style="background:#ccc !important; color:#525252 !important;">
                            <li class="active">
-                              <a href=".tab_default_4" data-toggle="tab">
-                              <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br>
-                              <strong>Rewards Leadership</strong> </a>
+                              <a href=".repurchase-rewards" role="tab" data-toggle="tab"><i class="fa fa-trophy icon-lg" aria-hidden="true"></i> <strong>Repurchase Rewards</strong>
+                              </a>
                            </li>
-                           <li>
-                              <a href=".tab_default_5" data-toggle="tab">
-                              <i class="fa fa-newspaper-o icon-lg" aria-hidden="true"></i><br>
-                              <strong>Achievement History</strong> </a>
-                           </li>
-                           <li>
-                              <a href=".tab_default_6" data-toggle="tab">
-                              <i class="fa fa-users icon-lg" aria-hidden="true"></i><br>
-                              <strong>Leaderboard Reward</strong> </a>
-                           </li>
-                           <li>
-                              <a href=".tab_default_7" data-toggle="tab">
-                              <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br>
-                              <strong>Coinomia Reward History</strong> </a>
+                           <li class="">
+                              <a href=".launch-day" role="tab" data-toggle="tab"><i class="fa fa-trophy icon-lg" aria-hidden="true"></i><strong> Launch Day Rewards Achievers</strong></a>
                            </li>
                         </ul>
-                     </div>
-                     <div class="tab-content" style="padding:20px 20px; ">
-                        <div class="tab-pane tab_default_4 active">
-                           <div class="row">
-                              <div class="col-md-12 no-pad">
-                                 <img class="img-responsive" src="images/main-banner.jpg" style="width:100%;" />
-                              </div>
-                              <!--<div class="col-md-12 reward-main-banner">
-                                 <div class="col-md-4 icon text-center">
-                                   <img src="images/trophy.png" />
-                                 </div>
-                                 <div class="col-md-8 text-image">
-                                   <img class="img-responsive" src="images/text.png" />
-                                 </div>
-                                 </div>-->
-                              <!--<img ng-src="{{s3Url}}reward-top-header.png" width="100%" style="border-bottom:5px solid #FC0; border-radius:10px 10px 0px 0px; margin-top:-10px;"><br>-->
-                              <br>
-                              <div class="col-md-12 no-pad">
-                                 <div ng-repeat="reward in rewards" style="float:left;margin-top:20px;width:100%;">
-                                    <div class="col-md-12 no-pad {{reward.class}}">
-                                       <a title="Click More Details " data-toggle="collapse" data-target=".reward-{{$index}}" aria-expanded="false" aria-controls="reward-{{$index}}">
-                                          <div class="icon-section">
-                                             <img class="icon-img img-responsive" ng-src="images/rewards/{{reward.icon}}">
-                                          </div>
-                                          <div class="text-center title-section">
-                                             <img class="title-img" ng-src="images/rewards/{{reward.title}}">
-                                             <!--<h4 class="reward-main-heading"><strong class="text-uppercase">{{reward.title}}</strong> <br>
-                                                </h4>-->
-                                             <h3 class="reward-title">{{reward.subtitle}}</h3>
-                                             <p> 
-                                                <span class="short-description" ng-bind-html="reward.shortDescription"></span>
-                                             </p>
-                                          </div>
-                                          <div align="right" class="reward-section reward-img" style=" margin:0px; padding:0px;">
-                                             <img class="img-responsive" ng-src="images/rewards/{{reward.prize}}" style="margin: 0 auto;">
-                                          </div>
-                                       </a>
+                        <div class="tab-content" style="padding:20px 20px; ">
+                           <div class="tab-pane launch-day">
+                              <ul class="nav nav-tabs slim-nav" role="tablist" style="background:#ccc !important; color:#525252 !important;">
+                                 <li role="presentation" class="active">
+                                    <a href=".frontline" aria-controls="frontline" style="padding:5px 5px;" role="tab" data-toggle="tab" aria-expanded="false"><strong> Frontline Commission</strong></a>
+                                 </li>
+                                 <li role="presentation" class="">
+                                    <a href=".maximum" aria-controls="maximum" role="tab" data-toggle="tab" aria-expanded="true"><strong> Maximum Referrals</strong>
+                                    </a>
+                                 </li>
+                                 <li role="presentation" class="">
+                                    <a href=".paid" aria-controls="paid" role="tab" data-toggle="tab" aria-expanded="true"><strong> Paid Referrals</strong>
+                                    </a>
+                                 </li>
+                                 <li role="presentation" class="">
+                                    <a href=".repurchase" aria-controls="dmp" role="tab" data-toggle="tab" aria-expanded="true"><strong> Double your Repurchase Check</strong>
+                                    </a>
+                                 </li>
+                              </ul>
+                              <div class="tab-content overlay-wrapper" style="border:0 !important;padding: 15px 0;">
+                                 <div role="tabpanel" class="tab-pane frontline active">
+                                    <!--<span class="overlay-text ether" style="top:10px;">
+                                       <p>Coming Soon ...</p>
+                                       </span>-->
+                                    <div class="panel panel-default">
+                                       <img ng-src="{{s3Url}}frontline+commision.png" class="img-responsive" />
+                                       <!--<div class="table-responsive ng-binding">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                              <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                    <th width="20%"><strong class="white-color">S.No</strong></th>
+                                                    <th width="20%"><strong class="white-color">Member Id</strong></th>
+                                                    <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <tr ng-repeat="frontline in frontlineCommission">
+                                                    <td class="ng-binding">{{$index+1}}</td>
+                                                    <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[frontline.country] | lowercase}}.png" /> <strong>{{frontline.name}}</strong></td>
+                                                    <td class="ng-binding">{{frontline.amount}}</td>
+                                                </tr>
+                                              </tbody>
+                                          </table>
+                                          <br>
+                                          <br>
+                                          </div>-->
                                     </div>
-                                    <div class="collapse reward-{{$index}} reward col-xs-12 col-sm-12 col-md-12 no-pad">
-                                       <div class="col-md-12 no-pad" ng-if="reward.type !== 'gold'">
-                                          <div class="col-md-6 text-center bronze-desc no-pad" ng-if="reward.type === 'ruby' || reward.type === 'doublediamond'">
-                                             <img class="bronze-reward" ng-src="images/rewards/{{reward.description.prize}}" ng-if="reward.noImage===false" />
-                                          </div>
-                                          <div class="col-md-5 bronze">
-                                             <img class="desc-title" ng-src="images/rewards/{{reward.description.title}}" />
-                                             <p class="reward-desc" ng-bind-html="reward.description.subtitle"></p>
-                                          </div>
-                                          <div class="col-md-7 text-center bronze-desc" ng-if="reward.type !== 'ruby' && reward.type !== 'doublediamond'">
-                                             <img class="bronze-reward" ng-src="images/rewards/{{reward.description.prize}}" ng-if="reward.noImage===false" />
-                                          </div>
-                                       </div>
-                                       <!-- Gold Pack-->
-                                       <div class="col-md-12 no-pad" ng-if="reward.type === 'gold'">
-                                          <div class="col-md-4 no-pad">
-                                             <img class="gold-reward img-responsive" ng-src="images/rewards/{{reward.description.prize1}}" width="300px" />
-                                          </div>
-                                          <div class="col-md-4 text-center" style="padding:40px 0 0;">
-                                             <img class="desc-title" ng-src="images/rewards/{{reward.description.title}}" />
-                                             <p class="reward-desc" ng-bind-html="reward.description.subtitle"></p>
-                                          </div>
-                                          <div class="col-md-4 no-pad">
-                                             <img class="gold-reward img-responsive" ng-src="images/rewards/{{reward.description.prize2}}" width="300px" />
-                                          </div>
-                                       </div>
+                                 </div>
+                                 <div role="tabpanel" class="tab-pane maximum">
+                                    <!--<span class="overlay-text ether" style="top:10px;">
+                                       <p>Coming Soon ...</p>
+                                       </span>-->
+                                    <div class="panel panel-default">
+                                       <img ng-src="{{s3Url}}refferal+slide.png" class="img-responsive" />
+                                       <!--<div class="table-responsive ng-binding">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">S.No</strong></th>
+                                                   <th width="20%"><strong class="white-color">Member Id</strong></th>
+                                                   <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-repeat="maximum in maximumCommission" class="ng-scope">
+                                                   <td class="ng-binding">{{$index+1}}</td>
+                                                   <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[maximum.country] | lowercase}}.png" /> <strong>{{maximum.name}}</strong></td>
+                                                   <td class="ng-binding">{{maximum.amount}}</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <br>
+                                          <br>
+                                          </div>-->
                                     </div>
-                                    <!--<div class="well">
-                                       <div class="reward-detail">
-                                         <img ng-src="{{s3Url}}{{reward.image}}" width="100%">
-                                       </div>
-                                       </div>-->
+                                 </div>
+                                 <div role="tabpanel" class="tab-pane paid">
+                                    <!--<span class="overlay-text ether" style="top:10px;">
+                                       <p>Coming Soon ...</p>
+                                       </span>-->
+                                    <div class="panel panel-default">
+                                       <img ng-src="{{s3Url}}paidfrontline.png" class="img-responsive" />
+                                       <!--<div class="table-responsive ng-binding">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">S.No</strong></th>
+                                                   <th width="20%"><strong class="white-color">Member Id</strong></th>
+                                                   <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-repeat="paid in paidCommission">
+                                                   <td class="ng-binding">{{$index+1}}</td>
+                                                   <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[paid.country] | lowercase}}.png" /> <strong>{{paid.name}}</strong></td>
+                                                   <td class="ng-binding">{{paid.amount}}</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <br>
+                                          <br>
+                                          </div>-->
+                                    </div>
+                                 </div>
+                                 <div role="tabpanel" class="tab-pane repurchase">
+                                    <!--<span class="overlay-text ether" style="top:10px;">
+                                       <p>Coming Soon ...</p>
+                                       </span>-->
+                                    <div class="panel panel-default">
+                                       <img ng-src="{{s3Url}}doubleyourcheque-2.png" class="img-responsive" />
+                                       <!--<div class="table-responsive ng-binding">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">S.No</strong></th>
+                                                   <th width="20%"><strong class="white-color">Member Id</strong></th>
+                                                   <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                             <tr ng-repeat="repurchase in repurchaseCheque" class="ng-scope">
+                                                <td class="ng-binding">{{$index+1}}</td>
+                                                <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[repurchase.country] | lowercase}}.png" /> <strong>{{repurchase.name}}</strong></td>
+                                                <td class="ng-binding">{{repurchase.amount}}</td>
+                                             </tr>
+                                             </tbody>
+                                          </table>
+                                          <br>
+                                          <br>
+                                          </div>-->
+                                    </div>
                                  </div>
                               </div>
                            </div>
-                        </div>
-                        <div class="tab-pane tab_default_5" style="height:500px;">
-                           <h2 class="mb35-sm top-spacemob10"><i class="fa fa-newspaper-o icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Achievement History</strong></h2>
-                           <hr>
-                           <table class="table table-dark-gry table-hover mb30 font16">
-                              <thead style="background:#525252;">
-                                 <tr style="color:#525252;">
-                                    <td width="10%"><strong class="white-color">S.No</strong></td>
-                                    <td width="30%"><strong class="white-color">Date</strong></td>
-                                    <td width="30%"><strong class="white-color">Rank</strong></td>
-                                    <td width="30%"><strong class="white-color">Reward</strong></td>
-                                    <!--<td width="25%" align="center"><strong class="white-color">Consecutive Day(s)</strong></td>-->
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                 <tr ng-if="noRecords">
-                                    <td colspan="4"> No Records Found.</td>
-                                 </tr>                                 
-                                 <tr ng-repeat="achievement in achievements" ng-if="!noRecords">
-                                    <td>{{$index+1}}</td>
-                                    <td>{{achievement.ondate | date:'MM/dd/yyyy'}}</td>
-                                    <td><img ng-src="{{s3Url}}{{achievement.Rank | lowercase}}.png" width="30"></td>
-                                    <td ng-if="achievement.RewardName !== ''"><img ng-src="{{s3Url}}{{achievement.RewardName | lowercase}}-reward.png" width="120"></td>
-                                    <td ng-if="achievement.RewardName === ''"></td>
-                                    <!--<td align="center">{{achievement.consecutive_days}}</td>-->
-                                 </tr>
-                              </tbody>
-                           </table>
-                        </div>
-                        <div class="tab-pane tab_default_6">
-                           <h2 class="mb35-sm top-spacemob10"><i class="fa fa-users icon-lg-red border-round-red" style="padding-left:3px;" aria-hidden="true"></i> <strong>Leaderboard Reward</strong></h2>
-                           <hr>
-                           <div class="row">
-                              <div class="col-md-4 col-sm-12">
-                                 <h3><strong>Recent Rankers</strong><small>(7 Day's)</small></h3>
-                                 <table class="table table-dark-gry table-hover mb30 font16">
-                                    <thead style="background:#525252;">
-                                       <tr style="color:#525252;">
-                                          <td class="pd55"><strong class="white-color">Name</strong></td>
-                                          <!--<td><strong class="white-color">User ID</strong></td>-->
-                                          <!--<td><strong class="white-color"></strong></td>-->
-                                          <td class="text-center"><strong class="white-color">Rank</strong></td>
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr ng-repeat="weekRankers in weekRewards">
-                                          <td class="text-capitalize" style="vertical-align: middle">
-                                            <span class="image-wrapper pull-left">
-                                              <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="50">
-                                            </span>                                            
-                                            <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
-                                            <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
-                                          </td>
-                                          <!--<td style="vertical-align: middle"></td>-->
-                                          <td class="text-center"><img src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="80"></td>
-                                       </tr>
-                                    </tbody>
-                                 </table>
+                           <div class="tab-pane active repurchase-rewards" >
+                              <ul class="nav nav-tabs rewards_achiever achievers slim-nav" role="tablist" style="background:#ccc !important; color:#525252 !important;">
+                                 <li class="active">
+                                    <a href=".silver-rewards" role="tab" data-toggle="tab"><strong>Silver Rewards</strong></a>
+                                 </li>
+                              </ul>
+                              <div class="panel panel-default" style="border:0 !important;padding: 15px 0;">
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/ankur.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/baburaja.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/chinkwee.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/coinomiaitalia.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/coinomialeader.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/dipnker.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/gennedi.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/jeet.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/leenachawda.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/nebojsa.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/rustem.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/sarmesh+kumar.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/stefeno.png" class="img-responsive rewards-achievers" /></div>
+                                 <div class="col-md-6" style="padding:10px;"><img ng-src="{{s3Url}}Rewards-Achievers/vitali.png" class="img-responsive rewards-achievers" /></div>
                               </div>
-                              <div class="col-md-4 col-sm-12">
-                                 <h3><strong>All Time Rankers</strong></h3>
-                                 <table class="table table-dark-gry table-hover mb30 font16">
-                                    <thead style="background:#525252;">
-                                       <tr style="color:#525252;">
-                                          <td class="pd55"><strong class="white-color">Name</strong></td>
-                                          <td><strong class="white-color">Rank</strong></td>
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr ng-repeat="allRankers in allRewards">
-                                          <td class="text-capitalize" style="vertical-align: middle">
-                                            <span class="image-wrapper pull-left">
-                                              <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="50">
-                                            </span>                                            
-                                            <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
-                                            <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
-                                          </td>
-                                          <td><img src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="80"></td>
-                                       </tr>
-                                    </tbody>
-                                 </table>
-                              </div>
-                              
-                              <div class="col-md-4 col-sm-12">
-                                 <h3><strong>All Time Achievers</strong></h3>
-                                 <table class="table table-dark-gry table-hover mb30 font16">
-                                    <thead style="background:#525252;">
-                                       <tr style="color:#525252;">
-                                          <td class="pd55"><strong class="white-color">Name</strong></td>
-                                          <td><strong class="white-color">Rank</strong></td>
-                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                       <tr ng-repeat="achiever in allAchiever">
-                                          <td class="text-capitalize" style="vertical-align: middle">
-                                            <span class="image-wrapper pull-left">
-                                              <img class="img-circle" ng-src="{{achiever.avatar?achiever.avatar:'images/users/user5.png'}}" width="50">
-                                            </span>
-                                            <span class="pull-left"> &nbsp;<img src="{{s3Url}}flags/{{allCountryCodes[achiever.country] | lowercase}}.png"> {{achiever.MemberName | limitTo:18}}</strong> </span><br />
-                                            <span class="pull-left user_id"> &nbsp;<strong>{{achiever.MemberId}}</strong></span>
-                                          </td>
-                                          <td><img src="images/icons/{{achiever.RewardName | lowercase}}.png" width="80"></td>
-                                       </tr>
-                                    </tbody>
-                                 </table>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="tab-pane tab_default_7">
-                           <h2 class="mb35-sm top-spacemob10"><i class="fa fa-users icon-lg-red border-round-red" style="padding-left:3px;" aria-hidden="true"></i> <strong>Launch day rewards Achievers</strong></h2>
-                           <hr>
-                           <ul class="nav nav-tabs rewards_achiever" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-                              <li role="presentation" class="active">
-                                 <a href=".frontline" aria-controls="frontline" role="tab" data-toggle="tab" aria-expanded="false"><strong> Frontline Commission</strong></a>
-                              </li>
-                              <li role="presentation" class="">
-                                 <a href=".maximum" aria-controls="maximum" role="tab" data-toggle="tab" aria-expanded="true"><strong> Maximum Referrals</strong>
-                                 </a>
-                              </li>
-                              <li role="presentation" class="">
-                                 <a href=".paid" aria-controls="paid" role="tab" data-toggle="tab" aria-expanded="true"><strong> Paid Referrals</strong>
-                                 </a>
-                              </li>
-                              <li role="presentation" class="">
-                                 <a href=".repurchase" aria-controls="dmp" role="tab" data-toggle="tab" aria-expanded="true"><strong> Double your Repurchase Check</strong>
-                                 </a>
-                              </li>
-                           </ul>
-                           <div class="tab-content overlay-wrapper" style="border:0 !important;padding: 15px 0;">
-
-                            <div role="tabpanel" class="tab-pane frontline active">
-                                <!--<span class="overlay-text ether" style="top:10px;">
-                                  <p>Coming Soon ...</p>
-                                  </span>-->
-                                <div class="panel panel-default">
-                                  <img ng-src="{{s3Url}}frontline+commision.png" class="img-responsive" />
-                                  <!--<div class="table-responsive ng-binding">
-                                    <table class="table table-dark-gry table-hover mb30 font16">
-                                        <thead style="background:#525252;">
-                                          <tr style="color:#525252;">
-                                              <th width="20%"><strong class="white-color">S.No</strong></th>
-                                              <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr ng-repeat="frontline in frontlineCommission">
-                                              <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[frontline.country] | lowercase}}.png" /> <strong>{{frontline.name}}</strong></td>
-                                              <td class="ng-binding">{{frontline.amount}}</td>
-                                          </tr>
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <br>
-                                  </div>-->
-                                </div>
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane maximum">
-                                <!--<span class="overlay-text ether" style="top:10px;">
-                                  <p>Coming Soon ...</p>
-                                  </span>-->
-                                <div class="panel panel-default">
-                                  <img ng-src="{{s3Url}}refferal+slide.png" class="img-responsive" />
-                                  <!--<div class="table-responsive ng-binding">
-                                    <table class="table table-dark-gry table-hover mb30 font16">
-                                        <thead style="background:#525252;">
-                                          <tr style="color:#525252;">
-                                              <th width="20%"><strong class="white-color">S.No</strong></th>
-                                              <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          
-                                          <tr ng-repeat="maximum in maximumCommission" class="ng-scope">
-                                              <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[maximum.country] | lowercase}}.png" /> <strong>{{maximum.name}}</strong></td>
-                                              <td class="ng-binding">{{maximum.amount}}</td>
-                                          </tr>
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <br>
-                                  </div>-->
-                                </div>
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane paid">
-                                <!--<span class="overlay-text ether" style="top:10px;">
-                                  <p>Coming Soon ...</p>
-                                  </span>-->
-                                <div class="panel panel-default">
-                                  <img ng-src="{{s3Url}}paidfrontline.png" class="img-responsive" />
-                                  <!--<div class="table-responsive ng-binding">
-                                    <table class="table table-dark-gry table-hover mb30 font16">
-                                        <thead style="background:#525252;">
-                                          <tr style="color:#525252;">
-                                              <th width="20%"><strong class="white-color">S.No</strong></th>
-                                              <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                        
-                                          <tr ng-repeat="paid in paidCommission">
-                                              <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[paid.country] | lowercase}}.png" /> <strong>{{paid.name}}</strong></td>
-                                              <td class="ng-binding">{{paid.amount}}</td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <br>
-                                  </div>-->
-                                </div>
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane repurchase">
-                                <!--<span class="overlay-text ether" style="top:10px;">
-                                  <p>Coming Soon ...</p>
-                                  </span>-->
-                                <div class="panel panel-default">
-                                <img ng-src="{{s3Url}}doubleyourcheque-2.png" class="img-responsive" />
-                                  <!--<div class="table-responsive ng-binding">
-                                    <table class="table table-dark-gry table-hover mb30 font16">
-                                        <thead style="background:#525252;">
-                                          <tr style="color:#525252;">
-                                              <th width="20%"><strong class="white-color">S.No</strong></th>
-                                              <th width="20%"><strong class="white-color">Member Id</strong></th>
-                                              <th width="10%"><strong class="white-color">Achieved Amount ($)</strong></th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          
-                                          <tr ng-repeat="repurchase in repurchaseCheque" class="ng-scope">
-                                              <td class="ng-binding">{{$index+1}}</td>
-                                              <td class="ng-binding"><img ng-src="{{s3Url}}flags/{{allCountryCodes[repurchase.country] | lowercase}}.png" /> <strong>{{repurchase.name}}</strong></td>
-                                              <td class="ng-binding">{{repurchase.amount}}</td>
-                                          </tr>
-                                          
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <br>
-                                  </div>-->
-                                </div>
-                            </div>
                            </div>
                         </div>
                      </div>

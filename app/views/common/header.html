@@ -1,65 +1,71 @@
 <div class="navbar-header">
-  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-    <i class="fa fa-align-justify top-menu-icon" aria-hidden="true"></i>
-  </button>
+   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+   <i class="fa fa-align-justify top-menu-icon" aria-hidden="true"></i>
+   </button>
 </div>
 <div class="col-md-4 col-md-offset-1">
-  <p class="user-info" style=" padding-top:10px;">
-    <strong><i class="fa fa-user"></i> Welcome {{name}}, <country-flag country-name="country" country-code="allCountryCodes[country]" s3-url="s3Url"/> </strong>
-  </p>
+   <p class="user-info" style=" padding-top:10px;">
+      <strong>
+         <i class="fa fa-user"></i> Welcome {{name}}, 
+         <country-flag country-name="country" country-code="allCountryCodes[country]" s3-url="s3Url"/>
+      </strong>
+   </p>
 </div>
 <div class="col-md-7 right-logo" style="z-index:999;">
-  <!--<div class="counter-date">
-    <timer countdown="remainingTime" max-time-unit="'day'" class="timer" interval="1000">
-      <span class="countdown-amount">{{ddays}}</span><span class="timer-text">Day{{daysS}}</span>
-      <span class="countdown-amount">{{hhours}}</span><span class="timer-text"> Hour{{hoursS}}</span>
-      <span class="countdown-amount">{{mminutes}}</span><span class="timer-text"> Minute{{minutesS}}</span>
-      <span class="countdown-amount">{{sseconds}}</span><span class="timer-text"> Second{{secondsS}}</span>
-    </timer>
-  </div>
-  <p class="cal-dash pull-left">To Launch...</p>-->
-  <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo pull-right" width="200" style="padding:20px 20px 0px;">
-  <a class="header-logo pull-right" ng-click="openVideo()" style="cursor:pointer;">
-    <img ng-src="{{s3Url}}coinomiacademy7.png" width="180" style="padding: 6px 20px 0px;" />
-  </a>
+   <!--<div class="counter-date">
+      <timer countdown="remainingTime" max-time-unit="'day'" class="timer" interval="1000">
+        <span class="countdown-amount">{{ddays}}</span><span class="timer-text">Day{{daysS}}</span>
+        <span class="countdown-amount">{{hhours}}</span><span class="timer-text"> Hour{{hoursS}}</span>
+        <span class="countdown-amount">{{mminutes}}</span><span class="timer-text"> Minute{{minutesS}}</span>
+        <span class="countdown-amount">{{sseconds}}</span><span class="timer-text"> Second{{secondsS}}</span>
+      </timer>
+      </div>
+      <p class="cal-dash pull-left">To Launch...</p>-->
+   <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo pull-right" width="200" style="padding:20px 20px 0px;">
+   <a class="header-logo pull-right" ng-click="openVideo()" style="cursor:pointer;">
+   <img ng-src="{{s3Url}}coinomiacademy7.png" width="180" style="padding: 6px 20px 0px;" />
+   </a>
 </div>
 <div class="col-md-12 mobile-navigation collapse" id="bs-example-navbar-collapse-1">
-  <nav id="nav">
-    <ul class="nav nav-pills nav-stacked" id="menu-content">
-      <li><a href="#/reward" ng-class="(activeMenu==='reward'?'highlite':'')">
-          <span>Reward</span>
-        </a>
-      </li>
-      <li ><a href="#/dashboard" id="default" ng-class="(activeMenu==='dashboard'?'highlite':'')">
-        <span>Dashboard</span></a>
-      </li>
-      <li><a href="#/referral-link" ng-class="(activeMenu==='referral-link'?'highlite':'')">
-        <span>My Referral Links</span></a>
-      </li>
-      <li><a href='#/promote-coinomia' ng-class="(activeMenu==='promote-coinomia'?'highlite':'')">
-        <span>Promote Coinomia</span></a>
-      </li>
-      <li><a href="#/networks" ng-class="(activeMenu==='networks'?'highlite':'')">
-        <span>Networks</span></a>
-      </li>
-      <li><a href="#/mining" ng-class="(activeMenu==='mining'?'highlite':'')">
-        <span>Mining</span></a>
-      </li>
-      <li><a href="#/wallet" ng-class="(activeMenu==='wallet'?'highlite':'')">
-         <span>Wallets</span></a>
-      </li>
-      <li><a href="#/setting" ng-class="(activeMenu==='setting'?'highlite':'')">
-        <span>Settings</span></a>
-      </li>
-      <li class="parent">
-        <a href="#/support" ng-class="(activeMenu==='support'?'highlite':'')">
-          <span>Support</span></a>
-      </li>
-      <li class="parent">
-        <a class="logout" ng-click="logout()" style="cursor:pointer">
-          <span>Logout</span></a>
-      </li>
-    </ul>
-  </nav>
+   <nav id="nav">
+      <ul class="nav nav-pills nav-stacked" id="menu-content">
+         <li><a href="#/btccoin" ng-class="(activeMenu==='btccoin'?'highlite':'')">
+            <span>Reward</span>
+            </a>
+         </li>
+         <li><a href="#/reward" ng-class="(activeMenu==='reward'?'highlite':'')">
+            <span>Reward</span>
+            </a>
+         </li>
+         <li ><a href="#/dashboard" id="default" ng-class="(activeMenu==='dashboard'?'highlite':'')">
+            <span>Dashboard</span></a>
+         </li>
+         <li><a href="#/referral-link" ng-class="(activeMenu==='referral-link'?'highlite':'')">
+            <span>My Referral Links</span></a>
+         </li>
+         <li><a href='#/promote-coinomia' ng-class="(activeMenu==='promote-coinomia'?'highlite':'')">
+            <span>Promote Coinomia</span></a>
+         </li>
+         <li><a href="#/networks" ng-class="(activeMenu==='networks'?'highlite':'')">
+            <span>Networks</span></a>
+         </li>
+         <li><a href="#/mining" ng-class="(activeMenu==='mining'?'highlite':'')">
+            <span>Mining</span></a>
+         </li>
+         <li><a href="#/wallet" ng-class="(activeMenu==='wallet'?'highlite':'')">
+            <span>Wallets</span></a>
+         </li>
+         <li><a href="#/setting" ng-class="(activeMenu==='setting'?'highlite':'')">
+            <span>Settings</span></a>
+         </li>
+         <li class="parent">
+            <a href="#/support" ng-class="(activeMenu==='support'?'highlite':'')">
+            <span>Support</span></a>
+         </li>
+         <li class="parent">
+            <a class="logout" ng-click="logout()" style="cursor:pointer">
+            <span>Logout</span></a>
+         </li>
+      </ul>
+   </nav>
 </div>
-
