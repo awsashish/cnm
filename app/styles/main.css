@@ -184,13 +184,10 @@ body {
     text-align: center;
   }
 }
-.rewards-achievers{
-  border-radius:1%;
-  padding:0px !important;
-  margin:0px !important;
+.moving{
+  animation: moveDown 1 1s ease-out;
 }
-@media screen and (min-width: 992px) {
-  .rewards-achievers{
-    min-height:320px;
-  }
+@keyframes moveDown {
+   0% { transform: translateY(0) }
+   100% { transform: translateY(-65px) }
 }
