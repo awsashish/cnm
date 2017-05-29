@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('DashboardCtrl', function ($scope, $sce, $rootScope, $localStorage, $location, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config) {
+  .controller('DashboardCtrl', function ($scope, $sce, $rootScope, $localStorage, $location, $uibModal, $uibModalStack, coinomiaService, UtilsService, $filter, config, $interval, $timeout) {
 
     $scope.goToSection = function(id) {
       $location.hash(id);
@@ -602,6 +602,19 @@ angular.module('coinomiaFrontendApp')
           }
         })
     }
+    $scope.moving = false;
+    $scope.moveDown = function() {
+        $scope.moving = true;
+        $timeout($scope.switchFirst, 1000);
+    };
+    $scope.switchFirst = function() {
+        $scope.weekRewards.push($scope.weekRewards.shift());
+        $scope.allRewards.push($scope.allRewards.shift());
+        $scope.moving = false;
+        $scope.$apply();
+    };
+
+    $interval($scope.moveDown, 2000);
 
     // Get Available Package
     $scope.packageStock = function() {
