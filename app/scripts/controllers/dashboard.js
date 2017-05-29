@@ -614,7 +614,7 @@ angular.module('coinomiaFrontendApp')
         $scope.$apply();
     };
 
-    $interval($scope.moveDown, 2000);
+    $interval($scope.moveDown, 4000);
 
     // Get Available Package
     $scope.packageStock = function() {
