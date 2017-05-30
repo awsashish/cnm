@@ -22,7 +22,7 @@
     <div class="clearfix mt20" ng-if="totalAttr">
       <div class="mb15" ng-repeat="total in totalAttr">
         <h4 class="nomargin "> <strong>{{total.coin}}</strong></h4>
-        <h4 class="arrow_box-top-lft-amout mar10">{{total.income}} {{total.coin}} &asymp; $ {{total.USDPrice}}  </h4>
+        <h4 class="arrow_box-top-lft-amout mar10">{{total.income | number : 2}} {{total.coin}} &asymp; $ {{total.USDPrice | number : 2}}  </h4>
       </div>
       <br />
     </div>
