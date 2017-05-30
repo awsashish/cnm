@@ -28,6 +28,10 @@ angular.module('coinomiaFrontendApp')
     $scope.salesBinaryHeading = config.salesBinaryHeading;
     $scope.salesBinaryImage = config.salesBinaryImage;
 
+    // Rewards Section 
+    $scope.allRewards = [];
+    $scope.weekRewards = [];
+
     // Sales Commission default values
     $scope.poolContract = config.poolSelectedValue;
     $scope.contributorContract = config.machineSelectedValue;
