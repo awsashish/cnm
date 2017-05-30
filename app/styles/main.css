@@ -187,6 +187,8 @@ body {
 /* News Ticker */
 .moving{
   animation: moveDown 1 1s ease-out;
+}
+.movingRewards{
   animation: moveDown-reward 1 1s ease-out;
 }
 /* Dashboard Page */

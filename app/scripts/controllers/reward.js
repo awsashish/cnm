@@ -74,16 +74,16 @@ angular.module('coinomiaFrontendApp')
     $scope.repurchaseCheque = config.reward_commission.repurchase_cheque;
 
     // News Ticker Implementation
-    $scope.moving = false;
+    $scope.movingRewards = false;
     $scope.moveDown = function() {
-        $scope.moving = true;
+        $scope.movingRewards = true;
         $timeout($scope.switchFirst, 1000);
     };
     $scope.switchFirst = function() {
         $scope.weekRewards.push($scope.weekRewards.shift());
         $scope.allRewards.push($scope.allRewards.shift());
         $scope.allAchiever.push($scope.allAchiever.shift());
-        $scope.moving = false;
+        $scope.movingRewards = false;
         $scope.$apply();
     };
 
