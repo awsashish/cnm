@@ -12,12 +12,15 @@ angular.module('coinomiaFrontendApp')
 
     var pageLimit = config.pageLimit;
     // this.apiHost = 'https://api.coinomia.com/';
-    
+
     if($location.host() === 'login.coinomia.com') {
       this.apiHost = 'https://api.coinomia.com/';
     }else{
       this.apiHost = 'https://api.coinomia.com/';
     }
+
+    this.devHost = 'http://coinomiadevapi.azurewebsites.net/';
+    this.lsvtHost = 'https://webservices.lightspeedvt.net/lsvt_api_v35.ashx/';
 
     this.requestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -260,7 +263,7 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Get Latest Transaction and Withdrawals
-    this.getTransactionDetails = function(currentPage, pageLimit) {
+    this.getTransactionDetails = function(currentPage) {
 
       function transactionComplete(response) {
         return response;
@@ -271,7 +274,7 @@ angular.module('coinomiaFrontendApp')
         return error;
       }
 
-      return $http.get(this.apiHost +'user/latest-transaction/'+currentPage+'/'+pageLimit)
+      return $http.get(this.apiHost +'user/latest-transaction/'+currentPage)
         .then(transactionComplete)
         .catch(transactionFailed);
     };
@@ -432,6 +435,59 @@ angular.module('coinomiaFrontendApp')
         .then(getPackagesRequestComplete)
         .catch(getPackagesRequestFailed);
     }
+
+    // Get lgToken from LSVT
+    this.getlgToken = function(tokenInfo) {
+      // On Success
+      function lgTokenSuccess(response) {
+        return response;
+      }
+
+      // On Failed
+      function lgTokenFailure(error) {
+        $log.error('XHR Failed to retrieve LG Token.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.lsvtHost, tokenInfo)
+        .then(addUserSuccess)
+        .catch(addUserFailure);
+    }
+
+    // Add User on LSVT
+    this.addLsvtUser = function(bigUData) {
+      // On Success
+      function addUserSuccess(response) {
+        return response;
+      }
+
+      // On Failed
+      function addUserFailure(error) {
+        $log.error('XHR Failed to Add User.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.lsvtHost, bigUData)
+        .then(addUserSuccess)
+        .catch(addUserFailure);
+    }
+
+    // Add Coinomia Academy User
+    this.addAcademyUser= function(academyUser) {
+
+      function userAdded(response) {
+        return response;
+      }
+
+      function userAddFailed(error) {
+        $log.error('XHR Failed to Add Coinomia Academy User.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.devHost +'user/add-academy-user', academyUser)
+        .then(userAdded)
+        .catch(userAddFailed);
+    };
 
     // Get User Virtual Tree Info
     this.getVirtualTree = function() {
@@ -1237,6 +1293,41 @@ angular.module('coinomiaFrontendApp')
         .then(get7daysRewardsRequestComplete)
         .catch(get7daysRewardsRequestFailed);
     }
+
+    // Get Packages
+    this.academyPackages = function() {
+
+      function packagesRetrieved(response) {
+        return response;
+      }
+
+      function packageRetrieveFailed(error) {
+        $log.error('XHR Failed to Retrieve Package Information.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.devHost +'utilities/academy-packages')
+        .then(packagesRetrieved)
+        .catch(packageRetrieveFailed);
+
+    };
+
+    //Buy Packages
+    this.buyPackages = function(data) {
+
+      function packagesBought(response) {
+        return response;
+      }
+
+      function packageBuyFailed(error) {
+        $log.error('XHR Failed to Buy Packages.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.devHost +'user/academy-order', data)
+        .then(packagesBought)
+        .catch(packageBuyFailed);
+    };
 
     // Get Achievement Rewards
     this.getAchievements = function() {

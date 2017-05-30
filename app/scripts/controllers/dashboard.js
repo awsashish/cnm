@@ -28,6 +28,10 @@ angular.module('coinomiaFrontendApp')
     $scope.salesBinaryHeading = config.salesBinaryHeading;
     $scope.salesBinaryImage = config.salesBinaryImage;
 
+    // Rewards Section 
+    $scope.allRewards = [];
+    $scope.weekRewards = [];
+
     // Sales Commission default values
     $scope.poolContract = config.poolSelectedValue;
     $scope.contributorContract = config.machineSelectedValue;
@@ -602,6 +606,7 @@ angular.module('coinomiaFrontendApp')
           }
         })
     }
+    // News Ticker Implementation
     $scope.moving = false;
     $scope.moveDown = function() {
         $scope.moving = true;

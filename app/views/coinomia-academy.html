@@ -1,0 +1,323 @@
+<main-header class="main-header"></main-header>
+<section>
+   <div class="mainwrapper">
+      <navigation></navigation>
+      <style>.nav-tabs > li > a{ padding: 14px 15px !important; color:#fff !important;
+         }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td { padding: 8px 5px;}
+      </style>
+      <div class="mainpanel">
+         <div class="pageheader">
+            <div  ><iframe class="news-feeds"    height="60" width="90%" src="http://feed.mikle.com/widget/?rssmikle_url=http%3A%2F%2Ffeeds.feedburner.com%2FCoinDesk%3Fformat%3Dxml&rssmikle_frame_width=900&rssmikle_frame_height=60&frame_height_by_article=0&rssmikle_target=_blank&rssmikle_font=Arial%2C%20Helvetica%2C%20sans-serif&rssmikle_font_size=12&rssmikle_border=off&responsive=off&text_align=left&text_align2=left&corner=off&scrollbar=off&autoscroll=on&scrolldirection=up&scrollstep=3&mcspeed=10&sort=New&rssmikle_title=off&rssmikle_title_bgcolor=%23FFD700&rssmikle_title_color=%23FFFFFF&rssmikle_item_bgcolor=%23FFFFFF&rssmikle_item_title_length=55&rssmikle_item_title_color=%23FF4B14&rssmikle_item_border_bottom=on&rssmikle_item_description=on&item_link=off&rssmikle_item_description_length=150&rssmikle_item_description_color=%23666666&rssmikle_item_date=gl1&rssmikle_timezone=Etc%2FGMT&datetime_format=%25b%20%25e%2C%20%25Y%20%25l%3A%25M%20%25p&item_description_style=text&item_thumbnail=full&item_thumbnail_selection=auto&article_num=15&rssmikle_item_podcast=off&" scrolling="no" name="rssmikle_frame" marginwidth="0" marginheight="0" vspace="0" hspace="0" frameborder="0"></iframe></div>
+            <!-- media -->
+            <div  ></div>
+            <div class="media" style="margin-top:-2px;">
+            </div>
+         </div>
+         <!-- pageheader -->
+         <div class="contentpanel">
+            <div class="container">
+               <div class="col-md-3 col-sm-12" style="border-right:5px solid #FC0;"><img src="images/coinomiacademy.png" width="300" class="img-responsive" style=" padding:10px;"/></div>
+               <div class="col-md-9 col-sm-12" style="padding-left:40px;">
+                  <h2 class="mt5" style="font-size:35px !important; text-transform:uppercase;">
+                     You platform for Personal and Business Success
+                  </h2>
+                  <p>A cryptocurrency (or crypto currency) is a medium of exchange using cryptography to secure the transactions and to control the creation of new units. Cryptocurrencies are a subset of alternative currencies or specifically of digital currencies. Bitcoin became the first decentralized cryptocurrency in 2009.</p>
+               </div>
+            </div>
+            <div class="">
+               <hr />
+               <div class="tabbable-panel" >
+                  <div class="tabbable-line" >
+                     <div align="center">
+                        <ul  class="nav nav-tabs ">
+                           <li class="active" style="width:50%;" >
+                              <a href=".tab_default_3" data-toggle="tab" style="padding:10px 20px !important;">
+                              <i class="fa fa-graduation-cap icon-lg" aria-hidden="true"></i>
+                              <strong style="font-size:20px;">Coinomia Academy</strong> </a>
+                           </li>
+                           <li style="width:50%;"> <a href=".tab_default_4" data-toggle="tab" style="padding:10px 20px !important;">
+                              <i class="fa fa-file-video-o icon-lg" aria-hidden="true"></i>&nbsp;
+                              <strong style="font-size:20px;">Purchased Products</strong> </a>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="tab-content" style="padding:20px 20px; ">
+                        <div class="tab-pane tab_default_3 active">
+                           <div class="row" >
+                              <div class="col-md-4" ng-repeat="package in packages">
+                                 <div class="panel panel-default">
+                                    <div class="panel-body" style="padding:5px !important;">
+                                       <img src="images/package1.png" width="100%" class="img-responsive" />  
+                                    </div>
+                                    <div align="center" class="panel-footer">
+                                       <div class="row" align="left">
+                                          <div class="col-md-8 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">{{package.PackageName}}</span><br />
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <h2 class="counter-dash pack-price"><strong>{{package.Price}}</strong></h2>
+                                          </div>
+                                       </div>
+                                       <hr />
+                                       <p align="left" style="font-size:12px; "> - Network marketing: Habbits of succesful network marketers<br />
+                                          - 4 things you need in MLM<br />
+                                          - 4 things you do not need in MLM<br />
+                                          - MLM 4ever<br />
+                                          - Mindset of a business builder<br />
+                                          - 15 concept in MLM
+                                          - Motivaction for life
+                                       </p>
+                                       <a ui-sref="coinomia-academy-cart"  title="Buy Now" class="mar20" ><button type="button" class="btn btn-block btn-danger btn-xs pull-right" style="margin-top:20px; font-size:20px; padding:10px; font-weight:bold;"><i class="fa fa-download"></i> Buy Now</button></a>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="tab-pane tab_default_4">
+                           <h2 class="mb35-sm top-spacemob10"><i class="fa fa-clone icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Buy Packages</strong></h2>
+                           <hr />
+                           <div class="panel panel-default">
+                              <div class="panel-body">
+                                 <div class="row">
+                                    <div class="col-md-4">
+                                       <div class="panel panel-default">
+                                          <div class="panel-body" style="padding:5px !important;">
+                                             <iframe width="100%" height="200" src="https://www.youtube.com/embed/YB1qiuxiCbk" frameborder="0" allowfullscreen></iframe>
+                                          </div>
+                                          <div align="center" class="panel-footer">
+                                             <div class="row" align="left">
+                                                <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">Coinomia Package 04</span></div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                       <div class="panel panel-default">
+                                          <div class="panel-body" style="padding:5px !important;">
+                                             <iframe width="100%" height="200" src="https://www.youtube.com/embed/YB1qiuxiCbk" frameborder="0" allowfullscreen></iframe>
+                                          </div>
+                                          <div align="center" class="panel-footer">
+                                             <div class="row" align="left">
+                                                <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">Coinomia Package 01</span></div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                       <div class="panel panel-default">
+                                          <div class="panel-body" style="padding:5px !important;">
+                                             <iframe width="100%" height="200" src="https://www.youtube.com/embed/YB1qiuxiCbk" frameborder="0" allowfullscreen></iframe>
+                                          </div>
+                                          <div align="center" class="panel-footer">
+                                             <div class="row" align="left">
+                                                <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">Coinomia Package 03</span></div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div></div>
+                           </div>
+                        </div>
+                        <div class="tab-pane tab_default_10" >
+                           <h2 class="mb37 mar10" align="center" style="width:40%;">
+                              <span class="glyphicon glyphicon-minus"></span>
+                              Campaign<span class="glyphicon glyphicon-minus"></span>
+                           </h2>
+                           <br />
+                           <!-- Nav tabs -->
+                           <ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
+                              <li role="presentation" class="active" ><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab" ><strong><i class="fa fa-list-alt " aria-hidden="true"></i> Referral Campaign</strong></a></li>
+                              <li role="presentation" ><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><strong><i class="fa fa-list-alt " aria-hidden="true"></i>Referral Campaign Reports</strong></a></li>
+                              <li role="presentation" ><a href=".bnrr" aria-controls="bnrr" role="tab" data-toggle="tab"><strong><i class="fa fa-list-alt " aria-hidden="true"></i> Banner Report
+                                 </strong></a>
+                              </li>
+                           </ul>
+                           <!-- Tab panes -->
+                           <div class="tab-content" style="border:0px !important">
+                              <div role="tabpanel" class="tab-pane active dmp">
+                                 <br />   
+                                 <h2 class="mb35-sm top-spacemob10"><i class="fa fa-list-alt icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Referral Campaign</strong></h2>
+                                 <hr />
+                                 <div class="table-responsive">
+                                    <div class="ref-box yelo-text01"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                       http://www.sdfsdjk.com/?49283ksdjskfjh3298/sdfjsdk/ewurewi <button class="pull-right copy-btn " data-toggle="modal" data-target="#myModal"><i class="fa fa-chain "></i> Get Referral Link </button>
+                                    </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                       <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                             <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Create Referral Campaign</h4>
+                                             </div>
+                                             <div class="modal-body">
+                                                <form>
+                                                   <input type="text" class="form-control" /><br />
+                                                   <strong>Select Your Referral Campaign Lead Page</strong>
+                                                   <div class="row mar20">
+                                                      <div class="col-md-6 col-sm-12"><input name="check-ref" type="radio" value="" />&nbsp;<strong>Earn-Free-Bitcoins-Etherium</strong><br />
+                                                         <small>http://coinomia.com/prelaunch/earn-free-bitcoins-etherium.html?id=xyz</small><br />
+                                                         <a href="#">View Page</a>
+                                                      </div>
+                                                      <div class="col-md-6 col-sm-12"><input name="check-ref" type="radio" value="" />&nbsp;<strong>Earn-Free-Bitcoins-Etherium</strong><br />
+                                                         <small>http://coinomia.com/prelaunch/earn-free-bitcoins-etherium.html?id=xyz</small><br />
+                                                         <a href="#">View Page</a>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row mar20">
+                                                      <div class="col-md-6 col-sm-12"><input name="check-ref" type="radio" value="" />&nbsp;<strong>Earn-Free-Bitcoins-Etherium</strong><br />
+                                                         <small>http://coinomia.com/prelaunch/earn-free-bitcoins-etherium.html?id=xyz</small><br />
+                                                         <a href="#">View Page</a>
+                                                      </div>
+                                                      <div class="col-md-6 col-sm-12"><input name="check-ref" type="radio" value="" />&nbsp;<strong>Earn-Free-Bitcoins-Etherium</strong><br />
+                                                         <small>http://coinomia.com/prelaunch/earn-free-bitcoins-etherium.html?id=xyz</small><br />
+                                                         <a href="#">View Page</a>
+                                                      </div>
+                                                   </div>
+                                                   <div class="row mar20">
+                                                      <div class="col-md-6 col-sm-12"><input name="check-ref" type="radio" value="" />&nbsp;<strong>Earn-Free-Bitcoins-Etherium</strong><br />
+                                                         <small>http://coinomia.com/prelaunch/earn-free-bitcoins-etherium.html?id=xyz</small><br />
+                                                         <a href="#">View Page</a>
+                                                      </div>
+                                                      <div class="col-md-6 col-sm-12"><input name="check-ref" type="radio" value="" />&nbsp;<strong>Earn-Free-Bitcoins-Etherium</strong><br />
+                                                         <small>http://coinomia.com/prelaunch/earn-free-bitcoins-etherium.html?id=xyz</small><br />
+                                                         <a href="#">View Page</a>
+                                                      </div>
+                                                   </div>
+                                                </form>
+                                             </div>
+                                             <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Create Referral Campaign</button>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                       <table class="table table-dark-gry table-hover mb30 font16">
+                                          <thead style="background:#525252;">
+                                             <tr style="color:#525252;">
+                                                <td><strong class="white-color">S.No</strong></td>
+                                                <td><strong class="white-color">Title</strong></td>
+                                                <td><strong class="white-color">Refferal Link</strong></td>
+                                                <td><strong class="white-color">Action</strong></td>
+                                             </tr>
+                                          </thead>
+                                          <tr >
+                                             <td>01</td>
+                                             <td><strong>Coinomia Landing Page title01</strong> </td>
+                                             <td>
+                                                <small class="red-text02">http://www.nbbnlgf.com/?49283ksdjskfjh3298/sdfjsdk/opooewrpwe</small>
+                                             </td>
+                                             <td><i class="fa fa-times" aria-hidden="true"></i>
+                                                Delete
+                                             </td>
+                                          </tr>
+                                          <tr >
+                                             <td>02</td>
+                                             <td><strong>Coinomia Landing Page title02</strong> </td>
+                                             <td>
+                                                <small class="red-text02">http://www.sdfsdjk.com/?49283ksdjskfjh3298/sdfjsdk/ewurewi</small>
+                                             </td>
+                                             <td><i class="fa fa-times" aria-hidden="true"></i>
+                                                Delete 
+                                             </td>
+                                          </tr>
+                                       </table>
+                                       <div align="right">
+                                          <ul class="pagination pagination-metro nomargin mt10">
+                                             <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                             <li><a href="#">1</a></li>
+                                             <li class="active"><a href="#">2</a></li>
+                                             <li><a href="#">3</a></li>
+                                             <li><a href="#">4</a></li>
+                                             <li><a href="#">5</a></li>
+                                             <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                          </ul>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div role="tabpanel" class="tab-pane rmp" >
+                                 <br />
+                                 <h2 class="mb35-sm top-spacemob10"><i class="fa fa-list-alt icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Referral Campaign Reports</strong></h2>
+                                 <hr />
+                                 <div class="table-responsive">
+                                    <table class="table table-dark-gry table-hover mb30 font16">
+                                       <thead style="background:#525252;">
+                                          <tr style="color:#525252;">
+                                             <td><strong class="white-color">Created at</strong></td>
+                                             <td><strong class="white-color">Campaign Name</strong></td>
+                                             <td><strong class="white-color">Visits</strong></td>
+                                             <td><strong class="white-color">Signups</strong></td>
+                                          </tr>
+                                       </thead>
+                                       <tr >
+                                          <td>02/12/2106</td>
+                                          <td><strong>Mining with Coinomia</strong> </td>
+                                          <td>
+                                             <small class="red-text02">23,309</small>
+                                          </td>
+                                          <td>
+                                             400
+                                          </td>
+                                       </tr>
+                                    </table>
+                                    <div align="right">
+                                       <ul class="pagination pagination-metro nomargin mt10">
+                                          <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                          <li><a href="#">1</a></li>
+                                          <li class="active"><a href="#">2</a></li>
+                                          <li><a href="#">3</a></li>
+                                          <li><a href="#">4</a></li>
+                                          <li><a href="#">5</a></li>
+                                          <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div role="tabpanel" class="tab-pane bnrr" >
+                                 <br />
+                                 <h2 class="mb35-sm top-spacemob10"><i class="fa fa-list-alt icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Banner Report</strong></h2>
+                                 <hr />
+                                 <div class="table-responsive">
+                                    <table class="table table-dark-gry table-hover mb30 font16">
+                                       <thead style="background:#525252;">
+                                          <tr style="color:#525252;">
+                                             <td><strong class="white-color">Campaign Name</strong></td>
+                                             <td><strong class="white-color">Visits</strong></td>
+                                             <td><strong class="white-color">Sign Ups</strong></td>
+                                          </tr>
+                                       </thead>
+                                       <tr >
+                                          <td>Mining with Coinomia</td>
+                                          <td><strong>0</strong> </td>
+                                          <td>
+                                             <small class="red-text02">23,309</small>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                    <div align="right">
+                                       <ul class="pagination pagination-metro nomargin mt10">
+                                          <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                          <li><a href="#">1</a></li>
+                                          <li class="active"><a href="#">2</a></li>
+                                          <li><a href="#">3</a></li>
+                                          <li><a href="#">4</a></li>
+                                          <li><a href="#">5</a></li>
+                                          <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <main-footer></main-footer>
+   </div>
+</section>
