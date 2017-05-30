@@ -602,6 +602,7 @@ angular.module('coinomiaFrontendApp')
           }
         })
     }
+    // News Ticker Implementation
     $scope.moving = false;
     $scope.moveDown = function() {
         $scope.moving = true;

@@ -8,7 +8,7 @@
  * Controller of the coinomiaFrontendApp
  */
 angular.module('coinomiaFrontendApp')
-  .controller('RewardCtrl', function ($scope, $rootScope, config, coinomiaService) {
+  .controller('RewardCtrl', function ($scope, $rootScope, config, coinomiaService, $interval, $timeout) {
 
     $rootScope.s3Url = config.s3BucketUrl;
     $scope.rewards = config.rewards;
@@ -63,7 +63,7 @@ angular.module('coinomiaFrontendApp')
             }else{
               $scope.noRecords = true;
             }
-            
+
           }
         });
     }
@@ -72,7 +72,23 @@ angular.module('coinomiaFrontendApp')
     $scope.maximumCommission = config.reward_commission.referral_commission;
     $scope.paidCommission = config.reward_commission.paid_commission;
     $scope.repurchaseCheque = config.reward_commission.repurchase_cheque;
-     
+
+    // News Ticker Implementation
+    $scope.moving = false;
+    $scope.moveDown = function() {
+        $scope.moving = true;
+        $timeout($scope.switchFirst, 1000);
+    };
+    $scope.switchFirst = function() {
+        $scope.weekRewards.push($scope.weekRewards.shift());
+        $scope.allRewards.push($scope.allRewards.shift());
+        $scope.allAchiever.push($scope.allAchiever.shift());
+        $scope.moving = false;
+        $scope.$apply();
+    };
+
+    $interval($scope.moveDown, 3000);
+
     $scope.getAllRewards();
     $scope.get7daysRewards();
     $scope.getAchievements();

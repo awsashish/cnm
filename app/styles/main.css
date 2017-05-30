@@ -184,10 +184,18 @@ body {
     text-align: center;
   }
 }
+/* News Ticker */
 .moving{
   animation: moveDown 1 1s ease-out;
+  animation: moveDown-reward 1 1s ease-out;
 }
+/* Dashboard Page */
 @keyframes moveDown {
    0% { transform: translateY(0) }
    100% { transform: translateY(-65px) }
+}
+/* Rewards Page */
+@keyframes moveDown-reward {
+   0% { transform: translateY(0) }
+   100% { transform: translateY(-97px) }
 }
