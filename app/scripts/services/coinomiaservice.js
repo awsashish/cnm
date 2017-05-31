@@ -1329,6 +1329,23 @@ angular.module('coinomiaFrontendApp')
         .catch(packageBuyFailed);
     };
 
+    //Package Purchase History
+    this.packagePurchaseHistory = function() {
+
+      function packageHistorySuccess(response) {
+        return response;
+      }
+
+      function packageHistoryFailed(error) {
+        $log.error('XHR Failed to Retrieve Package Purchase History.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.devHost +'user/academy-order-history')
+        .then(packageHistorySuccess)
+        .catch(packageHistoryFailed);
+    };
+
     // Get Achievement Rewards
     this.getAchievements = function() {
       
