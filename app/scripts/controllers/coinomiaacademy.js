@@ -8,8 +8,8 @@ angular.module('coinomiaFrontendApp')
 		.then(function(result) {
 			if(result.status === 200) {
 				$scope.packagesBought = result.data;
-				$scope.getAcademyPackages();
 			}
+			$scope.getAcademyPackages();
 		});
 	};
 
@@ -18,8 +18,8 @@ angular.module('coinomiaFrontendApp')
 		.then(function(res) {
 			if(res.status === 200) {
 				$scope.packages = res.data.rows;
-				$scope.getPurchaseHistory();
 			}
+			$scope.getPurchaseHistory();
 		});
 	};
 
