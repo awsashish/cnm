@@ -1,969 +1,1152 @@
 <main-header class="main-header"></main-header>
 <style>
-  .panel {
-  position: initial;
-  }
+   .panel {
+   position: initial;
+   }
 </style>
 <section>
-  <div class="mainwrapper">
-    <navigation></navigation>
-    <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
-      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}
-    </style>
-    <div class="mainpanel">
-      <!-- <coming-soon text-value="'Mining'"></coming-soon> -->
-      <div class="contentpanel">
-        <div class="col-md-12 nomargin nopadding">
-          <h2 class="mb35"><i class="fa fa-line-chart icon-lg border-round" aria-hidden="true" style="padding-left:10px;"></i> <strong>Mining</strong></h2>
-          <hr />
-          <div class="tabbable-panel" style="min-height:800px;">
-            <div class="tabbable-line" >
-              <div align="center">
-                <ul  class="nav nav-tabs ">{{activeTab}}
-                  <li ng-class="(activeTab?'':'active')">
-                    <a href=".tab_default_4" data-toggle="tab">
-                    <i class="fa fa-shopping-cart icon-lg" aria-hidden="true"></i><br />
-                    <strong>Purchase</strong> </a>
-                  </li>
-                  <li ng-class="(activeTab==='order'?'active':'')">
-                    <a href=".tab_default_8" data-toggle="tab">
-                    <i class="fa fa-credit-card-alt icon-lg" aria-hidden="true"></i><br />
-                    <strong>Order</strong> </a>
-                  </li>
-                  <!--<li>
-                    <a href=".tab_default_5" data-toggle="tab">
-                    <i class="fa fa-circle-o icon-lg" aria-hidden="true"></i><br />
-                    <strong>Live Contracts</strong> </a>
-                    </li>-->
-                  <!--<li ng-click="miningPayouts(payoutCurrentPage)">
-                    <a href=".tab_default_6" data-toggle="tab">
-                    <i class="fa fa-newspaper-o icon-lg" aria-hidden="true"></i><br />
-                    <strong>Mining Payouts</strong> </a>
-                    </li>-->
-                  <!-- <li ng-click="walletInfo()">
-                    <a href=".tab_default_7" data-toggle="tab">
-                    <i class="fa fa-google-wallet icon-lg" aria-hidden="true"></i><br />
-                    <strong>Wallets</strong> </a>
-                    </li> -->
-                </ul>
-              </div>
-              <div class="tab-content" style="padding:20px 20px;">
-                <div class="tab-pane tab_default_4" ng-class="(activeTab?'':'active')">
-                  <br />
-                  <h2 class="mb37" align="center" style="width:40%;">
-                    <span class="glyphicon glyphicon-minus"></span>
-                    Purchase History<span class="glyphicon glyphicon-minus"></span>
-                  </h2>
-                  <br />
-                  <!-- Nav tabs -->
-                  <ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-                    <li role="presentation" class="active" style="width:25%"><a href=".rmp" aria-controls="rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
-                    <li role="presentation" style="width:25%"><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
-                    <li role="presentation" style="width:25%"><a href=".dashTab" aria-controls="rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}dashcoin.png" width="40" />  Dash</strong></a></li>
-                    <li role="presentation" style="width:25%"><a href=".dashTab" aria-controls="rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}dashcoin.png" width="40" />  Monero</strong></a></li>
-                  </ul>
-                  <!-- Tab panes -->
-                  <div class="tab-content overlay-wrapper" style="border:0px !important">
-                    <div role="tabpanel" class="tab-pane dmp">
-                      <!--<span class="overlay-text ether" style="top:10px;">
-                        <p>Coming Soon ...</p>
-                        </span>-->
-                      <br />
-                      <div class="panel panel-default">
-                        <div class="panel-heading nopadding nomargin">
-                          <h5 class="red-text08"><strong><img ng-src="{{s3Url}}ether-contract.png" width="60"> Pool Contract</strong></h5>
-                        </div>
-                        <div class="panel-body">
-                          <hr />
-                          <div class="row">
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Total Power</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{ethPoolPower}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Estimated Total Income(USD)</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{ethPoolEstimateIncome | currency}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Current Rate</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{ethPoolCurrentRate | currency}}</p>
-                            </div>
-                          </div>
-                          <br />
-                          <br />
-                          <div class="table-responsive">
-                            <table class="table table-dark-gry table-hover mb30 font16">
-                              <thead style="background:#525252;">
-                                <tr style="color:#525252;">
-                                  <th width="20%"><strong class="white-color">Date</strong></th>
-                                  <th width="20%"><strong class="white-color">Contract Name</strong></th>
-                                  <th width="10%"><strong class="white-color">Units</strong></th>
-                                  <th width="30%"><strong class="white-color">Power</strong></th>
-                                  <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr ng-if="noEthPoolRecords">
-                                  <td>No Records Found</td>
-                                </tr>
-                                <tr ng-repeat="ethPool in ethPoolDetails">
-                                  <td>{{ethPool.Date | date }}</td>
-                                  <td>{{ethPool.ProductName}}</td>
-                                  <td>{{ethPool.quantity}}</td>
-                                  <td>{{ethPool.miningpower | number:4}} MH/s</td>
-                                  <td>{{ethPool.totaldays/30 | number:0}} Months</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="pagination-default" ng-if="ethPoolRecords > 0">
-                              <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchaseEthPool('ETH', 'pool', ethPoolCurrentPage)"></ul>
-                            </div>
-                            <br />
-                            <br />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading nomargin nopadding">
-                          <h5 class="red-text08"><strong><img ng-src="{{s3Url}}ether-contributor.png" width="60"> Machine Contract</strong></h5>
-                        </div>
-                        <div class="panel-body">
-                          <div class="row">
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Total Power</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{ethMachinePower}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Estimated Total Income(USD)</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{ethMachineEstimateIncome | currency}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Current Rate</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{ethMachineCurrentRate | currency}}</p>
-                            </div>
-                          </div>
-                          <br />
-                          <br />
-                          <hr />
-                          <div class="table-responsive">
-                            <table class="table table-dark-gry table-hover mb30 font16">
-                              <thead style="background:#525252;">
-                                <tr style="color:#525252;">
-                                  <th width="20%"><strong class="white-color">Date</strong></th>
-                                  <th width="20%"><strong class="white-color">Contract Name</strong></th>
-                                  <th width="10%"><strong class="white-color">Units</strong></th>
-                                  <th width="30%"><strong class="white-color">Power</strong></th>
-                                  <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr ng-if="noEthMachineRecords">
-                                  <td>No Records Found</td>
-                                </tr>
-                                <tr ng-repeat="ethMachine in ethMachineDetails">
-                                  <td>{{ethMachine.Date | date }}</td>
-                                  <td>{{ethMachine.ProductName}}</td>
-                                  <td>{{ethMachine.quantity}}</td>
-                                  <td>{{ethMachine.miningpower}} MH/s</td>
-                                  <td>{{ethMachine.totaldays/30 | number:0}} Months</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="pagination-default" ng-if="ethMachineRecords > 0">
-                              <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchaseEthPool('ETH', 'machine', ethMachineCurrentPage)"></ul>
-                            </div>
-                            <br />
-                            <br />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading nomargin nopadding">
-                          <h5 class="red-text08"><strong><img ng-src="{{s3Url}}ether-rack.png" width="60"> Rack Contract</strong></h5>
-                        </div>
-                        <div class="panel-body">
-                          <div class="row">
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Total Power</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{ethRackPower}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Estimated Total Income(USD)</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{ethRackEstimateIncome | currency}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Current Rate</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{ethRackCurrentRate | currency}}</p>
-                            </div>
-                          </div>
-                          <hr />
-                          <div class="table-responsive">
-                            <table class="table table-dark-gry table-hover mb30 font16">
-                              <thead style="background:#525252;">
-                                <tr style="color:#525252;">
-                                  <th width="20%"><strong class="white-color">Date</strong></th>
-                                  <th width="20%"><strong class="white-color">Contract Name</strong></th>
-                                  <th width="10%"><strong class="white-color">Units</strong></th>
-                                  <th width="30%"><strong class="white-color">Power</strong></th>
-                                  <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr ng-if="noEthRackRecords">
-                                  <td>No Records Found</td>
-                                </tr>
-                                <tr ng-repeat="ethRack in ethRackDetails">
-                                  <td>{{ethRack.Date | date }}</td>
-                                  <td>{{ethRack.ProductName}}</td>
-                                  <td>{{ethRack.quantity}}</td>
-                                  <td>{{ethRack.miningpower}} MH/s</td>
-                                  <td>{{ethRack.totaldays/30 | number:0}} Months</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="pagination-default" ng-if="ethRackRecords > 0">
-                              <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethRackRecords" ng-model="ethRackCurrentPage" max-size="5" ng-change="purchaseEthRack('BTC', 'rack', ethRackCurrentPage)"></ul>
-                            </div>
-                            <br />
-                            <br />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane rmp active" >
-                      <br />
-                      <div class="panel panel-default">
-                        <div class="panel-heading nopadding nomargin">
-                          <h5 class="red-text08"><strong><img ng-src="{{s3Url}}contract-bitcoin.png" width="60"> Pool Contract</strong></h5>
-                        </div>
-                        <div class="panel-body">
-                          <hr />
-                          <div class="row">
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Total Power</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{btcPoolPower}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Estimated Total Income(USD)</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{btcPoolEstimateIncome | currency}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Current Rate</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{btcPoolCurrentRate | currency}}</p>
-                            </div>
-                          </div>
-                          <br />
-                          <br />
-                          <div class="table-responsive">
-                            <table class="table table-dark-gry table-hover mb30 font16">
-                              <thead style="background:#525252;">
-                                <tr style="color:#525252;">
-                                  <th width="20%"><strong class="white-color">Date</strong></th>
-                                  <th width="20%"><strong class="white-color">Contract Name</strong></th>
-                                  <th width="10%"><strong class="white-color">Units</strong></th>
-                                  <th width="30%"><strong class="white-color">Power</strong></th>
-                                  <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr ng-if="noBtcPoolRecords">
-                                  <td>No Records Found</td>
-                                </tr>
-                                <tr ng-repeat="btcPool in btcPoolDetails">
-                                  <td>{{btcPool.Date | date }}</td>
-                                  <td>{{btcPool.ProductName}}</td>
-                                  <td>{{btcPool.quantity}}</td>
-                                  <td>{{btcPool.miningpower}} TH/s</td>
-                                  <td>{{btcPool.totaldays/30 | number:0}} Months</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="pagination-default" ng-if="ethPoolRecords > 0">
-                              <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchaseBtcPool('ETH', 'pool', btcPoolCurrentPage)"></ul>
-                            </div>
-                            <br />
-                            <br />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading nomargin nopadding">
-                          <h5 class="red-text08"><strong><img ng-src="{{s3Url}}contributor.png" width="60"> Machine Contract</strong></h5>
-                        </div>
-                        <div class="panel-body">
-                          <hr />
-                          <div class="row">
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Total Power</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{btcMachinePower}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Estimated Total Income(USD)</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{btcMachineEstimateIncome | currency}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Current Rate</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{btcMachineCurrentRate | currency}}</p>
-                            </div>
-                          </div>
-                          <br />
-                          <br />
-                          <div class="table-responsive">
-                            <table class="table table-dark-gry table-hover mb30 font16">
-                              <thead style="background:#525252;">
-                                <tr style="color:#525252;">
-                                  <th width="20%"><strong class="white-color">Date</strong></th>
-                                  <th width="20%"><strong class="white-color">Contract Name</strong></th>
-                                  <th width="10%"><strong class="white-color">Units</strong></th>
-                                  <th width="30%"><strong class="white-color">Power</strong></th>
-                                  <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr ng-if="nobtcMachineRecords">
-                                  <td>No Records Found</td>
-                                </tr>
-                                <tr ng-repeat="btcMachine in btcMachineDetails">
-                                  <td>{{btcMachine.Date | date }}</td>
-                                  <td>{{btcMachine.ProductName}}</td>
-                                  <td>{{btcMachine.quantity}}</td>
-                                  <td>{{btcMachine.miningpower}} TH/s</td>
-                                  <td>{{btcMachine.totaldays/30 | number:0}} Months</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="pagination-default" ng-if="ethMachineRecords > 0">
-                              <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchaseBtcMachine('ETH', 'machine', btcMachineCurrentPage)"></ul>
-                            </div>
-                            <br />
-                            <br />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading nomargin nopadding">
-                          <h5 class="red-text08"><strong><img ng-src="{{s3Url}}rack.png" width="60"> Rack Contract</strong></h5>
-                        </div>
-                        <div class="panel-body">
-                          <hr />
-                          <div class="row">
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Total Power</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{btcRackPower}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Estimated Total Income(USD)</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{btcRackEstimateIncome | currency}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Current Rate</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{btcRackCurrentRate | currency}}</p>
-                            </div>
-                          </div>
-                          <br />
-                          <br />
-                          <div class="table-responsive">
-                            <table class="table table-dark-gry table-hover mb30 font16">
-                              <thead style="background:#525252;">
-                                <tr style="color:#525252;">
-                                  <th width="20%"><strong class="white-color">Date</strong></th>
-                                  <th width="20%"><strong class="white-color">Contract Name</strong></th>
-                                  <th width="10%"><strong class="white-color">Units</strong></th>
-                                  <th width="30%"><strong class="white-color">Power</strong></th>
-                                  <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr ng-if="nobtcRackRecords">
-                                  <td>No Records Found</td>
-                                </tr>
-                                <tr ng-repeat="btcRack in btcRackDetails">
-                                  <td>{{btcRack.Date | date }}</td>
-                                  <td>{{btcRack.ProductName}}</td>
-                                  <td>{{btcRack.quantity}}</td>
-                                  <td>{{btcRack.miningpower}} TH/s</td>
-                                  <td>{{btcRack.totaldays/30 | number:0}} Months</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="pagination-default" ng-if="btcRackRecords > 0">
-                              <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="btcRackRecords" ng-model="btcRackCurrentPage" max-size="5" ng-change="purchaseBtcRack('BTC', 'rack', btcRackCurrentPage)"></ul>
-                            </div>
-                            <br />
-                            <br />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane dashTab" >
-                      <br />
-                      <div class="panel panel-default">
-                        <div class="panel-heading nopadding nomargin">
-                          <h5 class="red-text08"><strong><img ng-src="{{s3Url}}dashpool.png" width="60"> Pool Contract</strong></h5>
-                        </div>
-                        <div class="panel-body">
-                          <hr />
-                          <div class="row">
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Total Power</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{dashPoolPower}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Estimated Total Income(USD)</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{dashPoolEstimateIncome | currency}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Current Rate</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{dashPoolCurrentRate | currency}}</p>
-                            </div>
-                          </div>
-                          <br />
-                          <br />
-                          <div class="table-responsive">
-                            <table class="table table-dark-gry table-hover mb30 font16">
-                              <thead style="background:#525252;">
-                                <tr style="color:#525252;">
-                                  <th width="20%"><strong class="white-color">Date</strong></th>
-                                  <th width="20%"><strong class="white-color">Contract Name</strong></th>
-                                  <th width="10%"><strong class="white-color">Units</strong></th>
-                                  <th width="30%"><strong class="white-color">Power</strong></th>
-                                  <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr ng-if="noDashPoolRecords">
-                                  <td>No Records Found</td>
-                                </tr>
-                                <tr ng-repeat="dashPool in dashPoolDetails">
-                                  <td>{{dashPool.Date | date }}</td>
-                                  <td>{{dashPool.ProductName}}</td>
-                                  <td>{{dashPool.quantity}}</td>
-                                  <td>{{dashPool.miningpower}} MH/s</td>
-                                  <td>{{dashPool.totaldays/30 | number:0}} Months</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="pagination-default" ng-if="ethPoolRecords > 0">
-                              <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchasedashPool('ETH', 'pool', dashPoolCurrentPage)"></ul>
-                            </div>
-                            <br />
-                            <br />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading nomargin nopadding">
-                          <h5 class="red-text08"><strong><img ng-src="{{s3Url}}dashmahine.png" width="60"> Machine Contract</strong></h5>
-                        </div>
-                        <div class="panel-body">
-                          <hr />
-                          <div class="row">
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Total Power</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{dashMachinePower}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Estimated Total Income(USD)</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{dashMachineEstimateIncome | currency}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Current Rate</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{dashMachineCurrentRate | currency}}</p>
-                            </div>
-                          </div>
-                          <br />
-                          <br />
-                          <div class="table-responsive">
-                            <table class="table table-dark-gry table-hover mb30 font16">
-                              <thead style="background:#525252;">
-                                <tr style="color:#525252;">
-                                  <th width="20%"><strong class="white-color">Date</strong></th>
-                                  <th width="20%"><strong class="white-color">Contract Name</strong></th>
-                                  <th width="10%"><strong class="white-color">Units</strong></th>
-                                  <th width="30%"><strong class="white-color">Power</strong></th>
-                                  <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr ng-if="noDashMachineRecords">
-                                  <td>No Records Found</td>
-                                </tr>
-                                <tr ng-repeat="dashMachine in dashMachineDetails">
-                                  <td>{{dashMachine.Date | date }}</td>
-                                  <td>{{dashMachine.ProductName}}</td>
-                                  <td>{{dashMachine.quantity}}</td>
-                                  <td>{{dashMachine.miningpower}} MH/s</td>
-                                  <td>{{dashMachine.totaldays/30 | number:0}} Months</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="pagination-default" ng-if="ethMachineRecords > 0">
-                              <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchasedashMachine('ETH', 'machine', dashMachineCurrentPage)"></ul>
-                            </div>
-                            <br />
-                            <br />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading nomargin nopadding">
-                          <h5 class="red-text08"><strong><img ng-src="{{s3Url}}dashrack.png" width="60"> Rack Contract</strong></h5>
-                        </div>
-                        <div class="panel-body">
-                          <hr />
-                          <div class="row">
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Total Power</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{dashRackPower}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Estimated Total Income(USD)</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{dashRackEstimateIncome | currency}}</p>
-                            </div>
-                            <div class="col-md-4 col-sm-12">
-                              <p class="pull-left">
-                              <h5><strong>Current Rate</strong></h5>
-                              </p>
-                              <p class="red-text04 pull-left">{{dashRackCurrentRate | currency}}</p>
-                            </div>
-                          </div>
-                          <br />
-                          <br />
-                          <div class="table-responsive">
-                            <table class="table table-dark-gry table-hover mb30 font16">
-                              <thead style="background:#525252;">
-                                <tr style="color:#525252;">
-                                  <th width="20%"><strong class="white-color">Date</strong></th>
-                                  <th width="20%"><strong class="white-color">Contract Name</strong></th>
-                                  <th width="10%"><strong class="white-color">Units</strong></th>
-                                  <th width="30%"><strong class="white-color">Power</strong></th>
-                                  <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr ng-if="noDashRackRecords">
-                                  <td>No Records Found</td>
-                                </tr>
-                                <tr ng-repeat="dashRack in dashRackDetails">
-                                  <td>{{dashRack.Date | date }}</td>
-                                  <td>{{dashRack.ProductName}}</td>
-                                  <td>{{dashRack.quantity}}</td>
-                                  <td>{{dashRack.miningpower}} MH/s</td>
-                                  <td>{{dashRack.totaldays/30 | number:0}} Months</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="pagination-default" ng-if="dashRackRecords > 0">
-                              <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="dashRackRecords" ng-model="dashRackCurrentPage" max-size="5" ng-change="purchasedashRack('dash', 'rack', dashRackCurrentPage)"></ul>
-                            </div>
-                            <br />
-                            <br />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane tab_default_5">
-                  <br />
-                  <p> Coming soon ... </p>
-                  <br />
-                </div>
-                <div class="tab-pane tab_default_51" style="height:500px;" >
-                  <h2 class="mb35-sm top-spacemob10"><i class="fa fa-circle-o icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Live Contracts</strong></h2>
-                  <hr />
-                  <div class="row">
-                    <div class="col-md-4 col-sm-12">
-                      <p class="pull-left">
-                      <h5><strong>Total Power</strong></h5>
-                      </p>
-                      <p class="red-text04 pull-left">4375798.87439</p>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                      <p class="pull-left">
-                      <h5><strong>Estimated Total Income(USD)</strong></h5>
-                      </p>
-                      <p class="red-text04 pull-left">$900</p>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                      <p class="pull-left">
-                      <h5><strong>Current Rate</strong></h5>
-                      </p>
-                      <p class="red-text04 pull-left">$900</p>
-                    </div>
-                  </div>
-                  <br />
-                  <br />
-                  <div class="table-responsive">
-                    <table class="table table-dark-gry table-hover mb30 font16">
-                      <thead style="background:#525252;">
-                        <tr style="color:#525252;">
-                          <th width="10%"><strong class="white-color">Date</strong></th>
-                          <th width="20%"><strong class="white-color">Contract Name</strong></th>
-                          <th width="10%"><strong class="white-color">Units</strong></th>
-                          <th width="30%"><strong class="white-color">Power</strong></th>
-                          <th width="30%"><strong class="white-color">Pending Expire</strong></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>12/12/2015</td>
-                          <td>Pool Contract</td>
-                          <td>1000</td>
-                          <td>3274832 TH/s</td>
-                          <td>2 Month</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <div class="pull-right">
-                      <ul class="pagination pagination-metro nomargin mt10">
-                        <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li><a href="#">1</a></li>
-                        <li class="active"><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                      </ul>
-                    </div>
-                    <br />
-                    <br />
-                  </div>
-                </div>
-                <div class="tab-pane tab_default_61" >
-                  <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-newspaper-o icon-lg-red border-round-red" style="padding-top:5px; padding-left:3px" aria-hidden="true"></i> <strong>Mining Payouts</strong></h2>
-                  <hr />
-                  <div class="table-responsive">
-                    <table class="table table-dark-gry table-hover mb30 font16">
-                      <thead style="background:#525252;">
-                        <tr style="color:#525252;">
-                          <th width="20%"><strong class="white-color">Date</strong></th>
-                          <th width="20%"><strong class="white-color">Payout</strong></th>
-                          <th width="20%"><strong class="white-color">Cryptocurrency </th>
-                          <th width="40%"><strong class="white-color">Payout Description
-                            </strong>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr ng-if="noPayout">
-                          <td>No data found</td>
-                        </tr>
-                        <tr ng-repeat="payout in payoutDetails">
-                          <td>{{payout.Date}}</td>
-                          <td><img width="20" ng-src="{{s3Url}}bitcoin.png"> {{payout.USD | number:8}}</td>
-                          <td>{{payout.Wallet}}</td>
-                          <td>{{payout.Description}}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <div class="pagination-default" ng-if="payoutTotal > 0">
-                      <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="payoutTotal" ng-model="payoutCurrentPage" max-size="5" ng-change="miningPayouts(payoutCurrentPage)"></ul>
-                    </div>
-                    <br />
-                    <br />
-                  </div>
-                </div>
-                <div class="tab-pane tab_default_7" style="height:800px;">
-                  <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-google-wallet icon-lg-red border-round-red" style="padding-top:5px; " aria-hidden="true"></i> <strong>Wallets</strong></h2>
-                  <hr />
-                  <div class="row">
-                    <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="BTC" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal" s3-url="s3Url"></wallet-info>
-                    <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="ETH" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal" s3-url="s3Url"></wallet-info>
-                    <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="USD" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal" s3-url="s3Url"></wallet-info>
-                    <br />
-                    <br />
-                  </div>
-                  <h2 class="mb37" align="center" style="width:50%;">
-                    <span class="glyphicon glyphicon-minus"></span>
-                    Latest Transaction and Withdrawal<span class="glyphicon glyphicon-minus"></span>
-                  </h2>
-                  <br />
-                  <div class="table-responsive">
-                    <table class="table table-dark-gry table-hover mb30 font16" >
-                      <thead style="background:#525252 !important;">
-                        <tr style="color:#525252 !important;">
-                          <th><strong class="white-color">#</strong></th>
-                          <th><strong class="white-color">Date</strong></th>
-                          <th><strong class="white-color">User ID</strong> </th>
-                          <th><strong class="white-color">Transaction</strong> </th>
-                          <th><strong class="white-color">Description</strong></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td colspan="5" class="text-center">No Transaction Found.</td>
-                        </tr>
-                        <tr ng-hide="true">
-                          <td>1</td>
-                          <td>12/12/2015(12:30:12)</td>
-                          <td>COIN34975934</td>
-                          <td>$900</td>
-                          <td>Withdrawal </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="tab-pane tab_default_8" ng-class="(activeTab==='order'?'active':'')" style="height:1000px;">
-                  <h2 class="mb35-sm top-spacemob10"><i class="fa fa-credit-card-alt icon-lg-red border-round-red" style="padding-left:3px;" aria-hidden="true"></i> <strong>Order</strong></h2>
-                  <hr />
-                  <div class="row" >
-                    <div class="col-md-8 col-sm-12">
-                      <div class="price-box" ng-repeat="(key,dash) in dashProducts">
-                        <!--<div class="out-stock" ng-if="btc.productname === 'Bitcoin Pool Contract' || btc.productname === 'Bitcoin Machine Contract'"> 
-                          <p>
-                            <img class="sold-out" src="https://s3-us-west-2.amazonaws.com/coinomia/images/sold-out-png-19947.png" />
-                          </p>
-                          </div>-->
-                        <form class="form-horizontal form-pricing" role="form">
-                          <div class="price-slider">
-                            <h4 class="great text-capitalize">{{dash.productname}}</h4>
-                            <img ng-src="{{s3Url}}{{dashImagePath[$index]}}" width="100" class="pull-right" />
-                            <div class="col-sm-12">
-                              <div ui-slider class="uiSlider" model="dash.dashMining" product="dash" min="{{dash.dashMining}}" max="{{dash.maxunit * dash.miningpower}}" step="{{dash.miningpower}}"></div>
-                            </div>
-                          </div>
-                          <div class="price-form" id="quantity-dash-{{key}}">
-                            <div class="form-group">
-                              <div class="col-sm-12">
-                                <input type="hidden" id="amount3" class="form-control">                                        <input type="hidden" id="amount3" class="form-control">
-                                <p class="price lead" id="amount-label3">
-                                  <input type="number" ng-model="dash.quantity" min="0" ng-change="calculateDashAmount(key, dash.quantity, dash.miningpower, dash.maxunit)" style="width: 80px;"/>
-                                  <!--{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}-->
-                                </p>
-                                Number Of Contracts<strong class="price pull-right lead">Amount : {{(dash.amount*dash.dashMining/dash.miningpower) | currency}}</strong>
+   <div class="mainwrapper">
+      <navigation></navigation>
+      <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
+         }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}
+      </style>
+      <div class="mainpanel">
+         <!-- <coming-soon text-value="'Mining'"></coming-soon> -->
+         <div class="contentpanel">
+            <div class="col-md-12 nomargin nopadding">
+               <h2 class="mb35"><i class="fa fa-line-chart icon-lg border-round" aria-hidden="true" style="padding-left:10px;"></i> <strong>Mining</strong></h2>
+               <hr />
+               <div class="tabbable-panel" style="min-height:800px;">
+                  <div class="tabbable-line" >
+                     <div align="center">
+                        <ul  class="nav nav-tabs ">
+                           {{activeTab}}
+                           <li ng-class="(activeTab?'':'active')">
+                              <a href=".tab_default_4" data-toggle="tab">
+                              <i class="fa fa-shopping-cart icon-lg" aria-hidden="true"></i><br />
+                              <strong>Purchase</strong> </a>
+                           </li>
+                           <li ng-class="(activeTab==='order'?'active':'')">
+                              <a href=".tab_default_8" data-toggle="tab">
+                              <i class="fa fa-credit-card-alt icon-lg" aria-hidden="true"></i><br />
+                              <strong>Order</strong> </a>
+                           </li>
+                           <!--<li>
+                              <a href=".tab_default_5" data-toggle="tab">
+                              <i class="fa fa-circle-o icon-lg" aria-hidden="true"></i><br />
+                              <strong>Live Contracts</strong> </a>
+                              </li>-->
+                           <!--<li ng-click="miningPayouts(payoutCurrentPage)">
+                              <a href=".tab_default_6" data-toggle="tab">
+                              <i class="fa fa-newspaper-o icon-lg" aria-hidden="true"></i><br />
+                              <strong>Mining Payouts</strong> </a>
+                              </li>-->
+                           <!-- <li ng-click="walletInfo()">
+                              <a href=".tab_default_7" data-toggle="tab">
+                              <i class="fa fa-google-wallet icon-lg" aria-hidden="true"></i><br />
+                              <strong>Wallets</strong> </a>
+                              </li> -->
+                        </ul>
+                     </div>
+                     <div class="tab-content" style="padding:20px 20px;">
+                        <div class="tab-pane tab_default_4" ng-class="(activeTab?'':'active')">
+                           <br />
+                           <h2 class="mb37" align="center" style="width:40%;">
+                              <span class="glyphicon glyphicon-minus"></span>
+                              Purchase History<span class="glyphicon glyphicon-minus"></span>
+                           </h2>
+                           <br />
+                           <!-- Nav tabs -->
+                           <ul class="nav nav-tabs" role="tablist" style="background:#ccc !important; color:#525252 !important;">
+                              <li role="presentation" class="active" style="width:25%"><a href=".rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
+                              <li role="presentation" style="width:25%"><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
+                              <li role="presentation" style="width:25%"><a href=".dashTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}dashcoin.png" width="40" />  Dash</strong></a></li>
+                              <li role="presentation" style="width:25%"><a href=".moneroTab" role="tab" data-toggle="tab"><strong><img ng-src="images/monerocoin.png" width="40" />  Monero</strong></a></li>
+                           </ul>
+                           <!-- Tab panes -->
+                           <div class="tab-content overlay-wrapper" style="border:0px !important">
+                              <div role="tabpanel" class="tab-pane dmp">
+                                 <!--<span class="overlay-text ether" style="top:10px;">
+                                    <p>Coming Soon ...</p>
+                                    </span>-->
+                                 <br />
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nopadding nomargin">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}ether-contract.png" width="60"> Pool Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{ethPoolPower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{ethPoolEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{ethPoolCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noEthPoolRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="ethPool in ethPoolDetails">
+                                                   <td>{{ethPool.Date | date }}</td>
+                                                   <td>{{ethPool.ProductName}}</td>
+                                                   <td>{{ethPool.quantity}}</td>
+                                                   <td>{{ethPool.miningpower | number:4}} MH/s</td>
+                                                   <td>{{ethPool.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="ethPoolRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchaseEthPool('ETH', 'pool', ethPoolCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nomargin nopadding">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}ether-contributor.png" width="60"> Machine Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{ethMachinePower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{ethMachineEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{ethMachineCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <hr />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noEthMachineRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="ethMachine in ethMachineDetails">
+                                                   <td>{{ethMachine.Date | date }}</td>
+                                                   <td>{{ethMachine.ProductName}}</td>
+                                                   <td>{{ethMachine.quantity}}</td>
+                                                   <td>{{ethMachine.miningpower}} MH/s</td>
+                                                   <td>{{ethMachine.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="ethMachineRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchaseEthPool('ETH', 'machine', ethMachineCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nomargin nopadding">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}ether-rack.png" width="60"> Rack Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{ethRackPower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{ethRackEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{ethRackCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <hr />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noEthRackRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="ethRack in ethRackDetails">
+                                                   <td>{{ethRack.Date | date }}</td>
+                                                   <td>{{ethRack.ProductName}}</td>
+                                                   <td>{{ethRack.quantity}}</td>
+                                                   <td>{{ethRack.miningpower}} MH/s</td>
+                                                   <td>{{ethRack.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="ethRackRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethRackRecords" ng-model="ethRackCurrentPage" max-size="5" ng-change="purchaseEthRack('BTC', 'rack', ethRackCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
                               </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                      <div class="price-box" ng-repeat="(key,btc) in btcProducts">
-                        <!--<div class="out-stock" ng-if="btc.productname === 'Bitcoin Pool Contract' || btc.productname === 'Bitcoin Machine Contract'"> 
-                          <p>
-                            <img class="sold-out" src="https://s3-us-west-2.amazonaws.com/coinomia/images/sold-out-png-19947.png" />
-                          </p>
-                          </div>-->
-                        <form class="form-horizontal form-pricing" role="form">
-                          <div class="price-slider">
-                            <h4 class="great text-capitalize">{{btc.productname}}</h4>
-                            <img ng-src="{{s3Url}}{{btcImagePath[$index]}}" width="100" class="pull-right" />
-                            <div class="col-sm-12">
-                              <div ui-slider class="uiSlider" model="btc.btcMining" product="btc" min="{{btc.btcMining}}" max="{{btc.maxunit * btc.miningpower}}" step="{{btc.miningpower}}"></div>
-                            </div>
-                          </div>
-                          <div class="price-form" id="quantity-{{key}}">
-                            <div class="form-group">
-                              <div class="col-sm-12">
-                                <input type="hidden" id="amount3" class="form-control">                                        <input type="hidden" id="amount3" class="form-control">
-                                <p class="price lead" id="amount-label3">
-                                  <input type="number" ng-model="btc.quantity" min="0" ng-change="calculateBtcAmount(key, btc.quantity, btc.miningpower, btc.maxunit)" style="width: 80px;"/>
-                                  <!--{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}-->
-                                </p>
-                                Number Of Contracts<strong class="price pull-right lead">Amount : {{(btc.amount*btc.btcMining/btc.miningpower) | currency}}</strong>
+                              <div role="tabpanel" class="tab-pane rmp active" >
+                                 <br />
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nopadding nomargin">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}contract-bitcoin.png" width="60"> Pool Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{btcPoolPower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{btcPoolEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{btcPoolCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noBtcPoolRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="btcPool in btcPoolDetails">
+                                                   <td>{{btcPool.Date | date }}</td>
+                                                   <td>{{btcPool.ProductName}}</td>
+                                                   <td>{{btcPool.quantity}}</td>
+                                                   <td>{{btcPool.miningpower}} TH/s</td>
+                                                   <td>{{btcPool.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="ethPoolRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchaseBtcPool('ETH', 'pool', btcPoolCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nomargin nopadding">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}contributor.png" width="60"> Machine Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{btcMachinePower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{btcMachineEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{btcMachineCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="nobtcMachineRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="btcMachine in btcMachineDetails">
+                                                   <td>{{btcMachine.Date | date }}</td>
+                                                   <td>{{btcMachine.ProductName}}</td>
+                                                   <td>{{btcMachine.quantity}}</td>
+                                                   <td>{{btcMachine.miningpower}} TH/s</td>
+                                                   <td>{{btcMachine.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="ethMachineRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchaseBtcMachine('ETH', 'machine', btcMachineCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nomargin nopadding">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}rack.png" width="60"> Rack Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{btcRackPower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{btcRackEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{btcRackCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="nobtcRackRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="btcRack in btcRackDetails">
+                                                   <td>{{btcRack.Date | date }}</td>
+                                                   <td>{{btcRack.ProductName}}</td>
+                                                   <td>{{btcRack.quantity}}</td>
+                                                   <td>{{btcRack.miningpower}} TH/s</td>
+                                                   <td>{{btcRack.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="btcRackRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="btcRackRecords" ng-model="btcRackCurrentPage" max-size="5" ng-change="purchaseBtcRack('BTC', 'rack', btcRackCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
                               </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                      <!--<div>
-                        <img src="images/eth-slider-coming-soon.png" class="img-responsive" />
-                        </div>-->
-                      <div class="price-box" ng-repeat="(key,eth) in ethProducts">
-                        <form class="form-horizontal form-pricing" role="form">
-                          <div class="price-slider">
-                            <h4 class="great text-capitalize">{{eth.productname}}</h4>
-                            <img ng-src="{{s3Url}}{{ethImagePath[$index]}}" width="100" class="pull-right" />
-                            <div class="col-sm-12">
-                              <div ui-slider class="uiSlider" model="eth.ethMining" product="eth" min="{{eth.ethMining}}" max="{{eth.maxunit * eth.miningpower}}" step="{{eth.miningpower}}"></div>
-                            </div>
-                          </div>
-                          <div class="price-form" id="quantity-eth-{{key}}">
-                            <div class="form-group">
-                              <div class="col-sm-12">
-                                <input type="hidden" id="amount3" class="form-control">
-                                <p class="price lead" id="amount-label3">
-                                  <input type="number" ng-model="eth.quantity" min="0" ng-change="calculateEthAmount(key, eth.quantity, eth.miningpower, eth.maxunit)" style="width: 80px;"/>
-                                  <!--{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}-->
-                                </p>
-                                <!--<p class="price lead" id="amount-label3">{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}
-                                  {{eth.quantity | number:0}}</p>-->
-                                Number Of Contracts<strong class="price pull-right lead">Amount : {{eth.amount * eth.ethMining/eth.miningpower | currency}}</strong>
+                              <div role="tabpanel" class="tab-pane dashTab" >
+                                 <br />
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nopadding nomargin">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}dashpool.png" width="60"> Pool Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashPoolPower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashPoolEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashPoolCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noDashPoolRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="dashPool in dashPoolDetails">
+                                                   <td>{{dashPool.Date | date }}</td>
+                                                   <td>{{dashPool.ProductName}}</td>
+                                                   <td>{{dashPool.quantity}}</td>
+                                                   <td>{{dashPool.miningpower}} MH/s</td>
+                                                   <td>{{dashPool.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="ethPoolRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchasedashPool('ETH', 'pool', dashPoolCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nomargin nopadding">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}dashmahine.png" width="60"> Machine Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashMachinePower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashMachineEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashMachineCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noDashMachineRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="dashMachine in dashMachineDetails">
+                                                   <td>{{dashMachine.Date | date }}</td>
+                                                   <td>{{dashMachine.ProductName}}</td>
+                                                   <td>{{dashMachine.quantity}}</td>
+                                                   <td>{{dashMachine.miningpower}} MH/s</td>
+                                                   <td>{{dashMachine.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="ethMachineRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchasedashMachine('ETH', 'machine', dashMachineCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nomargin nopadding">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}dashrack.png" width="60"> Rack Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashRackPower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashRackEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashRackCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noDashRackRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="dashRack in dashRackDetails">
+                                                   <td>{{dashRack.Date | date }}</td>
+                                                   <td>{{dashRack.ProductName}}</td>
+                                                   <td>{{dashRack.quantity}}</td>
+                                                   <td>{{dashRack.miningpower}} MH/s</td>
+                                                   <td>{{dashRack.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="dashRackRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="dashRackRecords" ng-model="dashRackCurrentPage" max-size="5" ng-change="purchasedashRack('dash', 'rack', dashRackCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
                               </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                      
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                      <div class="col-md-12 col-sm-12">
-                        <h2 align="center" class="mb35 top-spacemob10"><span class="glyphicon glyphicon-minus"></span>  Order Summary <span class="glyphicon glyphicon-minus"></span> </h2>
-                        <p align="center">Hashpower contract overview</p>
-                        <div class="panel panel-default " style="box-shadow:0px 0px 2px 2px #f2f2f2; background:#f9fbfc;">
-                          <div class="panel-body">
-                            <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="dash in dashProducts">
-                              <p>
-                              <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}{{dashImagePath[$index]}}" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{dash.productname}}</h2>
-                              </p>
-                              <h3 class="mb36">{{dash.amount * dash.dashMining/dash.miningpower | number:2}} USD</h3>
-                              <h3 class="mb36">{{dash.dashMining}} MH/s</h3>
-                              <input type="hidden" id="dash-{{$index}}" value="{{dash.amount * dash.dashMining/dash.miningpower}}" />
+                              <div role="tabpanel" class="tab-pane moneroTab" >
+                                 <br />
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nopadding nomargin">
+                                       <h5 class="red-text08"><strong><img ng-src="images/monerocloud.png" width="60"> Pool Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{moneroPoolPower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashPoolEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashPoolCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noDashPoolRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="dashPool in dashPoolDetails">
+                                                   <td>{{dashPool.Date | date }}</td>
+                                                   <td>{{dashPool.ProductName}}</td>
+                                                   <td>{{dashPool.quantity}}</td>
+                                                   <td>{{dashPool.miningpower}} MH/s</td>
+                                                   <td>{{dashPool.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="ethPoolRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchasedashPool('ETH', 'pool', dashPoolCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nomargin nopadding">
+                                       <h5 class="red-text08"><strong><img ng-src="images/moneromachine.png" width="60"> Machine Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashMachinePower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashMachineEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashMachineCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noDashMachineRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="dashMachine in dashMachineDetails">
+                                                   <td>{{dashMachine.Date | date }}</td>
+                                                   <td>{{dashMachine.ProductName}}</td>
+                                                   <td>{{dashMachine.quantity}}</td>
+                                                   <td>{{dashMachine.miningpower}} MH/s</td>
+                                                   <td>{{dashMachine.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="ethMachineRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchasedashMachine('ETH', 'machine', dashMachineCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nomargin nopadding">
+                                       <h5 class="red-text08"><strong><img ng-src="images/monerorack.png" width="60"> Rack Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashRackPower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashRackEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{dashRackCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noDashRackRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="dashRack in dashRackDetails">
+                                                   <td>{{dashRack.Date | date }}</td>
+                                                   <td>{{dashRack.ProductName}}</td>
+                                                   <td>{{dashRack.quantity}}</td>
+                                                   <td>{{dashRack.miningpower}} MH/s</td>
+                                                   <td>{{dashRack.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="dashRackRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="dashRackRecords" ng-model="dashRackCurrentPage" max-size="5" ng-change="purchasedashRack('dash', 'rack', dashRackCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="tab-pane tab_default_5">
+                           <br />
+                           <p> Coming soon ... </p>
+                           <br />
+                        </div>
+                        <div class="tab-pane tab_default_51" style="height:500px;" >
+                           <h2 class="mb35-sm top-spacemob10"><i class="fa fa-circle-o icon-lg-red border-round-red" style="padding-left:5px;" aria-hidden="true"></i> <strong>Live Contracts</strong></h2>
+                           <hr />
+                           <div class="row">
+                              <div class="col-md-4 col-sm-12">
+                                 <p class="pull-left">
+                                 <h5><strong>Total Power</strong></h5>
+                                 </p>
+                                 <p class="red-text04 pull-left">4375798.87439</p>
+                              </div>
+                              <div class="col-md-4 col-sm-12">
+                                 <p class="pull-left">
+                                 <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                 </p>
+                                 <p class="red-text04 pull-left">$900</p>
+                              </div>
+                              <div class="col-md-4 col-sm-12">
+                                 <p class="pull-left">
+                                 <h5><strong>Current Rate</strong></h5>
+                                 </p>
+                                 <p class="red-text04 pull-left">$900</p>
+                              </div>
+                           </div>
+                           <br />
+                           <br />
+                           <div class="table-responsive">
+                              <table class="table table-dark-gry table-hover mb30 font16">
+                                 <thead style="background:#525252;">
+                                    <tr style="color:#525252;">
+                                       <th width="10%"><strong class="white-color">Date</strong></th>
+                                       <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                       <th width="10%"><strong class="white-color">Units</strong></th>
+                                       <th width="30%"><strong class="white-color">Power</strong></th>
+                                       <th width="30%"><strong class="white-color">Pending Expire</strong></th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr>
+                                       <td>12/12/2015</td>
+                                       <td>Pool Contract</td>
+                                       <td>1000</td>
+                                       <td>3274832 TH/s</td>
+                                       <td>2 Month</td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                              <div class="pull-right">
+                                 <ul class="pagination pagination-metro nomargin mt10">
+                                    <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li class="active"><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                 </ul>
+                              </div>
                               <br />
-                            </div>
-                            <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="btc in btcProducts">
-                              <p>
-                              <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}bitcoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{btc.productname}}</h2>
-                              </p>
-                              <h3 class="mb36">{{btc.amount * btc.btcMining/btc.miningpower | number:2}} USD</h3>
-                              <h3 class="mb36">{{btc.btcMining}} TH/s</h3>
-                              <input type="hidden" id="btc-{{$index}}" value="{{btc.amount * btc.btcMining/btc.miningpower}}" />
                               <br />
-                            </div>
-                            <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="eth in ethProducts">
-                              <p>
-                              <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}ether.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{eth.productname}}</h2>
-                              </p>
-                              <h3 class="mb36">{{eth.amount * eth.ethMining/eth.miningpower | number:2}} USD</h3>
-                              <h3 class="mb36">{{eth.ethMining}} MH/s</h3>
-                              <input type="hidden" id="eth-{{$index}}" value="{{eth.amount * eth.ethMining/eth.miningpower}}" />
-                              <br />
-                            </div>
-                            <div class="clearfix"></div>
-                            <div align="center">
-                              <h3 class="total-price"><strong>Total - {{total | currency}}</strong></h3>
-                            </div>
-                            <div align="center" class="col-md-12   col-sm-12">
-                              <div class="" style="margin-top:20px;">
-                                <hr />
-                                <button type="button" class="btn btn-block btn-lg btn-success" ng-click="selectPayment()">Continue <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-                                </button><br />
-                                <div class="alert alert-danger fade in" ng-if="noOrder">
-                                  Please select any package.
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                           </div>
                         </div>
-                      </div>
-                    </div>
+                        <div class="tab-pane tab_default_61" >
+                           <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-newspaper-o icon-lg-red border-round-red" style="padding-top:5px; padding-left:3px" aria-hidden="true"></i> <strong>Mining Payouts</strong></h2>
+                           <hr />
+                           <div class="table-responsive">
+                              <table class="table table-dark-gry table-hover mb30 font16">
+                                 <thead style="background:#525252;">
+                                    <tr style="color:#525252;">
+                                       <th width="20%"><strong class="white-color">Date</strong></th>
+                                       <th width="20%"><strong class="white-color">Payout</strong></th>
+                                       <th width="20%"><strong class="white-color">Cryptocurrency </th>
+                                       <th width="40%"><strong class="white-color">Payout Description
+                                          </strong>
+                                       </th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr ng-if="noPayout">
+                                       <td>No data found</td>
+                                    </tr>
+                                    <tr ng-repeat="payout in payoutDetails">
+                                       <td>{{payout.Date}}</td>
+                                       <td><img width="20" ng-src="{{s3Url}}bitcoin.png"> {{payout.USD | number:8}}</td>
+                                       <td>{{payout.Wallet}}</td>
+                                       <td>{{payout.Description}}</td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                              <div class="pagination-default" ng-if="payoutTotal > 0">
+                                 <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="payoutTotal" ng-model="payoutCurrentPage" max-size="5" ng-change="miningPayouts(payoutCurrentPage)"></ul>
+                              </div>
+                              <br />
+                              <br />
+                           </div>
+                        </div>
+                        <div class="tab-pane tab_default_7" style="height:800px;">
+                           <h2 class="mb35-sm top-spacemob10"> <i class="fa fa-google-wallet icon-lg-red border-round-red" style="padding-top:5px; " aria-hidden="true"></i> <strong>Wallets</strong></h2>
+                           <hr />
+                           <div class="row">
+                              <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="BTC" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal" s3-url="s3Url"></wallet-info>
+                              <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="ETH" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal" s3-url="s3Url"></wallet-info>
+                              <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="USD" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal" s3-url="s3Url"></wallet-info>
+                              <br />
+                              <br />
+                           </div>
+                           <h2 class="mb37" align="center" style="width:50%;">
+                              <span class="glyphicon glyphicon-minus"></span>
+                              Latest Transaction and Withdrawal<span class="glyphicon glyphicon-minus"></span>
+                           </h2>
+                           <br />
+                           <div class="table-responsive">
+                              <table class="table table-dark-gry table-hover mb30 font16" >
+                                 <thead style="background:#525252 !important;">
+                                    <tr style="color:#525252 !important;">
+                                       <th><strong class="white-color">#</strong></th>
+                                       <th><strong class="white-color">Date</strong></th>
+                                       <th><strong class="white-color">User ID</strong> </th>
+                                       <th><strong class="white-color">Transaction</strong> </th>
+                                       <th><strong class="white-color">Description</strong></th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                    <tr>
+                                       <td colspan="5" class="text-center">No Transaction Found.</td>
+                                    </tr>
+                                    <tr ng-hide="true">
+                                       <td>1</td>
+                                       <td>12/12/2015(12:30:12)</td>
+                                       <td>COIN34975934</td>
+                                       <td>$900</td>
+                                       <td>Withdrawal </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                        <div class="tab-pane tab_default_8" ng-class="(activeTab==='order'?'active':'')" style="height:1000px;">
+                           <h2 class="mb35-sm top-spacemob10"><i class="fa fa-credit-card-alt icon-lg-red border-round-red" style="padding-left:3px;" aria-hidden="true"></i> <strong>Order</strong></h2>
+                           <hr />
+                           <div class="row" >
+                              <div class="col-md-8 col-sm-12">
+                                 <div class="price-box" ng-repeat="(key,dash) in dashProducts">
+                                    <!--<div class="out-stock" ng-if="btc.productname === 'Bitcoin Pool Contract' || btc.productname === 'Bitcoin Machine Contract'"> 
+                                       <p>
+                                         <img class="sold-out" src="https://s3-us-west-2.amazonaws.com/coinomia/images/sold-out-png-19947.png" />
+                                       </p>
+                                       </div>-->
+                                    <form class="form-horizontal form-pricing" role="form">
+                                       <div class="price-slider">
+                                          <h4 class="great text-capitalize">{{dash.productname}}</h4>
+                                          <img ng-src="{{s3Url}}{{dashImagePath[$index]}}" width="100" class="pull-right" />
+                                          <div class="col-sm-12">
+                                             <div ui-slider class="uiSlider" model="dash.dashMining" product="dash" min="{{dash.dashMining}}" max="{{dash.maxunit * dash.miningpower}}" step="{{dash.miningpower}}"></div>
+                                          </div>
+                                       </div>
+                                       <div class="price-form" id="quantity-dash-{{key}}">
+                                          <div class="form-group">
+                                             <div class="col-sm-12">
+                                                <input type="hidden" id="amount3" class="form-control">                                        <input type="hidden" id="amount3" class="form-control">
+                                                <p class="price lead" id="amount-label3">
+                                                   <input type="number" ng-model="dash.quantity" min="0" ng-change="calculateDashAmount(key, dash.quantity, dash.miningpower, dash.maxunit)" style="width: 80px;"/>
+                                                   <!--{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}-->
+                                                </p>
+                                                Number Of Contracts<strong class="price pull-right lead">Amount : {{(dash.amount*dash.dashMining/dash.miningpower) | currency}}</strong>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </form>
+                                 </div>
+                                 <div class="price-box" ng-repeat="(key,btc) in btcProducts">
+                                    <!--<div class="out-stock" ng-if="btc.productname === 'Bitcoin Pool Contract' || btc.productname === 'Bitcoin Machine Contract'"> 
+                                       <p>
+                                         <img class="sold-out" src="https://s3-us-west-2.amazonaws.com/coinomia/images/sold-out-png-19947.png" />
+                                       </p>
+                                       </div>-->
+                                    <form class="form-horizontal form-pricing" role="form">
+                                       <div class="price-slider">
+                                          <h4 class="great text-capitalize">{{btc.productname}}</h4>
+                                          <img ng-src="{{s3Url}}{{btcImagePath[$index]}}" width="100" class="pull-right" />
+                                          <div class="col-sm-12">
+                                             <div ui-slider class="uiSlider" model="btc.btcMining" product="btc" min="{{btc.btcMining}}" max="{{btc.maxunit * btc.miningpower}}" step="{{btc.miningpower}}"></div>
+                                          </div>
+                                       </div>
+                                       <div class="price-form" id="quantity-{{key}}">
+                                          <div class="form-group">
+                                             <div class="col-sm-12">
+                                                <input type="hidden" id="amount3" class="form-control">                                        <input type="hidden" id="amount3" class="form-control">
+                                                <p class="price lead" id="amount-label3">
+                                                   <input type="number" ng-model="btc.quantity" min="0" ng-change="calculateBtcAmount(key, btc.quantity, btc.miningpower, btc.maxunit)" style="width: 80px;"/>
+                                                   <!--{{setBtcQuantity(key, (btc.btcMining/btc.miningpower))}}-->
+                                                </p>
+                                                Number Of Contracts<strong class="price pull-right lead">Amount : {{(btc.amount*btc.btcMining/btc.miningpower) | currency}}</strong>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </form>
+                                 </div>
+                                 <!--<div>
+                                    <img src="images/eth-slider-coming-soon.png" class="img-responsive" />
+                                    </div>-->
+                                 <div class="price-box" ng-repeat="(key,eth) in ethProducts">
+                                    <form class="form-horizontal form-pricing" role="form">
+                                       <div class="price-slider">
+                                          <h4 class="great text-capitalize">{{eth.productname}}</h4>
+                                          <img ng-src="{{s3Url}}{{ethImagePath[$index]}}" width="100" class="pull-right" />
+                                          <div class="col-sm-12">
+                                             <div ui-slider class="uiSlider" model="eth.ethMining" product="eth" min="{{eth.ethMining}}" max="{{eth.maxunit * eth.miningpower}}" step="{{eth.miningpower}}"></div>
+                                          </div>
+                                       </div>
+                                       <div class="price-form" id="quantity-eth-{{key}}">
+                                          <div class="form-group">
+                                             <div class="col-sm-12">
+                                                <input type="hidden" id="amount3" class="form-control">
+                                                <p class="price lead" id="amount-label3">
+                                                   <input type="number" ng-model="eth.quantity" min="0" ng-change="calculateEthAmount(key, eth.quantity, eth.miningpower, eth.maxunit)" style="width: 80px;"/>
+                                                   <!--{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}-->
+                                                </p>
+                                                <!--<p class="price lead" id="amount-label3">{{setEthQuantity(key, (eth.ethMining/eth.miningpower))}}
+                                                   {{eth.quantity | number:0}}</p>-->
+                                                Number Of Contracts<strong class="price pull-right lead">Amount : {{eth.amount * eth.ethMining/eth.miningpower | currency}}</strong>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </form>
+                                 </div>
+                              </div>
+                              <div class="col-md-4 col-sm-12">
+                                 <div class="col-md-12 col-sm-12">
+                                    <h2 align="center" class="mb35 top-spacemob10"><span class="glyphicon glyphicon-minus"></span>  Order Summary <span class="glyphicon glyphicon-minus"></span> </h2>
+                                    <p align="center">Hashpower contract overview</p>
+                                    <div class="panel panel-default " style="box-shadow:0px 0px 2px 2px #f2f2f2; background:#f9fbfc;">
+                                       <div class="panel-body">
+                                          <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="dash in dashProducts">
+                                             <p>
+                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}{{dashImagePath[$index]}}" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{dash.productname}}</h2>
+                                             </p>
+                                             <h3 class="mb36">{{dash.amount * dash.dashMining/dash.miningpower | number:2}} USD</h3>
+                                             <h3 class="mb36">{{dash.dashMining}} MH/s</h3>
+                                             <input type="hidden" id="dash-{{$index}}" value="{{dash.amount * dash.dashMining/dash.miningpower}}" />
+                                             <br />
+                                          </div>
+                                          <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="btc in btcProducts">
+                                             <p>
+                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}bitcoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{btc.productname}}</h2>
+                                             </p>
+                                             <h3 class="mb36">{{btc.amount * btc.btcMining/btc.miningpower | number:2}} USD</h3>
+                                             <h3 class="mb36">{{btc.btcMining}} TH/s</h3>
+                                             <input type="hidden" id="btc-{{$index}}" value="{{btc.amount * btc.btcMining/btc.miningpower}}" />
+                                             <br />
+                                          </div>
+                                          <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="eth in ethProducts">
+                                             <p>
+                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}ether.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{eth.productname}}</h2>
+                                             </p>
+                                             <h3 class="mb36">{{eth.amount * eth.ethMining/eth.miningpower | number:2}} USD</h3>
+                                             <h3 class="mb36">{{eth.ethMining}} MH/s</h3>
+                                             <input type="hidden" id="eth-{{$index}}" value="{{eth.amount * eth.ethMining/eth.miningpower}}" />
+                                             <br />
+                                          </div>
+                                          <div class="clearfix"></div>
+                                          <div align="center">
+                                             <h3 class="total-price"><strong>Total - {{total | currency}}</strong></h3>
+                                          </div>
+                                          <div align="center" class="col-md-12   col-sm-12">
+                                             <div class="" style="margin-top:20px;">
+                                                <hr />
+                                                <button type="button" class="btn btn-block btn-lg btn-success" ng-click="selectPayment()">Continue <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                                                </button><br />
+                                                <div class="alert alert-danger fade in" ng-if="noOrder">
+                                                   Please select any package.
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
                   </div>
-                </div>
-              </div>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
+         <!-- Modal -->
+         <div class="modal fade" id="btc-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}btc-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Bitcoin Wallet</strong></h4>
+                  </div>
+                  <div class="modal-body">
+                     <form class="form-inline">
+                        <div class="form-group">
+                           <label><strong>No Of Bitcoin you want to Withdraw</strong></label>
+                           <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal fade" id="eth-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}eth-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Ether Wallet</strong></h4>
+                  </div>
+                  <div class="modal-body">
+                     <form class="form-inline">
+                        <div class="form-group">
+                           <label><strong>No Of Ether you want to Withdraw</strong></label>
+                           <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal fade" id="usd-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}usd-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;USD Wallet</strong></h4>
+                  </div>
+                  <div class="modal-body">
+                     <form class="form-inline">
+                        <div class="form-group">
+                           <label><strong>USD Doller want to Withdraw</strong></label>
+                           <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- contentpanel -->
       </div>
-      <!-- Modal -->
-      <div class="modal fade" id="btc-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}btc-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Bitcoin Wallet</strong></h4>
-            </div>
-            <div class="modal-body">
-              <form class="form-inline">
-                <div class="form-group">
-                  <label><strong>No Of Bitcoin you want to Withdraw</strong></label>
-                  <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" id="eth-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}eth-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Ether Wallet</strong></h4>
-            </div>
-            <div class="modal-body">
-              <form class="form-inline">
-                <div class="form-group">
-                  <label><strong>No Of Ether you want to Withdraw</strong></label>
-                  <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" id="usd-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}usd-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;USD Wallet</strong></h4>
-            </div>
-            <div class="modal-body">
-              <form class="form-inline">
-                <div class="form-group">
-                  <label><strong>USD Doller want to Withdraw</strong></label>
-                  <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- contentpanel -->
-    </div>
-    <main-footer></main-footer>
-  </div>
-  <!-- mainwrapper -->
+      <main-footer></main-footer>
+   </div>
+   <!-- mainwrapper -->
 </section>

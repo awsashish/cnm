@@ -53,6 +53,9 @@ angular.module('coinomiaFrontendApp')
     $scope.dashPoolContract = 0;
     $scope.dashContributorContract = 0;
     $scope.dashRackContract = 0;
+    $scope.moneroPoolContract = 0;
+    $scope.moneroContributorContract = 0;
+    $scope.moneroRackContract = 0;
 
     // TH/s and MH/s values
     $scope.btcPoolValue = config.btcPoolValue;
@@ -64,6 +67,9 @@ angular.module('coinomiaFrontendApp')
     $scope.dashPoolValue = config.dashPoolValue;
     $scope.dashMachineValue = config.dashMachineValue;
     $scope.dashRackValue = config.dashRackValue;
+    $scope.moneroPoolValue = config.moneroPoolValue;
+    $scope.moneroMachineValue = config.moneroMachineValue;
+    $scope.moneroRackValue = config.moneroRackValue;
 
     $scope.currentPage = config.currentPage;
 
@@ -117,10 +123,12 @@ angular.module('coinomiaFrontendApp')
         'btc2Mining':'',
         'ethMining':'',
         'dashMining':'',
+        'moneroMining':'',
         'btcUsd':'',
         'btc2Usd':'',
         'ethUsd':'',
-        'dashUSD':''
+        'dashUSD':'',
+        'moneroUsd':''
       };
      
       if(res.status === 200) {
@@ -137,6 +145,9 @@ angular.module('coinomiaFrontendApp')
           }else if($scope.currentMining.dashMining === '' && mining.coin === 'DASH'){
             $scope.currentMining.dashMining = mining.product_mining_rate;
             $scope.currentMining.dashUsd = mining.USDPrice;
+          }else if($scope.currentMining.moneroMining === '' && mining.coin === 'MONERO'){
+            $scope.currentMining.moneroMining = mining.product_mining_rate;
+            $scope.currentMining.moneroUsd = mining.USDPrice;
           }
         });
         // console.log($scope.currentMining.dashMining);
@@ -407,6 +418,30 @@ angular.module('coinomiaFrontendApp')
       $scope.totalDash();
     }
 
+    $scope.moneroPoolMining = function(value, pool, mining) {
+      var moneroPoolValue = pool.Price * value;
+      $scope.totalMoneroPool = mining.moneroMining * value;
+      $scope.moneroPoolTotalUsd = mining.moneroUsd * value;
+      $scope.moneroPoolPrice = moneroPoolValue;
+      $scope.totalMonero();
+    }
+
+    $scope.moneroContributorMining = function(value, contributor, mining) {
+      var moneroContributorValue = contributor.Price * value;
+      $scope.totalMoneroContributor = mining.moneroMining * value * config.contributorMining;
+      $scope.moneroContributorTotalUsd = mining.moneroUsd * value * config.contributorMining;
+      $scope.moneroContributorPrice = moneroContributorValue;
+      $scope.totalMonero();
+    }
+
+    $scope.moneroRackMining = function(value, rack, mining) {      
+      var moneroRackValue = rack.Price * value;
+      $scope.totalMoneroRack = mining.moneroMining * value * config.rackMining;
+      $scope.moneroRackTotalUsd = mining.moneroUsd * value * config.rackMining;
+      $scope.moneroRackPrice = moneroRackValue;
+      $scope.totalMonero();
+    }
+
     $scope.totalBtc = function () {
       if($scope.totalBtcPool === 0 && $scope.totalBtcContributor === 0 && $scope.totalBtcRack === 0) {
         $scope.finalBtc = 0;
@@ -440,7 +475,18 @@ angular.module('coinomiaFrontendApp')
 
     }
 
-    $scope.miningCalculate = function(btcValue, btcUsd, ethValue, ethUsd, dashValue, dashUsd, event) {
+    $scope.totalMonero = function () {
+      if($scope.totalMoneroPool === 0 && $scope.totalMoneroContributor === 0 && $scope.totalMoneroRack === 0) {
+        $scope.finalMonero = 0;
+        $scope.finalMoneroUsd = 0;
+      }else{
+        $scope.finalMonero = $scope.totalMoneroPool + $scope.totalMoneroContributor + $scope.totalMoneroRack;
+        $scope.finalMoneroUsd = $scope.moneroPoolTotalUsd + $scope.moneroContributorTotalUsd + $scope.moneroRackTotalUsd;
+      }
+
+    }
+
+    $scope.miningCalculate = function(btcValue, btcUsd, ethValue, ethUsd, dashValue, dashUsd, moneroValue, moneroUsd, event) {
       $scope.estIncome = [];
       var dailyUsd = btcUsd + ethUsd + dashUsd;
       var daily = {duration:'Daily', btc:btcValue, eth:ethValue, dash:dashValue, miningUsd: dailyUsd };

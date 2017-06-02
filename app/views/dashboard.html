@@ -77,9 +77,6 @@
                   <a href="#coin-videos/dash">
                      <div class="box-outer" style="font-size:20px;"><img ng-src="images/dashicon-btn.png" width="70"> &nbsp;&nbsp;Dash  </div>
                   </a>
-                  <a href="#coin-videos/monero">
-                     <div class="box-outer" style="font-size:20px;"><img ng-src="images/dashicon-btn.png" width="70"> &nbsp;&nbsp;Monero  </div>
-                  </a>
                </div>
             </div>
             <div class="col-md-5 col-sm-12 col-lg-6">
@@ -376,6 +373,7 @@
                                  <td><strong>BTC</strong></td>
                                  <td><strong>ETH</strong></td>
                                  <td><strong>DASH</strong></td>
+                                 <td><strong>MONERO</strong></td>
                                  <td><strong>USD <small>(eq.)</small></strong></td>
                               </tr>
                               <tr ng-repeat="income in estIncome">
@@ -383,6 +381,7 @@
                                  <td>{{income.btc | number:5}}</td>
                                  <td>{{income.eth | number:5}}</td>
                                  <td>{{income.dash | number:5}}</td>
+                                 <td>{{income.monero | number:5}}</td>
                                  <td><strong>${{income.miningUsd | number:5}}</strong></td>
                               </tr>
                            </table>
