@@ -25,10 +25,15 @@ angular.module('coinomiaFrontendApp')
     $scope.dashMachineCurrentPage = config.currentPage;
     $scope.dashRackCurrentPage = config.currentPage;
 
+    $scope.moneroPoolCurrentPage = config.currentPage;
+    $scope.moneroMachineCurrentPage = config.currentPage;
+    $scope.moneroRackCurrentPage = config.currentPage;
+
     $scope.productMaxUnit = config.productMaxUnit;
     $scope.btcImagePath = config.btcImagePath;
     $scope.ethImagePath = config.ethImagePath;
     $scope.dashImagePath = config.dashImagePath;
+    $scope.moneroImagePath = config.moneroImagePath;
     $scope.pageLimit = config.pageLimit;
     $scope.oldPackage = config.oldPackage;
 
@@ -47,6 +52,7 @@ angular.module('coinomiaFrontendApp')
       $scope.btcProducts = [];
       $scope.ethProducts = [];
       $scope.dashProducts = [];
+      $scope.moneroProducts = [];
       if(res.status === 200) {
         var k = 0;
         productsData.forEach(function(products) {          
@@ -62,6 +68,10 @@ angular.module('coinomiaFrontendApp')
             products.dashMining = 0;
             products.quantity = 0;
             $scope.dashProducts.push(products);
+          }else if(products.coin === 'MONERO' && $scope.oldPackage[k] !== products.productname){
+            products.moneroMining = 0;
+            products.quantity = 0;
+            $scope.moneroProducts.push(products);
           }
           k++;
           // $scope.total += products.amount;
@@ -145,12 +155,27 @@ angular.module('coinomiaFrontendApp')
       }
     }
 
+    $scope.calculateMoneroAmount = function(key, quantity, miningpower, maxUnit) {
+      if(quantity > maxUnit) {
+        $scope.moneroProducts[key].quantity = maxUnit;
+        $scope.moneroProducts[key].moneroMining = maxUnit*miningpower;
+        angular.element("#quantity-monero-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.moneroProducts[key].moneroMining+'<small>MH/s</small>');
+        return false;
+      }else{
+        $scope.moneroProducts[key].moneroMining = quantity*miningpower;
+        angular.element("#quantity-monero-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.moneroProducts[key].moneroMining+'<small>MH/s</small>');
+      }
+    }
+
     $scope.setEthQuantity = function(key, val) {
       $scope.ethProducts[key].quantity = val;
     }
 
     $scope.setDashQuantity = function(key, val) {
       $scope.dashProducts[key].quantity = val;
+    }
+    $scope.setMoneroQuantity = function(key, val) {
+      $scope.moneroProducts[key].quantity = val;
     }
 
 
@@ -196,6 +221,15 @@ angular.module('coinomiaFrontendApp')
         }
         j++;
       });      
+
+      $scope.moneroProducts.forEach(function(moneroInfo) {
+        if(moneroInfo.quantity !== 0 && moneroInfo.quantity !== null) {
+          var moneroAmount = moneroInfo.amount * moneroInfo.moneroMining/moneroInfo.miningpower;
+          $scope.purchaseTotal += moneroAmount;
+          $scope.orderDetails.push({data:{id:moneroInfo.id, quantity:moneroInfo.quantity}, name:moneroInfo.productname,  price:moneroAmount, path:$scope.moneroImagePath[j]});
+        }
+        l++;
+      });
 
       $scope.orderParams = [];
       
@@ -420,6 +454,58 @@ angular.module('coinomiaFrontendApp')
       })
     }
 
+    $scope.purchaseMoneroPool = function(type, product, currentPage) {
+      coinomiaService.orderHistory(type, product, currentPage)
+      .then(function(res){
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.moneroPoolPower = data.TotalPower;
+          $scope.moneroPoolEstimateIncome = data.estimated_total_income;
+          $scope.moneroPoolCurrentRate = data.current_rate;
+          $scope.moneroPoolRecords = data.records.total;
+          $scope.moneroPoolDetails = data.records.rows;
+          if($scope.moneroPoolRecords === 0) {
+            $scope.nomoneroPoolRecords = true;
+          }
+        }
+      })
+    }
+
+
+    $scope.purchaseMoneroMachine = function(type, product, currentPage) {
+      coinomiaService.orderHistory(type, product, currentPage)
+      .then(function(res){
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.moneroMachinePower = data.TotalPower;
+          $scope.moneroMachineEstimateIncome = data.estimated_total_income;
+          $scope.moneroMachineCurrentRate = data.current_rate;
+          $scope.moneroMachineRecords = data.records.total;
+          $scope.moneroMachineDetails = data.records.rows;
+          if($scope.moneroMachineRecords === 0) {
+            $scope.nomoneroMachineRecords = true;
+          }
+        }
+      })
+    }
+
+    $scope.purchaseMoneroRack = function(type, product, currentPage) {
+      coinomiaService.orderHistory(type, product, currentPage)
+      .then(function(res){
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.moneroRackPower = data.TotalPower;
+          $scope.moneroRackEstimateIncome = data.estimated_total_income;
+          $scope.moneroRackCurrentRate = data.current_rate;
+          $scope.moneroRackRecords = data.records.total;
+          $scope.moneroRackDetails = data.records.rows;
+          if($scope.moneroRackRecords === 0) {
+            $scope.nomoneroRackRecords = true;
+          }
+        }
+      })
+    }
+
     $scope.purchaseEthPool('ETH', 'pool', $scope.ethPoolCurrentPage);
     $scope.purchaseEthMachine('ETH', 'machine', $scope.ethMachineCurrentPage);
     $scope.purchaseEthRack('ETH', 'rack', $scope.ethRackCurrentPage);
@@ -431,4 +517,8 @@ angular.module('coinomiaFrontendApp')
     $scope.purchaseBtcPool('BTC', 'pool', $scope.btcPoolCurrentPage);
     $scope.purchaseBtcMachine('BTC', 'machine', $scope.btcMachineCurrentPage);
     $scope.purchaseBtcRack('BTC', 'rack', $scope.btcRackCurrentPage);
+
+    $scope.purchaseMoneroPool('MONERO', 'pool', $scope.moneroPoolCurrentPage);
+    $scope.purchaseMoneroMachine('MONERO', 'machine', $scope.moneroMachineCurrentPage);
+    $scope.purchaseMoneroRack('MONERO', 'rack', $scope.moneroRackCurrentPage);
   });

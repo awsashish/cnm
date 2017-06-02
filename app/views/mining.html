@@ -303,8 +303,8 @@
                                                 </tr>
                                              </tbody>
                                           </table>
-                                          <div class="pagination-default" ng-if="ethPoolRecords > 0">
-                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchaseBtcPool('ETH', 'pool', btcPoolCurrentPage)"></ul>
+                                          <div class="pagination-default" ng-if="btcPoolRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="btcPoolRecords" ng-model="btcPoolCurrentPage" max-size="5" ng-change="purchaseBtcPool('BTC', 'pool', btcPoolCurrentPage)"></ul>
                                           </div>
                                           <br />
                                           <br />
@@ -363,8 +363,8 @@
                                                 </tr>
                                              </tbody>
                                           </table>
-                                          <div class="pagination-default" ng-if="ethMachineRecords > 0">
-                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchaseBtcMachine('ETH', 'machine', btcMachineCurrentPage)"></ul>
+                                          <div class="pagination-default" ng-if="btcMachineRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="btcMachineRecords" ng-model="btcMachineCurrentPage" max-size="5" ng-change="purchaseBtcMachine('BTC', 'machine', btcMachineCurrentPage)"></ul>
                                           </div>
                                           <br />
                                           <br />
@@ -486,8 +486,8 @@
                                                 </tr>
                                              </tbody>
                                           </table>
-                                          <div class="pagination-default" ng-if="ethPoolRecords > 0">
-                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchasedashPool('ETH', 'pool', dashPoolCurrentPage)"></ul>
+                                          <div class="pagination-default" ng-if="dashPoolRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="dashPoolRecords" ng-model="dashPoolCurrentPage" max-size="5" ng-change="purchasedashPool('DASH', 'pool', dashPoolCurrentPage)"></ul>
                                           </div>
                                           <br />
                                           <br />
@@ -546,8 +546,8 @@
                                                 </tr>
                                              </tbody>
                                           </table>
-                                          <div class="pagination-default" ng-if="ethMachineRecords > 0">
-                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchasedashMachine('ETH', 'machine', dashMachineCurrentPage)"></ul>
+                                          <div class="pagination-default" ng-if="dashMachineRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="dashMachineRecords" ng-model="dashMachineCurrentPage" max-size="5" ng-change="purchasedashMachine('DASH', 'machine', dashMachineCurrentPage)"></ul>
                                           </div>
                                           <br />
                                           <br />
@@ -607,7 +607,7 @@
                                              </tbody>
                                           </table>
                                           <div class="pagination-default" ng-if="dashRackRecords > 0">
-                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="dashRackRecords" ng-model="dashRackCurrentPage" max-size="5" ng-change="purchasedashRack('dash', 'rack', dashRackCurrentPage)"></ul>
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="dashRackRecords" ng-model="dashRackCurrentPage" max-size="5" ng-change="purchasedashRack('DASH', 'rack', dashRackCurrentPage)"></ul>
                                           </div>
                                           <br />
                                           <br />
@@ -634,13 +634,13 @@
                                              <p class="pull-left">
                                              <h5><strong>Estimated Total Income(USD)</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{dashPoolEstimateIncome | currency}}</p>
+                                             <p class="red-text04 pull-left">{{moneroPoolEstimateIncome | currency}}</p>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
                                              <p class="pull-left">
                                              <h5><strong>Current Rate</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{dashPoolCurrentRate | currency}}</p>
+                                             <p class="red-text04 pull-left">{{moneroPoolCurrentRate | currency}}</p>
                                           </div>
                                        </div>
                                        <br />
@@ -657,20 +657,20 @@
                                                 </tr>
                                              </thead>
                                              <tbody>
-                                                <tr ng-if="noDashPoolRecords">
+                                                <tr ng-if="nomoneroPoolRecords">
                                                    <td>No Records Found</td>
                                                 </tr>
-                                                <tr ng-repeat="dashPool in dashPoolDetails">
-                                                   <td>{{dashPool.Date | date }}</td>
-                                                   <td>{{dashPool.ProductName}}</td>
-                                                   <td>{{dashPool.quantity}}</td>
-                                                   <td>{{dashPool.miningpower}} MH/s</td>
-                                                   <td>{{dashPool.totaldays/30 | number:0}} Months</td>
+                                                <tr ng-repeat="moneroPool in moneroPoolDetails">
+                                                   <td>{{moneroPool.Date | date }}</td>
+                                                   <td>{{moneroPool.ProductName}}</td>
+                                                   <td>{{moneroPool.quantity}}</td>
+                                                   <td>{{moneroPool.miningpower}} MH/s</td>
+                                                   <td>{{moneroPool.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
                                           </table>
-                                          <div class="pagination-default" ng-if="ethPoolRecords > 0">
-                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethPoolRecords" ng-model="ethPoolCurrentPage" max-size="5" ng-change="purchasedashPool('ETH', 'pool', dashPoolCurrentPage)"></ul>
+                                          <div class="pagination-default" ng-if="moneroPoolRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="moneroPoolRecords" ng-model="moneroPoolCurrentPage" max-size="5" ng-change="purchasemoneroPool('MONERO', 'pool', moneroPoolCurrentPage)"></ul>
                                           </div>
                                           <br />
                                           <br />
@@ -688,19 +688,19 @@
                                              <p class="pull-left">
                                              <h5><strong>Total Power</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{dashMachinePower}}</p>
+                                             <p class="red-text04 pull-left">{{moneroMachinePower}}</p>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
                                              <p class="pull-left">
                                              <h5><strong>Estimated Total Income(USD)</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{dashMachineEstimateIncome | currency}}</p>
+                                             <p class="red-text04 pull-left">{{moneroMachineEstimateIncome | currency}}</p>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
                                              <p class="pull-left">
                                              <h5><strong>Current Rate</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{dashMachineCurrentRate | currency}}</p>
+                                             <p class="red-text04 pull-left">{{moneroMachineCurrentRate | currency}}</p>
                                           </div>
                                        </div>
                                        <br />
@@ -717,20 +717,20 @@
                                                 </tr>
                                              </thead>
                                              <tbody>
-                                                <tr ng-if="noDashMachineRecords">
+                                                <tr ng-if="noMoneroMachineRecords">
                                                    <td>No Records Found</td>
                                                 </tr>
-                                                <tr ng-repeat="dashMachine in dashMachineDetails">
-                                                   <td>{{dashMachine.Date | date }}</td>
-                                                   <td>{{dashMachine.ProductName}}</td>
-                                                   <td>{{dashMachine.quantity}}</td>
-                                                   <td>{{dashMachine.miningpower}} MH/s</td>
-                                                   <td>{{dashMachine.totaldays/30 | number:0}} Months</td>
+                                                <tr ng-repeat="moneroMachine in moneroMachineDetails">
+                                                   <td>{{moneroMachine.Date | date }}</td>
+                                                   <td>{{moneroMachine.ProductName}}</td>
+                                                   <td>{{moneroMachine.quantity}}</td>
+                                                   <td>{{moneroMachine.miningpower}} MH/s</td>
+                                                   <td>{{moneroMachine.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
                                           </table>
-                                          <div class="pagination-default" ng-if="ethMachineRecords > 0">
-                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ethMachineRecords" ng-model="ethMachineCurrentPage" max-size="5" ng-change="purchasedashMachine('ETH', 'machine', dashMachineCurrentPage)"></ul>
+                                          <div class="pagination-default" ng-if="moneroMachineRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="moneroMachineRecords" ng-model="moneroMachineCurrentPage" max-size="5" ng-change="purchasemoneroMachine('MONERO', 'machine', moneroMachineCurrentPage)"></ul>
                                           </div>
                                           <br />
                                           <br />
@@ -748,19 +748,19 @@
                                              <p class="pull-left">
                                              <h5><strong>Total Power</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{dashRackPower}}</p>
+                                             <p class="red-text04 pull-left">{{moneroRackPower}}</p>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
                                              <p class="pull-left">
                                              <h5><strong>Estimated Total Income(USD)</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{dashRackEstimateIncome | currency}}</p>
+                                             <p class="red-text04 pull-left">{{moneroRackEstimateIncome | currency}}</p>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
                                              <p class="pull-left">
                                              <h5><strong>Current Rate</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{dashRackCurrentRate | currency}}</p>
+                                             <p class="red-text04 pull-left">{{moneroRackCurrentRate | currency}}</p>
                                           </div>
                                        </div>
                                        <br />
@@ -777,20 +777,20 @@
                                                 </tr>
                                              </thead>
                                              <tbody>
-                                                <tr ng-if="noDashRackRecords">
+                                                <tr ng-if="noMoneroRackRecords">
                                                    <td>No Records Found</td>
                                                 </tr>
-                                                <tr ng-repeat="dashRack in dashRackDetails">
-                                                   <td>{{dashRack.Date | date }}</td>
-                                                   <td>{{dashRack.ProductName}}</td>
-                                                   <td>{{dashRack.quantity}}</td>
-                                                   <td>{{dashRack.miningpower}} MH/s</td>
-                                                   <td>{{dashRack.totaldays/30 | number:0}} Months</td>
+                                                <tr ng-repeat="moneroRack in moneroRackDetails">
+                                                   <td>{{moneroRack.Date | date }}</td>
+                                                   <td>{{moneroRack.ProductName}}</td>
+                                                   <td>{{moneroRack.quantity}}</td>
+                                                   <td>{{moneroRack.miningpower}} MH/s</td>
+                                                   <td>{{moneroRack.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
                                           </table>
-                                          <div class="pagination-default" ng-if="dashRackRecords > 0">
-                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="dashRackRecords" ng-model="dashRackCurrentPage" max-size="5" ng-change="purchasedashRack('dash', 'rack', dashRackCurrentPage)"></ul>
+                                          <div class="pagination-default" ng-if="moneroRackRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="moneroRackRecords" ng-model="moneroRackCurrentPage" max-size="5" ng-change="purchasemoneroRack('MONERO', 'rack', moneroRackCurrentPage)"></ul>
                                           </div>
                                           <br />
                                           <br />
@@ -1030,6 +1030,32 @@
                                        </div>
                                     </form>
                                  </div>
+
+                                 <div class="price-box" ng-repeat="(key,monero) in moneroProducts">
+                                    <form class="form-horizontal form-pricing" role="form">
+                                       <div class="price-slider">
+                                          <h4 class="great text-capitalize">{{monero.productname}}</h4>
+                                          <img ng-src="{{s3Url}}{{moneroImagePath[$index]}}" width="100" class="pull-right" />
+                                          <div class="col-sm-12">
+                                             <div ui-slider class="uiSlider" model="monero.moneroMining" product="monero" min="{{monero.moneroMining}}" max="{{monero.maxunit * monero.miningpower}}" step="{{monero.miningpower}}"></div>
+                                          </div>
+                                       </div>
+                                       <div class="price-form" id="quantity-monero-{{key}}">
+                                          <div class="form-group">
+                                             <div class="col-sm-12">
+                                                <input type="hidden" id="amount3" class="form-control">
+                                                <p class="price lead" id="amount-label3">
+                                                   <input type="number" ng-model="monero.quantity" min="0" ng-change="calculateMoneroAmount(key, monero.quantity, monero.miningpower, monero.maxunit)" style="width: 80px;"/>
+                                                   <!--{{setMoneroQuantity(key, (monero.moneroMining/monero.miningpower))}}-->
+                                                </p>
+                                                <!--<p class="price lead" id="amount-label3">{{setmoneroQuantity(key, (monero.moneroMining/monero.miningpower))}}
+                                                   {{monero.quantity | number:0}}</p>-->
+                                                Number Of Contracts<strong class="price pull-right lead">Amount : {{monero.amount * monero.moneroMining/monero.miningpower | currency}}</strong>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </form>
+                                 </div>
                               </div>
                               <div class="col-md-4 col-sm-12">
                                  <div class="col-md-12 col-sm-12">
@@ -1062,6 +1088,15 @@
                                              <h3 class="mb36">{{eth.amount * eth.ethMining/eth.miningpower | number:2}} USD</h3>
                                              <h3 class="mb36">{{eth.ethMining}} MH/s</h3>
                                              <input type="hidden" id="eth-{{$index}}" value="{{eth.amount * eth.ethMining/eth.miningpower}}" />
+                                             <br />
+                                          </div>
+                                          <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="monero in moneroProducts">
+                                             <p>
+                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}monero.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{monero.productname}}</h2>
+                                             </p>
+                                             <h3 class="mb36">{{monero.amount * monero.moneroMining/monero.miningpower | number:2}} USD</h3>
+                                             <h3 class="mb36">{{monero.moneroMining}} MH/s</h3>
+                                             <input type="hidden" id="monero-{{$index}}" value="{{monero.amount * monero.moneroMining/monero.miningpower}}" />
                                              <br />
                                           </div>
                                           <div class="clearfix"></div>
@@ -1138,6 +1173,24 @@
                         <div class="form-group">
                            <label><strong>USD Doller want to Withdraw</strong></label>
                            <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal fade" id="eth-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}monero-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Monero Wallet</strong></h4>
+                  </div>
+                  <div class="modal-body">
+                     <form class="form-inline">
+                        <div class="form-group">
+                           <label><strong>No Of Monero you want to Withdraw</strong></label>
+                           <input type="text" name="monero-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
                         </div>
                      </form>
                   </div>
