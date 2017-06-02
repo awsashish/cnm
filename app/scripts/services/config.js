@@ -89,7 +89,8 @@ angular.module('coinomiaFrontendApp')
     'wallet':{
       'BTC': 'Bitcoin',
       'ETH': 'Ether',
-      'DASH': 'Dash'
+      'DASH': 'Dash',
+      'MONERO': 'Monero'
     },
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
     'signUpPath':'http://login.coinomia.com/#/signup',
@@ -132,6 +133,11 @@ angular.module('coinomiaFrontendApp')
       'dashpool.png',
       'dashmahine.png',
       'dashrack.png'
+    ],
+    'moneroImagePath':[
+      'monerocloud.png',
+      'moneromachine.png',
+      'monerorack.png'
     ],
     'productImage': {
       'Bitcoin Pool Contract': 'contract-bitcoin.png',

@@ -193,7 +193,7 @@ angular.module('coinomiaFrontendApp')
       }
 
       $scope.orderDetails = [];
-      var i = 0, j=0, k=0;
+      var i = 0, j=0, k=0, l=0;
       
       $scope.dashProducts.forEach(function(dashInfo) {
         if(dashInfo.quantity !== 0 && dashInfo.quantity !== null) {
