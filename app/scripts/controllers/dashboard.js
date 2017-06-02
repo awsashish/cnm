@@ -488,12 +488,12 @@ angular.module('coinomiaFrontendApp')
 
     $scope.miningCalculate = function(btcValue, btcUsd, ethValue, ethUsd, dashValue, dashUsd, moneroValue, moneroUsd, event) {
       $scope.estIncome = [];
-      var dailyUsd = btcUsd + ethUsd + dashUsd;
-      var daily = {duration:'Daily', btc:btcValue, eth:ethValue, dash:dashValue, miningUsd: dailyUsd };
-      var weekly = {duration:'Weekly', btc:btcValue*config.DAYS_IN_A_WEEK, eth:ethValue*config.DAYS_IN_A_WEEK, dash:dashValue*config.DAYS_IN_A_WEEK, miningUsd: dailyUsd*config.DAYS_IN_A_WEEK };
-      var monthly = {duration:'Monthly', btc:btcValue*config.DAYS_IN_A_MONTH, eth:ethValue*config.DAYS_IN_A_MONTH, dash:dashValue*config.DAYS_IN_A_MONTH, miningUsd: dailyUsd*config.DAYS_IN_A_MONTH };
-      var annually = {duration:'Annually', btc:btcValue*config.DAYS_IN_A_YEAR, eth:ethValue*config.DAYS_IN_A_YEAR, dash:dashValue*config.DAYS_IN_A_YEAR, miningUsd: dailyUsd*config.DAYS_IN_A_YEAR };
-      var monthly_15 = {duration:'15 Monthly', btc:btcValue*config.DAYS_IN_A_15_MONTHLY, eth:ethValue*config.DAYS_IN_A_15_MONTHLY, dash:dashValue*config.DAYS_IN_A_15_MONTHLY, miningUsd: dailyUsd*config.DAYS_IN_A_15_MONTHLY };
+      var dailyUsd = btcUsd + ethUsd + dashUsd + moneroUsd;
+      var daily = {duration:'Daily', btc:btcValue, eth:ethValue, dash:dashValue, monero:moneroValue, miningUsd: dailyUsd };
+      var weekly = {duration:'Weekly', btc:btcValue*config.DAYS_IN_A_WEEK, eth:ethValue*config.DAYS_IN_A_WEEK, dash:dashValue*config.DAYS_IN_A_WEEK, monero:moneroValue*config.DAYS_IN_A_WEEK, miningUsd: dailyUsd*config.DAYS_IN_A_WEEK };
+      var monthly = {duration:'Monthly', btc:btcValue*config.DAYS_IN_A_MONTH, eth:ethValue*config.DAYS_IN_A_MONTH, dash:dashValue*config.DAYS_IN_A_MONTH, monero:moneroValue*config.DAYS_IN_A_MONTH, miningUsd: dailyUsd*config.DAYS_IN_A_MONTH };
+      var annually = {duration:'Annually', btc:btcValue*config.DAYS_IN_A_YEAR, eth:ethValue*config.DAYS_IN_A_YEAR, dash:dashValue*config.DAYS_IN_A_YEAR, monero:moneroValue*config.DAYS_IN_A_YEAR,  miningUsd: dailyUsd*config.DAYS_IN_A_YEAR };
+      var monthly_15 = {duration:'15 Monthly', btc:btcValue*config.DAYS_IN_A_15_MONTHLY, eth:ethValue*config.DAYS_IN_A_15_MONTHLY, dash:dashValue*config.DAYS_IN_A_15_MONTHLY, monero:moneroValue*config.DAYS_IN_A_15_MONTHLY, miningUsd: dailyUsd*config.DAYS_IN_A_15_MONTHLY };
       $scope.estIncome.push(daily);
       $scope.estIncome.push(weekly);
       $scope.estIncome.push(monthly);
@@ -505,60 +505,95 @@ angular.module('coinomiaFrontendApp')
       $scope.btcPoolContract = config.poolSelectedValue;
       $scope.ethPoolContract = 0;
       $scope.dashPoolContract = 0;
+      $scope.moneroPoolContract = 0;
       $scope.ethPoolMining($scope.ethPoolContract, pool, mining);
       $scope.btcPoolMining($scope.btcPoolContract, pool, mining);
       $scope.dashPoolMining($scope.dashPoolContract, pool, mining);
+      $scope.moneroPoolMining($scope.moneroPoolContract, pool, mining);
     }
 
     $scope.dashPoolClick = function(value, pool, mining) {
       $scope.dashPoolContract = config.poolSelectedValue;
       $scope.ethPoolContract = 0;
       $scope.btcPoolContract = 0;
+      $scope.moneroPoolContract = 0;
       $scope.ethPoolMining($scope.ethPoolContract, pool, mining);
       $scope.btcPoolMining($scope.btcPoolContract, pool, mining);
       $scope.dashPoolMining($scope.dashPoolContract, pool, mining);
+      $scope.moneroPoolMining($scope.moneroPoolContract, pool, mining);
     }
 
     $scope.ethPoolClick = function(value, pool, mining) {
       $scope.ethPoolContract = config.poolSelectedValue;
       $scope.btcPoolContract = 0;
       $scope.dashPoolContract = 0;
+      $scope.moneroPoolContract = 0;
       $scope.ethPoolMining($scope.ethPoolContract, pool, mining);
       $scope.btcPoolMining($scope.btcPoolContract, pool, mining);
       $scope.dashPoolMining($scope.dashPoolContract, pool, mining);
+      $scope.moneroPoolMining($scope.moneroPoolContract, pool, mining);
+    }
+
+    $scope.moneroPoolClick = function(value, pool, mining) {
+      $scope.moneroPoolContract = config.poolSelectedValue;
+      $scope.btcPoolContract = 0;
+      $scope.dashPoolContract = 0;
+      $scope.ethPoolContract = 0;
+      $scope.ethPoolMining($scope.ethPoolContract, pool, mining);
+      $scope.btcPoolMining($scope.btcPoolContract, pool, mining);
+      $scope.dashPoolMining($scope.dashPoolContract, pool, mining);
+      $scope.moneroPoolMining($scope.moneroPoolContract, pool, mining);
     }
 
     $scope.btcMachineClick = function(value, contributor, mining) {
       $scope.btcContributorContract = config.machineSelectedValue
       $scope.ethContributorContract = 0;
       $scope.dashContributorContract = 0;
+      $scope.moneroContributorContract = 0;
       $scope.ethContributorMining($scope.ethContributorContract, contributor, mining);
       $scope.btcContributorMining($scope.btcContributorContract, contributor, mining);
       $scope.dashContributorMining($scope.dashContributorContract, contributor, mining);
+      $scope.moneroContributorMining($scope.moneroContributorContract, contributor, mining);
     }
 
     $scope.dashMachineClick = function(value, contributor, mining) {
       $scope.dashContributorContract = config.machineSelectedValue
       $scope.ethContributorContract = 0;
       $scope.btcContributorContract = 0;
+      $scope.moneroContributorContract = 0;
       $scope.ethContributorMining($scope.ethContributorContract, contributor, mining);
       $scope.btcContributorMining($scope.btcContributorContract, contributor, mining);
       $scope.dashContributorMining($scope.dashContributorContract, contributor, mining);
+      $scope.moneroContributorMining($scope.moneroContributorContract, contributor, mining);
     }
 
     $scope.ethMachineClick = function(value, contributor, mining) {
       $scope.ethContributorContract = config.machineSelectedValue;
       $scope.btcContributorContract = 0;
       $scope.dashContributorContract = 0;
+      $scope.moneroContributorContract = 0;
       $scope.ethContributorMining($scope.ethContributorContract, contributor, mining);
       $scope.btcContributorMining($scope.btcContributorContract, contributor, mining);
       $scope.dashContributorMining($scope.dashContributorContract, contributor, mining);
+      $scope.moneroContributorMining($scope.moneroContributorContract, contributor, mining);
+    }
+
+    $scope.moneroMachineClick = function(value, contributor, mining) {
+      $scope.moneroContributorContract = config.machineSelectedValue;
+      $scope.btcContributorContract = 0;
+      $scope.dashContributorContract = 0;
+      $scope.ethContributorContract = 0;
+      $scope.ethContributorMining($scope.ethContributorContract, contributor, mining);
+      $scope.btcContributorMining($scope.btcContributorContract, contributor, mining);
+      $scope.dashContributorMining($scope.dashContributorContract, contributor, mining);
+      $scope.moneroContributorMining($scope.moneroContributorContract, contributor, mining);
     }
 
     $scope.btcRackClick = function(value, rack, mining) {
       $scope.btcRackContract = config.rackSelectedValue;
       $scope.ethRackContract = 0;
       $scope.dashRackContract =0;
+      $scope.moneroRackContract = 0;
       $scope.ethRackMining($scope.ethRackContract, rack, mining);
       $scope.btcRackMining($scope.btcRackContract, rack, mining);
       $scope.dashRackMining($scope.dashRackContract, rack, mining);
@@ -568,6 +603,7 @@ angular.module('coinomiaFrontendApp')
       $scope.dashRackContract = config.rackSelectedValue;
       $scope.ethRackContract = 0;
       $scope.btcRackContract = 0;
+      $scope.moneroRackContract = 0;
       $scope.ethRackMining($scope.ethRackContract, rack, mining);
       $scope.btcRackMining($scope.btcRackContract, rack, mining);
       $scope.dashRackMining($scope.dashRackContract, rack, mining);
@@ -576,10 +612,22 @@ angular.module('coinomiaFrontendApp')
     $scope.ethRackClick = function(value, rack, mining) {
       $scope.ethRackContract = config.rackSelectedValue;
       $scope.btcRackContract = 0;
-      $scope.dashRackContract =0;
+      $scope.dashRackContract = 0;
+      $scope.moneroRackContract = 0;
       $scope.ethRackMining($scope.ethRackContract, rack, mining);
       $scope.btcRackMining($scope.btcRackContract, rack, mining);
       $scope.dashRackMining($scope.dashRackContract, rack, mining);
+    }
+
+    $scope.moneroRackClick = function(value, rack, mining) {
+      $scope.moneroRackContract = config.rackSelectedValue;
+      $scope.btcRackContract = 0;
+      $scope.dashRackContract = 0;
+      $scope.ethRackContract = 0;
+      $scope.ethRackMining($scope.ethRackContract, rack, mining);
+      $scope.btcRackMining($scope.btcRackContract, rack, mining);
+      $scope.dashRackMining($scope.dashRackContract, rack, mining);
+      $scope.moneroRackMining($scope.moneroRackContract, rack, mining);
     }
 
     // Open Reward Structure Modal
