@@ -258,6 +258,7 @@ angular.module('coinomiaFrontendApp')
               $scope.btcPoolMining($scope.btcPoolContract, $scope.poolDetails, $scope.currentMining);
               $scope.ethPoolMining($scope.ethPoolContract, $scope.poolDetails, $scope.currentMining);
               $scope.dashPoolMining($scope.dashPoolContract, $scope.poolDetails, $scope.currentMining);
+              $scope.moneroPoolMining($scope.moneroPoolContract, $scope.poolDetails, $scope.currentMining);
             }else if(packages.PackageName === 'Contributor') {
               $scope.contributorDetails = packages;
               $scope.contributorCalc($scope.treeDetails, $scope.contributorContract, $scope.contributorDetails);
@@ -265,6 +266,7 @@ angular.module('coinomiaFrontendApp')
               $scope.btcContributorMining($scope.btcContributorContract, $scope.contributorDetails, $scope.currentMining);
               $scope.ethContributorMining($scope.ethContributorContract, $scope.contributorDetails, $scope.currentMining);
               $scope.dashContributorMining($scope.dashContributorContract, $scope.contributorDetails, $scope.currentMining);
+              $scope.moneroContributorMining($scope.moneroContributorContract, $scope.contributorDetails, $scope.currentMining);
             }else {
               $scope.rackDetails = packages;
               $scope.rackCalc($scope.treeDetails, $scope.rackContract, $scope.rackDetails);
@@ -272,6 +274,7 @@ angular.module('coinomiaFrontendApp')
               $scope.btcRackMining($scope.btcRackContract, $scope.rackDetails, $scope.currentMining);
               $scope.ethRackMining($scope.ethRackContract, $scope.rackDetails, $scope.currentMining);
               $scope.dashRackMining($scope.dashRackContract, $scope.rackDetails, $scope.currentMining);
+              $scope.moneroRackMining($scope.moneroRackContract, $scope.rackDetails, $scope.currentMining);
             }
             $scope.packagesDetails.push(packages);
           });
