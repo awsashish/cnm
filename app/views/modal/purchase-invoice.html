@@ -14,7 +14,7 @@
       Please Find the Details About Your New Purchase Below.<br>
       <hr>
       <strong>Mode of Purchase</strong>: <img ng-src="{{s3Url}}{{payment.mode=='BTC'?'bitcoin-logo':'coinomia-wallet'}}.png" width="100"><br><br>
-      <h4 class="add-funds-popup">You have to Pay <strong>{{purchase.value_in_btc}} BTC </strong> </h4><br>
+      <h4 class="add-funds-popup">You have to Pay <strong>{{payment.mode == 'BTC' ? purchase.value_in_btc : purchase.value_in_usd}} {{payment.mode == 'BTC' ? 'BTC' : 'USD'}}</strong> </h4><br>
       <div class="col-xs-12 col-sm-12 col-md-12">
         <strong>Date :</strong> {{transactionDate}}<br><br>
       </div>
