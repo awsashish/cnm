@@ -212,3 +212,10 @@ body {
    100% { transform: translateY(-97px) }
 
 }
+
+.contentpanel{
+  min-height:1320px !important;
+}
+.leftpanel{
+  min-height:1400px !important;
+}
