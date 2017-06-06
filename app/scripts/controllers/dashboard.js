@@ -100,10 +100,27 @@ angular.module('coinomiaFrontendApp')
       };
       var purchasedData = res.data;
       $scope.purchasedPower = [];
+      var btcCoin = {};
+      var dashCoin = {};
+      var ethCoin = {};
       if(res.status === 200) {
         purchasedData.forEach(function(purchased) {
-          $scope.purchasedPower.push(purchased);
+          if(purchased.coin == 'MONERO'){
+            $scope.purchasedPower.push(purchased);
+          }
+          else if(purchased.coin == 'DASH'){
+            dashCoin = purchased;
+          }
+          else if(purchased.coin == 'BTC'){
+            btcCoin = purchased;
+          }
+          else{
+            ethCoin = purchased;
+          }
         });
+        $scope.purchasedPower.push(dashCoin);
+        $scope.purchasedPower.push(btcCoin);
+        $scope.purchasedPower.push(ethCoin);
       }
     });
 
@@ -165,17 +182,22 @@ angular.module('coinomiaFrontendApp')
       var totalIncomeData = res.data;
       $scope.ethIncome = {};
       $scope.btcIncome = {};
+      $scope.dashIncome = {};
       $scope.totalIncome = [];
       if(res.status === 200) {
         totalIncomeData.forEach(function(income) {
-          if(income.coin != 'USD' && income.coin != 'ETH' && income.coin != 'BTC') {
+          if(income.coin == 'MONERO') {
             $scope.totalIncome.push(income);
-          }else if(income.coin != 'USD' && income.coin != 'ETH'){
+          }else if(income.coin == 'DASH'){
+            $scope.dashIncome = income;
+          }else if(income.coin == 'BTC'){
             $scope.btcIncome = income;
-          }else{
+          }
+          else if(income.coin == 'ETH'){
             $scope.ethIncome = income;
           }
         });
+        $scope.totalIncome.push($scope.dashIncome);
         $scope.totalIncome.push($scope.btcIncome);
         $scope.totalIncome.push($scope.ethIncome);
       }
