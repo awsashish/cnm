@@ -16,7 +16,7 @@ angular.module('coinomiaFrontendApp')
     if($location.host() === 'login.coinomia.com') {
       this.apiHost = 'https://api.coinomia.com/';
     }else{
-      this.apiHost = 'https://api.coinomia.com/';
+      this.apiHost = 'http://coinomiadevapi.azurewebsites.net/';
     }
 
     this.devHost = 'http://coinomiadevapi.azurewebsites.net/';
