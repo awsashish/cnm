@@ -17,6 +17,10 @@ angular.module('coinomiaFrontendApp')
     $scope.hasDirectReferral = false;
     $scope.hasBinaryReferral = false;
 
+    // Rewards Section 
+    $scope.allRewards = [];
+    $scope.weekRewards = [];
+
     $scope.packagesDetails = [];
     $scope.treeDetails = '';
     $scope.poolDetails = '';
