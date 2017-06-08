@@ -14,12 +14,14 @@ angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', func
 		});
 	};
 
+	// Remove Item from Cart
 	$scope.removeFromCart = function (){
 		$scope.cartItem = {};
 		$scope.showTable = false;
 		$scope.totalPrice = $scope.cartItem.Price;
 	};
 
+	// Purchase Selected Package
 	$scope.placeOrder = function (){
 		var orderList = [];
 		var data = {
@@ -33,51 +35,6 @@ angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', func
 				$scope.invoiceInfo = result.data;
 			}
 		});
-		/* coinomiaService.packageIdAPI */
-		// var tokenInfo = {
-		// 	"command": getLGToken,
-		// 	"authkey": 'A4CCEA76'
-		// };
-		// coinomiaService.getlgToken(tokenInfo)
-		// .then(function(result) {
-		// 	if(result.status === 200) {
-		// 		$scope.token = result.data;
-		// 	}
-		// });
-
-		// var bigUData = {
-		// 	"command": 'addUser',
-		// 	"token": $scope.token,
-		// 	"login": $rootScope.userInfo.username,
-		// 	"password": 'coinomia1',
-		// 	"FName": $rootScope.userInfo.name,
-		// 	"LName": '',
-		// 	"Email": $rootScope.userInfo.Email,
-		// 	"isActive": 'True',
-		// 	"userAccessLevel": 7,
-		// 	"gdlrid": '85625'
-		// };
-		// coinomiaService.addLsvtUser(bigUData)
-		// .then(function(result) {
-		// 	if(result.status === 200) {
-		// 		$scope.userId = result.data;
-		// 	}
-		// });
-		// var academyUser = {
-		// 	"GUserID": $scope.userId,
-		// 	"GUserLogin": $rootScope.userInfo.username,
-		// 	"GUserAccessLevel": 7,
-		// 	"GUserAccessLevelName": '',
-		// 	"GUserEmail": $rootScope.userInfo.Email,
-		// 	"LGID": $rootScope.userInfo.username,
-		// 	"ContentRID": 'packageId'
-		// };
-		// coinomiaService.addAcademyUser(academyUser)
-		// .then(function(result) {
-		// 	if(result.status === 200) {
-		// 		$scope.userData = result.data;
-		// 	}
-		// });
 	};
 	// Close Modal 
 	$scope.closeModal = function() {
