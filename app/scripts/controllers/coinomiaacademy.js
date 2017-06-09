@@ -1,7 +1,19 @@
 'use strict';
 
 angular.module('coinomiaFrontendApp')
-  .controller('CoinomiaAcademyCtrl', function ($scope, $state, coinomiaService) {
+  .controller('CoinomiaAcademyCtrl', function ($scope, $state, coinomiaService, $location) {
+
+  	init();
+  	function init() {
+       coinomiaService.getUserInfo().then(function(res) {
+			var data = res.data;
+			if(res.status === 200){
+				if(data.biguurl){
+					$scope.bigUUrl = data.biguurl;
+				}
+			}
+		});
+    }
 
 	$scope.getPackagePurchaseHistory = function () {
 		coinomiaService.packagePurchaseHistory()
@@ -32,6 +44,10 @@ angular.module('coinomiaFrontendApp')
 			})
 		})
 	};
+
+	$scope.goToLightSpeed = function() {
+		window.location = $scope.bigUUrl;
+	}
 
 	$scope.getPackagePurchaseHistory();
   });
