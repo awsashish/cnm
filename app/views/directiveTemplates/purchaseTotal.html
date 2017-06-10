@@ -15,7 +15,8 @@
     <div class="clearfix mt20" ng-if="purchasedAttr">
       <div class="mb15" ng-repeat="purchased in purchasedAttr">
         <h4 class="nomargin "> <strong>{{purchased.coin}}</strong></h4>
-        <h4 class="arrow_box-top-lft-amout mar10">{{purchased.miningpower}} {{purchased.coin=='BTC'?'TH/s':'MH/s'}}</h4>
+        <h4 ng-if="purchased.coin != 'MONERO'" class="arrow_box-top-lft-amout mar10">{{purchased.miningpower}} {{purchased.coin=='BTC'?'TH/s':'MH/s'}}</h4>
+        <h4 ng-if="purchased.coin == 'MONERO'" class="arrow_box-top-lft-amout mar10">{{purchased.miningpower}} H/s</h4>
       </div>
       <br />
     </div>

@@ -159,11 +159,11 @@ angular.module('coinomiaFrontendApp')
       if(quantity > maxUnit) {
         $scope.moneroProducts[key].quantity = maxUnit;
         $scope.moneroProducts[key].moneroMining = maxUnit*miningpower;
-        angular.element("#quantity-monero-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.moneroProducts[key].moneroMining+'<small>MH/s</small>');
+        angular.element("#quantity-monero-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.moneroProducts[key].moneroMining+'<small>H/s</small>');
         return false;
       }else{
         $scope.moneroProducts[key].moneroMining = quantity*miningpower;
-        angular.element("#quantity-monero-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.moneroProducts[key].moneroMining+'<small>MH/s</small>');
+        angular.element("#quantity-monero-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.moneroProducts[key].moneroMining+'<small>H/s</small>');
       }
     }
 

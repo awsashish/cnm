@@ -665,7 +665,7 @@
                                                    <td>{{moneroPool.Date | date }}</td>
                                                    <td>{{moneroPool.ProductName}}</td>
                                                    <td>{{moneroPool.quantity}}</td>
-                                                   <td>{{moneroPool.miningpower}} MH/s</td>
+                                                   <td>{{moneroPool.miningpower}} H/s</td>
                                                    <td>{{moneroPool.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
@@ -725,7 +725,7 @@
                                                    <td>{{moneroMachine.Date | date }}</td>
                                                    <td>{{moneroMachine.ProductName}}</td>
                                                    <td>{{moneroMachine.quantity}}</td>
-                                                   <td>{{moneroMachine.miningpower}} MH/s</td>
+                                                   <td>{{moneroMachine.miningpower}} H/s</td>
                                                    <td>{{moneroMachine.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
@@ -785,7 +785,7 @@
                                                    <td>{{moneroRack.Date | date }}</td>
                                                    <td>{{moneroRack.ProductName}}</td>
                                                    <td>{{moneroRack.quantity}}</td>
-                                                   <td>{{moneroRack.miningpower}} MH/s</td>
+                                                   <td>{{moneroRack.miningpower}} H/s</td>
                                                    <td>{{moneroRack.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
@@ -1068,7 +1068,7 @@
                                              <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}{{moneroImagePath[$index]}}" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{monero.productname}}</h2>
                                              </p>
                                              <h3 class="mb36">{{monero.amount * monero.moneroMining/monero.miningpower | number:2}} USD</h3>
-                                             <h3 class="mb36">{{monero.moneroMining}} MH/s</h3>
+                                             <h3 class="mb36">{{monero.moneroMining}} H/s</h3>
                                              <input type="hidden" id="monero-{{$index}}" value="{{monero.amount * monero.moneroMining/monero.miningpower}}" />
                                              <br />
                                           </div>
