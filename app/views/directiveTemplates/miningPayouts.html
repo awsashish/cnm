@@ -86,7 +86,7 @@
                   <div class="col-sm-12 col-md-12">
                     <select class="sm-txtbox1" ng-model="moneroPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="moneroPoolCalc({desContract:moneroPoolContract, contractValue:poolDetails, mining:currentMining})">
                     </select>
-                    <br><small>{{moneroPoolContract*moneroPoolValue}} MH/s</small>
+                    <br><small>{{moneroPoolContract*moneroPoolValue}} H/s</small>
                   </div>
                 </div>
               </div>
@@ -200,7 +200,7 @@
                   <div class="col-sm-12 col-md-12">
                     <select class="sm-txtbox1" ng-model="moneroContributorContract" ng-options="option.value as option.name for option in machineOptions" ng-change="moneroContributorCalc({desContract:moneroContributorContract, contractValue:contributorDetails, mining:currentMining})">
                     </select>
-                    <br><small>{{moneroContributorContract*moneroMachineValue}} MH/s</small>
+                    <br><small>{{moneroContributorContract*moneroMachineValue}} H/s</small>
                   </div>
                 </div>
               </div>
@@ -314,7 +314,7 @@
                   <div class="col-sm-12 col-md-12">
                     <select class="sm-txtbox1" ng-model="moneroRackContract" ng-options="option.value as option.name for option in rackOptions" ng-change="moneroRackCalc({desContract:moneroRackContract, contractValue:rackDetails, mining:currentMining})">
                     </select>
-                    <br><small>{{moneroRackContract*moneroRackValue}} MH/s</small>
+                    <br><small>{{moneroRackContract*moneroRackValue}} H/s</small>
                   </div>
                 </div>
               </div>
