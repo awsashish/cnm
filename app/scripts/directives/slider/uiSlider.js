@@ -58,6 +58,8 @@ angular.module('coinomiaFrontendApp')
       link: function(scope, elem, attrs) {
         if('undefined' != typeof scope.btc && scope.btc.coin.toLowerCase() === 'btc'){
           var sliderLabel  = '<label>SLIDER_VALUE<small>TH/s</small></label><div class="ui-slider-label-inner"></div>';
+        }else if('undefined' != typeof scope.monero && scope.monero.coin.toLowerCase() === 'monero'){
+          var sliderLabel  = '<label>SLIDER_VALUE<small>H/s</small></label><div class="ui-slider-label-inner"></div>';
         }else{
           var sliderLabel  = '<label>SLIDER_VALUE<small>MH/s</small></label><div class="ui-slider-label-inner"></div>';
         }
