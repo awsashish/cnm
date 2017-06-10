@@ -34,8 +34,13 @@
               </a>
             </li>
             <li role="presentation" class="" >
-              <a href=".dash" aria-controls="eth" role="tab" data-toggle="tab" ng-click="dashPoolClick({desContract:dashPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important; text-align: left">
+              <a href=".dash" aria-controls="eth" role="tab" data-toggle="tab" ng-click="dashPoolClick({desContract:dashPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
               <img class="img-circle payouts-image" ng-src="{{s3Url}}dashpool.png" title="Dash Pool Contract(ETH)"   />
+              </a>
+            </li>
+            <li role="presentation" class="" >
+              <a href=".monero" aria-controls="eth" role="tab" data-toggle="tab" ng-click="moneroPoolClick({desContract:moneroPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}monerocloud.png" title="Pool Contract(MONERO)"   />
               </a>
             </li>
           </ul>
@@ -75,6 +80,17 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade monero" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <select class="sm-txtbox1" ng-model="moneroPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="moneroPoolCalc({desContract:moneroPoolContract, contractValue:poolDetails, mining:currentMining})">
+                    </select>
+                    <br><small>{{moneroPoolContract*moneroPoolValue}} H/s</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
         <td width="40%">
@@ -106,6 +122,15 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade monero" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{moneroPoolPrice | number:2}}</strong></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
       </tr>
@@ -123,8 +148,13 @@
               </a>
             </li>
             <li role="presentation" class="" >
-              <a href=".dash1" aria-controls="dash1" role="tab" data-toggle="tab" ng-click="dashMachineClick({desContract:dashContributorContract, contractValue:contributorDetails, mining:currentMining})" style="padding:10px 0px !important;text-align: left;">
+              <a href=".dash1" aria-controls="dash1" role="tab" data-toggle="tab" ng-click="dashMachineClick({desContract:dashContributorContract, contractValue:contributorDetails, mining:currentMining})" style="padding:10px 0px !important;">
               <img class="img-circle payouts-image" ng-src="{{s3Url}}dashmahine.png" title="Machine Contract(DASH)"  />
+              </a>
+            </li>
+            <li role="presentation" class="" >
+              <a href=".monero1" aria-controls="monero1" role="tab" data-toggle="tab" ng-click="moneroMachineClick({desContract:moneroContributorContract, contractValue:contributorDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}moneromachine.png" title="Machine Contract(MONERO)"  />
               </a>
             </li>
           </ul>
@@ -164,6 +194,17 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade monero1" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <select class="sm-txtbox1" ng-model="moneroContributorContract" ng-options="option.value as option.name for option in machineOptions" ng-change="moneroContributorCalc({desContract:moneroContributorContract, contractValue:contributorDetails, mining:currentMining})">
+                    </select>
+                    <br><small>{{moneroContributorContract*moneroMachineValue}} H/s</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
         <td width="40%">
@@ -195,6 +236,15 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade monero1" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{moneroContributorPrice | number:2}}</strong></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
       </tr>
@@ -212,8 +262,13 @@
               </a>
             </li>
             <li role="presentation" class="" >
-              <a href=".dash2" aria-controls="dash" role="tab" data-toggle="tab" ng-click="dashRackClick({desContract:dashRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;text-align: left;">
+              <a href=".dash2" aria-controls="dash" role="tab" data-toggle="tab" ng-click="dashRackClick({desContract:dashRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
               <img class="img-circle payouts-image" ng-src="{{s3Url}}dashrack.png" title="DASH"  />
+              </a>
+            </li>
+            <li role="presentation" class="" >
+              <a href=".monero2" aria-controls="monero" role="tab" data-toggle="tab" ng-click="moneroRackClick({desContract:moneroRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}monerorack.png" title="MONERO"  />
               </a>
             </li>
           </ul>
@@ -253,6 +308,17 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade monero2" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <select class="sm-txtbox1" ng-model="moneroRackContract" ng-options="option.value as option.name for option in rackOptions" ng-change="moneroRackCalc({desContract:moneroRackContract, contractValue:rackDetails, mining:currentMining})">
+                    </select>
+                    <br><small>{{moneroRackContract*moneroRackValue}} H/s</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
         <td width="40%">
@@ -280,6 +346,15 @@
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
                     <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{dashRackPrice | number:2}}</strong></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade monero2" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{moneroRackPrice | number:2}}</strong></h4>
                   </div>
                 </div>
               </div>

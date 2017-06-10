@@ -64,7 +64,10 @@ angular.module('coinomiaFrontendApp')
     'ethRackValue':58,
     'dashPoolValue':50,          // Mining payout ETH pool MH/s value
     'dashMachineValue':500,    // Mining payout ETH Machine or Contributor MH/s value
-    'dashRackValue':5000,              // Mining payout ETH Rack MH/s value
+    'dashRackValue':5000,
+    'moneroPoolValue':150,        // dummy values for now
+    'moneroMachineValue':1500,    // dummy values for now
+    'moneroRackValue':15000,      // dummy values for now
     'productMaxUnit':[
       1000,
       100,
@@ -86,7 +89,8 @@ angular.module('coinomiaFrontendApp')
     'wallet':{
       'BTC': 'Bitcoin',
       'ETH': 'Ether',
-      'DASH': 'Dash'
+      'DASH': 'Dash',
+      'MONERO': 'Monero'
     },
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
     'signUpPath':'http://login.coinomia.com/#/signup',
@@ -129,6 +133,11 @@ angular.module('coinomiaFrontendApp')
       'dashpool.png',
       'dashmahine.png',
       'dashrack.png'
+    ],
+    'moneroImagePath':[
+      'monerocloud.png',
+      'moneromachine.png',
+      'monerorack.png'
     ],
     'productImage': {
       'Bitcoin Pool Contract': 'contract-bitcoin.png',

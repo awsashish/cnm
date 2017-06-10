@@ -27,14 +27,20 @@ angular.module('coinomiaFrontendApp')
       var dashMachine = parseInt(angular.element("#dash-1").val());
       var dashRack = parseInt(angular.element("#dash-2").val());
 
+      // MONERO Value
+      var moneroPool = parseInt(angular.element("#monero-0").val());
+      var moneroMachine = parseInt(angular.element("#monero-1").val());
+      var moneroRack = parseInt(angular.element("#monero-2").val());
+
       //var btcTotal = btcPool + btcMachine + btcRack + btcPool2 + btcMachine2 + btcRack2;
       var btcTotal = btcPool + btcMachine + btcRack;
       var ethTotal = ethPool + ethMachine + ethRack;
       var dashTotal = dashPool + dashMachine + dashRack;
-      var total = btcTotal + ethTotal + dashTotal;
+      var moneroTotal = moneroPool + moneroMachine + moneroRack;
+      var total = btcTotal + ethTotal + dashTotal + moneroTotal;
       if(total){
         var total = $filter('currency')(total);
-        
+
         var totalAmount = '<strong>Total - '+total+'</strong>';
         angular.element(".total-price").html(totalAmount);
       }else{
@@ -52,6 +58,8 @@ angular.module('coinomiaFrontendApp')
       link: function(scope, elem, attrs) {
         if('undefined' != typeof scope.btc && scope.btc.coin.toLowerCase() === 'btc'){
           var sliderLabel  = '<label>SLIDER_VALUE<small>TH/s</small></label><div class="ui-slider-label-inner"></div>';
+        }else if('undefined' != typeof scope.monero && scope.monero.coin.toLowerCase() === 'monero'){
+          var sliderLabel  = '<label>SLIDER_VALUE<small>H/s</small></label><div class="ui-slider-label-inner"></div>';
         }else{
           var sliderLabel  = '<label>SLIDER_VALUE<small>MH/s</small></label><div class="ui-slider-label-inner"></div>';
         }
@@ -80,6 +88,11 @@ angular.module('coinomiaFrontendApp')
                 scope.dash.quantity = scope.dash.dashMining/scope.dash.miningpower;
                 el.html(sliderLabel.replace('SLIDER_VALUE', scope.dash.dashMining));
               }
+              else if (attrs.product === 'monero') {
+                scope.monero.moneroMining = ui.value;
+                scope.monero.quantity = scope.monero.moneroMining/scope.monero.miningpower;
+                el.html(sliderLabel.replace('SLIDER_VALUE', scope.monero.moneroMining));
+              }
             });
           },
           create: function( event, ui ) {
@@ -93,6 +106,9 @@ angular.module('coinomiaFrontendApp')
             }
             else if (attrs.product === 'dash') {
               el.append(sliderLabel.replace('SLIDER_VALUE', scope.dash.dashMining));
+            }
+            else if (attrs.product === 'monero') {
+              el.append(sliderLabel.replace('SLIDER_VALUE', scope.monero.moneroMining));
             }
           },
           change: function() {
@@ -108,7 +124,7 @@ angular.module('coinomiaFrontendApp')
             $(elem).slider('value', scope.btc.btcMining);
             setTimeout(function() {
               totalAmount.call();
-            }, 500)            
+            }, 500)
           });
         }
         else if(attrs.product === 'eth') {
@@ -119,7 +135,7 @@ angular.module('coinomiaFrontendApp')
             $(elem).slider('value', scope.eth.ethMining);
             setTimeout(function() {
               totalAmount.call();
-            }, 500)            
+            }, 500)
           });
         }
         else if(attrs.product === 'dash') {
@@ -130,7 +146,18 @@ angular.module('coinomiaFrontendApp')
             $(elem).slider('value', scope.dash.dashMining);
             setTimeout(function() {
               totalAmount.call();
-            }, 500)            
+            }, 500)
+          });
+        }
+        else if(attrs.product === 'monero') {
+          scope.$watch('monero.moneroMining', function(newVal) {
+            $(elem).slider('value', newVal);
+          });
+          scope.$watch('monero.quantity', function(newVal) {
+            $(elem).slider('value', scope.monero.moneroMining);
+            setTimeout(function() {
+              totalAmount.call();
+            }, 500)
           });
         }
       }

@@ -15,6 +15,7 @@ angular.module('coinomiaFrontendApp')
     $scope.productMaxUnit = config.productMaxUnit;
     $scope.btcImagePath = config.btcImagePath;
     $scope.ethImagePath = config.ethImagePath;
+    $scope.moneroImagePath = config.moneroImagePath;
     $scope.verifiedStatus = false;
     $scope.pagination = {
       perpage: config.pageLimit

@@ -317,6 +317,9 @@
                            dash-pool-value="dashPoolValue"
                            dash-machine-value="dashMachineValue"
                            dash-rack-value="dashRackValue"
+                           monero-pool-value="moneroPoolValue"
+                           monero-machine-value="moneroMachineValue"
+                           monero-rack-value="moneroRackValue"
                            machine-options="machineOptions"
                            rack-options="rackOptions"
                            pool-details="poolDetails"
@@ -332,6 +335,9 @@
                            dash-pool-contract="dashPoolContract"
                            dash-contributor-contract="dashContributorContract"
                            dash-rack-contract="dashRackContract"
+                           monero-pool-contract="moneroPoolContract"
+                           monero-contributor-contract="moneroContributorContract"
+                           monero-rack-contract="moneroRackContract"
                            btc-pool-price="btcPoolPrice"
                            btc-contributor-price="btcContributorPrice"
                            btc-rack-price="btcRackPrice"
@@ -341,6 +347,9 @@
                            dash-pool-price="dashPoolPrice"
                            dash-contributor-price="dashContributorPrice"
                            dash-rack-price="dashRackPrice"
+                           monero-pool-price="moneroPoolPrice"
+                           monero-contributor-price="moneroContributorPrice"
+                           monero-rack-price="moneroRackPrice"
                            btc-pool-click="btcPoolClick(desContract, contractValue, mining)"
                            btc-machine-click="btcMachineClick(desContract, contractValue, mining)"
                            btc-rack-click="btcRackClick(desContract, contractValue, mining)"
@@ -350,6 +359,9 @@
                            dash-pool-click="dashPoolClick(desContract, contractValue, mining)"
                            dash-machine-click="dashMachineClick(desContract, contractValue, mining)"
                            dash-rack-click="dashRackClick(desContract, contractValue, mining)"
+                           monero-pool-click="moneroPoolClick(desContract, contractValue, mining)"
+                           monero-machine-click="moneroMachineClick(desContract, contractValue, mining)"
+                           monero-rack-click="moneroRackClick(desContract, contractValue, mining)"
                            btc-pool-calc="btcPoolMining(desContract, contractValue, mining)"
                            btc-contributor-calc="btcContributorMining(desContract, contractValue, mining)"
                            btc-rack-calc="btcRackMining(desContract, contractValue, mining)"
@@ -358,9 +370,12 @@
                            eth-rack-calc="ethRackMining(desContract, contractValue, mining)"
                            dash-pool-calc="dashPoolMining(desContract, contractValue, mining)"
                            dash-contributor-calc="dashContributorMining(desContract, contractValue, mining)"
-                           dash-rack-calc="dashRackMining(desContract, contractValue, mining)" s3-url="s3Url"></div>
+                           dash-rack-calc="dashRackMining(desContract, contractValue, mining)"
+                           monero-pool-calc="moneroPoolMining(desContract, contractValue, mining)"
+                           monero-contributor-calc="moneroContributorMining(desContract, contractValue, mining)"
+                           monero-rack-calc="moneroRackMining(desContract, contractValue, mining)" s3-url="s3Url"></div>
                         <p align="center">
-                           <button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd, finalDash, finalDashUsd, $event)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button>
+                           <button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd, finalDash, finalDashUsd, finalMonero, finalMoneroUsd, $event)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button>
                         </p>
                         <div class="clearfix"></div>
                         <h3 align="center" class="text-title02"><strong>Your Estimated income based on Current <br />
@@ -373,6 +388,7 @@
                                  <td><strong>BTC</strong></td>
                                  <td><strong>ETH</strong></td>
                                  <td><strong>DASH</strong></td>
+                                 <td><strong>MONERO</strong></td>
                                  <td><strong>USD <small>(eq.)</small></strong></td>
                               </tr>
                               <tr ng-repeat="income in estIncome">
@@ -380,6 +396,7 @@
                                  <td>{{income.btc | number:5}}</td>
                                  <td>{{income.eth | number:5}}</td>
                                  <td>{{income.dash | number:5}}</td>
+                                 <td>{{income.monero | number:5}}</td>
                                  <td><strong>${{income.miningUsd | number:5}}</strong></td>
                               </tr>
                            </table>
