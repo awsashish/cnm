@@ -8,6 +8,7 @@ angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', func
 		coinomiaService.academyPackages()
 		.then(function(result) {
 			if(result.status === 200) {
+				$scope.index = parseInt($state.params.id);
 				$scope.cartItem = result.data.rows[$state.params.id];
 				$scope.totalPrice = parseInt($scope.cartItem.Price);
 			}
