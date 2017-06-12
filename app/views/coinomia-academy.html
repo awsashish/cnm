@@ -47,7 +47,10 @@
                               <div class="col-md-4" ng-repeat="package in packages">
                                  <div class="panel panel-default" >
                                     <div class="panel-body" style="padding:5px !important;">
-                                       <img src="images/package1.png" width="100%" class="img-responsive" />  
+                                       <img ng-if="package.PackageName == 'Package 1'" ng-src="{{s3Url}}Coinomia-Academy/package1.png" width="100%" class="img-responsive" />
+                                       <img ng-if="package.PackageName == 'Package 2'"  ng-src="{{s3Url}}Coinomia-Academy/package2.png" width="100%" class="img-responsive" />
+                                       <img ng-if="package.PackageName == 'Package 3'" ng-src="{{s3Url}}Coinomia-Academy/package3.png" width="100%" class="img-responsive" />
+                                       <img ng-if="package.PackageName == 'Package 4'" ng-src="{{s3Url}}Coinomia-Academy/package4.png" width="100%" class="img-responsive" />
                                     </div>
                                     <div align="center" class="panel-footer">
                                        <div class="row" align="left">
