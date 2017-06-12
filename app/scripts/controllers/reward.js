@@ -12,6 +12,9 @@ angular.module('coinomiaFrontendApp')
 
     $rootScope.s3Url = config.s3BucketUrl;
     $scope.rewards = config.rewards;
+    $scope.allRewards = [];
+    $scope.allAchiever = [];
+    $scope.weekRewards = [];
 
     $scope.toggleDiv = function(value) {
       console.log(value);
@@ -86,12 +89,10 @@ angular.module('coinomiaFrontendApp')
         $scope.movingRewards = false;
         $scope.$apply();
     };
-
-    $interval($scope.moveDown, 3000);
-
     $scope.getAllRewards();
     $scope.get7daysRewards();
     $scope.getAchievements();
     $scope.getAchiever();
+    $interval($scope.moveDown, 3000);
 
   });

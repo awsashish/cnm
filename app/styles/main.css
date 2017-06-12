@@ -184,11 +184,11 @@ body {
     text-align: center;
   }
 }
-.rewards-achievers{
+/*.rewards-achievers{
   border:1px solid #737373;
   padding:0px !important;
   margin:0px !important;
-}
+}*/
 @media screen and (min-width: 992px) {
   .rewards-achievers{
     min-height:320px;
@@ -210,4 +210,11 @@ body {
 @keyframes moveDown-reward {
    0% { transform: translateY(0) }
    100% { transform: translateY(-97px) }
+}
+
+.contentpanel{
+  min-height:1320px !important;
+}
+.leftpanel{
+  min-height:1400px !important;
 }

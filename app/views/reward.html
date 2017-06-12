@@ -5,6 +5,11 @@
    <style>.nav-tabs > li > a{ padding: 14px 15px !important; color:#fff !important;
       }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td { padding: 8px 5px;}
       .slim-nav > li > a {padding:7px 12px !important;}
+      @media screen and (max-width: 992px) {
+        .reward-tab li a{
+          font-size:12px !important;
+        }
+      }
    </style>
    <div class="mainpanel">
       <!-- <coming-soon text-value="'Mining'"></coming-soon> -->
@@ -18,23 +23,23 @@
             <div class="tabbable-panel">
                <div class="tabbable-line">
                   <div align="center">
-                     <ul class="nav nav-tabs reward-tab">
-                        <li class="active">
+                     <ul class="row nav nav-tabs">
+                        <li class="active col-md-3 col-sm-3 col-xs-6" style="padding:0px;">
                            <a href=".tab_default_4" data-toggle="tab">
                            <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br>
                            <strong>Rewards Leadership</strong> </a>
                         </li>
-                        <li>
+                        <li class="col-md-3 col-sm-3 col-xs-6" style="padding:0px;">
                            <a href=".tab_default_5" data-toggle="tab">
                            <i class="fa fa-newspaper-o icon-lg" aria-hidden="true"></i><br>
                            <strong>Achievement History</strong> </a>
                         </li>
-                        <li>
+                        <li class="col-md-3 col-sm-3 col-xs-6" style="padding:0px;">
                            <a href=".tab_default_6" data-toggle="tab">
                            <i class="fa fa-users icon-lg" aria-hidden="true"></i><br>
                            <strong>Leaderboard Reward</strong> </a>
                         </li>
-                        <li>
+                        <li class="col-md-3 col-sm-3 col-xs-6" style="padding:0px;">
                            <a href=".tab_default_7" data-toggle="tab">
                            <i class="fa fa-trophy icon-lg" aria-hidden="true"></i><br>
                            <strong>Coinomia Reward History</strong> </a>
@@ -158,7 +163,7 @@
                                     </tr>
                                  </thead>
                               </table>
-                              <div class="ticker" style="max-height: 500px;overflow-y:hidden;overflow-x: hidden;">
+                              <div class="ticker" style="max-height: 500px;overflow-y:auto;overflow-x: hidden;">
                                  <table class="table table-dark-gry table-hover mb30 font16 viewport" ng-class="{movingRewards: movingRewards}">
                                     <tbody>
                                        <tr ng-repeat="weekRankers in weekRewards">
@@ -188,7 +193,7 @@
                                     </tr>
                                  </thead>
                               </table>
-                              <div class="ticker" style="max-height: 500px;overflow-y:hidden;overflow-x: hidden;">
+                              <div class="ticker" style="max-height: 500px;overflow-y:auto;overflow-x: hidden;">
                                  <table class="table table-dark-gry table-hover mb30 font16 viewport" ng-class="{movingRewards: movingRewards}">
                                     <tbody>
                                        <tr ng-repeat="allRankers in allRewards">
@@ -217,7 +222,7 @@
                                     </tr>
                                  </thead>
                               </table>
-                              <div class="ticker" style="max-height: 500px;overflow-y:hidden;overflow-x: hidden;">
+                              <div class="ticker" style="max-height: 500px;overflow-y:auto;overflow-x: hidden;">
                                  <table class="table table-dark-gry table-hover mb30 font16 viewport" ng-class="{movingRewards: movingRewards}">
                                     <tbody>
                                        <tr ng-repeat="achiever in allAchiever">
@@ -238,29 +243,29 @@
                      </div>
                      <div class="tab-pane tab_default_7">
                         <ul class="nav nav-tabs slim-nav" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-                           <li class="active">
+                           <li class="active col-md-6 text-center" style="padding:0px;">
                               <a href=".repurchase-rewards" role="tab" data-toggle="tab"><i class="fa fa-trophy icon-lg" aria-hidden="true"></i> <strong>Repurchase Rewards</strong>
                               </a>
                            </li>
-                           <li class="">
+                           <li class="col-md-6 text-center" style="padding:0px;">
                               <a href=".launch-day" role="tab" data-toggle="tab"><i class="fa fa-trophy icon-lg" aria-hidden="true"></i><strong> Launch Day Rewards Achievers</strong></a>
                            </li>
                         </ul>
-                        <div class="tab-content" style="padding:20px 20px; ">
+                        <div class="tab-content" style="padding:20px 20px;">
                            <div class="tab-pane launch-day">
                               <ul class="nav nav-tabs slim-nav" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-                                 <li role="presentation" class="active">
+                                 <li role="presentation" class="active col-md-3 text-center" style="padding:0px;">
                                     <a href=".frontline" aria-controls="frontline" style="padding:5px 5px;" role="tab" data-toggle="tab" aria-expanded="false"><strong> Frontline Commission</strong></a>
                                  </li>
-                                 <li role="presentation" class="">
+                                 <li role="presentation" class="col-md-3 text-center" style="padding:0px;">
                                     <a href=".maximum" aria-controls="maximum" role="tab" data-toggle="tab" aria-expanded="true"><strong> Maximum Referrals</strong>
                                     </a>
                                  </li>
-                                 <li role="presentation" class="">
+                                 <li role="presentation" class="col-md-3 text-center" style="padding:0px;">
                                     <a href=".paid" aria-controls="paid" role="tab" data-toggle="tab" aria-expanded="true"><strong> Paid Referrals</strong>
                                     </a>
                                  </li>
-                                 <li role="presentation" class="">
+                                 <li role="presentation" class="col-md-3 text-center" style="padding:0px;">
                                     <a href=".repurchase" aria-controls="dmp" role="tab" data-toggle="tab" aria-expanded="true"><strong> Double your Repurchase Check</strong>
                                     </a>
                                  </li>
