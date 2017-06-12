@@ -108,55 +108,19 @@
                            <div class="panel panel-default">
                               <div class="panel-body">
                                  <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" ng-repeat="packageBought in packagesBought">
                                        <div class="panel panel-default">
                                           <div class="panel-body" style="padding:5px !important;">
-                                             <img ng-src="{{s3Url}}Coinomia-Academy/package1.png" width="100%" class="img-responsive" />
+                                             <img ng-if="packageBought.ProductName == 'Package 1'" ng-src="{{s3Url}}Coinomia-Academy/package1.png" width="100%" class="img-responsive" />
+                                             <img ng-if="packageBought.ProductName == 'Package 2'" ng-src="{{s3Url}}Coinomia-Academy/package2.png" width="100%" class="img-responsive" />
+                                             <img ng-if="packageBought.ProductName == 'Package 3'" ng-src="{{s3Url}}Coinomia-Academy/package3.png" width="100%" class="img-responsive" />
+                                             <img ng-if="packageBought.ProductName == 'Package 4'" ng-src="{{s3Url}}Coinomia-Academy/package4.png" width="100%" class="img-responsive" />
                                           </div>
                                           <div align="center" class="panel-footer">
                                              <div class="row" align="left">
-                                                <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">Coinomia Package 1</span></div>
+                                               <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">{{packageBought.ProductName}}</span></div>
                                              </div>
-                                             <button ng-if="bigUUrl" type="button" class="btn btn-block btn-danger btn-xs" style="margin-top:10px; font-size:15px; padding:10px;" ng-click="goToLightSpeed();">Explore All</button>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <div class="panel panel-default">
-                                          <div class="panel-body" style="padding:5px !important;">
-                                             <img ng-src="{{s3Url}}Coinomia-Academy/package2.png" width="100%" class="img-responsive" />
-                                          </div>
-                                          <div align="center" class="panel-footer">
-                                             <div class="row" align="left">
-                                                <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">Coinomia Package 2</span></div>
-                                             </div>
-                                             <button ng-if="bigUUrl" type="button" class="btn btn-block btn-danger btn-xs" style="margin-top:10px; font-size:15px; padding:10px;" ng-click="goToLightSpeed();">Explore All</button>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <div class="panel panel-default">
-                                          <div class="panel-body" style="padding:5px !important;">
-                                             <img ng-src="{{s3Url}}Coinomia-Academy/package3.png" width="100%" class="img-responsive" />
-                                          </div>
-                                          <div align="center" class="panel-footer">
-                                             <div class="row" align="left">
-                                                <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">Coinomia Package 3</span></div>
-                                             </div>
-                                             <button ng-if="bigUUrl" type="button" class="btn btn-block btn-danger btn-xs" style="margin-top:10px; font-size:15px; padding:10px;" ng-click="goToLightSpeed();">Explore All</button>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                       <div class="panel panel-default">
-                                          <div class="panel-body" style="padding:5px !important;">
-                                             <img ng-src="{{s3Url}}Coinomia-Academy/package4.png" width="100%" class="img-responsive" />
-                                          </div>
-                                          <div align="center" class="panel-footer">
-                                             <div class="row" align="left">
-                                                <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">Coinomia Package 4</span></div>
-                                             </div>
-                                             <button ng-if="bigUUrl" type="button" class="btn btn-block btn-danger btn-xs" style="margin-top:10px; font-size:15px; padding:10px;" ng-click="goToLightSpeed();">Explore All</button>
+                                             <btton ng-if="bigUUrl" type="button" class="btn btn-block btn-danger btn-xs" style="margin-top:10px; font-size:15px; padding:10px;" ng-click="goToLightSpeed();">Explore All</button>
                                           </div>
                                        </div>
                                     </div>
