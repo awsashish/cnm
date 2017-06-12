@@ -370,7 +370,7 @@ angular.module('coinomiaFrontendApp')
           'name': 'HumanEyeballs.com Traffic',
           'country': 'USA',
           'amount': 90
-        },        
+        },
         {
           'memberid': 'dreambig1',
           'name': 'Sabai Marketing Group',
@@ -403,9 +403,9 @@ angular.module('coinomiaFrontendApp')
         'type': 'bronze',
         'noImage': false,
         'class': 'reward01',
-        'image': '400.jpg', 
+        'image': '400.jpg',
         'title': 'bronze-ribbon.png',
-        'subtitle': 'Hitting 1st Slab of Repurchase Binary', 
+        'subtitle': 'Hitting 1st Slab of Repurchase Binary',
         'shortDescription': 'When you hit the slab of 3:3, you are ranked Bronze. <br />Hitting for 7 consecutive days, you will get rewarded with <strong> $400 </strong>',
         'prize':'bronze-reward.png',
         'description': {
@@ -419,9 +419,9 @@ angular.module('coinomiaFrontendApp')
         'type': 'silver',
         'noImage': true,
         'class': 'reward02',
-        'image': 'macbook.png', 
+        'image': 'macbook.png',
         'title': 'silver-ribbon.png',
-        'subtitle': 'Hitting 2nd Slab of Repurchase Binary', 
+        'subtitle': 'Hitting 2nd Slab of Repurchase Binary',
         'shortDescription': 'When you hit the slab of 9:9, you are ranked Silver.<br /> Hitting for 7 Consecutive days, grab a <strong>Macbook Pro!</strong>.',
         'prize':'macbook.png',
         'description': {
@@ -436,7 +436,7 @@ angular.module('coinomiaFrontendApp')
         'noImage': false,
         'class': 'reward01',
         'title': 'gold-ribbon.png',
-        'subtitle': 'Hitting 3rd Slab of Repurchase Binary', 
+        'subtitle': 'Hitting 3rd Slab of Repurchase Binary',
         'shortDescription': 'When you hit the slab of 27:27, you are ranked Gold. Hitting for 7 Consecutive days, fly to <strong>Dubai/Tashkent for 3 Nights/4 days</strong>.',
         'prize':'dubai-trip.png',
         'description': {
@@ -453,7 +453,7 @@ angular.module('coinomiaFrontendApp')
         'noImage': true,
         'class': 'reward01',
         'title': 'ruby-ribbon.png',
-        'subtitle': 'Hitting 4th Slab of Repurchase Binary', 
+        'subtitle': 'Hitting 4th Slab of Repurchase Binary',
         'shortDescription': 'When you hit the slab of 81:81, you are ranked Ruby. Hitting for 7 Consecutive days, fly to <strong>Vegas for 6 Nights/7 days</strong>.',
         'prize':'ruby_vegas.png',
         'description': {
@@ -468,13 +468,13 @@ angular.module('coinomiaFrontendApp')
         'noImage': true,
         'class': 'reward01',
         'title': 'emerald-ribbon.png',
-        'subtitle': 'Hitting 5th Slab of Repurchase Binary', 
+        'subtitle': 'Hitting 5th Slab of Repurchase Binary',
         'shortDescription': 'When you hit the slab of 243:243, you are ranked <strong>Emerald</strong>.Hitting for 7 Consecutive days, you can drive home a <strong>BMW 5 Series!</strong>.',
         'prize':'emerald_BMW5.png',
         'description': {
           'title': 'emerald_bingo_title.png',
           'subtitle': "Hitting <strong>Emerald</strong> for 7 continuous days will make you a star! Not only you will be making a hefty amount daily by repurchase, you will also drive a powerful <strong>BMW 5</strong> series. No further explanations required as the brand speaks itself!",
-          'prize': 'emerald-bingo.png' 
+          'prize': 'emerald-bingo.png'
         }
       },
       {
@@ -483,7 +483,7 @@ angular.module('coinomiaFrontendApp')
         'noImage': true,
         'class': 'reward01',
         'title': 'diamond-ribbon.png',
-        'subtitle': 'Hitting 6th Slab of Repurchase Binary', 
+        'subtitle': 'Hitting 6th Slab of Repurchase Binary',
         'shortDescription': 'When you hit the slab of 729:729, you are ranked <strong>Diamond</strong>. Hitting for 7 Consecutive days, drive home with a brand new <strong>BMW I8</strong> luxury car!.',
         'prize':'diamond_BMWi8.png',
         'description': {
@@ -498,7 +498,7 @@ angular.module('coinomiaFrontendApp')
         'noImage': true,
         'class': 'reward01',
         'title': 'doublediamond-ribbon.png',
-        'subtitle': 'Hitting 7th Slab of Repurchase Binary', 
+        'subtitle': 'Hitting 7th Slab of Repurchase Binary',
         'shortDescription': 'When you hit the slab of 2143:2143, you are ranked <strong>Double Diamond</strong>. Hitting for 7 Consecutive days, drive a brand new <strong>Ferrai Italia!</strong>.',
         'prize':'doublediamond_ferrari.png',
         'description': {
@@ -513,7 +513,7 @@ angular.module('coinomiaFrontendApp')
         'noImage': false,
         'class': 'reward01',
         'title': 'blackdiamond-ribbon.png',
-        'subtitle': 'Hitting 8th and final Slab of Repurchase Binary', 
+        'subtitle': 'Hitting 8th and final Slab of Repurchase Binary',
         'shortDescription': 'When you hit the slab of 6561:6561, you are ranked <strong>Black Diamond</strong>. Hitting for 7 Consecutive days, Book an Apartment in <strong>Burj Khalifa!</strong>.',
         'prize':'blackdiamond_apartment.png',
         'description': {
