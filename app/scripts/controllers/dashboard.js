@@ -17,6 +17,10 @@ angular.module('coinomiaFrontendApp')
     $scope.hasDirectReferral = false;
     $scope.hasBinaryReferral = false;
 
+    // Rewards Section 
+    $scope.allRewards = [];
+    $scope.weekRewards = [];
+
     $scope.packagesDetails = [];
     $scope.treeDetails = '';
     $scope.poolDetails = '';
@@ -603,6 +607,7 @@ angular.module('coinomiaFrontendApp')
         })
     }
     // News Ticker Implementation
+
     $scope.moving = false;
     $scope.moveDown = function() {
         $scope.moving = true;
@@ -615,7 +620,7 @@ angular.module('coinomiaFrontendApp')
         $scope.$apply();
     };
 
-    $interval($scope.moveDown, 3000);
+    $interval($scope.moveDown, 4000);
 
     // Get Available Package
     $scope.packageStock = function() {

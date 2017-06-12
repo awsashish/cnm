@@ -41,7 +41,7 @@ angular.module('coinomiaFrontendApp')
         authenticate: false
     })
     .state('coinomia-academy-cart', {
-        url: '/coinomia-academy-cart',
+        url: '/coinomia-academy-cart/:id',
         templateUrl: 'views/coinomia-academy-cart.html',
         controller: 'CoinomiaAcademyCartCtrl',
         authenticate: false

@@ -16,11 +16,10 @@ angular.module('coinomiaFrontendApp')
     if($location.host() === 'login.coinomia.com') {
       this.apiHost = 'https://api.coinomia.com/';
     }else{
-      this.apiHost = 'https://api.coinomia.com/';
+      this.apiHost = 'http://coinomiadevapi.azurewebsites.net/';
     }
 
     this.devHost = 'http://coinomiadevapi.azurewebsites.net/';
-    this.lsvtHost = 'https://webservices.lightspeedvt.net/lsvt_api_v35.ashx/';
 
     this.requestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -434,42 +433,6 @@ angular.module('coinomiaFrontendApp')
       return $http.get(this.apiHost +'utilities/packages')
         .then(getPackagesRequestComplete)
         .catch(getPackagesRequestFailed);
-    }
-
-    // Get lgToken from LSVT
-    this.getlgToken = function(tokenInfo) {
-      // On Success
-      function lgTokenSuccess(response) {
-        return response;
-      }
-
-      // On Failed
-      function lgTokenFailure(error) {
-        $log.error('XHR Failed to retrieve LG Token.\n' + angular.toJson(error.data, true));
-        return error;
-      }
-
-      return $http.post(this.lsvtHost, tokenInfo)
-        .then(addUserSuccess)
-        .catch(addUserFailure);
-    }
-
-    // Add User on LSVT
-    this.addLsvtUser = function(bigUData) {
-      // On Success
-      function addUserSuccess(response) {
-        return response;
-      }
-
-      // On Failed
-      function addUserFailure(error) {
-        $log.error('XHR Failed to Add User.\n' + angular.toJson(error.data, true));
-        return error;
-      }
-
-      return $http.post(this.lsvtHost, bigUData)
-        .then(addUserSuccess)
-        .catch(addUserFailure);
     }
 
     // Add Coinomia Academy User
@@ -1327,6 +1290,23 @@ angular.module('coinomiaFrontendApp')
       return $http.post(this.devHost +'user/academy-order', data)
         .then(packagesBought)
         .catch(packageBuyFailed);
+    };
+
+    //Package Purchase History
+    this.packagePurchaseHistory = function() {
+
+      function packageHistorySuccess(response) {
+        return response;
+      }
+
+      function packageHistoryFailed(error) {
+        $log.error('XHR Failed to Retrieve Package Purchase History.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.get(this.devHost +'user/academy-order-history')
+        .then(packageHistorySuccess)
+        .catch(packageHistoryFailed);
     };
 
     // Get Achievement Rewards
