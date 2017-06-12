@@ -2,22 +2,13 @@
 <section>
   <div class="mainwrapper">
     <navigation></navigation>
-    <style>
-      .nav-tabs > li > a {        {
-        padding: 14px 45px !important; color:#fff !important;
-      }
-      .nav-tabs {
-        background: #d9534f  none repeat scroll 0 0 !important;
-      }
-      .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-        background:#b73632 !important;
-      }
-      .cropArea {
-        background: #E4E4E4;
-        overflow: hidden;
-        width:100px;
-        height:100px;
-      }
+    <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
+      }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.cropArea {
+      background: #E4E4E4;
+      overflow: hidden;
+      width:100px;
+      height:100px;
+    }
     </style>
     <div class="mainpanel">
 
@@ -95,10 +86,10 @@
                 <div class="alert alert-danger fade in text-capitalize" ng-if="errorMessage">
                   <strong>{{errorMessage}}</strong>
                 </div>
+                <wallet-info class="col-xs-12 col-md-4 col-sm-4" wallet-data="walletData" wallet-type="MONERO" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
                 <wallet-info class="col-xs-12 col-md-4 col-sm-4" wallet-data="walletData" wallet-type="BTC" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
                 <wallet-info class="col-xs-12 col-md-4 col-sm-4" wallet-data="walletData" wallet-type="ETH" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
                 <wallet-info class="col-xs-12 col-md-4 col-sm-4" wallet-data="walletData" wallet-type="DASH" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
-                <wallet-info class="col-xs-12 col-md-4 col-sm-4" wallet-data="walletData" wallet-type="MONERO" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
                 <!-- <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="USD" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info> -->
               </div>
 
