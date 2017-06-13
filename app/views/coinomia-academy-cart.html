@@ -40,8 +40,8 @@
                      <td><strong class="white-color">Price</strong></td>
                      <td><strong class="white-color">Action</strong></td>
                   </thead>
-                  <tr ng-repeat="cartItem in cartItems">
-                     <td><img src="images/package1.png" style="border:1px solid #ccc; padding:5px;" width="80"  /></td>
+                  <tr ng-show="showTable == true">
+                     <td><img ng-src="{{s3Url}}Coinomia-Academy/package{{index+1}}.png" style="border:1px solid #ccc; padding:5px;" width="80"  /></td>
                      <td style="vertical-align:middle;"> <strong>{{cartItem.PackageName}}</strong><br />
                      </td>
                      <td>
@@ -90,7 +90,7 @@
                               <td><strong>Package Name</strong></td>
                               <td><strong>Price</strong></td>
                            </tr>
-                           <tr ng-repeat="cartItem in cartItems">
+                           <tr>
                               <td><img src="images/package1.png" width="30" />{{cartItem.PackageName}}</td>
                               <td>{{cartItem.Price}}</td>
                            </tr>

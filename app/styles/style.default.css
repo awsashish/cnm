@@ -6312,3 +6312,6 @@ h1{
 .neu_font {
     font-family : 'BebasNeuewebfont';
 }
+.counter-dash-text{
+  padding:0px 10px!important;
+}
