@@ -1065,7 +1065,7 @@
                                        <div class="panel-body">
                                           <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="monero in moneroProducts">
                                              <p>
-                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}{{moneroImagePath[$index]}}" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{monero.productname}}</h2>
+                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}moneroheader.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{monero.productname}}</h2>
                                              </p>
                                              <h3 class="mb36">{{monero.amount * monero.moneroMining/monero.miningpower | number:2}} USD</h3>
                                              <h3 class="mb36">{{monero.moneroMining}} H/s</h3>
@@ -1074,7 +1074,7 @@
                                           </div>
                                           <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="dash in dashProducts">
                                              <p>
-                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}{{dashImagePath[$index]}}" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{dash.productname}}</h2>
+                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}dashcoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{dash.productname}}</h2>
                                              </p>
                                              <h3 class="mb36">{{dash.amount * dash.dashMining/dash.miningpower | number:2}} USD</h3>
                                              <h3 class="mb36">{{dash.dashMining}} MH/s</h3>
