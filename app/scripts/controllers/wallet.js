@@ -16,6 +16,7 @@ angular.module('coinomiaFrontendApp')
     $scope.btcImagePath = config.btcImagePath;
     $scope.ethImagePath = config.ethImagePath;
     $scope.moneroImagePath = config.moneroImagePath;
+    $scope.liteImagePath = config.liteImagePath;
     $scope.verifiedStatus = false;
     $scope.pagination = {
       perpage: config.pageLimit
@@ -179,7 +180,7 @@ angular.module('coinomiaFrontendApp')
 
 
     $scope.verifyAndSubmit = function(activity, requestAmount, type) {
-      if(activity.toLowerCase() === 'withdrawal' && (type === 'BTC' || type === 'ETH' || type === 'DASH')) {
+      if(activity.toLowerCase() === 'withdrawal' && (type === 'BTC' || type === 'ETH' || type === 'DASH' || type === 'MONERO'|| type === 'LITE')) {
         $scope.calcFees(requestAmount, $rootScope.balance, $rootScope.networkFees);
       }else{
         $scope.walletActivity(requestAmount, $rootScope.walletName, activity);
@@ -201,6 +202,12 @@ angular.module('coinomiaFrontendApp')
           var type = 'eth';
         }else if(wallet.toLowerCase() === 'dash') {
           var type = 'dash';
+        else if(wallet.toLowerCase() === 'monero') {
+          var type = 'monero';
+        }
+        else if(wallet.toLowerCase() === 'lite') {
+          var type = 'lite';
+        }
         }else if(wallet.toLowerCase() === 'usd') {
           var type = 'usd';
         }
@@ -230,6 +237,12 @@ angular.module('coinomiaFrontendApp')
         }else if(wallet.toLowerCase() === 'dash') {
           var type = 'dash';
           var data = JSON.stringify(amount); 
+        }else if(wallet.toLowerCase() === 'monero') {
+          var type = 'monero';
+          var data = JSON.stringify(amount); 
+        }else if(wallet.toLowerCase() === 'lite') {
+          var type = 'lite';
+          var data = JSON.stringify(amount); 
         }else if(wallet.toLowerCase() === 'usd') {
           var type = 'usd';
           var data = JSON.stringify(amount); 
@@ -241,7 +254,7 @@ angular.module('coinomiaFrontendApp')
             $scope.loadingData = false;
             $scope.responseSuccess = true;
             var data = res.data;
-            if(data.message === '#Successfully Convert') {
+            if(data.message === '#Successfully Converted') {
               $rootScope.convertSuccess = true; 
             }else{
               $rootScope.convertError = true;

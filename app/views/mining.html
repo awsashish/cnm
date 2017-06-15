@@ -58,10 +58,11 @@
                            <br />
                            <!-- Nav tabs -->
                            <ul class="nav nav-tabs row" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-                              <li role="presentation" class="col-md-3 col-sm-12 col-xs-12 active" style="padding:0px;"><a href=".rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
-                              <li role="presentation" class="col-md-3 col-sm-12 col-xs-12" style="padding:0px;"><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
-                              <li role="presentation" class="col-md-3 col-sm-12 col-xs-12" style="padding:0px;"><a href=".dashTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}dashcoin.png" width="40" />  Dash</strong></a></li>
-                              <li role="presentation" class="col-md-3 col-sm-12 col-xs-12" style="padding:0px;"s><a href=".moneroTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}moneroheader.png" width="40" />  Monero</strong></a></li>
+                              <li role="presentation" class="col-md-2 col-sm-12 col-xs-12 active" style="padding:0px;"><a href=".rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
+                              <li role="presentation" class="col-md-2 col-sm-12 col-xs-12" style="padding:0px;"><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
+                              <li role="presentation" class="col-md-2 col-sm-12 col-xs-12" style="padding:0px;"><a href=".dashTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}dashcoin.png" width="40" />  Dash</strong></a></li>
+                              <li role="presentation" class="col-md-2 col-sm-12 col-xs-12" style="padding:0px;"s><a href=".moneroTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}moneroheader.png" width="40" />  Monero</strong></a></li>
+                              <li role="presentation" class="col-md-2 col-sm-12 col-xs-12" style="padding:0px;"s><a href=".liteTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}liteheader.png" width="40" />  Lite</strong></a></li>
                            </ul>
 
                            <!-- Tab panes -->
@@ -799,6 +800,189 @@
                                     </div>
                                  </div>
                               </div>
+                              <div role="tabpanel" class="tab-pane liteTab" >
+                                 <br />
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nopadding nomargin">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}litecloud.png" width="60"> Pool Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{litePoolPower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{litePoolEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{litePoolCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noLitePoolRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="litePool in litePoolDetails">
+                                                   <td>{{litePool.Date | date }}</td>
+                                                   <td>{{litePool.ProductName}}</td>
+                                                   <td>{{litePool.quantity}}</td>
+                                                   <td>{{litePool.miningpower}} H/s</td>
+                                                   <td>{{litePool.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="litePoolRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="litePoolRecords" ng-model="litePoolCurrentPage" max-size="5" ng-change="purchaseLitePool('LITE', 'pool', litePoolCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nomargin nopadding">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}litemachine.png" width="60"> Machine Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{liteMachinePower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{liteMachineEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{liteMachineCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noLiteMachineRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="liteMachine in liteMachineDetails">
+                                                   <td>{{liteMachine.Date | date }}</td>
+                                                   <td>{{liteMachine.ProductName}}</td>
+                                                   <td>{{liteMachine.quantity}}</td>
+                                                   <td>{{liteMachine.miningpower}} H/s</td>
+                                                   <td>{{liteMachine.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="liteMachineRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="liteMachineRecords" ng-model="liteMachineCurrentPage" max-size="5" ng-change="purchaseLiteMachine('LITE', 'machine', liteMachineCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="panel panel-default">
+                                    <div class="panel-heading nomargin nopadding">
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}literack.png" width="60"> Rack Contract</strong></h5>
+                                    </div>
+                                    <div class="panel-body">
+                                       <hr />
+                                       <div class="row">
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Total Power</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{liteRackPower}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Estimated Total Income(USD)</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{liteRackEstimateIncome | currency}}</p>
+                                          </div>
+                                          <div class="col-md-4 col-sm-12">
+                                             <p class="pull-left">
+                                             <h5><strong>Current Rate</strong></h5>
+                                             </p>
+                                             <p class="red-text04 pull-left">{{liteRackCurrentRate | currency}}</p>
+                                          </div>
+                                       </div>
+                                       <br />
+                                       <br />
+                                       <div class="table-responsive">
+                                          <table class="table table-dark-gry table-hover mb30 font16">
+                                             <thead style="background:#525252;">
+                                                <tr style="color:#525252;">
+                                                   <th width="20%"><strong class="white-color">Date</strong></th>
+                                                   <th width="20%"><strong class="white-color">Contract Name</strong></th>
+                                                   <th width="10%"><strong class="white-color">Units</strong></th>
+                                                   <th width="30%"><strong class="white-color">Power</strong></th>
+                                                   <th width="30%"><strong class="white-color">Expire Time Left(in month)</strong></th>
+                                                </tr>
+                                             </thead>
+                                             <tbody>
+                                                <tr ng-if="noLiteRackRecords">
+                                                   <td>No Records Found</td>
+                                                </tr>
+                                                <tr ng-repeat="liteRack in liteRackDetails">
+                                                   <td>{{liteRack.Date | date }}</td>
+                                                   <td>{{liteRack.ProductName}}</td>
+                                                   <td>{{liteRack.quantity}}</td>
+                                                   <td>{{liteRack.miningpower}} H/s</td>
+                                                   <td>{{liteRack.totaldays/30 | number:0}} Months</td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <div class="pagination-default" ng-if="liteRackRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="liteRackRecords" ng-model="liteRackCurrentPage" max-size="5" ng-change="purchaseLiteRack('LITE', 'rack', liteRackCurrentPage)"></ul>
+                                          </div>
+                                          <br />
+                                          <br />
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
                            </div>
                         </div>
                         <div class="tab-pane tab_default_5">
@@ -972,6 +1156,31 @@
                                        </div>
                                     </form>
                                  </div>
+                                 <div class="price-box" ng-repeat="(key,lite) in liteProducts">
+                                    <form class="form-horizontal form-pricing" role="form">
+                                       <div class="price-slider">
+                                          <h4 class="great text-capitalize">{{lite.productname}}</h4>
+                                          <img ng-src="{{s3Url}}{{liteImagePath[$index]}}" width="100" class="pull-right" />
+                                          <div class="col-sm-12">
+                                             <div ui-slider class="uiSlider" model="lite.liteMining" product="lite" min="{{lite.liteMining}}" max="{{lite.maxunit * lite.miningpower}}" step="{{lite.miningpower}}"></div>
+                                          </div>
+                                       </div>
+                                       <div class="price-form" id="quantity-lite-{{key}}">
+                                          <div class="form-group">
+                                             <div class="col-sm-12">
+                                                <input type="hidden" id="amount3" class="form-control">
+                                                <p class="price lead" id="amount-label3">
+                                                   <input type="number" ng-model="lite.quantity" min="0" ng-change="calculateLiteAmount(key, lite.quantity, lite.miningpower, lite.maxunit)" style="width: 80px;"/>
+                                                   <!--{{setLiteQuantity(key, (lite.liteMining/lite.miningpower))}}-->
+                                                </p>
+                                                <!--<p class="price lead" id="amount-label3">{{setLiteQuantity(key, (lite.liteMining/lite.miningpower))}}
+                                                   {{lite.quantity | number:0}}</p>-->
+                                                Number Of Contracts<strong class="price pull-right lead">Amount : {{lite.amount * lite.liteMining/lite.miningpower | currency}}</strong>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </form>
+                                 </div>
                                  <div class="price-box" ng-repeat="(key,dash) in dashProducts">
                                     <!--<div class="out-stock" ng-if="btc.productname === 'Bitcoin Pool Contract' || btc.productname === 'Bitcoin Machine Contract'"> 
                                        <p>
@@ -1070,6 +1279,15 @@
                                              <h3 class="mb36">{{monero.amount * monero.moneroMining/monero.miningpower | number:2}} USD</h3>
                                              <h3 class="mb36">{{monero.moneroMining}} H/s</h3>
                                              <input type="hidden" id="monero-{{$index}}" value="{{monero.amount * monero.moneroMining/monero.miningpower}}" />
+                                             <br />
+                                          </div>
+                                          <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="lite in liteProducts">
+                                             <p>
+                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}liteheader.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{lite.productname}}</h2>
+                                             </p>
+                                             <h3 class="mb36">{{lite.amount * lite.liteMining/lite.miningpower | number:2}} USD</h3>
+                                             <h3 class="mb36">{{lite.liteMining}} H/s</h3>
+                                             <input type="hidden" id="lite-{{$index}}" value="{{lite.amount * lite.liteMining/lite.miningpower}}" />
                                              <br />
                                           </div>
                                           <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="dash in dashProducts">
