@@ -19,7 +19,7 @@ angular.module('coinomiaFrontendApp')
       this.apiHost = 'https://api.coinomia.com/';
     }
 
-    this.devHost = 'http://coinomiadevapi.azurewebsites.net/';
+    this.devHost = 'https://api.coinomia.com/';
 
     this.requestConfig = {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},
