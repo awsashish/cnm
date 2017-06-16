@@ -99,7 +99,8 @@
                                  <td>{{cartItem.Price}}</td>
                               </tr>
                            </table>
-                           <h3 class="pull-right nomargin nopadding"><strong>Total : ${{invoiceInfo.value_in_usd}}</strong></h3>
+                           <h3 ng-if="payment === '1'" class="pull-right nomargin nopadding"><strong>Total : ${{invoiceInfo.value_in_usd}}</strong></h3>
+                           <h3 ng-if="payment === '2'" class="pull-right nomargin nopadding"><strong>Total : ${{cartItem.Price}}</strong></h3>
                            <div class="clearfix"></div>
                            <hr />
                            </p>
