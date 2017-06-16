@@ -144,8 +144,8 @@ angular.module('coinomiaFrontendApp')
       'monerorack.png'
     ],
     'liteImagePath':[
-      'litecloud.png',
-      'litemachine.png',
+      'litepool.png',
+      'litemahine.png',
       'literack.png'
     ],
     'productImage': {

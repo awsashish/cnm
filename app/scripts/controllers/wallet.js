@@ -202,12 +202,10 @@ angular.module('coinomiaFrontendApp')
           var type = 'eth';
         }else if(wallet.toLowerCase() === 'dash') {
           var type = 'dash';
-        else if(wallet.toLowerCase() === 'monero') {
+        }else if(wallet.toLowerCase() === 'monero') {
           var type = 'monero';
-        }
-        else if(wallet.toLowerCase() === 'lite') {
+        }else if(wallet.toLowerCase() === 'lite') {
           var type = 'lite';
-        }
         }else if(wallet.toLowerCase() === 'usd') {
           var type = 'usd';
         }
