@@ -33,7 +33,11 @@ angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', func
 		coinomiaService.buyPackages(data)
 		.then(function(result) {
 			if(result.status === 200) {
-				$scope.invoiceInfo = result.data;
+				if(result.data.message && result.data.message !== 'success') {
+		            $scope.noBalance = true;
+		        }else{
+					$scope.invoiceInfo = result.data;
+				}
 			}
 		});
 	};
