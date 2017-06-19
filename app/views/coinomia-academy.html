@@ -2,8 +2,36 @@
 <section>
    <div class="mainwrapper">
       <navigation></navigation>
-      <style>.nav-tabs > li > a{ padding: 14px 15px !important; color:#fff !important;
-         }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td { padding: 8px 5px;}
+      <style>
+      .nav-tabs > li > a{
+         padding: 14px 15px !important; 
+         color:#fff !important;
+      }
+      .nav-tabs{
+         background: #d9534f  none repeat scroll 0 0 !important;
+      }
+      .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ 
+         background:#b73632 !important;
+      }
+      .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td { 
+         padding: 8px 5px;
+      }
+      @media screen and (min-width: 992px) and (max-width:1220px){
+         .packagename{
+            width:100%;
+         }
+         .packageprice{
+            float:none!important;
+         }
+      }
+      @media screen and (max-width:380px){
+        .packagename{
+          width:100%!important;
+        }
+        .packageprice{
+          float:none!important;
+        }
+      }
       </style>
       <div class="mainpanel">
          <div class="pageheader">
@@ -54,10 +82,10 @@
                                     </div>
                                     <div align="center" class="panel-footer">
                                        <div class="row" align="left">
-                                          <div class="col-md-8 col-sm-8 col-xs-10 cacaemy-block01"><span class="mt5" style="font-size:22px !important; color: #C00;padding-left:10px;">{{package.PackageName}}</span><br />
+                                          <div class="col-md-9 col-sm-8 col-xs-10 cacaemy-block01 packagename"><span class="mt5" style="font-size:22px !important; color: #C00;padding-left:10px;">{{package.PackageName}}</span><br />
                                           </div>
-                                          <div class="col-md-4 col-sm-4 col-xs-2">
-                                             <h2 class="counter-dash counter-dash-text pack-price pull-right" style="font-size:25px;"><strong>${{package.Price}}</strong></h2>
+                                          <div class="col-md-3 col-sm-4 col-xs-2">
+                                             <h2 class="counter-dash counter-dash-text pack-price packageprice" style="font-size:25px;"><strong>${{package.Price}}</strong></h2>
                                           </div>
                                        </div>
                                        <div class="row" align="left">
@@ -127,7 +155,7 @@
                                           </div>
                                           <div align="center" class="panel-footer">
                                              <div class="row" align="left">
-                                               <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">{{packageBought.ProductName}}</span></div>
+                                                <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">{{packageBought.ProductName}}</span></div>
                                              </div>
                                              <button ng-if="bigUUrl" type="button" class="btn btn-block btn-danger btn-xs" style="margin-top:10px; font-size:15px; padding:10px;" ng-click="goToLightSpeed();">Explore All</button>
                                           </div>
