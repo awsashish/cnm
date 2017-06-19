@@ -44,7 +44,7 @@
                      <div class="tab-content" style="padding:20px 20px; ">
                         <div class="tab-pane tab_default_3 active">
                            <div class="row" >
-                              <div class="col-md-4" ng-repeat="package in packages">
+                              <div class="col-md-4 col-sm-6" ng-repeat="package in packages">
                                  <div class="panel panel-default" >
                                     <div class="panel-body" style="padding:5px !important;">
                                        <img ng-if="package.PackageName == 'Coinomia - 100$ package'" ng-src="{{s3Url}}Coinomia-Academy/package1.png" width="100%" class="img-responsive" />
@@ -54,13 +54,13 @@
                                     </div>
                                     <div align="center" class="panel-footer">
                                        <div class="row" align="left">
-                                          <div class="col-md-9 col-sm-8 col-xs-10 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;padding-left:10px;">{{package.PackageName}}</span><br />
+                                          <div class="col-md-8 col-sm-8 col-xs-10 cacaemy-block01"><span class="mt5" style="font-size:22px !important; color: #C00;padding-left:10px;">{{package.PackageName}}</span><br />
                                           </div>
-                                          <div class="col-md-3 col-sm-4 col-xs-2">
-                                             <h2 class="counter-dash counter-dash-text pack-price pull-right" style="font-size:28px;"><strong>${{package.Price}}</strong></h2>
+                                          <div class="col-md-4 col-sm-4 col-xs-2">
+                                             <h2 class="counter-dash counter-dash-text pack-price pull-right" style="font-size:25px;"><strong>${{package.Price}}</strong></h2>
                                           </div>
                                           <div class="col-md-6 col-sm-6 col-xs-6 add-funds-popup text-center" style="margin-left:15px;">
-                                             <span style="background-color: #fc2a1!important;font-size:18px;">PV {{package.PV}}</span><br />
+                                             <span style="background-color: #fc2a1!important;font-size:15px;">PV {{package.PV}}</span><br />
                                           </div>
                                        </div>
                                        <hr />
