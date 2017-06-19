@@ -218,3 +218,12 @@ body {
 .leftpanel{
   min-height:1400px !important;
 }
+
+.pv-block{
+  font-size:20px !important; 
+  color: #fff !important;
+  padding-left:10px;
+  background: #fc2a1c;
+  border-radius:10px;
+  padding:5px;
+}
