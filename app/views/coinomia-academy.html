@@ -54,10 +54,19 @@
                                     </div>
                                     <div align="center" class="panel-footer">
                                        <div class="row" align="left">
-                                          <div class="col-md-8 col-sm-6 col-xs-6 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;padding-left:10px;">{{package.PackageName}}</span><br />
+                                          <div class="col-md-8 col-sm-8 col-xs-10 cacaemy-block01"><span class="mt5" style="font-size:22px !important; color: #C00;padding-left:10px;">{{package.PackageName}}</span><br />
                                           </div>
-                                          <div class="col-md-4 col-sm-6 col-xs-6">
-                                             <h2 class="counter-dash counter-dash-text pack-price pull-right"><strong>${{package.Price}}</strong></h2>
+                                          <div class="col-md-4 col-sm-4 col-xs-2">
+                                             <h2 class="counter-dash counter-dash-text pack-price pull-right" style="font-size:25px;"><strong>${{package.Price}}</strong></h2>
+                                          </div>
+                                       </div>
+                                       <div class="row" align="left">
+                                          <div class="col-md-5 col-sm-3 col-xs-4 add-funds-popup text-center" style="margin-left:15px;">
+                                             <span style="background-color: #fc2a1!important;font-size:15px;margin-right:20px;">PV
+                                             </span>
+                                             <span style="background-color: #fc2a1!important;font-size:15px;">{{package.PV}}
+                                             </span>
+                                             <br />
                                           </div>
                                        </div>
                                        <hr />
@@ -96,7 +105,7 @@
                                           - Smiljan Mori – Wake UP3 Live event<br />
                                           - Speaking - WORLD CLASS SPEAKERS ALLIANCE - Lisa Nichols<br />
                                        </p>
-                                       <a ui-sref="coinomia-academy-cart({id: $index})" title="Buy Now" class="mar20" ><button ng-disabled="package.isDisabled" type="button" class="btn btn-block btn-danger btn-xs pull-right" style="margin-top:20px; font-size:20px; padding:10px; font-weight:bold;"><i class="fa fa-download"></i> Buy Now</button></a>
+                                       <a ui-sref="coinomia-academy-cart({id: $index})" title="Buy Now" class="mar20" ><button  ng-disabled="package.isDisabled" type="button" class="btn btn-block btn-danger btn-xs pull-right" style="margin-top:20px; font-size:20px; padding:10px; font-weight:bold;"><i class="fa fa-download"></i> Buy Now</button></a>
                                     </div>
                                  </div>
                               </div>
@@ -120,7 +129,7 @@
                                              <div class="row" align="left">
                                                <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">{{packageBought.ProductName}}</span></div>
                                              </div>
-                                             <btton ng-if="bigUUrl" type="button" class="btn btn-block btn-danger btn-xs" style="margin-top:10px; font-size:15px; padding:10px;" ng-click="goToLightSpeed();">Explore All</button>
+                                             <button ng-if="bigUUrl" type="button" class="btn btn-block btn-danger btn-xs" style="margin-top:10px; font-size:15px; padding:10px;" ng-click="goToLightSpeed();">Explore All</button>
                                           </div>
                                        </div>
                                     </div>

@@ -46,7 +46,7 @@ angular.module('coinomiaFrontendApp')
 	};
 
 	$scope.goToLightSpeed = function() {
-		window.location = $scope.bigUUrl;
+		window.open($scope.bigUUrl, '_blank');
 	}
 
 	$scope.getPackagePurchaseHistory();
