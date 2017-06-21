@@ -32,6 +32,11 @@
           float:none!important;
         }
       }
+      @media screen and (max-width:767px){
+        .academy-container{
+          margin-top:100px;
+        }
+      }
       </style>
       <div class="mainpanel">
          <div class="pageheader">
@@ -43,7 +48,7 @@
          </div>
          <!-- pageheader -->
          <div class="contentpanel">
-            <div class="container">
+            <div class="container academy-container">
                <div class="col-md-3 col-sm-12" style="border-right:5px solid #FC0;"><img src="images/coinomiacademy.png" width="300" class="img-responsive" style=" padding:10px;"/></div>
                <div class="col-md-9 col-sm-12" style="padding-left:40px;">
                   <h2 class="mt5" style="font-size:35px !important; text-transform:uppercase;">
@@ -57,13 +62,13 @@
                <div class="tabbable-panel" >
                   <div class="tabbable-line" >
                      <div align="center">
-                        <ul  class="nav nav-tabs ">
-                           <li class="active" style="width:50%;" >
-                              <a href=".tab_default_3" data-toggle="tab" style="padding:10px 20px !important;">
+                        <ul class="nav nav-tabs ">
+                           <li class="active col-md-6 col-sm-6 col-xs-12" style="padding:0px;">
+                              <a href=".tab_default_3" data-toggle="tab" style="padding:10px 20px !important;border:none;">
                               <i class="fa fa-graduation-cap icon-lg" aria-hidden="true"></i>
                               <strong style="font-size:20px;">Coinomia Academy</strong> </a>
                            </li>
-                           <li style="width:50%;"> <a href=".tab_default_4" data-toggle="tab" style="padding:10px 20px !important;">
+                           <li class="col-md-6 col-sm-6 col-xs-12" style="padding:0px;"> <a href=".tab_default_4" data-toggle="tab" style="padding:10px 20px !important;border:none;">
                               <i class="fa fa-file-video-o icon-lg" aria-hidden="true"></i>&nbsp;
                               <strong style="font-size:20px;">Purchased Products</strong> </a>
                            </li>
@@ -155,7 +160,7 @@
                                           </div>
                                           <div align="center" class="panel-footer">
                                              <div class="row" align="left">
-                                                <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:25px !important; color: #C00;">{{packageBought.ProductName}}</span></div>
+                                                <div class="col-md-12 col-sm-12 cacaemy-block01"><span class="mt5" style="font-size:22px !important; color: #C00;">{{packageBought.ProductName}}</span></div>
                                              </div>
                                              <button ng-if="bigUUrl" type="button" class="btn btn-block btn-danger btn-xs" style="margin-top:10px; font-size:15px; padding:10px;" ng-click="goToLightSpeed();">Explore All</button>
                                           </div>
