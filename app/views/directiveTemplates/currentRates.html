@@ -1,75 +1,71 @@
 <div class="panel  noborder">
-  <div class="s-block-transparent-bg panel-heading noborder " >
-    <div class="panel-btns">
-      <a href="" class="panel-close tooltips" data-toggle="tooltip" title="Close Panel"><i class="fa fa-times"></i></a>
-    </div>
-    <!-- panel-btns -->
-    <div class="panel-icon"><img ng-src="{{s3Url}}{{miningParams.iconPath}}" width="60" class="img-responsive" /></div>
-    <div class="media-body">
-      <h1 class="mt5 no-pad no-mar">{{miningParams.title}}</h1>
-      <small>{{miningParams.subTitle}}</small>
-    </div>
-    <!-- media-body -->
-    <hr>
-    <div class="clearfix mar10"> </div>
-    <div class="blo01">
-      <h4 class="title-top-mid-block">Pool Contract</h4>
-      <div class="row">
-        <div class="col-md-6 col-sm-12 top-box-lft ">
-          <h4 class="nomargin current-rates-fonts " > BTC - 3.00000 TH/s</h4>
-          <h4 class="nomargin current-rates-fonts " > BTC - 2.00000 TH/s</h4>
-          <h4 class="nomargin current-rates-fonts" >Ether - 0.5766 MH/s</h4>
-          <h4 class="nomargin current-rates-fonts" >Dash - 50 MH/s</h4>
-          <h4 class="nomargin current-rates-fonts" >Monero - 150 H/s</h4>
-        </div>
-        <div class="col-md-6 col-sm-12 top-box-rgt" >
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btcMining | number:6}} BTC &asymp; $ {{currentMining.btcUsd | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btc2Mining | number:6}} BTC &asymp; $ {{currentMining.btc2Usd | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.ethMining | number:6}} ETH &asymp; $ {{currentMining.ethUsd | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.dashMining | number:6}} DASH &asymp; $ {{currentMining.dashUsd | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.moneroMining | number:6}} MONERO &asymp; $ {{currentMining.moneroUsd | number:6}}</h4>
-        </div>
+   <div class="s-block-transparent-bg panel-heading noborder " >
+      <div class="panel-btns">
+         <a href="" class="panel-close tooltips" data-toggle="tooltip" title="Close Panel"><i class="fa fa-times"></i></a>
       </div>
-    </div>
-    <div class="blo01" style="margin-top:10px;">
-      <h4 class=" title-top-mid-block" >Machine Contract</h4>
-      <div class="row">
-        <div class="col-md-6 col-sm-12 top-box-lft ">
-          <h4 class="nomargin current-rates-fonts" > BTC - 30.000 TH/s</h4>
-          <h4 class="nomargin current-rates-fonts" > BTC - 20.000 TH/s</h4>
-          <h4 class="nomargin current-rates-fonts" >Ether - 5.766 MH/s</h4>
-          <h4 class="nomargin current-rates-fonts" >Dash - 500 MH/s</h4>
-          <h4 class="nomargin current-rates-fonts" >Monero - 1500 H/s</h4>
-        </div>
-        <div class="col-md-6 col-sm-12 top-box-rgt" >
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btcMining*miningParams.machineMining | number:6}} BTC &asymp; $ {{currentMining.btcUsd*miningParams.machineMining | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btc2Mining*miningParams.machineMining | number:6}} BTC &asymp; $ {{currentMining.btc2Usd*miningParams.machineMining | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.ethMining*miningParams.machineMining | number:6}} ETH &asymp; $ {{currentMining.ethUsd*miningParams.machineMining | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.dashMining*miningParams.machineMining | number:6}} DASH &asymp; $ {{currentMining.dashUsd*miningParams.machineMining | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.moneroMining*miningParams.machineMining | number:6}} MONERO &asymp; $ {{currentMining.moneroUsd*miningParams.machineMining | number:6}}</h4>
-        </div>
+      <!-- panel-btns -->
+      <div class="panel-icon"><img ng-src="{{s3Url}}{{miningParams.iconPath}}" width="60" class="img-responsive" /></div>
+      <div class="media-body">
+         <h1 class="mt5 no-pad no-mar">{{miningParams.title}}</h1>
+         <small>{{miningParams.subTitle}}</small>
       </div>
-    </div>
-    <div class="blo01">
-      <h4 class="mar10 title-top-mid-block">Rack Contract</h4>
-      <div class="row">
-        <div class="col-md-6 col-sm-12 top-box-lft ">
-          <h4 class="nomargin current-rates-fonts" > BTC - 300.000 TH/s</h4>
-          <h4 class="nomargin current-rates-fonts" > BTC - 200.000 TH/s</h4>
-          <h4 class="nomargin current-rates-fonts" >Ether - 57.66 MH/s</h4>
-          <h4 class="nomargin current-rates-fonts" >Dash - 5000 MH/s</h4>
-          <h4 class="nomargin current-rates-fonts" >Monero - 15000 H/s</h4>
-        </div> 
-        <div class="col-md-6 col-sm-12 top-box-rgt">
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btcMining*miningParams.rackMining | number:6}} BTC &asymp; $ {{currentMining.btcUsd*miningParams.rackMining | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btc2Mining*miningParams.rackMining | number:6}} BTC &asymp; $ {{currentMining.btc2Usd*miningParams.rackMining | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.ethMining*miningParams.rackMining | number:6}} ETH &asymp; $ {{currentMining.ethUsd*miningParams.rackMining | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.dashMining*miningParams.rackMining | number:6}} DASH &asymp; $ {{currentMining.dashUsd*miningParams.rackMining | number:6}}</h4>
-          <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.moneroMining*miningParams.rackMining | number:6}} MONERO &asymp; $ {{currentMining.moneroUsd*miningParams.rackMining | number:6}}</h4>
-        </div>
+      <!-- media-body -->
+      <hr>
+      <div class="clearfix mar10"> </div>
+      <div class="blo01">
+         <div class="row">
+            <div class="col-md-4">
+               <h4 class="title-top-mid-block">Pool Contract</h4>
+               <div class="col-md-5 col-sm-12 top-box-lft ">
+                  <h4 class="nomargin current-rates-fonts " > BTC - 3.00000 TH/s</h4>
+                  <h4 class="nomargin current-rates-fonts " > BTC - 2.00000 TH/s</h4>
+                  <h4 class="nomargin current-rates-fonts" >Ether - 0.5766 MH/s</h4>
+                  <h4 class="nomargin current-rates-fonts" >Dash - 50 MH/s</h4>
+                  <h4 class="nomargin current-rates-fonts" >Monero - 150 H/s</h4>
+               </div>
+               <div class="col-md-7 col-sm-12 top-box-rgt" >
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btcMining | number:6}} BTC &asymp; $ {{currentMining.btcUsd | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btc2Mining | number:6}} BTC &asymp; $ {{currentMining.btc2Usd | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.ethMining | number:6}} ETH &asymp; $ {{currentMining.ethUsd | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.dashMining | number:6}} DASH &asymp; $ {{currentMining.dashUsd | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.moneroMining | number:6}} MONERO &asymp; $ {{currentMining.moneroUsd | number:6}}</h4>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <h4 class=" title-top-mid-block" >Machine Contract</h4>
+               <div class="col-md-5 col-sm-12 top-box-lft ">
+                  <h4 class="nomargin current-rates-fonts" > BTC - 30.000 TH/s</h4>
+                  <h4 class="nomargin current-rates-fonts" > BTC - 20.000 TH/s</h4>
+                  <h4 class="nomargin current-rates-fonts" >Ether - 5.766 MH/s</h4>
+                  <h4 class="nomargin current-rates-fonts" >Dash - 500 MH/s</h4>
+                  <h4 class="nomargin current-rates-fonts" >Monero - 1500 H/s</h4>
+               </div>
+               <div class="col-md-7 col-sm-12 top-box-rgt" >
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btcMining*miningParams.machineMining | number:6}} BTC &asymp; $ {{currentMining.btcUsd*miningParams.machineMining | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btc2Mining*miningParams.machineMining | number:6}} BTC &asymp; $ {{currentMining.btc2Usd*miningParams.machineMining | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.ethMining*miningParams.machineMining | number:6}} ETH &asymp; $ {{currentMining.ethUsd*miningParams.machineMining | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.dashMining*miningParams.machineMining | number:6}} DASH &asymp; $ {{currentMining.dashUsd*miningParams.machineMining | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.moneroMining*miningParams.machineMining | number:6}} MONERO &asymp; $ {{currentMining.moneroUsd*miningParams.machineMining | number:6}}</h4>
+               </div>
+            </div>
+            <div class="col-md-4">
+               <h4 class="title-top-mid-block">Rack Contract</h4>
+               <div class="col-md-5 col-sm-12 top-box-lft ">
+                  <h4 class="nomargin current-rates-fonts" > BTC - 300.000 TH/s</h4>
+                  <h4 class="nomargin current-rates-fonts" > BTC - 200.000 TH/s</h4>
+                  <h4 class="nomargin current-rates-fonts" >Ether - 57.66 MH/s</h4>
+                  <h4 class="nomargin current-rates-fonts" >Dash - 5000 MH/s</h4>
+                  <h4 class="nomargin current-rates-fonts" >Monero - 15000 H/s</h4>
+               </div>
+               <div class="col-md-7 col-sm-12 top-box-rgt">
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btcMining*miningParams.rackMining | number:6}} BTC &asymp; $ {{currentMining.btcUsd*miningParams.rackMining | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;">{{currentMining.btc2Mining*miningParams.rackMining | number:6}} BTC &asymp; $ {{currentMining.btc2Usd*miningParams.rackMining | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.ethMining*miningParams.rackMining | number:6}} ETH &asymp; $ {{currentMining.ethUsd*miningParams.rackMining | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.dashMining*miningParams.rackMining | number:6}} DASH &asymp; $ {{currentMining.dashUsd*miningParams.rackMining | number:6}}</h4>
+                  <h4 class="nomargin current-rates-fonts " style="min-height:24px;" >{{currentMining.moneroMining*miningParams.rackMining | number:6}} MONERO &asymp; $ {{currentMining.moneroUsd*miningParams.rackMining | number:6}}</h4>
+               </div>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
-  <!-- panel-body -->
+   </div>
 </div>
-<!-- panel -->

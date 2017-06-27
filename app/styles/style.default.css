@@ -1407,7 +1407,6 @@ select {
     -moz-transition: all 0.2s ease-out 0s;
     -webkit-transition: all 0.2s ease-out 0s;
     transition: all 0.2s ease-out 0s;
-    padding: 12px 5px;
 }
 
 .leftpanel .nav > li > a:hover,
@@ -5398,10 +5397,6 @@ h4.great {
         right: 20px;
         bottom: 0px;
     }
-
-    .leadership-reward {
-        margin-top:10px;
-    }
 }
 
 
@@ -6197,7 +6192,7 @@ h1{
 .reward07 p{padding-left:20px; font-size:16px !important;}
 .reward07 .prize-img { width:100%; height: 100%; padding-top:50px;}
 
-.reward-head-dash{background:#b73632;  color:#fff; padding:5px; border-radius:5px 5px 0px 0px; border-top:3px solid #900; font-family: "Oswald",sans-serif; font-weight:normal;font-size: 20px;}
+.reward-head-dash{background:#b73632;  color:#fff; /*padding:5px;*/ border-radius:5px 5px 0px 0px; border-top:1px solid #900; font-family: "Oswald",sans-serif; font-weight:normal;font-size: 17px;}
 
 .user_id strong{padding-left: 20px;}
 

@@ -100,13 +100,13 @@ body {
       width: 100% !important;
   }
   .social-icons img {
-      width: 170px;
+      width: 130px;
   }  
 }
 
 @media screen and (min-width: 1200px) {
   .social-icons img {
-      width: 200px;
+      width: 150px;
   }
 
   .social-icons {
@@ -229,4 +229,12 @@ body {
 }
 .packageprice{
   float: right;
+}
+@media screen and (max-width: 767px) {
+  .leadership-reward{
+    margin-bottom:220px;
+  }
+  .first-board{
+    margin-bottom:50px;
+  }
 }

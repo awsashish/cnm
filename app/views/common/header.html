@@ -4,7 +4,7 @@
    </button>
 </div>
 <div class="col-md-4 col-md-offset-1">
-   <p class="user-info" style=" padding-top:10px;">
+   <p class="user-info" style=" padding-top:30px;">
       <strong>
          <i class="fa fa-user"></i> Welcome {{name}}, 
          <country-flag country-name="country" country-code="allCountryCodes[country]" s3-url="s3Url"/>
@@ -12,27 +12,27 @@
    </p>
 </div>
 <div class="col-md-7 right-logo" style="z-index:999;">
-  <!--<div class="counter-date">
-    <timer countdown="remainingTime" max-time-unit="'day'" class="timer" interval="1000">
-      <span class="countdown-amount">{{ddays}}</span><span class="timer-text">Day{{daysS}}</span>
-      <span class="countdown-amount">{{hhours}}</span><span class="timer-text"> Hour{{hoursS}}</span>
-      <span class="countdown-amount">{{mminutes}}</span><span class="timer-text"> Minute{{minutesS}}</span>
-      <span class="countdown-amount">{{sseconds}}</span><span class="timer-text"> Second{{secondsS}}</span>
-    </timer>
-  </div>
-  <p class="cal-dash pull-left">To Launch...</p>-->
-  <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo pull-right" width="200" style="padding:20px 20px 0px;">
-  <a class="header-logo pull-right" ui-sref="coinomia-academy" style="cursor:pointer;">
-    <div style="position:relative;">
-      <img src="images/live-gif.gif" class="img-responsive" style="position:absolute;left:20px;top:5px;max-width:60px;">
-      <img ng-src="{{s3Url}}coinomiacademy7.png" width="180" style="padding: 6px 20px 0px;" />
-    </div>
-  </a>
+   <!--<div class="counter-date">
+      <timer countdown="remainingTime" max-time-unit="'day'" class="timer" interval="1000">
+        <span class="countdown-amount">{{ddays}}</span><span class="timer-text">Day{{daysS}}</span>
+        <span class="countdown-amount">{{hhours}}</span><span class="timer-text"> Hour{{hoursS}}</span>
+        <span class="countdown-amount">{{mminutes}}</span><span class="timer-text"> Minute{{minutesS}}</span>
+        <span class="countdown-amount">{{sseconds}}</span><span class="timer-text"> Second{{secondsS}}</span>
+      </timer>
+      </div>
+      <p class="cal-dash pull-left">To Launch...</p>-->
+   <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo pull-right" width="200" style="padding:20px 20px 0px;">
+   <a class="header-logo pull-right" ui-sref="coinomia-academy" style="cursor:pointer;">
+      <div style="position:relative;">
+         <img src="images/live-gif.gif" class="img-responsive" style="position:absolute;left:20px;top:5px;max-width:60px;">
+         <img ng-src="{{s3Url}}coinomiacademy7.png" width="180" style="padding: 6px 20px 0px;" />
+      </div>
+   </a>
 </div>
 <div class="col-md-12 mobile-navigation collapse" id="bs-example-navbar-collapse-1">
    <nav id="nav">
       <ul class="nav nav-pills nav-stacked" id="menu-content">
-        <li><a href="#/coinomia-academy" ng-class="(activeMenu==='coinomia-academy'?'highlite':'')">
+         <li><a href="#/coinomia-academy" ng-class="(activeMenu==='coinomia-academy'?'highlite':'')">
             <span>Coinomia Academy</span>
             </a>
          </li>

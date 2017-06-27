@@ -53,6 +53,9 @@
    <!-- media -->
    <nav id="nav">
       <ul class="nav nav-pills nav-stacked" id="menu-content">
+         <li ><a href="#/dashboard" id="default" ng-class="(activeMenu==='dashboard'?'highlite':'')"><i class="fa fa-home lg-i"></i> <br />
+            <span>Dashboard</span></a>
+         </li>
          <li><a data-toggle="modal" data-target=".bs-example-modal-lg" ng-class="(activeMenu==='btccoin'?'highlite':'')">
             <img ng-src="images/btccoin.png" width="100%" style="padding:5px;">
             </a>
@@ -60,9 +63,6 @@
          <li><a href="#/reward" ng-class="(activeMenu==='reward'?'highlite':'')">
             <img ng-src="images/reward-icon.png" width="100%" style="padding:5px;">
             </a>
-         </li>
-         <li ><a href="#/dashboard" id="default" ng-class="(activeMenu==='dashboard'?'highlite':'')"><i class="fa fa-home lg-i"></i> <br />
-            <span>Dashboard</span></a>
          </li>
          <li ><a href="#/referral-link" ng-class="(activeMenu==='referral-link'?'highlite':'')"><i class="fa fa-chain lg-i" aria-hidden="true"></i>
             <br />
