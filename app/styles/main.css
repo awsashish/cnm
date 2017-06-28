@@ -238,3 +238,8 @@ body {
     margin-bottom:50px;
   }
 }
+@media screen and (max-width: 1340px) {
+  .top-box-lft, .top-box-rgt{
+    width:100%;
+  }
+}
