@@ -1,71 +1,79 @@
-<div  ng-repeat="info in walletData | filter:{'Wallet':walletType}">
-   <h2 class="mb35 no-margin" align="center"><img ng-src="{{s3Url}}package/{{info.Wallet | lowercase}}-wallet.png" width="75"><br>
+<div class="wallet-list" ng-repeat="info in walletData | filter:{'Wallet':walletType}">
+   <h2 class="mb35 wallet-margin" align="center" class="wallet-heading"><img ng-src="{{s3Url}}package/{{info.Wallet | lowercase}}-wallet.png" width="75"><br>
       <span class="glyphicon glyphicon-minus"></span>
-      <span>{{walletHeading[info.Wallet]?walletHeading[info.Wallet]:'USD'}} Wallet</span>
+      <span style="font-size:22px;">{{walletHeading[info.Wallet]?walletHeading[info.Wallet]:'USD'}} Wallet</span>
       <span class="glyphicon glyphicon-minus"></span><br>
    </h2>
    <br>
    <div class="table-responsive">
       <table class="table table-dark-gry table-hover mb30 font16 overlay-wrapper">
          <tbody>
-           <tr ng-if="type && info.Wallet !== 'USD'">
+            <tr ng-if="type && info.Wallet !== 'USD'">
                <td valign="middle"><strong class="red-text02" >Balance {{walletHeading[info.Wallet]}}</strong></td>
-               <td ng-if="info.Wallet !== 'USD'"><h4 class="nomargin nopadding"><strong>{{info.Balance}} {{info.Wallet}}</strong></h4></td>
-               <td><h4 class="nomargin nopadding" ng-if="info.Wallet === 'USD'"><strong>{{info.Balance | currency}} </strong></h4></td>
+               <td ng-if="info.Wallet !== 'USD'">
+                  <h4 class="nomargin nopadding"><strong>{{info.Balance}} {{info.Wallet}}</strong></h4>
+               </td>
+               <td>
+                  <h4 class="nomargin nopadding" ng-if="info.Wallet === 'USD'"><strong>{{info.Balance | currency}} </strong></h4>
+               </td>
             </tr>
             <tr ng-if="type && info.Wallet === 'USD'">
                <td valign="middle"><strong class="red-text02" >Balance {{walletHeading[info.Wallet]}}</strong></td>
-               <td ng-if="info.Wallet !== 'USD'"><h4 class="nomargin nopadding"><strong>{{info.Balance}} {{info.Wallet}}</strong></h4></td>
-               <td><h3 class="nomargin nopadding" ng-if="info.Wallet === 'USD'"><strong>{{info.Balance | currency}} </strong></h3></td>
+               <td ng-if="info.Wallet !== 'USD'">
+                  <h4 class="nomargin nopadding"><strong>{{info.Balance}} {{info.Wallet}}</strong></h4>
+               </td>
+               <td>
+                  <h4 class="nomargin nopadding" ng-if="info.Wallet === 'USD'"><strong>{{info.Balance | currency}} </strong></h4>
+               </td>
             </tr>
             <tr ng-if="info.Wallet !== 'USD'">
-               <td valign="middle"><strong class="red-text02 " style="padding-top:30px;">Wallet Address</strong></td>
+               <td valign="middle" style="vertical-align:middle;"><strong class="red-text02">Wallet Address</strong></td>
                <td>
-                 <input type="text" class="form-control" ng-model="info.Address">
+                  <input type="text" class="form-control" style="margin:0px;" ng-model="info.Address">
                </td>
+              <td></td>
             </tr>
             <tr ng-if="type">
-              <td align="center" valign="middle" colspan="2" ng-if="info.Wallet === 'USD'">
-                 <form name="fund" class="form-inline" ng-submit="submit(amount)" novalidate>
-                   <div class="col-xs-8 col-sm-8 col-md-8 text-left fund-section">
-                     <div class="col-xs-12 col-sm-12 col-md-12 input-group fund-box mb8">
-                       <span class="input-group-addon ng-binding">$</span>
-                       <input type="number" name="amount" class="form-control" ng-model="amount" ng-change="checkAmount(amount)" required />
+               <td align="center" valign="middle" colspan="3" ng-if="info.Wallet === 'USD'">
+                  <form name="fund" class="form-inline" ng-submit="submit(amount)" novalidate>
+                     <div class="col-xs-8 col-sm-8 col-md-8 text-left fund-section">
+                        <div class="col-xs-12 col-sm-12 col-md-12 input-group fund-box">
+                           <span class="input-group-addon ng-binding">$</span>
+                           <input type="number" name="amount" class="form-control" ng-model="amount" ng-change="checkAmount(amount)" required />
+                        </div>
+                        <div class="alert alert-danger fade in error-padding text-center"
+                           ng-show="fund.amount.$touched && fund.amount.$invalid">
+                           Please enter any amount
+                        </div>
+                        <div class="alert alert-danger fade in error-padding text-center"
+                           ng-if="amountError">Amount should not be less than $100.</div>
                      </div>
-                     <div class="alert alert-danger fade in error-padding text-center"
-                        ng-show="fund.amount.$touched && fund.amount.$invalid">
-                        Please enter any amount</div>
-                     <div class="alert alert-danger fade in error-padding text-center"
-                        ng-if="amountError">Amount should not be less than $100.</div>
-                    </div>
-                    <!-- <b style="font-size:25px; ">$</b>
-                    <input type="number" name="amount" class="form-control" ng-model="amount" style="margin-top:10px;" ng-change="checkAmount(amount)" required />&nbsp;&nbsp; -->
-                    <div class="col-xs-4 col-sm-4 col-md-4 text-left fund-button">
-                      <button type="submit" data-toggle="modal" data-target="#add-funds" class="btn btn-default btn-white" ng-disabled="fund.$invalid || amountError"><strong>Add Funds</strong></button>
-                    </div>
-                 </form>
-              </td>
-               <td align="center" valign="middle" colspan="2" ng-if="info.Wallet !== 'USD' && info.Wallet !== 'ETH'">
-                 <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(info, 'withdrawal', info.Wallet)"><strong><img ng-src="images/withdraw.png" width="30"> Withdraw</strong></a>
-
-                 <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ng-click="getWallet(info, 'convertUSD', info.Wallet)"><strong><img ng-src="{{s3Url}}dollar.png" width="30"> Convert to USD</strong></a>
+                     <!-- <b style="font-size:25px; ">$</b>
+                        <input type="number" name="amount" class="form-control" ng-model="amount" style="margin-top:10px;" ng-change="checkAmount(amount)" required />&nbsp;&nbsp; -->
+                     <div class="col-xs-4 col-sm-4 col-md-4 text-left fund-button">
+                        <button type="submit" data-toggle="modal" data-target="#add-funds" class="btn btn-default btn-white" ng-disabled="fund.$invalid || amountError"><strong>Add Funds</strong></button>
+                     </div>
+                  </form>
                </td>
-               <td align="center" valign="middle" colspan="2" ng-if="info.Wallet === 'ETH'">
-                 <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(info, 'withdrawal', info.Wallet)"><strong><img ng-src="images/withdraw.png" width="30"> Withdraw</strong></a>
-
-                 <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ng-click="getWallet(info, 'convertUSD', info.Wallet)"><strong><img ng-src="{{s3Url}}dollar.png" width="30"> Convert to USD</strong></a>
+               <td align="center" valign="middle" colspan="3" ng-if="info.Wallet !== 'USD' && info.Wallet !== 'ETH'">
+                  <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(info, 'withdrawal', info.Wallet)"><strong><img ng-src="images/withdraw.png" width="30"> Withdraw</strong></a>
+                  <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ng-click="getWallet(info, 'convertUSD', info.Wallet)"><strong><img ng-src="{{s3Url}}dollar.png" width="30"> Convert to USD</strong></a>
+               </td>
+               <td align="center" valign="middle" colspan="3" ng-if="info.Wallet === 'ETH'">
+                  <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(info, 'withdrawal', info.Wallet)"><strong><img ng-src="images/withdraw.png" width="30"> Withdraw</strong></a>
+                  <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ng-click="getWallet(info, 'convertUSD', info.Wallet)"><strong><img ng-src="{{s3Url}}dollar.png" width="30"> Convert to USD</strong></a>
                </td>
             </tr>
             <tr ng-if="type && info.Wallet === 'USD'">
-              <td align="center" valign="middle" colspan="2">
-                <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(info, 'withdrawal', info.Wallet)"><strong><img ng-src="images/withdraw.png" width="30"> Withdraw</strong></a>
-                 <!--<a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(walletHeading[info.Wallet], 'convertBTC', info.Wallet)"><strong><img ng-src="{{s3Url}}btc.png" width="30"> Convert to BTC</strong></a>-->
-                 <a data-toggle="modal" data-target="#internal-transfer" class="btn btn-default"><strong><img ng-src="images/transfer-funds.png" width="30"> Internal Transfer</strong></a>
+               <td align="center" valign="middle" colspan="3">
+                  <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(info, 'withdrawal', info.Wallet)"><strong><img ng-src="images/withdraw.png" width="30"> Withdraw</strong></a>
+                  <!--<a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(walletHeading[info.Wallet], 'convertBTC', info.Wallet)"><strong><img ng-src="{{s3Url}}btc.png" width="30"> Convert to BTC</strong></a>-->
+                  <a data-toggle="modal" data-target="#internal-transfer" class="btn btn-default"><strong><img ng-src="images/transfer-funds.png" width="30"> Internal Transfer</strong></a>
                </td>
             </tr>
             <tr ng-if="!type">
-               <td align="center" valign="middle" colspan="2">
-                 <button class="btn btn-lg btn-default white-btn" ng-click="updateWallet({wallet:info.Wallet, address:info.Address})"><strong>Save </strong></button>
+               <td align="center" valign="middle" colspan="3">
+                  <button class="btn btn-lg btn-default white-btn" ng-click="updateWallet({wallet:info.Wallet, address:info.Address})"><strong>Save </strong></button>
                </td>
             </tr>
          </tbody>
