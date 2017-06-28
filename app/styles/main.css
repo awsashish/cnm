@@ -230,7 +230,7 @@ body {
 .packageprice{
   float: right;
 }
-@media screen and (max-width: 1340px) {
+@media screen and (max-width: 450px) {
   .top-box-lft, .top-box-rgt{
     width:100%;
   }
