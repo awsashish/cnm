@@ -154,7 +154,10 @@ angular.module('coinomiaFrontendApp')
       'Bitcoin Rack Contract': 'rack.png',
       'Ethereum Pool Contract':'ether-contract.png',
       'Ethereum Machine Contract':'ether-contributor',
-      'Ethereum Rack Contract':'ether-rack'
+      'Ethereum Rack Contract':'ether-rack',
+      'Monero Pool Contract':'monerocloud.png',
+      'Monero Machine Contract':'moneromachine.png',
+      'Monero Rack Contract':'monerorack.png'
     },
     'reward_commission': {
       'frontline_commission': [
