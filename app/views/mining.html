@@ -58,11 +58,11 @@
                            <br />
                            <!-- Nav tabs -->
                            <ul class="nav nav-tabs row" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-                              <li role="presentation" class="col-md-2 col-sm-12 col-xs-12 active" style="padding:0px;"><a href=".rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
-                              <li role="presentation" class="col-md-2 col-sm-12 col-xs-12" style="padding:0px;"><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
-                              <li role="presentation" class="col-md-2 col-sm-12 col-xs-12" style="padding:0px;"><a href=".dashTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}dashcoin.png" width="40" />  Dash</strong></a></li>
-                              <li role="presentation" class="col-md-2 col-sm-12 col-xs-12" style="padding:0px;"s><a href=".moneroTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}moneroheader.png" width="40" />  Monero</strong></a></li>
-                              <li role="presentation" class="col-md-2 col-sm-12 col-xs-12" style="padding:0px;"s><a href=".ltcTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}litecoin.png" width="40" />  Lite</strong></a></li>
+                              <li role="presentation" class="mining-tabs col-md-2 col-sm-12 col-xs-12 active" style="padding:0px;"><a href=".rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
+                              <li role="presentation" class="mining-tabs col-md-2 col-sm-12 col-xs-12" style="padding:0px;"><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
+                              <li role="presentation" class="mining-tabs col-md-2 col-sm-12 col-xs-12" style="padding:0px;"><a href=".dashTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}dashcoin.png" width="40" />  Dash</strong></a></li>
+                              <li role="presentation" class="mining-tabs col-md-2 col-sm-12 col-xs-12" style="padding:0px;"s><a href=".moneroTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}moneroheader.png" width="40" />  Monero</strong></a></li>
+                              <li role="presentation" class="mining-tabs col-md-2 col-sm-12 col-xs-12" style="padding:0px;"s><a href=".ltcTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}litecoin.png" width="40" />  Lite</strong></a></li>
                            </ul>
 
                            <!-- Tab panes -->
@@ -1280,7 +1280,7 @@
                                           </div>
                                           <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="ltc in ltcProducts">
                                              <p>
-                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}ltccoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{ltc.productname}}</h2>
+                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}litecoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{ltc.productname}}</h2>
                                              </p>
                                              <h3 class="mb36">{{ltc.amount * ltc.ltcMining/ltc.miningpower | number:2}} USD</h3>
                                              <h3 class="mb36">{{ltc.ltcMining}} H/s</h3>

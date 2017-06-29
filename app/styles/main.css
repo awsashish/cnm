@@ -219,3 +219,14 @@ body {
 .leftpanel{
   min-height:1400px !important;
 }
+@media screen and (min-width: 992px) {
+  .mining-tabs{
+    width:20%;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1180px) {
+  .mining-tabs{
+    width:50%;
+    min-height:70px;
+  }
+}
