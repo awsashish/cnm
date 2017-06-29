@@ -20,7 +20,7 @@
                         <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="DASH" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal" s3-url="s3Url"></wallet-info>
                         <wallet-info class="col-md-6 col-sm-12" wallet-data="walletData" wallet-type="USD" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal" s3-url="s3Url"></wallet-info>
                         <wallet-info class="col-md-6 col-sm-12" wallet-data="walletData" wallet-type="MONERO" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal" s3-url="s3Url"></wallet-info>
-                        <!-- <wallet-info class="col-md-6 col-sm-12" wallet-data="walletData" wallet-type="LITE" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal" s3-url="s3Url"></wallet-info> -->
+                        <wallet-info class="col-md-6 col-sm-12" wallet-data="walletData" wallet-type="LTC" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" type="withdrawal" s3-url="s3Url"></wallet-info>
                          <br />
                          <br />
                       </div>
@@ -119,7 +119,7 @@
                       <small class="col-md-12 red-text02" ng-if="walletName === 'ETH'">Note : Minimum balance should be 0.05 ETH</small>
                       <small class="col-md-12 red-text02" ng-if="walletName === 'DASH'">Note : Minimum balance should be 0.05 DASH</small>
                       <small class="col-md-12 red-text02" ng-if="walletName === 'MONERO'">Note : Minimum balance should be 0.05 MONERO</small>
-                      <small class="col-md-12 red-text02" ng-if="walletName === 'LITE'">Note : Minimum balance should be 0.05 LITE</small>
+                      <small class="col-md-12 red-text02" ng-if="walletName === 'LTC'">Note : Minimum balance should be 0.05 LTC</small>
                       <button type="submit" style="padding:10px;top: -4px;position: relative;" class="btn btn-default" ng-disabled="withdrawal.$invalid">OK</button>
                       <div class="alert alert-danger fade in error-padding"
                         ng-show="withdrawal.walletAmount.$touched && withdrawal.walletAmount.$invalid" style="width:80%;">

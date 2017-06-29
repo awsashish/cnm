@@ -68,9 +68,9 @@ angular.module('coinomiaFrontendApp')
     'moneroPoolValue':150,
     'moneroMachineValue':1500,
     'moneroRackValue':15000,
-    'litePoolValue':150,
-    'liteMachineValue':1500,
-    'liteRackValue':15000,
+    'ltcPoolValue':150,
+    'ltcMachineValue':1500,
+    'ltcRackValue':15000,
     'productMaxUnit':[
       1000,
       100,
@@ -94,7 +94,7 @@ angular.module('coinomiaFrontendApp')
       'ETH': 'Ether',
       'DASH': 'Dash',
       'MONERO': 'Monero',
-      'LITE': 'Lite'
+      'LTC': 'Ltc'
     },
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
     'signUpPath':'http://login.coinomia.com/#/signup',
@@ -143,7 +143,7 @@ angular.module('coinomiaFrontendApp')
       'moneromachine.png',
       'monerorack.png'
     ],
-    'liteImagePath':[
+    'ltcImagePath':[
       'litepool.png',
       'litemahine.png',
       'literack.png'

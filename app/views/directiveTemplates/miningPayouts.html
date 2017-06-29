@@ -44,8 +44,8 @@
               </a>
             </li>
             <li role="presentation" class="" >
-              <a href=".lite" role="tab" data-toggle="tab" ng-click="litePoolClick({desContract:litePoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
-              <img class="img-circle payouts-image" ng-src="{{s3Url}}litepool.png" title="Pool Contract(LITE)"   />
+              <a href=".ltc" role="tab" data-toggle="tab" ng-click="ltcPoolClick({desContract:ltcPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}litepool.png" title="Pool Contract(LTC)"   />
               </a>
             </li>
           </ul>
@@ -96,13 +96,13 @@
                 </div>
               </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade lite" >
+            <div role="tabpanel" class="tab-pane fade ltc" >
               <div align="left" class="tab-inner">
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
-                    <select class="sm-txtbox1" ng-model="litePoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="litePoolCalc({desContract:litePoolContract, contractValue:poolDetails, mining:currentMining})">
+                    <select class="sm-txtbox1" ng-model="ltcPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="ltcPoolCalc({desContract:ltcPoolContract, contractValue:poolDetails, mining:currentMining})">
                     </select>
-                    <br><small>{{litePoolContract*litePoolValue}} H/s</small>
+                    <br><small>{{ltcPoolContract*ltcPoolValue}} H/s</small>
                   </div>
                 </div>
               </div>
@@ -147,11 +147,11 @@
                 </div>
               </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade lite" >
+            <div role="tabpanel" class="tab-pane fade ltc" >
               <div align="left" class="tab-inner">
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
-                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{litePoolPrice | number:2}}</strong></h4>
+                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{ltcPoolPrice | number:2}}</strong></h4>
                   </div>
                 </div>
               </div>
@@ -183,8 +183,8 @@
               </a>
             </li>
             <li role="presentation" class="" >
-              <a href=".lite1" aria-controls="lite1" role="tab" data-toggle="tab" ng-click="liteMachineClick({desContract:liteContributorContract, contractValue:contributorDetails, mining:currentMining})" style="padding:10px 0px !important;">
-              <img class="img-circle payouts-image" ng-src="{{s3Url}}litemahine.png" title="Machine Contract(LITE)"  />
+              <a href=".ltc1" aria-controls="ltc1" role="tab" data-toggle="tab" ng-click="ltcMachineClick({desContract:ltcContributorContract, contractValue:contributorDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}litemahine.png" title="Machine Contract(LTC)"  />
               </a>
             </li>
           </ul>
@@ -235,13 +235,13 @@
                 </div>
               </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade lite1" >
+            <div role="tabpanel" class="tab-pane fade ltc1" >
               <div align="left" class="tab-inner">
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
-                    <select class="sm-txtbox1" ng-model="liteContributorContract" ng-options="option.value as option.name for option in machineOptions" ng-change="liteContributorCalc({desContract:liteContributorContract, contractValue:contributorDetails, mining:currentMining})">
+                    <select class="sm-txtbox1" ng-model="ltcContributorContract" ng-options="option.value as option.name for option in machineOptions" ng-change="ltcContributorCalc({desContract:ltcContributorContract, contractValue:contributorDetails, mining:currentMining})">
                     </select>
-                    <br><small>{{liteContributorContract*liteMachineValue}} H/s</small>
+                    <br><small>{{ltcContributorContract*ltcMachineValue}} H/s</small>
                   </div>
                 </div>
               </div>
@@ -286,11 +286,11 @@
                 </div>
               </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade lite1" >
+            <div role="tabpanel" class="tab-pane fade ltc1" >
               <div align="left" class="tab-inner">
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
-                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{liteContributorPrice | number:2}}</strong></h4>
+                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{ltcContributorPrice | number:2}}</strong></h4>
                   </div>
                 </div>
               </div>
@@ -322,8 +322,8 @@
               </a>
             </li>
             <li role="presentation" class="" >
-              <a href=".lite2" aria-controls="lite" role="tab" data-toggle="tab" ng-click="liteRackClick({desContract:liteRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
-              <img class="img-circle payouts-image" ng-src="{{s3Url}}literack.png" title="LITE"  />
+              <a href=".ltc2" aria-controls="ltc" role="tab" data-toggle="tab" ng-click="ltcRackClick({desContract:ltcRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}literack.png" title="LTC"  />
               </a>
             </li>
           </ul>
@@ -374,13 +374,13 @@
                 </div>
               </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade lite2" >
+            <div role="tabpanel" class="tab-pane fade ltc2" >
               <div align="left" class="tab-inner">
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
-                    <select class="sm-txtbox1" ng-model="liteRackContract" ng-options="option.value as option.name for option in rackOptions" ng-change="liteRackCalc({desContract:liteRackContract, contractValue:rackDetails, mining:currentMining})">
+                    <select class="sm-txtbox1" ng-model="ltcRackContract" ng-options="option.value as option.name for option in rackOptions" ng-change="ltcRackCalc({desContract:ltcRackContract, contractValue:rackDetails, mining:currentMining})">
                     </select>
-                    <br><small>{{liteRackContract*liteRackValue}} H/s</small>
+                    <br><small>{{ltcRackContract*ltcRackValue}} H/s</small>
                   </div>
                 </div>
               </div>
@@ -425,11 +425,11 @@
                 </div>
               </div>
             </div>
-            <div role="tabpanel" class="tab-pane fade lite2" >
+            <div role="tabpanel" class="tab-pane fade ltc2" >
               <div align="left" class="tab-inner">
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
-                    <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{liteRackPrice | number:2}}</strong></h4>
+                    <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{ltcRackPrice | number:2}}</strong></h4>
                   </div>
                 </div>
               </div>
