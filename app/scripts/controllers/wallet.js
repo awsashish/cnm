@@ -208,6 +208,8 @@ angular.module('coinomiaFrontendApp')
           var type = 'ltc';
         }else if(wallet.toLowerCase() === 'usd') {
           var type = 'usd';
+        }else if(wallet.toLowerCase() === 'monero') {
+          var type = 'monero';
         }
 
         // Withdrawal Amount 
@@ -243,6 +245,9 @@ angular.module('coinomiaFrontendApp')
           var data = JSON.stringify(amount); 
         }else if(wallet.toLowerCase() === 'usd') {
           var type = 'usd';
+          var data = JSON.stringify(amount); 
+        }else if(wallet.toLowerCase() === 'monero') {
+          var type = 'monero';
           var data = JSON.stringify(amount); 
         }
 

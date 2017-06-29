@@ -40,8 +40,8 @@
                      <td><strong class="white-color">Price</strong></td>
                      <td><strong class="white-color">Action</strong></td>
                   </thead>
-                  <tr ng-repeat="cartItem in cartItems">
-                     <td><img src="images/package1.png" style="border:1px solid #ccc; padding:5px;" width="80"  /></td>
+                  <tr ng-show="showTable == true">
+                     <td><img ng-src="{{s3Url}}Coinomia-Academy/package{{index+1}}.png" style="border:1px solid #ccc; padding:5px;" width="80"  /></td>
                      <td style="vertical-align:middle;"> <strong>{{cartItem.PackageName}}</strong><br />
                      </td>
                      <td>
@@ -70,42 +70,57 @@
                <hr />
             </div>
             <div class="modal fade" id="purchase-summry" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-               <div ng-if="invoiceInfo" class="modal-dialog" role="document">
+               <div class="modal-dialog" role="document">
                   <div class="modal-content">
                      <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 align="left" class="modal-title" id="myModalLabel">Purchase Invoice</h4>
                      </div>
-                     <div align="left" class="modal-body" style="font-size:16px;">
-                        <em><strong>Hello {{name}},</strong></em><br />
-                        <br />
-                        Please Find the Details About Your New Purchase Below.<br />
-                        <hr />
-                        <strong>Mode of Purchase</strong>: <img src="images/bitcoin-logo.png" width="100" /><br /><br />
-                        <p class="add-funds-popup">Bitcoin Address : <strong>{{invoiceInfo.address}}</strong></p>
-                        <br />
-                        <p class="bit-address"><strong>Invoice Number</strong> : {{invoiceInfo.invoice_number}}</p>
-                        <table class="table table-bordered">
-                           <tr>
-                              <td><strong>Package Name</strong></td>
-                              <td><strong>Price</strong></td>
-                           </tr>
-                           <tr ng-repeat="cartItem in cartItems">
-                              <td><img src="images/package1.png" width="30" />{{cartItem.PackageName}}</td>
-                              <td>{{cartItem.Price}}</td>
-                           </tr>
-                        </table>
-                        <h3 class="pull-right nomargin nopadding"><strong>Total : ${{invoiceInfo.value_in_usd}}</strong></h3>
-                        <div class="clearfix"></div>
-                        <hr />
-                        </p>
-                        <br />
-                        <span><strong>Thank You,</strong><br />
-                        Team Coinomia<br />
-                        <img src="images/logo-coinomia.png" width="60" /></span>
-                     </div>
-                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal();">OK</button>
+                     <div align="left" class="modal-body text-capitalize" style="font-size:16px;">
+                        <div class="alert alert-danger fade in" ng-if="noBalance" style="font-size:13px;">
+                           Sorry, You don't have enough balance into your Coinomia USD wallet.
+                        </div>
+                        <div ng-if="!noBalance">
+                           <em><strong>Hello {{name}},</strong></em><br />
+                           <br />
+                           Please Find the Details About Your New Purchase Below.<br />
+                           <hr />
+                           <strong>Mode of Purchase</strong>: <img ng-src="{{s3Url}}{{payment === '1' ? 'bitcoin-logo':'coinomia-wallet'}}.png" width="100" /><br /><br />
+                           <p ng-if="payment === '1'" class="add-funds-popup">Bitcoin Address : <strong>{{invoiceInfo.address}}</strong></p>
+                           <br />
+                           <p class="bit-address"><strong>Invoice Number</strong> : {{invoiceInfo.invoice_number}}</p>
+                           <table class="table table-bordered">
+                              <tr>
+                                 <td><strong>Package Name</strong></td>
+                                 <td><strong>Price</strong></td>
+                              </tr>
+                              <tr>
+                                 <td><img src="images/package1.png" width="30" />{{cartItem.PackageName}}</td>
+                                 <td>{{cartItem.Price}}</td>
+                              </tr>
+                           </table>
+                           <h3 ng-if="payment === '1'" class="pull-right nomargin nopadding"><strong>Total : ${{invoiceInfo.value_in_usd}}</strong></h3>
+                           <h3 ng-if="payment === '2'" class="pull-right nomargin nopadding"><strong>Total : ${{cartItem.Price}}</strong></h3>
+                           <div class="clearfix"></div>
+                           <hr />
+                           </p>
+                           <br />
+                           <span><strong>Thank You,</strong><br />
+                           Team Coinomia<br />
+                           <img src="images/logo-coinomia.png" width="60" /></span>
+                        </div>
+                        <div ng-if="invoiceInfo.error" align="left" class="modal-body" style="font-size:16px;">
+                           <em><strong>Hello {{name}},</strong></em><br />
+                           <br />
+                           The purchase could not be made. Please try after some time.<br />
+                           <hr />
+                           <span><strong>Thank You,</strong><br />
+                           Team Coinomia<br />
+                           <img src="images/logo-coinomia.png" width="60" /></span>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="closeModal();">OK</button>
+                        </div>
                      </div>
                   </div>
                </div>

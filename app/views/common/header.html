@@ -12,25 +12,32 @@
    </p>
 </div>
 <div class="col-md-7 right-logo" style="z-index:999;">
-   <!--<div class="counter-date">
-      <timer countdown="remainingTime" max-time-unit="'day'" class="timer" interval="1000">
-        <span class="countdown-amount">{{ddays}}</span><span class="timer-text">Day{{daysS}}</span>
-        <span class="countdown-amount">{{hhours}}</span><span class="timer-text"> Hour{{hoursS}}</span>
-        <span class="countdown-amount">{{mminutes}}</span><span class="timer-text"> Minute{{minutesS}}</span>
-        <span class="countdown-amount">{{sseconds}}</span><span class="timer-text"> Second{{secondsS}}</span>
-      </timer>
-      </div>
-      <p class="cal-dash pull-left">To Launch...</p>-->
-   <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo pull-right" width="200" style="padding:20px 20px 0px;">
-   <a class="header-logo pull-right" ng-click="openVideo()" style="cursor:pointer;">
-   <img ng-src="{{s3Url}}coinomiacademy7.png" width="180" style="padding: 6px 20px 0px;" />
-   </a>
+  <!--<div class="counter-date">
+    <timer countdown="remainingTime" max-time-unit="'day'" class="timer" interval="1000">
+      <span class="countdown-amount">{{ddays}}</span><span class="timer-text">Day{{daysS}}</span>
+      <span class="countdown-amount">{{hhours}}</span><span class="timer-text"> Hour{{hoursS}}</span>
+      <span class="countdown-amount">{{mminutes}}</span><span class="timer-text"> Minute{{minutesS}}</span>
+      <span class="countdown-amount">{{sseconds}}</span><span class="timer-text"> Second{{secondsS}}</span>
+    </timer>
+  </div>
+  <p class="cal-dash pull-left">To Launch...</p>-->
+  <img ng-src="{{s3Url}}logo-coinomia.png" class="header-logo pull-right" width="200" style="padding:20px 20px 0px;">
+  <a class="header-logo pull-right" ui-sref="coinomia-academy" style="cursor:pointer;">
+    <div style="position:relative;">
+      <img src="images/live-gif.gif" class="img-responsive" style="position:absolute;left:20px;top:5px;max-width:60px;">
+      <img ng-src="{{s3Url}}coinomiacademy7.png" width="180" style="padding: 6px 20px 0px;" />
+    </div>
+  </a>
 </div>
 <div class="col-md-12 mobile-navigation collapse" id="bs-example-navbar-collapse-1">
    <nav id="nav">
       <ul class="nav nav-pills nav-stacked" id="menu-content">
-         <li><a href="#/btccoin" ng-class="(activeMenu==='btccoin'?'highlite':'')">
-            <span>Reward</span>
+        <li><a href="#/coinomia-academy" ng-class="(activeMenu==='coinomia-academy'?'highlite':'')">
+            <span>Coinomia Academy</span>
+            </a>
+         </li>
+         <li><a data-toggle="modal" data-target=".bs-example-modal-xs"  ng-class="(activeMenu==='btccoin'?'highlite':'')">
+            <span>Bitcoin</span>
             </a>
          </li>
          <li><a href="#/reward" ng-class="(activeMenu==='reward'?'highlite':'')">
@@ -68,4 +75,233 @@
          </li>
       </ul>
    </nav>
+   <div class="modal fade bs-example-modal-xs" tabindex="-1" role="dialog" data-dismiss="modal" aria-labelledby="myLargeModalLabel" >
+      <div class="modal-dialog modal-lg" role="document"  >
+         <div class="modal-content" style="background:url(images/cover.jpg); background-image:cover; min-height:750px;">
+            <div class="modal-header">
+               <button type="button" class="close pull-right modal-btn" data-dismiss="modal">&times;</button>
+            </div>
+            <h1 align="center" class="textpop01"><img src="images/bitcoin-img.png" class="bitcoin-modal-img img-responsive pull-right">
+               The World On Bitcoin
+            </h1>
+            <p align="center" class="textpop02 modal-text-mbl"><strong>Overview</strong><br>
+               Bitcoin was invented as a peer-to- peer system for online payments that does
+               not require a trusted central authority. Since its inception in 2008, Bitcoin has
+               grown into a technology, a currency, an investment vehicle, and a community
+               of users. In this guide, i hope to explain what Bitcoin is, what are the views of
+               some prominent people about it and how it works as well as describe how you
+               can use it to improve your life.
+            </p>
+            <p class="textpop03 modal-text-mbl"><strong>Goals</strong><br>
+               <span>To provide a collective feedback and views of some trusted and famous people
+               on Bitcoin</span>
+               The inception of cryptocurrencies has laid a remarkable hand on
+               the economy of the whole world, while bitcoin holds the prominent
+               and robust place, all the other
+               Cryptocurrencies drift and fade away. More and more people are
+               embracing this cryptographic achievement and Bitcoin due to its
+               fame and unrelenting surge will continue to exist forever. Now let's
+               have a glimpse of what some renowned people have to say about
+               bitcoin.
+            </p>
+            <div class="row modal-row-mbl" style="margin:5px 30px;">
+               <div class="col-md-6" style="margin-right:0px !important; padding-right:0px !important;">
+                  <div class="block-pop01 modal-text-block-mbl" style="margin-right:5px;">
+                     <div class="row">
+                        <div class="col-md-3 col-sm-12"><img src="images/Arnon_Grunberg.jpg" width="120" class="img-bor-pop"></div>
+                        <div class="col-md-9 col-sm-12"><strong><em>"The relative success of the Bitcoin proves that money first
+                           and foremost depends on trust. Neither gold nor bonds are
+                           needed to back up a currency."</em>
+                           </strong><br>
+                           <br>
+                           Arnon Yasha Yves Grunberg is a Dutch writer of novels, essays, and
+                           columns, as well as a journalist.<br>
+                           <br>
+                           <strong class="yeloow-txt">Arnon Grunberg</strong><br>
+                           Duch Writer
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6" style="margin-left:0px !important; padding-left:0px !important;">
+                  <div class="block-pop01 modal-text-block-mbl" style="margin-left:5px;">
+                     <div class="row">
+                        <div class="col-md-3 col-sm-12"><img src="images/Mike_Tyson.jpg" width="120" class="img-bor-pop"></div>
+                        <div class="col-md-9 col-sm-12"><em><strong>"People don't really understand a currency based on numerical equations. I
+                           personally still don't ... but I'm grateful to be a part of the revolution and
+                           hoping that my participation in this space will lead to more conversations and
+                           help increase knowledge and awareness"</strong></em>
+                           <br>
+                           <br>
+                           Branded Mike Tyson Bitcoin ATMs sit near the Las Vegas strip. He
+                           has also joined together with a few online Bitcoin companies to make
+                           a Bitcoin wallet service.<br>
+                           <br>
+                           <strong class="yeloow-txt">Mike Tyson</strong>
+                           <br>
+                           American former professional boxer<br>
+                           June 30, 1966 (age 50) Brooklyn, New York City, New York, U.S.
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row modal-row-mbl" style="margin:5px 30px;">
+               <div class="col-md-6" style="margin-right:0px !important; padding-right:0px !important;">
+                  <div class="block-pop01 modal-text-block-mbl" style="margin-right:5px;">
+                     <div class="row">
+                        <div class="col-md-3 col-sm-12"><img src="images/Dmitry_Medvedev.jpg" width="120" class="img-bor-pop"></div>
+                        <div class="col-md-9 col-sm-12"><em><strong>"I ask to consider the possibility of using Blockchain technology in the system
+                           of public administration and the economy of the Russian Federation".</strong></em><br>
+                           <br>
+                           I gave instructions to the Ministry of Communications and the Ministry of
+                           Economic Development to consider the possibility of using these technologies in
+                           preparing the program "<strong>Digital Economy</strong>"<br>
+                           <br>
+                           <strong class="yeloow-txt">Dmitry Medvedev</strong><br>
+                           Prime Minister, ex-president of the Russian Federation, Russia<br>
+                           Dmitry Medvedev was born on 14 September 1965 in Leningrad, in
+                           the Soviet Union.
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6" style="margin-left:0px !important; padding-left:0px !important;">
+                  <div class="block-pop01 modal-text-block-mbl" style="margin-left:5px;">
+                     <div class="row">
+                        <div class="col-md-3 col-sm-12"><img src="images/Donald Glover.jpg" width="120" class="img-bor-pop"></div>
+                        <div class="col-md-9 col-sm-12"><strong><em>“Yeah I know a lot of people are skeptical, but I feel like if everything's going
+                           to live online, why not bitcoins. Being backed by gold seems very old and
+                           nostalgic to me.<br>
+                           <br>
+                           Being back to bitcoin, which takes the time to actually make and there's this
+                           equation that has to be done, that feels more real to me and makes more sense”.</strong></em><br>
+                           <br>
+                           <strong class="yeloow-txt">Donald Glover</strong><br>
+                           Donald McKinley Glover, American actor, writer, producer, director,
+                           comedian, rapper, singer, and songwriter.
+                           <br>
+                           Donald McKinley Glover, September 25, 1983, California, U.S
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row modal-row-mbl" style="margin:5px 30px;">
+               <div class="col-md-6" style="margin-right:0px !important; padding-right:0px !important;">
+                  <div class="block-pop01 modal-text-block-mbl" style="margin-right:5px;">
+                     <div class="row">
+                        <div class="col-md-3 col-sm-12"><img src="images/hal-finney.jpg" width="120" class="img-bor-pop"></div>
+                        <div class="col-md-9 col-sm-12"><em><strong>“Bitcoin seems to be a very promising idea. I like the idea of basing security on
+                           the assumption that the CPU power of honest participants outweighs that of the
+                           attacker. It is a very modern notion that exploits the power of the long tail.”</strong></em><br>
+                           <br>
+                           <strong class="yeloow-txt">Hal Finney</strong><br>
+                           Computer scientist, Developer, Cryptographer. America<br>
+                           Harold Thomas Finney II (May 4, 1956 – August 28, 2014)
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6" style="margin-left:0px !important; padding-left:0px !important;">
+                  <div class="block-pop01 modal-text-block-mbl" style="margin-left:5px;">
+                     <div class="row">
+                        <div class="col-md-3 col-sm-12"><img src="images/wences casares.jpg" width="120" class="img-bor-pop"></div>
+                        <div class="col-md-9 col-sm-12"><strong>“Bitcoin is not a currency for a government, it is a global currency
+                           for the people”</strong><br>
+                           <br>
+                           Wences Casares is a technology entrepreneur with global business
+                           experience specializing in technology and financial ventures. He is an
+                           advocate of the Bitcoin revolution and he has said he believes that
+                           Bitcoin will be bigger than the internet.<br>
+                           <br>
+                           <strong class="yeloow-txt">Wences Casares</strong><br>
+                           Technology Entrepreneur, Businessman, Argentina<br>
+                           February 26, 1974 (age 43)
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row modal-row-mbl" style="margin:5px 30px;">
+               <div class="col-md-6" style="margin-right:0px !important; padding-right:0px !important;">
+                  <div class="block-pop01 modal-text-block-mbl" style="height:390px; margin-right:5px;">
+                     <div class="row">
+                        <div class="col-md-3 col-sm-12"><img src="images/Peter-Diamandis.jpg" width="120" class="img-bor-pop"></div>
+                        <div class="col-md-9 col-sm-12"><strong><em>"At its core, bitcoin is a smart currency, designed by forwarding thinking-engineers, it
+                           eliminates the need for banks, gets rid of credit card fees, money transfer fees, and
+                           reduces the need for lawyers in transition for God things".</em></strong><br>
+                           <br>
+                           Greek American engineer, physician, and entrepreneur best known
+                           for being the founder and chairman of the X Prize Foundation, the co-
+                           founder and Executive Chairman of Singularity University and the co-
+                           author of the New York Times Bestsellers Abundance:the Future Is
+                           Beter Than You think and BOLD : How To Go Big, Create Wealth,and Impact The World.<br>
+                           <br>
+                           <strong class="yeloow-txt">Peter Diamandis</strong><br>
+                           Engineer, Physician, and Entrepreneur<br>
+                           May 20, 1961 (age 55) The Bronx, New York City, United States.<br>
+                           Education- MIT, Harvard Medical
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6" style="margin-left:0px !important; padding-left:0px !important;">
+                  <div class="block-pop01 modal-text-block-mbl" style="margin-left:5px; height:390px">
+                     <div class="row">
+                        <div class="col-md-3 col-sm-12"><img src="images/Bob-Greideld.jpg" width="120" class="img-bor-pop"></div>
+                        <div class="col-md-9 col-sm-12"><em><strong>“I’m a big believer in the ability of blockchain technology to effect
+                           fundamental change in the infrastructure of the financial service industry”.</strong></em><br>
+                           <br>
+                           Robert Greifeld is an American businessman and is the chairman of 
+                           Nasdaq, the largest electronic screen-based equity securities market in the
+                           United States.<br>
+                           <br>
+                           <strong class="yeloow-txt">Bob Greifeld</strong><br>
+                           CEO of NASDAQ, U.S.A
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row modal-row-mbl" style="margin:5px 30px;">
+               <div class="col-md-6" style="margin-right:0px !important; padding-right:0px !important;">
+                  <div class="block-pop01 modal-text-block-mbl" style="margin-right:5px;">
+                     <div class="row">
+                        <div class="col-md-3 col-sm-12"><img src="images/MAX.jpg" width="120" class="img-bor-pop"></div>
+                        <div class="col-md-9 col-sm-12">“<em><strong>Bitcoin is the currency of resistance
+                           If Satoshi had released Bitcoin 10 yrs. earlier, 9/11 would never have
+                           happened"</strong></em><br>
+                           <br>
+                           <strong class="yeloow-txt">Max Keiser</strong><br>
+                           Timothy Maxwell "Max" Keiser (born January 23, 1960) is an American<br>
+                           broadcaster and filmmaker.
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6" style="margin-left:0px !important; padding-left:0px !important;">
+                  <div class="block-pop01 modal-text-block-mbl" style="margin-left:5px;">
+                     <div class="row">
+                        <div class="col-md-3 col-sm-12"><img src="images/charles hoskinson.jpg" width="120" class="img-bor-pop"></div>
+                        <div class="col-md-9 col-sm-12"><em><strong>"Solidify bitcoin technology for complete decentralization
+                           Charles Hoskinson is a Colorado-based technology entrepreneur and
+                           mathematician. He attended the Metropolitan State University of Denver and the
+                           University of Colorado at Boulder to study Number Theory and Mathematical
+                           Logic prior to moving into cryptography via industry exposure."</strong></em><br>
+                           <br>
+                           <strong class="yeloow-txt">Charles Hoskinson</strong><br>
+                           Entrepreneur and Mathematician. Core Developer- Ethereum.<br>
+                           Founder of The Bitcoin Project, and former Ethereum CEO,
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <br>
+            <br>
+            <br>
+         </div>
+      </div>
+   </div>
 </div>

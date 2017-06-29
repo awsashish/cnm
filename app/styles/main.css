@@ -210,7 +210,6 @@ body {
 @keyframes moveDown-reward {
    0% { transform: translateY(0) }
    100% { transform: translateY(-97px) }
-
 }
 
 .contentpanel{
@@ -229,4 +228,16 @@ body {
     width:50%;
     min-height:70px;
   }
+}
+
+.pv-block{
+  font-size:20px !important; 
+  color: #fff !important;
+  padding-left:10px;
+  background: #fc2a1c;
+  border-radius:10px;
+  padding:5px;
+}
+.packageprice{
+  float: right;
 }

@@ -16,6 +16,29 @@
    .img-bor-pop{ width:90px;}
    .yeloow-txt{ color: #F90 !important;}
    .block-pop01 img{ padding:5px; background:#fff; border:1px solid #ccc;}
+   @media screen and (max-width: 767px) {
+     .modal-text-mbl strong{
+       font-size:30px;
+     }
+     .modal-text-mbl{
+         font-size:13px;
+         margin-right:10px;
+         margin-left:10px;
+     }
+     .modal-text-block-mbl{
+         font-size:9px;
+     }
+     .modal-row-mbl{
+         margin-left: 4px !important;
+         margin-right: 4px !important;
+     }
+   }
+   .modal-btn{
+      font-size:36px;
+      margin-top:-20px !important;
+      opacity: 0.7;
+      color:#000;
+   }
 </style>
 <div class="leftpanel left-navigation" id="bs-example-navbar-collapse-1">
    <div class="media profile-left">
@@ -101,6 +124,9 @@
       <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" >
          <div class="modal-dialog modal-lg" role="document"  >
             <div class="modal-content" style="background:url(images/cover.jpg); background-image:cover; min-height:750px;">
+               <div class="modal-header">
+                  <button type="button" class="close pull-right modal-btn" data-dismiss="modal">&times;</button>
+               </div>
                <h1 align="center" class="textpop01"><img src="images/bitcoin-img.png" width="350" class="pull-right">
                   The World On Bitcoin
                </h1>
@@ -124,7 +150,7 @@
                   have a glimpse of what some renowned people have to say about
                   bitcoin.
                </p>
-               <div class="row" style="margin:5px 30px;">
+               <div class="row modal-row-mbl" style="margin:5px 30px;">
                   <div class="col-md-6" style="margin-right:0px !important; padding-right:0px !important;">
                      <div class="block-pop01" style="margin-right:5px;">
                         <div class="row">
