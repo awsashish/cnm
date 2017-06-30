@@ -94,7 +94,7 @@ angular.module('coinomiaFrontendApp')
       'ETH': 'Ether',
       'DASH': 'Dash',
       'MONERO': 'Monero',
-      'LTC': 'Ltc'
+      'LTC': 'Litecoin'
     },
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
     'signUpPath':'http://login.coinomia.com/#/signup',
