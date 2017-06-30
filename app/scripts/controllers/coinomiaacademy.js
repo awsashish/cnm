@@ -1,16 +1,11 @@
 'use strict';
 
 angular.module('coinomiaFrontendApp')
-  .controller('CoinomiaAcademyCtrl', function ($scope, $state, coinomiaService, $location, config, $sce, $uibModal, $uibModalStack) {
+  .controller('CoinomiaAcademyCtrl', function ($scope, $state, coinomiaService, $location) {
 
   	init();
   	function init() {
-		$scope.videoOne = config.videoIdOne;
-	    $scope.videoTwo = config.videoIdTwo;
-	    $scope.playerAttr = {
-	        autoplay: true
-	    };
-       	coinomiaService.getUserInfo().then(function(res) {
+	   	coinomiaService.getUserInfo().then(function(res) {
 			var data = res.data;
 			if(res.status === 200){
 				if(data.biguurl){
@@ -18,28 +13,7 @@ angular.module('coinomiaFrontendApp')
 				}
 			}
 		});
-		$scope.videoOne = config.videoIdOne;
-	    $scope.videoTwo = config.videoIdTwo;
-	    $scope.playerAttr = {
-	        autoplay: true
-	    };
-
-	    // Open Video Modal
-	    $scope.openVideo = function() {
-	      var url = config.academyUrl;
-	      var autoplay = true;
-	      $scope.videoUrl = $sce.trustAsResourceUrl(url+autoplay);
-	      var modalInstance = $uibModal.open({
-	          templateUrl: 'views/modal/cloud-mining-video.html',
-	          scope: $scope,
-	          size: 'lg',
-	          windowClass: 'academy-video'
-	      });
-	    }
-	    $scope.closePopup = function() {
-	      $uibModalStack.dismissAll();
-	    }
-    }
+	}
     //Information of Purchased Packages
 	$scope.getPackagePurchaseHistory = function () {
 		coinomiaService.packagePurchaseHistory()
@@ -79,5 +53,4 @@ angular.module('coinomiaFrontendApp')
 	}
 
 	$scope.getPackagePurchaseHistory();
-	$scope.openVideo();
   });
