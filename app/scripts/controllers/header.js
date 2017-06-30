@@ -131,19 +131,19 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Open Video Modal
-    $scope.openVideo = function() {
-      var url = config.academyUrl;
-      var autoplay = true;
-      $scope.videoUrl = $sce.trustAsResourceUrl(url+autoplay);
-      var modalInstance = $uibModal.open({
-          templateUrl: 'views/modal/cloud-mining-video.html',
-          scope: $scope,
-          size: 'lg',
-          windowClass: 'academy-video'
-      });
-    }
-    $scope.closePopup = function() {
-      $uibModalStack.dismissAll();
-    }
+    // $scope.openVideo = function() {
+    //   var url = config.academyUrl;
+    //   var autoplay = true;
+    //   $scope.videoUrl = $sce.trustAsResourceUrl(url+autoplay);
+    //   var modalInstance = $uibModal.open({
+    //       templateUrl: 'views/modal/cloud-mining-video.html',
+    //       scope: $scope,
+    //       size: 'lg',
+    //       windowClass: 'academy-video'
+    //   });
+    // }
+    // $scope.closePopup = function() {
+    //   $uibModalStack.dismissAll();
+    // }
 
   });
