@@ -45,7 +45,7 @@
                   <h4 align="center" style="color:#C30"><strong>REMAINING CONTRACTS</strong></h4>
                   <div class="clearfix"></div>
                   <div align="center" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="stock in availablePackage" ng-if="stock.coin == 'MONERO'">
-                    <img ng-src="{{s3Url}}{{packageImage[stock.productname]}}" width="70">
+                    <img ng-src="{{s3Url}}{{packageImage[stock.productname]}}" width="70" title="{{stock.productname}}">
                     <h1 class="counter-dash">{{stock.available}}</h1>
                   </div>
                </div>
