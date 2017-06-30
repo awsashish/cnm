@@ -65,9 +65,12 @@ angular.module('coinomiaFrontendApp')
     'dashPoolValue':50,          // Mining payout ETH pool MH/s value
     'dashMachineValue':500,    // Mining payout ETH Machine or Contributor MH/s value
     'dashRackValue':5000,
-    'moneroPoolValue':150,        // dummy values for now
-    'moneroMachineValue':1500,    // dummy values for now
-    'moneroRackValue':15000,      // dummy values for now
+    'moneroPoolValue':150,
+    'moneroMachineValue':1500,
+    'moneroRackValue':15000,
+    'ltcPoolValue':150,
+    'ltcMachineValue':1500,
+    'ltcRackValue':15000,
     'productMaxUnit':[
       1000,
       100,
@@ -90,7 +93,8 @@ angular.module('coinomiaFrontendApp')
       'BTC': 'Bitcoin',
       'ETH': 'Ether',
       'DASH': 'Dash',
-      'MONERO': 'Monero'
+      'MONERO': 'Monero',
+      'LTC': 'Litecoin'
     },
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
     'signUpPath':'http://login.coinomia.com/#/signup',
@@ -139,13 +143,21 @@ angular.module('coinomiaFrontendApp')
       'moneromachine.png',
       'monerorack.png'
     ],
+    'ltcImagePath':[
+      'litepool.png',
+      'litemahine.png',
+      'literack.png'
+    ],
     'productImage': {
       'Bitcoin Pool Contract': 'contract-bitcoin.png',
       'Bitcoin Machine Contract': 'contributor.png',
       'Bitcoin Rack Contract': 'rack.png',
       'Ethereum Pool Contract':'ether-contract.png',
       'Ethereum Machine Contract':'ether-contributor',
-      'Ethereum Rack Contract':'ether-rack'
+      'Ethereum Rack Contract':'ether-rack',
+      'Monero Pool Contract':'monerocloud.png',
+      'Monero Machine Contract':'moneromachine.png',
+      'Monero Rack Contract':'monerorack.png'
     },
     'reward_commission': {
       'frontline_commission': [
