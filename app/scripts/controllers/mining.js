@@ -222,7 +222,6 @@ angular.module('coinomiaFrontendApp')
 
       $scope.orderDetails = [];
       var i = 0, j=0, k=0, l=0, m=0;
-      
       $scope.dashProducts.forEach(function(dashInfo) {
         if(dashInfo.quantity !== 0 && dashInfo.quantity !== null) {
           var dashAmount = dashInfo.amount * dashInfo.dashMining/dashInfo.miningpower;

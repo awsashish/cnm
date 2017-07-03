@@ -218,7 +218,7 @@ angular.module('coinomiaFrontendApp')
             $scope.loadingData = false;
             $rootScope.responseSuccess = true;
             var data = res.data;
-            if(data.message === '#Successfully Request Added') {
+            if(data.message === '#Request Successfully Added') {
               $rootScope.withdrawalSuccess = true; 
             }else{
               $rootScope.withdrawalError = true;

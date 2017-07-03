@@ -41,7 +41,7 @@ angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', func
 			}
 		});
 	};
-	// Close Modal 
+	// Close Modal
 	$scope.closeModal = function() {
 		$uibModalStack.dismissAll();
 		$window.location.reload();
