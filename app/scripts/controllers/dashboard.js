@@ -676,39 +676,39 @@ angular.module('coinomiaFrontendApp')
     };
 
     // Open Video Pop up
-    if(!$localStorage.viewPopup) {
-      $scope.modalInstance = $uibModal.open({
-          templateUrl: 'views/modal/cloud-mining-video.html',
-          scope: $scope,
-          size: 'lg',
-          windowClass: 'academy-video',
-      });
+    // if(!$localStorage.viewPopup) {
+    //   $scope.modalInstance = $uibModal.open({
+    //       templateUrl: 'views/modal/cloud-mining-video.html',
+    //       scope: $scope,
+    //       size: 'lg',
+    //       windowClass: 'academy-video',
+    //   });
 
-      $scope.modalInstance.result.then(function(){
-          $localStorage.$default({viewPopup: 1});
-      }, function(){
-          $localStorage.$default({viewPopup: 1});
-      });
-    }
+    //   $scope.modalInstance.result.then(function(){
+    //       $localStorage.$default({viewPopup: 1});
+    //   }, function(){
+    //       $localStorage.$default({viewPopup: 1});
+    //   });
+    // }
 
-    $scope.closeModal = function() {
-      $localStorage.$default({viewPopup: 1});
-      $uibModalStack.dismissAll();
-    }
+    // $scope.closeModal = function() {
+    //   $localStorage.$default({viewPopup: 1});
+    //   $uibModalStack.dismissAll();
+    // }
 
-    $scope.closePopup = function() {
-      $localStorage.$default({viewPopup: 1});
-      $uibModalStack.dismissAll();
-    }
+    // $scope.closePopup = function() {
+    //   $localStorage.$default({viewPopup: 1});
+    //   $uibModalStack.dismissAll();
+    // }
 
-    // Open Angular Modal
-    $scope.getReferrals = function() {
-      var modalInstance = $uibModal.open({
-          templateUrl: 'views/modal/automatic-referrals.html',
-          scope: $scope,
-          size: 'md'
-      });
-    }
+    // // Open Angular Modal
+    // $scope.getReferrals = function() {
+    //   var modalInstance = $uibModal.open({
+    //       templateUrl: 'views/modal/automatic-referrals.html',
+    //       scope: $scope,
+    //       size: 'md'
+    //   });
+    // }
 
     // Get All Time Rewards
     $scope.getAllRewards = function() {

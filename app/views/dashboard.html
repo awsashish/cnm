@@ -34,18 +34,18 @@
       }
       </style>
       <div class="mainpanel">
-         <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom:80px;">
-            <div class="container top-dashboard-pro">
+         <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom:15px;">
+            <div class="container top-dashboard-pro" style="margin-top:0px;">
                <div class="col-md-8">
                   <div class="inner-top-dash" style="font-size:13px;">
-                     Coinomia started with a huge Mining setup however, positive word of       mouth and teamwork sailed like a spark! Most of our contracts are sold out and now there are just a few leftovers. Our new Bitcoin Mining hardware is already at our doorsteps. It will take a while before we set it up for production and roll out fresh Mining Contracts for Coinomia Affiliates.
+                     Coinomia Started With A Huge Mining Setup However, Positive Word Of Mouth And Teamwork Sailed Like A Spark! Most Of Our Contracts Are Sold Out And Now There Are Just A Few Leftovers. Our New Monero Mining Hardware Is Already At Our Doorsteps. It Will Take A While Before We Set It Up For Production And Roll Out Fresh Mining Contracts For Coinomia Affiliates.
                   </div>
                </div>
                <div class="col-md-4 available-package">
                   <h4 align="center" style="color:#C30"><strong>REMAINING CONTRACTS</strong></h4>
                   <div class="clearfix"></div>
                   <div align="center" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="stock in availablePackage" ng-if="stock.coin == 'MONERO'">
-                    <img ng-src="{{s3Url}}{{packageImage[stock.productname]}}" width="70">
+                    <img ng-src="{{s3Url}}{{packageImage[stock.productname]}}" width="70" title="{{stock.productname}}">
                     <h1 class="counter-dash">{{stock.available}}</h1>
                   </div>
                </div>
