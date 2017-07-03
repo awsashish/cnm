@@ -246,3 +246,9 @@ body {
     min-height:450px;
   }
 }
+@media screen and (min-width: 768px) {
+  .welcome-text{
+    position:absolute;
+    left:120px;
+  }
+}

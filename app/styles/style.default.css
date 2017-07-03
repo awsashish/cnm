@@ -4378,6 +4378,7 @@ body.signin {
 
     .navbar-toggle {
       position: absolute;
+      top:12px;
       right: 0;
       z-index: 999;
       margin-top:0;
@@ -5254,7 +5255,7 @@ h4.great {
   .contentpanel {margin-top: 10px;}
   .timer span { font-size: 11px; }
   .countdown-amount { font-size: 12px !important; padding: 5px 8px !important;}
-  .user-info{ width: 180px; }
+  .user-info{ width: 230px; }
   .main-header{ height: auto;}
   .refresh {
     cursor: pointer;
