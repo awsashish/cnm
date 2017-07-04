@@ -241,3 +241,11 @@ body {
 .packageprice{
   float: right;
 }
+@media screen and (min-width: 1150px){
+  .network-tabs{
+    width:14%;
+  }
+  .network-tabs a{
+    min-height:100px;
+  }
+}

@@ -1131,6 +1131,28 @@
                            <hr />
                            <div class="row" >
                               <div class="col-md-8 col-sm-12">
+                                 <div class="price-box" ng-repeat="(key,ltc) in ltcProducts">
+                                    <form class="form-horizontal form-pricing" role="form">
+                                       <div class="price-slider">
+                                          <h4 class="great text-capitalize">{{ltc.productname}}</h4>
+                                          <img ng-src="{{s3Url}}{{ltcImagePath[$index]}}" width="100" class="pull-right" />
+                                          <div class="col-sm-12">
+                                             <div ui-slider class="uiSlider" model="ltc.ltcMining" product="ltc" min="{{ltc.ltcMining}}" max="{{ltc.maxunit * ltc.miningpower}}" step="{{ltc.miningpower}}"></div>
+                                          </div>
+                                       </div>
+                                       <div class="price-form" id="quantity-ltc-{{key}}">
+                                          <div class="form-group">
+                                             <div class="col-sm-12">
+                                                <input type="hidden" id="amount3" class="form-control">
+                                                <p class="price lead" id="amount-label3">
+                                                   <input type="number" ng-model="ltc.quantity" min="0" ng-change="calculateLtcAmount(key, ltc.quantity, ltc.miningpower, ltc.maxunit)" style="width: 80px;"/>
+                                                </p>
+                                                Number Of Contracts<strong class="price pull-right lead">Amount : {{ltc.amount * ltc.ltcMining/ltc.miningpower | currency}}</strong>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </form>
+                                 </div>
                                  <div class="price-box" ng-repeat="(key,monero) in moneroProducts">
                                     <form class="form-horizontal form-pricing" role="form">
                                        <div class="price-slider">
@@ -1151,28 +1173,6 @@
                                                 <!--<p class="price lead" id="amount-label3">{{setmoneroQuantity(key, (monero.moneroMining/monero.miningpower))}}
                                                    {{monero.quantity | number:0}}</p>-->
                                                 Number Of Contracts<strong class="price pull-right lead">Amount : {{monero.amount * monero.moneroMining/monero.miningpower | currency}}</strong>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </form>
-                                 </div>
-                                 <div class="price-box" ng-repeat="(key,ltc) in ltcProducts">
-                                    <form class="form-horizontal form-pricing" role="form">
-                                       <div class="price-slider">
-                                          <h4 class="great text-capitalize">{{ltc.productname}}</h4>
-                                          <img ng-src="{{s3Url}}{{ltcImagePath[$index]}}" width="100" class="pull-right" />
-                                          <div class="col-sm-12">
-                                             <div ui-slider class="uiSlider" model="ltc.ltcMining" product="ltc" min="{{ltc.ltcMining}}" max="{{ltc.maxunit * ltc.miningpower}}" step="{{ltc.miningpower}}"></div>
-                                          </div>
-                                       </div>
-                                       <div class="price-form" id="quantity-ltc-{{key}}">
-                                          <div class="form-group">
-                                             <div class="col-sm-12">
-                                                <input type="hidden" id="amount3" class="form-control">
-                                                <p class="price lead" id="amount-label3">
-                                                   <input type="number" ng-model="ltc.quantity" min="0" ng-change="calculateLtcAmount(key, ltc.quantity, ltc.miningpower, ltc.maxunit)" style="width: 80px;"/>
-                                                </p>
-                                                Number Of Contracts<strong class="price pull-right lead">Amount : {{ltc.amount * ltc.ltcMining/ltc.miningpower | currency}}</strong>
                                              </div>
                                           </div>
                                        </div>
@@ -1269,15 +1269,6 @@
                                     <p align="center">Hashpower contract overview</p>
                                     <div class="panel panel-default " style="box-shadow:0px 0px 2px 2px #f2f2f2; background:#f9fbfc;">
                                        <div class="panel-body">
-                                          <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="monero in moneroProducts">
-                                             <p>
-                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}moneroheader.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{monero.productname}}</h2>
-                                             </p>
-                                             <h3 class="mb36">{{monero.amount * monero.moneroMining/monero.miningpower | number:2}} USD</h3>
-                                             <h3 class="mb36">{{monero.moneroMining}} H/s</h3>
-                                             <input type="hidden" id="monero-{{$index}}" value="{{monero.amount * monero.moneroMining/monero.miningpower}}" />
-                                             <br />
-                                          </div>
                                           <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="ltc in ltcProducts">
                                              <p>
                                              <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}litecoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{ltc.productname}}</h2>
@@ -1285,6 +1276,15 @@
                                              <h3 class="mb36">{{ltc.amount * ltc.ltcMining/ltc.miningpower | number:2}} USD</h3>
                                              <h3 class="mb36">{{ltc.ltcMining}} H/s</h3>
                                              <input type="hidden" id="ltc-{{$index}}" value="{{ltc.amount * ltc.ltcMining/ltc.miningpower}}" />
+                                             <br />
+                                          </div>
+                                          <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="monero in moneroProducts">
+                                             <p>
+                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}moneroheader.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{monero.productname}}</h2>
+                                             </p>
+                                             <h3 class="mb36">{{monero.amount * monero.moneroMining/monero.miningpower | number:2}} USD</h3>
+                                             <h3 class="mb36">{{monero.moneroMining}} H/s</h3>
+                                             <input type="hidden" id="monero-{{$index}}" value="{{monero.amount * monero.moneroMining/monero.miningpower}}" />
                                              <br />
                                           </div>
                                           <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="dash in dashProducts">
