@@ -249,3 +249,14 @@ body {
     min-height:100px;
   }
 }
+.wallet-list{
+  background-color: rgba(128, 128, 128, 0.07);
+  border-radius: 2%;
+  border: 1px solid #e8e8e8;
+  margin-bottom:20px;
+}
+@media screen and (max-width: 1200px) {
+  .wallet-list{
+    min-height:450px;
+  }
+}
