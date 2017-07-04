@@ -33,6 +33,23 @@
          -webkit-appearance: menulist;
       }
       </style>
+      <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom:15px;">
+         <div class="container top-dashboard-pro" style="margin-top:0px;">
+            <div class="col-md-8">
+               <div class="inner-top-dash" style="font-size:13px;">
+                  Coinomia Started With A Huge Mining Setup However, Positive Word Of Mouth And Teamwork Sailed Like A Spark! Most Of Our Contracts Are Sold Out And Now There Are Just A Few Leftovers. Our New Monero Mining Hardware Is Already At Our Doorsteps. It Will Take A While Before We Set It Up For Production And Roll Out Fresh Mining Contracts For Coinomia Affiliates.
+               </div>
+            </div>
+            <div class="col-md-4 available-package">
+               <h4 align="center" style="color:#C30"><strong>REMAINING CONTRACTS</strong></h4>
+               <div class="clearfix"></div>
+               <div align="center" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="stock in availablePackage" ng-if="stock.coin == 'MONERO'">
+                 <img ng-src="{{s3Url}}{{packageImage[stock.productname]}}" width="70" title="{{stock.productname}}">
+                 <h1 class="counter-dash">{{stock.available}}</h1>
+               </div>
+            </div>
+         </div>
+      </div>
       <div class="mainpanel">
          <div class="contentpanel" style="overflow:hidden;padding-top:0;">
             <div class="col-sm-12 col-md-12 ">
@@ -256,20 +273,6 @@
             <h2 align="center" class="mb37 full-width" style="border:0"><span class="glyphicon glyphicon-minus"></span> Virtual Calculators<span class="glyphicon glyphicon-minus"></span> </h2>
             <span class="yellow-border"></span>
             <br />
-            <div class="row">
-               <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom:50px;">
-                  <div class="container top-dashboard-pro">
-                     <div class="col-md-12 available-package">
-                        <h4 align="center" style="color:#C30"><strong>REMAINING CONTRACTS</strong></h4>
-                        <div class="clearfix"></div>
-                        <div align="center" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="stock in availablePackage" ng-if="stock.isenable">
-                          <img ng-src="{{s3Url}}{{packageImage[stock.productname]}}" width="70">
-                          <h1 class="counter-dash">{{stock.available}}</h1>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
             <div class="row">
                <div class="col-md-5">
                   <div class="panel panel-default">
