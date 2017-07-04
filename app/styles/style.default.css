@@ -588,7 +588,7 @@ map area{
 .main-header{
   border-bottom: 1px solid #eee;
   padding-bottom: 10px;
-  height: 1p0px;
+  height: 75px;
   box-shadow: 0 2px 3px rgba(0,0,0,0.03);
   float: left;
   width: 100%;
@@ -4715,8 +4715,7 @@ body.signin {
 
 }
 
-@media(min-width:320px) and (max-width:768px)
-{
+@media screen and (min-width:320px) and (max-width:768px){
     .headerwrapper .header-left { width: 230px !important;}
     .leftpanel .profile-left .profile-thumb img{ width:70px;}
     .leftpanel .profile-left .media-heading{ font-size:12px;}
@@ -4744,10 +4743,6 @@ body.signin {
         margin: 0 auto !important
     }
 }
-
-
-
-
 .btn-white{ background:#fff !important;}
 
 
@@ -5195,8 +5190,7 @@ h4.great {
   .arrow_box:after, .arrow_box:before { display: none;}
 }
 
-@media(max-width:767px)
-{
+@media(max-width:767px){
 
 	.leftpanel{ margin-top:-68px !important; height:100% !important;}
 	.contentpanel{ margin-top:10px;}
@@ -6314,4 +6308,17 @@ h1{
 }
 .wallet-margin{
   margin-top:20px !important;
+}
+@media (max-width: 768px){
+  .navbar-toggle {
+      display: block;
+  }
+  .navbar-header{
+    float:none;
+  }
+}
+@media (min-width:768px) and (max-width: 768px){
+  .mobile-navigation{
+    margin-top:75px;
+  }
 }

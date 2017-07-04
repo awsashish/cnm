@@ -252,3 +252,9 @@ body {
     left:120px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .right-logo{
+    display:none;
+  }
+}
