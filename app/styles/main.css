@@ -218,7 +218,7 @@ body {
 .leftpanel{
   min-height:1400px !important;
 }
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   .mining-tabs{
     width:20%;
   }
@@ -256,6 +256,6 @@ body {
 }
 @media screen and (max-width: 1200px) {
   .wallet-list{
-    min-height:450px;
+    min-height:371px;
   }
 }
