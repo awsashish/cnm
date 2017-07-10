@@ -82,6 +82,9 @@ angular.module('coinomiaFrontendApp')
           }
           $scope.getFlag($rootScope.country);
         }
+        else if(res.status == 401){
+          $state.go('login');
+        }
       });
     }
 
