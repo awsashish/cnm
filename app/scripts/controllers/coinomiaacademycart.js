@@ -12,6 +12,9 @@ angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', func
 				$scope.cartItem = result.data.rows[$state.params.id];
 				$scope.totalPrice = parseInt($scope.cartItem.Price);
 			}
+			else if(res.status == 401){
+				$state.go('login');
+			}
 		});
 	};
 
