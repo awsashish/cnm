@@ -99,51 +99,11 @@
                   </a>
                </div>
             </div>
-            <div class="col-md-5 col-sm-12 col-lg-6">
+            <div class="col-md-12 col-sm-12 col-lg-12">
                <news-feeds></news-feeds>
             </div>
             <!-- Coinomia Leadership reward -->
-            <div class="col-md-7 col-sm-12 col-lg-6 leadership-reward" style="border:1px solid #ccc; border-radius:5px; padding:0px;min-height: 415px;">
-               <h3 class="no-margin no-padding reward-head-dash text-center" style="margin:0 !important;"><strong><img src="images/rankers.png" width="40"> Coinomia Leadership Reward</strong></h3>
-               <div class="col-md-6 no-padding">
-                  <h4 class="ranker-heading1"><strong><i class="fa fa-users" aria-hidden="true"></i> Recent Rankers</strong></h4>
-                  <div class="ticker" style="max-height: 405px;overflow-y:hidden;overflow-x: hidden;">
-                     <table class="viewport" ng-class="{moving: moving}" width="100%" style="border:1px solid #f2f2f2;">
-                        <tbody>
-                           <tr class="ranker1-odd" ng-repeat="weekRankers in weekRewards">
-                              <td height="35">
-                                 <span class="image-wrapper pull-left">
-                                 <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="40">
-                                 </span>
-                                 <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
-                                 <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
-                              </td>
-                              <td><img ng-src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </div>
-               </div>
-               <div class="col-md-6 no-padding">
-                  <h4 class="ranker-heading2"><strong><i class="fa fa-users" aria-hidden="true"></i> All Time Rankers</strong></h4>
-                  <div class="ticker" style="max-height: 405px;overflow-y:hidden;overflow-x: hidden;">
-                     <table class="viewport" ng-class="{moving: moving}" width="100%" style="border:1px solid #f2f2f2;">
-                        <tbody>
-                           <tr class="ranker1-odd" ng-repeat="allRankers in allRewards">
-                              <td height="35">
-                                 <span class="image-wrapper pull-left">
-                                 <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="40">
-                                 </span>
-                                 <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
-                                 <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
-                              </td>
-                              <td><img ng-src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </div>
-               </div>
-            </div>
+            
             <!-- Coinomia Leadership reward / -->
             <!--<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
                <a href="#promote-coinomia/social-group">
@@ -163,65 +123,8 @@
                </a>
                </div>-->
             <div>
-               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt20">
-                  <div class="tabbable-panel" >
-                     <div class="tabbable-line" >
-                        <h3 align="left" class="latest-signup">
-                           <i class="fa fa-users"></i> Signup Data
-                        </h3>
-                        <div align="center">
-                           <ul class="nav nav-tabs">
-                              <li class="active" style="width:50%;">
-                                 <a href=".tab_default_4" data-toggle="tab" aria-expanded="true">
-                                 <i class="fa fa-users " aria-hidden="true"></i>
-                                 Company Wide </a>
-                              </li>
-                              <li style="width:50%;" class="">
-                                 <a href=".tab_default_5" data-toggle="tab" aria-expanded="false">
-                                 <i class="fa fa-user " aria-hidden="true"></i>
-                                 My Team </a>
-                              </li>
-                           </ul>
-                        </div>
-                        <div class="tab-content" style="padding:20px 10px 0px; margin-bottom:20px; ">
-                           <div class="tab-pane tab_default_4 active">
-                              <img src="images/arrow-bot.png" class="arrow-bot-lft">
-                              <p ng-if="loadingData">Loading data ... </p>
-                              <div class="responsive-calendar">
-                                 <div class="day-headers">
-                                    <div class="day header" ng-repeat="weekDay in coinomiaTeam | unique:'day'">{{weekDay.day}}</div>
-                                 </div>
-                                 <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
-                                    <div class="day" ng-class="totalTeam.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="totalTeam in coinomiaTeam">
-                                       <a class="custom_date">{{totalTeam.dayNumber}}</a>
-                                       <!-- <a class="custom_day">{{totalTeam.day}}</a> -->
-                                       <span class="badge">{{totalTeam.total}}</span>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!-- <ui-calendar data="coinomiaTeam" date-range="getDates" ng-if="hasCoinomiaTeamData"></ui-calendar> -->
-                           </div>
-                           <div class="tab-pane tab_default_5">
-                              <img src="images/arrow-bot.png" class="arrow-bot-rgt">
-                              <p ng-if="loadingCoinomiaData">Loading data ... </p>
-                              <div class="responsive-calendar">
-                                 <div class="day-headers">
-                                    <div class="day header" ng-repeat="calendar in myTeam | unique:'day'">{{calendar.day}}</div>
-                                 </div>
-                                 <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
-                                    <div class="day" ng-class="team.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="team in myTeam">
-                                       <a class="custom_date">{{team.dayNumber}}</a>
-                                       <!-- <a class="custom_day">{{team.day}}</a> -->
-                                       <span class="badge">{{team.total}}</span>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt20 mb20">
+               
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                   <h3 align="left" class="latest-signup">
                      <i class="fa fa-user-plus"></i> Recent Sign ups
                   </h3>
@@ -241,6 +144,47 @@
                               <tr ng-repeat="(key, row) in latestSignup | limitTo:10:10">
                                  <td><img ng-src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername | limitTo: 13}}</td>
                                  <td>{{row.minutes}} {{row.minutes > 1 ? 'mins':'min'}} ago</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-7 col-sm-12 col-lg-6 leadership-reward" style="border:1px solid #ccc; border-radius:5px; padding:0px;min-height: 415px;">
+                  <h3 class="no-margin no-padding reward-head-dash text-center" style="margin:0 !important;"><strong><img src="images/rankers.png" width="40"> Coinomia Leadership Reward</strong></h3>
+                  <div class="col-md-6 no-padding">
+                     <h4 class="ranker-heading1"><strong><i class="fa fa-users" aria-hidden="true"></i> Recent Rankers</strong></h4>
+                     <div class="ticker" style="max-height: 405px;overflow-y:hidden;overflow-x: hidden;">
+                        <table class="viewport" ng-class="{moving: moving}" width="100%" style="border:1px solid #f2f2f2;">
+                           <tbody>
+                              <tr class="ranker1-odd" ng-repeat="weekRankers in weekRewards">
+                                 <td height="35">
+                                    <span class="image-wrapper pull-left">
+                                    <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="40">
+                                    </span>
+                                    <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
+                                    <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
+                                 </td>
+                                 <td><img ng-src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="col-md-6 no-padding">
+                     <h4 class="ranker-heading2"><strong><i class="fa fa-users" aria-hidden="true"></i> All Time Rankers</strong></h4>
+                     <div class="ticker" style="max-height: 405px;overflow-y:hidden;overflow-x: hidden;">
+                        <table class="viewport" ng-class="{moving: moving}" width="100%" style="border:1px solid #f2f2f2;">
+                           <tbody>
+                              <tr class="ranker1-odd" ng-repeat="allRankers in allRewards">
+                                 <td height="35">
+                                    <span class="image-wrapper pull-left">
+                                    <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="40">
+                                    </span>
+                                    <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
+                                    <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
+                                 </td>
+                                 <td><img ng-src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
                               </tr>
                            </tbody>
                         </table>
@@ -322,7 +266,65 @@
                      </div>
                   </div>
                </div>
-               <div class="col-md-6">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                  <div class="tabbable-panel" >
+                     <div class="tabbable-line" >
+                        <h3 align="left" class="latest-signup">
+                           <i class="fa fa-users"></i> Signup Data
+                        </h3>
+                        <div align="center">
+                           <ul class="nav nav-tabs">
+                              <li class="active" style="width:50%;">
+                                 <a href=".tab_default_4" data-toggle="tab" aria-expanded="true">
+                                 <i class="fa fa-users " aria-hidden="true"></i>
+                                 Company Wide </a>
+                              </li>
+                              <li style="width:50%;" class="">
+                                 <a href=".tab_default_5" data-toggle="tab" aria-expanded="false">
+                                 <i class="fa fa-user " aria-hidden="true"></i>
+                                 My Team </a>
+                              </li>
+                           </ul>
+                        </div>
+                        <div class="tab-content" style="padding:20px 10px 0px; margin-bottom:20px; ">
+                           <div class="tab-pane tab_default_4 active">
+                              <img src="images/arrow-bot.png" class="arrow-bot-lft">
+                              <p ng-if="loadingData">Loading data ... </p>
+                              <div class="responsive-calendar">
+                                 <div class="day-headers">
+                                    <div class="day header" ng-repeat="weekDay in coinomiaTeam | unique:'day'">{{weekDay.day}}</div>
+                                 </div>
+                                 <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
+                                    <div class="day" ng-class="totalTeam.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="totalTeam in coinomiaTeam">
+                                       <a class="custom_date">{{totalTeam.dayNumber}}</a>
+                                       <!-- <a class="custom_day">{{totalTeam.day}}</a> -->
+                                       <span class="badge">{{totalTeam.total}}</span>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- <ui-calendar data="coinomiaTeam" date-range="getDates" ng-if="hasCoinomiaTeamData"></ui-calendar> -->
+                           </div>
+                           <div class="tab-pane tab_default_5">
+                              <img src="images/arrow-bot.png" class="arrow-bot-rgt">
+                              <p ng-if="loadingCoinomiaData">Loading data ... </p>
+                              <div class="responsive-calendar">
+                                 <div class="day-headers">
+                                    <div class="day header" ng-repeat="calendar in myTeam | unique:'day'">{{calendar.day}}</div>
+                                 </div>
+                                 <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
+                                    <div class="day" ng-class="team.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="team in myTeam">
+                                       <a class="custom_date">{{team.dayNumber}}</a>
+                                       <!-- <a class="custom_day">{{team.day}}</a> -->
+                                       <span class="badge">{{team.total}}</span>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- <div class="col-md-6">
                   <div class="panel panel-default">
                      <div class="panel-body">
                         <h3 align="center" class="yelo-text mt0">Mining Payouts <br /><small class="sm-text01"><strong>Paid in BTC/ETH</strong></small></h3>
@@ -423,7 +425,7 @@
                         </div>
                      </div>
                   </div>
-               </div>
+               </div> -->
             </div>
          </div>
          <!-- contentpanel -->
