@@ -12,6 +12,9 @@ angular.module('coinomiaFrontendApp')
 					$scope.bigUUrl = data.biguurl; //BigU Url where the user is to be redirected
 				}
 			}
+			else if(res.status == 401){
+				$state.go('login');
+			}
 		});
 	}
     //Information of Purchased Packages

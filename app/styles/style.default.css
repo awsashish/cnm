@@ -868,7 +868,15 @@ select {
   text-transform: uppercase;
   display: block;
 }
-
+.red-border{
+    margin-bottom: 70px;
+    width: 385px;
+    margin: auto;
+    border-bottom: 5px solid #d9534f;
+    padding-bottom: 10px !important;
+    text-transform: uppercase;
+    display: block;
+}
 .full-width{
   width:100%;
 }
