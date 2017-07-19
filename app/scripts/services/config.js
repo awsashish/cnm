@@ -153,7 +153,7 @@ angular.module('coinomiaFrontendApp')
       'literack.png'
     ],
     'viaImagePath':[
-      'viapool.png',
+      'viacloud.png',
       'viamachine.png',
       'viarack.png'
     ],
