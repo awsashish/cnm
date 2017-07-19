@@ -16,7 +16,6 @@ angular.module('coinomiaFrontendApp')
     $scope.btcImagePath = config.btcImagePath;
     $scope.ethImagePath = config.ethImagePath;
     $scope.moneroImagePath = config.moneroImagePath;
-    $scope.ltcImagePath = config.ltcImagePath;
     $scope.viaImagePath = config.viaImagePath;
     $scope.verifiedStatus = false;
     $scope.pagination = {
@@ -181,7 +180,7 @@ angular.module('coinomiaFrontendApp')
 
 
     $scope.verifyAndSubmit = function(activity, requestAmount, type) {
-      if(activity.toLowerCase() === 'withdrawal' && (type === 'BTC' || type === 'ETH' || type === 'DASH' || type === 'MONERO'|| type === 'LTC' || type === 'VIA')) {
+      if(activity.toLowerCase() === 'withdrawal' && (type === 'BTC' || type === 'ETH' || type === 'DASH' || type === 'MONERO' || type === 'VIA')) {
         $scope.calcFees(requestAmount, $rootScope.balance, $rootScope.networkFees);
       }else{
         $scope.walletActivity(requestAmount, $rootScope.walletName, activity);
@@ -205,8 +204,6 @@ angular.module('coinomiaFrontendApp')
           var type = 'dash';
         }else if(wallet.toLowerCase() === 'monero') {
           var type = 'monero';
-        }else if(wallet.toLowerCase() === 'ltc') {
-          var type = 'ltc';
         }else if(wallet.toLowerCase() === 'usd') {
           var type = 'usd';
         }else if(wallet.toLowerCase() === 'monero') {
@@ -242,10 +239,7 @@ angular.module('coinomiaFrontendApp')
           var data = JSON.stringify(amount); 
         }else if(wallet.toLowerCase() === 'monero') {
           var type = 'monero';
-          var data = JSON.stringify(amount); 
-        }else if(wallet.toLowerCase() === 'ltc') {
-          var type = 'ltc';
-          var data = JSON.stringify(amount); 
+          var data = JSON.stringify(amount);
         }else if(wallet.toLowerCase() === 'usd') {
           var type = 'usd';
           var data = JSON.stringify(amount); 
