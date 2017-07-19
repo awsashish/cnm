@@ -71,6 +71,9 @@ angular.module('coinomiaFrontendApp')
     'ltcPoolValue':150,
     'ltcMachineValue':1500,
     'ltcRackValue':15000,
+    'viaPoolValue':150,
+    'viaMachineValue':1500,
+    'viaRackValue':15000,
     'productMaxUnit':[
       1000,
       100,
@@ -94,7 +97,8 @@ angular.module('coinomiaFrontendApp')
       'ETH': 'Ether',
       'DASH': 'Dash',
       'MONERO': 'Monero',
-      'LTC': 'Litecoin'
+      'LTC': 'Litecoin',
+      'VIA': 'Viacoin'
     },
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
     'signUpPath':'http://login.coinomia.com/#/signup',
@@ -148,6 +152,11 @@ angular.module('coinomiaFrontendApp')
       'litemahine.png',
       'literack.png'
     ],
+    'viaImagePath':[
+      'viapool.png',
+      'viamachine.png',
+      'viarack.png'
+    ],
     'productImage': {
       'Bitcoin Pool Contract': 'contract-bitcoin.png',
       'Bitcoin Machine Contract': 'contributor.png',
@@ -157,7 +166,13 @@ angular.module('coinomiaFrontendApp')
       'Ethereum Rack Contract':'ether-rack',
       'Monero Pool Contract':'monerocloud.png',
       'Monero Machine Contract':'moneromachine.png',
-      'Monero Rack Contract':'monerorack.png'
+      'Monero Rack Contract':'monerorack.png',
+      'Lite Pool Contract':'litecloud.png',
+      'Lite Machine Contract':'litemachine.png',
+      'Lite Rack Contract':'literack.png',
+      'Viacoin Pool Contract':'viacloud.png',
+      'Viacoin Machine Contract':'viamachine.png',
+      'Viacoin Rack Contract':'viarack.png'
     },
     'reward_commission': {
       'frontline_commission': [
