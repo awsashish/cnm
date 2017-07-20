@@ -6268,7 +6268,7 @@ h1{
 	to { transform: scale(1.5); }
 }
 
-.top-dashboard-pro{padding:10px 0; text-align:justify; border:1px solid #ccc; background:#FFF; font-size:17px; font-weight:bold;  border-radius:10px; text-transform:capitalize; margin-top:20px; font-family: 'Raleway', sans-serif;  box-shadow:2px 2px #f2f2f2; width:100%;}
+.top-dashboard-pro{padding:10px 0; text-align:justify; border:1px solid #ccc; background:#FFF; font-size:17px; font-weight:bold;  border-radius:10px; text-transform:capitalize; margin-top:20px; font-family: 'Raleway', sans-serif; width:100%;}
 
 .inner-top-dash{ background:#f1f1f1; padding:20px; border-bottom:2px solid #ccc; color:#525252; border-radius:10px; margin:5px; line-height:25px !important;}
 
