@@ -574,7 +574,7 @@ map area{
 }
 
 .overall-signup {
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 .transaction_heading {
