@@ -113,10 +113,10 @@ angular.module('coinomiaFrontendApp')
       var btcCoin = {};
       var dashCoin = {};
       var ethCoin = {};
-      var viaCoin = {};
+      var moneroCoin = {};
       if(res.status === 200) {
         purchasedData.forEach(function(purchased) {
-          if(purchased.coin == 'MONERO'){
+          if(purchased.coin == 'VIA'){
             $scope.purchasedPower.push(purchased);
           }
           else if(purchased.coin == 'DASH'){
@@ -125,14 +125,14 @@ angular.module('coinomiaFrontendApp')
           else if(purchased.coin == 'BTC'){
             btcCoin = purchased;
           }
-          else if(purchased.coin == 'VIA'){
-            viaCoin = purchased;
+          else if(purchased.coin == 'MONERO'){
+            moneroCoin = purchased;
           }
           else{
             ethCoin = purchased;
           }
         });
-        $scope.purchasedPower.push(viaCoin);
+        $scope.purchasedPower.push(moneroCoin);
         $scope.purchasedPower.push(dashCoin);
         $scope.purchasedPower.push(btcCoin);
         $scope.purchasedPower.push(ethCoin);
@@ -203,11 +203,11 @@ angular.module('coinomiaFrontendApp')
       $scope.ethIncome = {};
       $scope.btcIncome = {};
       $scope.dashIncome = {};
-      $scope.viaIncome = {};
+      $scope.moneroIncome = {};
       $scope.totalIncome = [];
       if(res.status === 200) {
         totalIncomeData.forEach(function(income) {
-          if(income.coin == 'MONERO') {
+          if(income.coin == 'VIA') {
             $scope.totalIncome.push(income);
           }else if(income.coin == 'DASH'){
             $scope.dashIncome = income;
@@ -215,11 +215,11 @@ angular.module('coinomiaFrontendApp')
             $scope.btcIncome = income;
           }else if(income.coin == 'ETH'){
             $scope.ethIncome = income;
-          }else if(income.coin == 'VIA'){
-            $scope.viaIncome = income;
+          }else if(income.coin == 'MONERO'){
+            $scope.moneroIncome = income;
           }
         });
-        $scope.totalIncome.push($scope.viaIncome);
+        $scope.totalIncome.push($scope.moneroIncome);
         $scope.totalIncome.push($scope.dashIncome);
         $scope.totalIncome.push($scope.btcIncome);
         $scope.totalIncome.push($scope.ethIncome);

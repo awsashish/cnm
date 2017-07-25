@@ -71,9 +71,9 @@ angular.module('coinomiaFrontendApp')
     'ltcPoolValue':150,
     'ltcMachineValue':1500,
     'ltcRackValue':15000,
-    'viaPoolValue':150,
-    'viaMachineValue':1500,
-    'viaRackValue':15000,
+    'viaPoolValue':300,
+    'viaMachineValue':3000,
+    'viaRackValue':30000,
     'productMaxUnit':[
       1000,
       100,
