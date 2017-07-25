@@ -48,6 +48,11 @@
               <img class="img-circle payouts-image" ng-src="{{s3Url}}litepool.png" title="Pool Contract(LTC)"   />
               </a>
             </li>
+            <li role="presentation" class="" >
+              <a href=".via" role="tab" data-toggle="tab" ng-click="viaPoolClick({desContract:viaPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}viacloud.png" title="Pool Contract(VIA)"   />
+              </a>
+            </li>
           </ul>
         </td>
         <td>
@@ -107,6 +112,17 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade via" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <select class="sm-txtbox1" ng-model="viaPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="viaPoolCalc({desContract:viaPoolContract, contractValue:poolDetails, mining:currentMining})">
+                    </select>
+                    <br><small>{{viaPoolContract*viaPoolValue}} H/s</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
         <td>
@@ -156,6 +172,15 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade via" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{viaPoolPrice | number:2}}</strong></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
       </tr>
@@ -185,6 +210,11 @@
             <li role="presentation" class="" >
               <a href=".ltc1" aria-controls="ltc1" role="tab" data-toggle="tab" ng-click="ltcMachineClick({desContract:ltcContributorContract, contractValue:contributorDetails, mining:currentMining})" style="padding:10px 0px !important;">
               <img class="img-circle payouts-image" ng-src="{{s3Url}}litemahine.png" title="Machine Contract(LTC)"  />
+              </a>
+            </li>
+            <li role="presentation" class="" >
+              <a href=".via1" aria-controls="via1" role="tab" data-toggle="tab" ng-click="viaMachineClick({desContract:viaContributorContract, contractValue:contributorDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}viamachine.png" title="Machine Contract(VIA)"  />
               </a>
             </li>
           </ul>
@@ -246,6 +276,17 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade via1" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <select class="sm-txtbox1" ng-model="viaContributorContract" ng-options="option.value as option.name for option in machineOptions" ng-change="viaContributorCalc({desContract:viaContributorContract, contractValue:contributorDetails, mining:currentMining})">
+                    </select>
+                    <br><small>{{viaContributorContract*viaMachineValue}} H/s</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
         <td>
@@ -295,6 +336,15 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade via1" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{viaContributorPrice | number:2}}</strong></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
       </tr>
@@ -324,6 +374,11 @@
             <li role="presentation" class="" >
               <a href=".ltc2" aria-controls="ltc" role="tab" data-toggle="tab" ng-click="ltcRackClick({desContract:ltcRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
               <img class="img-circle payouts-image" ng-src="{{s3Url}}literack.png" title="Rack Contract(LTC)"  />
+              </a>
+            </li>
+            <li role="presentation" class="" >
+              <a href=".via2" aria-controls="via" role="tab" data-toggle="tab" ng-click="viaRackClick({desContract:viaRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}viarack.png" title="Rack Contract(VIA)"  />
               </a>
             </li>
           </ul>
@@ -385,6 +440,17 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade via2" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <select class="sm-txtbox1" ng-model="viaRackContract" ng-options="option.value as option.name for option in rackOptions" ng-change="viaRackCalc({desContract:viaRackContract, contractValue:rackDetails, mining:currentMining})">
+                    </select>
+                    <br><small>{{viaRackContract*viaRackValue}} H/s</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
         <td>
@@ -430,6 +496,15 @@
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
                     <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{ltcRackPrice | number:2}}</strong></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade via2" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{viaRackPrice | number:2}}</strong></h4>
                   </div>
                 </div>
               </div>

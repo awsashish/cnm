@@ -344,6 +344,9 @@
                            ltc-pool-value="ltcPoolValue"
                            ltc-machine-value="ltcMachineValue"
                            ltc-rack-value="ltcRackValue"
+                           via-pool-value="viaPoolValue"
+                           via-machine-value="viaMachineValue"
+                           via-rack-value="viaRackValue"
                            machine-options="machineOptions"
                            rack-options="rackOptions"
                            pool-details="poolDetails"
@@ -365,6 +368,9 @@
                            ltc-pool-contract="ltcPoolContract"
                            ltc-contributor-contract="ltcContributorContract"
                            ltc-rack-contract="ltcRackContract"
+                           via-pool-contract="viaPoolContract"
+                           via-contributor-contract="viaContributorContract"
+                           via-rack-contract="viaRackContract"
                            btc-pool-price="btcPoolPrice"
                            btc-contributor-price="btcContributorPrice"
                            btc-rack-price="btcRackPrice"
@@ -380,6 +386,9 @@
                            ltc-pool-price="ltcPoolPrice"
                            ltc-contributor-price="ltcContributorPrice"
                            ltc-rack-price="ltcRackPrice"
+                           via-pool-price="viaPoolPrice"
+                           via-contributor-price="viaContributorPrice"
+                           via-rack-price="viaRackPrice"
                            btc-pool-click="btcPoolClick(desContract, contractValue, mining)"
                            btc-machine-click="btcMachineClick(desContract, contractValue, mining)"
                            btc-rack-click="btcRackClick(desContract, contractValue, mining)"
@@ -395,6 +404,9 @@
                            ltc-pool-click="ltcPoolClick(desContract, contractValue, mining)"
                            ltc-machine-click="ltcMachineClick(desContract, contractValue, mining)"
                            ltc-rack-click="ltcRackClick(desContract, contractValue, mining)"
+                           via-pool-click="viaPoolClick(desContract, contractValue, mining)"
+                           via-machine-click="viaMachineClick(desContract, contractValue, mining)"
+                           via-rack-click="viaRackClick(desContract, contractValue, mining)"
                            btc-pool-calc="btcPoolMining(desContract, contractValue, mining)"
                            btc-contributor-calc="btcContributorMining(desContract, contractValue, mining)"
                            btc-rack-calc="btcRackMining(desContract, contractValue, mining)"
@@ -409,9 +421,12 @@
                            monero-rack-calc="moneroRackMining(desContract, contractValue, mining)"
                            ltc-pool-calc="ltcPoolMining(desContract, contractValue, mining)"
                            ltc-contributor-calc="ltcContributorMining(desContract, contractValue, mining)"
-                           ltc-rack-calc="ltcRackMining(desContract, contractValue, mining)" s3-url="s3Url"></div>
+                           ltc-rack-calc="ltcRackMining(desContract, contractValue, mining)" s3-url="s3Url"
+                           via-pool-calc="viaPoolMining(desContract, contractValue, mining)"
+                           via-contributor-calc="viaContributorMining(desContract, contractValue, mining)"
+                           via-rack-calc="viaRackMining(desContract, contractValue, mining)" s3-url="s3Url"></div>
                         <p align="center">
-                           <button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd, finalDash, finalDashUsd, finalMonero, finalMoneroUsd, finalLtc, finalLtcUsd, $event)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button>
+                           <button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd, finalDash, finalDashUsd, finalMonero, finalMoneroUsd, finalLtc, finalLtcUsd, finalVia, finalViaUsd, $event)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button>
                         </p>
                         <div class="clearfix"></div>
                         <h3 align="center" class="text-title02"><strong>Your Estimated income based on Current <br />
@@ -426,6 +441,7 @@
                                  <td><strong>DASH</strong></td>
                                  <td><strong>MONERO</strong></td>
                                  <td><strong>LTC</strong></td>
+                                 <td><strong>VIA</strong></td>
                                  <td><strong>USD <small>(eq.)</small></strong></td>
                               </tr>
                               <tr ng-repeat="income in estIncome">
@@ -435,6 +451,7 @@
                                  <td>{{income.dash | number:5}}</td>
                                  <td>{{income.monero | number:5}}</td>
                                  <td>{{income.ltc | number:5}}</td>
+                                 <td>{{income.via | number:5}}</td>
                                  <td><strong>${{income.miningUsd | number:5}}</strong></td>
                               </tr>
                            </table>
