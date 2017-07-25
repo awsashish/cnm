@@ -59,11 +59,11 @@
                            <br />
                            <!-- Nav tabs -->
                            <ul class="nav nav-tabs row" role="tablist" style="background:#ccc !important; color:#525252 !important;">
-                              <li role="presentation" class="mining-tabs col-xs-3 active" style="padding:0px;min-height:70px;"><a href=".rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
-                              <li role="presentation" class="mining-tabs col-xs-3" style="padding:0px;min-height:70px;"><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
-                              <li role="presentation" class="mining-tabs col-xs-3" style="padding:0px;min-height:70px;"><a href=".dashTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}dashcoin.png" width="40" />  Dash</strong></a></li>
-                              <li role="presentation" class="mining-tabs col-xs-3" style="padding:0px;min-height:70px;"s><a href=".moneroTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}moneroheader.png" width="40" />  Monero</strong></a></li>
-                              <li role="presentation" class="mining-tabs col-xs-3" style="padding:0px;min-height:70px;"s><a href=".ltcTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}litecoin.png" width="40" />  Lite</strong></a></li>
+                              <li role="presentation" class="col-lg-2 col-md-2 col-xs-4 active" style="padding:0px;min-height:70px;"><a href=".rmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}bitcoin.png" width="40" />  Bitcoin</strong></a></li>
+                              <li role="presentation" class="col-lg-2 col-md-2 col-xs-4" style="padding:0px;min-height:70px;"><a href=".dmp" aria-controls="dmp" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}ether.png" width="40"> Ethereum</strong></a></li>
+                              <li role="presentation" class="col-lg-2 col-md-2 col-xs-4" style="padding:0px;min-height:70px;"><a href=".dashTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}dashcoin.png" width="40" />  Dash</strong></a></li>
+                              <li role="presentation" class="col-lg-2 col-md-2 col-xs-4" style="padding:0px;min-height:70px;"s><a href=".moneroTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}moneroheader.png" width="40" />  Monero</strong></a></li>
+                              <li role="presentation" class="col-lg-2 col-md-2 col-xs-4" style="padding:0px;min-height:70px;"s><a href=".viaTab" role="tab" data-toggle="tab"><strong><img ng-src="{{s3Url}}viacoin.png" width="40" />  Viacoin</strong></a></li>
                            </ul>
 
                            <!-- Tab panes -->
@@ -801,11 +801,13 @@
                                     </div>
                                  </div>
                               </div>
-                              <div role="tabpanel" class="tab-pane ltcTab" >
+
+
+                              <div role="tabpanel" class="tab-pane viaTab" >
                                  <br />
                                  <div class="panel panel-default">
                                     <div class="panel-heading nopadding nomargin">
-                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}litepool.png" width="60"> Pool Contract</strong></h5>
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}viacloud.png" width="60"> Pool Contract</strong></h5>
                                     </div>
                                     <div class="panel-body">
                                        <hr />
@@ -814,19 +816,19 @@
                                              <p class="pull-left">
                                              <h5><strong>Total Power</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{ltcPoolPower}}</p>
+                                             <p class="red-text04 pull-left">{{viaPoolPower}}</p>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
                                              <p class="pull-left">
                                              <h5><strong>Estimated Total Income(USD)</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{ltcPoolEstimateIncome | currency}}</p>
+                                             <p class="red-text04 pull-left">{{viaPoolEstimateIncome | currency}}</p>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
                                              <p class="pull-left">
                                              <h5><strong>Current Rate</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{ltcPoolCurrentRate | currency}}</p>
+                                             <p class="red-text04 pull-left">{{viaPoolCurrentRate | currency}}</p>
                                           </div>
                                        </div>
                                        <br />
@@ -843,20 +845,20 @@
                                                 </tr>
                                              </thead>
                                              <tbody>
-                                                <tr ng-if="noLtcPoolRecords">
+                                                <tr ng-if="noViaPoolRecords">
                                                    <td>No Records Found</td>
                                                 </tr>
-                                                <tr ng-repeat="ltcPool in ltcPoolDetails">
-                                                   <td>{{ltcPool.Date | date }}</td>
-                                                   <td>{{ltcPool.ProductName}}</td>
-                                                   <td>{{ltcPool.quantity}}</td>
-                                                   <td>{{ltcPool.miningpower}} H/s</td>
-                                                   <td>{{ltcPool.totaldays/30 | number:0}} Months</td>
+                                                <tr ng-repeat="viaPool in viaPoolDetails">
+                                                   <td>{{viaPool.Date | date }}</td>
+                                                   <td>{{viaPool.ProductName}}</td>
+                                                   <td>{{viaPool.quantity}}</td>
+                                                   <td>{{viaPool.miningpower}} MH/s</td>
+                                                   <td>{{viaPool.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
                                           </table>
-                                          <div class="pagination-default" ng-if="ltcPoolRecords > 0">
-                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ltcPoolRecords" ng-model="ltcPoolCurrentPage" max-size="5" ng-change="purchaseLtcPool('LTC', 'pool', ltcPoolCurrentPage)"></ul>
+                                          <div class="pagination-default" ng-if="viaPoolRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="viaPoolRecords" ng-model="viaPoolCurrentPage" max-size="5" ng-change="purchaseViaPool('VIA', 'pool', viaPoolCurrentPage)"></ul>
                                           </div>
                                           <br />
                                           <br />
@@ -865,7 +867,7 @@
                                  </div>
                                  <div class="panel panel-default">
                                     <div class="panel-heading nomargin nopadding">
-                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}litemahine.png" width="60"> Machine Contract</strong></h5>
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}viamachine.png" width="60"> Machine Contract</strong></h5>
                                     </div>
                                     <div class="panel-body">
                                        <hr />
@@ -874,19 +876,19 @@
                                              <p class="pull-left">
                                              <h5><strong>Total Power</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{ltcMachinePower}}</p>
+                                             <p class="red-text04 pull-left">{{viaMachinePower}}</p>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
                                              <p class="pull-left">
                                              <h5><strong>Estimated Total Income(USD)</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{ltcMachineEstimateIncome | currency}}</p>
+                                             <p class="red-text04 pull-left">{{viaMachineEstimateIncome | currency}}</p>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
                                              <p class="pull-left">
                                              <h5><strong>Current Rate</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{ltcMachineCurrentRate | currency}}</p>
+                                             <p class="red-text04 pull-left">{{viaMachineCurrentRate | currency}}</p>
                                           </div>
                                        </div>
                                        <br />
@@ -903,20 +905,20 @@
                                                 </tr>
                                              </thead>
                                              <tbody>
-                                                <tr ng-if="noLtcMachineRecords">
+                                                <tr ng-if="noViaMachineRecords">
                                                    <td>No Records Found</td>
                                                 </tr>
-                                                <tr ng-repeat="ltcMachine in ltcMachineDetails">
-                                                   <td>{{ltcMachine.Date | date }}</td>
-                                                   <td>{{ltcMachine.ProductName}}</td>
-                                                   <td>{{ltcMachine.quantity}}</td>
-                                                   <td>{{ltcMachine.miningpower}} H/s</td>
-                                                   <td>{{ltcMachine.totaldays/30 | number:0}} Months</td>
+                                                <tr ng-repeat="viaMachine in viaMachineDetails">
+                                                   <td>{{viaMachine.Date | date }}</td>
+                                                   <td>{{viaMachine.ProductName}}</td>
+                                                   <td>{{viaMachine.quantity}}</td>
+                                                   <td>{{viaMachine.miningpower}} MH/s</td>
+                                                   <td>{{viaMachine.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
                                           </table>
-                                          <div class="pagination-default" ng-if="ltcMachineRecords > 0">
-                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ltcMachineRecords" ng-model="ltcMachineCurrentPage" max-size="5" ng-change="purchaseLtcMachine('LTC', 'machine', ltcMachineCurrentPage)"></ul>
+                                          <div class="pagination-default" ng-if="viaMachineRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="viaMachineRecords" ng-model="viaMachineCurrentPage" max-size="5" ng-change="purchaseViaMachine('VIA', 'machine', viaMachineCurrentPage)"></ul>
                                           </div>
                                           <br />
                                           <br />
@@ -925,7 +927,7 @@
                                  </div>
                                  <div class="panel panel-default">
                                     <div class="panel-heading nomargin nopadding">
-                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}literack.png" width="60"> Rack Contract</strong></h5>
+                                       <h5 class="red-text08"><strong><img ng-src="{{s3Url}}viarack.png" width="60"> Rack Contract</strong></h5>
                                     </div>
                                     <div class="panel-body">
                                        <hr />
@@ -934,19 +936,19 @@
                                              <p class="pull-left">
                                              <h5><strong>Total Power</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{ltcRackPower}}</p>
+                                             <p class="red-text04 pull-left">{{viaRackPower}}</p>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
                                              <p class="pull-left">
                                              <h5><strong>Estimated Total Income(USD)</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{ltcRackEstimateIncome | currency}}</p>
+                                             <p class="red-text04 pull-left">{{viaRackEstimateIncome | currency}}</p>
                                           </div>
                                           <div class="col-md-4 col-sm-12">
                                              <p class="pull-left">
                                              <h5><strong>Current Rate</strong></h5>
                                              </p>
-                                             <p class="red-text04 pull-left">{{ltcRackCurrentRate | currency}}</p>
+                                             <p class="red-text04 pull-left">{{viaRackCurrentRate | currency}}</p>
                                           </div>
                                        </div>
                                        <br />
@@ -963,20 +965,20 @@
                                                 </tr>
                                              </thead>
                                              <tbody>
-                                                <tr ng-if="noLtcRackRecords">
+                                                <tr ng-if="noViaRackRecords">
                                                    <td>No Records Found</td>
                                                 </tr>
-                                                <tr ng-repeat="ltcRack in ltcRackDetails">
-                                                   <td>{{ltcRack.Date | date }}</td>
-                                                   <td>{{ltcRack.ProductName}}</td>
-                                                   <td>{{ltcRack.quantity}}</td>
-                                                   <td>{{ltcRack.miningpower}} H/s</td>
-                                                   <td>{{ltcRack.totaldays/30 | number:0}} Months</td>
+                                                <tr ng-repeat="viaRack in viaRackDetails">
+                                                   <td>{{viaRack.Date | date }}</td>
+                                                   <td>{{viaRack.ProductName}}</td>
+                                                   <td>{{viaRack.quantity}}</td>
+                                                   <td>{{viaRack.miningpower}} MH/s</td>
+                                                   <td>{{viaRack.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
                                           </table>
-                                          <div class="pagination-default" ng-if="ltcRackRecords > 0">
-                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="ltcRackRecords" ng-model="ltcRackCurrentPage" max-size="5" ng-change="purchaseLtcRack('LTC', 'rack', ltcRackCurrentPage)"></ul>
+                                          <div class="pagination-default" ng-if="viaRackRecords > 0">
+                                             <ul class="pagination pagination-metro nomargin mt10" uib-pagination items-per-page="10" boundary-links="true" total-items="viaRackRecords" ng-model="viaRackCurrentPage" max-size="5" ng-change="purchaseViaRack('VIA', 'rack', viaRackCurrentPage)"></ul>
                                           </div>
                                           <br />
                                           <br />
@@ -1132,23 +1134,23 @@
                            <hr />
                            <div class="row" >
                               <div class="col-md-8 col-sm-12">
-                                 <div class="price-box" ng-repeat="(key,ltc) in ltcProducts">
+                                 <div class="price-box" ng-repeat="(key,via) in viaProducts">
                                     <form class="form-horizontal form-pricing" role="form">
                                        <div class="price-slider">
-                                          <h4 class="great text-capitalize">{{ltc.productname}}</h4>
-                                          <img ng-src="{{s3Url}}{{ltcImagePath[$index]}}" width="100" class="pull-right" />
+                                          <h4 class="great text-capitalize">{{via.productname}}</h4>
+                                          <img ng-src="{{s3Url}}{{viaImagePath[$index]}}" width="100" class="pull-right" />
                                           <div class="col-sm-12">
-                                             <div ui-slider class="uiSlider" model="ltc.ltcMining" product="ltc" min="{{ltc.ltcMining}}" max="{{ltc.maxunit * ltc.miningpower}}" step="{{ltc.miningpower}}"></div>
+                                             <div ui-slider class="uiSlider" model="via.viaMining" product="via" min="{{via.viaMining}}" max="{{via.maxunit * via.miningpower}}" step="{{via.miningpower}}"></div>
                                           </div>
                                        </div>
-                                       <div class="price-form" id="quantity-ltc-{{key}}">
+                                       <div class="price-form" id="quantity-via-{{key}}">
                                           <div class="form-group">
                                              <div class="col-sm-12">
                                                 <input type="hidden" id="amount3" class="form-control">
                                                 <p class="price lead" id="amount-label3">
-                                                   <input type="number" ng-model="ltc.quantity" min="0" ng-change="calculateLtcAmount(key, ltc.quantity, ltc.miningpower, ltc.maxunit)" style="width: 80px;"/>
+                                                   <input type="number" ng-model="via.quantity" min="0" ng-change="calculateViaAmount(key, via.quantity, via.miningpower, via.maxunit)" style="width: 80px;"/>
                                                 </p>
-                                                Number Of Contracts<strong class="price pull-right lead">Amount : {{ltc.amount * ltc.ltcMining/ltc.miningpower | currency}}</strong>
+                                                Number Of Contracts<strong class="price pull-right lead">Amount : {{via.amount * via.viaMining/via.miningpower | currency}}</strong>
                                              </div>
                                           </div>
                                        </div>
@@ -1270,13 +1272,13 @@
                                     <p align="center">Hashpower contract overview</p>
                                     <div class="panel panel-default " style="box-shadow:0px 0px 2px 2px #f2f2f2; background:#f9fbfc;">
                                        <div class="panel-body">
-                                          <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="ltc in ltcProducts">
+                                          <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="via in viaProducts">
                                              <p>
-                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}litecoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{ltc.productname}}</h2>
+                                             <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}viacoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{via.productname}}</h2>
                                              </p>
-                                             <h3 class="mb36">{{ltc.amount * ltc.ltcMining/ltc.miningpower | number:2}} USD</h3>
-                                             <h3 class="mb36">{{ltc.ltcMining}} H/s</h3>
-                                             <input type="hidden" id="ltc-{{$index}}" value="{{ltc.amount * ltc.ltcMining/ltc.miningpower}}" />
+                                             <h3 class="mb36">{{via.amount * via.viaMining/via.miningpower | number:2}} USD</h3>
+                                             <h3 class="mb36">{{via.viaMining}} MH/s</h3>
+                                             <input type="hidden" id="via-{{$index}}" value="{{via.amount * via.viaMining/via.miningpower}}" />
                                              <br />
                                           </div>
                                           <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="monero in moneroProducts">
