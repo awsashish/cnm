@@ -3,44 +3,35 @@
    <div class="mainwrapper">
       <navigation></navigation>
       <style>
-         .price-box{
-            margin-bottom:20px;
-            padding:20px;
-            background:#f5f5f5;
-         }
-         .container .jumbotron{
-            padding-left:0px !important;
-            padding-right:0px !important;
-         }
-         label {
-            font-size: 11px;
-         }
-         .nav-tabs > li > a{
-            padding: 5px !important;
-            color:#fff !important;
-            font-family:'Oswald', sans-serif;
-         }
-         .nav-tabs{
-            background: #ccc  none repeat scroll 0 0 !important;
-         }
-         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
-            background:#b73632 !important;
-         }
-         .nav-tabs > li > a {
-            font-size: 20px;
-         }
-         select {
-            -webkit-appearance: menulist;
-         }
-         .contentpanel {
-            overflow:hidden;
-            padding-top:0;
-         }
-         @media screen and (max-width:992px){
-            .mining-particulars{
-               margin-top: 20px;
-            }
-         }
+      .price-box{
+         margin-bottom:20px;
+         padding:20px;
+         background:#f5f5f5;
+      }
+      .container .jumbotron{
+         padding-left:0px !important;
+         padding-right:0px !important;
+      }
+      label {
+         font-size: 11px;
+      }
+      .nav-tabs > li > a{
+         padding: 5px !important;
+         color:#fff !important;
+         font-family:'Oswald', sans-serif;
+      }
+      .nav-tabs{
+         background: #ccc  none repeat scroll 0 0 !important;
+      }
+      .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+         background:#b73632 !important;
+      }
+      .nav-tabs > li > a {
+         font-size: 20px;
+      }
+      select {
+         -webkit-appearance: menulist;
+      }
       </style>
       <div class="mainpanel">
          <div class="col-xs-12 col-sm-12 col-md-12" style="margin-bottom:15px;">
@@ -54,13 +45,14 @@
                   <h4 align="center" style="color:#C30"><strong>REMAINING CONTRACTS</strong></h4>
                   <div class="clearfix"></div>
                   <div align="center" class="col-xs-4 col-sm-4 col-md-4" ng-repeat="stock in availablePackage" ng-if="stock.coin == 'MONERO'">
-                     <img ng-src="{{s3Url}}{{packageImage[stock.productname]}}" width="70" title="{{stock.productname}}">
-                     <h1 class="counter-dash">{{stock.available}}</h1>
+                    <img ng-src="{{s3Url}}{{packageImage[stock.productname]}}" width="70" title="{{stock.productname}}">
+                    <h1 class="counter-dash">{{stock.available}}</h1>
                   </div>
                </div>
             </div>
+
          </div>
-         <div class="contentpanel">
+         <div class="contentpanel" style="overflow:hidden;padding-top:0;">
             <div class="col-sm-12 col-md-12 ">
                <div class="col-md-10 col-sm-8 social-section">
                   <p align="left" class="arrow">
@@ -107,212 +99,354 @@
                      <div class="box-outer" style="font-size:20px;"><img ng-src="images/moneroicon-btn.png" width="45"> &nbsp;&nbsp;Monero  </div>
                   </a>
                </div>
-               <div class="col-md-12 col-sm-12 col-lg-12">
-                  <news-feeds></news-feeds>
-               </div>
-               <div class="col-md-12" style="margin-top:20px;">
-                  <div class="col-lg-6 col-md-6 col-sm-12">
-                     <h3 align="left" class="latest-signup">
-                        <i class="fa fa-user-plus"></i> Recent Sign ups
-                     </h3>
-                     <p class="total-signup">Total Sign Ups ({{totalUsers | number}})</p>
-                     <div class="table-content">
-                        <div class="table-responsive overall-signup">
-                           <table class="table table-striped table-hover" style="width:50%">
-                              <tbody>
-                                 <tr ng-repeat="(key, row) in latestSignup | limitTo:10">
-                                    <td><img ng-src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername | limitTo: 20}}</td>
-                                    <td>{{row.minutes}} {{row.minutes > 1 ? 'mins':'min'}} ago</td>
-                                 </tr>
-                              </tbody>
-                           </table>
-                           <table class="table table-striped table-hover" style="width:50%">
-                              <tbody>
-                                 <tr ng-repeat="(key, row) in latestSignup | limitTo:10:10">
-                                    <td><img ng-src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername | limitTo: 13}}</td>
-                                    <td>{{row.minutes}} {{row.minutes > 1 ? 'mins':'min'}} ago</td>
-                                 </tr>
-                              </tbody>
-                           </table>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-6 col-sm-12 col-lg-6 leadership-reward" style="border:1px solid #ccc; border-radius:5px; padding:0px;min-height: 415px;">
-                     <h3 class="no-margin no-padding reward-head-dash text-center" style="margin:0 !important;"><strong><img src="images/rankers.png" width="40"> Coinomia Leadership Reward</strong></h3>
-                     <div class="col-md-6 no-padding">
-                        <h4 class="ranker-heading1"><strong><i class="fa fa-users" aria-hidden="true"></i> Recent Rankers</strong></h4>
-                        <div class="ticker" style="max-height: 405px;overflow-y:hidden;overflow-x: hidden;">
-                           <table class="viewport" ng-class="{moving: moving}" width="100%" style="border:1px solid #f2f2f2;">
-                              <tbody>
-                                 <tr class="ranker1-odd" ng-repeat="weekRankers in weekRewards">
-                                    <td height="35">
-                                       <span class="image-wrapper pull-left">
-                                       <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="40">
-                                       </span>
-                                       <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
-                                       <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
-                                    </td>
-                                    <td><img ng-src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
-                                 </tr>
-                              </tbody>
-                           </table>
-                        </div>
-                     </div>
-                     <div class="col-md-6 no-padding">
-                        <h4 class="ranker-heading2"><strong><i class="fa fa-users" aria-hidden="true"></i> All Time Rankers</strong></h4>
-                        <div class="ticker" style="max-height: 405px;overflow-y:hidden;overflow-x: hidden;">
-                           <table class="viewport" ng-class="{moving: moving}" width="100%" style="border:1px solid #f2f2f2;">
-                              <tbody>
-                                 <tr class="ranker1-odd" ng-repeat="allRankers in allRewards">
-                                    <td height="35">
-                                       <span class="image-wrapper pull-left">
-                                       <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="40">
-                                       </span>
-                                       <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
-                                       <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
-                                    </td>
-                                    <td><img ng-src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
-                                 </tr>
-                              </tbody>
-                           </table>
-                        </div>
-                     </div>
+            </div>
+            <div class="col-md-5 col-sm-12 col-lg-6">
+               <news-feeds></news-feeds>
+            </div>
+            <!-- Coinomia Leadership reward -->
+            <div class="col-md-7 col-sm-12 col-lg-6 leadership-reward" style="border:1px solid #ccc; border-radius:5px; padding:0px;min-height: 415px;">
+               <h3 class="no-margin no-padding reward-head-dash text-center" style="margin:0 !important;"><strong><img src="images/rankers.png" width="40"> Coinomia Leadership Reward</strong></h3>
+               <div class="col-md-6 no-padding">
+                  <h4 class="ranker-heading1"><strong><i class="fa fa-users" aria-hidden="true"></i> Recent Rankers</strong></h4>
+                  <div class="ticker" style="max-height: 405px;overflow-y:hidden;overflow-x: hidden;">
+                     <table class="viewport" ng-class="{moving: moving}" width="100%" style="border:1px solid #f2f2f2;">
+                        <tbody>
+                           <tr class="ranker1-odd" ng-repeat="weekRankers in weekRewards">
+                              <td height="35">
+                                 <span class="image-wrapper pull-left">
+                                 <img class="img-circle" ng-src="{{weekRankers.avatar?weekRankers.avatar:'images/users/user5.png'}}" width="40">
+                                 </span>
+                                 <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[weekRankers.country] | lowercase}}.png"> {{weekRankers.MemberName | limitTo:18}}</strong> </span><br />
+                                 <span class="pull-left user_id"> &nbsp;<strong>{{weekRankers.MemberId}}</strong></span>
+                              </td>
+                              <td><img ng-src="images/icons/{{weekRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
+                           </tr>
+                        </tbody>
+                     </table>
                   </div>
                </div>
-               <div class="clearfix"></div>
-               <div class="col-md-12 mining-particulars">
-                  <div class="col-md-12">
-                     <h3 style="font-size:24px;" align="left" class="col-md-12 latest-signup">
-                        <i style="padding-right: 5px;" class="fa fa-line-chart"></i>Mining Particulars
-                     </h3>
-                  </div>
-                  <div class="col-md-3 col-sm-3" purchase-total
-                     purchased-attr="purchasedPower"
-                     purchased-params="purchasedParams" s3-url="s3Url">
-                  </div>
-                  <div class="col-md-6 col-sm-6" current-rates
-                     current-mining="currentMining"
-                     mining-params="ratesParams" s3-url="s3Url">
-                  </div>
-                  <div class="col-md-3 col-sm-3" purchase-total
-                     total-attr="totalIncome"
-                     total-params="totalParams" s3-url="s3Url">
+               <div class="col-md-6 no-padding">
+                  <h4 class="ranker-heading2"><strong><i class="fa fa-users" aria-hidden="true"></i> All Time Rankers</strong></h4>
+                  <div class="ticker" style="max-height: 405px;overflow-y:hidden;overflow-x: hidden;">
+                     <table class="viewport" ng-class="{moving: moving}" width="100%" style="border:1px solid #f2f2f2;">
+                        <tbody>
+                           <tr class="ranker1-odd" ng-repeat="allRankers in allRewards">
+                              <td height="35">
+                                 <span class="image-wrapper pull-left">
+                                 <img class="img-circle" ng-src="{{allRankers.avatar?allRankers.avatar:'images/users/user5.png'}}" width="40">
+                                 </span>
+                                 <span class="pull-left"> &nbsp;<img ng-src="{{s3Url}}flags/{{allCountryCodes[allRankers.country] | lowercase}}.png"> {{allRankers.MemberName | limitTo:18}}</strong> </span><br />
+                                 <span class="pull-left user_id"> &nbsp;<strong>{{allRankers.MemberId}}</strong></span>
+                              </td>
+                              <td><img ng-src="images/icons/{{allRankers.RewardName | lowercase}}.png" width="75" class="pull-right pad-r10 "> </td>
+                           </tr>
+                        </tbody>
+                     </table>
                   </div>
                </div>
-               <br />
-               <div class="clearfix"></div>
-               <div class="row">
-                  <div class="col-md-6">
-                     <h3 class="latest-signup full-width"><i class="fa fa-calculator" aria-hidden="true"></i></span> Virtual Calculator</span> </h3>
-                     <div class="panel panel-default">
-                        <div class="panel-body">
-                           <h3 align="center" class="yelo-text mt0">Sales Commissions <br /><small class="sm-text01"><strong>Considering you as Rack Contract Owners!</strong></small></h3>
-                           <br />
-                           <!-- Direct Sales Commission -->
-                           <div class="block-wrapper" sales-commission commission="'direct'"
-                              tree-details="treeDetails"
-                              sales-Heading="salesDirectHeading"
-                              sales-image-path="salesDirectImage"
-                              pool-details="poolDetails"
-                              contributor-details="contributorDetails"
-                              rack-details="rackDetails"
-                              pool-contract="poolContract"
-                              contributor-contract="contributorContract"
-                              rack-contract="rackContract"
-                              pool-total="poolTotal"
-                              contributor-total="contributorTotal"
-                              rack-total="rackTotal"
-                              pool-calc="poolCalc(treeData, contract, poolData)"
-                              contributor-calc="contributorCalc(treeData, contract, contributorData)"
-                              rack-calc="rackCalc(treeData, contract, rackData)" s3-url="s3Url" ng-if="hasDirectReferral"></div>
-                           <br />
-                           <!-- Binary Sales Commission -->
-                           <div class="block-wrapper" sales-commission commission="'binary'"
-                              binary-details="binaryUsers"
-                              sales-Heading="salesBinaryHeading"
-                              sales-image-path="salesBinaryImage"
-                              tree-details="treeDetails"
-                              pool-details="poolDetails"
-                              contributor-details="contributorDetails"
-                              rack-details="rackDetails"
-                              binary-pool-contract="poolContract"
-                              binary-contributor-contract="contributorContract"
-                              binary-rack-contract="rackContract"
-                              binary-pool-total="binaryPoolTotal"
-                              binary-contributor-total="binaryContributorTotal"
-                              binary-rack-total="binaryRackTotal"
-                              binary-pool-calc="binaryPoolCalc(treeData, contract, poolData)"
-                              binary-contributor-calc="binaryContributorCalc(treeData, contract, contributorData)"
-                              binary-rack-calc="binaryRackCalc(treeData, contract, rackData)" s3-url="s3Url" ng-if="hasBinaryReferral"></div>
-                           <h3 align="center"><strong>Your Estimated Paycheck</strong>
-                           </h3>
-                           <p class="grand-total">${{payCheckTotal | number:2}}</p>
-                           <small>*Above mentioned figures are based on an average of referral and team commissions, calculated on behalf of estimated purchases of your current downlines. It represents the income potential of this marketing system.</small>
+            </div>
+            <!-- Coinomia Leadership reward / -->
+            <!--<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+               <a href="#promote-coinomia/social-group">
+                 <div class="box-outer"><img src="{{s3Url}}facebook.png" width="70" /> &nbsp;&nbsp;Get Connected  </div>
+               </a>
+               <a href="#promote-coinomia/grab-concept">
+                 <div class="box-outer"><img src="{{s3Url}}presentation.png" width="70" />&nbsp;&nbsp; Grab the Concept</div>
+               </a>
+               <a href="#referral-link">
+                 <div class="box-outer"><img src="{{s3Url}}plan.png" width="70" /> &nbsp;&nbsp;Your Referral Links</div>
+               </a>
+               <a href="#promote-coinomia/sms-blast">
+                 <div class="box-outer"><img src="{{s3Url}}mining.png" width="70" /> &nbsp;&nbsp;Get, Set, Go!</div>
+               </a>
+               <a ng-click="getReferrals()" style="cursor:pointer;">
+                 <div class="box-outer"><img src="{{s3Url}}plan.png" width="70" /> &nbsp;&nbsp;Get Automatic Referrals!</div>
+               </a>
+               </div>-->
+            <div>
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt20">
+                  <div class="tabbable-panel" >
+                     <div class="tabbable-line" >
+                        <h3 align="left" class="latest-signup">
+                           <i class="fa fa-users"></i> Signup Data
+                        </h3>
+                        <div align="center">
+                           <ul class="nav nav-tabs">
+                              <li class="active" style="width:50%;">
+                                 <a href=".tab_default_4" data-toggle="tab" aria-expanded="true">
+                                 <i class="fa fa-users " aria-hidden="true"></i>
+                                 Company Wide </a>
+                              </li>
+                              <li style="width:50%;" class="">
+                                 <a href=".tab_default_5" data-toggle="tab" aria-expanded="false">
+                                 <i class="fa fa-user " aria-hidden="true"></i>
+                                 My Team </a>
+                              </li>
+                           </ul>
                         </div>
-                     </div>
-                  </div>
-                  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                     <div class="tabbable-panel" >
-                        <div class="tabbable-line" >
-                           <h3 align="left" class="latest-signup">
-                              <i class="fa fa-users"></i> Signup Data
-                           </h3>
-                           <div align="center">
-                              <ul class="nav nav-tabs">
-                                 <li class="active" style="width:50%;">
-                                    <a href=".tab_default_4" data-toggle="tab" aria-expanded="true">
-                                    <i class="fa fa-users " aria-hidden="true"></i>
-                                    Company Wide </a>
-                                 </li>
-                                 <li style="width:50%;" class="">
-                                    <a href=".tab_default_5" data-toggle="tab" aria-expanded="false">
-                                    <i class="fa fa-user " aria-hidden="true"></i>
-                                    My Team </a>
-                                 </li>
-                              </ul>
-                           </div>
-                           <div class="tab-content" style="padding:20px 10px 0px; margin-bottom:20px; ">
-                              <div class="tab-pane tab_default_4 active">
-                                 <img src="images/arrow-bot.png" class="arrow-bot-lft">
-                                 <p ng-if="loadingData">Loading data ... </p>
-                                 <div class="responsive-calendar">
-                                    <div class="day-headers">
-                                       <div class="day header" ng-repeat="weekDay in coinomiaTeam | unique:'day'">{{weekDay.day}}</div>
-                                    </div>
-                                    <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
-                                       <div class="day" ng-class="totalTeam.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="totalTeam in coinomiaTeam">
-                                          <a class="custom_date">{{totalTeam.dayNumber}}</a>
-                                          <!-- <a class="custom_day">{{totalTeam.day}}</a> -->
-                                          <span class="badge">{{totalTeam.total}}</span>
-                                       </div>
+                        <div class="tab-content" style="padding:20px 10px 0px; margin-bottom:20px; ">
+                           <div class="tab-pane tab_default_4 active">
+                              <img src="images/arrow-bot.png" class="arrow-bot-lft">
+                              <p ng-if="loadingData">Loading data ... </p>
+                              <div class="responsive-calendar">
+                                 <div class="day-headers">
+                                    <div class="day header" ng-repeat="weekDay in coinomiaTeam | unique:'day'">{{weekDay.day}}</div>
+                                 </div>
+                                 <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
+                                    <div class="day" ng-class="totalTeam.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="totalTeam in coinomiaTeam">
+                                       <a class="custom_date">{{totalTeam.dayNumber}}</a>
+                                       <!-- <a class="custom_day">{{totalTeam.day}}</a> -->
+                                       <span class="badge">{{totalTeam.total}}</span>
                                     </div>
                                  </div>
-                                 <!-- <ui-calendar data="coinomiaTeam" date-range="getDates" ng-if="hasCoinomiaTeamData"></ui-calendar> -->
                               </div>
-                              <div class="tab-pane tab_default_5">
-                                 <img src="images/arrow-bot.png" class="arrow-bot-rgt">
-                                 <p ng-if="loadingCoinomiaData">Loading data ... </p>
-                                 <div class="responsive-calendar">
-                                    <div class="day-headers">
-                                       <div class="day header" ng-repeat="calendar in myTeam | unique:'day'">{{calendar.day}}</div>
-                                    </div>
-                                    <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
-                                       <div class="day" ng-class="team.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="team in myTeam">
-                                          <a class="custom_date">{{team.dayNumber}}</a>
-                                          <!-- <a class="custom_day">{{team.day}}</a> -->
-                                          <span class="badge">{{team.total}}</span>
-                                       </div>
+                              <!-- <ui-calendar data="coinomiaTeam" date-range="getDates" ng-if="hasCoinomiaTeamData"></ui-calendar> -->
+                           </div>
+                           <div class="tab-pane tab_default_5">
+                              <img src="images/arrow-bot.png" class="arrow-bot-rgt">
+                              <p ng-if="loadingCoinomiaData">Loading data ... </p>
+                              <div class="responsive-calendar">
+                                 <div class="day-headers">
+                                    <div class="day header" ng-repeat="calendar in myTeam | unique:'day'">{{calendar.day}}</div>
+                                 </div>
+                                 <div class="days" data-group="days" style="border-right:1px solid #fbfbfb; border-bottom:1px solid #fbfbfb; padding:0px;">
+                                    <div class="day" ng-class="team.total?'':'past not-current'" style="transform: rotateY(0deg); backface-visibility: hidden; transition: -webkit-transform 0.5s ease 0s;" ng-repeat="team in myTeam">
+                                       <a class="custom_date">{{team.dayNumber}}</a>
+                                       <!-- <a class="custom_day">{{team.day}}</a> -->
+                                       <span class="badge">{{team.total}}</span>
                                     </div>
                                  </div>
                               </div>
                            </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 mt20 mb20">
+                  <h3 align="left" class="latest-signup">
+                     <i class="fa fa-user-plus"></i> Recent Sign ups
+                  </h3>
+                  <p class="total-signup">Total Sign Ups ({{totalUsers | number}})</p>
+                  <div class="table-content">
+                     <div class="table-responsive overall-signup">
+                        <table class="table table-striped table-hover" style="width:50%">
+                           <tbody>
+                              <tr ng-repeat="(key, row) in latestSignup | limitTo:10">
+                                 <td><img ng-src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername | limitTo: 20}}</td>
+                                 <td>{{row.minutes}} {{row.minutes > 1 ? 'mins':'min'}} ago</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <table class="table table-striped table-hover" style="width:50%">
+                           <tbody>
+                              <tr ng-repeat="(key, row) in latestSignup | limitTo:10:10">
+                                 <td><img ng-src="images/flags/{{allCountryCodes[row.country] | lowercase}}.png"> {{row.membername | limitTo: 13}}</td>
+                                 <td>{{row.minutes}} {{row.minutes > 1 ? 'mins':'min'}} ago</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row row-stat">
+               <div class="col-md-12">
+                  <h3 style="font-size:24px;" align="left" class="col-md-12 latest-signup">
+                     <i style="padding-right: 5px;" class="fa fa-line-chart"></i>Mining Particulars
+                  </h3>
+               </div>
+               <div class="col-md-3" purchase-total
+                  purchased-attr="purchasedPower"
+                  purchased-params="purchasedParams" s3-url="s3Url"></div>
+               <!-- col-md-4 -->
+               <div class="col-md-6" current-rates
+                  current-mining="currentMining"
+                  mining-params="ratesParams" s3-url="s3Url"></div>
+               <!-- col-md-4 -->
+               <div class="col-md-3" purchase-total
+                  total-attr="totalIncome"
+                  total-params="totalParams" s3-url="s3Url"></div>
+               <!-- col-md-4 -->
+            </div>
+            <!-- row -->
+            <br />
+            <h2 align="center" class="mb37 full-width" style="border:0"><span class="glyphicon glyphicon-minus"></span> Virtual Calculators<span class="glyphicon glyphicon-minus"></span> </h2>
+            <span class="yellow-border"></span>
+            <br />
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="panel panel-default">
+                     <div class="panel-body">
+                        <h3 align="center" class="yelo-text mt0">Sales Commissions <br /><small class="sm-text01"><strong>Considering you as Rack Contract Owners!</strong></small></h3>
+                        <br />
+                        <!-- Direct Sales Commission -->
+                        <div class="block-wrapper" sales-commission commission="'direct'"
+                           tree-details="treeDetails"
+                           sales-Heading="salesDirectHeading"
+                           sales-image-path="salesDirectImage"
+                           pool-details="poolDetails"
+                           contributor-details="contributorDetails"
+                           rack-details="rackDetails"
+                           pool-contract="poolContract"
+                           contributor-contract="contributorContract"
+                           rack-contract="rackContract"
+                           pool-total="poolTotal"
+                           contributor-total="contributorTotal"
+                           rack-total="rackTotal"
+                           pool-calc="poolCalc(treeData, contract, poolData)"
+                           contributor-calc="contributorCalc(treeData, contract, contributorData)"
+                           rack-calc="rackCalc(treeData, contract, rackData)" s3-url="s3Url" ng-if="hasDirectReferral"></div>
+                        <br />
+                        <!-- Binary Sales Commission -->
+                        <div class="block-wrapper" sales-commission commission="'binary'"
+                           binary-details="binaryUsers"
+                           sales-Heading="salesBinaryHeading"
+                           sales-image-path="salesBinaryImage"
+                           tree-details="treeDetails"
+                           pool-details="poolDetails"
+                           contributor-details="contributorDetails"
+                           rack-details="rackDetails"
+                           binary-pool-contract="poolContract"
+                           binary-contributor-contract="contributorContract"
+                           binary-rack-contract="rackContract"
+                           binary-pool-total="binaryPoolTotal"
+                           binary-contributor-total="binaryContributorTotal"
+                           binary-rack-total="binaryRackTotal"
+                           binary-pool-calc="binaryPoolCalc(treeData, contract, poolData)"
+                           binary-contributor-calc="binaryContributorCalc(treeData, contract, contributorData)"
+                           binary-rack-calc="binaryRackCalc(treeData, contract, rackData)" s3-url="s3Url" ng-if="hasBinaryReferral"></div>
+                        <h3 align="center"><strong>Your Estimated Paycheck</strong>
+                        </h3>
+                        <p class="grand-total">${{payCheckTotal | number:2}}</p>
+                        <small>*Above mentioned figures are based on an average of referral and team commissions, calculated on behalf of estimated purchases of your current downlines. It represents the income potential of this marketing system.</small>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="panel panel-default">
+                     <div class="panel-body" style="padding:2px;">
+                        <h3 align="center" class="yelo-text mt0">Mining Payouts <br /><small class="sm-text01"><strong>Paid in BTC/ETH</strong></small></h3>
+                        <div class="block-wrapper" mining-payout
+                           pool-options="poolOptions"
+                           btc-pool-value="btcPoolValue"
+                           btc-machine-value="btcMachineValue"
+                           btc-rack-value="btcRackValue"
+                           eth-pool-value="ethPoolValue"
+                           eth-machine-value="ethMachineValue"
+                           eth-rack-value="ethRackValue"
+                           dash-pool-value="dashPoolValue"
+                           dash-machine-value="dashMachineValue"
+                           dash-rack-value="dashRackValue"
+                           monero-pool-value="moneroPoolValue"
+                           monero-machine-value="moneroMachineValue"
+                           monero-rack-value="moneroRackValue"
+                           ltc-pool-value="ltcPoolValue"
+                           ltc-machine-value="ltcMachineValue"
+                           ltc-rack-value="ltcRackValue"
+                           machine-options="machineOptions"
+                           rack-options="rackOptions"
+                           pool-details="poolDetails"
+                           contributor-details="contributorDetails"
+                           rack-details="rackDetails"
+                           current-mining="currentMining"
+                           btc-pool-contract="btcPoolContract"
+                           btc-contributor-contract="btcContributorContract"
+                           btc-rack-contract="btcRackContract"
+                           eth-pool-contract="ethPoolContract"
+                           eth-contributor-contract="ethContributorContract"
+                           eth-rack-contract="ethRackContract"
+                           dash-pool-contract="dashPoolContract"
+                           dash-contributor-contract="dashContributorContract"
+                           dash-rack-contract="dashRackContract"
+                           monero-pool-contract="moneroPoolContract"
+                           monero-contributor-contract="moneroContributorContract"
+                           monero-rack-contract="moneroRackContract"
+                           ltc-pool-contract="ltcPoolContract"
+                           ltc-contributor-contract="ltcContributorContract"
+                           ltc-rack-contract="ltcRackContract"
+                           btc-pool-price="btcPoolPrice"
+                           btc-contributor-price="btcContributorPrice"
+                           btc-rack-price="btcRackPrice"
+                           eth-pool-price="ethPoolPrice"
+                           eth-contributor-price="ethContributorPrice"
+                           eth-rack-price="ethRackPrice"
+                           dash-pool-price="dashPoolPrice"
+                           dash-contributor-price="dashContributorPrice"
+                           dash-rack-price="dashRackPrice"
+                           monero-pool-price="moneroPoolPrice"
+                           monero-contributor-price="moneroContributorPrice"
+                           monero-rack-price="moneroRackPrice"
+                           ltc-pool-price="ltcPoolPrice"
+                           ltc-contributor-price="ltcContributorPrice"
+                           ltc-rack-price="ltcRackPrice"
+                           btc-pool-click="btcPoolClick(desContract, contractValue, mining)"
+                           btc-machine-click="btcMachineClick(desContract, contractValue, mining)"
+                           btc-rack-click="btcRackClick(desContract, contractValue, mining)"
+                           eth-pool-click="ethPoolClick(desContract, contractValue, mining)"
+                           eth-machine-click="ethMachineClick(desContract, contractValue, mining)"
+                           eth-rack-click="ethRackClick(desContract, contractValue, mining)"
+                           dash-pool-click="dashPoolClick(desContract, contractValue, mining)"
+                           dash-machine-click="dashMachineClick(desContract, contractValue, mining)"
+                           dash-rack-click="dashRackClick(desContract, contractValue, mining)"
+                           monero-pool-click="moneroPoolClick(desContract, contractValue, mining)"
+                           monero-machine-click="moneroMachineClick(desContract, contractValue, mining)"
+                           monero-rack-click="moneroRackClick(desContract, contractValue, mining)"
+                           ltc-pool-click="ltcPoolClick(desContract, contractValue, mining)"
+                           ltc-machine-click="ltcMachineClick(desContract, contractValue, mining)"
+                           ltc-rack-click="ltcRackClick(desContract, contractValue, mining)"
+                           btc-pool-calc="btcPoolMining(desContract, contractValue, mining)"
+                           btc-contributor-calc="btcContributorMining(desContract, contractValue, mining)"
+                           btc-rack-calc="btcRackMining(desContract, contractValue, mining)"
+                           eth-pool-calc="ethPoolMining(desContract, contractValue, mining)"
+                           eth-contributor-calc="ethContributorMining(desContract, contractValue, mining)"
+                           eth-rack-calc="ethRackMining(desContract, contractValue, mining)"
+                           dash-pool-calc="dashPoolMining(desContract, contractValue, mining)"
+                           dash-contributor-calc="dashContributorMining(desContract, contractValue, mining)"
+                           dash-rack-calc="dashRackMining(desContract, contractValue, mining)"
+                           monero-pool-calc="moneroPoolMining(desContract, contractValue, mining)"
+                           monero-contributor-calc="moneroContributorMining(desContract, contractValue, mining)"
+                           monero-rack-calc="moneroRackMining(desContract, contractValue, mining)"
+                           ltc-pool-calc="ltcPoolMining(desContract, contractValue, mining)"
+                           ltc-contributor-calc="ltcContributorMining(desContract, contractValue, mining)"
+                           ltc-rack-calc="ltcRackMining(desContract, contractValue, mining)" s3-url="s3Url"></div>
+                        <p align="center">
+                           <button class="calculator" ng-click="miningCalculate(finalBtc, finalBtcUsd, finalEth, finalEthUsd, finalDash, finalDashUsd, finalMonero, finalMoneroUsd, finalLtc, finalLtcUsd, $event)"><i class="fa fa-calculator" aria-hidden="true"></i> Calculate Now</button>
+                        </p>
+                        <div class="clearfix"></div>
+                        <h3 align="center" class="text-title02"><strong>Your Estimated income based on Current <br />
+                           Exchange Values of Respective Currencies</strong>
+                        </h3>
+                        <div class="table-responsive">
+                           <table class="table" style="background:#faf9f9; border:1px solid #ccc;" >
+                              <tr>
+                                 <td><strong>#</strong></td>
+                                 <td><strong>BTC</strong></td>
+                                 <td><strong>ETH</strong></td>
+                                 <td><strong>DASH</strong></td>
+                                 <td><strong>MONERO</strong></td>
+                                 <td><strong>LTC</strong></td>
+                                 <td><strong>USD <small>(eq.)</small></strong></td>
+                              </tr>
+                              <tr ng-repeat="income in estIncome">
+                                 <td>{{income.duration}}</td>
+                                 <td>{{income.btc | number:5}}</td>
+                                 <td>{{income.eth | number:5}}</td>
+                                 <td>{{income.dash | number:5}}</td>
+                                 <td>{{income.monero | number:5}}</td>
+                                 <td>{{income.ltc | number:5}}</td>
+                                 <td><strong>${{income.miningUsd | number:5}}</strong></td>
+                              </tr>
+                           </table>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
          </div>
+         <!-- contentpanel -->
       </div>
       <main-footer></main-footer>
    </div>
+   <!-- mainwrapper -->
 </section>

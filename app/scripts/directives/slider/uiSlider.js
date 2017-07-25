@@ -32,18 +32,18 @@ angular.module('coinomiaFrontendApp')
       var moneroMachine = parseInt(angular.element("#monero-1").val());
       var moneroRack = parseInt(angular.element("#monero-2").val());
 
-      // VIA Value
-      var viaPool = parseInt(angular.element("#via-0").val());
-      var viaMachine = parseInt(angular.element("#via-1").val());
-      var viaRack = parseInt(angular.element("#via-2").val());
+      // LTC Value
+      var ltcPool = parseInt(angular.element("#ltc-0").val());
+      var ltcMachine = parseInt(angular.element("#ltc-1").val());
+      var ltcRack = parseInt(angular.element("#ltc-2").val());
 
       //var btcTotal = btcPool + btcMachine + btcRack + btcPool2 + btcMachine2 + btcRack2;
       var btcTotal = btcPool + btcMachine + btcRack;
       var ethTotal = ethPool + ethMachine + ethRack;
       var dashTotal = dashPool + dashMachine + dashRack;
+      var ltcTotal = ltcPool + ltcMachine + ltcRack;
       var moneroTotal = moneroPool + moneroMachine + moneroRack;
-      var viaTotal = viaPool + viaMachine + viaRack;
-      var total = btcTotal + ethTotal + dashTotal + moneroTotal + viaTotal;
+      var total = btcTotal + ethTotal + dashTotal + moneroTotal + ltcTotal;
       if(total){
         var total = $filter('currency')(total);
 
@@ -99,10 +99,10 @@ angular.module('coinomiaFrontendApp')
                 scope.monero.quantity = scope.monero.moneroMining/scope.monero.miningpower;
                 el.html(sliderLabel.replace('SLIDER_VALUE', scope.monero.moneroMining));
               }
-              else if (attrs.product === 'via') {
-                scope.via.viaMining = ui.value;
-                scope.via.quantity = scope.via.viaMining/scope.via.miningpower;
-                el.html(sliderLabel.replace('SLIDER_VALUE', scope.via.viaMining));
+              else if (attrs.product === 'ltc') {
+                scope.ltc.ltcMining = ui.value;
+                scope.ltc.quantity = scope.ltc.ltcMining/scope.ltc.miningpower;
+                el.html(sliderLabel.replace('SLIDER_VALUE', scope.ltc.ltcMining));
               }
             });
           },
@@ -121,8 +121,8 @@ angular.module('coinomiaFrontendApp')
             else if (attrs.product === 'monero') {
               el.append(sliderLabel.replace('SLIDER_VALUE', scope.monero.moneroMining));
             }
-            else if (attrs.product === 'via') {
-              el.append(sliderLabel.replace('SLIDER_VALUE', scope.via.viaMining));
+            else if (attrs.product === 'ltc') {
+              el.append(sliderLabel.replace('SLIDER_VALUE', scope.ltc.ltcMining));
             }
           },
           change: function() {
@@ -174,12 +174,12 @@ angular.module('coinomiaFrontendApp')
             }, 500)
           });
         }
-        else if(attrs.product === 'via') {
-          scope.$watch('via.viaMining', function(newVal) {
+        else if(attrs.product === 'ltc') {
+          scope.$watch('ltc.ltcMining', function(newVal) {
             $(elem).slider('value', newVal);
           });
-          scope.$watch('via.quantity', function(newVal) {
-            $(elem).slider('value', scope.via.viaMining);
+          scope.$watch('ltc.quantity', function(newVal) {
+            $(elem).slider('value', scope.ltc.ltcMining);
             setTimeout(function() {
               totalAmount.call();
             }, 500)
