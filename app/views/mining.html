@@ -852,7 +852,7 @@
                                                    <td>{{viaPool.Date | date }}</td>
                                                    <td>{{viaPool.ProductName}}</td>
                                                    <td>{{viaPool.quantity}}</td>
-                                                   <td>{{viaPool.miningpower}} H/s</td>
+                                                   <td>{{viaPool.miningpower}} MH/s</td>
                                                    <td>{{viaPool.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
@@ -912,7 +912,7 @@
                                                    <td>{{viaMachine.Date | date }}</td>
                                                    <td>{{viaMachine.ProductName}}</td>
                                                    <td>{{viaMachine.quantity}}</td>
-                                                   <td>{{viaMachine.miningpower}} H/s</td>
+                                                   <td>{{viaMachine.miningpower}} MH/s</td>
                                                    <td>{{viaMachine.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
@@ -972,7 +972,7 @@
                                                    <td>{{viaRack.Date | date }}</td>
                                                    <td>{{viaRack.ProductName}}</td>
                                                    <td>{{viaRack.quantity}}</td>
-                                                   <td>{{viaRack.miningpower}} H/s</td>
+                                                   <td>{{viaRack.miningpower}} MH/s</td>
                                                    <td>{{viaRack.totaldays/30 | number:0}} Months</td>
                                                 </tr>
                                              </tbody>
@@ -1277,7 +1277,7 @@
                                              <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}viacoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{via.productname}}</h2>
                                              </p>
                                              <h3 class="mb36">{{via.amount * via.viaMining/via.miningpower | number:2}} USD</h3>
-                                             <h3 class="mb36">{{via.viaMining}} H/s</h3>
+                                             <h3 class="mb36">{{via.viaMining}} MH/s</h3>
                                              <input type="hidden" id="via-{{$index}}" value="{{via.amount * via.viaMining/via.miningpower}}" />
                                              <br />
                                           </div>

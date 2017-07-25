@@ -182,11 +182,11 @@ angular.module('coinomiaFrontendApp')
       if(quantity > maxUnit) {
         $scope.viaProducts[key].quantity = maxUnit;
         $scope.viaProducts[key].viaMining = maxUnit*miningpower;
-        angular.element("#quantity-via-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.viaProducts[key].viaMining+'<small>H/s</small>');
+        angular.element("#quantity-via-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.viaProducts[key].viaMining+'<small>MH/s</small>');
         return false;
       }else{
         $scope.viaProducts[key].viaMining = quantity*miningpower;
-        angular.element("#quantity-via-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.viaProducts[key].viaMining+'<small>H/s</small>');
+        angular.element("#quantity-via-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.viaProducts[key].viaMining+'<small>MH/s</small>');
       }
     }
 
