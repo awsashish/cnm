@@ -1129,7 +1129,7 @@
                               </table>
                            </div>
                         </div>
-                        <div class="tab-pane tab_default_8" ng-class="(activeTab==='order'?'active':'')" style="height:1000px;">
+                        <div class="tab-pane tab_default_8" ng-class="(activeTab==='order'?'active':'')">
                            <h2 class="mb35-sm top-spacemob10"><i class="fa fa-credit-card-alt icon-lg-red border-round-red" style="padding-left:3px;" aria-hidden="true"></i> <strong>Order</strong></h2>
                            <hr />
                            <div class="row" >
@@ -1271,7 +1271,7 @@
                                     <h2 align="center" class="mb35 top-spacemob10"><span class="glyphicon glyphicon-minus"></span>  Order Summary <span class="glyphicon glyphicon-minus"></span> </h2>
                                     <p align="center">Hashpower contract overview</p>
                                     <div class="panel panel-default " style="box-shadow:0px 0px 2px 2px #f2f2f2; background:#f9fbfc;">
-                                       <div class="panel-body">
+                                       <div class="panel-body summary-panel">
                                           <div  class="col-md-12  col-sm-12" style="border-bottom:1px dotted #ccc;" ng-repeat="via in viaProducts">
                                              <p>
                                              <h2 class="mb38 nopadding nomargin"><img ng-src="{{s3Url}}viacoin.png" width="25" class="pull-left img-responsive top-spacemob10" />&nbsp;{{via.productname}}</h2>
@@ -1341,76 +1341,76 @@
                   </div>
                </div>
             </div>
-         </div>
-         <!-- Modal -->
-         <div class="modal fade" id="btc-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}btc-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Bitcoin Wallet</strong></h4>
-                  </div>
-                  <div class="modal-body">
-                     <form class="form-inline">
-                        <div class="form-group">
-                           <label><strong>No Of Bitcoin you want to Withdraw</strong></label>
-                           <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
-                        </div>
-                     </form>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="modal fade" id="eth-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}eth-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Ether Wallet</strong></h4>
-                  </div>
-                  <div class="modal-body">
-                     <form class="form-inline">
-                        <div class="form-group">
-                           <label><strong>No Of Ether you want to Withdraw</strong></label>
-                           <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
-                        </div>
-                     </form>
+            <!-- Modal -->
+            <div class="modal fade" id="btc-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+               <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}btc-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Bitcoin Wallet</strong></h4>
+                     </div>
+                     <div class="modal-body">
+                        <form class="form-inline">
+                           <div class="form-group">
+                              <label><strong>No Of Bitcoin you want to Withdraw</strong></label>
+                              <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
+                           </div>
+                        </form>
+                     </div>
                   </div>
                </div>
             </div>
-         </div>
-         <div class="modal fade" id="usd-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}usd-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;USD Wallet</strong></h4>
-                  </div>
-                  <div class="modal-body">
-                     <form class="form-inline">
-                        <div class="form-group">
-                           <label><strong>USD Doller want to Withdraw</strong></label>
-                           <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
-                        </div>
-                     </form>
+            <div class="modal fade" id="eth-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+               <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}eth-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Ether Wallet</strong></h4>
+                     </div>
+                     <div class="modal-body">
+                        <form class="form-inline">
+                           <div class="form-group">
+                              <label><strong>No Of Ether you want to Withdraw</strong></label>
+                              <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
+                           </div>
+                        </form>
+                     </div>
                   </div>
                </div>
             </div>
-         </div>
-         <div class="modal fade" id="eth-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}package/monero-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Monero Wallet</strong></h4>
+            <div class="modal fade" id="usd-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+               <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}usd-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;USD Wallet</strong></h4>
+                     </div>
+                     <div class="modal-body">
+                        <form class="form-inline">
+                           <div class="form-group">
+                              <label><strong>USD Doller want to Withdraw</strong></label>
+                              <input type="text" name="bitcoin-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
+                           </div>
+                        </form>
+                     </div>
                   </div>
-                  <div class="modal-body">
-                     <form class="form-inline">
-                        <div class="form-group">
-                           <label><strong>No Of Monero you want to Withdraw</strong></label>
-                           <input type="text" name="monero-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
-                        </div>
-                     </form>
+               </div>
+            </div>
+            <div class="modal fade" id="eth-wallet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+               <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><img ng-src="{{s3Url}}package/monero-wallet.png" width="35" class="pull-left img-responsive " /> <strong>&nbsp;Monero Wallet</strong></h4>
+                     </div>
+                     <div class="modal-body">
+                        <form class="form-inline">
+                           <div class="form-group">
+                              <label><strong>No Of Monero you want to Withdraw</strong></label>
+                              <input type="text" name="monero-wallet" class="form-control" style="width:80%;"/> <button type="button" style="padding:10px;" class="btn btn-default" data-dismiss="modal">OK</button>
+                           </div>
+                        </form>
+                     </div>
                   </div>
                </div>
             </div>

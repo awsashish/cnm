@@ -6346,3 +6346,37 @@ h1{
     margin:0px;
   }
 }
+
+@media screen and (max-width:450px){
+  h4.great {
+    padding: 4px 10px;
+    font-size: 15px;
+    margin: 0 0 55px -50px;
+  }
+  .price-slider img{
+    width:70px !important;
+  }
+
+  .price-box {
+    width: 95%;
+  }
+  .form-inline .form-group{
+    margin-right:0px;
+  }
+}
+@media screen and (max-width:340px){
+
+  .summary-panel{
+    padding:4px;
+  }
+  .price-slider img{
+    width:60px !important;
+  }
+  .price-form {
+    padding:0px;
+  }
+  .mb38{
+    font-size:15px !important;
+  }
+
+}
