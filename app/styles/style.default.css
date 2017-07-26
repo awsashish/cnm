@@ -6346,7 +6346,11 @@ h1{
     margin:0px;
   }
 }
-
+@media screen and (max-width:767px){
+  .academy-container{
+    margin-top:100px;
+  }
+}
 @media screen and (max-width:450px){
   h4.great {
     padding: 4px 10px;
@@ -6362,6 +6366,24 @@ h1{
   }
   .form-inline .form-group{
     margin-right:0px;
+  }
+  .arrow_box-top-lft-amout{
+    font-size:14px;
+  }
+  .mt5{
+    font-size:20px !important;
+  }
+  .grand-total{
+    font-size:35px;
+  }
+  .academy-heading{
+    padding:0px !important;
+  }
+  .payment-type img{
+    width: 45px !important;
+  }
+  .payment-desc{
+    width:100% !important;
   }
 }
 @media screen and (max-width:340px){
