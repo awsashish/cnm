@@ -2,13 +2,14 @@
 <section>
   <div class="mainwrapper">
     <navigation></navigation>
-    <style>.nav-tabs > li > a{ padding: 14px 45px !important; color:#fff !important;
+    <style>.nav-tabs > li > a{ color:#fff !important;
       }.nav-tabs{background: #d9534f  none repeat scroll 0 0 !important;}.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{ background:#b73632 !important;}.cropArea {
       background: #E4E4E4;
       overflow: hidden;
       width:100px;
       height:100px;
     }
+    .settings-tabs a{padding: 14px 0px !important;}
     </style>
     <div class="mainpanel">
 
@@ -19,22 +20,22 @@
           <div class="tabbable-line" >
             <div align="center">
               <ul  class="nav nav-tabs ">
-                <li class="active col-lg-3 col-sm-6 col-xs-12" style="padding:0px; min-height:85px;">
+                <li class="active settings-tabs col-lg-3 col-sm-3 col-xs-6" style="padding:0px; min-height:85px;">
                   <a href=".tab_default_4" data-toggle="tab">
                   <i class="fa fa-user icon-lg" aria-hidden="true"></i><br />
                   <strong>My Profile</strong> </a>
                 </li>
-                <li class="col-lg-3 col-sm-6 col-xs-12" style="padding:0px; min-height:85px;" ng-click="walletInfo()">
+                <li class="settings-tabs col-lg-3 col-sm-3 col-xs-6" style="padding:0px; min-height:85px;" ng-click="walletInfo()">
                   <a href=".tab_default_5" data-toggle="tab">
                   <i class="fa fa-google-wallet icon-lg" aria-hidden="true"></i><br />
                   <strong>Wallet Address</strong> </a>
                 </li>
-                <li class="col-lg-3 col-sm-6 col-xs-12" style="padding:0px; min-height:85px;">
+                <li class="settings-tabs col-lg-3 col-sm-3 col-xs-6" style="padding:0px; min-height:85px;">
                   <a href=".tab_default_6" data-toggle="tab">
                   <i class="fa fa-star icon-lg" aria-hidden="true"></i><br />
                   <strong>Change Password</strong> </a>
                 </li>
-                <li class="col-lg-3 col-sm-6 col-xs-12" style="padding:0px; min-height:85px;">
+                <li class="settings-tabs col-lg-3 col-sm-3 col-xs-6" style="padding:0px; min-height:85px;">
                   <a href=".tab_default_7" data-toggle="tab">
                   <i class="fa fa-key icon-lg" aria-hidden="true"></i><br />
                   <strong>OTP Settings</strong> </a>
@@ -86,10 +87,11 @@
                 <div class="alert alert-danger fade in text-capitalize" ng-if="errorMessage">
                   <strong>{{errorMessage}}</strong>
                 </div>
-                <wallet-info class="col-xs-12 col-md-4 col-sm-4" wallet-data="walletData" wallet-type="MONERO" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
-                <wallet-info class="col-xs-12 col-md-4 col-sm-4" wallet-data="walletData" wallet-type="BTC" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
-                <wallet-info class="col-xs-12 col-md-4 col-sm-4" wallet-data="walletData" wallet-type="ETH" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
-                <wallet-info class="col-xs-12 col-md-4 col-sm-4" wallet-data="walletData" wallet-type="DASH" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
+                <wallet-info class="col-xs-12 col-md-4 col-sm-6" wallet-data="walletData" wallet-type="VIA" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
+                <wallet-info class="col-xs-12 col-md-4 col-sm-6" wallet-data="walletData" wallet-type="MONERO" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
+                <wallet-info class="col-xs-12 col-md-4 col-sm-6" wallet-data="walletData" wallet-type="BTC" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
+                <wallet-info class="col-xs-12 col-md-4 col-sm-6" wallet-data="walletData" wallet-type="ETH" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
+                <wallet-info class="col-xs-12 col-md-4 col-sm-6" wallet-data="walletData" wallet-type="DASH" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info>
                 <!-- <wallet-info class="col-md-4 col-sm-12" wallet-data="walletData" wallet-type="USD" update-wallet="updateWallet(wallet, address)" success-message="successMessage" error-message="errorMessage" wallet-heading="walletHeading" s3-url="s3Url"></wallet-info> -->
               </div>
 

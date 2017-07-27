@@ -29,11 +29,16 @@ angular.module('coinomiaFrontendApp')
     $scope.moneroMachineCurrentPage = config.currentPage;
     $scope.moneroRackCurrentPage = config.currentPage;
 
+    $scope.viaPoolCurrentPage = config.currentPage;
+    $scope.viaMachineCurrentPage = config.currentPage;
+    $scope.viaRackCurrentPage = config.currentPage;
+
     $scope.productMaxUnit = config.productMaxUnit;
     $scope.btcImagePath = config.btcImagePath;
     $scope.ethImagePath = config.ethImagePath;
     $scope.dashImagePath = config.dashImagePath;
     $scope.moneroImagePath = config.moneroImagePath;
+    $scope.viaImagePath = config.viaImagePath;
     $scope.pageLimit = config.pageLimit;
     $scope.oldPackage = config.oldPackage;
 
@@ -53,9 +58,10 @@ angular.module('coinomiaFrontendApp')
       $scope.ethProducts = [];
       $scope.dashProducts = [];
       $scope.moneroProducts = [];
+      $scope.viaProducts = [];
       if(res.status === 200) {
         var k = 0;
-        productsData.forEach(function(products) {          
+        productsData.forEach(function(products) {
           if(products.coin === 'BTC' && $scope.oldPackage[k] !== products.productname) {
             products.btcMining = 0;
             products.quantity = 0;
@@ -72,6 +78,11 @@ angular.module('coinomiaFrontendApp')
             products.moneroMining = 0;
             products.quantity = 0;
             $scope.moneroProducts.push(products);
+          }
+          else if(products.coin === 'VIA' && $scope.oldPackage[k] !== products.productname){
+            products.viaMining = 0;
+            products.quantity = 0;
+            $scope.viaProducts.push(products);
           }
           k++;
           // $scope.total += products.amount;
@@ -167,6 +178,18 @@ angular.module('coinomiaFrontendApp')
       }
     }
 
+    $scope.calculateViaAmount = function(key, quantity, miningpower, maxUnit) {
+      if(quantity > maxUnit) {
+        $scope.viaProducts[key].quantity = maxUnit;
+        $scope.viaProducts[key].viaMining = maxUnit*miningpower;
+        angular.element("#quantity-via-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.viaProducts[key].viaMining+'<small>MH/s</small>');
+        return false;
+      }else{
+        $scope.viaProducts[key].viaMining = quantity*miningpower;
+        angular.element("#quantity-via-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.viaProducts[key].viaMining+'<small>MH/s</small>');
+      }
+    }
+
     $scope.setEthQuantity = function(key, val) {
       $scope.ethProducts[key].quantity = val;
     }
@@ -174,8 +197,13 @@ angular.module('coinomiaFrontendApp')
     $scope.setDashQuantity = function(key, val) {
       $scope.dashProducts[key].quantity = val;
     }
+
     $scope.setMoneroQuantity = function(key, val) {
       $scope.moneroProducts[key].quantity = val;
+    }
+
+    $scope.setViaQuantity = function(key, val) {
+      $scope.viaProducts[key].quantity = val;
     }
 
 
@@ -193,8 +221,7 @@ angular.module('coinomiaFrontendApp')
       }
 
       $scope.orderDetails = [];
-      var i=0, j=0, k=0, l=0;
-      
+      var i=0, j=0, k=0, l=0, m=0, n=0;
       $scope.dashProducts.forEach(function(dashInfo) {
         if(dashInfo.quantity !== 0 && dashInfo.quantity !== null) {
           var dashAmount = dashInfo.amount * dashInfo.dashMining/dashInfo.miningpower;
@@ -229,6 +256,15 @@ angular.module('coinomiaFrontendApp')
           $scope.orderDetails.push({data:{id:moneroInfo.id, quantity:moneroInfo.quantity}, name:moneroInfo.productname,  price:moneroAmount, path:$scope.moneroImagePath[j]});
         }
         l++;
+      });
+
+      $scope.viaProducts.forEach(function(viaInfo) {
+        if(viaInfo.quantity !== 0 && viaInfo.quantity !== null) {
+          var viaAmount = viaInfo.amount * viaInfo.viaMining/viaInfo.miningpower;
+          $scope.purchaseTotal += viaAmount;
+          $scope.orderDetails.push({data:{id:viaInfo.id, quantity:viaInfo.quantity}, name:viaInfo.productname,  price:viaAmount, path:$scope.viaImagePath[j]});
+        }
+        m++;
       });
 
       $scope.orderParams = [];
@@ -506,6 +542,58 @@ angular.module('coinomiaFrontendApp')
       })
     }
 
+    $scope.purchaseViaPool = function(type, product, currentPage) {
+      coinomiaService.orderHistory(type, product, currentPage)
+      .then(function(res){
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.viaPoolPower = data.TotalPower;
+          $scope.viaPoolEstimateIncome = data.estimated_total_income;
+          $scope.viaPoolCurrentRate = data.current_rate;
+          $scope.viaPoolRecords = data.records.total;
+          $scope.viaPoolDetails = data.records.rows;
+          if($scope.viaPoolRecords === 0) {
+            $scope.noViaPoolRecords = true;
+          }
+        }
+      })
+    }
+
+
+    $scope.purchaseViaMachine = function(type, product, currentPage) {
+      coinomiaService.orderHistory(type, product, currentPage)
+      .then(function(res){
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.viaMachinePower = data.TotalPower;
+          $scope.viaMachineEstimateIncome = data.estimated_total_income;
+          $scope.viaMachineCurrentRate = data.current_rate;
+          $scope.viaMachineRecords = data.records.total;
+          $scope.viaMachineDetails = data.records.rows;
+          if($scope.viaMachineRecords === 0) {
+            $scope.noViaMachineRecords = true;
+          }
+        }
+      })
+    }
+
+    $scope.purchaseViaRack = function(type, product, currentPage) {
+      coinomiaService.orderHistory(type, product, currentPage)
+      .then(function(res){
+        if(res.status === 200) {
+          var data = res.data;
+          $scope.viaRackPower = data.TotalPower;
+          $scope.viaRackEstimateIncome = data.estimated_total_income;
+          $scope.viaRackCurrentRate = data.current_rate;
+          $scope.viaRackRecords = data.records.total;
+          $scope.viaRackDetails = data.records.rows;
+          if($scope.viaRackRecords === 0) {
+            $scope.noViaRackRecords = true;
+          }
+        }
+      })
+    }
+
     $scope.purchaseEthPool('ETH', 'pool', $scope.ethPoolCurrentPage);
     $scope.purchaseEthMachine('ETH', 'machine', $scope.ethMachineCurrentPage);
     $scope.purchaseEthRack('ETH', 'rack', $scope.ethRackCurrentPage);
@@ -521,4 +609,8 @@ angular.module('coinomiaFrontendApp')
     $scope.purchaseMoneroPool('MONERO', 'pool', $scope.moneroPoolCurrentPage);
     $scope.purchaseMoneroMachine('MONERO', 'machine', $scope.moneroMachineCurrentPage);
     $scope.purchaseMoneroRack('MONERO', 'rack', $scope.moneroRackCurrentPage);
+
+    $scope.purchaseViaPool('VIA', 'pool', $scope.viaPoolCurrentPage);
+    $scope.purchaseViaMachine('VIA', 'machine', $scope.viaMachineCurrentPage);
+    $scope.purchaseViaRack('VIA', 'rack', $scope.viaRackCurrentPage);
   });

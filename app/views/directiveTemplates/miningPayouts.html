@@ -7,7 +7,7 @@
     Amount</strong>
   </div>
 </div> -->
-<div class="table-responsive responsive-block" style="overflow:hidden;">
+<div class="table-responsive responsive-block" style="overflow-x:auto;">
   <!-- Direct Sales Commission -->
   <table class="table no-wrap">
     <thead>
@@ -21,31 +21,41 @@
     </thead>
     <tbody>
       <tr>
-        <td width="30%">
+        <td>
           <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
             <li role="presentation" class="active" >
-              <a href=".btc" aria-controls="btc" role="tab" data-toggle="tab" ng-click="btcPoolClick({desContract:btcPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <a href=".btc" role="tab" data-toggle="tab" ng-click="btcPoolClick({desContract:btcPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
               <img class="img-circle payouts-image" ng-src="{{s3Url}}contract-bitcoin.png" title="Pool Contract(BTC)" />
               </a>
             </li>
             <li role="presentation" class="" >
-              <a href=".eth" aria-controls="eth" role="tab" data-toggle="tab" ng-click="ethPoolClick({desContract:ethPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <a href=".eth" role="tab" data-toggle="tab" ng-click="ethPoolClick({desContract:ethPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
               <img class="img-circle payouts-image" ng-src="{{s3Url}}ether-contract.png" title="Pool Contract(ETH)"   />
               </a>
             </li>
             <li role="presentation" class="" >
-              <a href=".dash" aria-controls="eth" role="tab" data-toggle="tab" ng-click="dashPoolClick({desContract:dashPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <a href=".dash" role="tab" data-toggle="tab" ng-click="dashPoolClick({desContract:dashPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
               <img class="img-circle payouts-image" ng-src="{{s3Url}}dashpool.png" title="Dash Pool Contract(ETH)"   />
               </a>
             </li>
             <li role="presentation" class="" >
-              <a href=".monero" aria-controls="eth" role="tab" data-toggle="tab" ng-click="moneroPoolClick({desContract:moneroPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <a href=".monero" role="tab" data-toggle="tab" ng-click="moneroPoolClick({desContract:moneroPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
               <img class="img-circle payouts-image" ng-src="{{s3Url}}monerocloud.png" title="Pool Contract(MONERO)"   />
+              </a>
+            </li>
+            <li role="presentation" class="" >
+              <a href=".ltc" role="tab" data-toggle="tab" ng-click="ltcPoolClick({desContract:ltcPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}litepool.png" title="Pool Contract(LTC)"   />
+              </a>
+            </li>
+            <li role="presentation" class="" >
+              <a href=".via" role="tab" data-toggle="tab" ng-click="viaPoolClick({desContract:viaPoolContract, contractValue:poolDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}viacloud.png" title="Pool Contract(VIA)"   />
               </a>
             </li>
           </ul>
         </td>
-        <td width="30%">
+        <td>
           <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
             <div role="tabpanel" class="tab-pane fade in active btc" >
               <div align="left" class="tab-inner">
@@ -91,9 +101,31 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade ltc" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <select class="sm-txtbox1" ng-model="ltcPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="ltcPoolCalc({desContract:ltcPoolContract, contractValue:poolDetails, mining:currentMining})">
+                    </select>
+                    <br><small>{{ltcPoolContract*ltcPoolValue}} H/s</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade via" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <select class="sm-txtbox1" ng-model="viaPoolContract" ng-options="option.value as option.name for option in poolOptions" ng-change="viaPoolCalc({desContract:viaPoolContract, contractValue:poolDetails, mining:currentMining})">
+                    </select>
+                    <br><small>{{viaPoolContract*viaPoolValue}} H/s</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
-        <td width="40%">
+        <td>
           <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
             <div role="tabpanel" class="tab-pane fade in active btc" >
               <div align="left" class="tab-inner">
@@ -131,11 +163,29 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade ltc" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{ltcPoolPrice | number:2}}</strong></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade via" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{viaPoolPrice | number:2}}</strong></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
       </tr>
       <tr>
-        <td width="30%">
+        <td>
           <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
             <li role="presentation" class="active" >
               <a href=".btc1" aria-controls="btc1" role="tab" data-toggle="tab" ng-click="btcMachineClick({desContract:btcContributorContract, contractValue:contributorDetails, mining:currentMining})" style="padding:10px 0px !important;">
@@ -157,9 +207,19 @@
               <img class="img-circle payouts-image" ng-src="{{s3Url}}moneromachine.png" title="Machine Contract(MONERO)"  />
               </a>
             </li>
+            <li role="presentation" class="" >
+              <a href=".ltc1" aria-controls="ltc1" role="tab" data-toggle="tab" ng-click="ltcMachineClick({desContract:ltcContributorContract, contractValue:contributorDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}litemahine.png" title="Machine Contract(LTC)"  />
+              </a>
+            </li>
+            <li role="presentation" class="" >
+              <a href=".via1" aria-controls="via1" role="tab" data-toggle="tab" ng-click="viaMachineClick({desContract:viaContributorContract, contractValue:contributorDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}litemahine.png" title="Machine Contract(VIA)"  />
+              </a>
+            </li>
           </ul>
         </td>
-        <td width="30%">
+        <td>
           <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
             <div role="tabpanel" class="tab-pane fade in active btc1" >
               <div align="left" class="tab-inner">
@@ -205,9 +265,31 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade ltc1" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <select class="sm-txtbox1" ng-model="ltcContributorContract" ng-options="option.value as option.name for option in machineOptions" ng-change="ltcContributorCalc({desContract:ltcContributorContract, contractValue:contributorDetails, mining:currentMining})">
+                    </select>
+                    <br><small>{{ltcContributorContract*ltcMachineValue}} H/s</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade via1" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <select class="sm-txtbox1" ng-model="viaContributorContract" ng-options="option.value as option.name for option in machineOptions" ng-change="viaContributorCalc({desContract:viaContributorContract, contractValue:contributorDetails, mining:currentMining})">
+                    </select>
+                    <br><small>{{viaContributorContract*viaMachineValue}} H/s</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
-        <td width="40%">
+        <td>
           <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
             <div role="tabpanel" class="tab-pane fade in active btc1" >
               <div align="left" class="tab-inner">
@@ -245,11 +327,29 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade ltc1" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{ltcContributorPrice | number:2}}</strong></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade via1" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <h4 class="nomargin nopadding red-text01"><strong>&asymp; $ {{viaContributorPrice | number:2}}</strong></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
       </tr>
       <tr>
-        <td width="30%">
+        <td>
           <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
             <li role="presentation" class="active" >
               <a href=".btc2" aria-controls="btc2" role="tab" data-toggle="tab" ng-click="btcRackClick({desContract:btcRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
@@ -258,22 +358,32 @@
             </li>
             <li role="presentation" class="" >
               <a href=".eth2" aria-controls="eth2" role="tab" data-toggle="tab" ng-click="ethRackClick({desContract:ethRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
-              <img class="img-circle payouts-image" ng-src="{{s3Url}}ether-rack.png" title="ETH"  />
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}ether-rack.png" title="Rack Contract(ETH)"  />
               </a>
             </li>
             <li role="presentation" class="" >
               <a href=".dash2" aria-controls="dash" role="tab" data-toggle="tab" ng-click="dashRackClick({desContract:dashRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
-              <img class="img-circle payouts-image" ng-src="{{s3Url}}dashrack.png" title="DASH"  />
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}dashrack.png" title="Rack Contract(DASH)"  />
               </a>
             </li>
             <li role="presentation" class="" >
               <a href=".monero2" aria-controls="monero" role="tab" data-toggle="tab" ng-click="moneroRackClick({desContract:moneroRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
-              <img class="img-circle payouts-image" ng-src="{{s3Url}}monerorack.png" title="MONERO"  />
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}monerorack.png" title="Rack Contract(MONERO)"  />
+              </a>
+            </li>
+            <li role="presentation" class="" >
+              <a href=".ltc2" aria-controls="ltc" role="tab" data-toggle="tab" ng-click="ltcRackClick({desContract:ltcRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}literack.png" title="Rack Contract(LTC)"  />
+              </a>
+            </li>
+            <li role="presentation" class="" >
+              <a href=".via2" aria-controls="via" role="tab" data-toggle="tab" ng-click="viaRackClick({desContract:viaRackContract, contractValue:rackDetails, mining:currentMining})" style="padding:10px 0px !important;">
+              <img class="img-circle payouts-image" ng-src="{{s3Url}}literack.png" title="Rack Contract(VIA)"  />
               </a>
             </li>
           </ul>
         </td>
-        <td width="30%">
+        <td>
           <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
             <div role="tabpanel" class="tab-pane fade in active btc2" >
               <div align="left" class="tab-inner">
@@ -319,9 +429,20 @@
                 </div>
               </div>
             </div>
+            <div role="tabpanel" class="tab-pane fade ltc2" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <select class="sm-txtbox1" ng-model="ltcRackContract" ng-options="option.value as option.name for option in rackOptions" ng-change="ltcRackCalc({desContract:ltcRackContract, contractValue:rackDetails, mining:currentMining})">
+                    </select>
+                    <br><small>{{ltcRackContract*ltcRackValue}} H/s</small>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
-        <td width="40%">
+        <td>
           <div class="tab-content" id="tabs-collapse" style="padding:0px !important; border:0px !important;">
             <div role="tabpanel" class="tab-pane fade in active btc2" >
               <div align="left" class="tab-inner">
@@ -355,6 +476,15 @@
                 <div class="row">
                   <div class="col-sm-12 col-md-12">
                     <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{moneroRackPrice | number:2}}</strong></h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade ltc2" >
+              <div align="left" class="tab-inner">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <h4 class="nomargin nopadding red-text01"> <strong>&asymp; $ {{ltcRackPrice | number:2}}</strong></h4>
                   </div>
                 </div>
               </div>
