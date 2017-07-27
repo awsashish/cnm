@@ -15,9 +15,9 @@
          </div>
          <!-- pageheader -->
          <div class="contentpanel">
-            <div class="container">
+            <div class="container academy-container">
                <div class="col-md-3 col-sm-12" style="border-right:5px solid #FC0;"><img src="images/coinomiacademy.png" width="300" class="img-responsive" style=" padding:10px;"/></div>
-               <div class="col-md-9 col-sm-12" style="padding-left:40px;">
+               <div class="col-md-9 col-sm-12 academy-heading" style="padding-left:40px;">
                   <h2 class="mt5" style="font-size:35px !important; text-transform:uppercase;">
                      You 
                      platform for Personal and Business Success
@@ -27,7 +27,7 @@
             </div>
             <hr />
             <div class="clearfix"></div>
-            <h2 class="mb37" align="center" style="width:60%;">
+            <h2 class="mb37 payment-desc" align="center" style="width:60%;">
                <span class="glyphicon glyphicon-minus"></span>
                Review What Products are in Your Shopping Cart<span class="glyphicon glyphicon-minus"></span>
             </h2>
@@ -56,7 +56,7 @@
                   <span class="mt5 pull-right" style=" color:#999;">Total Price: ${{totalPrice}}</span>
                </p>
                <p style="border-bottom:1px solid #ccc;  padding:5px; height:80px;">
-                  <span class="mt5 pull-right" style="color:#999;">Select Payment :
+                  <span class="mt5 pull-right payment-type" style="color:#999;">Select Payment :
                      <input name="bitcoin" type="radio" value="1" ng-model="payment"/>
                      <img src="images/btc-wallet.png" width="60" />&nbsp;&nbsp;
                      <input name="usd" type="radio" value="2" ng-model="payment"/>
@@ -86,7 +86,7 @@
                            Please Find the Details About Your New Purchase Below.<br />
                            <hr />
                            <strong>Mode of Purchase</strong>: <img ng-src="{{s3Url}}{{payment === '1' ? 'bitcoin-logo':'coinomia-wallet'}}.png" width="100" /><br /><br />
-                           <p ng-if="payment === '1'" class="add-funds-popup">Bitcoin Address : <strong>{{invoiceInfo.address}}</strong></p>
+                           <p ng-if="payment === '1'" class="add-funds-popup btc-address-academypg">Bitcoin Address : <strong>{{invoiceInfo.address}}</strong></p>
                            <br />
                            <p class="bit-address"><strong>Invoice Number</strong> : {{invoiceInfo.invoice_number}}</p>
                            <table class="table table-bordered">
