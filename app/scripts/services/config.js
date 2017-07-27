@@ -98,7 +98,8 @@ angular.module('coinomiaFrontendApp')
       'DASH': 'Dash',
       'MONERO': 'Monero',
       'LTC': 'Litecoin',
-      'VIA': 'Viacoin'
+      'VIA': 'Viacoin',
+      'ACADEMY': 'Academy'
     },
     'bannerApiPath':'http://coinomiaadmin.azurewebsites.net',
     'signUpPath':'http://login.coinomia.com/#/signup',
