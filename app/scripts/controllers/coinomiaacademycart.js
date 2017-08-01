@@ -46,6 +46,7 @@ angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', func
 			if(result.status === 200) {
 				if(result.data.message && result.data.message !== 'success') {
 		            $scope.noBalance = true;
+		            $scope.message = result.data.message;
 		        }else{
 					$scope.invoiceInfo = result.data;
 				}
