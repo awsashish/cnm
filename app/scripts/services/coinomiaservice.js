@@ -1146,6 +1146,24 @@ angular.module('coinomiaFrontendApp')
         .catch(transferFundRequestFailed);
     }
 
+    // Transfer Fund
+    this.transferAcademyFund = function(transferData) {
+      // On Success
+      function transferAcademyFundRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function transferAcademyFundRequestFailed(error) {
+        $log.error('XHR Failed for Transfer Fund.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/academy-fund-transfer', transferData)
+        .then(transferAcademyFundRequestComplete)
+        .catch(transferAcademyFundRequestFailed);
+    }
+
     // Withdrawal Amount
     this.withdrawalAmount = function(data, type) {
       // On Success
