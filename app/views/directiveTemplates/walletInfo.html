@@ -9,13 +9,13 @@
       <table class="table table-dark-gry table-hover mb30 font16 overlay-wrapper">
          <tbody>
             <!-- To show the Balance of All Wallets other than USD -->
-            <tr ng-if="type && info.Wallet !== 'USD'">
+            <tr ng-if="info.Wallet !== 'USD'">
                <td valign="middle"><strong class="red-text02" >Balance {{walletHeading[info.Wallet]}}</strong></td>
-               <td ng-if="info.Wallet !== 'USD'">
+               <td ng-if="info.Wallet !== 'USD' && info.Wallet !== 'ACADEMY'">
                   <h4 class="nomargin nopadding"><strong>{{info.Balance}} {{info.Wallet}}</strong></h4>
                </td>
                <td>
-                  <h4 class="nomargin nopadding" ng-if="info.Wallet === 'USD'"><strong>{{info.Balance | currency}} </strong></h4>
+                  <h4 class="nomargin nopadding" ng-if="info.Wallet === 'USD' || info.Wallet === 'ACADEMY'"><strong>{{info.Balance | currency}} </strong></h4>
                </td>
             </tr>
             <!-- To show the Balance of USD Wallet -->
@@ -37,7 +37,7 @@
               <td></td>
             </tr>
             <!-- Applicable to all wallets having the Fund Withdraw feature -->
-            <tr ng-if="type">
+            <tr ng-if="type == 'withdrawal'">
                <td align="center" valign="middle" colspan="3" ng-if="info.Wallet === 'USD'">
                   <form name="fund" class="form-inline" ng-submit="submit(amount)" novalidate>
                      <div class="col-xs-8 col-sm-8 col-md-8 text-left fund-section">
@@ -77,7 +77,7 @@
                </td>
             </tr>
             <!-- Internal Transfer option for Academy Wallet -->
-            <tr ng-if="!type && info.Wallet === 'ACADEMY'">
+            <tr ng-if="type && info.Wallet === 'ACADEMY'">
                <td align="center" valign="middle" colspan="3">
                   <a data-toggle="modal" data-target="#internal-transfer" class="btn btn-default"><strong><img ng-src="images/transfer-funds.png" width="30"> Internal Transfer</strong></a>
                </td>
