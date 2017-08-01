@@ -29,7 +29,7 @@
                </td>
             </tr>
             <!-- To show the Wallet Address -->
-            <tr ng-if="info.Wallet !== 'USD'">
+            <tr ng-if="info.Wallet !== 'USD' && info.Wallet !== 'ACADEMY'">
                <td valign="middle" style="vertical-align:middle;"><strong class="red-text02">Wallet Address</strong></td>
                <td>
                   <input type="text" class="form-control" style="margin:0px;" ng-model="info.Address">
@@ -77,7 +77,7 @@
                </td>
             </tr>
             <!-- Internal Transfer option for Academy Wallet -->
-            <tr ng-if="type && info.Wallet === 'ACADEMY'">
+            <tr ng-if="info.Wallet === 'ACADEMY'">
                <td align="center" valign="middle" colspan="3">
                   <a data-toggle="modal" data-target="#internal-transfer-academy" class="btn btn-default"><strong><img ng-src="images/transfer-funds.png" width="30"> Internal Transfer</strong></a>
                </td>
