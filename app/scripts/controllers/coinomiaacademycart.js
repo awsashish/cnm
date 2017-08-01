@@ -27,9 +27,17 @@ angular.module('coinomiaFrontendApp').controller('CoinomiaAcademyCartCtrl', func
 
 	// Purchase Selected Package
 	$scope.placeOrder = function (){
+		var paymentMethod = '';
+		if($scope.payment == "1"){
+			paymentMethod = 'BTC';
+		} else if($scope.payment == "2"){
+			paymentMethod = 'WALLET';
+		} else{
+			paymentMethod = 'ACADEMY';
+		}
 		var orderList = [];
 		var data = {
-			"payment_method": ($scope.payment === "1") ? 'BTC' : 'WALLET',
+			"payment_method": paymentMethod,
 			"payment_type": '',
 			"OrderDetails": [{"id": $scope.cartItem.itemid, "quantity": 1}]
 		};
