@@ -55,7 +55,8 @@
                      <!-- <b style="font-size:25px; ">$</b>
                         <input type="number" name="amount" class="form-control" ng-model="amount" style="margin-top:10px;" ng-change="checkAmount(amount)" required />&nbsp;&nbsp; -->
                      <div class="col-xs-4 col-sm-4 col-md-4 text-left fund-button">
-                        <button type="submit" data-toggle="modal" data-target="#add-funds" class="btn btn-default btn-white" ng-disabled="fund.$invalid || amountError"><strong>Add Funds</strong></button>
+                        <button ng-if="info.Wallet == 'USD'" type="submit" data-toggle="modal" data-target="#add-funds" class="btn btn-default btn-white" ng-disabled="fund.$invalid || amountError"><strong>Add Funds</strong></button>
+                        <button ng-if="info.Wallet == 'ACADEMY'" type="submit" data-toggle="modal" data-target="#add-funds-academy" class="btn btn-default btn-white" ng-disabled="fund.$invalid || amountError"><strong>Add Funds</strong></button>
                      </div>
                   </form>
                </td>
