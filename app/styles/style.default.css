@@ -6326,6 +6326,9 @@ h1{
     width:12.5%;
   }
 }
+.academy-invoice-pkg{
+  width:80px;
+}
 .login-section{
   position:absolute;
   top:50%;
@@ -6353,6 +6356,13 @@ h1{
   }
 }
 @media screen and (max-width:450px){
+
+  .cart-container{
+    padding:0px;
+  }
+  .academy-invoice-pkg{
+    width:60px;
+  }
   h4.great {
     padding: 4px 10px;
     font-size: 15px;
@@ -6372,7 +6382,7 @@ h1{
     font-size:14px;
   }
   .mt5{
-    font-size:20px !important;
+    font-size:17px !important;
   }
   .grand-total{
     font-size:35px;
@@ -6402,4 +6412,9 @@ h1{
     font-size:15px !important;
   }
 
+}
+@media screen and (max-width:375px){
+  .payment-type img{
+    width: 36px !important;
+  }
 }

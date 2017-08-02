@@ -178,6 +178,36 @@ angular.module('coinomiaFrontendApp')
       });
     }
 
+    // Transfer Academy Fund
+    $scope.transferAcademyFund = function(transferAmount, userId) {
+      $scope.loadingData = true;
+      var transferData = {
+        "userid":userId,
+        "amount":transferAmount
+      }
+      coinomiaService.transferAcademyFund(transferData).then(function(res) {
+        if(res.status === 200) {
+          $uibModalStack.dismissAll();
+          $scope.loadingData = false;
+          var data = res.data;
+          if(data.message !== '!balance not available') {
+            $scope.transferSuccess = true;
+            $scope.amount = transferAmount;
+            $scope.customerId = userId;
+          }else {
+            $scope.transferFailed = true;
+          }
+
+          var modalInstance = $uibModal.open({
+              templateUrl: 'views/modal/transfer-amount.html',
+              scope: $scope,
+              size: 'md',
+              backdrop: 'static'
+          });
+        }
+      });
+    }
+
 
     $scope.verifyAndSubmit = function(activity, requestAmount, type) {
       if(activity.toLowerCase() === 'withdrawal' && (type === 'BTC' || type === 'ETH' || type === 'DASH' || type === 'MONERO' || type === 'VIA')) {

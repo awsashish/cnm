@@ -32,7 +32,7 @@
                Review What Products are in Your Shopping Cart<span class="glyphicon glyphicon-minus"></span>
             </h2>
             <br />
-            <div class="container" style=" min-height:400px; overflow:hidden;">
+            <div class="container cart-container" style=" min-height:400px; overflow:hidden;">
                <table class="table table-dark-gry table-hover mb30 font16">
                   <thead style="background:#525252;">
                      <td><strong class="white-color"></strong></td>
@@ -41,7 +41,7 @@
                      <td><strong class="white-color">Action</strong></td>
                   </thead>
                   <tr ng-show="showTable == true">
-                     <td><img ng-src="{{s3Url}}Coinomia-Academy/package{{index+1}}.png" style="border:1px solid #ccc; padding:5px;" width="80"  /></td>
+                     <td><img ng-src="{{s3Url}}Coinomia-Academy/package{{index+1}}.png" style="border:1px solid #ccc; padding:5px;" class="academy-invoice-pkg" /></td>
                      <td style="vertical-align:middle;"> <strong>{{cartItem.PackageName}}</strong><br />
                      </td>
                      <td>
@@ -58,9 +58,11 @@
                <p style="border-bottom:1px solid #ccc;  padding:5px; height:80px;">
                   <span class="mt5 pull-right payment-type" style="color:#999;">Select Payment :
                      <input name="bitcoin" type="radio" value="1" ng-model="payment"/>
-                     <img src="images/btc-wallet.png" width="60" />&nbsp;&nbsp;
+                     <img src="images/btc-wallet.png" width="60" title="Bitcoin Wallet" />&nbsp;&nbsp;
                      <input name="usd" type="radio" value="2" ng-model="payment"/>
-                     <img src="images/usd-wallet.png" width="60" />
+                     <img src="images/usd-wallet.png" width="60" title="USD Wallet" />&nbsp;&nbsp;
+                     <input name="academy" type="radio" value="3" ng-model="payment"/>
+                     <img src="images/academy-wallet.png" width="60" title="Academy Wallet" />
                   </span>
                </p>
                <p>
@@ -78,7 +80,7 @@
                      </div>
                      <div align="left" class="modal-body text-capitalize" style="font-size:16px;">
                         <div class="alert alert-danger fade in" ng-if="noBalance" style="font-size:13px;">
-                           Sorry, You don't have enough balance into your Coinomia USD wallet.
+                           {{message}}
                         </div>
                         <div ng-if="!noBalance">
                            <em><strong>Hello {{name}},</strong></em><br />
