@@ -33,12 +33,17 @@ angular.module('coinomiaFrontendApp')
     $scope.viaMachineCurrentPage = config.currentPage;
     $scope.viaRackCurrentPage = config.currentPage;
 
+    $scope.litePoolCurrentPage = config.currentPage;
+    $scope.liteMachineCurrentPage = config.currentPage;
+    $scope.liteRackCurrentPage = config.currentPage;
+
     $scope.productMaxUnit = config.productMaxUnit;
     $scope.btcImagePath = config.btcImagePath;
     $scope.ethImagePath = config.ethImagePath;
     $scope.dashImagePath = config.dashImagePath;
     $scope.moneroImagePath = config.moneroImagePath;
     $scope.viaImagePath = config.viaImagePath;
+    $scope.ltcImagePath = config.ltcImagePath;
     $scope.pageLimit = config.pageLimit;
     $scope.oldPackage = config.oldPackage;
 
@@ -49,7 +54,7 @@ angular.module('coinomiaFrontendApp')
     if($stateParams.orderTab) {
       $scope.activeTab = $stateParams.orderTab;
     }
-    
+
     // Get Products
     coinomiaService.getProducts()
     .then(function(res) {
@@ -59,7 +64,9 @@ angular.module('coinomiaFrontendApp')
       $scope.dashProducts = [];
       $scope.moneroProducts = [];
       $scope.viaProducts = [];
+      $scope.ltcProducts = [];
       if(res.status === 200) {
+        console.log(productsData);
         var k = 0;
         productsData.forEach(function(products) {
           if(products.coin === 'BTC' && $scope.oldPackage[k] !== products.productname) {
@@ -83,6 +90,11 @@ angular.module('coinomiaFrontendApp')
             products.viaMining = 0;
             products.quantity = 0;
             $scope.viaProducts.push(products);
+          }
+          else if(products.coin === 'LITE' && $scope.oldPackage[k] !== products.productname){
+            products.liteMining = 0;
+            products.quantity = 0;
+            $scope.ltcProducts.push(products);
           }
           k++;
           // $scope.total += products.amount;
@@ -190,6 +202,17 @@ angular.module('coinomiaFrontendApp')
       }
     }
 
+    $scope.calculateLiteAmount = function(key, quantity, miningpower, maxUnit) {
+      if(quantity > maxUnit) {
+        $scope.ltcProducts[key].quantity = maxUnit;
+        $scope.ltcProducts[key].LiteMining = maxUnit*miningpower;
+        angular.element("#quantity-lite-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.ltcProducts[key].liteMining+'<small>MH/s</small>');
+        return false;
+      }else{
+        $scope.ltcProducts[key].liteMining = quantity*miningpower;
+        angular.element("#quantity-lite-"+key).parent().find(".price-slider .ui-slider-handle > label").html($scope.ltcProducts[key].liteMining+'<small>MH/s</small>');
+      }
+    }
     $scope.setEthQuantity = function(key, val) {
       $scope.ethProducts[key].quantity = val;
     }
@@ -206,8 +229,11 @@ angular.module('coinomiaFrontendApp')
       $scope.viaProducts[key].quantity = val;
     }
 
+    $scope.setLiteQuantity = function(key, val) {
+      $scope.ltcProducts[key].quantity = val;
+    }
 
-    // Close Modal 
+    // Close Modal
       $scope.closeModal = function() {
         $uibModalStack.dismissAll();
         $window.location.reload();
@@ -230,7 +256,7 @@ angular.module('coinomiaFrontendApp')
         }
         k++;
       });
-      
+
       $scope.btcProducts.forEach(function(btcInfo) {
         if(btcInfo.quantity !== 0 && btcInfo.quantity !== null) {
           var btcAmount = btcInfo.amount*btcInfo.btcMining/btcInfo.miningpower;
@@ -239,7 +265,7 @@ angular.module('coinomiaFrontendApp')
         }
         i++;
       });
-      
+
       $scope.ethProducts.forEach(function(ethInfo) {
         if(ethInfo.quantity !== 0 && ethInfo.quantity !== null) {
           var ethAmount = ethInfo.amount * ethInfo.ethMining/ethInfo.miningpower;
@@ -247,7 +273,7 @@ angular.module('coinomiaFrontendApp')
           $scope.orderDetails.push({data:{id:ethInfo.id, quantity:ethInfo.quantity}, name:ethInfo.productname,  price:ethAmount, path:$scope.ethImagePath[j]});
         }
         j++;
-      });      
+      });
 
       $scope.moneroProducts.forEach(function(moneroInfo) {
         if(moneroInfo.quantity !== 0 && moneroInfo.quantity !== null) {
@@ -266,9 +292,17 @@ angular.module('coinomiaFrontendApp')
         }
         m++;
       });
+      $scope.ltcProducts.forEach(function(ltcInfo) {
+        if(ltcInfo.quantity !== 0 && ltcInfo.quantity !== null) {
+          var ltcAmount = ltcInfo.amount * ltcInfo.viaMining/ltcInfo.miningpower;
+          $scope.purchaseTotal += ltcAmount;
+          $scope.orderDetails.push({data:{id:ltcInfo.id, quantity:ltcInfo.quantity}, name:ltcInfo.productname,  price:ltcAmount, path:$scope.ltcImagePath[j]});
+        }
+        n++;
+      });
 
       $scope.orderParams = [];
-      
+
       $scope.orderDetails.forEach(function(info) {
         if(info.data.quantity !== undefined && info.data.quantity !== null) {
           $scope.orderParams.push(info.data);
@@ -285,7 +319,7 @@ angular.module('coinomiaFrontendApp')
       }else{
         $scope.noOrder = true;
       }
-      
+
 
     }
 
@@ -302,10 +336,10 @@ angular.module('coinomiaFrontendApp')
         "payment_method": payment.mode,
         "payment_type": "",
         "OrderDetails" : $scope.orderParams
-      } 
+      }
 
       // console.log(orderData);
-      // Book Order 
+      // Book Order
       coinomiaService.bookOrder(orderData).then(function(res) {
         $uibModalStack.dismissAll();
         $scope.loadingData = false;
@@ -594,6 +628,59 @@ angular.module('coinomiaFrontendApp')
       })
     }
 
+
+    $scope.purchaseLitePool = function(type, product, currentPage) {
+      coinomiaService.orderHistory(type, product, currentPage)
+        .then(function(res){
+          if(res.status === 200) {
+            var data = res.data;
+            $scope.litePoolPower = data.TotalPower;
+            $scope.litePoolEstimateIncome = data.estimated_total_income;
+            $scope.litePoolCurrentRate = data.current_rate;
+            $scope.litePoolRecords = data.records.total;
+            $scope.litePoolDetails = data.records.rows;
+            if($scope.litePoolRecords === 0) {
+              $scope.noLitePoolRecords = true;
+            }
+          }
+        })
+    }
+
+
+    $scope.purchaseLiteMachine = function(type, product, currentPage) {
+      coinomiaService.orderHistory(type, product, currentPage)
+        .then(function(res){
+          if(res.status === 200) {
+            var data = res.data;
+            $scope.liteMachinePower = data.TotalPower;
+            $scope.liteMachineEstimateIncome = data.estimated_total_income;
+            $scope.liteMachineCurrentRate = data.current_rate;
+            $scope.liteMachineRecords = data.records.total;
+            $scope.liteMachineDetails = data.records.rows;
+            if($scope.liteMachineRecords === 0) {
+              $scope.noLiteMachineRecords = true;
+            }
+          }
+        })
+    }
+
+    $scope.purchaseLiteRack = function(type, product, currentPage) {
+      coinomiaService.orderHistory(type, product, currentPage)
+        .then(function(res){
+          if(res.status === 200) {
+            var data = res.data;
+            $scope.liteRackPower = data.TotalPower;
+            $scope.liteRackEstimateIncome = data.estimated_total_income;
+            $scope.liteRackCurrentRate = data.current_rate;
+            $scope.liteRackRecords = data.records.total;
+            $scope.liteRackDetails = data.records.rows;
+            if($scope.liteRackRecords === 0) {
+              $scope.noLiteRackRecords = true;
+            }
+          }
+        })
+    }
+
     $scope.purchaseEthPool('ETH', 'pool', $scope.ethPoolCurrentPage);
     $scope.purchaseEthMachine('ETH', 'machine', $scope.ethMachineCurrentPage);
     $scope.purchaseEthRack('ETH', 'rack', $scope.ethRackCurrentPage);
@@ -613,4 +700,7 @@ angular.module('coinomiaFrontendApp')
     $scope.purchaseViaPool('VIA', 'pool', $scope.viaPoolCurrentPage);
     $scope.purchaseViaMachine('VIA', 'machine', $scope.viaMachineCurrentPage);
     $scope.purchaseViaRack('VIA', 'rack', $scope.viaRackCurrentPage);
+    $scope.purchaseLitePool('LITE', 'pool', $scope.litePoolCurrentPage);
+    $scope.purchaseLiteMachine('LITE', 'machine', $scope.liteMachineCurrentPage);
+    $scope.purchaseLiteRack('LITE', 'rack', $scope.liteRackCurrentPage);
   });
