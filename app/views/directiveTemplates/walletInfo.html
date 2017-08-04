@@ -38,7 +38,7 @@
             </tr>
             <!-- Applicable to all wallets having the Fund Withdraw feature -->
             <tr>
-               <td align="center" valign="middle" colspan="3" ng-if="(info.Wallet == 'USD')">
+               <td align="center" valign="middle" colspan="3" ng-if="(info.Wallet == 'USD' || info.Wallet == 'ACADEMY')">
                   <form name="fund" class="form-inline" ng-submit="submit(amount)" novalidate>
                      <div class="col-xs-8 col-sm-8 col-md-8 text-left fund-section">
                         <div class="col-xs-12 col-sm-12 col-md-12 input-group fund-box">

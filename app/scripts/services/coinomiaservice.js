@@ -945,6 +945,23 @@ angular.module('coinomiaFrontendApp')
     }
 
     // Update Profile
+    this.addAcademyFund = function(amount) {
+      // On Success
+      function addAcademyFundRequestComplete(response) {
+        return response;
+      }
+
+      // On Failed
+      function addAcademyFundRequestFailed(error) {
+        $log.error('XHR Failed for Add Fund.\n' + angular.toJson(error.data, true));
+        return error;
+      }
+
+      return $http.post(this.apiHost +'user/add-fund-academy', amount)
+        .then(addAcademyFundRequestComplete)
+        .catch(addAcademyFundRequestFailed);
+    }
+    // Update Profile
     this.fundStatus = function(btcAddress) {
       // On Success
       function fundStatusRequestComplete(response) {
