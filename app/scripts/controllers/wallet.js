@@ -79,6 +79,25 @@ angular.module('coinomiaFrontendApp')
       })
     }
 
+    // Add Academy FUND
+    $scope.addAcademyFund = function(amount) {
+      $scope.loadingData = true;
+      coinomiaService.addAcademyFund(amount)
+      .then(function(res) {
+        if(res.status === 200) {
+          $scope.loadingData = false;
+          angular.element("#add-funds-academy").hide();
+          var data = res.data;
+          $scope.transactionDetails = data;
+          $scope.transactionDate = moment().format('YYYY-MM-DD');
+          var modalInstance = $uibModal.open({
+              templateUrl: 'views/transaction-invoice.html',
+              scope: $scope,
+              size: 'md'
+          });
+        }
+      })
+    }
     // Check Added Fund Status
     $scope.checkStatus = function(btcAddress) {
       var btcAddress = JSON.stringify(btcAddress);

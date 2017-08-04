@@ -259,6 +259,30 @@
                </div>
             </div>
          </div>
+         <div class="modal fade" id="add-funds-academy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                     <h4 class="modal-title" id="myModalLabel"><img ng-src="images/usd-wallet.png" width="35" class="pull-left img-responsive "> <strong>&nbsp;Add Funds</strong></h4>
+                  </div>
+                  <div id="loadingDiv" ng-if="loadingData"></div>
+                  <div class="modal-body">
+                     <form>
+                        <strong>Choose Your Payment Method</strong>
+                        <div class="row mar20">
+                           <div class="col-md-6 col-md-offset-3 col-sm-12"><input name="check-ref" type="radio" value="1" checked>&nbsp;&nbsp;<img ng-src="{{s3Url}}bitcoin-logo.png" width="200"></div>
+                        </div>
+                     </form>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-primary" ng-click="addAcademyFund(addAmount)" ng-disabled="amountError">Add Funds</button>
+                  </div>
+               </div>
+            </div>
+         </div>
          <!-- Add Funds -->
          <!-- Transaction Details -->
          <!-- <div class="modal fade in" id="add-funds1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
