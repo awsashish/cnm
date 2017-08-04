@@ -60,11 +60,11 @@
                      </div>
                   </form>
                </td>
-               <td align="center" valign="middle" colspan="3" ng-if="info.Wallet !== 'USD' && info.Wallet !== 'ETH' && info.Wallet !== 'ACADEMY'">
+               <td align="center" valign="middle" colspan="3" ng-if="type &&(info.Wallet !== 'USD' && info.Wallet !== 'ETH' && info.Wallet !== 'ACADEMY')">
                   <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(info, 'withdrawal', info.Wallet)"><strong><img ng-src="images/withdraw.png" width="30"> Withdraw</strong></a>
                   <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ng-click="getWallet(info, 'convertUSD', info.Wallet)"><strong><img ng-src="{{s3Url}}dollar.png" width="30"> Convert to USD</strong></a>
                </td>
-               <td align="center" valign="middle" colspan="3" ng-if="info.Wallet === 'ETH'">
+               <td align="center" valign="middle" colspan="3" ng-if="type && info.Wallet === 'ETH'">
                   <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default btn-white" ng-click="getWallet(info, 'withdrawal', info.Wallet)"><strong><img ng-src="images/withdraw.png" width="30"> Withdraw</strong></a>
                   <a data-toggle="modal" data-target="#btc-wallet" class="btn btn-default" ng-click="getWallet(info, 'convertUSD', info.Wallet)"><strong><img ng-src="{{s3Url}}dollar.png" width="30"> Convert to USD</strong></a>
                </td>
@@ -83,7 +83,7 @@
                   <a data-toggle="modal" data-target="#internal-transfer-academy" class="btn btn-default"><strong><img ng-src="images/transfer-funds.png" width="30"> Internal Transfer</strong></a>
                </td>
             </tr>
-            <tr ng-if="!type && !info.Wallet == 'ACADEMY'">
+            <tr ng-if="!type && info.Wallet !== 'ACADEMY'">
                <td align="center" valign="middle" colspan="3">
                   <button class="btn btn-lg btn-default white-btn" ng-click="updateWallet({wallet:info.Wallet, address:info.Address})"><strong>Save </strong></button>
                </td>
