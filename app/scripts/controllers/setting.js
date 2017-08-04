@@ -131,7 +131,7 @@ angular.module('coinomiaFrontendApp')
     $scope.closePopup = function() {
       $uibModalStack.dismissAll();
     }
-    
+
     $scope.changeOTPStatus = function(factorValue, otp) {
       $scope.otpErrorMessage = '';
       $scope.statusMessage = '';
@@ -164,7 +164,7 @@ angular.module('coinomiaFrontendApp')
 
     $scope.changeStatus = function(getValue) {
       $scope.loadingMessage = true;
-      $scope.factorStatus = getValue;   
+      $scope.factorStatus = getValue;
 
       coinomiaService.requestOTP().then(function(res) {
         $scope.loadingMessage = false;
@@ -183,7 +183,7 @@ angular.module('coinomiaFrontendApp')
       //         scope: $scope,
       //         size: 'md'
       //     });
-      
+
     }
 
 
