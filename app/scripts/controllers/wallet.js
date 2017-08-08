@@ -60,44 +60,44 @@ angular.module('coinomiaFrontendApp')
     }
 
     // Add FUND
-    $scope.addFund = function(amount) {
+    $scope.addFund = function(coin, amount) {
+      $scope.selectedCoin = coin;
       $scope.loadingData = true;
-      coinomiaService.addUsdFund(amount)
-      .then(function(res) {
-        if(res.status === 200) {
-          $scope.loadingData = false;
-          angular.element("#add-funds").hide();
-          var data = res.data;
-          $scope.transactionDetails = data;
-          $scope.transactionDate = moment().format('YYYY-MM-DD');
-          var modalInstance = $uibModal.open({
-              templateUrl: 'views/transaction-invoice.html',
-              scope: $scope,
-              size: 'md'
-          });
-        }
-      })
+
+      if(coin == "USD"){
+        coinomiaService.addUsdFund(amount).then(function(res) {
+          if(res.status === 200) {
+            $scope.loadingData = false;
+            angular.element("#add-funds").hide();
+            var data = res.data;
+            $scope.transactionDetails = data;
+            $scope.transactionDate = moment().format('YYYY-MM-DD');
+            var modalInstance = $uibModal.open({
+                templateUrl: 'views/transaction-invoice-funds.html',
+                scope: $scope,
+                size: 'md'
+            });
+          }
+        });
+      }
+      else{
+        coinomiaService.addAcademyFund(amount).then(function(res) {
+          if(res.status === 200) {
+            $scope.loadingData = false;
+            angular.element("#add-funds-academy").hide();
+            var data = res.data;
+            $scope.transactionDetails = data;
+            $scope.transactionDate = moment().format('YYYY-MM-DD');
+            var modalInstance = $uibModal.open({
+                templateUrl: 'views/transaction-invoice-funds.html',
+                scope: $scope,
+                size: 'md'
+            });
+          }
+        });
+      }
     }
 
-    // Add Academy FUND
-    $scope.addAcademyFund = function(amount) {
-      $scope.loadingData = true;
-      coinomiaService.addAcademyFund(amount)
-      .then(function(res) {
-        if(res.status === 200) {
-          $scope.loadingData = false;
-          angular.element("#add-funds-academy").hide();
-          var data = res.data;
-          $scope.transactionDetails = data;
-          $scope.transactionDate = moment().format('YYYY-MM-DD');
-          var modalInstance = $uibModal.open({
-              templateUrl: 'views/transaction-invoice-academy.html',
-              scope: $scope,
-              size: 'md'
-          });
-        }
-      })
-    }
     // Check Added Fund Status
     $scope.checkStatus = function(btcAddress) {
       var btcAddress = JSON.stringify(btcAddress);

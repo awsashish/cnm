@@ -240,7 +240,9 @@
                <div class="modal-content">
                   <div class="modal-header">
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                     <h4 class="modal-title" id="myModalLabel"><img ng-src="images/usd-wallet.png" width="35" class="pull-left img-responsive "> <strong>&nbsp;Add Funds</strong></h4>
+                     <h4 class="modal-title" id="myModalLabel">
+                        <img ng-src="images/usd-wallet.png" width="35" class="pull-left img-responsive ">
+                        <strong>&nbsp;Add Funds</strong></h4>
                   </div>
                   <div id="loadingDiv" ng-if="loadingData"></div>
                   <div class="modal-body">
@@ -254,7 +256,7 @@
                   <br>
                   <br>
                   <div class="modal-footer">
-                     <button type="button" class="btn btn-primary" ng-click="addFund(addAmount)" ng-disabled="amountError">Add Funds</button>
+                     <button type="button" class="btn btn-primary" ng-click="addFund('USD',addAmount)" ng-disabled="amountError">Add Funds</button>
                   </div>
                </div>
             </div>
@@ -264,7 +266,7 @@
                <div class="modal-content">
                   <div class="modal-header">
                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                     <h4 class="modal-title" id="myModalLabel"><img ng-src="images/usd-wallet.png" width="35" class="pull-left img-responsive "> <strong>&nbsp;Add Funds</strong></h4>
+                     <h4 class="modal-title" id="myModalLabel"><img ng-src="images/academy-wallet.png" width="35" class="pull-left img-responsive "> <strong>&nbsp;Add Funds</strong></h4>
                   </div>
                   <div id="loadingDiv" ng-if="loadingData"></div>
                   <div class="modal-body">
@@ -278,7 +280,7 @@
                   <br>
                   <br>
                   <div class="modal-footer">
-                     <button type="button" class="btn btn-primary" ng-click="addAcademyFund(addAmount)" ng-disabled="amountError">Add Funds</button>
+                     <button type="button" class="btn btn-primary" ng-click="addFund('ACADEMY',addAmount)" ng-disabled="amountError">Add Funds</button>
                   </div>
                </div>
             </div>
@@ -323,7 +325,7 @@
                   </div>
                </div>
             </div>
-         </div> -->
+            </div> -->
          <!-- Transaction Details -->
          <!-- contentpanel -->
       </div>
